@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_JOB/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_DownloadSourceCode/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_Email/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP发送Email  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP发送Email  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP发送Email "/>
+<meta name="twitter:description" content="SAP 发送邮件 邮件功能可以配置参数，使用系统标准的邮件工作台收发邮件，还可以调用邮件API接口函数收发邮件。 Tcode RZ10：设置Profile参数 1"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP发送Email ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_Email\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  2050 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_Email\/",
+  "datePublished": "2019-04-08T00:00:00\x2b00:00",
+  "dateModified": "2019-04-08T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP发送Email </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-08 >8 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="sap-发送邮件">SAP 发送邮件</h2>
+<p>邮件功能可以配置参数，使用系统标准的邮件工作台收发邮件，还可以调用邮件API接口函数收发邮件。</p>
+<h3 id="tcode">Tcode</h3>
+<h4 id="rz10设置profile参数">RZ10：设置Profile参数</h4>
+<p>1、运行事务码RZ10，显示如图所示界面</p>
+<p><img src="/images/ABAP/EMAIL_RZ10_1.png" alt="RZ10"></p>
+<p>2、进入修改界面，如下图所示，点图中的“Parameter”按钮</p>
+<p><img src="/images/ABAP/EMAIL_RZ10_2.png" alt="RZ10"></p>
+<p>3、新建参数icm/server_port_1赋值为“PROT=SMTP,PORT=25000,TIMEOUT=90,PROCTIMEOUT=3600”</p>
+<p>默认情况下已经有一个参数文件icm/server_port_0 = PORT=HTTP,PORT=XXXX(每个服务可能不一样)，那么这里的&lt;*&gt;就是要根据你的参数文件的具体情况，如果已经有了_0,这里你就需要设成_1, 以此类推，PORT一般设置成25。这里还有一个选项是TIMEOUT可以设定等待邮件服务器回复时间的最大值。</p>
+<p><img src="/images/ABAP/EMAIL_RZ10_3.png" alt="RZ10"></p>
+<p>4、返回，并点击图中的“Parameter”按钮</p>
+<p>新建参数is/SMTP/virt_host_0 赋值为“ * :25000;”。is/SMTP/virt_host_&lt; * &gt; = &lt; host &gt;:&lt; port &gt;,&lt; port &gt;,&hellip;;  定义虚拟邮件主机，主要用来接收邮件的，_&lt;*&gt;的设置同上。要注意，参数值最后是有一个分号的。完成后保存，激活。 配置完需要重启服务，参数才能生效。</p>
+<p><img src="/images/ABAP/EMAIL_RZ10_4.png" alt="RZ10"></p>
+<h4 id="su01sap发邮件用户的维护">SU01：SAP发邮件用户的维护</h4>
+<p>1、对于每一个client，需要创建一个用户作为邮件的接收者，创建了用户，用户类型设置为service</p>
+<p><img src="/images/ABAP/EMAIL_SU01_2.png" alt="SU01"></p>
+<p>2、并给该用户赋Profile：S_A.SCON</p>
+<p><img src="/images/ABAP/EMAIL_SU01_1.png" alt="SU01"></p>
+<p>3、配置Address：Email信息</p>
+<p><img src="/images/ABAP/EMAIL_SU01_3.png" alt="SU01"></p>
+<h4 id="sicf配置服务">SICF：配置服务</h4>
+<p>1、执行事务码SICF</p>
+<p><img src="/images/ABAP/EMAIL_SICF_1.png" alt="SICF"></p>
+<p>2、双击SAPconnect</p>
+<p><img src="/images/ABAP/EMAIL_SICF_2.png" alt="SICF">
+3、显示Host data 主机数据,对于 Profile Parameter Number，输入 &ldquo;is/STMP/virt_host_#&ldquo;中的#的值，一般可能是0，如果不存在的话，下面会有提示的。</p>
+<p><img src="/images/ABAP/EMAIL_SICF_3.png" alt="SICF"></p>
+<p>4、登陆数据（logon data）</p>
+<ul>
+<li>客户端：当前客户端编号</li>
+<li>用户：前面su01中创建的service用户</li>
+<li>语言：EN</li>
+</ul>
+<p><img src="/images/ABAP/EMAIL_SICF_4.png" alt="SICF"></p>
+<p>5、Handler List,输入CL_SMTP_EXT_SAPCONNECT</p>
+<p><img src="/images/ABAP/EMAIL_SICF_5.png" alt="SICF"></p>
+<p>6、完成以上配置后，返回保存激活</p>
+<h4 id="scot配置">SCOT：配置</h4>
+<p><img src="/images/ABAP/EMAIL_SCOT_1.png" alt="SCOT"></p>
+<p>1、菜单栏 ：Settings&mdash;-Default domain，此处填写邮件服务器。
+这个邮件的默认域名比如sap.com，那么如果在你发送邮件的时候收件人地址如果只写test的话，系统会自动加上@sap.com，如果收件人地址是全的话，这个domain不维护关系也不大。</p>
+<p>2、维护SMTP节点：View&mdash;-Note</p>
+<p>Nodes—Display或者双击上图SMTP后弹出对话框，维护 以下信息勾上 &ldquo;Node in user&rdquo;。
+在MAIL HOST和MAIL PORT下面，指定发送邮件服务器的地址，比如如果是163的话，就应该是smtp.163.com。
+这里MAIL HOST填写公司邮件服务器地址,MAIL PORT填写25000选中Internet的Set，弹出新对话框，指定接收地址的地址区域，一般用*表示所有邮件都用SMTP来发送，其他信息用默认。
+这里SAPconnect的信息可以有两种方式显示的，如果双击SMTP节点弹出的是JOB的信息的话，选择菜单中SYSTEM STATUS，切换到为另一种显示方式即可。</p>
+<p><img src="/images/ABAP/EMAIL_SCOT_2.png" alt="SCOT"></p>
+<p><img src="/images/ABAP/EMAIL_SCOT_3.png" alt="SCOT"></p>
+<p>3、<strong>Send job</strong>,选择菜单中的 View&ndash;&gt;Jobs，可以检查是否已经有Jobs被调度了 选择Jobs-&gt;Create，并指定Job名称，点执行按钮，选择SAP&amp;CONNECTALL变式，并选择Schedule Job。</p>
+<p>选择 Schedule periodiacally定期计划,指定时间间隔，比如10分钟，选择创建。到这里，基本配置成功了。</p>
+<p>4、可以在<strong>SBWP</strong>中，选择发送邮件，来测试配置是否成功，输入收件人的邮件地址，点击发送。如果配置成功的话，收一下邮件，应该收到了来自登陆SAP GUI的账号中配置的邮件地址的邮件了。</p>
+<h4 id="sost查看发送情况">SOST：查看发送情况</h4>
+<h4 id="tips如果只是使用sap发送而不接收外部回复回来的邮件那么只需要配置步骤二四">Tips:如果只是使用SAP发送而不接收外部回复回来的邮件，那么只需要配置步骤二、四.</h4>
+<h3 id="程序">程序</h3>
+<p>CLASS</p>
+<ul>
+<li>CL_BCS</li>
+<li>CL_DOCUMENT_BCS</li>
+</ul>
+<p>Function Module</p>
+<ul>
+<li>SO_DOCUMENT_SEND_API1</li>
+<li>SO_NEW_DOCUMENT_ATT_SEND_API1</li>
+<li>SO_NEW_DOCUMENT_SEND_API1</li>
+</ul>
+<h3 id="示例程序">示例程序</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">l_send_request</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">CL_BCS</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">l_document</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">CL_DOCUMENT_BCS</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>,
+     <span style="color:#a6e22e">i_text</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">BCSY_TEXT</span>,     <span style="color:#e6db74">&#34; Table for body &#34;</span>
+     <span style="color:#a6e22e">w_text</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">i_text</span>,
+     <span style="color:#a6e22e">l_subject</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">SO_OBJ_DES</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">l_sender</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">IF_SENDER_BCS</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>,
+     <span style="color:#a6e22e">l_uname</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">uname</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">l_recipient</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">IF_RECIPIENT_BCS</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>,
+     <span style="color:#a6e22e">i_email</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>.
+<span style="color:#a6e22e">TRY</span>.
+<span style="color:#e6db74">&#34; 创建发送请求 &#34;</span>
+  <span style="color:#a6e22e">l_send_request</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_bcs</span>=&gt;<span style="color:#a6e22e">create_persistent</span>( ).
+<span style="color:#e6db74">&#34; 设定发送内容 &#34;</span> 
+  <span style="color:#a6e22e">w_text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">line</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Email body context&#39;</span>.
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">w_text</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">i_text</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">w_text</span>.
+  <span style="color:#a6e22e">l_document</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_document_bcs</span>=&gt;<span style="color:#a6e22e">create_document</span>(
+                   <span style="color:#a6e22e">i_type</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RAW&#39;</span>       <span style="color:#e6db74">&#34; Type of document &#34;</span>
+                   <span style="color:#a6e22e">i_subject</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_subject</span> <span style="color:#e6db74">&#34; Email subject &#34;</span>
+                   <span style="color:#a6e22e">i_text</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">i_text</span> <span style="color:#e6db74">&#34; Email body internal table &#34;</span>
+                   <span style="color:#a6e22e">I_IMPORTANCE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>    <span style="color:#e6db74">&#34; Email Document priority &#34;</span>
+                    ).
+<span style="color:#e6db74">&#34; 增加发送内容到发送请求 &#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">l_send_request</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_document</span>( <span style="color:#a6e22e">l_document</span> ).
+<span style="color:#e6db74">&#34; 取得发送者（取得发件人，前提是这个邮箱地址能发邮件，并且不需要密码）&#34;</span>
+  <span style="color:#a6e22e">l_uname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">uname</span>.
+  <span style="color:#a6e22e">l_sender</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_sapuser_bcs</span>=&gt;<span style="color:#a6e22e">create</span>( <span style="color:#a6e22e">l_uname</span> ).
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">l_send_request</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_sender</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">i_sender</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_sender</span>.
+<span style="color:#e6db74">&#34; 设置收件人 &#34;</span>
+   <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">it_mailaccept</span>.
+     <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">i_email</span>.
+     <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">it_mailaccept</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#e6db74">&#39;@XXXXX.COM&#39;</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">i_email</span>.
+     <span style="color:#a6e22e">TRANSLATE</span> <span style="color:#a6e22e">i_email</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">LOWER</span> <span style="color:#a6e22e">CASE</span>.
+     <span style="color:#a6e22e">l_recipient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_cam_address_bcs</span>=&gt;<span style="color:#a6e22e">create_internet_address</span>( <span style="color:#a6e22e">i_email</span> ).
+     <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">l_send_request</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">add_recipient</span>
+       <span style="color:#a6e22e">EXPORTING</span>
+         <span style="color:#a6e22e">i_recipient</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_recipient</span>
+         <span style="color:#a6e22e">i_express</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+         <span style="color:#a6e22e">i_copy</span>       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>
+         <span style="color:#a6e22e">i_blind_copy</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>
+         <span style="color:#a6e22e">i_no_forward</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>.
+   <span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#e6db74">&#34; 设置抄送人 &#34;</span>
+    <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">it_mailaccept_copy</span>.
+      <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">i_email</span>.
+      <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">it_mailaccept_copy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#e6db74">&#39;@XXXXX&#39;</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">i_email</span>.
+      <span style="color:#a6e22e">TRANSLATE</span> <span style="color:#a6e22e">i_email</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">LOWER</span> <span style="color:#a6e22e">CASE</span>.
+      <span style="color:#a6e22e">l_recipient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_cam_address_bcs</span>=&gt;<span style="color:#a6e22e">create_internet_address</span>( <span style="color:#a6e22e">i_email</span> ).
+      <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">l_send_request</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">add_recipient</span>
+        <span style="color:#a6e22e">EXPORTING</span>
+          <span style="color:#a6e22e">i_recipient</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_recipient</span>
+          <span style="color:#a6e22e">i_express</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+          <span style="color:#a6e22e">i_copy</span>       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+          <span style="color:#a6e22e">i_blind_copy</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>
+          <span style="color:#a6e22e">i_no_forward</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>.
+    <span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#e6db74">&#34; 立即发送 &#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">l_send_request</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_send_immediately</span>( <span style="color:#e6db74">&#39;X&#39;</span> ).
+<span style="color:#e6db74">&#34; 发送 &#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">l_send_request</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">send</span>( 
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">I_WITH_ERROR_SCREEN</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  ).
+  <span style="color:#a6e22e">COMMIT</span> <span style="color:#a6e22e">WORK</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBRC</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+    <span style="color:#a6e22e">WRITE</span> <span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">M</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">f</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">y</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">.</span>
+  <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_document_bcs</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">l_bcs_exception</span>.
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_send_req_bcs</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">l_send_exception</span>.
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_address_bcs</span>  <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">l_addr_exception</span>.
+<span style="color:#a6e22e">ENDTRY</span>.
+</code></pre></div><h3 id="相关链接">相关链接</h3>
+<ul>
+<li><a href="https://coldinfire.github.io/2019/ABAP_EmailText/">发送带文本附件的Email</a></li>
+<li><a href="https://coldinfire.github.io/2019/ABAP_EmailExcel/">发送带Excel附件的Email</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2050</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_JOB/" class="prev" rel="prev" title="SAP后台JOB"><i class="iconfont icon-dajiantou"></i>&nbsp;SAP后台JOB</a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_DownloadSourceCode/" class="next" rel="next" title=" SAP下载程序源码工具 "> SAP下载程序源码工具 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-08 00:00:00 \x2b0000 UTC',
+        title: ' SAP发送Email ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

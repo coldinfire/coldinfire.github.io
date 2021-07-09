@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_View/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P3/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_Demo/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            创建一个Web Dynpro ABAP程序实例  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 创建一个Web Dynpro ABAP程序实例  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 创建一个Web Dynpro ABAP程序实例 "/>
+<meta name="twitter:description" content="准备数据 SAP Web Dynpro 一般都是采用调用 ERP 接口方式获取业务数据，因此输入，输出参数等结构都需要和 ERP 系统中接口的内容保持一致。在 ERP 系统中找到 Report 对应的程序"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 创建一个Web Dynpro ABAP程序实例 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_Demo\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  2059 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_Demo\/",
+  "datePublished": "2018-10-20T00:00:00\x2b00:00",
+  "dateModified": "2018-10-20T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 创建一个Web Dynpro ABAP程序实例 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-20 >20 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="准备数据">准备数据</h3>
+<p>SAP Web Dynpro 一般都是采用调用 ERP 接口方式获取业务数据，因此输入，输出参数等结构都需要和 ERP 系统中接口的内容保持一致。在 ERP 系统中找到 Report 对应的程序，在 Web Dynpro 系统中创建对应的结构，分别对应选择屏幕和对应的 ALV 报表。</p>
+<h3 id="se80创建wda">SE80创建WDA</h3>
+<p>输入WDA的Name和View Name，创建Web Dynpro并激活</p>
+<p><img src="/images/webdynproABAP/1.1.png" alt="Web Dynpro 创建"></p>
+<p><img src="/images/webdynproABAP/1.png" alt="Web Dynpro 创建"></p>
+<p>双击对象名ZPR_ZPEFF，然后添加Component Use</p>
+<p><img src="/images/webdynproABAP/2.png" alt="Web Dynpro 添加 Component Use"></p>
+<p>然后双击COMPONENTCONTROLLER,在Properties中创建Components</p>
+<p><img src="/images/webdynproABAP/3.png" alt="添加Components"></p>
+<p>切换页签到Context(还是COMPONENTCONTROLLER),创建Nodes</p>
+<p>Context：节点。视图使用的表，结构，全部放在这里。一般0-1/1-1/0-n三种。前两种相当于工作区，结构，后一种是内表。1-1时需要勾选Initialization Lead Selection</p>
+<p>进到创建Nodes的界面,输入Node Name,Dictionary structure,然后Cardinality改成0..n，然然后点击Add attribute from structure来选择需要的字段</p>
+<p><img src="/images/webdynproABAP/4.1.png" alt="Create node"></p>
+<p><img src="/images/webdynproABAP/5.png" alt="Add Attribute from Structure"></p>
+<p><img src="/images/webdynproABAP/6.png" alt="Result"></p>
+<p>再建一个Node (ZOPTION)用来放复选框</p>
+<p><img src="/images/webdynproABAP/7.png" alt="Create Check box node"></p>
+<p>在ZOPTION下创建二个属性，对应P_TOTAL和P_DETAIL</p>
+<p><img src="/images/webdynproABAP/8.png" alt="Add attribute"></p>
+<p>切换到页签 Attribute，然后维护以下三个属性</p>
+<p><img src="/images/webdynproABAP/9.png" alt="Add attribute"></p>
+<p>在页签Methods我们用到2个方法，(具体代码后面会给)：</p>
+<ul>
+<li>DATA_LOAD是手动添加的方法</li>
+<li>WDDOINIT是系统自动添加的方法</li>
+</ul>
+<p><img src="/images/webdynproABAP/10.png" alt="Add METHODS"></p>
+<h3 id="view的处理">View的处理</h3>
+<p>每个视图都有一个控制器负责根据用户的交互来执执行作。</p>
+<h4 id="input_view处理">INPUT_VIEW处理</h4>
+<p>首先进到INPUT_VIEW中的Context页签中,然后将右边的Node拖到左边,如下图：</p>
+<p><img src="/images/webdynproABAP/11.png" alt="Input View Context"></p>
+<p>然后Inbound Plugs 和 Outbound Plugs 分别维护</p>
+<ul>
+<li>在Inbound Plugs维护Plug
+Name : FROM_ALV_VIEW</li>
+<li>在Outbound Plugs维护Plug
+Name : TO_ALV_VIEW</li>
+</ul>
+<p><strong>接下来我们在Layout设置选择界面的信息。</strong></p>
+<p>首先设置一个执行按钮，右键ROOTUIELEMENTCONTAINER,选择Insert Element,然后输入ID为TOOLBAR1,Type为TOOLBAR点击确定。</p>
+<p><img src="/images/webdynproABAP/14.png" alt="Input View Layout"></p>
+<p>右键TOOLBAR1,选择Insert Toolbar Element,输入ID为EXCUTE, Type为TOOLBAR_BUTTON.</p>
+<p><img src="/images/webdynproABAP/15.png" alt="Input View Layout"></p>
+<p><img src="/images/webdynproABAP/16.png" alt="Input View Layout Ele"></p>
+<p>然后设置EXCUTE的属性，输入图标名称，创建一个Event,如下图所示</p>
+<p><img src="/images/webdynproABAP/17.png" alt="Input View Layout Button"></p>
+<p>然后双击EXCUTE,写入逻辑,当点击按钮时，跳入到ALV_VIEW视图:fire_&lsquo;Outbound Plugs name&rsquo;_plg( )。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lo_componentcontroller</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">ig_componentcontroller</span> .
+    <span style="color:#a6e22e">lo_componentcontroller</span> <span style="color:#f92672">=</span>   <span style="color:#a6e22e">wd_this</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_componentcontroller_ctr</span>( ).
+    <span style="color:#e6db74">&#34;&#34;</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#a6e22e">来源ComponentController中method</span>
+    <span style="color:#a6e22e">lo_componentcontroller</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">data_load</span>(
+    ).
+    <span style="color:#a6e22e">wd_this</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">fire_to_alv_view_plg</span>(
+    ).
+</code></pre></div><p><img src="/images/webdynproABAP/18.png" alt="Input View Event"></p>
+<p>然后我们继续回到Layout,接下来创建Group，右键ROOTUIELEMENTCONTAINER,然后输入ID为SELECTIONS1,选择Type为GROUP，如下图：</p>
+<p><img src="/images/webdynproABAP/19.png" alt="Input View Layout Group"></p>
+<p>然后修改Group属性，Layout选择MatrixLayout ,然后width维护100%</p>
+<p><img src="/images/webdynproABAP/20.png" alt="Input View Layout property"></p>
+<p>再然后右键SELECTIONS1,选择Insert Element,输入ID和Type</p>
+<p><img src="/images/webdynproABAP/22.png" alt="Input View Layout selection"></p>
+<p>接下来我们以同样的方式创建GROUP，名称为SELECTIONS2</p>
+<p>右键SELECTIONS2,然后选择Create
+Container Form,选择字段，确定。</p>
+<p><img src="/images/webdynproABAP/21.png" alt="Input View Layout "></p>
+<p>这里我们回到COMPONENTCONTROLLER的Methods,将用到的2个方法写入逻辑。</p>
+<ul>
+<li><strong>WDDOINIT</strong> – 初始化选择界面
+<ul>
+<li><a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P3/">Component Controller: WDDOINIT</a></li>
+</ul>
+</li>
+<li><strong>DATA_LOAD</strong> – 加载数据
+<ul>
+<li><a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P2/">ALV_INPUT: DATA_LOAD</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="alv_view处理">ALV_VIEW处理</h4>
+<p>将二个ALV报表要显示的结果的结构添加到Component
+Controller中的上下文中;</p>
+<p>右键Views然后创建新的VIEW用来展示ALV报表 ：ALV_VIEW</p>
+<p>添加Context 和Properties/Component Use</p>
+<p><img src="/images/webdynproABAP/23.png" alt="ALV View Context "></p>
+<p><img src="/images/webdynproABAP/23.1.png" alt="ALV View Properties "></p>
+<p>然后Inbound Plugs和Outbound
+Plugs分别维护</p>
+<ul>
+<li>在Inbound Plugs维护Plug
+Name : FROM_INPUT_VIEW</li>
+<li>在Outbound Plugs维护Plug
+Name : TO_INPUT_VIEW</li>
+</ul>
+<p>然后切换到页签Layout,新建一个返回按钮,BACK,然后双击BACK,写入返回逻辑。</p>
+<p><img src="/images/webdynproABAP/26.png" alt="ALV View Layout back "></p>
+<p><img src="/images/webdynproABAP/27.png" alt="ALV View Layout back "></p>
+<p>我们再回到Layout,创建一个HORIZONTAL_GUTTER类型是HORIZONTAL GUTTER将按钮和ALV输出数据隔开。</p>
+<p><img src="/images/webdynproABAP/24.png" alt="View Layout "></p>
+<p>然后创建一个DISPLAY_DATA 类型是<code>ViewContainerUIElement</code>。</p>
+<p><img src="/images/webdynproABAP/25.png" alt="View Layout "></p>
+<p>再切换到Methods中，在WDDOINIT中写实现ALV逻辑。如果在ALV View界面需要进行功能处理，则创建对应的Method并写入功能代码。</p>
+<ul>
+<li><a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P1/">ALV_VIEW: WDDOINIT</a></li>
+<li><a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P4/">ALV_VIEW: Print_Function</a></li>
+</ul>
+<h3 id="windows-处理">Windows 处理</h3>
+<p>windows 只是一种容器，在一个 component 内一个 window 可以包含任意多个 view.</p>
+<p>打开Windows并双击视图,然后将ALV_VIEW拖到ZWDA_DEMO下面，如图：</p>
+<p><img src="/images/webdynproABAP/28.png" alt="Windows Add"></p>
+<p>右键INPUT_VIW中的SELECT_OPTIONS,将select_options绑定</p>
+<p><img src="/images/webdynproABAP/29.1.png" alt="Windows Input View Select Options"></p>
+<p><img src="/images/webdynproABAP/29.2.png" alt="Windows Input View Select Options Embed"></p>
+<p>然后右键INPUT_VIEW下的TO_ALV_VIEW, 选择 Create
+Navigation Link</p>
+<p><img src="/images/webdynproABAP/29.3.png" alt="Windows Input View OUT"></p>
+<p><img src="/images/webdynproABAP/29.4.png" alt="Windows Input View OUT"></p>
+<p>再右键ALV_VIEW下的DISPLAY_DATA,进行绑定</p>
+<p><img src="/images/webdynproABAP/30.png" alt="Windows Input View OUT"></p>
+<p>然后右键ALV_VIEW中的TO_INPUT_VIEW, Create Navigation Link</p>
+<p><img src="/images/webdynproABAP/31.png" alt="Windows Input View OUT"></p>
+<p>最后效果如下图所示：</p>
+<p><img src="/images/webdynproABAP/35.png" alt="Windows Result"></p>
+<h3 id="创建web-dynpro-componentinterface">创建Web Dynpro Component(Interface)</h3>
+<p>右键Object Name -&gt; Create -&gt; Web Dynpro Application</p>
+<p><img src="/images/webdynproABAP/32.png" alt="Windows Result"></p>
+<p>可以在浏览器通过产生的URL进行测试</p>
+<p><img src="/images/webdynproABAP/33.png" alt="Windows Result"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2059</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_View/" class="prev" rel="prev" title=" Web Dynpro ABAP - View Details "><i class="iconfont icon-dajiantou"></i>&nbsp; Web Dynpro ABAP - View Details </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P3/" class="next" rel="next" title=" Web Dynpro ABAP Program:WDDOINIT "> Web Dynpro ABAP Program:WDDOINIT &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-10-20 00:00:00 \x2b0000 UTC',
+        title: ' 创建一个Web Dynpro ABAP程序实例 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAPTable2/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAPTable4/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAPTable3/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           报表开发&lt;内表操作&gt; | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="报表开发&lt;内表操作&gt; | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="报表开发&lt;内表操作&gt;"/>
+<meta name="twitter:description" content="内表操作 SQL 语句的执行顺序 书写顺序：SELECT [DISTINCT]&ndash;&gt;FROM&ndash;&gt;WHERE&ndash;&gt;GROUP BY&ndash;&gt;HAVING&ndash;&gt;UNION&ndash;&gt;ORDER BY 其执行顺序为：FROM&ndash;&gt;WHERE&ndash;&gt;GROUP BY&ndash;&gt;HAVING&ndash;&gt;SELECT&ndash;&gt;DISTINCT&ndash;&gt;UNION-&gt;ORDER"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "报表开发\x3c内表操作\x3e",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAPTable3\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  1133 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAPTable3\/",
+  "datePublished": "2018-06-23T00:00:00\x2b00:00",
+  "dateModified": "2018-06-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">报表开发&lt;内表操作&gt;</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-23 >23 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="内表操作">内表操作</h2>
+
+<h3 id="sql-语句的执行顺序">SQL 语句的执行顺序</h3>
+
+<p>书写顺序：SELECT [DISTINCT]&ndash;&gt;FROM&ndash;&gt;WHERE&ndash;&gt;GROUP BY&ndash;&gt;HAVING&ndash;&gt;UNION&ndash;&gt;ORDER BY</p>
+
+<p>其执行顺序为：FROM&ndash;&gt;WHERE&ndash;&gt;GROUP BY&ndash;&gt;HAVING&ndash;&gt;SELECT&ndash;&gt;DISTINCT&ndash;&gt;UNION-&gt;ORDER BY</p>
+
+<p>1、FROM 才是 SQL 语句执行的第一步，并非 SELECT</p>
+
+<p>2、SELECT 是在大部分语句执行了之后才执行的，严格的说是在 FROM 和 GROUP BY 之后执行的。</p>
+
+<p>3、无论在语法上还是在执行顺序上， UNION 总是排在在 ORDER BY 之前。</p>
+
+<h3 id="清空字段-内表-结构">【清空字段，内表，结构】</h3>
+
+<p>​   使用字段，内表，结构前需要清空其内容，以避免在程序内使用时产生数据的混乱。循环结束后，循环开始前需要根据程序需求选择是否需要清空内表内容，对于带有Headline 的内表要注意。</p>
+
+<h3 id="增删改">【增删改】</h3>
+
+<pre><code class="language-JS">&lt;1&gt; Loop AT循环(sy-tabix:索引号)
+    LOOP AT itab {INTO wa}|{ASSIGNING &lt;fs&gt; [CASTING]} | {TRANSPORTING NO FILDS} 
+      [[USING KEY key_name] [FROM idx1] [TO idx2] [WHERE log_exp|(cond_syntax)]].
+    ENDLOOP.
+&lt;2&gt; INSERT &lt;wa&gt; INTO TABLE &lt;itab&gt;.[单条]
+    INSERT &lt;wa&gt; INTO &lt;itab&gt; INDEX &lt;idx&gt;.[索引]
+    INSERT LINES OF &lt;itab&gt; [FROM &lt;n1&gt;] [TO &lt;n2&gt;] INTO TABLE &lt;itab&gt;.[批量插入]
+    APPEND &lt;wa&gt; TO &lt;itab&gt;.
+    APPEND LINES OF &lt;itab1&gt; [FROM&lt;n1&gt;] [TO&lt;n2&gt;] TO &lt;itab2&gt;.
+&lt;3&gt; READ TABLE &lt;itab&gt; WITH KEY {&lt;k1&gt;=&lt;f1&gt;...[BINARY SEARCH]} INTO &lt;wa&gt;}
+    [COMPARING &lt;f1&gt;&lt;f2&gt;...|ALL FIELDS]  [TRANSPORTING &lt;f1&gt; &lt;f2&gt; ...|ALL FIELDS
+                                        |NO FIELDS] | ASSIGNING &lt;fs&gt;.
+    COMPARING:根据关键字读取指定的单行与工作区&lt;wa&gt;中的相应组件进行比较。内容相同SY-SUBRC=0
+&lt;4&gt; MODIFY itab1.
+    MODIFY itab INDEX idx FROM &lt;wa&gt; [TRANSPORTING &lt;f1&gt; &lt;f2&gt; ...].
+    MODIFY TABLE &lt;itab&gt; FROM &lt;wa&gt; [TRANSPORTING &lt;f1&gt; &lt;f2&gt;...].[修改单条]
+    MODIFY &lt;itab&gt; FROM &lt;wa&gt; TRANSPORTING &lt;f1&gt; &lt;f2&gt; ... WHERE &lt;cond&gt;.[修改多条]
+    UPDATE dbtab SET f1=g1 ... fi=gi WHERE &lt;con&gt;.
+    TRANSPORTING:根据后面的字段进行比较，当字段出现不一致现象时，触发修改操作
+&lt;5&gt; DELETE TABLE &lt;itab&gt; FROM &lt;wa&gt; [USING KEY key_name].[删除单条]
+    DELETE TABLE &lt;itab&gt; WITH TABLE KEY &lt;k1&gt;=&lt;f1&gt;.. .
+    DELETE &lt;itab&gt; WHERE &lt;cond&gt;.[删除多行]
+    DELETE &lt;itab&gt; [INDEX &lt;idx&gt;].
+&lt;6&gt;删除重复
+  (1)SORT record_tab. //首先进行排序处理
+  (2)DELETE ADJACENT DUPLICATES ENTRIES FROM itab [USING KEY key_name] 
+                                     [COMPARING K1 K2...] [ALL FIELDS].//删除
+&lt;7&gt; COLLECT &lt;wa&gt; INTO &lt;itab&gt;.
+&lt;8&gt; 第二索引
+    UNIQUE KEY.唯一升序第二索引
+    NON-UNIQUE KEY.非唯一升序第二索引
+    通过第二索引在无法使用主键时，可以加快大量处理数据的速度。
+</code></pre>
+
+<h3 id="查">【查】</h3>
+
+<pre><code class="language-JS">SELECT SINGLE ... INTO [CORRESPONDING FIELDS OF] &lt;wa&gt; WHERE ...
+SELECT ... INTO|APPENDING CORRESPONDING FIELDS OF TABLE &lt;itab&gt;...
+RANGES ：
+  RANGES sel FOR obj [OCCURS n].
+  SELECT-OPTIONS selcrit FOR {dobj|(name)}.
+FOR ALLENTRIES:
+  1:会自动删除重复行   
+  2:WHERE后还有其他条件，会忽略后续条件
+表连接：
+  INNER JOIN、LEFT OUTER JOIN.
+</code></pre>
+
+<h3 id="事务处理">【事务处理】</h3>
+
+<pre><code class="language-JS">&quot;Commit
+CALL FUNCTION 'BAPI_TRANSACTION_COMMIT'
+  EXPORTING
+     wait = 'X'.
+  IMPORTING
+     return = commback.
+&quot;Rollback     
+CALL FUNCTION 'BAPI_TRANSACTION_ROLLBACK'
+  IMPORTING
+     return = commback.
+&quot;直接使用
+COMMIT WORK.         异步更新。
+COMMIT WORK AND WAIT.同步跟新，执行结果可通过sy-subrc判断是否提交成功。
+ROLLBACK WORK.
+
+</code></pre>
+
+<h2 id="focus">Focus</h2>
+
+<ol>
+<li>多表的结合的查询，首先进行各自的关键字查询，然后进行表与表转换可以提升效率</li>
+<li>表相应字段非关键字时，寻找有该关键字的相对应的关联表进行查询并合并表数据</li>
+<li>binary search 和 sort 进行使用时注意sort的关键字与binary search 保持统一</li>
+<li>MODIFY itab1 INDEX sy-tabix.进行修改时最好定义变量记录sy-tabix.</li>
+<li>inner join 和 left outer join 的连接条件最好都是关键字.</li>
+<li>双层loop循环时，第二个内部表定义为SORTED TABLE会大大的提高处理速度</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1133</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAPTable2/" class="prev" rel="prev" title="报表开发&lt;屏幕设置&gt;"><i class="iconfont icon-dajiantou"></i>&nbsp;报表开发&lt;屏幕设置&gt;</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAPTable4/" class="next" rel="next" title="报表开发&lt;ALV显示设置&gt;">报表开发&lt;ALV显示设置&gt;&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-23 00:00:00 \x2b0000 UTC',
+        title: '报表开发\x3c内表操作\x3e',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

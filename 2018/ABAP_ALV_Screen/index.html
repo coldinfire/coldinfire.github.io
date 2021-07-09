@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_Basic/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ALV_InnerTable/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ALV_Screen/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           报表开发&lt;屏幕设置&gt; | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="报表开发&lt;屏幕设置&gt; | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="报表开发&lt;屏幕设置&gt;"/>
+<meta name="twitter:description" content="选择屏幕 引用链接 屏幕触发事件 选择屏幕触发的是：AT SELECTION-SCREEN 对话屏幕触发的是：PAI 列表屏幕触发的是：AT USER-COMMAND SELECT-SCREEN SELECT-SCREEN 语句用于创建屏幕的框架结构，主要包括"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "报表开发\x3c屏幕设置\x3e",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_Screen\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  3903 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_Screen\/",
+  "datePublished": "2018-06-19T00:00:00\x2b00:00",
+  "dateModified": "2018-06-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">报表开发&lt;屏幕设置&gt;</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-19 >19 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="选择屏幕-引用链接httpswwwcnblogscomfoxtingarchive201207012572243html">选择屏幕 <a href="https://www.cnblogs.com/foxting/archive/2012/07/01/2572243.html">引用链接</a></h2>
+<h3 id="屏幕触发事件">屏幕触发事件</h3>
+<p>选择屏幕触发的是：AT SELECTION-SCREEN</p>
+<p>对话屏幕触发的是：PAI</p>
+<p>列表屏幕触发的是：AT USER-COMMAND</p>
+<h3 id="select-screen">SELECT-SCREEN</h3>
+<p>SELECT-SCREEN 语句用于创建屏幕的框架结构，主要包括屏幕元素的创建、子屏幕的创建等。</p>
+<h4 id="定义屏幕对象">定义屏幕对象</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF SCREEN</span> src_num.
+  ...
+<span style="color:#66d9ef">SELECTION-SCREEN END OF SCREEN</span> src_num.
+</code></pre></div><p>该语法用于定义一个 INCLUDE SUREEN，可通过 CALL 方法在 Report 程序中引用：</p>
+<p><code>CALL SCREEN &lt;num&gt; STARTING AT [1 2] ENDING AT [1 2].</code></p>
+<p>参数可以将所定义屏幕窗体作为一个新的对话框窗体来引用，并指定其创建的具体大小及位置。</p>
+<p><strong>注意：当从一个主屏幕中来调用其程序中的另一窗体时，必须使用CALL SELECTION-SCREEN方法</strong></p>
+<h4 id="定义屏幕块">定义屏幕块</h4>
+<p>在屏幕中定义一个 BLOCK 块：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">blk_1</span> [<span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">FRAME</span>] [<span style="color:#a6e22e">TITLE</span> <span style="color:#a6e22e">title</span>] [<span style="color:#a6e22e">NO</span> <span style="color:#a6e22e">INTERVALS</span>].
+  ......
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">blk_1</span>.
+<span style="color:#a6e22e">扩展语法</span><span style="color:#960050;background-color:#1e0010">：</span>
+  <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">FRAME</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">创建一个框架</span>
+  <span style="color:#a6e22e">TITLE</span> <span style="color:#a6e22e">title</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">创建一个带标题的框架</span>
+  <span style="color:#a6e22e">NO</span> <span style="color:#a6e22e">INTERVALS</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">所创建的框架中限制SELECT只有一个输入项</span>
+</code></pre></div><p>屏幕块中添加的其它元素：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">INCLUDE</span> <span style="color:#a6e22e">BLOCKS</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">block1</span><span style="color:#f92672">&gt;</span>.  <span style="color:#a6e22e">调用已存在屏幕元素</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">ULINE</span>.  <span style="color:#a6e22e">划出横线</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">必须用在BLOCK中才能生效</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">SKIP</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">n</span><span style="color:#f92672">&gt;</span>.  <span style="color:#a6e22e">在BLOCK中产生换行</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">n</span><span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">POSITION</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">pos</span><span style="color:#f92672">&gt;</span>. <span style="color:#a6e22e">在BLOCK中产生空格</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LINE</span>.
+  ......
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LINE</span>. <span style="color:#a6e22e">将所生成的屏幕元素控制在一行</span>.
+</code></pre></div><h4 id="单行添加">单行添加</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LINE</span>.
+  <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">COMMENT</span> <span style="color:#a6e22e">n</span>(<span style="color:#a6e22e">m</span>) <span style="color:#a6e22e">TEXT</span><span style="color:#f92672">-</span><span style="color:#ae81ff">001</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">FIELD</span> <span style="color:#a6e22e">s_name</span>. <span style="color:#e6db74">&#34;文档信息&#34;</span>
+  <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OPTION</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">s_name</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">itab</span><span style="color:#f92672">-</span><span style="color:#a6e22e">field</span>. <span style="color:#e6db74">&#34;设定类型&#34;</span>
+  <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OPTION</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">seltab</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">FOR</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">f</span><span style="color:#f92672">&gt;</span> 
+    <span style="color:#a6e22e">NO</span> <span style="color:#a6e22e">INTERVALS</span>  <span style="color:#e6db74">&#34;删除HIGH值&#34;</span>
+    <span style="color:#a6e22e">NO</span><span style="color:#f92672">-</span><span style="color:#a6e22e">EXTENSION</span>  <span style="color:#e6db74">&#34;限制选择为单行，不会出现多条按钮&#34;</span>
+    <span style="color:#a6e22e">OBLIGATORY</span>    <span style="color:#e6db74">&#34;只有前面一个框中出现勾勾，只针对LOW字段有效&#34;</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LINE</span>.
+</code></pre></div><h3 id="parameters-单值输入">PARAMETERS 单值输入</h3>
+<p>PARAMETERS 参照数据字典具体字段或者自定义数据类型创建单值文本输入域以及单选/复选框等：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> 
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">P_1</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">field</span><span style="color:#f92672">&gt;</span>      <span style="color:#e6db74">&#34;文本域&#34;</span>
+  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">AS</span> <span style="color:#a6e22e">CHECKBOX</span>.       <span style="color:#e6db74">&#34;复选框&#34;</span>
+  <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">GRP1</span>, <span style="color:#e6db74">&#34;单选域&#34;</span>
+  <span style="color:#a6e22e">P2</span> <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">GRP1</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span>,  <span style="color:#e6db74">&#34;默认选中X&#34;</span>
+  <span style="color:#a6e22e">P3</span> <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">GRP1</span>. <span style="color:#e6db74">&#34;GRP1单选组&#34;</span>
+</code></pre></div><p>可选参数列表：</p>
+<ul>
+<li>
+<p>​    <code>DEFAULT f</code>：定义默认值</p>
+</li>
+<li>
+<p>​    <code>TYPE type</code>：参照某一类型对象定义PARAMETERS</p>
+</li>
+<li>
+<p>​    <code>DECIMALS dec</code>：定义小数位，对输入参数自动格式化，该语法只对P类型有效(参数某一类型定义关键字TYPE)</p>
+</li>
+<li>
+<p>​    <code>LIKE g</code>：參照某一字典对象定义PARAMETERS</p>
+</li>
+<li>
+<p>​    <code>MEMORY ID pi</code>：将PARAMETERS存储在SAP内存，参数名长度不能超过三位</p>
+</li>
+<li>
+<p>​    <code>NO-DISPLAY</code>：将PARAMETERS设置为隐藏，不会的屏幕上输出</p>
+</li>
+<li>
+<p>​    <code>LOWER CASE</code>：输入值中不允许输入小写字符，否则会自动转换为大写</p>
+</li>
+<li>
+<p>​    <code>OBLIGATORY</code>：限制该PARAMETERS为必填，否则会提示输入</p>
+</li>
+<li>
+<p>​    <code>AS CHECKBOX</code>：创建CHECKBOX对象</p>
+</li>
+<li>
+<p>​    <code>RADIO BUTTON GROUP radi</code>：创建（RADIO）单选框</p>
+</li>
+<li>
+<p>​    <code>VISIBLE LENGTH vlen</code>：定义显示长度</p>
+</li>
+<li>
+<p>​    <code>USER-COMMAND fcode</code>：为创建对象分配对象名，fcode 会存储到 sscrfields-ucomm 字段中</p>
+</li>
+<li>
+<p>​    <code>AS LISTBOX VISIBLE LENGTH vlen</code>：创建一个下拉框，并指定长度</p>
+</li>
+</ul>
+<h4 id="下拉框实现">下拉框实现</h4>
+<p>定义一个下拉框对象，其可视数据长度一般比输出数据长度大2用于放置下拉图标.</p>
+<p>PARAMETERS: p_lang LIKE itab-field AS LISTBOX VISIBLE LENGTH 22 USER-COMMAND onli DEFAULT &lsquo;LH&rsquo;.</p>
+<p>通过函数：<code>VRM_SET_VALUES</code> 为下拉框初始化列表项</p>
+<p>该变量用于记录下拉列表数值是否初始化，否则每次屏幕初始化都会重新加载重复数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">INIT</span>.
+<span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">OUTPUT</span>.
+<span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">SETLIST</span>.
+</code></pre></div><p>子程序用于加载下拉框的数据：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">SETLIST</span>.
+  <span style="color:#a6e22e">TYPE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">POOLS</span> <span style="color:#a6e22e">VRM</span>. 
+  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">MYVALUE</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">VRM_VALUES</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>.
+  <span style="color:#a6e22e">对内表加载值</span>
+  <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">KEY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CHINESE&#39;</span>. <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TEXT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;中国&#39;</span>.    
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">MYVALUE</span>.
+  <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">KEY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AMERICAN&#39;</span>. <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TEXT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;美国&#39;</span>.         
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">MYVALUE</span>.
+  <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">KEY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ENGLISH&#39;</span>. <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TEXT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;英国&#39;</span>. 
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">MYVALUE</span>.
+  <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">KEY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FRENCH&#39;</span>. <span style="color:#a6e22e">MYVALUE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TEXT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;法国&#39;</span>.   
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">MYVALUE</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">INIT</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;VRM_SET_VALUES&#39;</span> <span style="color:#e6db74">&#34;调用函数对下拉框对象传递数据&#34;</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">ID</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;P_LANG&#39;</span>       <span style="color:#e6db74">&#34;下拉框对象名&#34;</span>
+        <span style="color:#a6e22e">VALUES</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MYVALUE</span>[]  <span style="color:#e6db74">&#34;下拉框中加载的数据&#34;</span>
+      <span style="color:#a6e22e">EXCEPTIONS</span>
+        <span style="color:#a6e22e">ID_ILLEGAL_NAME</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#a6e22e">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span>
+  <span style="color:#a6e22e">ENDIF</span>.
+ <span style="color:#a6e22e">INIT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>. <span style="color:#e6db74">&#34;记录初始化状态&#34;</span>
+<span style="color:#a6e22e">ENDFORM</span>.
+</code></pre></div><h3 id="select-options-输入域">SELECT-OPTIONS 输入域</h3>
+<p>SELECT-OPTIONS 参照数据库字段来建立输入域，命名不能超过8位，最大输入长度为18位：</p>
+<p><code> SELECT-OPTIONS： &lt;S_1&gt; FOR &lt;dbtab-ele&gt; option</code></p>
+<p>内表结构：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">SIGN</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">I</span> , <span style="color:#a6e22e">E</span>
+<span style="color:#a6e22e">OPTION</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">EQ</span>,<span style="color:#a6e22e">NE</span>,<span style="color:#a6e22e">CP</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">模糊查询</span><span style="color:#960050;background-color:#1e0010">）</span>,<span style="color:#a6e22e">NP</span>,<span style="color:#a6e22e">GE</span>,<span style="color:#a6e22e">LT</span>,<span style="color:#a6e22e">LE</span>,<span style="color:#a6e22e">GT</span>
+<span style="color:#a6e22e">LOW</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">范围较小值</span>
+<span style="color:#a6e22e">HIGH</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">范围较大值</span>
+</code></pre></div><p>参数可选属性列表：</p>
+<ul>
+<li>
+<p>​	<code>DEFAULT g</code>：定义单一默认值</p>
+</li>
+<li>
+<p>​    <code>DEFAULT g...OPTION  xxx ... SIGN s</code>：定义含判断条件的单一默认值</p>
+</li>
+<li>
+<p>​    <code>DEFAULT g TO h</code>：定义默认值的取值范围</p>
+</li>
+<li>
+<p>​    <code>DEFAULT g TO h ... OPTION op ... SIGN s</code>：设置默认值的聚会范围及判断条件</p>
+</li>
+<li>
+<p>​    <code>MEMORY ID pid</code>：将SELECT-OPTIONS分配参数名并存储在SAP内存，参数名长度不能超过三位</p>
+</li>
+<li>
+<p>​    <code>NO-DISPLAY</code>：将SELECT-OPTIONS设置为隐藏，不会在屏幕上输出</p>
+</li>
+<li>
+<p>​    <code>LOWER CASE</code>：输入值中不允许输入小写字符，否则会自动转换为大写</p>
+</li>
+<li>
+<p>​    <code>OBLIGATORY</code>：限制该SELECT-OPTIONS为必须输入的项目，执行中系统会提示</p>
+</li>
+<li>
+<p>​    <code>NO-EXTENSION</code>：限制该SELECT-OPTIONS只能输入一行数据，输入多行按钮（上图最右边按钮）被隐藏</p>
+</li>
+<li>
+<p>​    <code>VISIBLE LENGTH vlen</code>：定义所显示数据的长度</p>
+</li>
+</ul>
+<h3 id="维护选择字段屏幕描述goto--text-elements">维护选择字段屏幕描述：GOTO&ndash;&gt;Text Elements</h3>
+<p>可以使用 TCode:SE32 进行维护。</p>
+<p>前台界面显示的为 PARAMETERS 和 SELECTION-OPTION 定义的字段，不便于理解需。提供某一字段的完整名称以方便用户理解。</p>
+<p>包含字段：</p>
+<ul>
+<li>
+<p>Selection Texts：定义已存在并且激活的屏幕元素的名称</p>
+</li>
+<li>
+<p>Text Symbols：实现自定义文本及符号,该文本使用对象为 SELECTION-SCREEN，以三位字符表示(TEXT-001)</p>
+</li>
+<li>
+<p>图标符号：可以在 Text Symbols 通过@符号来进行引用，如&rdquo;@01@&quot;,可通过程序RSTXICON查看所有的图标</p>
+</li>
+</ul>
+<h4 id="可进行多语言显示的维护goto---translation">可进行多语言显示的维护：GOTO &ndash;&gt;Translation</h4>
+<h3 id="屏幕事件处理">屏幕事件处理</h3>
+<h4 id="initialization">INITIALIZATION</h4>
+<p>程序初始化事件，该事件在程序屏幕未显示之前执行。对程序设置值及屏幕元素进行初始化</p>
+<h4 id="start-of-selection">START-OF-SELECTION</h4>
+<p>该事件在单击按钮后触发</p>
+<p>END-OF-SELECTION</p>
+<p>该事件应用于所有数据处理完成，即 START-OF-SELECTION 相关执行事件执行完成。但输出屏幕还未显示之前，在实际的应用于一些执行结果的检验等。</p>
+<h4 id="at-selection-screen">AT SELECTION-SCREEN</h4>
+<p>选择屏幕显示之后，用来响应回车，F1，F4等事件。</p>
+<p>可选参数：</p>
+<ul>
+<li><code>ON field</code>：检查具体输入字段（SELECTION-OPTIONS或PARAMETERS）是否完整或正确</li>
+<li><code>ON VALUE-REQUEST FOR &lt;field low/high&gt;</code>：SELECT-OPTIONS 点击选择帮助F4键时触发该事件</li>
+<li><code>ON HELP-REQUEST FOR &lt;field low/high&gt;</code>：SELECTION-OPTIONS 按选择帮助F1键时键发该事件</li>
+<li><code>ON RADIOBUTTON GROUP &lt;radio&gt;</code>：单选按钮事件，必须进行整体输入检查</li>
+<li><code>ON BLOCK &lt;block&gt;</code>：框架的触发事件（控制框架中的屏幕元素值的输入）</li>
+<li><code>OUTPUT</code>：用于屏幕输出时的各屏幕元素值的管控（PBO处理，在选择屏幕显示之前就被调用；响应屏幕上的事件，用户回车或F8后也被调用；通过modify screen可以修改选择屏幕字段）</li>
+<li><code>ON EXIT-COMMAND</code>：用于 BACK、CANCEL、EXIT 等事件</li>
+</ul>
+<p><strong>设置屏幕选择框不可输入和必输控制</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">AT SELECTION-SCREEN OUTPUT</span>.
+  <span style="color:#66d9ef">LOOP AT SCREEN</span>.
+	<span style="color:#66d9ef">IF</span> screen<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X_NORM&#39;</span> <span style="color:#f92672">OR</span> screen<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X_PARK&#39;</span>.
+	  screen<span style="color:#f92672">-</span>input <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+	  <span style="color:#66d9ef">MODIFY SCREEN</span>.
+	<span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> screen<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X_NORM&#39;</span> <span style="color:#f92672">OR</span> screen<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X_PARK&#39;</span>.
+      screen<span style="color:#f92672">-</span>required <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+      <span style="color:#66d9ef">MODIFY SCREEN</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    ...
+  <span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><ul>
+<li>REQUIRED：控制必输属性，使用后会忽略OBLIGATORY。
+<ul>
+<li>0：不必输</li>
+<li>1：必输，系统自动校验</li>
+<li>2：不必输，但是会提示必输标志</li>
+</ul>
+</li>
+<li>INPUT：控制屏幕元素的可输入性</li>
+<li>ACTIVE：控制屏幕的可见性 (0:不可见  1:不可见)</li>
+</ul>
+<h3 id="屏幕内创建按钮">屏幕内创建按钮</h3>
+<p><code>  SELECTION-SCREEN: PUSHBUTTON [/n] &lt;pos(len)&gt; &lt;name&gt; USER-COMMAND &lt;ucom&gt; [MODIF ID &lt;key&gt;].</code></p>
+<p><code>/n</code> :按钮初始时距离屏幕左边的位置</p>
+<p><code>&lt;pos(len)&gt;</code>：PUSHBUTTON按钮在屏幕生成的位置与长度。</p>
+<p><code>&lt;name&gt;</code>：PUSHBUTTON按钮的名称，给按钮赋值时要用到名字。</p>
+<p><code>&lt;ucom&gt;</code>：必须指定的字符代码，当用户在选择屏幕上触发按钮时，<code>&lt;ucom&gt;</code> 被输入到词典对象字段：SSCRFIELDS-UCOMM中，必须显式使用语句TABLES引用SSCRFIELDS。</p>
+<p>实例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">TABLES</span> <span style="color:#a6e22e">SSCRFIELDS</span>. <span style="color:#e6db74">&#34;引用词典对象&#34;</span>
+<span style="color:#a6e22e">INCLUDE</span><span style="color:#f92672">:</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">icon</span><span style="color:#f92672">&gt;</span>.  <span style="color:#e6db74">&#34;按钮中加入图标必须调用该类型库,图标请参考T-CODE：ICON&#34;</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">PUSHBUTTON</span> <span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">20</span>) <span style="color:#a6e22e">PUBU1</span> <span style="color:#a6e22e">USER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMMAND</span> <span style="color:#a6e22e">ABCD</span>.
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">SKIP</span>.<span style="color:#e6db74">&#34;换行&#34;</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">PUSHBUTTON</span> <span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>(<span style="color:#ae81ff">25</span>) <span style="color:#a6e22e">PUBU2</span> <span style="color:#a6e22e">USER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMMAND</span> <span style="color:#a6e22e">ABCE</span>. <span style="color:#e6db74">&#34;位置从10开始&#34;</span>
+<span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">OUTPUT</span>.
+  <span style="color:#a6e22e">MOVE</span> <span style="color:#e6db74">&#39;CALL NEXT SCREEN&#39;</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">PUBU1</span>. <span style="color:#e6db74">&#34;给PUBU1按钮赋值描述&#34;</span>
+  <span style="color:#a6e22e">WRITE</span> <span style="color:#a6e22e">ICON_OKAY</span> <span style="color:#a6e22e">AS</span> <span style="color:#a6e22e">ICON</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">PUBU2</span>. <span style="color:#e6db74">&#34;给PUBU2按钮添加图标，并且在给按钮赋值之前，否则将会把文字替换。&#34;</span>
+  <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">PUBU2</span> <span style="color:#e6db74">&#39;My Second Button&#39;</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">PUBU2</span> <span style="color:#a6e22e">SEPARATED</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">SPACE</span>. <span style="color:#e6db74">&#34;给第二个按钮添加赋值描述&#34;</span>
+<span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span>.
+ <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SSCRFIELDS</span><span style="color:#f92672">-</span><span style="color:#a6e22e">UCOMM</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ABCD&#39;</span>.
+   <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">xxxx</span>.  <span style="color:#e6db74">&#34;调用子程序&#34;</span>
+ <span style="color:#a6e22e">ENDIF</span>.
+</code></pre></div><h3 id="在工具栏上新增一个功能按钮">在工具栏上新增一个功能按钮</h3>
+<p><code>SELECTION-SCREEN FUNCTION KEY n.</code></p>
+<p>该按钮的定义保存在系统结构体 SSCRFIELDS 中，n 为一个整数序数最大至 5。</p>
+<p>当 n=1 时，其按钮描述保存在字段 SSCRFIELDS-FUNCTXT_01 中，其按钮对象命名为&quot;FC01&rdquo;，保存在字段SSCRFIELDS-UCOMM 中。</p>
+<p><strong>实例：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">TABLES SSCRFIELDS. &#34;引用词典对象&#34;
+TYPE-POOLS ICON. &#34;Program Icon Library&#34;
+DATA functxt TYPE SMP_DYNTXT. &#34;SMP_DYNTXT(菜单制作器:动态文本的程序接口)&#34;
+PARAMETERS: p_carrid TYPE s_carr_id,
+            p_cityfr TYPE s_from_cit.
+SELECTION-SCREEN: FUNCTION KEY 1,FUNCTION KEY 2.
+INITIALIZATION. &#34;屏幕初始化&#34;
+  functxt-icon_id   = &#39;@49@&#39;.  &#34;文本字段中的图标（替换显示，别名）&#34;
+  functxt-quickinfo = &#39;Download Template&#39;. &#34;菜单制作器：信息文本 (4.0)，滑鼠移去过去显示的信息TIP&#34;
+  functxt-icon_text =&#39;Download Template&#39;.  &#34;菜单制作器：图标文本 (4.0)，菜单名称&#34;
+  sscrfields-functxt_01 = functxt.
+  functxt-icon_text = &#39;UA&#39;.
+  sscrfields-functxt_02 = functxt.
+AT SELECTION-SCREEN.
+  CASE SSCRFIELDS-UCOMM.
+    WHEN &#39;FC01&#39;.
+      p_carrid = &#39;LH&#39;.
+      p_cityfr = &#39;Frankfurt&#39;.
+    WHEN &#39;FC02&#39;.
+      p_carrid = &#39;UA&#39;.
+      p_cityfr = &#39;Chicago&#39;.
+  ENDCASE.
+</code></pre></div><h3 id="屏幕单选框分组显示界面内容">屏幕单选框分组显示界面内容</h3>
+<p>通过Group将GUI需要显示的界面进行分组，并在 <code>AT SELECTION-SCREEN OUTPUT.</code>事件中对每一个单选项选择进行判断，并激活对应的界面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">BLK1</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">FRAME</span> <span style="color:#a6e22e">TITLE</span> <span style="color:#a6e22e">TEXT</span><span style="color:#f92672">-</span><span style="color:#ae81ff">008.</span>
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">P_R1</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">FLAG</span> <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">C1</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span> <span style="color:#a6e22e">USER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMMAND</span> <span style="color:#a6e22e">US1</span>,
+            <span style="color:#a6e22e">P_R2</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">FLAG</span> <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">C1</span>,
+            <span style="color:#a6e22e">P_R3</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">FLAG</span> <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">C1</span>.
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">BLK1</span>.
+
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">BLK2</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">FRAME</span> <span style="color:#a6e22e">TITLE</span> <span style="color:#a6e22e">TEXT</span><span style="color:#f92672">-</span><span style="color:#ae81ff">007.</span>
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">P_PEDTR</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">PLAF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PEDTR</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR1</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DATUM</span>.
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">P_WERKS</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">T001W</span><span style="color:#f92672">-</span><span style="color:#a6e22e">WERKS</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR1</span> <span style="color:#a6e22e">MEMORY</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">WRK</span>.
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">P_TIME</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">MSEG</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MENGE</span> <span style="color:#a6e22e">VISIBLE</span> <span style="color:#a6e22e">LENGTH</span> <span style="color:#ae81ff">6</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;22.5&#39;</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR1</span>.
+<span style="color:#a6e22e">SELECT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OPTIONS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">S_AUFNR</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">AFKO</span><span style="color:#f92672">-</span><span style="color:#a6e22e">AUFNR</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR1</span>  .
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">BLK2</span>.
+
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">BLK3</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">FRAME</span> <span style="color:#a6e22e">TITLE</span> <span style="color:#a6e22e">TEXT</span><span style="color:#f92672">-</span><span style="color:#ae81ff">008.</span>
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">P_WERK</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">T001W</span><span style="color:#f92672">-</span><span style="color:#a6e22e">WERKS</span>  <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span> <span style="color:#a6e22e">MEMORY</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">WRK</span>.
+<span style="color:#a6e22e">SELECT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OPTIONS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">S_MATNR</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">MARA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MATNR</span>  <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span> ,
+                <span style="color:#a6e22e">S_DRAWN</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">MARA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ZZ_DRAWING_NO</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span> ,
+                <span style="color:#a6e22e">S_ZMC</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">ZPP_MOLDMACTON</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Z_MC</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span>,
+                <span style="color:#a6e22e">S_ZTONS</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">ZPP_MOLDMACTON</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ZTONS</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span> ,
+                <span style="color:#a6e22e">S_WSHOP</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">ZPP_MOLDMACTON</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ZWKSHOP</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span>,
+                <span style="color:#a6e22e">S_SDATE</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">ZPP_MOLDSCHE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SDATE</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span> <span style="color:#a6e22e">NO</span><span style="color:#f92672">-</span><span style="color:#a6e22e">EXTENSION</span> <span style="color:#a6e22e">NO</span> <span style="color:#a6e22e">INTERVALS</span>,
+                <span style="color:#a6e22e">S_SDAT2</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">ZPP_MOLDSCHE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SDATE</span> <span style="color:#a6e22e">MODIF</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">PR2</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DATUM</span>.
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">BLK3</span>.
+
+<span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">OUTPUT</span>.
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">SCREEN</span>.
+    <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">P_R1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">GROUP1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PR2&#39;</span>.
+        <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ACTIVE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+      <span style="color:#a6e22e">ELSE</span>.
+        <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ACTIVE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+      <span style="color:#a6e22e">ENDIF</span>.
+    <span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">P_R2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> <span style="color:#a6e22e">OR</span> <span style="color:#a6e22e">P_R3</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">GROUP1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PR1&#39;</span>.
+        <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ACTIVE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+      <span style="color:#a6e22e">ELSE</span>.
+        <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ACTIVE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+        <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">P_R3</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+          <span style="color:#a6e22e">IF</span>  <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME</span> <span style="color:#a6e22e">CS</span> <span style="color:#e6db74">&#39;S_SDATE&#39;</span>.
+            <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ACTIVE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+          <span style="color:#a6e22e">ENDIF</span>.
+        <span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">P_R2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+          <span style="color:#a6e22e">IF</span>  <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME</span> <span style="color:#a6e22e">CS</span> <span style="color:#e6db74">&#39;S_SDAT2&#39;</span>.
+            <span style="color:#a6e22e">SCREEN</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ACTIVE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+          <span style="color:#a6e22e">ENDIF</span>.
+        <span style="color:#a6e22e">ENDIF</span>.
+      <span style="color:#a6e22e">ENDIF</span>.
+    <span style="color:#a6e22e">ENDIF</span>.
+    <span style="color:#a6e22e">MODIFY</span> <span style="color:#a6e22e">SCREEN</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3903</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Basic/" class="prev" rel="prev" title="报表开发&lt;概述&gt;"><i class="iconfont icon-dajiantou"></i>&nbsp;报表开发&lt;概述&gt;</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_InnerTable/" class="next" rel="next" title="报表开发&lt;内表操作&gt;">报表开发&lt;内表操作&gt;&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-19 00:00:00 \x2b0000 UTC',
+        title: '报表开发\x3c屏幕设置\x3e',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

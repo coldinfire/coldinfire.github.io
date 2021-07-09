@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_InnerTable/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ALV_Display_util/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ALV_Display/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           报表开发&lt;ALV FieldCatalog设置&gt; | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="报表开发&lt;ALV FieldCatalog设置&gt; | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="报表开发&lt;ALV FieldCatalog设置&gt;"/>
+<meta name="twitter:description" content="ALV Display相关的FM &lt;1&gt; REUSE_ALV_FIELDCATALOG_MERGE：根据内表结构自动生成FIELDCAT字段结构信息。 &lt;2&gt; R"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "报表开发\x3cALV FieldCatalog设置\x3e",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_Display\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  5151 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_Display\/",
+  "datePublished": "2018-06-25T00:00:00\x2b00:00",
+  "dateModified": "2018-06-25T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">报表开发&lt;ALV FieldCatalog设置&gt;</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-25 >25 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                11 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="alv-display相关的fm">ALV Display相关的FM</h2>
+<p>&lt;1&gt; REUSE_ALV_FIELDCATALOG_MERGE：根据内表结构自动生成FIELDCAT字段结构信息。</p>
+<p>&lt;2&gt; REUSE_ALV_LIST_DISPLAY：List格式的ALV模式为固定格式，应用于较严格的标准报表。</p>
+<p>&lt;3&gt; REUSE_ALV_GRID_DISPLAY：Grid格式的ALV报表有栏位选择按钮功能，允许用户直接输出格式，操作更为灵活。</p>
+<p>&lt;4&gt; REUSE_ALV_GRID_DISPLAY_LVC：以 LVC结尾的ALV函数，此函数中引用到的类型大部分都不再从类型池slis 中来引用，而是直接引用字典中已定义好的表或结构类型，这种函数与面向对象的CL_GUI_ALV_GRID生成的ALV参数类型上基本相同，所以以后一般如果使用函数方式来产生ALV，推荐使用REUSE_ALV_GRID_DISPLAY_LVC函数，因为这样方便修改面向对象方式的ALV。</p>
+<p>&lt;5&gt; LVC_FIELDCATALOG_MERGE：针对LVC结尾的函数，自动生成FIELDCAT字段结构信信息。</p>
+<p>对于 <strong>SLIS</strong>_开头的，可以在类型池 SLIS 中查看，<strong>LVC</strong> 开头的可以在数据字典（<strong>SE11</strong>）中查看。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">TYPE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">POOLS</span><span style="color:#f92672">:</span><span style="color:#a6e22e">SLIS</span>.
+<span style="color:#a6e22e">REUSE_ALV_GRID_DISPLAY</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gt_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">slis_t_fieldcat_alv</span>,
+        <span style="color:#a6e22e">wa_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">slis_fieldcat_alv</span>,
+        <span style="color:#a6e22e">gt_layout</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">slis_layout_alv</span>.
+
+<span style="color:#a6e22e">REUSE_ALV_GRID_DISPLAY_LVC</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gt_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_t_fcat</span>,
+        <span style="color:#a6e22e">wa_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_s_fcat</span>,
+        <span style="color:#a6e22e">gt_layout</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_s_layo</span>.
+</code></pre></div><p>在 ALV 开发中有两个重要的对象： <strong>LAYOUT</strong> 和 <strong>FIELDCAT</strong> 。</p>
+<ul>
+<li>
+<p><strong>LAYOUT</strong> 主要用于设置 ALV 的输出格式，如输出字段的颜色、表格中的线条等，为 ALV 输出的可选项。</p>
+</li>
+<li>
+<p><strong>FIELDCAT</strong> 主要用于 ALV 结构定义，包括具体字段的名称、类型、格式等属性，与 Layout 不一样的是输出格式只针对某个字段。为 ALV 输出的必选项。</p>
+</li>
+</ul>
+<h2 id="field-catalog-字段">Field Catalog 字段</h2>
+<h3 id="slis-field-catalog-常用参数列表">SLIS Field Catalog 常用参数列表</h3>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>描述</th>
+<th>输入值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROW_POS(10)</td>
+<td>行输出位置</td>
+<td>1….n</td>
+</tr>
+<tr>
+<td>COL_POS(10)</td>
+<td>列输出位置</td>
+<td>1….n</td>
+</tr>
+<tr>
+<td><strong>FIELDNAME</strong>(30)</td>
+<td>针对输出内表列进行设置，只有设置了的列才会显示在ALV中</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TABNAME</strong> (30)</td>
+<td>fieldname字段对应的内表名称</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CURRENCY</strong>(5)</td>
+<td>货币单位</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CFIELDNAME</strong>(30)</td>
+<td>当前输出内表中的货币单位字段的字段名称</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CTABNAME</strong>(30)</td>
+<td>Cfieldname字段值对应的内表名称，(仅 SLIS 有)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QUANTITY</strong>(3)</td>
+<td>计量单位</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QFIELDNAME</strong>(30)</td>
+<td>参考计量单位的字段名称</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QTABNAME</strong>(30)</td>
+<td>Qfieldname对应的输出内表名，(仅 SLIS 有)</td>
+<td></td>
+</tr>
+<tr>
+<td>REF_TABNAME</td>
+<td>参考表名称，配合REF_FIELDNAME使用，(仅 SLIS 有)</td>
+<td></td>
+</tr>
+<tr>
+<td>REF_FIELDNAME</td>
+<td>参考字段名称，配合REF_TABNAME使用，单元格生成F4帮助</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SELTEXT_L/M/S</strong>(40/20/10)</td>
+<td>设置字段名称描述长/中/短</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DDICTXT</strong>(1)</td>
+<td>直接指定列标题描述格式，指定后则保持固定不变</td>
+<td>(S)hort (M)iddle (L)ong</td>
+</tr>
+<tr>
+<td>DDIC_OUTPUTLEN</td>
+<td>数据字典输出长度</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NO_OUT</strong>(1)</td>
+<td>当前列隐藏输出</td>
+<td>X-隐藏，space-不隐藏</td>
+</tr>
+<tr>
+<td><strong>KEY</strong>(1)</td>
+<td>将定义字段设置为KEY值</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>ICON(1)</td>
+<td>将定义字段以ICON的形式显示,INCLUDE <!-- raw HTML omitted --></td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>CHECKBOX(1)</td>
+<td>将定义字段以CHECKBOX的形式显示</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>EDIT(1)</td>
+<td>是否可编辑</td>
+<td>X-可编辑，space-不可编辑</td>
+</tr>
+<tr>
+<td>INPUT(1)</td>
+<td>输入</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>OUTPUTLEN(6)</td>
+<td>列的字符输出宽度</td>
+<td>1….n</td>
+</tr>
+<tr>
+<td>OFFSET(6)</td>
+<td>设置偏移量</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TEXT_FIELDNAME</strong></td>
+<td>文本字段名称</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>REPTEXT_DDIC</strong></td>
+<td>与数据元素的主标题类似</td>
+<td></td>
+</tr>
+<tr>
+<td>FIX_COLUMN(1)</td>
+<td>列固定不滚动，颜色不会发生变化</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>JUST(1)</td>
+<td>定义字段对齐方式</td>
+<td>(R)IGHT(L)EFT(C)ENTER</td>
+</tr>
+<tr>
+<td><strong>TECH</strong>(1)</td>
+<td>置为技术列的列将不会再显示出来</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>LZERO(1)</td>
+<td>将定义字段以前导&quot;0&quot;的形式显示</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>NO_SIGN(1)</td>
+<td>将定义字段符号设置为不显示</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>NO_ZERO(1)</td>
+<td>如果取值为零，则为空，既不输出零</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>NO_SUM(1)</td>
+<td>设置当前列输出时不自动求和</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>HOTSPOT(1)</td>
+<td>设置字段是否有热点，热点字段显示有下划线</td>
+<td>X-设置，FCode “<strong>&amp;IC1</strong>“</td>
+</tr>
+<tr>
+<td><strong>ROUND</strong>(I)</td>
+<td>四舍五入保留位数</td>
+<td></td>
+</tr>
+<tr>
+<td>DECIMALS_OUT(6)</td>
+<td>控制小数点的位数</td>
+<td></td>
+</tr>
+<tr>
+<td>EMPHASIZE</td>
+<td>设置字段的颜色(列颜色)</td>
+<td></td>
+</tr>
+<tr>
+<td>NO_CONVEXT(1)</td>
+<td>设置转换规则，对应于Domain中的转换规则</td>
+<td>X-不设置，space-设置</td>
+</tr>
+<tr>
+<td>LOWERCASE(1)</td>
+<td>是否允许小写字母</td>
+<td>X-允许，space-不允许</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-1自定义fieldcat字段结构">Method 1:自定义FIELDCAT字段结构</h4>
+<p>定义宏来设置FIELDAT属性 &amp;1 &amp;2 &amp;3分别为参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">slis_alv_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">SLIS_T_FIELDCAT_ALV</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>. 
+<span style="color:#a6e22e">DEFINE</span> <span style="color:#a6e22e">fieldcatset</span>.
+   <span style="color:#a6e22e">slis_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">REF_TABNAME</span> <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;LSPFLI&#39;</span>.
+   <span style="color:#a6e22e">slis_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FIELDNAME</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1.</span>
+   <span style="color:#a6e22e">slis_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELTEXT_L</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2.</span>
+   <span style="color:#a6e22e">slis_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELTEXT_M</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2.</span>
+   <span style="color:#a6e22e">slis_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELTEXT_S</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2.</span>
+   <span style="color:#a6e22e">slis_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COL_POS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">3.</span>
+   <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">slis_alv_fieldcat</span>.
+   <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">slis_alv_fieldcat</span>.
+<span style="color:#a6e22e">END</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DEFINITION</span>.
+<span style="color:#a6e22e">fieldcatset</span> <span style="color:#e6db74">&#39;CARRID&#39;</span> <span style="color:#e6db74">&#39;航线承运人&#39;</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TABIX</span>.
+</code></pre></div><h4 id="method-2半自动创建直接参考数据字典中的现有透明表">Method 2:半自动创建,直接参考数据字典中的现有透明表</h4>
+<p>调用 <strong>REUSE_ALV_FIELDCATALOG_MERGE</strong> 函数来对相应的Fieldcat 进行匹配。</p>
+<p>使用数据字典中的透明表或视图时:</p>
+<ul>
+<li>直接使用，生成和透明表和视图定义字段相同类型的Fieldcat</li>
+</ul>
+<p>使用结构或则内表时:</p>
+<ul>
+<li>必须保证该结构或内表中的每个字段的定义只能使用 LIKE 操作符</li>
+<li>使用 TYPE 时，该字段在使用 REUSE_ALV_FIELDCATALOG_MERGE函数时将被忽略，不参照字典类型直接定义类型的除外。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">TYPE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">POOLS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">SLIS</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">gt_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">slis_t_fieldcat_alv</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>,
+     <span style="color:#a6e22e">gs_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">slis_fieldcat_alv</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;REUSE_ALV_FIELDCATALOG_MERGE&#39;</span>
+ <span style="color:#a6e22e">exporting</span>
+  <span style="color:#a6e22e">I_PROGRAM_NAME</span>        <span style="color:#f92672">=</span>  <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">REPID</span>
+  <span style="color:#a6e22e">I_INTERNAL_TABNAME</span>     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INTERNAL_TABNAME&#39;</span> <span style="color:#e6db74">&#34;显示输出的内表名，要大写&#34;</span>
+<span style="color:#e6db74">&#34; 如果定义的显示输出内表是参照的字典中的structure, table, view时，才需要指定 Structure&#34;</span>
+  <span style="color:#a6e22e">I_structure_name</span>       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZALV_FEED&#39;</span>  <span style="color:#e6db74">&#34;ALV需要显示的字段结构&#34;</span>
+  <span style="color:#a6e22e">I_CLIENT_NEVER_DISPLAY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#e6db74">&#34;I_BYPASSING_BUFFER     = I_BYPASSING_BUFFER&#34;</span>
+  <span style="color:#e6db74">&#34;I_BUFFER_ACTIVE        = &#39; &#39;&#34;</span>
+ <span style="color:#a6e22e">changing</span>
+      <span style="color:#a6e22e">ct_fieldcat</span>         <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_fieldcat</span>  <span style="color:#e6db74">&#34;对应ALV显示的字段结构&#34;</span>
+ <span style="color:#a6e22e">exceptions</span>
+  <span style="color:#a6e22e">inconsistent_interface</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">program_error</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+  <span style="color:#a6e22e">others</span>                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.</span>
+<span style="color:#f92672">*</span><span style="color:#a6e22e">若对gt_fieldcat中某些字段有特殊设置</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">可LOOP内表按照要求更改参数值</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">Modify此内表</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">gt_fieldcat</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">gs_fieldcat</span>.
+    <span style="color:#a6e22e">CASE</span> <span style="color:#a6e22e">gs_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span>.
+      <span style="color:#a6e22e">WHEN</span> <span style="color:#e6db74">&#39;MATNR&#39;</span>.
+        ......
+        <span style="color:#a6e22e">MODIFY</span> <span style="color:#a6e22e">gt_fieldcat</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">gs_fieldcat</span>.
+        ......
+    <span style="color:#a6e22e">ENDCASE</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+</code></pre></div><h3 id="lvc_s_fcat-field-catalog">LVC_S_FCAT: Field Catalog</h3>
+<p>大部分和 **SLIS_** 一致，下面列出不一致的。</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>描述</th>
+<th>输入值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REF_FIELD</td>
+<td>参考字段名称，配合REF_TABLE使用</td>
+<td></td>
+</tr>
+<tr>
+<td>REF_TABLE</td>
+<td>参考表名称，配合REF_FIELD使用</td>
+<td></td>
+</tr>
+<tr>
+<td>SCRTEXT_L/M/S(40/20/10)</td>
+<td>设置字段名称描述长/中/短</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="自定义fieldcat字段结构">自定义FIELDCAT字段结构</h4>
+<p>定义宏来创建FIELDCAT字段属性</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lvc_alv_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LVC_T_FCAT</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>. 
+<span style="color:#a6e22e">DEFINE</span> <span style="color:#a6e22e">fieldcatset</span>.
+   <span style="color:#a6e22e">lvc_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">REF_TABLE</span> <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;LSPFLI&#39;</span>.
+   <span style="color:#a6e22e">lvc_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FIELDNAME</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1.</span>
+   <span style="color:#a6e22e">lvc_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCRTEXT_L</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2.</span>
+   <span style="color:#a6e22e">lvc_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCRTEXT_M</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2.</span>
+   <span style="color:#a6e22e">lvc_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCRTEXT_S</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2.</span>
+   <span style="color:#a6e22e">lvc_alv_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COL_POS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">3.</span>
+   <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">lvc_alv_fieldcat</span>.
+   <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">lvc_alv_fieldcat</span>.
+<span style="color:#a6e22e">END</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DEFINITION</span>.
+<span style="color:#a6e22e">fieldcatset</span> <span style="color:#e6db74">&#39;CARRID&#39;</span> <span style="color:#e6db74">&#39;航线承运人&#39;</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TABIX</span>.
+</code></pre></div><h4 id="半自动创建直接参考数据字典中的现有透明表">半自动创建：直接参考数据字典中的现有透明表</h4>
+<p>既可以根据定义的内表，也可以根据数据字典存在的结构或表，视图创建。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">gt_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LVC_T_FCAT</span>,
+     <span style="color:#a6e22e">gs_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LVC_S_FCAT</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;LVC_FIELDCATALOG_MERGE&#39;</span>
+ <span style="color:#a6e22e">exporting</span>
+  <span style="color:#e6db74">&#34;I_BUFFER_ACTIVE        = I_BUFFER_ACTIVE&#34;</span>
+  <span style="color:#a6e22e">I_structure_name</span>       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZALV_FEED&#39;</span>  <span style="color:#e6db74">&#34;ALV需要显示的字段结构&#34;</span>
+  <span style="color:#a6e22e">I_CLIENT_NEVER_DISPLAY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#e6db74">&#34;I_BYPASSING_BUFFER     = I_BYPASSING_BUFFER&#34;</span>
+  <span style="color:#e6db74">&#34;I_INTERNAL_TABNAME     = &#39;INTERNAL_TABNAME&#39; 
+</span><span style="color:#e6db74"> changing
+</span><span style="color:#e6db74">      ct_fieldcat         = gt_fieldcat  &#34;</span><span style="color:#a6e22e">对应ALV显示的字段结构</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+ <span style="color:#a6e22e">exceptions</span>
+  <span style="color:#a6e22e">inconsistent_interface</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">program_error</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span>
+<span style="color:#f92672">*</span><span style="color:#a6e22e">若对gt_fieldcat中某些字段有特殊设置</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">可LOOP内表按照要求更改参数值</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">Modify此内表</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><h2 id="layout-字段">Layout 字段</h2>
+<h3 id="slis-layout常用参数列表">SLIS Layout常用参数列表</h3>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>描述</th>
+<th>输入值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ZEBRA</strong>(1)</td>
+<td>使ALV表格按斑马线间隔条纹方式显示</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td><strong>EDIT</strong>(1)</td>
+<td>设置ALV单元格整体为可编辑模式</td>
+<td>X-可编辑，space-不可编辑</td>
+</tr>
+<tr>
+<td>NO_VLINE(1)</td>
+<td>设置列间网格线</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>NO_HLINE(1)</td>
+<td>设置行间网格线</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>NO_COLHEAD(1)</td>
+<td>设置不显示标题</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>NO_HOTSPOT(1)</td>
+<td>标题不设置热点</td>
+<td>X-不设置，space-设置</td>
+</tr>
+<tr>
+<td>NO_INPUT(1)</td>
+<td>输出的ALV不能编辑，只显示数据</td>
+<td>X-不允许，space-允许</td>
+</tr>
+<tr>
+<td>F2CODE</td>
+<td>设置触发弹出详细信息窗口的功能码</td>
+<td>&lsquo;&amp;ETA&rsquo;：双击时触发的funcode</td>
+</tr>
+<tr>
+<td>NO_KEYFIX(1)</td>
+<td>关键字不固定，可以随滚动条滚动</td>
+<td>X-不固定，space-固定</td>
+</tr>
+<tr>
+<td><strong>NUMC_SUM</strong>(1)</td>
+<td>设置仅NUMC类型字段进行总计</td>
+<td>X-仅Numc类型，space-不仅Numc类型</td>
+</tr>
+<tr>
+<td><strong>COLWIDTH_OPTIMIZE</strong>(1)</td>
+<td>优化列宽设置</td>
+<td>X-优化</td>
+</tr>
+<tr>
+<td>NO_ULINE_HS(1)</td>
+<td>输出ALV表不显示水平格线</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>MIN_LINESIZE(sy-linsz)</td>
+<td>ALV列表的最小宽度</td>
+<td>取值10到250</td>
+</tr>
+<tr>
+<td>MAX_LINESIZE(sy-linsz)</td>
+<td>ALV列表的最大宽度</td>
+<td>取值80到1020，默认250</td>
+</tr>
+<tr>
+<td><strong>Lights_fieldname</strong></td>
+<td>输出内表中定义的字段名，该列用来显示状态灯</td>
+<td>1：red，2：yellow，3：green</td>
+</tr>
+<tr>
+<td>Lights_tabname</td>
+<td>输出字段的参考内表名称</td>
+<td></td>
+</tr>
+<tr>
+<td>Lights_rollname</td>
+<td>数据元素的名称，在灯字段按F1触发</td>
+<td></td>
+</tr>
+<tr>
+<td>Lights_condense(1)</td>
+<td>对输出的内表分类汇总的时候，小计行显示状态灯</td>
+<td>X-小计行显示</td>
+</tr>
+<tr>
+<td><strong>BOX_FIELDNAME</strong></td>
+<td>设置数据内表中哪列以选择按钮形式显示</td>
+<td></td>
+</tr>
+<tr>
+<td>BOX_TABNAME</td>
+<td>BOX_FIELDNAME参考内表名称</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>KEY_HOTSPOT</strong> (1)</td>
+<td>关键字段作为热点，可单击</td>
+<td></td>
+</tr>
+<tr>
+<td>HOTSPOT_FIELDNAME</td>
+<td>热点字段设置，可单击</td>
+<td></td>
+</tr>
+<tr>
+<td>DETAIL_POPUP(1)</td>
+<td>行项目明细弹窗形式</td>
+<td>X-显示，space-不显示;对list_alv有效</td>
+</tr>
+<tr>
+<td>DETAIL_INITIAL_LINES(1)</td>
+<td>明细中同时显示初始化行</td>
+<td>X-同时显示，space-不显示</td>
+</tr>
+<tr>
+<td>DETAIL_TITLEBAR</td>
+<td>明细窗口标题文本</td>
+<td></td>
+</tr>
+<tr>
+<td>NO_SUMCHOICE(1)</td>
+<td>不能进行选择总计</td>
+<td>X-设置</td>
+</tr>
+<tr>
+<td>NO_TOTALLINE(1)</td>
+<td>不能总计，但可以小计</td>
+<td>X-设置</td>
+</tr>
+<tr>
+<td>NO_SUBCHOICE(1)</td>
+<td>不能选择小计，但可以总计</td>
+<td>X-设置</td>
+</tr>
+<tr>
+<td>NO_SUBTOTALS(1)</td>
+<td>不能小计，但可以总计</td>
+<td>X-设置</td>
+</tr>
+<tr>
+<td>NO_UNIT_SPLITTING(1)</td>
+<td>有单位字段，不进行总计</td>
+<td>X-设置</td>
+</tr>
+<tr>
+<td>TOTALS_BOFORE_ITEMS(1)</td>
+<td>总计行将会显示在最前面</td>
+<td>X-设置</td>
+</tr>
+<tr>
+<td>TOTALS_ONLY(1)</td>
+<td>仅显示合计</td>
+<td>X-设置</td>
+</tr>
+<tr>
+<td>TOTALS_TEXT(60)</td>
+<td>合计，第一列显示的文本</td>
+<td></td>
+</tr>
+<tr>
+<td>SUBTOTALS_TEXT(60)</td>
+<td>总计和小计行，第一列显示的文本</td>
+<td></td>
+</tr>
+<tr>
+<td>BOX_FIELDNAME</td>
+<td>指定数据内表中哪列以选择按钮形式显示</td>
+<td>slis_fieldname</td>
+</tr>
+<tr>
+<td>CONFIRMATION_PROMPT(1)</td>
+<td>当退出ALV报表展示界面时，是否需要提示用户</td>
+<td>X-提示，space-不提示</td>
+</tr>
+<tr>
+<td>DETAIL_POPUP(1)</td>
+<td>右键中有 Detail 菜单，是否弹出详细信息窗口</td>
+<td>X-弹出，space-不弹出</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">INFO_FIELDNAME</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">用于设置ALV输出报表每一行的颜色</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">其参数为输出内表的字段名称</span><span style="color:#960050;background-color:#1e0010">，</span>
+   <span style="color:#a6e22e">要注意的是使用该属性需要同时在内表中定义一个与该参数所定义字段名相同的字段</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">例如</span><span style="color:#960050;background-color:#1e0010">：</span>
+   <span style="color:#a6e22e">LAYOUT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">INFO_FIELDNAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;COLOR&#39;</span>.<span style="color:#a6e22e">倘若其数据输出内表名为LT_OUT</span>,<span style="color:#a6e22e">则需要在该内表增加一字段</span>
+   <span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">COLOR</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并为其内表每行复制</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">颜色参数范围C000</span><span style="color:#f92672">~</span><span style="color:#a6e22e">C999</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">例如</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">LT_OUT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COLOR</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C012&#39;</span>.
+<span style="color:#a6e22e">COLTAB_FIELDNAME</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">设置单元格颜色</span>
+</code></pre></div><p><strong>【颜色】</strong></p>
+<p>​	<a href="http://blog.sina.com.cn/s/blog_3f2c03e30100mk1s.html">颜色设置</a></p>
+<ul>
+<li>
+<p>行颜色:gs_layout-&lt;color_fieldname&gt; = &lsquo;COLOR&rsquo;</p>
+<ul>
+<li>
+<p>ALV 中的每行数据颜色是通过 LayOut 来控制的。需要在显示输出内表结构中增加一列字段，用来存储数据行的颜色</p>
+</li>
+<li>
+<p>颜色值定义为 4 位字符，首位固定为字母 “C”，第 2 位为颜色，由 0~7 表示，不同的数字表示不同的颜色属性，如：</p>
+<p>0 = background color     1 = Gray-blue     2 = Light gray    3 = yellow   4 = blue-gray        5 = green       6 = red      7 = orange</p>
+<p>第 3 位表示输出文字是否高亮显示，由 0~1 表示，为 1 时表示高亮显示。第 4 位测试了一下，基本上 0~9 颜色都差不多，唯一就是当取值为 1 时，底色又回到了灰色（且只是在第 3 位为 0 时才有此效果）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>列颜色:gt_fieldcat-emphasize = &lsquo;C510&rsquo;.[1：C固定，2：颜色值0~7,3：高亮0、1(X)，4：颜色反转，0、1]</p>
+</li>
+<li>
+<p>单元格颜色:gs_layout-&lt;coltab_fieldname&gt;='COLORTABLE&rsquo;.</p>
+</li>
+</ul>
+<p><strong>【可编辑】</strong></p>
+<p>​	整体可编辑：layout-edit = &lsquo;X&rsquo;</p>
+<p>​	某列可编辑：fieldcat-edit = &lsquo;X&rsquo;</p>
+<p>​	单元格可编辑：需要通过OO方式实现</p>
+<h3 id="lvc常用参数列表">LVC常用参数列表</h3>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>描述</th>
+<th>输入值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ZEBRA</strong>(1)</td>
+<td>使ALV表格按斑马线间隔条码方式显示</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td><strong>EDIT</strong>(1)</td>
+<td>设置ALV为可编辑模式</td>
+<td>X-可编辑，space-不可编辑</td>
+</tr>
+<tr>
+<td><strong>CWIDTH_OPT</strong>(1)</td>
+<td>自动优化列宽</td>
+<td>X-优化，space-不自动优化</td>
+</tr>
+<tr>
+<td>NO_KEYFIX(1)</td>
+<td>关键字不固定，可以随滚动条滚动</td>
+<td>X-不固定，space-固定</td>
+</tr>
+<tr>
+<td>NO_HGRIDLN(1)</td>
+<td>是否隐藏水平网格线</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>NO_VGRIDLN(1)</td>
+<td>是否隐藏垂直网格线</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>NO_HEADERS(1)</td>
+<td>隐藏列抬头</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>NO_MERGING(1)</td>
+<td>禁用单元格合并</td>
+<td>X-禁用，space-不禁用</td>
+</tr>
+<tr>
+<td>NO_F4(1)</td>
+<td>屏蔽F4搜索帮助</td>
+<td>X-不显示，space-显示</td>
+</tr>
+<tr>
+<td>STYLEFNAME</td>
+<td>用来传输格表，以便把单元格显示为按钮</td>
+<td>LVC_FNAME</td>
+</tr>
+<tr>
+<td><strong>SEL_MODE</strong>(1)</td>
+<td>选择模式</td>
+<td>A-最左端有选择按钮，space-空白</td>
+</tr>
+<tr>
+<td>KEYHOT(1)</td>
+<td>关键列作为热点</td>
+<td>X-设置，space-不设置</td>
+</tr>
+<tr>
+<td>NUMC_TOTAL(1)</td>
+<td>禁止 NUMC 字段总计</td>
+<td>X-禁止，space-不禁止</td>
+</tr>
+<tr>
+<td>NO_TOTLINE(1)</td>
+<td>不输出总计行</td>
+<td>X-不输出，space-输出</td>
+</tr>
+<tr>
+<td>NO_UTSPLIT(1)</td>
+<td>按单元拆分总计行</td>
+<td>X-不拆分，space-拆分</td>
+</tr>
+<tr>
+<td>INFO_FNAME</td>
+<td>带有简单行彩色代码的字段名称</td>
+<td></td>
+</tr>
+<tr>
+<td>CTAB_FNAME</td>
+<td>代表颜色信息的字段名</td>
+<td></td>
+</tr>
+<tr>
+<td>NO_ROWMARK</td>
+<td>禁用行选择</td>
+<td></td>
+</tr>
+<tr>
+<td>NO_TOOLBAR</td>
+<td>隐藏工具栏</td>
+<td></td>
+</tr>
+<tr>
+<td>GRID_TITLE</td>
+<td>标题栏文本</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="设置工具导航栏-gui-status">设置工具导航栏 GUI Status</h2>
+<h4 id="copy-sap标准gui-status">Copy SAP标准GUI Status</h4>
+<ul>
+<li>SE80 -&gt; SALV -&gt; STANDARD -&gt; Copy到自定义程序的GUI Status</li>
+</ul>
+<p><img src="/images/ABAP/CopyGUI.png" alt="GUI"></p>
+<p>GUI Status参数设置共包括3个部分：</p>
+<ol>
+<li>
+<p>菜单栏(Menu Bar)：用于设置主菜单选项。</p>
+</li>
+<li>
+<p>应用工具条(Application ToolBar)：用于设置应用工具栏按钮，包括按钮名称、按钮描述、及按钮所对的ICON图标。</p>
+</li>
+<li>
+<p>功能键(Function Key)：为按钮分配功能键代码，包括系统标题按钮(如返回、退出、关闭等)及通过Application ToolBar所定义的客制化按钮。</p>
+</li>
+</ol>
+<p><strong>在ALV函数中使用</strong></p>
+<pre><code class="language-jsp" data-lang="jsp">call function 'REUSE_ALV_GRID_DISPLAY_LVC'
+  exporting
+    i_callback_program       = sy-repid 
+    i_callback_pf_status_set = 'FRM_SET_STATUS'
+    i_callback_user_command  = 'FRM_USER_COMMAND'
+    is_layout_lvc            = lw_layout
+    it_fieldcat_lvc          = gt_fieldcat
+    i_default                = 'X'
+    i_save                   = 'X'
+  tables
+    t_outtab                 = gt_alv_data
+  exceptions
+    program_error            = 1.
+      
+GUI TITLE设置：
+   GUI TITLE 用于定义Report标题栏内容.
+ 定义：
+   Create--&gt;GUI Titles：可以输入&amp;符号作为Title,当程序运行时对其填充动态文本。
+ 在程序中调用：
+   SET TITLEBAR 'TITLE_BAR' WITH SY-DATUM 'IFENER' 'BAR TEST'.&quot;设置TITLEBAR，并赋参数列表 
+</code></pre><p><strong>自定义状态栏</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">form</span> <span style="color:#a6e22e">frm_set_status</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">excluding</span> .
+  <span style="color:#a6e22e">form</span> <span style="color:#a6e22e">frm_set_status</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">extab</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">slis_t_extab</span>.
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ls_slis_extab</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">slis_extab</span>.
+  <span style="color:#e6db74">&#34;排除按钮不显示&#34;</span>
+  <span style="color:#a6e22e">ls_slis_extab</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fcode</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&amp;ABC&#39;</span>.
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_slis_extab</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">extab</span>.
+  ......
+  <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">TITLEBAR</span> <span style="color:#e6db74">&#39;TITLE&#39;</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">t01</span>.          <span style="color:#e6db74">&#34;输入标题栏名称&#34;</span>
+  <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">STATUS</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">STATUS_NAME</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">EXCLUDING</span> <span style="color:#a6e22e">extab</span>. <span style="color:#e6db74">&#34;输入自定义按钮工具的名称,并排除指定按钮&#34;</span>
+<span style="color:#a6e22e">endform</span>.                    <span style="color:#e6db74">&#34;frm_set_status&#34;</span>
+</code></pre></div><p><strong>按钮处理</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">Form</span> <span style="color:#a6e22e">frm_set_command</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">p_ucomm</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ucomm</span>
+                           <span style="color:#a6e22e">i_selfield</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">slis_selfield</span>.
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ls_stable</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">lvc_s_stbl</span>.
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span><span style="color:#a6e22e">lr_grid</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">cl_gui_alv_grid</span>.
+  <span style="color:#a6e22e">call</span> <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;GET_GLOBALS_FROM_SLVC_FULLSCR&#39;</span>
+    <span style="color:#a6e22e">importing</span>
+      <span style="color:#a6e22e">e_grid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lr_grid</span>.
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">lr_grid</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">check_changed_data</span>.
+ <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">LR_GRID</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">REFRESH_TABLE_DISPLAY</span>.
+  <span style="color:#a6e22e">i_selfield</span><span style="color:#f92672">-</span><span style="color:#a6e22e">refresh</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.  <span style="color:#e6db74">&#34;自动刷新&#34;</span>
+  <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">p_ucomm</span>.
+    <span style="color:#a6e22e">when</span> <span style="color:#e6db74">&#39;ZPRT&#39;</span>.
+      <span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">gt_disp</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">gs_disp</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">key</span> <span style="color:#a6e22e">check_box</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+        <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">frm_print_data</span>.
+      <span style="color:#66d9ef">else</span>.
+        <span style="color:#a6e22e">message</span> <span style="color:#a6e22e">e398</span>(<span style="color:#ae81ff">00</span>) <span style="color:#a6e22e">display</span> <span style="color:#a6e22e">like</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+        <span style="color:#66d9ef">return</span>.
+      <span style="color:#a6e22e">endif</span>.
+    <span style="color:#a6e22e">when</span> <span style="color:#e6db74">&#39;&amp;IC1&#39;</span>. <span style="color:#e6db74">&#34;对操作代码进行相应处理&#34;</span>
+	  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">i_selfield</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#a6e22e">EQ</span> <span style="color:#e6db74">&#39;FieldName&#39;</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">i_selfield</span><span style="color:#f92672">-</span><span style="color:#a6e22e">value</span> <span style="color:#a6e22e">NE</span> <span style="color:#a6e22e">space</span>.
+      	<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ls_upload</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_upload</span>.
+ 		<span style="color:#a6e22e">READ</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">gt_upload</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">ls_upload</span> <span style="color:#a6e22e">INDEX</span> <span style="color:#a6e22e">rs_selfield</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabindex</span>.
+  		<span style="color:#a6e22e">CHECK</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#a6e22e">EQ</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">ls_upload</span><span style="color:#f92672">-</span><span style="color:#a6e22e">aufnr</span> <span style="color:#a6e22e">NE</span> <span style="color:#a6e22e">space</span>.
+        <span style="color:#e6db74">&#34;传入输入参数值并调用其他TCode&#34;</span>
+ 	    <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PARAMETER</span> <span style="color:#a6e22e">ID</span> <span style="color:#e6db74">&#39;ANR&#39;</span> <span style="color:#a6e22e">FIELD</span> <span style="color:#a6e22e">ls_upload</span><span style="color:#f92672">-</span><span style="color:#a6e22e">aufnr</span>.
+  	    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">TRANSACTION</span> <span style="color:#e6db74">&#39;CO03&#39;</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">SKIP</span> <span style="color:#a6e22e">FIRST</span> <span style="color:#a6e22e">SCREEN</span>. <span style="color:#e6db74">&#34;跳过第一屏屏幕&#34;</span>
+      <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#a6e22e">endcase</span>.
+ <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">lr_grid</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">refresh_table_display</span>.
+<span style="color:#a6e22e">endform</span>.
+</code></pre></div><p><strong>自定义按钮</strong></p>
+<p>对于定义的按钮，我们可以通过系统变量SY-UCOMM来获取它的功能代码。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">USER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMMAND</span>.   <span style="color:#e6db74">&#34;当单击某个按钮时，触发该事件
+</span><span style="color:#e6db74">  CASE sy-ucomm.  &#34;</span><span style="color:#a6e22e">获取所操作按钮的功能代码</span>(<span style="color:#a6e22e">FUNCTION</span> <span style="color:#a6e22e">Code</span>)
+</code></pre></div><ul>
+<li>调用显示，应用于START-OF-SELECTION事件</li>
+</ul>
+<p>​	<code>SET PF-STATUS &lt;STATUS_NAME&gt;.</code></p>
+<p>​	不显示某些按钮：<code>SET PF-STATUS &lt;STATUS_NAME&gt; EXCLUDING &lt;extab&gt;.</code></p>
+<h3 id="文本增强">文本增强</h3>
+<ul>
+<li>T-CODE:CMOD-&gt;转到-&gt;文本增强-&gt;关键字-&gt;更改</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>5151</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_InnerTable/" class="prev" rel="prev" title="报表开发&lt;内表操作&gt;"><i class="iconfont icon-dajiantou"></i>&nbsp;报表开发&lt;内表操作&gt;</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Display_util/" class="next" rel="next" title="Field Catalog 字段排坑">Field Catalog 字段排坑&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-25 00:00:00 \x2b0000 UTC',
+        title: '报表开发\x3cALV FieldCatalog设置\x3e',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_MIGO_Print/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_Stock/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_GoodMovementTypes/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SAP 移动类型详解 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="SAP 移动类型详解 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAP 移动类型详解"/>
+<meta name="twitter:description" content="SAP Good Movement Types:是3个数字，用于标识 SAP Good Movement 的类型。 移动类型参考字段MSEG-BWART，移动类型参考表T156，文本表是T156T. SAP MM"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SAP 移动类型详解",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_GoodMovementTypes\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  2267 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_GoodMovementTypes\/",
+  "datePublished": "2020-05-20T00:00:00\x2b00:00",
+  "dateModified": "2020-05-20T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">SAP 移动类型详解</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-05-20 >20 May 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SAP Good Movement Types:是3个数字，用于标识 SAP Good Movement 的类型。</p>
+<p>移动类型参考字段MSEG-BWART，移动类型参考表T156，文本表是T156T.</p>
+<h4 id="sap-mm中重要的移动类型">SAP MM中重要的移动类型</h4>
+<table>
+<thead>
+<tr>
+<th>Movement Type</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Goods receipt for purchase order or order</td>
+<td>采购订单或订单的收货</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Goods receipt for purchase order into GR blocked stock</td>
+<td>采购订单收货到收货冻结库存中</td>
+</tr>
+<tr>
+<td>201</td>
+<td>SAP MM Goods issue for a cost center</td>
+<td>成本中心的 SAP MM 发货</td>
+</tr>
+<tr>
+<td>261</td>
+<td>Goods issue for an order</td>
+<td>订单的发货</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Transfer posting plant to plant in one step</td>
+<td>一步将过帐工厂转移到工厂</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Transfer posting plant to plant in two steps</td>
+<td>分两步将过帐工厂转移到工厂</td>
+</tr>
+<tr>
+<td>311</td>
+<td>Transfer posting storage location to storage location in one step</td>
+<td>SAP MM 一步将过帐存储地点转移到存储地点</td>
+</tr>
+<tr>
+<td>313</td>
+<td>Stock transfer storage location to storage location in two steps</td>
+<td>分两步将库存转移到存储地点</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sap-和收货相关的移动类型">SAP 和收货相关的移动类型</h4>
+<table>
+<thead>
+<tr>
+<th>Movement Type</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Goods receipt for purchase order</td>
+<td>采购订单的收货</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Goods receipt for purchase order to GR blocked stock</td>
+<td>采购订单收货到收货的冻结库存</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Release from the GR blocked stock for the purchase order</td>
+<td>从采购订单的收货冻结中释放库存</td>
+</tr>
+<tr>
+<td>121</td>
+<td>Subsequent adjustment for subcontracting</td>
+<td>分包的后续调整</td>
+</tr>
+<tr>
+<td>122</td>
+<td>Return deliveries to vendor</td>
+<td>将交货退还给供应商</td>
+</tr>
+<tr>
+<td>124</td>
+<td>Return delivery to vendor from GR blocked stock</td>
+<td>从收货冻结的库存退货给供应商</td>
+</tr>
+<tr>
+<td>161</td>
+<td>Returns for purchase order</td>
+<td>采购订单退货</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sap-和发货相关的移动类型">SAP 和发货相关的移动类型</h4>
+<table>
+<thead>
+<tr>
+<th>Movement Type</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201</td>
+<td>Goods issue for a cost center</td>
+<td>成本中心的发货</td>
+</tr>
+<tr>
+<td>221</td>
+<td>Goods issue for a project</td>
+<td>项目的发货</td>
+</tr>
+<tr>
+<td>251</td>
+<td>Goods issue for sale (without sales order)</td>
+<td>销售的发货（无销售订单）</td>
+</tr>
+<tr>
+<td>261</td>
+<td>Goods issue for an order</td>
+<td>订单的发货</td>
+</tr>
+<tr>
+<td>281</td>
+<td>Goods issue for a network</td>
+<td>network的发货(PS)</td>
+</tr>
+<tr>
+<td>291</td>
+<td>Goods issue for any account assignment</td>
+<td>任何科目分配的发货</td>
+</tr>
+</tbody>
+</table>
+<h4 id="工厂到工厂和存储地点的转移">工厂到工厂和存储地点的转移</h4>
+<ul>
+<li>工厂到工厂的转移(一步和两步)</li>
+<li>存储地点转移到其他存储地点，包括SAP中检验库存，样品转移和Block状态移动</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Movement Type</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>301</td>
+<td>Plant to plant transfer in one step</td>
+<td>工厂到工厂的转移一步完成</td>
+</tr>
+<tr>
+<td>303</td>
+<td>Plant to plant transfer in two steps :  stock removal</td>
+<td>工厂到工厂的转移分为两个步骤：清除库存</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Plant to plant transfer in two steps :  putaway</td>
+<td>工厂到工厂的转移分两个步骤：上架</td>
+</tr>
+<tr>
+<td>309</td>
+<td>Transfer postings from material to material</td>
+<td>从物料到物料转移过帐</td>
+</tr>
+<tr>
+<td>311</td>
+<td>Transfer of storage location to storage location in one step</td>
+<td>一步将存储位置转移到存储位置</td>
+</tr>
+<tr>
+<td>313</td>
+<td>Transfer of storage location to storage location in two steps :  stock removal</td>
+<td>分两步将存储地点转移到存储地点：清除库存</td>
+</tr>
+<tr>
+<td>315</td>
+<td>Transfer of storage location to storage location in two steps :  putaway</td>
+<td>分两步将存储地点转移到存储地点：放置</td>
+</tr>
+<tr>
+<td>321</td>
+<td>Transfer of inspection stock :  unrestricted-use stock</td>
+<td>检验库存的转移：非限制使用的库存</td>
+</tr>
+<tr>
+<td>323</td>
+<td>Transfer of storage location to storage location :  inspection stock</td>
+<td>将存储地点转移到存储地点：检验库存</td>
+</tr>
+<tr>
+<td>325</td>
+<td>Transfer of storage location to storage location :  blocked stock</td>
+<td>将存储地点转移到存储地点：冻结库存</td>
+</tr>
+<tr>
+<td>331</td>
+<td>Sample from the inspection stock</td>
+<td>检验库存中的样品</td>
+</tr>
+<tr>
+<td>333</td>
+<td>Sample from the unrestricted-use stock</td>
+<td>非限制使用库存中的样本</td>
+</tr>
+<tr>
+<td>335</td>
+<td>Sample from the blocked stock</td>
+<td>冻结库存中的样本</td>
+</tr>
+<tr>
+<td>341</td>
+<td>Status change of a batch (unrestricted-use to restricted)</td>
+<td>批次的状态更改（非限制使用到限制）</td>
+</tr>
+<tr>
+<td>343</td>
+<td>Transfer of blocked stock :  unrestricted-use stock</td>
+<td>冻结库存的转移：非限制使用的库存</td>
+</tr>
+<tr>
+<td>349</td>
+<td>Transfer of blocked stock :  inspection stock</td>
+<td>冻结库存的转移：检验库存</td>
+</tr>
+<tr>
+<td>351</td>
+<td>Goods issue for a stock transport order (without shipping)</td>
+<td>库存运输订单的发货（不发货）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="特殊库存转移库存和冻结库存退货">特殊库存，转移库存和冻结库存退货</h4>
+<table>
+<thead>
+<tr>
+<th>Movement Types</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>411</td>
+<td>Transfer of special stock to own stock (only for sales order stock)</td>
+<td>特殊库存转为自有库存（仅用于销售订单库存）</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Transfer posting to sales order stock</td>
+<td>将过帐转移到销售订单库存</td>
+</tr>
+<tr>
+<td>451</td>
+<td>Returns from customer (without shipping)</td>
+<td>客户退货（不发货）</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Transfer of blocked stock returns to unrestricted-use stock</td>
+<td>将冻结的库存退货转移到非限制使用的库存</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Returns stock transfer</td>
+<td>返回库存转移</td>
+</tr>
+<tr>
+<td>457</td>
+<td>Transfer of blocked stock returns to inspection stock</td>
+<td>将冻结的退货库存转移到检验库存</td>
+</tr>
+<tr>
+<td>459</td>
+<td>Transfer of blocked stock returns to blocked stock</td>
+<td>将冻结的库存退货转移到冻结的库存</td>
+</tr>
+</tbody>
+</table>
+<h4 id="不同类型的收货处理">不同类型的收货处理</h4>
+<table>
+<thead>
+<tr>
+<th>Movement Types</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>501</td>
+<td>Goods receipt without purchase order :  unrestricted-use stock</td>
+<td>无采购订单的收货：非限制使用的库存</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Goods receipt without purchase order :  stock in quality inspection</td>
+<td>无采购订单的收货：检验库存</td>
+</tr>
+<tr>
+<td>505</td>
+<td>Goods receipt without purchase order :  blocked stock</td>
+<td>无采购订单的收货：冻结库存</td>
+</tr>
+<tr>
+<td>521</td>
+<td>Goods receipt without order :  unrestricted-use stock</td>
+<td>无订单收货：非限制使用的库存</td>
+</tr>
+<tr>
+<td>523</td>
+<td>Goods receipt without order :  inspection stock</td>
+<td>无订单收货：检验库存</td>
+</tr>
+<tr>
+<td>525</td>
+<td>Goods receipt without order :  blocked stock</td>
+<td>无订单收货：冻结库存</td>
+</tr>
+<tr>
+<td>531</td>
+<td>Goods receipt of by-products from order</td>
+<td>订单中副产品的收货</td>
+</tr>
+<tr>
+<td>541</td>
+<td>Transfer of unrestricted-use stock to subcontracting stock</td>
+<td>将非限制使用的库存转移到分包库存</td>
+</tr>
+<tr>
+<td>543</td>
+<td>Consumption from subcontracting stock</td>
+<td>分包库存的消耗</td>
+</tr>
+<tr>
+<td>545</td>
+<td>Goods receipt of by-products from subcontracting</td>
+<td>分包的副产品收货</td>
+</tr>
+<tr>
+<td>551</td>
+<td>Scrapping from unrestricted-use stock</td>
+<td>从非限制使用的库存中报废</td>
+</tr>
+<tr>
+<td>553</td>
+<td>Scrapping from inspection stock</td>
+<td>从检验库存中报废</td>
+</tr>
+<tr>
+<td>555</td>
+<td>Scrapping from blocked stock</td>
+<td>从冻结的库存中报废</td>
+</tr>
+<tr>
+<td>557</td>
+<td>Issue from stock in transit (adjustment posting)</td>
+<td>从运输中的库存发货（调整过帐）</td>
+</tr>
+<tr>
+<td>561</td>
+<td>Initial entry of stock balances :  unrestricted-use stock</td>
+<td>库存余额的初始输入：非限制使用的库存</td>
+</tr>
+<tr>
+<td>563</td>
+<td>Initial entry of stock balances :  quality inspection</td>
+<td>库存余额的初始输入：质量检验</td>
+</tr>
+<tr>
+<td>565</td>
+<td>Initial entry of stock balances :  blocked stock</td>
+<td>库存余额的初始输入：冻结库存</td>
+</tr>
+<tr>
+<td>581</td>
+<td>Goods receipt of a by-product from network</td>
+<td>来自network的副产品收货</td>
+</tr>
+</tbody>
+</table>
+<h4 id="与运输相关的sap移动类型">与运输相关的SAP移动类型</h4>
+<p>主要功能是：</p>
+<ul>
+<li>商品包装</li>
+<li>货物的交货处理</li>
+<li>物品拣选</li>
+<li>货物通讯</li>
+<li>计划和监控运输</li>
+<li>发货过账</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Movement Types</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>601</td>
+<td>Goods issue for delivery</td>
+<td>基于发货的发货</td>
+</tr>
+<tr>
+<td>603</td>
+<td>Goods issue for a stock transport order (shipping) with additional item</td>
+<td>带有其他物料的库存运输订单（装运）的发货</td>
+</tr>
+<tr>
+<td>605</td>
+<td>Goods receipt for a stock transport order (shipping) with additional item</td>
+<td>带有其他项目的库存运输订单（装运）的收货</td>
+</tr>
+<tr>
+<td>621</td>
+<td>Transfer of unrestricted-use stock :  returnable packaging with customer (shipping)</td>
+<td>无限制使用的库存的转移：与客户可回收的包装（装运）</td>
+</tr>
+<tr>
+<td>623</td>
+<td>Goods issue from returnable packaging with customer (shipping)</td>
+<td>与客户进行可回收包装的发货（装运）</td>
+</tr>
+<tr>
+<td>631</td>
+<td>Transfer of unrestricted-use stock :  consignment stock at customer (shipping)</td>
+<td>非限制使用库存的转移：客户的寄售库存（装运）</td>
+</tr>
+<tr>
+<td>633</td>
+<td>Goods issue from consignment stock at customer (shipping)</td>
+<td>客户寄售库存中的发货（装运）</td>
+</tr>
+<tr>
+<td>641</td>
+<td>Goods issue for a stock transport order (shipping)</td>
+<td>库存运输订单的发货（装运）</td>
+</tr>
+<tr>
+<td>643</td>
+<td>Goods issue for a cross-company-code stock transport order</td>
+<td>跨公司代码库存运输订单的发货</td>
+</tr>
+<tr>
+<td>645</td>
+<td>Goods issue for a cross-company-code stock transport order performed in one step (shipping)</td>
+<td>一步执行的跨公司代码库存运输订单的发货（装运）</td>
+</tr>
+<tr>
+<td>647</td>
+<td>Goods issue for a stock transport order performed in one step (shipping)</td>
+<td>一步执行库存运输订单的发货（装运）</td>
+</tr>
+<tr>
+<td>651</td>
+<td>Returns from customer (shipping)</td>
+<td>客户退货(运输)</td>
+</tr>
+<tr>
+<td>653</td>
+<td>Returns from customer (shipping) to unrestricted-use stock</td>
+<td>从客户（装运）到非限制使用库存的退货</td>
+</tr>
+<tr>
+<td>655</td>
+<td>Returns from customer (shipping) to inspection stock</td>
+<td>从客户（装运）到检验库存的退货</td>
+</tr>
+<tr>
+<td>657</td>
+<td>Returns from customer (shipping) to blocked stock</td>
+<td>从客户（装运）到冻结库存的退货</td>
+</tr>
+<tr>
+<td>661</td>
+<td>Returns to vendor using shipping</td>
+<td>使用运输退货给供应商</td>
+</tr>
+<tr>
+<td>673</td>
+<td>Returns for a cross-company-code stock transport order (shipping)</td>
+<td>跨公司代码库存运输订单（装运）的退货</td>
+</tr>
+<tr>
+<td>675</td>
+<td>Returns for a cross-company-code stock transport order (shipping) performed in one step</td>
+<td>一步执行的跨公司代码库存运输订单（装运）的退货</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sap-中的库存差异移动类型">SAP 中的库存差异移动类型</h4>
+<p>​	在SPA MM(物料管理)和SAP WM(仓库管理)中，与库存差异相关的移动类型。</p>
+<table>
+<thead>
+<tr>
+<th>Movement Types</th>
+<th>Desc</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>701</td>
+<td>Inventory difference in unrestricted-use stock</td>
+<td>非限制使用库存中的库存差异</td>
+</tr>
+<tr>
+<td>702</td>
+<td>Inventory difference in quality inspection stock (MM-IM)</td>
+<td>质量检验库存中的库存差异（MM-IM）</td>
+</tr>
+<tr>
+<td>707</td>
+<td>Inventory difference in blocked stock</td>
+<td>冻结库存中的库存差异</td>
+</tr>
+<tr>
+<td>711</td>
+<td>Inventory difference in unrestricted-use stock (LE-WM)</td>
+<td>非限制使用库存（LE-WM）的库存差异</td>
+</tr>
+<tr>
+<td>713</td>
+<td>Inventory difference in quality inspection stock (MM-IM)</td>
+<td>质量检验库存中的库存差异（MM-IM）</td>
+</tr>
+<tr>
+<td>715</td>
+<td>Inventory difference for returns</td>
+<td>退货的库存差异</td>
+</tr>
+<tr>
+<td>717</td>
+<td>Inventory difference in blocked stock (LE-WM)</td>
+<td>冻结库存的库存差异（LE-WM）</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2267</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_MIGO_Print/" class="prev" rel="prev" title="MIGO 收货后自动打印功能"><i class="iconfont icon-dajiantou"></i>&nbsp;MIGO 收货后自动打印功能</a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_Stock/" class="next" rel="next" title="SAP 库存查看">SAP 库存查看&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-05-20 00:00:00 \x2b0000 UTC',
+        title: 'SAP 移动类型详解',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

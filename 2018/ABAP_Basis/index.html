@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/Linux_ShellFlow/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Table/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Basis/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP 数据类型 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP 数据类型 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP 数据类型"/>
+<meta name="twitter:description" content="ABAP基本数据类型 基本数据类型 Type Description Type Description C Character text D Date(YYYYMMDD) N Numeric text(不能进行计算) T Time(HHMMSS) I Integer F Floating point P Packed(包类型:1-16) X 十六进制 常用"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP 数据类型",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  471 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis\/",
+  "datePublished": "2018-05-12T00:00:00\x2b00:00",
+  "dateModified": "2018-05-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP 数据类型</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-12 >12 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="abap基本数据类型">ABAP基本数据类型</h3>
+<h4 id="基本数据类型">基本数据类型</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>Character text</td>
+<td>D</td>
+<td>Date(YYYYMMDD)</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Numeric text(不能进行计算)</td>
+<td>T</td>
+<td>Time(HHMMSS)</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Integer</td>
+<td>F</td>
+<td>Floating point</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Packed(包类型:1-16)</td>
+<td>X</td>
+<td>十六进制</td>
+</tr>
+</tbody>
+</table>
+<h4 id="常用系统变量">常用系统变量</h4>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SY-UNAME</td>
+<td>用户登录名</td>
+<td>SY-TCODE</td>
+<td>当前执行的TCode</td>
+</tr>
+<tr>
+<td>SY-SUBRC</td>
+<td>表示系统执行成功与否</td>
+<td>SY-TMAXL</td>
+<td>内表总行数</td>
+</tr>
+<tr>
+<td>SY-CPROG</td>
+<td>当前程序名</td>
+<td>SY-BATCH</td>
+<td>程序是否后台JOB执行</td>
+</tr>
+<tr>
+<td>SY-DATUM</td>
+<td>当前系统日期</td>
+<td>SY-HOST</td>
+<td>服务器名称</td>
+</tr>
+<tr>
+<td>SY-UZEIT</td>
+<td>当前系统时间</td>
+<td>SY-DYNNR</td>
+<td>屏幕的编号</td>
+</tr>
+<tr>
+<td>SY-INDEX</td>
+<td>DO-ENDDO 中是有效的</td>
+<td>SY-DBCNT</td>
+<td>DB操作处理过的表行号</td>
+</tr>
+<tr>
+<td>SY-TABIX</td>
+<td>LOOP索引，Read内表索引</td>
+<td>SY-LANGU</td>
+<td>当前登陆的语言</td>
+</tr>
+<tr>
+<td>SY-MSGID</td>
+<td>Message Class</td>
+<td>SY-MSGV1</td>
+<td>Message Variable</td>
+</tr>
+<tr>
+<td>SY-MSGTY</td>
+<td>Message Type</td>
+<td>SY-MSGV2</td>
+<td>Message Variable</td>
+</tr>
+<tr>
+<td>SY-MSGNO</td>
+<td>Message Number</td>
+<td>SY-MSGV3</td>
+<td>Message Variable</td>
+</tr>
+<tr>
+<td>SY-ZONLO</td>
+<td>当前时区</td>
+<td>SY-MSGV4</td>
+<td>Message Variable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="变量的声明">变量的声明</h3>
+<h4 id="自定义变量类型">自定义变量类型</h4>
+<p><code>DATA &lt;var&gt;(len) TYPE &lt;type&gt; VALUE &lt;value&gt; [&lt;decimals&gt;]</code></p>
+<h4 id="参考字段定义变量">参考字段定义变量</h4>
+<p><code>DATA &lt;var1&gt; like &lt;var2&gt;</code>  &amp; <code>DATA &lt;var1&gt; TYPE &lt;var2&gt;</code></p>
+<ul>
+<li>透明表、结构、数据字典：既是类型又是对象，可用 type 和 like 。</li>
+<li>只能使用 LIKE 引用另一自定义变量的类型，不可以使用 TYPE</li>
+</ul>
+<h3 id="定义常量宏">定义常量、宏</h3>
+<h4 id="常量定义">常量定义</h4>
+<p><code>CONSTANTS &lt;var&gt;(len) TYPE &lt;type&gt; VALUE &lt;value&gt;.</code></p>
+<p><code>CONSTANTS &lt;var&gt;(len) LIKE &lt;var2&gt; VALUE &lt;value&gt;.</code></p>
+<h4 id="宏定义">宏定义</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DEFINE</span> alv_ref1.
+  <span style="color:#66d9ef">clear</span> gw_field.
+  gw_field<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> &amp;1.
+  gw_field<span style="color:#f92672">-</span>coltext  <span style="color:#f92672">=</span> &amp;2.
+  gw_field<span style="color:#f92672">-</span>outputlen <span style="color:#f92672">=</span> &amp;3.
+  gw_field<span style="color:#f92672">-</span>ref_field <span style="color:#f92672">=</span> &amp;4.
+  gw_field<span style="color:#f92672">-</span>ref_table <span style="color:#f92672">=</span> &amp;5.
+  gw_field<span style="color:#f92672">-</span>edit <span style="color:#f92672">=</span> &amp;6.
+  gw_field<span style="color:#f92672">-</span>f4availabl <span style="color:#f92672">=</span> &amp;7.
+<span style="color:#66d9ef">append</span> gw_field <span style="color:#66d9ef">to</span> gt_field.
+<span style="color:#66d9ef">END-OF-DEFINITION</span>.
+</code></pre></div><p>使用：<code>alv_ref1 'para1' 'para2' ... 'paran'.</code></p>
+<h3 id="describe使用">DESCRIBE使用</h3>
+<p>字段属性：<code>DESCRIBE FIELD &lt;field&gt; [mes var]...</code>     (一个data的类型、长度、小数点、输出长度等信息)</p>
+<p>内表：<code>DESCRIBE TABLE itab [kind knd] [LINES lin] [COCCURS n].</code></p>
+<p>两个字段不同：<code>DESCRIBE distance ...</code></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>471</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/Linux_ShellFlow/" class="prev" rel="prev" title=" Shell 脚本-流程控制"><i class="iconfont icon-dajiantou"></i>&nbsp; Shell 脚本-流程控制</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Table/" class="next" rel="next" title="ABAP 数据表">ABAP 数据表&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-12 00:00:00 \x2b0000 UTC',
+        title: 'ABAP 数据类型',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

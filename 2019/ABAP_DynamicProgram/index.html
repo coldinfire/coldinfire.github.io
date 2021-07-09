@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_IDoc/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SearchHelp/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_DynamicProgram/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP Dynnamic Programer | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP Dynnamic Programer | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP Dynnamic Programer"/>
+<meta name="twitter:description" content="利用Field Symbols和数据参考的实例： *&amp;-------------------------------------------------------------------- *&amp; Report ZZSM_TEST_DYN *&amp;-------------------------------------------------------------------- REPORT zzsm_test_dyn. DATA: tab_reference TYPE REF TO data, struc_reference TYPE REF TO data. DATA: descr TYPE REF TO cl_abap_structdescr. FIELD-SYMBOLS: &lt;struc&gt; TYPE ANY, &lt;field&gt; TYPE ANY, &lt;itab&gt; TYPE ANY TABLE. PARAMETERS: p_table(20) DEFAULT &#39;LFA1&#39; OBLIGATORY, p_rows TYPE i OBLIGATORY. TRY . &#34;Dynamic"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP Dynnamic Programer",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_DynamicProgram\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  162 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_DynamicProgram\/",
+  "datePublished": "2019-09-25T00:00:00\x2b00:00",
+  "dateModified": "2019-09-25T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP Dynnamic Programer</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-09-25 >25 September 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="利用field-symbols和数据参考的实例">利用Field Symbols和数据参考的实例：</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span>
+<span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span> <span style="color:#a6e22e">Report</span>  <span style="color:#a6e22e">ZZSM_TEST_DYN</span>
+<span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span>
+<span style="color:#a6e22e">REPORT</span>  <span style="color:#a6e22e">zzsm_test_dyn</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tab_reference</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">data</span>,
+      <span style="color:#a6e22e">struc_reference</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">data</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">descr</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cl_abap_structdescr</span>.
+<span style="color:#a6e22e">FIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SYMBOLS</span><span style="color:#f92672">:</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">struc</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ANY</span>,
+               <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">field</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ANY</span>,
+               <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">itab</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ANY</span> <span style="color:#a6e22e">TABLE</span>.
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">p_table</span>(<span style="color:#ae81ff">20</span>) <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;LFA1&#39;</span> <span style="color:#a6e22e">OBLIGATORY</span>,
+            <span style="color:#a6e22e">p_rows</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">i</span> <span style="color:#a6e22e">OBLIGATORY</span>.
+<span style="color:#a6e22e">TRY</span> .
+    <span style="color:#e6db74">&#34;Dynamic create Table &amp; Structure &#34;</span>
+    <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">tab_reference</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STANDARD</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> (<span style="color:#a6e22e">p_table</span>)
+           <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">NON</span><span style="color:#f92672">-</span><span style="color:#a6e22e">UNIQUE</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#a6e22e">KEY</span>.
+    <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">tab_reference</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">itab</span><span style="color:#f92672">&gt;</span>.
+    
+    <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">struc_reference</span> <span style="color:#a6e22e">TYPE</span> (<span style="color:#a6e22e">p_table</span>).
+    <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">struc_reference</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">struc</span><span style="color:#f92672">&gt;</span>.
+    <span style="color:#e6db74">&#34;Get data from table&#34;</span>
+    <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> (<span style="color:#a6e22e">p_table</span>) <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">itab</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">UP</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">p_rows</span> <span style="color:#a6e22e">ROWS</span> .
+    <span style="color:#e6db74">&#34;Get structure desc by struc&#34;</span>
+    <span style="color:#a6e22e">descr</span> <span style="color:#f92672">?</span><span style="color:#f92672">=</span>  <span style="color:#a6e22e">cl_abap_typedescr</span>=&gt;<span style="color:#a6e22e">describe_by_data</span>( <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">struc</span><span style="color:#f92672">&gt;</span> ).
+    <span style="color:#e6db74">&#34;Data processing logic&#34;</span>
+    <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">itab</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">INTO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">struc</span><span style="color:#f92672">&gt;</span>.
+      <span style="color:#a6e22e">DO</span> <span style="color:#ae81ff">20</span> <span style="color:#a6e22e">TIMES</span>.
+        <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">COMPONENT</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">index</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">STRUCTURE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">struc</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">field</span><span style="color:#f92672">&gt;</span>.
+        <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#a6e22e">EQ</span> <span style="color:#ae81ff">0.</span>
+          <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">field</span><span style="color:#f92672">&gt;</span>.
+        <span style="color:#a6e22e">ELSE</span>.
+          <span style="color:#a6e22e">EXIT</span>.
+        <span style="color:#a6e22e">ENDIF</span>.
+      <span style="color:#a6e22e">ENDDO</span>.
+    <span style="color:#a6e22e">ENDLOOP</span>.
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_sy_create_data_error</span>.
+    <span style="color:#a6e22e">WRITE</span> <span style="color:#e6db74">&#39;Wrong Database!&#39;</span>.
+<span style="color:#a6e22e">ENDTRY</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>162</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_IDoc/" class="prev" rel="prev" title="IDoc操作"><i class="iconfont icon-dajiantou"></i>&nbsp;IDoc操作</a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SearchHelp/" class="next" rel="next" title=" ABAP 搜索帮助 "> ABAP 搜索帮助 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-09-25 00:00:00 \x2b0000 UTC',
+        title: ' ABAP Dynnamic Programer',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

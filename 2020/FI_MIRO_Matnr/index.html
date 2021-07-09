@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_BTE/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_MIRO_INCOMINGINVOICE_CREATE/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/FI_MIRO_Matnr/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE"/>
+<meta name="twitter:description" content="引用链接：https://mp.weixin.qq.com/s/7Wvo452ZJN3MBemD-ehJlw MIRO根据物料创建贷项凭证: BAPI_INCOMINGINVOICE_CREATE"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/FI_MIRO_Matnr\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI, MM",
+  "wordcount":  361 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/FI_MIRO_Matnr\/",
+  "datePublished": "2020-02-16T00:00:00\x2b00:00",
+  "dateModified": "2020-02-16T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-02-16 >16 February 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>引用链接：<a href="https://mp.weixin.qq.com/s/7Wvo452ZJN3MBemD-ehJlw">https://mp.weixin.qq.com/s/7Wvo452ZJN3MBemD-ehJlw</a></p>
+<p>MIRO根据物料创建贷项凭证: BAPI_INCOMINGINVOICE_CREATE</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">-</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span> <span style="color:#a6e22e">Report</span>  <span style="color:#a6e22e">ZLM_MIRO</span>
+<span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span>
+<span style="color:#f92672">*</span><span style="color:#f92672">&amp;</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">--</span><span style="color:#f92672">-</span><span style="color:#f92672">*</span>
+<span style="color:#a6e22e">REPORT</span> <span style="color:#a6e22e">ZLM_MIRO</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LS_HEADERDATA</span>       <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">BAPI_INCINV_CREATE_HEADER</span>,
+      <span style="color:#a6e22e">LT_RETURN</span>           <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BAPIRET2</span>,
+      <span style="color:#a6e22e">LS_RETURN</span>           <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">BAPIRET2</span>,
+      <span style="color:#a6e22e">LV_INVOICEDOCNUMBER</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">BAPI_INCINV_FLD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">INV_DOC_NO</span>.
+
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LT_TAXDATA</span>             <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BAPI_INCINV_CREATE_TAX</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LS_TAXDATA</span>             <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">BAPI_INCINV_CREATE_TAX</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LT_ITEMDATA</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BAPI_INCINV_CREATE_ITEM</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LS_ITEMDATA</span> <span style="color:#a6e22e">TYPE</span>          <span style="color:#a6e22e">BAPI_INCINV_CREATE_ITEM</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LT_MATERIALDATA</span>        <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span>   <span style="color:#a6e22e">BAPI_INCINV_CREATE_MATERIAL</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LS_MATERIALDATA</span>        <span style="color:#a6e22e">LIKE</span>  <span style="color:#a6e22e">BAPI_INCINV_CREATE_MATERIAL</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LV_ITEM</span>                <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">RBLGP</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LV_GROSS</span>               <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">BAPI_RMWWR</span>.
+
+<span style="color:#a6e22e">PARAMETERS</span> <span style="color:#a6e22e">P_MATNR</span>  <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">MATNR</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;V700000526&#39;</span>.
+<span style="color:#a6e22e">PARAMETERS</span> <span style="color:#a6e22e">P_AMOUNT</span> <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">BAPIWRBTR</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;9&#39;</span>  .
+<span style="color:#a6e22e">PARAMETERS</span> <span style="color:#a6e22e">P_BWKEY</span>  <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">BWKEY</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;9110&#39;</span> .
+<span style="color:#a6e22e">PARAMETERS</span> <span style="color:#a6e22e">P_UOM</span>    <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">MEINS</span> <span style="color:#a6e22e">DEFAULT</span>  <span style="color:#e6db74">&#39;EA&#39;</span>.
+<span style="color:#a6e22e">PARAMETERS</span> <span style="color:#a6e22e">P_MENGE</span>  <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">MENGE_D</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+<span style="color:#a6e22e">PARAMETERS</span> <span style="color:#a6e22e">P_TAX</span>    <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">MWSKZ_MRM</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;J1&#39;</span>.
+<span style="color:#a6e22e">PARAMETERS</span> <span style="color:#a6e22e">P_CA_TAX</span> <span style="color:#a6e22e">AS</span> <span style="color:#a6e22e">CHECKBOX</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span>.<span style="color:#e6db74">&#34;自动计算税费&#34;</span>
+
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">INVOICE_DOC_ITEM</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MATERIAL</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_MATNR</span>.
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DB_CR_IND</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;H&#39;</span>.
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ITEM_AMOUNT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_AMOUNT</span>.
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">QUANTITY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_MENGE</span>.
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TAX_CODE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_TAX</span>.
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">BASE_UOM</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_UOM</span>.
+<span style="color:#a6e22e">LS_MATERIALDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">VAL_AREA</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_BWKEY</span>.
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">LS_MATERIALDATA</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">LT_MATERIALDATA</span>.
+
+<span style="color:#a6e22e">LV_GROSS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_GROSS</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">P_AMOUNT</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">P_AMOUNT</span>  <span style="color:#f92672">*</span> <span style="color:#ae81ff">17</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">100.</span>
+<span style="color:#e6db74">&#34; Header &#34;</span>
+<span style="color:#a6e22e">CLEAR</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LS_HEADERDATA</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">INVOICE_IND</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>. <span style="color:#e6db74">&#34;贷项凭证&#34;</span>
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">GROSS_AMOUNT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_GROSS</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">BLINE_DATE</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DATUM</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DIFF_INV</span>     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S0021&#39;</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">REF_DOC_NO</span>   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;4690000030&#39;</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DOC_DATE</span>     <span style="color:#f92672">=</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DATUM</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PSTNG_DATE</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DATUM</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMP_CODE</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;9110&#39;</span>..
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CURRENCY</span>     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CNY&#39;</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CURRENCY_ISO</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CNY&#39;</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CALC_TAX_IND</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PMNTTRMS</span>     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0001&#39;</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ITEM_TEXT</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text&#39;</span>.
+<span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">GROSS_AMOUNT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_GROSS</span>.
+
+<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">P_CA_TAX</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+  <span style="color:#a6e22e">LS_HEADERDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CALC_TAX_IND</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">LS_TAXDATA</span>.
+  <span style="color:#a6e22e">LS_TAXDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TAX_CODE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;J1&#39;</span>.
+  <span style="color:#a6e22e">LS_TAXDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TAX_AMOUNT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_AMOUNT</span>  <span style="color:#f92672">*</span> <span style="color:#ae81ff">17</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">100.</span><span style="color:#e6db74">&#34; demo 默认17%&#34;</span>
+  <span style="color:#a6e22e">LS_TAXDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ITEMNO_TAX</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">LS_TAXDATA</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">LT_TAXDATA</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_INCOMINGINVOICE_CREATE&#39;</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">HEADERDATA</span>       <span style="color:#f92672">=</span> <span style="color:#a6e22e">LS_HEADERDATA</span>
+  <span style="color:#a6e22e">IMPORTING</span>
+    <span style="color:#a6e22e">INVOICEDOCNUMBER</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_INVOICEDOCNUMBER</span>
+  <span style="color:#a6e22e">TABLES</span>
+    <span style="color:#a6e22e">ITEMDATA</span>         <span style="color:#f92672">=</span> <span style="color:#a6e22e">LT_ITEMDATA</span>
+    <span style="color:#a6e22e">MATERIALDATA</span>     <span style="color:#f92672">=</span> <span style="color:#a6e22e">LT_MATERIALDATA</span>
+    <span style="color:#a6e22e">TAXDATA</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">LT_TAXDATA</span>
+    <span style="color:#a6e22e">RETURN</span>           <span style="color:#f92672">=</span> <span style="color:#a6e22e">LT_RETURN</span>.
+  <span style="color:#a6e22e">WRITE</span> <span style="color:#a6e22e">LV_INVOICEDOCNUMBER</span>.
+<span style="color:#a6e22e">ROLLBACK</span> <span style="color:#a6e22e">WORK</span>.  
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>361</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_BTE/" class="prev" rel="prev" title="ABAP BTE增强使用"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP BTE增强使用</a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_MIRO_INCOMINGINVOICE_CREATE/" class="next" rel="next" title="MIRO根据退货PO创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE">MIRO根据退货PO创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-02-16 00:00:00 \x2b0000 UTC',
+        title: 'MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

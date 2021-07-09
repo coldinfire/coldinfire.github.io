@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_DialogTmp/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_TableCopyFields/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_FieldSymbol/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Field Symbols  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Field Symbols  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Field Symbols "/>
+<meta name="twitter:description" content="字段符号 定义: FIELD-SYMBOLS: &lt;fs&gt; TYPE ANY TABLE. FIELD-SYMBOLS: &lt;fs&gt; LIKE LINE OF &lt;t_TABLE&gt;. FIELD-SYMBOLS: &lt;fs&gt; TYPE ANY. &lt;1&gt; FS必须和某个变量，结构或者内表绑定后才能使用，在使用FS前必须分配给某个变量，不然会发生FS"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Field Symbols ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_FieldSymbol\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1133 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_FieldSymbol\/",
+  "datePublished": "2018-09-08T00:00:00\x2b00:00",
+  "dateModified": "2018-09-08T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Field Symbols </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-08 >8 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="字段符号">字段符号</h3>
+<h4 id="定义">定义:</h4>
+<ul>
+<li><code>FIELD-SYMBOLS: &lt;fs&gt; TYPE ANY TABLE.</code></li>
+<li><code>FIELD-SYMBOLS: &lt;fs&gt; LIKE LINE OF &lt;t_TABLE&gt;.</code></li>
+<li><code>FIELD-SYMBOLS: &lt;fs&gt; TYPE ANY.</code></li>
+</ul>
+<p>&lt;1&gt; FS必须和某个变量，结构或者内表绑定后才能使用，在使用FS前必须分配给某个变量，不然会发生FS未分配的运行时错误。如果LOOP内表时ASSIGNING到FS，之后假如有REFRESH内表的操作的话，FS也会再次回到初始未被ASSIGN的状态，这时如果使用FS也会发生FS未分配的RUNTIME ERROR。</p>
+<p>&lt;2&gt; <code>ASSIGN structure TO &lt;fs&gt;</code>:将某个内存区域分配给字段符号，这样字段符号就代表了该内存区域，即该内存区域别名字段符号可以看作仅是已经被解引用的指针，即某个变量的别名。</p>
+<h4 id="使用场景">使用场景</h4>
+<p><code>ASSIGN &lt;Val&gt; TO &lt;fs&gt;</code>: 将某个内存区域分配给字段符号，这样字段符号就代表了该内存区域。</p>
+<p><strong>UNASSIGN:</strong>  该语句是初始化<code>&lt;FS&gt;</code>字段符号，执行后字段符号将不再引用内存区域，<code>&lt;fs&gt; is assigned</code>返回假。</p>
+<p><strong>CLEAR:</strong> 与UNASSIGN不同的是，只有一个作用就是初始化它所指向的内存区域，而不是解除分配。</p>
+<p><strong>循环：</strong> LOOP内表INTO Structure和 LOOP内表ASSIGNING Structure的比较</p>
+<p>LOOP内表INTO结构时，系统会把先把当前行的数据复制到结构，如果结构的值改了，还需要使用MODIFY语句把更改后的值传回内表。也就是说，结构是内表里的数据的一个副本，操作这个副本不会影响内表里的数据。为了提高效率，可以使用FS，FS直接指向内表数据，省去了复制数据到结构的过程。修改FS的值也就是相当于直接修改内表里的数据，不需要再使用MODIFY语句。</p>
+<p><strong>读表：</strong> 将内表数据的行记录分配到FS，修改FS的值也就是相当于直接修改内表里的数据。</p>
+<h4 id="使用实例">使用实例</h4>
+<ul>
+<li>
+<p>APPEND &amp; INSERT</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#e6db74">&#34;Append line&#34;</span>
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">INITIAL</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">t_mara</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span>.
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">-</span><span style="color:#a6e22e">matnr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sapclub&#39;</span>.
+<span style="color:#e6db74">&#34;Insert table&#34;</span>
+<span style="color:#a6e22e">INSERT</span> <span style="color:#a6e22e">INITIAL</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">t_mara</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">INDEX</span> <span style="color:#ae81ff">2.</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">-</span><span style="color:#a6e22e">matnr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ABCDEF&#39;</span>.
+</code></pre></div></li>
+<li>
+<p>LOOP &amp; READ</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#e6db74">&#34;Read table&#34;</span>
+<span style="color:#a6e22e">READ</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">t_mara</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">KEY</span> <span style="color:#a6e22e">matnr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sapclub&#39;</span>.
+<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#a6e22e">EQ</span> <span style="color:#ae81ff">0.</span>
+  <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#960050;background-color:#1e0010">f</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">_</span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">.</span>
+<span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#e6db74">&#34;Loop&#34;</span>
+<span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">t_mara</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#960050;background-color:#1e0010">f</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">_</span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">.</span>
+<span style="color:#a6e22e">ENDLOOP</span>.
+</code></pre></div></li>
+<li>
+<p>MODIFY</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#e6db74">&#34;READ and MODIFY&#34;</span>
+<span style="color:#a6e22e">READ</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">t_mara</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">KEY</span> <span style="color:#a6e22e">matnr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;matnr&#39;</span>
+<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#a6e22e">EQ</span> <span style="color:#ae81ff">0.</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ersda</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">datum</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#e6db74">&#34;LOOP and MODIFY&#34;</span>
+<span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">t_mara</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs_mara</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ersda</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">datum</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">ENDLOOP</span>.
+</code></pre></div></li>
+<li>
+<p>直接复制内表数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">lt_1</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs1</span><span style="color:#f92672">&gt;</span>
+<span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">lt_2</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs2</span><span style="color:#f92672">&gt;</span>.
+...
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lt_2</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lt_1</span><span style="color:#f92672">&gt;</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lv_lines</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">i</span>.
+<span style="color:#a6e22e">lv_lines</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lines</span>( <span style="color:#a6e22e">lt_2</span> ).
+<span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lv_lines</span>.
+</code></pre></div></li>
+<li>
+<p>循环单条复制内表数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">lt_1</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs1</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">INITIAL</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">lt_2</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ls_2</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ls_2</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ls_1</span><span style="color:#f92672">&gt;</span>.
+<span style="color:#a6e22e">ENDLOOP</span>.
+</code></pre></div></li>
+<li>
+<p>通过结构中字段名称获取内表数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">field_name</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">char20</span>.
+<span style="color:#a6e22e">FIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SYMBOLS</span><span style="color:#f92672">:</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lv_field</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">any</span>.
+<span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">lt</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">COMPONENT</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">field_name</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">STRUCTURE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lv_field</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">CHECK</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lv_field</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">ASSIGNED</span>.
+<span style="color:#a6e22e">ENDLOOP</span>.
+</code></pre></div></li>
+<li>
+<p>通过结构中字段索引获取内表数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">index_number</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">i</span>.
+<span style="color:#a6e22e">FIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SYMBOLS</span><span style="color:#f92672">:</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lv_field</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">any</span>.
+<span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">lt</span> <span style="color:#a6e22e">ASSIGNING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">COMPONENT</span> <span style="color:#a6e22e">index_number</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">STRUCTURE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lv_field</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">CHECK</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lv_field</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">ASSIGNED</span>.
+<span style="color:#a6e22e">ENDLOOP</span>.
+</code></pre></div></li>
+</ul>
+<p>ASSIGN隐式强转</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">TYPES</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">t_date</span>,
+    <span style="color:#a6e22e">year</span>(<span style="color:#ae81ff">4</span>) <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">n</span>,
+    <span style="color:#a6e22e">month</span>(<span style="color:#ae81ff">2</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">n</span>,
+    <span style="color:#a6e22e">day</span>(<span style="color:#ae81ff">2</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">n</span>,
+  <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">t_date</span>.
+<span style="color:#a6e22e">FIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SYMBOLS</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">t_date</span>.  <span style="color:#e6db74">&#34;将&lt;fs&gt;定义成了具体限定类型&#34;</span>
+<span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">datum</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">CASTING</span>. <span style="color:#e6db74">&#34;后面没有指定具体类型，所以使用定义时的类型进行隐式转换&#34;</span>
+</code></pre></div><p>ASSIGN显示强转</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">txt</span>(<span style="color:#ae81ff">8</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;19980606&#39;</span>.
+  <span style="color:#a6e22e">FIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SYMBOLS</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">txt</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fs</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">CASTING</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">d</span>.<span style="color:#e6db74">&#34;由于定义时未指定具体的类型，所以这里需要显示强转&#34;</span>
+</code></pre></div><p>**动态引用：**通过循环赋值给定义的字段符号，对其进行修改，等于直接修改原内表。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">field</span><span style="color:#f92672">-</span><span style="color:#a6e22e">symbols</span><span style="color:#f92672">:</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">l_shortageqty</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">mng01</span>.
+<span style="color:#a6e22e">loop</span> <span style="color:#a6e22e">at</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">dyn_table</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">assigning</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">dyn_wa</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">assign</span> <span style="color:#a6e22e">component</span> <span style="color:#e6db74">&#39;SHORTAGEQTY&#39;</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">structure</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">dyn_wa</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">to</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">l_shortageqty</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">l_shortageqty</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">l_shortageqty</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">-</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">l_fvalue</span><span style="color:#f92672">&gt;</span>.
+<span style="color:#a6e22e">endloop</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1133</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_DialogTmp/" class="prev" rel="prev" title="Dialog程序实例"><i class="iconfont icon-dajiantou"></i>&nbsp;Dialog程序实例</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_TableCopyFields/" class="next" rel="next" title="复制其他的内表/结构到当前表/结构">复制其他的内表/结构到当前表/结构&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-08 00:00:00 \x2b0000 UTC',
+        title: ' Field Symbols ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

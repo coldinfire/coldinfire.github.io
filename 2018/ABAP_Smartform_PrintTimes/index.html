@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Smartforms_Utils/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Smartform_Print/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Smartform_PrintTimes/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Smart forms统计打印次数 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Smart forms统计打印次数 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Smart forms统计打印次数"/>
+<meta name="twitter:description" content="打印次数的记录 通过参数控制和对调用 Smart forms 完成后返回的参数值，判断用户是否完成Form打印。 DATA: fm_name TYPE rs38l_fnam. DATA: control_param TYPE ssfctrlop . DATA: composer_param TYPE ssfcompop . DATA: output_info TYPE ssfcrescl. composer_param-tdiexit = &#39;X&#39;. &#34; 预览打印"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Smart forms统计打印次数",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartform_PrintTimes\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "smartforms",
+  "wordcount":  246 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartform_PrintTimes\/",
+  "datePublished": "2018-07-22T00:00:00\x2b00:00",
+  "dateModified": "2018-07-22T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Smart forms统计打印次数</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-22 >22 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="打印次数的记录">打印次数的记录</h3>
+<p>通过参数控制和对调用 Smart forms 完成后返回的参数值，判断用户是否完成Form打印。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA: fm_name TYPE rs38l_fnam.
+DATA: control_param TYPE ssfctrlop .
+DATA: composer_param TYPE ssfcompop .
+DATA: output_info TYPE ssfcrescl.
+composer_param-tdiexit = &#39;X&#39;.   &#34; 预览打印后直接退出 &#34;
+* 根据SmartForm名称获得Form的Function Name
+CALL FUNCTION &#39;SSF_FUNCTION_MODULE_NAME&#39;
+  EXPORTING
+    formname = &#39;FORM_NAME&#39;
+  IMPORTING
+     fm_name = fm_name
+  EXCEPTIONS
+     no_form = 1
+     no_function_module = 2
+    OTHERS = 3 .
+IF sy-subrc <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; 0.
+  MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+    WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+ENDIF.
+* 调用Function实现打印，并判断是否输出到打印机
+CALL FUNCTION fm_name
+  EXPORTING
+    control_parameters = control_param
+    output_options     = composer_param
+  IMPORTING
+    job_output_info    = output_info
+  EXCEPTIONS
+    formatting_error   = 1
+    internal_error     = 2
+    send_error         = 3
+    user_canceled      = 4
+    OTHERS             = 5.
+IF sy-subrc = 0.  
+  if output_info-outputdone = &#39;X&#39;. &#34; 是否已经输出到打印机 &#34;  
+    &#34; 增加打印次数，并把它写到相应的自定义表中 &#34; 
+  endif.  
+ENDIF. 
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>246</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/smartforms/">
+                    #smartforms</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Smartforms_Utils/" class="prev" rel="prev" title="Smartforms常见问题"><i class="iconfont icon-dajiantou"></i>&nbsp;Smartforms常见问题</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Smartform_Print/" class="next" rel="next" title="Smartforms 连续打印">Smartforms 连续打印&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-22 00:00:00 \x2b0000 UTC',
+        title: 'Smart forms统计打印次数',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

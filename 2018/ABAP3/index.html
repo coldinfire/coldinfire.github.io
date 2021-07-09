@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP2/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP4/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP3/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP 语法详解(Form&amp;Func) | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP 语法详解(Form&amp;Func) | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP 语法详解(Form&amp;Func)"/>
+<meta name="twitter:description" content="全局变量，局部变量 ​ 报表程序中：选择屏幕事件块(AT SELECTION-SCREEN),逻辑数据库事件块，及methods，subrouti"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP 语法详解(Form\x26Func)",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP3\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abap",
+  "wordcount":  1574 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP3\/",
+  "datePublished": "2018-05-20T00:00:00\x2b00:00",
+  "dateModified": "2018-05-20T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP 语法详解(Form&amp;Func)</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-20 >20 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h3 id="全局变量-局部变量">全局变量，局部变量</h3>
+
+<p>​   报表程序中：选择屏幕事件块(AT SELECTION-SCREEN),逻辑数据库事件块，及methods，subroutines (FORM子过程)、Function Modules中声明的变量为局部的。</p>
+
+<p>​   其他块里的变量属于全局的（报表事件块、列表事件块、对话module）效果与在程序开头定义的变量一样。</p>
+
+<h3 id="form-function">Form、Function</h3>
+
+<h4 id="form中的参数">Form中的参数：</h4>
+
+<ol>
+<li><p>TABLES：Type和like只能接标准内表类型或标准内表对象</p>
+
+<ul>
+<li><code>FORM &lt;name&gt; TABLES itab1...itabn.</code>：以表的方式传输数据</li>
+</ul></li>
+
+<li><p>USING：值传递，则对形参的修改不会改变实参</p>
+
+<ul>
+<li><code>FORM &lt;name&gt; USING [p1....pn].</code></li>
+</ul></li>
+
+<li><p>CHANGING:使用排序表或则哈希表，如果CHANGE值传递，对形参的修改还是会改变实参，在form或则function执行完后才去修改</p>
+
+<ul>
+<li><code>FORM &lt;name&gt; CHANGING [p1....pn].</code></li>
+</ul></li>
+
+<li><p>调用指定程序中的子程序：不同的ABAP程序中的子程序是可以共用的</p>
+
+<ul>
+<li><code>PERFORM &lt;sub_name&gt; [CHANGING p1..pn] IN PROFRAM &lt;prog_name&gt;.</code></li>
+</ul></li>
+
+<li><p>通过TCode调用指定程序中的子程序</p>
+
+<ul>
+<li><code>CALL TRANSACTION &lt;TCode&gt;.</code></li>
+</ul></li>
+
+<li><p>使用SUBMIT调用另一个程序：</p>
+
+<p>SUBMIT &lt;程序名&gt;.</p>
+
+<ul>
+<li><p>&hellip;<code>USING SELECTION-SCREEN &lt;SCR&gt;</code>. &ldquo;调用子屏幕</p></li>
+
+<li><p>&hellip;<code>IVA  SELECTION-SCREEN.</code>        &ldquo;显示所调用程序的初始屏幕</p></li>
+
+<li><p>&hellip;<code>AND RETURN.</code>    &ldquo;调用指定程序执行后可返回上一屏幕</p></li>
+</ul></li>
+</ol>
+
+<h4 id="function-group-se37">Function Group （SE37）</h4>
+
+<p>系统会自动创建Main program与相应的include程序。</p>
+
+<p>​    <code>SAPL&lt;fgrp&gt;：</code>主程序名，将Function Group里的所有的Include文件包括进来，只有Include语句</p>
+
+<p>​   <code>L&lt;fgrp&gt;TOP：</code>有FUNCTION-POOL语句，以及所有Function model都可以使用的全局数据定义</p>
+
+<p>​   <code>L&lt;fgrp&gt;UXX：</code>只有include语句，为相应具体Function Model所对应的Include文件名：<code>L&lt;fgrp&gt;U01...</code>包含了对应的FM代码。</p>
+
+<p>​   <code>L&lt;fgrp&gt;U01：</code>01,02编号对应UXX，代表其创建先后的序号。</p>
+
+<p>​   <code>L&lt;fgrp&gt;FXX：</code>用来存放一些Form子程序，可以被所有Function Modules所使用。</p>
+
+<p>​   <code>L&lt;fgrp&gt;PAI，L&lt;fgrp&gt;PBO：</code>PAI,PBO事件。</p>
+
+<h3 id="at-end-sum">AT&hellip;END (SUM)</h3>
+
+<ol>
+<li>AT&hellip;END：中的组件名不一定要是结构中的关键字段，但是需要在声明结构时按调用顺序排序。
+
+<ul>
+<li>f1，f2，fn.  f1，f2，fn</li>
+</ul></li>
+<li>SUM:根据结构中对应的字段进行分组求和，且指定字段之前的依次分组</li>
+</ol>
+
+<h3 id="事件终止">事件终止</h3>
+
+<ul>
+<li><p>RETURN : 用来退出当前执行的程序块，而不仅仅是退出循环。如FORM，METHOD，报表事件块</p></li>
+
+<li><p>STOP :</p>
+
+<ul>
+<li><p>INITIALIZATION中STOP会导致跳转到AT SELECTION-SCREEN OUTPUT事件块</p></li>
+
+<li><p>如果STOP在AT SELECTION-SCREEN OUTPUT块里，则只是退出当前块，STOP后面语句不执行而已</p></li>
+
+<li><p>如果STOP在循环中，FORM，METHOD直接从被调用的点退出所在事件块</p></li>
+</ul></li>
+
+<li><p>EXIT : INITIALIZATION中的EXIT会跳转到AT SELECTION-SCREEN OUTPUT事件</p>
+
+<ul>
+<li><p>如果EXIT在AT SELECTION-SCREEN OUTPUT块里，则只是退出当前块，EXIT后面语句不执行而已</p></li>
+
+<li><p>如果EXIT 在循环中，只是跳出当前循环而已；循环之外的模块则与RETURN类似</p></li>
+</ul></li>
+
+<li><p>CHECK :</p>
+
+<ul>
+<li><p>CHECK只是跳出当前事件块，继续下个事件块的处理，相当于方法的RETURN</p></li>
+
+<li><p>CHECK在循环中，只是跳出循环（DO,WHILE,LOOP）类似于CONTINUE,在循环外则跳出当前执行的程序块</p></li>
+</ul></li>
+
+<li><p>LEAVE :</p>
+
+<ul>
+<li><p>LEAVE PROGRAM.退出整个程序</p></li>
+
+<li><p><code>LEAVE TO TRANSACTION &lt;tcode&gt;</code>.跳转到另外的TCode</p></li>
+
+<li><p>LEAVE LIST-PROCESSING.从List processor回到Dialog processor</p></li>
+
+<li><p>LEAVE TO LIST-PROCESSING. 控制权从dialog processor 转交到list processor</p></li>
+
+<li><p>LEAVE {SCREEN | {TO SCREEN dynnr}}</p></li>
+</ul></li>
+
+<li><p>REJECT : 用在逻辑数据库GET event blocks中，可以从循环或则一个FORM中直接跳出所在的GET事件块</p></li>
+</ul>
+
+<p>未完待续&hellip;&hellip;<a href="https://coldinfire.github.io/2018/ABAP4" rel="nofollow noreferrer" target="_blank">ABAP 语法详解(SQL)</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1574</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abap/">
+                    #abap</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP2/" class="prev" rel="prev" title="ABAP 语法详解(内表)"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP 语法详解(内表)</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP4/" class="next" rel="next" title="ABAP 语法详解(SQL)">ABAP 语法详解(SQL)&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-20 00:00:00 \x2b0000 UTC',
+        title: 'ABAP 语法详解(Form\x26Func)',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2019</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

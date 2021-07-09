@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP1/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP3/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP2/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP 语法详解(内表) | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP 语法详解(内表) | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP 语法详解(内表)"/>
+<meta name="twitter:description" content="内表定义和使用 内表定义 工作区域：工作区域可以存放多个变量数据。 ​ 直接定义：DATA: BEGIN OF &lt;str&gt; END OF &lt;str&gt;. ​ 参照DB或则结构：DATA &lt;wa&gt; TYPE &lt;dbtab&gt;|&lt;str&gt;. ​ 参照内表"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP 语法详解(内表)",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP2\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abap",
+  "wordcount":  2676 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP2\/",
+  "datePublished": "2018-05-16T00:00:00\x2b00:00",
+  "dateModified": "2018-05-16T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP 语法详解(内表)</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-16 >16 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h3 id="内表定义和使用">内表定义和使用</h3>
+
+<h4 id="内表定义">内表定义</h4>
+
+<p><strong>工作区域：</strong>工作区域可以存放多个变量数据。</p>
+
+<p>​   直接定义：<code>DATA: BEGIN OF &lt;str&gt;   END OF &lt;str&gt;.</code></p>
+
+<p>​   参照DB或则结构：<code>DATA &lt;wa&gt; TYPE &lt;dbtab&gt;|&lt;str&gt;.</code></p>
+
+<p>​   参照内表：<code>DATA  &lt;wa&gt;  LIKE LINE OF &lt;dbtab&gt;.</code></p>
+
+<p>​   继承结构：</p>
+
+<pre><code class="language-JS">DATA: BEGIN OF &lt;str&gt;.
+  INCLUDE STRUCTURE &lt;str_Other&gt;.
+  DATA: &lt;ele&gt; TYPE &lt;db-ele&gt; ,
+END OF &lt;str&gt;.
+</code></pre>
+
+<p><strong>内表类型：</strong></p>
+
+<p>​   索引内表：标准内表(Standard table)、排序表(Sorted table)
+​</p>
+
+<p>​   标准内表：每一行数据都有关键字和系统生成的逻辑索引。
+​</p>
+
+<p>​   排序表：排序表按照关键字升序排序后再进行存储。</p>
+
+<p>​   哈希表：Hashed table，没有索引的表，只能靠关键字进行寻址，用哈希算法管理数据。</p>
+
+<p><strong>内表定义：</strong>可以参考结构体、其他内表、透明表</p>
+
+<p>​   参考结构：<code>DATA &lt;table_name&gt; TYPE STANDARD TABLE OF &lt;structure&gt; [WITH HEADER LINE].
+</code></p>
+
+<p>​   参考内表：<code>DATA &lt;table_name&gt; TYPE TABLE OF &lt;内表或透明表&gt; [WITH HEADER LINE].</code></p>
+
+<ul>
+<li>with header line,用 itab[] 和 itab 来区分内表和工作区</li>
+<li>分别定义内表和工作区</li>
+<li>定义结构时用occur 0直接定义
+    .</li>
+<li>LIKE LINE OF后面接一个内表，表示一个data参数具有和内表一样的结构，可当做Work Area使用</li>
+<li>LIKE TABLE OF后面接一个结构，表示一个data参数是一个内表，这个内表和后面接的结构一样</li>
+</ul>
+
+<h3 id="内表操作">内表操作</h3>
+
+<p><strong>内表清空：</strong></p>
+
+<p>​   <code>CLEAR &lt;ITAB&gt;</code>：仅清空HEADER LINE，对内表数据存储空间不影响。</p>
+
+<p>​    <code>REFRESH &lt;ITAB&gt;</code>：清空内表数据存储空间，对HEADER LINE不影响。</p>
+
+<p>​    <code>REFRESH &lt;itab&gt; FROM TABLE &lt;dbtab&gt;</code>：清空内表存储空间，填充从数据库表所获数据。
+​</p>
+
+<p><code>FREE &lt;ITAB&gt;</code>：清空内表数据存储空间，对HEADER LINE不影响。</p>
+
+<p><strong>APPEND(增加，内表赋值)</strong></p>
+
+<p>​   有HEADER LINE内表，数据被赋给内表HEADER LINE后再APPEND到表中最后一行。
+​</p>
+
+<ul>
+<li><code>APPEND ITAB.
+</code><br /></li>
+</ul>
+
+<p>​    对于没有HEADER LINE的内表，只能通表外部WORK AREA来传递数据。
+​</p>
+
+<ul>
+<li><code>APPEND (&lt;work area&gt; into) &lt;ITAB&gt;.</code></li>
+</ul>
+
+<p><strong>INSERT(向内表插入数据)</strong></p>
+
+<p>​   INSERT itab INDEX idx. :若itab有多行数据，将新记录新增到第一行</p>
+
+<p>​    INSERT wa INTO TABLE itab.   :将结构体中数据新增到内表</p>
+
+<p>​    INSERT LINES OF itab1 [FROM idx] [TO idx2] INTO itab2 [INDEX idx3].:将itab1指定范围数据插入到itab2</p>
+
+<p><strong>DELETE(删除数据)</strong></p>
+
+<p>​   DELETE TABLE itab WITH TABLE KEY k1=v1&hellip;kn=vn.：按具体值删除。</p>
+
+<p>​    DELETE TABLE itab [FROM wa].：参照其它内表值删除。</p>
+
+<p>​    DELETE itab INDEX idx.：根据索引删除具体行数据。</p>
+
+<p>​    DELETE itab FROM idx1 TO idx2.：根据索引删除具体行数范围间数据。</p>
+
+<p>​    DELETE ADJACENT DUPLICATES FROM itab.：删除重复数据，执行此条件前必须先排序。</p>
+
+<p><strong>MODIFY:(修改内表数据)</strong></p>
+
+<p>​   按内表位置或者具体内表字段值相等条件修改内表数据。
+​</p>
+
+<p>​   MODIFY itab [FROM wa] [INDEX idx] [TRANSPORTING f1&hellip;fn] WHERE cond.</p>
+
+<p><strong>LOOP&hellip;.ENDLOOP：（循环读取内表数据)</strong></p>
+
+<p>​    循环读取内表数据，在循环中使用系统变量SY-TABIX可获取当前所执行的行数。</p>
+
+<p>​    LOOP AT ITAB [INTO WA] FROM n1 TO n2.：读取内表具体行数间数据。</p>
+
+<p>​    LOOP AT ITAB [INTO WA] WHERE cond.：按具体字段条件读取内表。</p>
+
+<p><strong>AT&hellip;ENDAT（设置内表循环触发条件）</strong></p>
+
+<p>​    该语法为事件控制函数，应用于LOOP循环语句中，用于获取内表的数据变化事件。</p>
+
+<p>​    AT NEW f.：当某个字段数据与上一行数据值不同时触发该事件。</p>
+
+<p>​    AT END OF f.：当内表中某个字段当前行值与下一行值不同时触发该事件。</p>
+
+<p>​    AT FIRST.：当执行内表第一行时触发该事件。</p>
+
+<p>​    AT LAST.：当执行内表最后一行时触发该事件。</p>
+
+<p><strong>READ:(读取)</strong></p>
+
+<p>​    READ TABLE itab [INTO wa] FROM wa.</p>
+
+<p>​    READ TABLE itab [INTO wa] WITH [TABLE] KEY k1=v1&hellip;kn=vn [BINARY SEARCH].</p>
+
+<p>​    READ TABLE itab [INTO wa] INDEX i.</p>
+
+<p><strong>COLLECT（内表数据分类汇总）</strong></p>
+
+<p>​    将内表中相同的字段合并，若有类型为<code>I</code>的字段，则将其值加总。</p>
+
+<ul>
+<li>COLLECT [wa INTO] itab.</li>
+</ul>
+
+<p><strong>DESCRIBE（获取内表具体属性）</strong></p>
+
+<ul>
+<li>DESCRIBE TABLE itab LINES n：获取内表当前总行数，n为整型(i)。</li>
+</ul>
+
+<h3 id="table-透明表-transparent-table-簇表-cluster-table-池表-pool-table"><strong>Table:透明表(Transparent table)、簇表 (Cluster table)、 池表(Pool table)</strong></h3>
+
+<p>​    <strong>透明表：</strong>和数据库具有相同结构的表存储结构。数据库中有一个相应得物理表。</p>
+
+<p>​    <strong>簇表：</strong>该表在SAP Dict展现在我们眼前的结构，由透明表转化<Extras—Change table category>从单个表去理解与透明表没有差异，但是多个表组成簇表，它们在物理上对主键只存储一遍，故对簇表的关联查询可以极大提高访问速度。
+​</p>
+
+<p>​   <strong>池表：</strong>由透明表转换，可用来存储控制数据，与数据库中的表是多对一关系。</p>
+
+<ul>
+<li><p>INSERT 透明表 INTO 簇表。 只要透明的簇表的主键都在透明表里面就行。就是透明表主键多了也无所谓。</p></li>
+
+<li><p>INSERT 透明表 INTO 池表. 透明表和池表的主键必须相同的。</p></li>
+</ul>
+
+<p>​   <strong>表簇：</strong>几个簇表可以组合成一个表簇，几个簇表存贮在数据库中一个相应的表里，DB层的物理表。</p>
+
+<p>​   <strong>结构：</strong>结构在数据库不存在数据记录。结构用于在程序之间或程序与屏幕之间的接口定义。
+​</p>
+
+<p>​   <strong>附加结构：</strong>附加结构定义字段的子集，该字段属于其他表格或结构，但是在修正管理中作为单独的对象。</p>
+
+<h3 id="sap数据表的组成元素">SAP数据表的组成元素</h3>
+
+<p><strong>Data element：</strong>构成结构、表的基本组件 search help、parameter ID、标签描述。Goto &gt; Documentation &gt; Change ：修改提示文档信息</p>
+
+<p><strong>Domain：</strong>定义数据元素的技术属性，类型，长度，精度。</p>
+
+<p>​    Definition：
+​</p>
+
+<ul>
+<li><p>Format、Output Charact</p></li>
+
+<li><p>Converse Routine(转换规则)：注意前导0的补充问题，将该字段设置为<code>ALPHA</code>。</p></li>
+
+<li><p>Lower Case：不勾选，默认会全部转换为大写字母。</p></li>
+
+<li><p>value range：设置该Domain的固定取值列表和其含义,C,Y,F类型中的一种。</p></li>
+</ul>
+
+<pre><code class="language-JS">  DEC:double    FLTP:Float  INT1:0~255  INT2:-32768~32767     INT4:4字节   
+  NUMC:数字字符(1-255)   CHAR:字符(1-255)    STRING
+  CURR:货币字段(1-17)    CUKY:货币代码(5)     QUAN:金额(1-17)  UNIT:单位(2-3)   
+  DATS:Date(8)          TIMS:Time(6)       CLNT:Client(3)    
+  LANG:Language(internal 1,external 2)
+</code></pre>
+
+<p><strong>Field:</strong>透明表字段，可以作为透明表的主 / 外键，继承了 Data Element 的所有属性。</p>
+
+<p>​   透明表中的Technical Setting设置Log data changes后可以使用SCU3，STAD查看日志。【非特殊情况不设置，会占用很大的内存】</p>
+
+<h4 id="数据分类">数据分类</h4>
+
+<ul>
+<li><p><strong>Master Data</strong>：业务主数据；即：SAP 各模块中的主数据：总账科目、供应商主数据、物料主数据等；</p></li>
+
+<li><p><strong>Transaction Data</strong>：业务处理数据；在业务处理操作中，生成的凭证号等数据，如：销售订单凭证号、采购订单凭证号、收货凭证号等；</p></li>
+
+<li><p><strong>System Data</strong>：系统数据；包括 ABAP 程序的源码、元数据、文档等数据；</p></li>
+
+<li><p><strong>Configuration Data</strong>：配置数据；存放企业项目实施时，配置的初始化信息，如：货币汇率、订单类型、变式等</p></li>
+</ul>
+
+<h3 id="维护abap数据字典">维护ABAP数据字典</h3>
+
+<ul>
+<li><p><strong>SE80 – Repository Browser</strong></p></li>
+
+<li><p><strong>SE15 – Repository Information System</strong></p></li>
+
+<li><p><strong>SE16 /SE16N – Data Browser</strong></p></li>
+
+<li><p><strong>SE11 – ABAP Dictionary</strong></p></li>
+
+<li><p><strong>SE13 – Dictionary technical settings</strong></p></li>
+
+<li><p><strong>SM30 – Maintain Table Views</strong></p></li>
+
+<li><p><strong>SM31 – Table Maintenance</strong></p></li>
+</ul>
+
+<h3 id="表维护创建">表维护创建</h3>
+
+<pre><code class="language-JS">SM30：表维护 Utilities -----&gt;Table maintenance generator
+          Technical Dialog Details
+          Authorization Group：&amp;NC&amp;
+          Function group：ZFG_tablename
+          Maintenance Screens : 
+          Maintenance type：one step
+</code></pre>
+
+<p>未完待续&hellip;&hellip;<a href="https://coldinfire.github.io/2018/ABAP3" rel="nofollow noreferrer" target="_blank">ABAP 语法详解(Field&amp;Form)</a></p>
+
+<p>参考&hellip;&hellip;.<a href="https://coldinfire.github.io/2018/ABAPTable3" rel="nofollow noreferrer" target="_blank">报表开发&lt;内表操作&gt;</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2676</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abap/">
+                    #abap</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP1/" class="prev" rel="prev" title="ABAP 语法详解(数据表)"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP 语法详解(数据表)</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP3/" class="next" rel="next" title="ABAP 语法详解(Form&amp;Func)">ABAP 语法详解(Form&amp;Func)&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-16 00:00:00 \x2b0000 UTC',
+        title: 'ABAP 语法详解(内表)',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2019</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

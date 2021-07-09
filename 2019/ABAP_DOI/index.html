@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Webservice/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_Memory/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_DOI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP DOI使用 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP DOI使用 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP DOI使用"/>
+<meta name="twitter:description" content="概述 DOI（Desktop office Integration）采用OO的思想实现与Office的结合使用。 可以先上传模板到服务器(OAOR)，然后对模"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP DOI使用",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_DOI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV, DOI",
+  "wordcount":  2693 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_DOI\/",
+  "datePublished": "2019-02-22T00:00:00\x2b00:00",
+  "dateModified": "2019-02-22T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP DOI使用</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-02-22 >22 February 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="概述-">概述</h2>
+<p>DOI（Desktop office Integration）采用OO的思想实现与Office的结合使用。</p>
+<p>可以先上传模板到服务器(OAOR)，然后对模板进行填充。也可以通过代码创建ExceL文档。</p>
+<p>OAOR：class name, class type，object key。</p>
+<p>会使用到的对象：<code>TYPE-POOLS:vrm, sbdst, soi.</code></p>
+<p>重要对象：</p>
+<ul>
+<li>container: 存放excel电子表格(spreadsheet)的容器。spreadsheet需要一个容器来存放。</li>
+<li>container control: 容器中用于创建和管理其他Office集成所需要的对象。container control是一个接口，类型是i_oi_container_control。</li>
+<li>document proxy: 每一个document proxy的实例代表用office application打开的档,excel，    word。如果想打开多个文档，需要定义多个实例，类型为i_oi_document_proxy。</li>
+<li>spreadsheet: spreadsheet接口，代表最终要操作的excel文档。类型是   i_oi_spreadsheet</li>
+<li>errors：异常的处理，保存操作时的异常，类型是 i_oi_error。</li>
+</ul>
+<p>如果读取服务器上的文档模板，需要cl_bds_document_set类：</p>
+<ul>
+<li>business document set：business document set用于管理后续要操作的文档，可以包含一个或多个文档。</li>
+</ul>
+<p>操作步骤(OAOR上传文档后)</p>
+<ol>
+<li>获取container</li>
+<li>创建container control对象实例并初始化</li>
+<li>创建document proxy对象的实例</li>
+<li>打开一个服务器上的模板文档或新建一个excel文档</li>
+<li>操作excel文档，设置excel的属性</li>
+<li>退出时关闭excel文档，释放资源</li>
+<li>异常管理</li>
+</ol>
+<h2 id="定义和使用-">定义和使用</h2>
+<h3 id="字段定义-">字段定义：</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span> <span style="color:#a6e22e">SAP</span> <span style="color:#a6e22e">Desktop</span> <span style="color:#a6e22e">Office</span> <span style="color:#a6e22e">Integration</span> <span style="color:#a6e22e">Interfaces</span>
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cl_container</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">cl_gui_container</span>,
+      <span style="color:#a6e22e">cl_control</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">i_oi_container_control</span>,
+      <span style="color:#a6e22e">cl_document</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">i_oi_document_proxy</span>,
+      <span style="color:#a6e22e">cl_spreadsheet</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">i_oi_spreadsheet</span><span style="color:#960050;background-color:#1e0010">，</span>
+      <span style="color:#a6e22e">cl_error</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">i_oi_error</span><span style="color:#960050;background-color:#1e0010">，</span>
+      <span style="color:#a6e22e">cl_errors</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">i_oi_error</span> <span style="color:#a6e22e">OCCURS</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Spreadsheet</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">structures</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">Excel</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">input</span>
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wa_cellitem</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">soi_generic_item</span>,
+      <span style="color:#a6e22e">wa_rangeitem</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">soi_range_item</span>,
+      <span style="color:#a6e22e">gt_ranges</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">soi_range_list</span>,
+      <span style="color:#a6e22e">gt_excel_input</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">soi_generic_table</span>,
+      <span style="color:#a6e22e">wa_excel_input</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">soi_generic_item</span>,
+      <span style="color:#a6e22e">g_initialized</span>  <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+      <span style="color:#a6e22e">g_retcode</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">soi_ret_string</span>,
+      <span style="color:#a6e22e">gt_excel_format</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">soi_format_table</span>,
+      <span style="color:#a6e22e">wa_format</span>      <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_excel_format</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gt_itab</span>     <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">alsmex_tabline</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>,
+      <span style="color:#a6e22e">gt_imt_tab</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">typ_area_excel</span>,
+      <span style="color:#a6e22e">wa_imt_tab</span>  <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_imt_tab</span>,
+      <span style="color:#a6e22e">g_macro</span>     <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">text100</span>,
+      <span style="color:#a6e22e">g_sheet</span>(<span style="color:#ae81ff">10</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">c</span>,
+      <span style="color:#a6e22e">g_cell_fit</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">c</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cl_bds_instance</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cl_bds_document_set</span>,
+      <span style="color:#a6e22e">gt_doc_signature</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sbdst_signature</span>,
+      <span style="color:#a6e22e">wa_doc_signature</span>  <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_doc_signature</span>,
+      <span style="color:#a6e22e">gt_doc_components</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sbdst_components</span>,
+      <span style="color:#a6e22e">gt_doc_uris</span>       <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sbdst_uri</span>,
+      <span style="color:#a6e22e">wa_doc_uris</span>       <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">LINE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_doc_uris</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">g_app</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">vrm_id</span>,
+      <span style="color:#a6e22e">gt_applist</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">vrm_values</span>,
+      <span style="color:#a6e22e">g_excel</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">text80</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;Excel.Sheet&#39;</span>,       <span style="color:#e6db74">&#34;EXCEL的表单&#34;</span>
+      <span style="color:#a6e22e">g_docu_type</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">text80</span>,
+      <span style="color:#a6e22e">g_url</span>(<span style="color:#ae81ff">256</span>)  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">c</span>,
+      <span style="color:#a6e22e">g_has_activex</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">c</span>,
+      <span style="color:#a6e22e">g_col</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">i</span>,         <span style="color:#e6db74">&#34;字段所在的列数&#34;</span>
+      <span style="color:#a6e22e">g_row</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">i</span>.         <span style="color:#e6db74">&#34;字段所在的行数&#34;</span>
+</code></pre></div><p>以下三个值为Tcode:OAOR里面新建模板文件的参数</p>
+<p>DATA: g_classname  TYPE sbdst_classname VALUE &lsquo;HRFPM_EXCEL_STANDARD&rsquo;,</p>
+<p>g_classtype  TYPE sbdst_classtype VALUE &lsquo;OT&rsquo;,</p>
+<p>g_object_key TYPE sbdst_object_key VALUE &lsquo;ZTEST&rsquo;.</p>
+<h3 id="开始创建doi-">开始创建DOI:</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*=</span><span style="color:#f92672">===</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">Get_container</span> (<span style="color:#a6e22e">动态Container</span>)
+<span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">cl_splitter</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">parent</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_gui_container</span>=&gt;<span style="color:#a6e22e">screen0</span>
+        <span style="color:#a6e22e">rows</span>    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#a6e22e">columns</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">cl_splitter</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_border</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">border</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_gui_cfw</span>=&gt;<span style="color:#66d9ef">false</span>.
+        <span style="color:#a6e22e">cl_container</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_splitter</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_container</span>( <span style="color:#a6e22e">row</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">column</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+<span style="color:#f92672">*=</span><span style="color:#f92672">===</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">Get</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">SAP</span> <span style="color:#a6e22e">DOI</span>  <span style="color:#a6e22e">i_oi_container_control</span> <span style="color:#66d9ef">interface</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">c_oi_container_control_creator</span>=&gt;<span style="color:#a6e22e">get_container_control</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">control</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_control</span>
+      <span style="color:#a6e22e">error</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_error</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">errors</span> <span style="color:#a6e22e">occured</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">cl_error</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">raise_message</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#f92672">*=</span><span style="color:#f92672">===</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">Initialize</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">SAP</span> <span style="color:#a6e22e">DOI</span> <span style="color:#a6e22e">Container</span>, <span style="color:#a6e22e">tell</span> <span style="color:#a6e22e">it</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">run</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">container</span>
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_control</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">init_control</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">inplace_enabled</span>          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X &#39;</span>
+      <span style="color:#a6e22e">inplace_scroll_documents</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#a6e22e">register_on_close_event</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#a6e22e">register_on_custom_event</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#a6e22e">r3_application_name</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DOI Test&#39;</span>
+      <span style="color:#a6e22e">parent</span>                  <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_container</span>
+      <span style="color:#a6e22e">no_flush</span>      <span style="color:#f92672">=</span>   <span style="color:#e6db74">&#39;X&#39;</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">error</span>                    <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_errors</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">save</span> <span style="color:#a6e22e">error</span> <span style="color:#a6e22e">object</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">collection</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">cl_errors</span>.
+<span style="color:#f92672">*=</span><span style="color:#f92672">===</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">Ask</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">SAP</span> <span style="color:#a6e22e">DOI</span> <span style="color:#a6e22e">container</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">i_oi_document_proxy</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">Excel</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">cl_control</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_document_proxy</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">document_type</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Excel.Sheet&#39;</span>
+      <span style="color:#a6e22e">no_flush</span>           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+<span style="color:#f92672">*</span>    <span style="color:#a6e22e">REGISTER_CONTAINER</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">document_proxy</span>     <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_docu_proxy</span>
+      <span style="color:#a6e22e">error</span>              <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_errors</span>.
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">cl_errors</span>.
+</code></pre></div><h3 id="对excel进行操作-">对Excel进行操作：</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"> <span style="color:#a6e22e">wa_doc_signature</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prop_name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DESCRIPTION&#39;</span>.
+ <span style="color:#a6e22e">wa_doc_signature</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prop_value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PP_REPORT&#39;</span>.
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">wa_doc_signature</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">gt_doc_signature</span>.
+<span style="color:#f92672">*=</span><span style="color:#f92672">===</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">Create_excel_document</span>
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_control</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_document_proxy</span>
+  <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">document_type</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Excel.Sheet&#39;</span>
+    <span style="color:#a6e22e">no_flush</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#a6e22e">importing</span>
+    <span style="color:#a6e22e">document_proxy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gr_document</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create_document</span>
+  <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">document_title</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DOI test by Stone Wang &#39;</span>
+    <span style="color:#a6e22e">no_flush</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X &#39;</span>
+    <span style="color:#a6e22e">open_inplace</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+</code></pre></div><h3 id="操作模板文档">操作模板文档：</h3>
+<p>操作excel模板文档，使用cl_bds_document_set类，这个类的get_with_url方法获取文档的url</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span><span style="color:#a6e22e">Business</span> document <span style="color:#a6e22e">system</span>
+<span style="color:#f92672">*=</span><span style="color:#f92672">===</span><span style="color:#f92672">=</span><span style="color:#a6e22e">get_template_url</span>
+<span style="color:#a6e22e">create</span> <span style="color:#a6e22e">object</span> <span style="color:#a6e22e">gr_bds_documents</span>.
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">cl_bds_document_set</span>=&gt;<span style="color:#a6e22e">get_info</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">classname</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classname</span>
+      <span style="color:#a6e22e">classtype</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classtype</span>
+      <span style="color:#a6e22e">object_key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_objectkey</span>
+    <span style="color:#a6e22e">changing</span>
+      <span style="color:#a6e22e">components</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_doc_components</span>
+      <span style="color:#a6e22e">signature</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_doc_signature</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">cl_bds_document_set</span>=&gt;<span style="color:#a6e22e">get_with_url</span>
+  <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">classname</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classname</span>
+    <span style="color:#a6e22e">classtype</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classtype</span>
+    <span style="color:#a6e22e">object_key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_objectkey</span>
+  <span style="color:#a6e22e">changing</span>
+    <span style="color:#a6e22e">uris</span>      <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_bds_uris</span>
+    <span style="color:#a6e22e">signature</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_doc_signature</span>.
+ <span style="color:#a6e22e">free</span> <span style="color:#a6e22e">gr_bds_documents</span>.
+ <span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">gt_bds_uris</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">gs_bds_url</span> <span style="color:#a6e22e">index</span> <span style="color:#ae81ff">1.</span>
+ <span style="color:#a6e22e">g_url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gs_bds_url</span><span style="color:#f92672">-</span><span style="color:#a6e22e">uri</span>.
+<span style="color:#e6db74">&#34;&lt;cl_bds_document_set&gt; 的静态方法get_with_url获取excel template的url。&#34;</span>
+<span style="color:#e6db74">&#34;数据存放在内表中，读取后放在global变量g_template_url里面。&#34;</span>
+
+<span style="color:#e6db74">&#34;Open the excel&#34;</span>
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_control</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_document_proxy</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">document_type</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Excel.Sheet&#39;</span>
+     <span style="color:#a6e22e">no_flush</span>          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+     <span style="color:#a6e22e">register_container</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">document_proxy</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">gr_document</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">open_document</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">open_inplace</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+     <span style="color:#a6e22e">document_url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_template_url</span>.
+ <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">available</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">i</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">has_spreadsheet_interface</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">no_flush</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">is_available</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">available</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_spreadsheet_interface</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">no_flush</span>        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">sheet_interface</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gr_spreadsheet</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">select_sheet</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Sheet1&#39;</span>
+     <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">error</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span>
+     <span style="color:#a6e22e">retcode</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">retcode</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_active_sheet</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">no_flush</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#a6e22e">importing</span>
+      <span style="color:#a6e22e">sheetname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sheetname</span>
+      <span style="color:#a6e22e">error</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span>
+      <span style="color:#a6e22e">retcode</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">retcode</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">add_sheet</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;年度报表&#39;</span>
+     <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">error</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span>
+     <span style="color:#a6e22e">retcode</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">retcode</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">delete_sheet</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">sheetname</span>
+     <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">error</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span>
+     <span style="color:#a6e22e">retcode</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">retcode</span>.
+</code></pre></div><p>原文：https://blog.csdn.net/SAPmatinal/article/details/52776862</p>
+<h3 id="数据写入excel-">数据写入Excel:</h3>
+<p>数据写入Excel，可以使用批量的方式或者逐个单元格写入的方式。批量写入的方式效率高，逐个单元格写入的方式比较灵活。将数据写入excel需要使用 i_oi_spreadsheet接口实例的两个方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span> <span style="color:#a6e22e">insert_range_dim</span> <span style="color:#a6e22e">方法</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">定义一个范围</span>(<span style="color:#a6e22e">range</span>)<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">设定range的名称</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">位置和大小</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">insert_range_dim</span>
+ <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span>
+    <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    <span style="color:#a6e22e">top</span>      <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#a6e22e">left</span>    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">rows</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">line_count</span>
+    <span style="color:#a6e22e">columns</span>  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4.</span>
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">set_range_data</span> <span style="color:#a6e22e">方法</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">写入数据到range</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">写入的时候</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">ranges参数设定range的名称和大小</span>, 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">contents参数设定写入的内容</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">methodgr_spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_ranges_data</span>
+ <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">ranges</span><span style="color:#f92672">=</span><span style="color:#a6e22e">gt_ranges</span>
+    <span style="color:#a6e22e">contents</span><span style="color:#f92672">=</span><span style="color:#a6e22e">gt_contents</span>
+    <span style="color:#a6e22e">no_flush</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#f92672">*</span><span style="color:#a6e22e">界定ranges范围</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">R_HANDLE_EXCEL</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">INSERT_RANGE_DIM</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">NAME</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;title&#39;</span>
+      <span style="color:#a6e22e">NO_FLUSH</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#a6e22e">TOP</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">LEFT</span>     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">ROWS</span>     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">COLUMNS</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_TOTAL_COLUMNS</span>.
+  <span style="color:#a6e22e">WA_RANGES</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;title&#39;</span>.
+  <span style="color:#a6e22e">WA_RANGES</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ROWS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">WA_RANGES</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COLUMNS</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_TOTAL_COLUMNS</span>.
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">WA_RANGESTO</span> <span style="color:#a6e22e">IT_RANGES</span>.
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">LV_ROWTYPE</span> <span style="color:#a6e22e">I</span>.
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">LV_COLUMNTYPE</span> <span style="color:#a6e22e">I</span>.
+<span style="color:#a6e22e">FIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SYMBOLS</span> .
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">LWA_FIELDCATTYPE</span> <span style="color:#a6e22e">SLIS_FIELDCAT_ALV</span>.
+<span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">LV_COLUMN</span>.
+<span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">IT_FIELDCATINTO</span> <span style="color:#a6e22e">LWA_FIELDCAT</span>.
+  <span style="color:#a6e22e">LV_COLUMN</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_COLUMN</span> <span style="color:#f92672">+</span><span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">WA_CONTENTS</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ROW</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">WA_CONTENTS</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COLUMN</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_COLUMN</span>.
+  <span style="color:#a6e22e">WA_CONTENTS</span><span style="color:#f92672">-</span><span style="color:#a6e22e">VALUE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LWA_FIELDCAT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELTEXT_L</span>.
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">WA_CONTENTSTO</span> <span style="color:#a6e22e">IT_CONTENTS</span>.
+<span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Set</span> <span style="color:#a6e22e">data</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">R_HANDLE_EXCEL</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_RANGES_DATA</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">RANGES</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">IT_RANGE</span>
+    <span style="color:#a6e22e">CONTENTS</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">IT_CONTENTS</span>
+    <span style="color:#a6e22e">NO_FLUSH</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">R_HANDLE_EXCEL</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">FIT_WIDEST</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">NAME</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">SPACE</span>
+    <span style="color:#a6e22e">NO_FLUSH</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+</code></pre></div><h3 id="对象销毁-">对象销毁：</h3>
+<p>PAI的exit-command事件中对spreadsheet, control和container等对象的销毁。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">exit_program</span> <span style="color:#a6e22e">input</span>.
+  <span style="color:#a6e22e">save_ok</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ok_code</span>.
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">ok_code</span>.
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">save_ok</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EXIT&#39;</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">gr_document</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">close_document</span>.
+      <span style="color:#a6e22e">free</span> <span style="color:#a6e22e">gr_document</span>.
+    <span style="color:#a6e22e">endif</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">gr_control</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_control</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">destroy_control</span>.
+      <span style="color:#a6e22e">free</span> <span style="color:#a6e22e">gr_control</span>.
+    <span style="color:#a6e22e">endif</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">gr_container</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">initial</span>.
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_container</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">free</span>.
+    <span style="color:#a6e22e">endif</span>.
+    <span style="color:#a6e22e">leave</span> <span style="color:#a6e22e">program</span>.
+  <span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endmodule</span>.
+</code></pre></div><h2 id="其他实现-">其他实现</h2>
+<h3 id="1-如何根据屏幕大小让-excel-自适应-">1. 如何根据屏幕大小让 Excel 自适应</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cl_container</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">cl_gui_container</span>,
+      <span style="color:#a6e22e">cl_splitter</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">cl_gui_splitter_container</span>,
+    ......
+<span style="color:#a6e22e">form</span> <span style="color:#a6e22e">get_dynamic_container</span>.
+  <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">object</span> <span style="color:#a6e22e">gr_splitter</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">parent</span>      <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_gui_container</span>=&gt;<span style="color:#a6e22e">screen0</span>
+      <span style="color:#a6e22e">rows</span>        <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">columns</span>  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> .
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_splitter</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_border</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">border</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_gui_cfw</span>=&gt;<span style="color:#66d9ef">false</span>.
+  <span style="color:#a6e22e">gr_container</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gr_splitter</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_container</span>( <span style="color:#a6e22e">row</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">column</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+<span style="color:#a6e22e">endform</span>.
+<span style="color:#a6e22e">container</span> <span style="color:#a6e22e">control</span> <span style="color:#a6e22e">初始化的时候</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">设定</span> <span style="color:#a6e22e">parent</span> <span style="color:#a6e22e">为</span> <span style="color:#a6e22e">gr_container</span>
+</code></pre></div><h3 id="2-excel-单个单元格写入-">2. Excel 单个单元格写入</h3>
+<p>单个单元格写入的方法，同批量写入一样，使用 i_oi_spreadsheet 接口的set_range_dim 方法和 set_range_data方法。区别在于 range 只包含一行一列：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">form</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">p_row</span> <span style="color:#a6e22e">p_col</span> <span style="color:#a6e22e">p_value</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">define</span> <span style="color:#a6e22e">internal</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">ranges</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">contents</span> <span style="color:#a6e22e">parameters</span>
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lt_ranges</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_range_list</span>,
+        <span style="color:#a6e22e">ls_rangeitem</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_range_item</span>,
+        <span style="color:#a6e22e">lt_contents</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_generic_table</span>,
+        <span style="color:#a6e22e">ls_content</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_generic_item</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">populate</span> <span style="color:#a6e22e">ranges</span>
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">ls_rangeitem</span>.
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">lt_ranges</span>[].
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span> .
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">columns</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">rows</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4.</span>
+  <span style="color:#a6e22e">append</span> <span style="color:#a6e22e">ls_rangeitem</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">lt_ranges</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">populate</span> <span style="color:#a6e22e">contents</span>
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">ls_content</span>.
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">lt_contents</span>[].
+  <span style="color:#a6e22e">ls_content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">column</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">row</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_value</span>.
+  <span style="color:#a6e22e">append</span> <span style="color:#a6e22e">ls_content</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">lt_contents</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">每次只写一行一列</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">insert_range_dim</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span>
+      <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#a6e22e">top</span>      <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_row</span>
+      <span style="color:#a6e22e">left</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_col</span>
+      <span style="color:#a6e22e">rows</span>    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">columns</span>  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_ranges_data</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">ranges</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_ranges</span>
+      <span style="color:#a6e22e">contents</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_contents</span>
+      <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">endform</span>.   
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">循环写入</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">loop</span> <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">gt_spfli</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">gs_spfli</span>.
+   <span style="color:#a6e22e">row_index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">carrid</span>.
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">connid</span>.
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">3</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cityfrom</span>.
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">4</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cityto</span>.
+   <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">gs_spfli</span>.
+<span style="color:#a6e22e">endloop</span>.
+</code></pre></div><h3 id="3-设置-excel-属性-">3. 设置 Excel 属性</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">form</span> <span style="color:#a6e22e">set_excel_attributes</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">修改WORK</span> <span style="color:#a6e22e">SHEET</span> <span style="color:#a6e22e">的名字</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">cl_spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_sheet_name</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">newname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;物料主数据清单&#39;</span>
+      <span style="color:#a6e22e">oldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Sheet1&#39;</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">error</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_errors</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">border</span> <span style="color:#a6e22e">line</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">range</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_frame</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">rangename</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span>
+      <span style="color:#a6e22e">typ</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;127&#39;</span>
+      <span style="color:#a6e22e">color</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+      <span style="color:#a6e22e">no_flush</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">auto</span> <span style="color:#a6e22e">fit</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">fit_widest</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">space</span>
+      <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">endform</span>.   
+</code></pre></div><h3 id="4-错误处理-">4. 错误处理</h3>
+<p>通常有两种方法来处理错误：</p>
+<p>第一种方法：使用 c_oi_errors 的静态方法 raise_message 简单地显示相关的错误：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHODC_OI_ERRORS</span>=&gt;<span style="color:#a6e22e">RAISE_MESSAGE</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+       <span style="color:#a6e22e">TYPE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">type</span>
+ <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">可以是</span> <span style="color:#a6e22e">A</span>, <span style="color:#a6e22e">E</span>, <span style="color:#a6e22e">W</span>, <span style="color:#a6e22e">I</span>, <span style="color:#a6e22e">S</span> <span style="color:#a6e22e">其中之一</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p>第二种方法是区分不同的错误，给用户一个更明确的提示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">ret_code</span> <span style="color:#a6e22e">EQ</span> <span style="color:#a6e22e">c_oi_errors</span>=&gt;<span style="color:#a6e22e">ret_ok</span>.
+  <span style="color:#e6db74">&#34; Document opened successfully&#34;</span>
+<span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">ret_code</span> <span style="color:#a6e22e">EQ</span> <span style="color:#a6e22e">c_oi_errors</span>=&gt; <span style="color:#a6e22e">ret_document_already_open</span>.
+  <span style="color:#e6db74">&#34; Special error handling, e.g. dialog box.&#34;</span>
+<span style="color:#a6e22e">ELSE</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">c_oi_errors</span>=&gt;<span style="color:#a6e22e">raise_message</span>
+     <span style="color:#a6e22e">EXPORTING</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+</code></pre></div><p>也可以把 ret_code 返回的错误码先储存在内表中，集中处理：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">errors</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">i_oi_error</span> <span style="color:#a6e22e">OCCURS</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">DOI</span> <span style="color:#a6e22e">processing</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">control</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_link_server</span>
+  <span style="color:#a6e22e">EXPORTING</span> <span style="color:#a6e22e">server_type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">server_type</span>
+    <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#a6e22e">IMPORTING</span> <span style="color:#a6e22e">link_server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">link_server</span>
+    <span style="color:#a6e22e">retcode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">retcode</span>
+    <span style="color:#a6e22e">error</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">errors</span>.
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">errors</span>.
+<span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">errors</span>. 
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">errors</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">raise_message</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+	  <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>
+    <span style="color:#a6e22e">EXCEPTIONS</span> 
+      <span style="color:#a6e22e">message_raised</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">flush_failed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span>
+<span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">errors</span>.
+</code></pre></div><p>原文：https://blog.csdn.net/stone0823/article/details/53819960</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2693</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/DOI/">
+                    #DOI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Webservice/" class="prev" rel="prev" title="SAP Webservice 使用"><i class="iconfont icon-dajiantou"></i>&nbsp;SAP Webservice 使用</a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Memory/" class="next" rel="next" title="SAP memory使用">SAP memory使用&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-02-22 00:00:00 \x2b0000 UTC',
+        title: 'ABAP DOI使用',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>
