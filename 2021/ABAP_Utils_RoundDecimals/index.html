@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_AmountToUpcase/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Basis_FunctionDiff/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_RoundDecimals/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 数值四舍五入函数  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 数值四舍五入函数  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 数值四舍五入函数 "/>
+<meta name="twitter:description" content="ABAP 保留指定小数位 ROUND函数 INT_SORT-MENGE = ROUND( VAL = LTB-EMENG * P_QPA DEC = 3 MODE = 1 ). mode代表着小数省略的规则， 1： 默认值，这个值总是从 0 四舍五入到更大的绝对值 5"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 数值四舍五入函数 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_RoundDecimals\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  252 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_RoundDecimals\/",
+  "datePublished": "2021-06-12T00:00:00\x2b00:00",
+  "dateModified": "2021-06-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 数值四舍五入函数 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-06-12 >12 June 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="abap-保留指定小数位">ABAP 保留指定小数位</h3>
+<h4 id="round函数">ROUND函数</h4>
+<p><code>INT_SORT-MENGE = ROUND( VAL = LTB-EMENG * P_QPA DEC = 3 MODE = 1 ).</code></p>
+<p>mode代表着小数省略的规则，</p>
+<ul>
+<li>1： 默认值，这个值总是从 0 四舍五入到更大的绝对值</li>
+<li>5： 这个值总是从 0 四舍五入到更小的绝对值</li>
+</ul>
+<h4 id="functionhr_nz_rounding_decimals">Function：HR_NZ_ROUNDING_DECIMALS</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> : dat  <span style="color:#66d9ef">TYPE </span>p <span style="color:#66d9ef">DECIMALS</span>  <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;12.5445&#39;</span> ,
+       dat_result <span style="color:#66d9ef">TYPE </span>p <span style="color:#66d9ef">DECIMALS</span>  .
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;HR_NZ_ROUNDING_DECIMALS&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    value_in                 <span style="color:#f92672">=</span> dat
+    conv_dec                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>      <span style="color:#75715e">&#34; 设置保留几位小数
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IMPORTING</span>
+    value_out                <span style="color:#f92672">=</span> dat_result
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    no_rounding_required     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    decimals_greater_than_10 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    rounding_error           <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">OTHERS</span>                   <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+</code></pre></div><h4 id="functionround">Function：Round</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> : dat  <span style="color:#66d9ef">TYPE </span>p <span style="color:#66d9ef">DECIMALS</span>  <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;12.540&#39;</span> ,
+       dat_result <span style="color:#66d9ef">TYPE </span>p <span style="color:#66d9ef">DECIMALS</span>  .
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ROUND&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">decimals</span>      <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    input         <span style="color:#f92672">=</span> dat
+    <span style="color:#66d9ef">sign</span>          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#75715e">&#34;+ 向上取舍,- 向下取舍(负数也一样)&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IMPORTING</span>
+    output        <span style="color:#f92672">=</span> dat_result
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    input_invalid <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    overflow      <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    type_invalid  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">OTHERS</span>        <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>252</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_AmountToUpcase/" class="prev" rel="prev" title=" ABAP 数字金额转为大写 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 数字金额转为大写 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Basis_FunctionDiff/" class="next" rel="next" title=" RFC-BAPI-BADI-BDC 区别 "> RFC-BAPI-BADI-BDC 区别 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-06-12 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 数值四舍五入函数 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

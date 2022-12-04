@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_Utils/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_OOALV2/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OOALV1/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           报表开发&lt;OO ALV&gt; | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="报表开发&lt;OO ALV&gt; | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="报表开发&lt;OO ALV&gt;"/>
+<meta name="twitter:description" content="OO ALV ALV GRID CONTROL 使用了控制器技术以实现屏幕显示，和所有的控制器一样，ALV GRID CONTROL 通过系统中的一个全局的类提供了方法，以响应它的动作. 使用了 ABAP 的对象以"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "报表开发\u003cOO ALV\u003e",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV1\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  2597 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV1\/",
+  "datePublished": "2018-07-06T00:00:00\u002b00:00",
+  "dateModified": "2018-07-06T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">报表开发&lt;OO ALV&gt;</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-06 >6 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="oo-alv">OO ALV</h2>
+<p>ALV GRID CONTROL 使用了控制器技术以实现屏幕显示，和所有的控制器一样，ALV GRID CONTROL 通过系统中的一个全局的类提供了方法，以响应它的动作.</p>
+<p>使用了 ABAP 的对象以后，列表是通过 ALV 的一个实例 (INSTANCE) 来显示的，可以使用 ABAP 对象的事件管理.</p>
+<p><strong>ALV GRID继承结构</strong>    <img src="/images/ABAP/OOALV1.png" alt="继承结构"></p>
+<h3 id="相关类">相关类</h3>
+<ul>
+<li>
+<p>CL_GUI_CUSTOM_CONTAINER：用户自己定义控件区域</p>
+</li>
+<li>
+<p>CL_GUI_DOCKING_CONTAINER：动态创建容器，不需要在创建时绑定到预先绘制好的自定义控件中</p>
+</li>
+<li>
+<p>CL_GUI_SPLITTER_CONTAINER：可在同一屏幕创建多个ALV显示</p>
+</li>
+<li>
+<p>CL_GUI_ALV_GRID：ALV控制类</p>
+</li>
+<li>
+<p>CL_GUI_CONTAINER：容器接口</p>
+</li>
+<li>
+<p>LVC_T_FCAT：ALV显示参照字段表</p>
+</li>
+<li>
+<p>LVC_S_FCAT：ALV显示参照字段结构</p>
+</li>
+<li>
+<p>LVC_T_SORT: 排序条件字段</p>
+</li>
+</ul>
+<p><em><strong>定义</strong></em></p>
+<p>​	DATA obj_wcl_container TYPE REF TO CL_GUI_CUSTOM_CONTAINER. ：控制容器类</p>
+<p>​	DATA obj_wcl_alv TYPE REF TO CL_GUI_ALV_GRID . ：ALV控制类</p>
+<p>​	DATA GS_LAYOUT1 TYPE LVC_S_LAYO. ：布局结构</p>
+<p>​	DATA GT_FIELDCAT TYPE LVC_T_FCAT. ：存放字段目录的内表</p>
+<p>​	DATA GS_FIELDCAT TYPE LVC_S_FCAT. ：存放字段目录的结构</p>
+<p>​	DATA lt_exclude TYPE ui_functions. ：alv不需要的图标按钮</p>
+<h3 id="控制区域containergrid关系">控制区域、Container、Grid关系</h3>
+<p>先在屏幕绘制一个用户自定义控件区域，然后以自定义区域为基础创建 CL_GUI_CUSTOM_CONTAINER 容器实例，最后以此容器实例来创建  CL_GUI_ALV_GRID 实例。首先要在程序内创建一个屏幕，并在程序中定义一个Customer Control。</p>
+<p><img src="/images/ABAP/OOALV2.png" alt="屏幕定义"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: obj_wcl_container <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_custom_container, <span style="color:#75715e">&#34;控制容器类&#34;
+</span><span style="color:#75715e"></span>      obj_wcl_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid . <span style="color:#75715e">&#34;ALV控制类&#34;
+</span><span style="color:#75715e">&#34;创建SAP容器实例&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">IF</span> obj_wcl_alv <span style="color:#f92672">IS INITIAL</span>.
+ <span style="color:#66d9ef">CREATE OBJECT</span> obj_wcl_container
+	<span style="color:#66d9ef">EXPORTING</span>
+      container_name  <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;CONTAINER&#39;</span>. <span style="color:#75715e">&#34;自定义控件名称&#34;
+</span><span style="color:#75715e"></span>	EXCEPTONS
+      cntl_error      <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+	  <span style="color:#66d9ef">others</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+	<span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno 
+		<span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  ENEIF.
+<span style="color:#75715e">&#34;创建ALV GRID实例&#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">CREATE OBJECT</span> obj_wcl_alv
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_parent  <span style="color:#f92672">=</span> obj_wcl_container.
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+        error_cntl_create <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        error_cntl_init   <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        error_cntl_link   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+        error_dp_create   <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+        <span style="color:#66d9ef">OTHERS</span>            <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+                 <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+    <span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><p><strong>一个屏幕创建多个ALV：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:G_SPLITTER <span style="color:#66d9ef">TYPE REF TO</span> CL_GUI_SPLITTER_CONTAINER,
+     G_CONTAINER_2000L <span style="color:#66d9ef">TYPE REF TO</span> CL_GUI_CONTAINER,
+     G_CONTAINER_2000R <span style="color:#66d9ef">TYPE REF TO</span> CL_GUI_CONTAINER.
+<span style="color:#66d9ef">IF</span> g_splitter <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">CREATE OBJECT</span> g_splitter  <span style="color:#75715e">&#34;定义一个屏幕包含两个ALV&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">EXPORTING</span>
+        parent  <span style="color:#f92672">=</span> cl_gui_container<span style="color:#f92672">=&gt;</span>screen0
+        rows    <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        columns <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> g_splitter<span style="color:#f92672">-&gt;</span>set_border
+      <span style="color:#66d9ef">EXPORTING</span>
+        border <span style="color:#f92672">=</span> cl_gui_cfw<span style="color:#f92672">=&gt;</span>false.
+    g_container_2000l <span style="color:#f92672">=</span> g_splitter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_container</span>( row <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> column <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+    g_container_2000r <span style="color:#f92672">=</span> g_splitter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_container</span>( row <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> column <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+    g_splitter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_row_height</span>( <span style="color:#66d9ef">id</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> height <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> ).
+    g_splitter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_row_height</span>( <span style="color:#66d9ef">id</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> height <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span> ).
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="fieldcat">FieldCat</h3>
+<p>设置显示数据的 FieldCat。</p>
+<h4 id="宏定义">宏定义</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DEFINE</span> <span style="color:#a6e22e">M_FIELDCAT</span>.
+  <span style="color:#a6e22e">CLEAR</span><span style="color:#f92672">:</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1.</span>
+  <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FIELDNAME</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2</span> .
+  <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COLTEXT</span>   <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">3</span> .
+  <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CHECKBOX</span>  <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">4</span> .
+  <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">REPREP</span>    <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">5</span> .
+  <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">EDIT</span>      <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">6</span> .
+  <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OUTPUTLEN</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">7</span> .
+  <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DECIMALS</span>  <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">8</span> .
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">END</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DEFINITION</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">alv1_fieldcat</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">lvc_s_fcat</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+<span style="color:#a6e22e">M_FIELDCAT</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">alv1_fieldcat</span>  <span style="color:#e6db74">&#39;DATUM&#39;</span>  <span style="color:#e6db74">&#39;Plan.Date&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#a6e22e">alv1_fieldcat</span>  <span style="color:#e6db74">&#39;UZEIT&#39;</span>  <span style="color:#e6db74">&#39;Plan.Time&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#a6e22e">alv1_fieldcat</span>  <span style="color:#e6db74">&#39;STATUS&#39;</span> <span style="color:#e6db74">&#39;Status&#39;</span>    <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;&#39;</span>.
+</code></pre></div><h4 id="通过调用bapi完成">通过调用BAPI完成</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">prepare_field_catalog</span> <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">pt_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_t_fcat</span> .
+  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">lvc_s_fcat</span> . 
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;LVC_FIELDCATALOG_MERGE&#39;</span> 
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">i_structure_name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SFLIGHT&#39;</span> 
+	<span style="color:#a6e22e">CHANGING</span>
+      <span style="color:#a6e22e">ct_fieldcat</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pt_fieldcat</span>[] 
+	<span style="color:#a6e22e">EXCEPTIONS</span>
+	  <span style="color:#a6e22e">inconsistent_interface</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+	  <span style="color:#a6e22e">program_error</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> 
+	  <span style="color:#a6e22e">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.</span> 
+	<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span> 
+	  <span style="color:#a6e22e">Exception</span> <span style="color:#a6e22e">handling</span>
+	<span style="color:#a6e22e">ENDIF</span>. 
+
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">pt_fieldcat</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">ls_fcat</span> . 
+	<span style="color:#a6e22e">CASE</span> <span style="color:#a6e22e">pt_fieldcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> . 
+	  <span style="color:#a6e22e">WHEN</span> <span style="color:#e6db74">&#39;CARRID&#39;</span> . 
+		<span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outpulen</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;10&#39;</span> . 
+		<span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">coltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Airline Carrier ID&#39;</span> . 
+		<span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">edit</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+	    <span style="color:#a6e22e">MODIFY</span> <span style="color:#a6e22e">pt_fieldcat</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">ls_fcat</span> . 
+	  <span style="color:#a6e22e">WHEN</span> <span style="color:#e6db74">&#39;PAYMENTSUM&#39;</span> . 
+		<span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">no_out</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> . 
+		<span style="color:#a6e22e">MODIFY</span> <span style="color:#a6e22e">pt_fieldcat</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">ls_fcat</span> . 
+	<span style="color:#a6e22e">ENDCASE</span> .
+  <span style="color:#a6e22e">ENDLOOP</span> .
+<span style="color:#a6e22e">ENDFORM</span> .
+</code></pre></div><h3 id="layout">Layout</h3>
+<h4 id="设置布局">设置布局</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">prepare_layout</span> <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">ps_layout</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_s_layo</span>.     
+  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zebra</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> .    
+  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">grid_title</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Flights&#39;</span> .    
+  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">smalltitle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> .
+<span style="color:#a6e22e">ENDFORM</span>. <span style="color:#e6db74">&#34;prepare_layout&#34;</span>
+</code></pre></div><h4 id="排除不必要的按钮">排除不必要的按钮</h4>
+<ul>
+<li>
+<p>自定义按钮</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lt_excl <span style="color:#66d9ef">TYPE </span>slis_t_extab.
+  <span style="color:#66d9ef">APPEND</span> <span style="color:#e6db74">&#39;CLOSE&#39;</span> <span style="color:#66d9ef">TO</span> lt_excl.
+  <span style="color:#66d9ef">APPEND</span> <span style="color:#e6db74">&#39;SALL.PUL&#39;</span> <span style="color:#66d9ef">TO</span> lt_excl.
+  <span style="color:#66d9ef">APPEND</span> <span style="color:#e6db74">&#39;UALL.PUL&#39;</span> <span style="color:#66d9ef">TO</span> lt_excl.
+<span style="color:#66d9ef">SET PF-STATUS</span> <span style="color:#e6db74">&#39;STATUS&#39;</span> EXCLUDING lt_excl .
+<span style="color:#66d9ef">SET TITLEBAR</span> <span style="color:#e6db74">&#39;TITLE&#39;</span>.
+</code></pre></div></li>
+<li>
+<p>系统标准按钮</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">exclude_tb_functions</span> <span style="color:#66d9ef">CHANGING</span> pt_exclude <span style="color:#66d9ef">TYPE </span>ui_functions .     
+  <span style="color:#66d9ef">DATA</span> ls_exclude <span style="color:#66d9ef">TYPE </span>ui_func.      
+  ls_exclude <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=&gt;</span>mc_fc_maximum .      
+  <span style="color:#66d9ef">APPEND</span> ls_exclude <span style="color:#66d9ef">TO</span> pt_exclude.      
+  ls_exclude <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=&gt;</span>mc_fc_minimum .    
+  <span style="color:#66d9ef">APPEND</span> ls_exclude <span style="color:#66d9ef">TO</span> pt_exclude.     
+  ls_exclude <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=&gt;</span>mc_fc_subtot .    
+  <span style="color:#66d9ef">APPEND</span> ls_exclude <span style="color:#66d9ef">TO</span> pt_exclude.     
+  ls_exclude <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=&gt;</span>mc_fc_sum .      
+  <span style="color:#66d9ef">APPEND</span> ls_exclude <span style="color:#66d9ef">TO</span> pt_exclude.      
+  ls_exclude <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=&gt;</span>mc_fc_average .     
+  <span style="color:#66d9ef">APPEND</span> ls_exclude <span style="color:#66d9ef">TO</span> pt_exclude.      
+  ls_exclude <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=&gt;</span>mc_mb_sum .     
+  <span style="color:#66d9ef">APPEND</span> ls_exclude <span style="color:#66d9ef">TO</span> pt_exclude.      
+  ls_exclude <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=&gt;</span>mc_mb_subtot .
+  <span style="color:#66d9ef">APPEND</span> ls_exclude <span style="color:#66d9ef">TO</span> pt_exclude.
+<span style="color:#66d9ef">ENDFORM</span> .
+</code></pre></div></li>
+</ul>
+<h3 id="alv显示">ALV显示</h3>
+<h4 id="显示-alv">显示 ALV</h4>
+<p>CL_GUI_ALV_GRID 重要方法 <code>set_table_for_first_display</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL METHOD</span> obj_wcl_alv<span style="color:#f92672">-&gt;</span>set_table_for_first_display 
+   <span style="color:#66d9ef">EXPORTING</span> 
+     i_structure_name             <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXX&#39;</span>       <span style="color:#75715e">&#34;参照表结构字段显示&#34;
+</span><span style="color:#75715e"></span>     is_variant                    <span style="color:#f92672">=</span> ls_variant  <span style="color:#75715e">&#34;指定布局变式&#34;
+</span><span style="color:#75715e"></span>     is_layout                     <span style="color:#f92672">=</span> ls_layout   <span style="color:#75715e">&#34;布局设置&#34;
+</span><span style="color:#75715e"></span>     i_save                        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>         <span style="color:#75715e">&#34;保存表格布局&#34;
+</span><span style="color:#75715e"></span>     it_toolbar_excluding          <span style="color:#f92672">=</span> lt_exclude  <span style="color:#75715e">&#34;排除的按钮&#34;
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">CHANGING</span> 
+     it_outtab                     <span style="color:#f92672">=</span> gt_list[]   <span style="color:#75715e">&#34;需要显示的内表数据&#34;
+</span><span style="color:#75715e"></span>     it_fieldcatalog               <span style="color:#f92672">=</span> lt_fieldcat <span style="color:#75715e">&#34;结构字段&#34;
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">EXCEPTIONS</span> 
+     invalid_parameter_combination <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+     program_error                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> 
+     too_many_lines                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> 
+     <span style="color:#66d9ef">OTHERS</span>                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+</code></pre></div><h4 id="刷新-alv">刷新 ALV</h4>
+<p><code>REFRESH_TABLE_DISPLAY</code></p>
+<ul>
+<li>IS_STABLE：有行列两个参数，如果设置了相应的参数，对应的行或列属性就不会滚动。刷新的稳定性，就是滚动条保持不动。</li>
+<li>I_SOFT_REFRESH：软刷新，为了显示数据而设置的过滤都将保持不变。临时给 ALV 创建的合计，排序，等保持不变。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL METHOD</span> obj_wcl_alv<span style="color:#f92672">-&gt;</span>refresh_table_display 
+  <span style="color:#66d9ef">EXPORTING</span>
+  	<span style="color:#75715e">&#34;IS_STABLE = &#34;
+</span><span style="color:#75715e"></span>	I_SOFT_REFRESH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+	finished <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#66d9ef">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> .
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#75715e">&#34;Exception handling&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="给alv对象注册事件">给ALV对象注册事件</h3>
+<p>(1) HANDLE_TOOLBAR：这个事件用于给ALV加自定义工具条按钮。</p>
+<p>(2) HANDLE_CLICK：用于给ALV点击其中一行后处理代码段。</p>
+<p>(3) HANDLE_COMMAND：事件用于接收用户按了自定义按钮后，触发的代码段。</p>
+<p>(4) HANDLE_DOUBLE_CLICK：双击事件</p>
+<p>(5) DATA_CHANGED：可编辑字段的数据发生变化时触发，可用来检查数据的输入正确性</p>
+<p>(6) DATA_CHANGED_FINISHED：当数据修改完成后触发，数据没有被修改，当失去焦点或回车时触发</p>
+<p>&hellip;&hellip;</p>
+<p><strong>定义事件</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CLASS</span> cl_event_receiver <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#75715e">&#34;声明单击事件的方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_hotspot_click
+      <span style="color:#66d9ef">FOR EVENT</span> hotspot_click <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_row_id e_column_id.
+    <span style="color:#75715e">&#34;声明双击事件方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_double_click
+      <span style="color:#66d9ef">FOR EVENT</span> double_click <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_row e_column.
+    <span style="color:#75715e">&#34;声明 Toolbar 事件方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_toolbar
+      <span style="color:#66d9ef">FOR EVENT</span> toolbar <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_object e_interactive.
+    <span style="color:#75715e">&#34;声明 USER-COMMAND 事件方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_command
+      <span style="color:#66d9ef">FOR EVENT</span> user_command <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_ucomm.
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;cl_event_receiver DEFINITION&#34;
+</span></code></pre></div><p><strong>事件执行的方法代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CLASS</span> cl_event_receiver <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#75715e">&#34;单击事件方法的实现&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_hotspot_click</span>.
+    <span style="color:#66d9ef">CONDENSE</span> e_row_id     NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">CONDENSE</span> e_column_id  NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">MESSAGE</span> i001(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39; 单击事件 -&gt; 行号:&#39;</span> e_row_id  <span style="color:#e6db74">&#39;、列名：&#39;</span> e_column_id.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_HOTSPOT_CLICK&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;双击事件方法的实现&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_double_click</span>.
+    <span style="color:#66d9ef">CONDENSE</span> e_row     NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">CONDENSE</span> e_column  NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">MESSAGE</span> i001(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39; 双击事件 -&gt; 行号:&#39;</span> e_row  <span style="color:#e6db74">&#39;、列名：&#39;</span> e_column.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_double_click&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;实现 Toolbar 事件方法&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_toolbar</span>.
+    <span style="color:#66d9ef">DATA</span>: ls_toolbar <span style="color:#66d9ef">TYPE </span>stb_button.
+    <span style="color:#66d9ef">CLEAR</span>: ls_toolbar.
+    ls_toolbar<span style="color:#f92672">-</span>butn_type <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.   <span style="color:#75715e">&#34;分隔符&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> e_object<span style="color:#f92672">-&gt;</span>mt_toolbar.
+    <span style="color:#66d9ef">CLEAR</span>: ls_toolbar.
+    ls_toolbar<span style="color:#f92672">-</span>function <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DISP&#39;</span>.    <span style="color:#75715e">&#34;功能码&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>icon <span style="color:#f92672">=</span> icon_display.  <span style="color:#75715e">&#34;图标名称&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>quickinfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; 显示&#39;</span>.   <span style="color:#75715e">&#34;图标的提示信息&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>butn_type <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.        <span style="color:#75715e">&#34;0 表示正常按钮&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>disabled <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.        <span style="color:#75715e">&#34;X 表示灰色，不可用&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;btn1&#39;</span>.      <span style="color:#75715e">&#34;按钮上显示的文本&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> e_object<span style="color:#f92672">-&gt;</span>mt_toolbar.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_toolbar&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;实现 USER-COMMAND 事件方法&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_command</span>.
+    <span style="color:#66d9ef">CASE</span> e_ucomm.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;DISP&#39;</span>.
+       <span style="color:#66d9ef">MESSAGE</span> i001(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;Toolbar 事件 + USER-COMMAND 事件 &#39;</span>.
+    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;HANDLE_COMMAND&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;cl_event_receiver IMPLEMENTATION&#34;
+</span></code></pre></div><p><strong>注册事件</strong></p>
+<p>在创建GRID实例后注册事件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CREATE OBJECT</span> event_receiver.
+  <span style="color:#75715e">&#34;注册事件 handler 方法&#34;
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_hotspot_click  <span style="color:#66d9ef">FOR</span> g_grid01.
+   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_double_click   <span style="color:#66d9ef">FOR</span> g_grid01.
+   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_toolbar <span style="color:#66d9ef">FOR</span> g_grid01.
+   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_command <span style="color:#66d9ef">FOR</span> g_grid01.
+</code></pre></div><p><strong>单元格编辑</strong></p>
+<p>设置FIELDCAT的 EDIT 属性。还需要在显示ALV前添加触发数据改变事件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL METHOD</span> ALV_GRID<span style="color:#f92672">-&gt;</span>REGISTER_EDIT_EVENT
+  <span style="color:#66d9ef">EXPORTING</span>
+    I_EVENT_ID <span style="color:#f92672">=</span> CL_GUI_ALV_GRID<span style="color:#f92672">=&gt;</span>MC_EVT_MODIFIED. <span style="color:#75715e">&#34;必须设置一种触发方式&#34;
+</span></code></pre></div><ul>
+<li>按回车触发：I_EVENT_ID = CL_GUI_ALV_GRID=&gt;MC_EVENT_ENTER.</li>
+<li>单元格失去焦点触发：I_EVENT_ID = CL_GUI_ALV_GRID=&gt;MC_EVENT_MODIFIES.</li>
+</ul>
+<h4 id="第一次显示后修改-field-catalog-或-layout">第一次显示后修改 Field Catalog 或 Layout</h4>
+<ul>
+<li>Field Catalog
+<ul>
+<li>get_frontend_fieldcatalog</li>
+<li>set_frontend_fieldcatalog</li>
+</ul>
+</li>
+<li>Layout
+<ul>
+<li>get_frontend_layout</li>
+<li>set_frontend_layout</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> ls_fcat <span style="color:#66d9ef">TYPE </span>lvc_s_fcat .
+<span style="color:#66d9ef">DATA</span> lt_fcat <span style="color:#66d9ef">TYPE </span>lvc_t_fcat .
+<span style="color:#66d9ef">DATA</span> ls_layout <span style="color:#66d9ef">TYPE </span>lvc_s_layo .
+<span style="color:#75715e">&#34;Field Cattalog&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL METHOD</span> gr_alvgrid<span style="color:#f92672">-&gt;</span>get_frontend_fieldcatalog
+  <span style="color:#66d9ef">IMPORTING</span>
+    et_fieldcatalog <span style="color:#f92672">=</span> lt_fcat[] .
+<span style="color:#66d9ef">LOOP AT </span>lt_fcat <span style="color:#66d9ef">INTO</span> ls_fcat .
+  <span style="color:#66d9ef">IF</span> ls_fcat<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Field_name&#39;</span> .
+    ls_fcat<span style="color:#f92672">-</span>no_out <span style="color:#f92672">=</span> space .
+    <span style="color:#66d9ef">MODIFY</span> lt_fcat <span style="color:#66d9ef">FROM</span> ls_fcat .
+  <span style="color:#66d9ef">ENDIF</span> .
+<span style="color:#66d9ef">ENDLOOP</span> .
+<span style="color:#66d9ef">CALL METHOD</span> gr_alvgrid<span style="color:#f92672">-&gt;</span>set_frontend_fieldcatalog
+  <span style="color:#66d9ef">EXPORTING</span>
+    it_fieldcatalog <span style="color:#f92672">=</span> lt_fcat[] .
+<span style="color:#75715e">&#34;Layout&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL METHOD</span> gr_alvgrid<span style="color:#f92672">-&gt;</span>get_frontend_layout
+  <span style="color:#66d9ef">IMPORTING</span>
+    es_layout <span style="color:#f92672">=</span> ls_layout .
+    ls_layout<span style="color:#f92672">-</span>grid_title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Title name&#39;</span> .
+<span style="color:#66d9ef">CALL METHOD</span> gr_alvgrid<span style="color:#f92672">-&gt;</span>set_frontend_layout
+  <span style="color:#66d9ef">EXPORTING</span>
+    is_layout <span style="color:#f92672">=</span> ls_layout .
+</code></pre></div><h4 id="排序">排序</h4>
+<p>初始化排序功能，在<code>set_table_for_first_display</code>中添加参数<code>IT_SORT</code>.如果排序字段在Field catalog会出现Dump。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">prepare_sort_table</span> <span style="color:#66d9ef">CHANGING</span> pt_sort <span style="color:#66d9ef">TYPE </span>lvc_t_sort .
+  <span style="color:#66d9ef">DATA</span> ls_sort <span style="color:#66d9ef">TYPE </span>lvc_s_sort .
+  ls_sort<span style="color:#f92672">-</span>spos <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXX&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>up <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> . <span style="color:#75715e">&#34;A to Z&#34;
+</span><span style="color:#75715e"></span>  ls_sort<span style="color:#f92672">-</span>down <span style="color:#f92672">=</span> space .
+  <span style="color:#66d9ef">APPEND</span> ls_sort <span style="color:#66d9ef">TO</span> pt_sort .
+  ls_sort<span style="color:#f92672">-</span>spos <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXX&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>up <span style="color:#f92672">=</span> space .
+  ls_sort<span style="color:#f92672">-</span>down <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> . <span style="color:#75715e">&#34;Z to A&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">APPEND</span> ls_sort <span style="color:#66d9ef">TO</span> pt_sort .
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34;prepare_sort_table&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2597</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Utils/" class="prev" rel="prev" title="报表开发&lt;常用工具&gt;"><i class="iconfont icon-dajiantou"></i>&nbsp;报表开发&lt;常用工具&gt;</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV2/" class="next" rel="next" title="OO ALV 实例程序">OO ALV 实例程序&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-06 00:00:00 \u002b0000 UTC',
+        title: '报表开发\u003cOO ALV\u003e',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

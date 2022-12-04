@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionFM/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ExtJS_Basis/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionClass/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 获取CLASS参数结果  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 获取CLASS参数结果  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 获取CLASS参数结果 "/>
+<meta name="twitter:description" content="Read Class Data data: i_class type klah-class. data: i_classtype type klah-klart. data: i_key_date type sy-datum default sy-datum. data: e_structure type ref to cl_abap_structdescr, et_data type ref to data, e_table type ref to cl_abap_tabledescr. field-symbols: &lt;char&gt; type bapi1003_charact_r. data: mt_classdescriptions type standard table of bapi1003_catch_r. data: mt_classlongtexts type standard table of bapi1003_longtext_r. data: mt_classcharacteristics type standard table of bapi1003_charact_r. data: mt_classcharactvalues type standard table of bapi1003_char_val_r. data: mt_return type standard table"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 获取CLASS参数结果 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_ReflectionClass\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  684 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_ReflectionClass\/",
+  "datePublished": "2021-04-27T00:00:00\x2b00:00",
+  "dateModified": "2021-04-27T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 获取CLASS参数结果 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-04-27 >27 April 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="read-class-data">Read Class Data</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">data</span>: i_class <span style="color:#66d9ef">type </span>klah<span style="color:#f92672">-</span>class.
+<span style="color:#66d9ef">data</span>: i_classtype <span style="color:#66d9ef">type </span>klah<span style="color:#f92672">-</span>klart.
+<span style="color:#66d9ef">data</span>: i_key_date <span style="color:#66d9ef">type </span>sy<span style="color:#f92672">-</span>datum <span style="color:#66d9ef">default</span> sy<span style="color:#f92672">-</span>datum.
+<span style="color:#66d9ef">data</span>: e_structure <span style="color:#66d9ef">type ref to</span> cl_abap_structdescr,
+      et_data <span style="color:#66d9ef">type ref to</span> <span style="color:#66d9ef">data</span>,
+      e_table <span style="color:#66d9ef">type ref to</span> cl_abap_tabledescr.
+<span style="color:#66d9ef">field-symbols</span>: &lt;char&gt; <span style="color:#66d9ef">type </span>bapi1003_charact_r.
+<span style="color:#66d9ef">data</span>: mt_classdescriptions <span style="color:#66d9ef">type standard table of</span> bapi1003_catch_r.
+<span style="color:#66d9ef">data</span>: mt_classlongtexts <span style="color:#66d9ef">type standard table of</span> bapi1003_longtext_r.
+<span style="color:#66d9ef">data</span>: mt_classcharacteristics <span style="color:#66d9ef">type standard table of</span> bapi1003_charact_r.
+<span style="color:#66d9ef">data</span>: mt_classcharactvalues <span style="color:#66d9ef">type standard table of</span> bapi1003_char_val_r.
+<span style="color:#66d9ef">data</span>: mt_return <span style="color:#66d9ef">type standard table of</span> bapiret2.
+<span style="color:#66d9ef">data</span>: ms_charact_detail <span style="color:#66d9ef">type </span>bapicharactdetail.
+<span style="color:#66d9ef">data</span>: m_lenght <span style="color:#66d9ef">type </span>i.
+<span style="color:#66d9ef">data</span>: m_decimals <span style="color:#66d9ef">type </span>i.
+<span style="color:#66d9ef">data</span>: mt_comp <span style="color:#66d9ef">type </span>cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>component_table.
+<span style="color:#66d9ef">data</span>: mt_comp_final <span style="color:#66d9ef">type </span>cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>component_table.
+<span style="color:#66d9ef">data</span>: mo_str  <span style="color:#66d9ef">type ref to</span> cl_abap_structdescr.
+<span style="color:#66d9ef">data</span>: mo_tab <span style="color:#66d9ef">type ref to</span> cl_abap_tabledescr.
+<span style="color:#66d9ef">data</span>: mt_data <span style="color:#66d9ef">type ref to</span> <span style="color:#66d9ef">data</span>.
+<span style="color:#66d9ef">data</span>: ms_comp <span style="color:#66d9ef">like line of</span> mt_comp.
+<span style="color:#66d9ef">data</span>: ms_return <span style="color:#66d9ef">type </span>bapiret2.
+<span style="color:#75715e">&#34;read class data&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">call function</span> <span style="color:#e6db74">&#39;BAPI_CLASS_READ&#39;</span>
+    <span style="color:#66d9ef">exporting</span>
+      classtype            <span style="color:#f92672">=</span> i_classtype
+      classnum             <span style="color:#f92672">=</span> i_class
+<span style="color:#75715e">*     LANGUISO             = LANGUISO</span>
+<span style="color:#75715e">*     LANGUINT             = SY-LANGU</span>
+      keydate              <span style="color:#f92672">=</span> i_key_date
+    <span style="color:#66d9ef">importing</span>
+<span style="color:#75715e">*     CLASSBASICDATA       = CLASSBASICDATA</span>
+<span style="color:#75715e">*     CLASSDOCUMENT        = CLASSDOCUMENT</span>
+<span style="color:#75715e">*     CLASSADDITIONAL      = CLASSADDITIONAL</span>
+<span style="color:#75715e">*     CLASSSTANDARD        = CLASSSTANDARD</span>
+      <span style="color:#66d9ef">return</span>               <span style="color:#f92672">=</span> ms_return
+    <span style="color:#66d9ef">tables</span>
+      classdescriptions    <span style="color:#f92672">=</span> mt_classdescriptions
+      classlongtexts       <span style="color:#f92672">=</span> mt_classlongtexts
+      classcharacteristics <span style="color:#f92672">=</span> mt_classcharacteristics
+      classcharactvalues   <span style="color:#f92672">=</span> mt_classcharactvalues.
+<span style="color:#66d9ef">if</span> ms_return<span style="color:#f92672">-</span>type <span style="color:#f92672">CN</span> <span style="color:#e6db74">&#39;AE&#39;</span>.
+    <span style="color:#75715e">&#34;firstly add key fields for structure like Object, class, class type,&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34; object table &#34;
+</span><span style="color:#75715e"></span>    ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;OBJECT_NUMBER&#39;</span>.
+    ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_name</span>( p_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;OBJNUM&#39;</span> ).
+    <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp_final.
+    ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CLASS&#39;</span>.
+    ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( p_data <span style="color:#f92672">=</span> i_class ).
+    <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp_final.
+    ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CLASSTYPE&#39;</span>.
+    ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( p_data <span style="color:#f92672">=</span> i_classtype ).
+    <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp_final.
+    ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;OBJECT_TABLE&#39;</span>.
+    ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_name</span>( p_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TABELLE&#39;</span> ).
+    <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp_final.
+    <span style="color:#75715e">&#34;Then let&#39;s loop through characteristics&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">loop at </span>mt_classcharacteristics <span style="color:#66d9ef">assigning</span> &lt;char&gt;.
+      <span style="color:#66d9ef">clear</span> ms_charact_detail.
+      <span style="color:#75715e">&#34;check each characteristic details&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">call function</span> <span style="color:#e6db74">&#39;BAPI_CHARACT_GETDETAIL&#39;</span>
+        <span style="color:#66d9ef">exporting</span>
+          charactname         <span style="color:#f92672">=</span> &lt;char&gt;<span style="color:#f92672">-</span>name_char
+          keydate             <span style="color:#f92672">=</span> i_key_date
+<span style="color:#75715e">*         LANGUAGE            = LANGUAGE</span>
+        <span style="color:#66d9ef">importing</span>
+          charactdetail       <span style="color:#f92672">=</span> ms_charact_detail
+        <span style="color:#66d9ef">tables</span>
+<span style="color:#75715e">*         CHARACTDESCR        = CHARACTDESCR</span>
+<span style="color:#75715e">*         CHARACTVALUESNUM    = CHARACTVALUESNUM</span>
+<span style="color:#75715e">*         CHARACTVALUESCHAR   = CHARACTVALUESCHAR</span>
+<span style="color:#75715e">*         CHARACTVALUESCURR   = CHARACTVALUESCURR</span>
+<span style="color:#75715e">*         CHARACTVALUESDESCR  = CHARACTVALUESDESCR</span>
+<span style="color:#75715e">*         CHARACTREFERENCES   = CHARACTREFERENCES</span>
+<span style="color:#75715e">*         CHARACTRESTRICTIONS = CHARACTRESTRICTIONS</span>
+          <span style="color:#66d9ef">return</span>              <span style="color:#f92672">=</span> mt_return.
+      <span style="color:#75715e">&#34;check if we have error&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">loop at </span>mt_return <span style="color:#66d9ef">into</span> ms_return <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">type </span><span style="color:#f92672">ca</span> <span style="color:#e6db74">&#39;AE&#39;</span>.
+        <span style="color:#66d9ef">raise</span> characteristics_error.
+      <span style="color:#66d9ef">endloop</span>.
+      <span style="color:#66d9ef">refresh</span> mt_comp[].
+      <span style="color:#66d9ef">clear</span>: ms_comp.
+      m_lenght <span style="color:#f92672">=</span> ms_charact_detail<span style="color:#f92672">-</span>length.
+      m_decimals <span style="color:#f92672">=</span> ms_charact_detail<span style="color:#f92672">-</span>decimals.
+      <span style="color:#66d9ef">clear</span>: ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;LOW&#39;</span>.
+      <span style="color:#75715e">&#34;depanding on data type we create different type for LOW component&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">case</span> ms_charact_detail<span style="color:#f92672">-</span>data_type.
+        <span style="color:#66d9ef">when</span> <span style="color:#e6db74">&#39;NUM&#39;</span>.
+          ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_p</span>(
+                p_length   <span style="color:#f92672">=</span> m_lenght
+                p_decimals <span style="color:#f92672">=</span> m_decimals  ).
+        <span style="color:#66d9ef">when</span> <span style="color:#e6db74">&#39;DATE&#39;</span>.
+          ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_d</span>( ).
+        <span style="color:#66d9ef">when</span> <span style="color:#e6db74">&#39;TIME&#39;</span>.
+          ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_t</span>( ).
+        <span style="color:#66d9ef">when</span> <span style="color:#e6db74">&#39;CHAR&#39;</span>.
+          ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_c</span>( p_length <span style="color:#f92672">=</span> m_lenght ).
+        <span style="color:#66d9ef">when</span> <span style="color:#e6db74">&#39;CURR&#39;</span>.
+          ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_p</span>(
+                p_length   <span style="color:#f92672">=</span> m_lenght
+                p_decimals <span style="color:#f92672">=</span> m_decimals  ).
+        <span style="color:#66d9ef">when</span> <span style="color:#66d9ef">others</span>.
+          ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_c</span>( p_length <span style="color:#f92672">=</span> m_lenght ).
+      <span style="color:#66d9ef">endcase</span>.
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;HIGH component will have same type as LOW so I do not clear work area&#34;
+</span><span style="color:#75715e"></span>      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;HIGH&#39;</span>.
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;now OPTION for LOW&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">clear</span>: ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;OPTLOW&#39;</span>.
+      ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_c</span>( p_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> ).
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;OPTION for HIGH&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">clear</span>: ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;OPTHIGH&#39;</span>.
+      ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_c</span>( p_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> ).
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;UNIT FROM&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">clear</span>: ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UNIT_FROM&#39;</span>.
+      ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( p_data <span style="color:#f92672">=</span> ms_charact_detail<span style="color:#f92672">-</span>unit_of_measurement ).
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;UNIT TO&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">clear</span>: ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UNIT_TO&#39;</span>.
+      ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( p_data <span style="color:#f92672">=</span> ms_charact_detail<span style="color:#f92672">-</span>unit_of_measurement ).
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;CURRENCY FROM&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">clear</span>: ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CURRENCY_FROM&#39;</span>.
+      ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( p_data <span style="color:#f92672">=</span> ms_charact_detail<span style="color:#f92672">-</span>currency  ).
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;CURRENCY TO&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">clear</span>: ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CURRENCY_TO&#39;</span>.
+      ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( p_data <span style="color:#f92672">=</span> ms_charact_detail<span style="color:#f92672">-</span>currency  ).
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp.
+      <span style="color:#75715e">&#34;We got all components so we can create structure of a characteristic&#34;
+</span><span style="color:#75715e"></span>      mo_str <span style="color:#f92672">=</span>  cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>( mt_comp ).
+      <span style="color:#75715e">&#34;and we can create table for this characteristic&#34;
+</span><span style="color:#75715e"></span>      mo_tab <span style="color:#f92672">=</span> cl_abap_tabledescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>( p_line_type  <span style="color:#f92672">=</span> mo_str
+                                           p_table_kind <span style="color:#f92672">=</span> cl_abap_tabledescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>tablekind_std
+                                           p_unique     <span style="color:#f92672">=</span> abap_false ).
+
+      <span style="color:#75715e">&#34;then we add the characteristic table as a component for our final structure&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">clear</span> ms_comp.
+      ms_comp<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> &lt;char&gt;<span style="color:#f92672">-</span>name_char.
+      ms_comp<span style="color:#f92672">-</span>type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> mo_tab.
+      <span style="color:#66d9ef">append</span> ms_comp <span style="color:#66d9ef">to</span> mt_comp_final.
+      <span style="color:#66d9ef">free </span>mo_tab.
+      <span style="color:#66d9ef">free </span>mo_str.
+    <span style="color:#66d9ef">endloop</span>.
+<span style="color:#75715e">&#34;we&#39;ve got now key fields + separate deep field for each characteristic so we can&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;create our final structure and table&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> mt_comp_final[] <span style="color:#f92672">is not initial</span>.
+      e_structure <span style="color:#f92672">=</span>  cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>( mt_comp_final ).
+      e_table      <span style="color:#f92672">=</span> cl_abap_tabledescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>(  p_line_type  <span style="color:#f92672">=</span> e_structure
+                                                  p_table_kind <span style="color:#f92672">=</span> cl_abap_tabledescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>tablekind_std
+                                                  p_unique     <span style="color:#f92672">=</span> abap_false ).
+      <span style="color:#66d9ef">try</span>.
+          <span style="color:#66d9ef">create data</span> et_data  <span style="color:#66d9ef">type </span>handle e_table.
+        <span style="color:#66d9ef">catch</span> cx_sy_create_data_error.
+          <span style="color:#66d9ef">raise</span> error_creating_table.
+      <span style="color:#66d9ef">endtry</span>.
+    <span style="color:#66d9ef">endif</span>.
+  <span style="color:#66d9ef">else</span>.
+    <span style="color:#66d9ef">raise</span> class_classtype_fetch_error.
+  <span style="color:#66d9ef">endif</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>684</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionFM/" class="prev" rel="prev" title=" ABAP 获取FM参数结果 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 获取FM参数结果 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ExtJS_Basis/" class="next" rel="next" title=" ExtJS 基础知识 "> ExtJS 基础知识 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-04-27 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 获取CLASS参数结果 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

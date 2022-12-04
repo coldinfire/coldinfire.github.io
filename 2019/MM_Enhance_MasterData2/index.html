@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Basis_VenderCreate/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_Basis_Purchase/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_Enhance_MasterData2/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            物料主数据增强自定义字段  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 物料主数据增强自定义字段  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 物料主数据增强自定义字段 "/>
+<meta name="twitter:description" content="自定义增强字段 正常情况下通过FM Exits来增强一个屏幕的步骤： Find relevant enhancement thru program name. T-code: CMOD, create an enhancement project, then assign the enhancement to the enhancement project Create a subscreen in corresponding X function group Implement the FM exits for transporting data to subscreen and"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 物料主数据增强自定义字段 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_Enhance_MasterData2\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  229 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_Enhance_MasterData2\/",
+  "datePublished": "2019-03-15T00:00:00\x2b00:00",
+  "dateModified": "2019-03-15T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 物料主数据增强自定义字段 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-03-15 >15 March 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="自定义增强字段">自定义增强字段</h3>
+<p>正常情况下通过FM Exits来增强一个屏幕的步骤：</p>
+<ol>
+<li>
+<p>Find relevant enhancement thru program name.</p>
+</li>
+<li>
+<p>T-code: <code>CMOD</code>, create an enhancement project, then assign the enhancement to the enhancement project</p>
+</li>
+<li>
+<p>Create a subscreen in corresponding X function group</p>
+</li>
+<li>
+<p>Implement the FM exits for transporting data to subscreen and retrieving data from subscreen.</p>
+</li>
+<li>
+<p>Active the enhancement project.</p>
+</li>
+</ol>
+<p>在main screen的flow logic中</p>
+<ul>
+<li>
+<p><strong>PBO</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">CUSTOMER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBSCREEN</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">area</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">INCLUDING</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">x</span><span style="color:#f92672">-</span><span style="color:#66d9ef">function</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pool</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">screen_number</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#e6db74">&#34;Transporting data to subscreen&#34;</span>
+  <span style="color:#a6e22e">MODULE</span> ...
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">CUSTOMER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;xxx&#39;</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">i_vars</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gl_field</span>.
+</code></pre></div></li>
+<li>
+<p><strong>PAI</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">CUSTOMER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBSCREEN</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">area</span><span style="color:#f92672">&gt;</span> .
+  <span style="color:#e6db74">&#34;Transporting data from subscreen&#34;</span>
+  <span style="color:#a6e22e">MODULE</span>...
+     <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">CUSTOMER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;xxx&#39;</span>
+       <span style="color:#a6e22e">IMPORTING</span>
+          <span style="color:#a6e22e">o_vars</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gl_field</span>.
+   
+</code></pre></div><p>这里的FM 的parameter interface是不能改变的，且每一个screen enhancemnet都要对应一个确定的自定义的 XXX Function Group但screen number是可以变化的。</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>229</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Basis_VenderCreate/" class="prev" rel="prev" title=" 供应商主数据创建 "><i class="iconfont icon-dajiantou"></i>&nbsp; 供应商主数据创建 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_Basis_Purchase/" class="next" rel="next" title=" 有库存的采购流程解析 "> 有库存的采购流程解析 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-03-15 00:00:00 \x2b0000 UTC',
+        title: ' 物料主数据增强自定义字段 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

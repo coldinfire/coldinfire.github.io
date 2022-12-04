@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_PurchaseRequest_BAPI/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/SAPDBCO_Connect/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_PurchaseOrder_BAPI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           使用BAPI创建Purchase Order | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="使用BAPI创建Purchase Order | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用BAPI创建Purchase Order"/>
+<meta name="twitter:description" content="通过BAPI创建PO FUNCTION zcreate_po. *&#34;---------------------------------------------------------------------- *&#34;*&#34;Local interface: *&#34; IMPORTING *&#34; VALUE(CALLNO) TYPE ZCALLNO *&#34; VALUE(DOC_TYPE) LIKE BAPIMEPOHEADER-DOC_TYPE DEFAULT &#39;ZIPR&#39; *&#34; VALUE(PURCH_ORG) LIKE BAPIMEPOHEADER-PURCH_ORG DEFAULT &#39;POIC&#39; *&#34; VALUE(PUR_GROUP) LIKE BAPIMEPOHEADER-PUR_GROUP *&#34; VALUE(VENDOR) LIKE BAPIMEPOHEADER-VENDOR *&#34; VALUE(COMP_CODE) LIKE BAPIMEPOHEADER-COMP_CODE DEFAULT &#39;GF50&#39; *&#34; VALUE(DZTERM) TYPE DZTERM DEFAULT &#39;0001&#39; *&#34; EXPORTING *&#34; VALUE(PO_NUMBER) LIKE BAPIMEPOHEADER-PO_NUMBER *&#34; VALUE(FLAG) LIKE BAPIRET2-TYPE *&#34; VALUE(MESSAGE) LIKE BAPIRET2-MESSAGE *&#34; TABLES *&#34;"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用BAPI创建Purchase Order",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_PurchaseOrder_BAPI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  1436 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_PurchaseOrder_BAPI\/",
+  "datePublished": "2020-06-16T00:00:00\u002b00:00",
+  "dateModified": "2020-06-16T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">使用BAPI创建Purchase Order</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-06-16 >16 June 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="通过bapi创建po">通过BAPI创建PO</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">FUNCTION zcreate_po.
+*&#34;----------------------------------------------------------------------
+*&#34;*&#34;Local interface:
+*&#34;  IMPORTING
+*&#34;     VALUE(CALLNO) TYPE  ZCALLNO
+*&#34;     VALUE(DOC_TYPE) LIKE  BAPIMEPOHEADER-DOC_TYPE DEFAULT &#39;ZIPR&#39;
+*&#34;     VALUE(PURCH_ORG) LIKE  BAPIMEPOHEADER-PURCH_ORG DEFAULT &#39;POIC&#39;
+*&#34;     VALUE(PUR_GROUP) LIKE  BAPIMEPOHEADER-PUR_GROUP
+*&#34;     VALUE(VENDOR) LIKE  BAPIMEPOHEADER-VENDOR
+*&#34;     VALUE(COMP_CODE) LIKE  BAPIMEPOHEADER-COMP_CODE DEFAULT &#39;GF50&#39;
+*&#34;     VALUE(DZTERM) TYPE  DZTERM DEFAULT &#39;0001&#39;
+*&#34;  EXPORTING
+*&#34;     VALUE(PO_NUMBER) LIKE  BAPIMEPOHEADER-PO_NUMBER
+*&#34;     VALUE(FLAG) LIKE  BAPIRET2-TYPE
+*&#34;     VALUE(MESSAGE) LIKE  BAPIRET2-MESSAGE
+*&#34;  TABLES
+*&#34;      POITEM STRUCTURE  ZPOITEM
+*&#34;----------------------------------------------------------------------
+DATA: lv_currency TYPE bapimepoheader-currency VALUE &#39;RMB&#39;,        &#34;货币码&#34;
+      ls_poitem   TYPE zpoitem,
+      lv_message  TYPE bapiret2-message,
+      lv_po_item  TYPE bapimepoitem-po_item,                       &#34;行项目号&#34;
+      lv_pckg_no  TYPE bapimepoitem-pckg_no.                       &#34;PCKG_NO&#34;
+DATA: quantity(18),
+      net_price(37),
+      limit(27),
+      exp_value(27),
+      l_lifnr   TYPE lfa1-lifnr,
+      lv_datano TYPE zdatano.
+DATA: lt_eskl TYPE TABLE OF eskl WITH HEADER LINE.
+CLEAR:gs_poheader,    gs_poheaderx,  gv_po_number,  gt_return,      gs_return,     gt_poitem,
+      gs_poitem,      gt_poitemx,    gs_poitemx,    gt_poschedule,  gs_poschedule, gt_poschedulex,
+      gs_poschedulex, gt_poaccount,  gs_poaccount,  gt_poaccountx,  gs_poaccountx, gt_polimits,
+      gs_polimits.
+*数据检查.
+PERFORM frm_check_data USING doc_type purch_org pur_group vendor comp_code poitem[]
+                       CHANGING flag message.
+*补齐前导零
+CALL FUNCTION &#39;CONVERSION_EXIT_ALPHA_INPUT&#39;
+  EXPORTING
+    input    = vendor
+ IMPORTING
+   output    = l_lifnr.
+*抬头数据
+gs_poheader-doc_type   = doc_type.      &#34;采购凭证类型
+gs_poheader-purch_org  = purch_org.     &#34;采购组织
+gs_poheader-pur_group  = pur_group.     &#34;采购组
+gs_poheader-vendor     = l_lifnr.       &#34;供应商帐户号
+gs_poheader-comp_code  = comp_code.     &#34;公司代码
+gs_poheader-currency   = lv_currency.   &#34;货币码
+gs_poheader-pmnttrms   = dzterm.        &#34;付款条件
+&#34;抬头数据标识&#34;
+gs_poheaderx-doc_type  = g_flag.
+gs_poheaderx-purch_org = g_flag.
+gs_poheaderx-pur_group = g_flag.
+gs_poheaderx-vendor    = g_flag.
+gs_poheaderx-comp_code = g_flag.
+gs_poheaderx-currency  = g_flag.
+gs_poheaderx-pmnttrms  = g_flag.
+SELECT * INTO TABLE  lt_eskl FROM eskl UP TO 500 ROWS
+    WHERE loekz = &#39;&#39; .
+LOOP AT poitem INTO ls_poitem.
+*行项目
+   READ TABLE lt_eskl INDEX sy-tabix.
+   lv_pckg_no = lt_eskl-packno.
+   lv_po_item = lv_po_item + 10.
+   PERFORM frm_poitem USING ls_poitem lv_po_item lv_pckg_no.
+*计划行
+   PERFORM frm_poschedule USING ls_poitem lv_po_item.
+*账户分配
+   PERFORM frm_poaccount USING ls_poitem lv_po_item.
+*服务限制
+   PERFORM frm_polimits USING ls_poitem lv_po_item lv_pckg_no.
+ENDLOOP.
+*创建采购订单
+CALL FUNCTION &#39;BAPI_PO_CREATE1&#39;
+  EXPORTING
+    poheader             = gs_poheader
+    poheaderx            = gs_poheaderx
+  IMPORTING
+    exppurchaseorder     = gv_po_number
+  TABLES
+    return               = gt_return
+    poitem               = gt_poitem
+    poitemx              = gt_poitemx
+    poschedule           = gt_poschedule
+    poschedulex          = gt_poschedulex
+    poaccount            = gt_poaccount
+    poaccountx           = gt_poaccountx
+    polimits             = gt_polimits.
+  READ TABLE gt_return INTO gs_return WITH KEY type = &#39;E&#39;.
+  IF sy-subrc NE 0.
+    po_number = gv_po_number.
+    flag = &#39;S&#39;.
+    CONCATENATE &#39;生成PO:&#39; po_number INTO message.
+    CALL FUNCTION &#39;BAPI_TRANSACTION_COMMIT&#39;
+      EXPORTING
+        wait = &#39;X&#39;.
+  ELSE.
+    CALL FUNCTION &#39;BAPI_TRANSACTION_ROLLBACK&#39;.
+    LOOP AT gt_return INTO gs_return WHERE type CA &#39;AEX&#39;.
+      MESSAGE ID gs_return-id
+            TYPE gs_return-type
+          NUMBER gs_return-number
+            WITH gs_return-message_v1 gs_return-message_v2
+                 gs_return-message_v3 gs_return-message_v4
+            INTO lv_message.
+      CONCATENATE message lv_message INTO message SEPARATED BY &#39;｜&#39;.
+    ENDLOOP.
+    SHIFT message LEFT DELETING LEADING  &#39;｜&#39;.
+    flag = &#39;E&#39;.
+  ENDIF.
+ENDFUNCTION.
+</code></pre></div><h3 id="根据pr创建po">根据PR创建PO</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">LOOP AT PRITEM.
+   IF SY-TABIX = 1.
+     LS_POHEADER-DOC_TYPE   = &#39;ZSTL&#39;.
+     CONCATENATE &#39;000000&#39; PRITEM-PLANT INTO LS_POHEADER-VENDOR.
+     IF LS_WERKS = &#39;1020&#39;.
+       LS_POHEADER-PURCH_ORG  = &#39;1022&#39;.  &#34;pritem-purch_org&#34;
+     ELSEIF LS_WERKS = &#39;1040&#39;.
+       LS_POHEADER-PURCH_ORG  = &#39;1042&#39;.
+     ENDIF.
+     LS_POHEADER-COMP_CODE  = &#39;1000&#39;.
+     LS_POHEADER-PUR_GROUP  = PRITEM-PUR_GROUP.
+     LS_POHEADER-DOC_DATE   = SY-DATUM.
+   ENDIF.
+   LT_POITEM-PO_ITEM    = PRITEM-PREQ_ITEM.
+   LT_POITEM-MATERIAL   = PRITEM-MATERIAL.
+   LT_POITEM-PLANT      = &#39;1000&#39;.
+   LT_POITEM-VEND_MAT   = PRITEM-VEND_MAT.
+   LT_POITEM-QUANTITY   = PRITEM-QUANTITY.
+   LT_POITEM-PO_UNIT    = PRITEM-UNIT.
+   IF PRITEM-CURRENCY <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; &#39;HKD&#39;.
+   	 CLEAR:LT_TCURR,LT_TCURR[],LS_EXCHRATE.
+     SELECT * FROM TCURR INTO TABLE LT_TCURR
+       WHERE KURST = &#39;M&#39;
+       AND FCURR = PRITEM-CURRENCY
+       AND TCURR = &#39;HKD&#39;.
+     SORT LT_TCURR BY GDATU ASCENDING.
+     LOOP AT LT_TCURR.
+       LT_TCURR-GDATU = &#39;99999999&#39; - LT_TCURR-GDATU.
+       IF LT_TCURR-GDATU <span style="color:#960050;background-color:#1e0010">&lt;</span>= SY-DATUM.
+         LS_EXCHRATE = LT_TCURR-UKURS.
+         EXIT.
+       ENDIF.
+     ENDLOOP.
+     IF LS_EXCHRATE IS NOT INITIAL.
+       LT_POITEM-NET_PRICE  = PRITEM-PREQ_PRICE * LS_EXCHRATE.
+     ELSE.
+       LT_POITEM-NET_PRICE  = PRITEM-PREQ_PRICE.
+     ENDIF.
+   ELSE.
+     LT_POITEM-NET_PRICE  = PRITEM-PREQ_PRICE.
+   ENDIF.
+   
+   LT_POITEM-PRICE_UNIT = PRITEM-PRICE_UNIT.
+   LT_POITEM-ACCTASSCAT = &#39;F&#39;.
+   APPEND LT_POITEM TO LT_POITEM.
+   
+   LT_POCOND-ITM_NUMBER = PRITEM-PREQ_ITEM.
+   LT_POCOND-COND_TYPE  = &#39;PBXX&#39;.
+   LT_POCOND-COND_VALUE = LT_POITEM-NET_PRICE.
+   LT_POCOND-CURRENCY   = &#39;HKD&#39;.
+   LT_POCOND-CHANGE_ID  = &#39;U&#39;.
+   APPEND LT_POCOND TO LT_POCOND.
+   CLEAR:LT_POCOND,LT_POITEM.
+   CLEAR:PRITEM-ACCTASSCAT.
+   MODIFY PRITEM TRANSPORTING ACCTASSCAT.
+ENDLOOP.
+
+LOOP AT PRITEMX.
+  IF SY-TABIX = 1.
+    LS_POHEADERX-DOC_TYPE  = &#39;X&#39;.
+    LS_POHEADERX-VENDOR    = &#39;X&#39;.
+    LS_POHEADERX-PURCH_ORG = &#39;X&#39;.
+    LS_POHEADERX-PUR_GROUP = &#39;X&#39;.
+    LS_POHEADERX-DOC_DATE  = &#39;X&#39;.
+  ENDIF.
+  LT_POITEMX-PO_ITEM    = PRITEMX-PREQ_ITEM.
+  LT_POITEMX-PO_ITEMX   = &#39;X&#39;.
+  LT_POITEMX-MATERIAL   = &#39;X&#39;.
+  LT_POITEMX-PLANT      = &#39;X&#39;.
+  LT_POITEMX-VEND_MAT   = &#39;X&#39;.
+  LT_POITEMX-QUANTITY   = &#39;X&#39;.
+  LT_POITEMX-NET_PRICE  = &#39;X&#39;.
+  LT_POITEMX-PRICE_UNIT = &#39;X&#39;.
+  LT_POITEMX-ACCTASSCAT = &#39;X&#39;.
+  APPEND LT_POITEMX TO LT_POITEMX.
+  CLEAR: LT_POITEMX.
+  LT_POCONDX-ITM_NUMBER = PRITEMX-PREQ_ITEM.
+  LT_POCONDX-COND_TYPE  = &#39;X&#39;.
+  LT_POCONDX-COND_VALUE = &#39;X&#39;.
+  LT_POCONDX-CURRENCY   = &#39;X&#39;.
+  LT_POCONDX-CHANGE_ID  = &#39;X&#39;.
+  APPEND LT_POCONDX TO LT_POCONDX.
+  CLEAR:LT_POCONDX.
+  CLEAR PRITEMX-ACCTASSCAT.
+  MODIFY PRITEMX TRANSPORTING ACCTASSCAT.
+ENDLOOP.
+
+LOOP AT PRACCOUNT.
+  LT_POACCOUNT-PO_ITEM    = PRACCOUNT-PREQ_ITEM.
+  LT_POACCOUNT-SERIAL_NO  = PRACCOUNT-SERIAL_NO.
+  LT_POACCOUNT-GL_ACCOUNT = PRACCOUNT-GL_ACCOUNT.
+  LT_POACCOUNT-ORDERID    = PRACCOUNT-ORDERID.
+  APPEND LT_POACCOUNT TO LT_POACCOUNT.
+  CLEAR: LT_POACCOUNT.
+ENDLOOP.
+
+LOOP AT PRACCOUNTX.
+  LT_POACCOUNTX-PO_ITEM    = PRACCOUNTX-PREQ_ITEM.
+  LT_POACCOUNTX-SERIAL_NO  = PRACCOUNTX-SERIAL_NO.
+  LT_POACCOUNTX-PO_ITEMX   = &#39;X&#39;.
+  LT_POACCOUNTX-GL_ACCOUNT = &#39;X&#39;.
+  LT_POACCOUNTX-ORDERID    = &#39;X&#39;.
+  APPEND LT_POACCOUNTX TO LT_POACCOUNTX.
+  CLEAR: LT_POACCOUNTX.
+ENDLOOP.
+CLEAR:PRACCOUNT,PRACCOUNT[],PRACCOUNTX,PRACCOUNTX[].
+
+LOOP AT PRHEADERTEXT.
+  LT_POTEXTHEADER-PO_NUMBER  = PRHEADERTEXT-PREQ_NO.
+  LT_POTEXTHEADER-PO_ITEM    = PRHEADERTEXT-PREQ_ITEM.
+  LT_POTEXTHEADER-TEXT_ID    = PRHEADERTEXT-TEXT_ID.
+  LT_POTEXTHEADER-TEXT_LINE  = PRHEADERTEXT-TEXT_LINE.
+  APPEND LT_POTEXTHEADER TO LT_POTEXTHEADER.
+  CLEAR: LT_POTEXTHEADER.
+ENDLOOP.
+        
+CALL FUNCTION &#39;BAPI_PO_CREATE1&#39;
+  EXPORTING
+	POHEADER               = LS_POHEADER
+	POHEADERX              = LS_POHEADERX
+  	POADDRVENDOR           = LS_POADDRVENDOR
+   	TESTRUN                = LS_TESTRUNPO
+   	MEMORY_UNCOMPLETE      = LS_MEMORY_UNCOMPLETE
+    MEMORY_COMPLETE        = LS_MEMORY_COMPLETE
+    POEXPIMPHEADER         = LS_POEXPIMPHEADER
+    POEXPIMPHEADERX        = LS_POEXPIMPHEADERX
+    VERSIONS               = LS_VERSIONS
+    NO_MESSAGING           = LS_NO_MESSAGING
+    NO_MESSAGE_REQ         = LS_NO_MESSAGE_REQ
+    NO_AUTHORITY           = LS_NO_AUTHORITY
+    NO_PRICE_FROM_PO       = LS_NO_PRICE_FROM_PO
+  IMPORTING
+    EXPPURCHASEORDER       = LS_EXPPURCHASEORDER
+    EXPHEADER              = LS_EXPHEADER
+    EXPPOEXPIMPHEADER      = LS_EXPPOEXPIMPHEADER
+  TABLES
+    RETURN                 = LT_RETURNPO
+    POITEM                 = LT_POITEM
+    POITEMX                = LT_POITEMX
+    POADDRDELIVERY         = LT_POADDRDELIVERY
+    POSCHEDULE             = LT_POSCHEDULE
+    POSCHEDULEX            = LT_POSCHEDULEX
+    POACCOUNT              = LT_POACCOUNT
+    POACCOUNTPROFITSEGMENT = LT_POACCOUNTPROFITSEGMENT
+    POACCOUNTX             = LT_POACCOUNTX
+    POCONDHEADER           = LT_POCONDHEADER
+    POCONDHEADERX          = LT_POCONDHEADERX
+    POCOND                 = LT_POCOND
+    POCONDX                = LT_POCONDX
+    POLIMITS               = LT_POLIMITS
+    POCONTRACTLIMITS       = LT_POCONTRACTLIMITS
+    POSERVICES             = LT_POSERVICES
+    POSRVACCESSVALUES      = LT_POSRVACCESSVALUES
+    POSERVICESTEXT         = LT_POSERVICESTEXT
+    EXTENSIONIN            = LT_EXTENSIONIN
+    EXTENSIONOUT           = LT_EXTENSIONOUT
+    POEXPIMPITEM           = LT_POEXPIMPITEM
+    POEXPIMPITEMX          = LT_POEXPIMPITEMX
+    POTEXTHEADER           = LT_POTEXTHEADER
+    POTEXTITEM             = LT_POTEXTITEM
+    ALLVERSIONS            = LT_ALLVERSIONS
+    POPARTNER              = LT_POPARTNER
+    POCOMPONENTS           = LT_POCOMPONENTS
+    POCOMPONENTSX          = LT_POCOMPONENTSX
+    POSHIPPING             = LT_POSHIPPING
+    POSHIPPINGX            = LT_POSHIPPINGX
+    POSHIPPINGEXP          = LT_POSHIPPINGEXP.
+    
+    LOOP AT pr_return WHERE type = &#39;E&#39; OR type = &#39;A&#39;.
+    ENDLOOP.
+    IF sy-subrc = 0.
+      CLEAR: lv_message.
+      CALL FUNCTION &#39;BAPI_TRANSACTION_ROLLBACK&#39;.
+      LOOP AT pr_return INTO l_return WHERE type = &#39;E&#39; .
+        CONCATENATE lv_message l_return-message &#39;;&#39;
+            INTO lv_message.
+      ENDLOOP.
+      CONCATENATE gt_data-bednr lv_message INTO gt_out-text.
+      APPEND gt_out.
+      CLEAR gt_out.
+    ELSE.
+      CALL FUNCTION &#39;BAPI_TRANSACTION_COMMIT&#39;
+        EXPORTING
+          wait = &#39;X&#39;.
+      CONCATENATE pr_no &#39;创建成功&#39; INTO gt_out-text.
+      APPEND gt_out.
+      CLEAR gt_out.
+    ENDIF.
+    FREE pr_item.
+    FREE pr_account.
+    FREE pr_item_id.
+    FREE pr_return.
+  ENDLOOP.
+</code></pre></div><h3 id="删除po">删除PO</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">FUNCTION zchange_po.
+*&#34;----------------------------------------------------------------------
+*&#34;*&#34;Local interface:
+*&#34;  IMPORTING
+*&#34;     VALUE(CALLNO) TYPE  ZCALLNO
+*&#34;     VALUE(PO_NUMBER) LIKE  BAPIMEPOHEADER-PO_NUMBER
+*&#34;  EXPORTING
+*&#34;     VALUE(FLAG) LIKE  BAPIRET2-TYPE
+*&#34;     VALUE(MESSAGE) LIKE  BAPIRET2-MESSAGE
+*&#34;  TABLES
+*&#34;      ZPOITEM STRUCTURE  ZPOITEM01
+*&#34;----------------------------------------------------------------------
+DATA: ls_zpoitem TYPE zpoitem01,
+      lv_message TYPE bapiret2-message,
+      lv_datano  TYPE zdatano.
+DATA: gv_po_number LIKE  bapimepoheader-po_number,              
+      gt_return    LIKE  TABLE OF bapiret2,                
+      gs_return    LIKE  LINE  OF gt_return,
+      gt_poitem    LIKE  TABLE OF bapimepoitem,   
+      gs_poitem    LIKE  LINE  OF gt_poitem,
+      gt_poitemx   LIKE  TABLE OF bapimepoitemx,
+      gs_poitemx   LIKE  LINE  OF gt_poitemx.
+CLEAR:gv_po_number,gs_poitemx,gs_poitem,gs_return,gt_poitemx,gt_poitem,gt_return.
+&#34;准备BAPI数据&#34;
+gv_po_number = po_number.
+LOOP AT zpoitem INTO ls_zpoitem.
+  gs_poitem-po_item    = ls_zpoitem-po_item.
+  gs_poitem-delete_ind = ls_zpoitem-delete_ind.
+  APPEND gs_poitem TO gt_poitem.
+  gs_poitemx-po_item    = ls_zpoitem-po_item.
+  gs_poitemx-po_itemx   = g_flag.
+  gs_poitemx-delete_ind = g_flag.
+  APPEND gs_poitemx TO gt_poitemx.
+  CLEAR:gs_poitemx,gs_poitem.
+ENDLOOP.
+&#34;执行BAPI BAPI_PO_CHANGE&#34;
+CALL FUNCTION &#39;BAPI_PO_CHANGE&#39;
+  EXPORTING
+    purchaseorder  = gv_po_number
+  TABLES
+    return         = gt_return
+    poitem         = gt_poitem
+    poitemx        = gt_poitemx.
+&#34;判断执行结果，并记录错误信息&#34;
+READ TABLE gt_return INTO gs_return WITH KEY type = &#39;E&#39;.
+IF sy-subrc NE 0.
+  flag = &#39;S&#39;.
+  CALL FUNCTION &#39;BAPI_TRANSACTION_COMMIT&#39;
+    EXPORTING
+      wait = &#39;X&#39;.
+  CONCATENATE &#39;PO：&#39;gv_po_number &#39;处理完成&#39; INTO message .
+ELSE.
+  CALL FUNCTION &#39;BAPI_TRANSACTION_ROLLBACK&#39;.
+  LOOP AT gt_return INTO gs_return WHERE type CA &#39;AEX&#39;.
+    MESSAGE ID     gs_return-id
+            TYPE   gs_return-type
+            NUMBER gs_return-number
+            WITH   gs_return-message_v1 gs_return-message_v2
+                   gs_return-message_v3 gs_return-message_v4
+            INTO lv_message.
+    CONCATENATE message lv_message INTO message SEPARATED BY &#39;｜&#39;.
+  ENDLOOP.
+  SHIFT message LEFT DELETING LEADING  &#39;｜&#39;.
+  flag = &#39;E&#39;.
+ENDIF.
+ENDFUNCTION.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1436</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_PurchaseRequest_BAPI/" class="prev" rel="prev" title="使用BAPI创建Purchase Request"><i class="iconfont icon-dajiantou"></i>&nbsp;使用BAPI创建Purchase Request</a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/SAPDBCO_Connect/" class="next" rel="next" title="SAP DBCO连接测试">SAP DBCO连接测试&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-16 00:00:00 \u002b0000 UTC',
+        title: '使用BAPI创建Purchase Order',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

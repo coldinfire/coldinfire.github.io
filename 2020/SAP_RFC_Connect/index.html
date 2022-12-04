@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_BAPI_ALL_LIST/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/FI_DocumentPost/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/SAP_RFC_Connect/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 配置RFC连接(SM59)  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 配置RFC连接(SM59)  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 配置RFC连接(SM59) "/>
+<meta name="twitter:description" content="原文链接 SAP配置RFC连接-SM59 SAP配置的RFC Connection都保存在表RFCDES中 Step1：Procedure to steup an RFC connection"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 配置RFC连接(SM59) ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/SAP_RFC_Connect\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "saputils",
+  "wordcount":  827 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/SAP_RFC_Connect\/",
+  "datePublished": "2020-07-26T00:00:00\x2b00:00",
+  "dateModified": "2020-07-26T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 配置RFC连接(SM59) </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-07-26 >26 July 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p><a href="https://www.guru99.com/how-to-configure-and-test-rfc.html">原文链接</a></p>
+<h2 id="sap配置rfc连接-sm59">SAP配置RFC连接-SM59</h2>
+<p>SAP配置的RFC Connection都保存在表<strong>RFCDES</strong>中</p>
+<h3 id="step1procedure-to-steup-an-rfc-connection">Step1：Procedure to steup an RFC connection</h3>
+<p>使用事物码<strong>SM59</strong>配置 RFC connection。在SM59中，可以浏览已经创建的RFC连接。</p>
+<p><img src="/images/SAPUtils/SAP_RFC_CONNECTION_1.png" alt="SM59"></p>
+<p><strong>创建新的RFC Destination</strong></p>
+<p><img src="/images/SAPUtils/SAP_RFC_CONNECTION_2.png" alt="SM59"></p>
+<ul>
+<li><strong>RFC Destination</strong> – Name of Destination (could be Target System ID or anything relevant)</li>
+<li><strong>Connection Type</strong> – here we choose one of the types (as explained previously) of RFC connections as per requirements.</li>
+<li><strong>Description</strong> – This is a short informative description, probably to explain the purpose of connection.</li>
+</ul>
+<p><strong>Technical Settings Tab</strong></p>
+<p><img src="/images/SAPUtils/SAP_RFC_CONNECTION_3.png" alt="SM59"></p>
+<ul>
+<li><strong>Target Host</strong>– Here we provide the complete hostname or IP address of the target system.</li>
+<li><strong>System Number –</strong> This is the system number of the target SAP system.</li>
+<li>Click Save</li>
+</ul>
+<p><strong>Logon and Security  Tab</strong></p>
+<p><img src="/images/SAPUtils/SAP_RFC_CONNECTION_4.png" alt="SM59"></p>
+<ul>
+<li>
+<p><strong>Language</strong> – As per the target system's language</p>
+</li>
+<li>
+<p><strong>Client</strong> – In SAP we never logon to a system, there has to be a particular client always, therefore we need to specify client number here for correct execution.</p>
+</li>
+<li>
+<p><strong>User ID and Password</strong> – preferably not to be your own login ID, there should be some generic ID so that the connection should not be affected by constantly changing end-user IDs or passwords. <em>Mostly, a user of type &lsquo;System&rsquo; or &lsquo;Communication&rsquo; is used here.</em> Please note that this is the User ID for the target system and not the source system where we are creating this connection.</p>
+</li>
+</ul>
+<p><strong>Note</strong>: By default, a connection is defined as aRFC. To define a connection as tRFC or qRFC go to Menu Bar -&gt; Destination aRFC options / tRFC options ; provide inputs as per requirements. To define qRFC, use the special options tab.</p>
+<h3 id="step-2-trusted-rfc-connection">Step 2: Trusted RFC connection</h3>
+<p>There is an option to make the RFC connection as <strong>&lsquo;Trusted&rsquo;.</strong> Once selected, the calling (trusted) system doesn't require a password to connect with target (trusting) system.</p>
+<p><img src="/images/SAPUtils/SAP_RFC_CONNECTION_5.png" alt="SM59"></p>
+<p>Following are the advantages for using trusted channels:</p>
+<ul>
+<li>Cross-system Single-Sign-On facility</li>
+<li>Password does not need to be sent across the network</li>
+<li>Timeout mechanism for the logon data prevents misuse.</li>
+<li>Prevents the mishandling of logon data because of the time-out mechanism.</li>
+<li>User-specific logon details of the calling/trusted system is checked.</li>
+</ul>
+<p>The RFC users must have the required authorizations in the trusting system (authorization object <strong>S_RFCACL</strong>).Trusted connections are mostly used to connect SAP Solution Manager Systems with other SAP systems (satellites)</p>
+<h3 id="step-3-testing-the-rfc-connection">Step 3: Testing the RFC Connection</h3>
+<p>After the RFCs are created (or sometimes in the case of already existing RFCs) we need to test, whether the connection is established successfully or not.</p>
+<p><img src="/images/SAPUtils/SAP_RFC_CONNECTION_6.png" alt="SM59"></p>
+<p>As shown above we go to SM59 to choose the RFC connection to be tested and then we expand drop down menu - &ldquo;<strong>Utilities-&gt;Test-&gt;…</strong>&quot;. We have three options:</p>
+<p><strong>Connection test -&gt;</strong> This attempts to make a connection with the remote system and hence validates IP address / Hostname and other connection details. If both systems are not able to connect, it throws an error. On success, it displays the table with response times. This test is just to check if the calling system can reach the remote system.</p>
+<p><strong>Authorization Test -&gt;</strong> It is used to validate the User ID and Password (provided under &lsquo;logon and security&rsquo; tab for the target system) and also the authorizations that are provided. If a test is successful, then the same screen will appear as shown above for the connection test.</p>
+<p><strong>Unicode Test -&gt;</strong> It is to check if the Target system is a Unicode or not.</p>
+<p><strong>Remote Logon –&gt;</strong>This is also a kind of connection test, in which a new session of the target system is opened, and we need to specify a login ID and Password (if not already mentioned under &lsquo;Logon and Security&rsquo; tab). If the user is of type &lsquo;Dialog&rsquo; then a dialog session is created. To justify the successful connection test, output will be the response times for the communication packets, else error message will appear.</p>
+<h3 id="step-4-what-went-wrong">Step 4: What went wrong?</h3>
+<p>If somehow the RFC connection is not established successfully, we can check the logs (to analyze the issue) at OS level in the &lsquo;WORK&rsquo; director. There we can find the log files with the naming convention as &ldquo;<code>dev_rfc&lt;sequence no.&gt;</code>&rdquo; and the error description can be read from such files.</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>827</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/saputils/">
+                    #saputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_BAPI_ALL_LIST/" class="prev" rel="prev" title=" MM BAPI List "><i class="iconfont icon-dajiantou"></i>&nbsp; MM BAPI List </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/FI_DocumentPost/" class="next" rel="next" title=" FI 会计凭证过账 "> FI 会计凭证过账 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-07-26 00:00:00 \x2b0000 UTC',
+        title: ' SAP 配置RFC连接(SM59) ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

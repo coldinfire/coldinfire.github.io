@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_Servlet_Request/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_Servlet_DownloadFile/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_Servlet_Respose/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Servlet Response对象 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Servlet Response对象 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Servlet Response对象"/>
+<meta name="twitter:description" content="Servlet Response 对象 ServletResponse 接口表示一个 Servlet 响应，在调用 Servlet 的Service( )方法前，Servlet 容器会先创建一个 ServletResponse 对象，并把它作为返回参数传给 Service( )方法。 ServletResponse 对"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Servlet Response对象",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_Servlet_Respose\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Servlet",
+  "wordcount":  1095 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_Servlet_Respose\/",
+  "datePublished": "2017-11-07T00:00:00\u002b00:00",
+  "dateModified": "2017-11-07T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Servlet Response对象</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-11-07 >7 November 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="servlet-response-对象">Servlet Response 对象</h3>
+<p>ServletResponse 接口表示一个 Servlet 响应，在调用 Servlet 的Service( )方法前，Servlet 容器会先创建一个 ServletResponse 对象，并把它作为返回参数传给 Service( )方法。</p>
+<p>ServletResponse 对象封装了向浏览器发送响应的复杂过程。</p>
+<h4 id="httpservletresponse-接口常用方法">HttpServletResponse 接口常用方法</h4>
+<p><img src="/images/Tomcat/HTTPResponse.png" alt="Response"></p>
+<p>由于 HTTP 请求消息分为状态行，响应消息头，响应消息体三部分；因此，在 HttpServletResponse 接口中定义了向客户端发送响应状态码，响应消息头，响应消息体的方法。</p>
+<p>设置响应行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public int getStatus();</td>
+<td style="text-align:left">获取状态码</td>
+</tr>
+<tr>
+<td style="text-align:left">public void setStatus(int statuscode);</td>
+<td style="text-align:left">设置状态码</td>
+</tr>
+<tr>
+<td style="text-align:left">public void sendError(int statuscode) throws IOException;</td>
+<td style="text-align:left">设置错误状态返回的状态码</td>
+</tr>
+<tr>
+<td style="text-align:left">public void sendError(int statuscode, String msg) throws IOException;</td>
+<td style="text-align:left">设置错误状态返回的状态码及描述信息</td>
+</tr>
+</tbody>
+</table>
+<p>设置响应头</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public void setIntHeader(String name, int value);</td>
+<td style="text-align:left">设置整形单值的响应头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public void addIntHeader(String name, int value);</td>
+<td style="text-align:left">设置整形多值的响应头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public void setDateHeader(String name, long date);</td>
+<td style="text-align:left">设置毫秒类型单值的响应头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public void addDateHeader(String name, long date);</td>
+<td style="text-align:left">设置毫秒类型多值的响应头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public void setHeader(String name, String value);</td>
+<td style="text-align:left">设置字符串类型单值的响应头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public void addHeader(String name, String value);</td>
+<td style="text-align:left">设置字符串类型多值的响应头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public boolean containsHeader(String name);</td>
+<td style="text-align:left">返回一个布尔值，判断响应的头部是否被设置</td>
+</tr>
+</tbody>
+</table>
+<p>设置响应体</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public void setContentLength(int len);</td>
+<td style="text-align:left">设置响应体的长度</td>
+</tr>
+<tr>
+<td style="text-align:left">public void setContentType(String type);</td>
+<td style="text-align:left">设置响应的编码格式，并通知浏览器使用该方式解码</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getCharacterEncoding();</td>
+<td style="text-align:left">设置响应体中MIME的编码方式</td>
+</tr>
+<tr>
+<td style="text-align:left">public ServletOutputStream getOutputStream() ;</td>
+<td style="text-align:left">返回使用二进制流包装的响应</td>
+</tr>
+<tr>
+<td style="text-align:left">public PrintWriter getWriter();</td>
+<td style="text-align:left">返回使用字符流包装的文本给客户端</td>
+</tr>
+<tr>
+<td style="text-align:left">public boolean isCommitted();</td>
+<td style="text-align:left">判断响应是否已被提交或完成</td>
+</tr>
+</tbody>
+</table>
+<p>其他设置</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public void flushBuffer();</td>
+<td style="text-align:left">强制刷新缓冲区的内容到客户端，之后如果调用forward方法将报异常</td>
+</tr>
+<tr>
+<td>public void resetBuffer();</td>
+<td style="text-align:left">只清除缓冲</td>
+</tr>
+<tr>
+<td>public void reset();</td>
+<td style="text-align:left">清除缓冲、状态码、头信息，设置页面不缓存</td>
+</tr>
+<tr>
+<td>public int getBufferSize();</td>
+<td style="text-align:left">返回响应使用的缓冲区使用的实际大小。</td>
+</tr>
+<tr>
+<td>public void setBufferSize(int size);</td>
+<td style="text-align:left">设置缓冲区的大小</td>
+</tr>
+<tr>
+<td>public void addCookie(Cookie cookie);</td>
+<td style="text-align:left">添加Cookie对象</td>
+</tr>
+<tr>
+<td>public String encodeURL(String url);</td>
+<td style="text-align:left">通过指定的编码对URL进项编码，并携带sessionid，本应用</td>
+</tr>
+<tr>
+<td>public String encodeRedirectURL(String url);</td>
+<td style="text-align:left">通过指定的编码对URL进项编码，并携带sessionid，跨应用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="重定向">重定向</h4>
+<p>重定向方法：<code>public void sendRedirect(String location);</code></p>
+<p>重定向特点：</p>
+<ul>
+<li>地址栏发生变化</li>
+<li>重定向可以访问其他站点(服务器)的资源</li>
+<li>重定向会发生两次 HTTP 请求</li>
+</ul>
+<p>路径写法：</p>
+<ul>
+<li>
+<p>相对路径：通过相对路径不可以确定唯一资源</p>
+<ul>
+<li>不以 <code>/</code> 开头，以<code>.</code>开头路径</li>
+<li>规则：找到当前资源和目标资源之间的相对位置关系</li>
+<li><code>./</code>：当前目录，可以省略不写</li>
+<li><code>../</code>：后退一级目录，上级目录</li>
+</ul>
+</li>
+<li>
+<p>绝对路径：通融过绝对路径可以确定唯一资源</p>
+<ul>
+<li>以<code>/</code> 开头的路径</li>
+<li>规则：判断定义的路径给谁使用？判断请求将来从哪里发出
+<ul>
+<li>给客户端浏览器使用：需要加虚拟目录(项目的访问路径)
+<ul>
+<li>建议虚拟目录动态获取：request.getContextPath()</li>
+</ul>
+</li>
+<li>给服务器使用：不需要加虚拟目录
+<ul>
+<li>转发路径</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="输出数据">输出数据</h4>
+<p>字符流</p>
+<ul>
+<li><code>PrintWriter pw = response.getWrite();</code></li>
+<li>乱码问题
+<ul>
+<li>获取默认编码是 ISO-8859-1；设置流的默认编码；告知浏览器响应体使用的编码</li>
+<li>获取流之前设置编码：<code>response.setContentType(&quot;text/html;charset=utf-8&quot;);</code></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1095</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Servlet/">
+                    #Servlet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Servlet_Request/" class="prev" rel="prev" title="Servlet Request对象"><i class="iconfont icon-dajiantou"></i>&nbsp;Servlet Request对象</a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Servlet_DownloadFile/" class="next" rel="next" title="Servlet 下载文件">Servlet 下载文件&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-11-07 00:00:00 \u002b0000 UTC',
+        title: 'Servlet Response对象',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

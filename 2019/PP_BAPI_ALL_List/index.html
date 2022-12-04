@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/FI_BAPI_DocumentPost/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/PP_BAPI_CreateRouting/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/PP_BAPI_ALL_List/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            PP 模块常用BAPI  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" PP 模块常用BAPI  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" PP 模块常用BAPI "/>
+<meta name="twitter:description" content="生产计划的 BAPI 列表 Routing：工艺路线 BAPI Description BAPI_ROUTING_CREATE 创建工艺路线BAPI - CA01 BAPI_ROUTING_EXISTENCE_CHECK 检查工艺路线是否存在 Reference operation set：参考操作集 BAPI Description BAPI_REFSETOFOPERATIONS_CREATE 创建参考参考工序集 BAPI_REFSETOFOPR_EXISTENCE_CHK"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " PP 模块常用BAPI ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/PP_BAPI_ALL_List\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI",
+  "wordcount":  864 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/PP_BAPI_ALL_List\/",
+  "datePublished": "2019-12-07T00:00:00\x2b00:00",
+  "dateModified": "2019-12-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> PP 模块常用BAPI </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-12-07 >7 December 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="生产计划的-bapi-列表">生产计划的 BAPI 列表</h3>
+<h4 id="routing工艺路线">Routing：工艺路线</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_ROUTING_CREATE</td>
+<td align="left">创建工艺路线BAPI - CA01</td>
+</tr>
+<tr>
+<td align="left">BAPI_ROUTING_EXISTENCE_CHECK</td>
+<td align="left">检查工艺路线是否存在</td>
+</tr>
+</tbody>
+</table>
+<h4 id="reference-operation-set参考操作集">Reference operation set：参考操作集</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_REFSETOFOPERATIONS_CREATE</td>
+<td align="left">创建参考参考工序集</td>
+</tr>
+<tr>
+<td align="left">BAPI_REFSETOFOPR_EXISTENCE_CHK</td>
+<td align="left">检查参考参考工序集</td>
+</tr>
+</tbody>
+</table>
+<h4 id="planned-order计划订单">Planned order：计划订单</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_PLANNEDORDER_CHANGE</td>
+<td align="left">更改计划订单 - MD04</td>
+</tr>
+<tr>
+<td align="left">BAPI_PLANNEDORDER_CREATE</td>
+<td align="left">创建计划订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PLANNEDORDER_DELETE</td>
+<td align="left">删除计划订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PLANNEDORDER_EXIST_CHECK</td>
+<td align="left">检查计划订单是否存在</td>
+</tr>
+<tr>
+<td align="left">BAPI_PLANNEDORDER_GET_DETAIL</td>
+<td align="left">获取计划订单详细信息(计划订单）</td>
+</tr>
+<tr>
+<td align="left">BAPI_PLANNEDORDER_GET_DET_LIST</td>
+<td align="left">获得计划订单信息</td>
+</tr>
+</tbody>
+</table>
+<h4 id="planned-independent-requirement计划独立需求">Planned Independent Requirement：计划独立需求</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_REQUIREMENTS_CHANGE</td>
+<td align="left">更改计划独立需求 - MD61</td>
+</tr>
+<tr>
+<td align="left">BAPI_REQUIREMENTS_CREATE</td>
+<td align="left">创建计划独立需求</td>
+</tr>
+<tr>
+<td align="left">BAPI_REQUIREMENTS_GETDETAIL</td>
+<td align="left">显示计划独立需求</td>
+</tr>
+</tbody>
+</table>
+<h4 id="production-order生产订单">Production order：生产订单</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_PRODORD_WM_MAT_STAGING</td>
+<td align="left">WM材料分期</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_SETUSERSTATUS</td>
+<td align="left">设置用户状态</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_SET_DEL_INDICATOR</td>
+<td align="left">设置删除标识</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_SET_DELETION_FLAG</td>
+<td align="left">设置删除标识</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_SCHEDULE</td>
+<td align="left">进行调整</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_REVOKEUSERSTATUS</td>
+<td align="left">取消用户状态</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_RELEASE</td>
+<td align="left">发布</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_GET_LIST</td>
+<td align="left">列表抬头订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_GET_DETAIL</td>
+<td align="left">抬头订单明细</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_EXIST_CHECK</td>
+<td align="left">确认检查性</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_CREATE</td>
+<td align="left">创建生产订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_CREATE_FROM_REF</td>
+<td align="left">创建根据模板</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_CREATE_FROM_PLORD</td>
+<td align="left">创建带有计划订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_CREATE_CAP_REQ</td>
+<td align="left">产生能力需求</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_COSTING</td>
+<td align="left">创建成本估计</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_COMPLETE_TECH</td>
+<td align="left">Complete &amp; Tech 设置</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_CLOSE</td>
+<td align="left">关闭订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_CHECK_MAT_AVAIL</td>
+<td align="left">检查物料可用性</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORD_CHANGE</td>
+<td align="left">更改生产订单</td>
+</tr>
+</tbody>
+</table>
+<h4 id="production-order-confirmation生产订单确认">Production order confirmation：生产订单确认</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_PRODORDCONF_GET_TT_PROP</td>
+<td align="left">确认计工单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_GET_TE_PROP</td>
+<td align="left">确认计工单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_GETLIST</td>
+<td align="left">生产订单确认</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_GETDETAIL</td>
+<td align="left">生产订单确认详细信息</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_GET_HDR_PROP</td>
+<td align="left">确认计划订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_EXIST_CHK</td>
+<td align="left">检查工单是否存在</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_CREATE_TT</td>
+<td align="left">确认计划工单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_CREATE_TE</td>
+<td align="left">确认计划工单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_PDC_UPLOAD_TT</td>
+<td align="left">PP 确认计划工单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_PDC_UPLOAD_TE</td>
+<td align="left">PP 确认计划单</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_CREATE_HDR</td>
+<td align="left">输入订单确认</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_CREATE_ACT</td>
+<td align="left">输入订单激活确认</td>
+</tr>
+<tr>
+<td align="left">BAPI_PRODORDCONF_CANCEL</td>
+<td align="left">取消生产订单</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bdc-download--upload-for-production-order下载和上传的bdc的生产订单">BDC Download &amp; Upload for production order：下载和上传的BDC的生产订单</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_RCVPRORDCF_RECEIVEPRODORD</td>
+<td align="left">PP-PDC: 下载生产订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_RCVPRORDCF_RECEIVEWORKC</td>
+<td align="left">PP-PDC: 下载工作中心</td>
+</tr>
+<tr>
+<td align="left">BAPI_RCVPRODCF_REQUEST_CONF</td>
+<td align="left">PP-PDC: 上传请求</td>
+</tr>
+</tbody>
+</table>
+<h4 id="kanban看板">KANBAN：看板</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_KANBAN_CHANGE</td>
+<td align="left">更改KANBAN数据</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBAN_CHANGESTATUS</td>
+<td align="left">更改KANBAN状态</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBAN_CHANGESTATUS1</td>
+<td align="left">更改KANBAN状态</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBAN_GETLIST</td>
+<td align="left">匹配选择标准KANBAN的测定</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBAN_GETLIST_ALL</td>
+<td align="left">匹配选择标准KANBAN的测定</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBAN_GETLISTFORSUPPLIE1</td>
+<td align="left">为供应商提供KANBAN数据</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBAN_GETLISTFORSUPPLIER</td>
+<td align="left">为供应商提供KANBAN数据</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBAN_SETINPROCESS</td>
+<td align="left">为供应商提供KANBAN数据</td>
+</tr>
+</tbody>
+</table>
+<h4 id="kanban-control-cycle看板">KANBAN CONTROL CYCLE：看板</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_KANBANCC_ADDEVENTDRKANBAN</td>
+<td align="left">为控制周期创建事件驱动的看板</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBANCC_CHANGE</td>
+<td align="left">变更控制周期</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBANCC_CREATE</td>
+<td align="left">创建控制周期</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBANCC_DELETE</td>
+<td align="left">删除控制周期</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBANCC_EXISTCHECK</td>
+<td align="left">检查控制循环的存在</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBANCC_GETLIST</td>
+<td align="left">使用选择标准确定看板控制周期</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBANCC_GETLIST_ALL</td>
+<td align="left">使用选择标准确定看板控制周期</td>
+</tr>
+<tr>
+<td align="left">BAPI_KANBANCC_WITHDRAWQUANTITY</td>
+<td align="left">看板控制周期的数量信号</td>
+</tr>
+</tbody>
+</table>
+<h4 id="rem-confirmationrem-确认">REM Confirmation：REM 确认</h4>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_REPMANCONF_CANCEL</td>
+<td align="left">处理的重复制造取消</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF1_CANCEL</td>
+<td align="left">处理的重复制造取消</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF_CREATE_MTO</td>
+<td align="left">销售订单执行重复制造情况</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF1_CREATE_MTO</td>
+<td align="left">销售订单执行重复制造情况</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF_CREATE_PLOT</td>
+<td align="left">执行生产成本</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF1_CREATE_MTP</td>
+<td align="left">在很多情况下，执行生产成本</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF_CREATE_MTS</td>
+<td align="left">在很多情况下，执行生产成本</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF1_CREATE_MTS</td>
+<td align="left">在很多情况下，执行生产成本</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF_EXIST_CHK</td>
+<td align="left">检查对象存在</td>
+</tr>
+<tr>
+<td align="left">BAPI_REPMANCONF1_EXIST_CHK</td>
+<td align="left">检查对象存在</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>864</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/FI_BAPI_DocumentPost/" class="prev" rel="prev" title=" BAPI:BAPI_ACC_DOCUMENT_POST 创建固定资产凭证 "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI:BAPI_ACC_DOCUMENT_POST 创建固定资产凭证 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/PP_BAPI_CreateRouting/" class="next" rel="next" title=" BAPI: BAPI_ROUTING_CREATE "> BAPI: BAPI_ROUTING_CREATE &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-12-07 00:00:00 \x2b0000 UTC',
+        title: ' PP 模块常用BAPI ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

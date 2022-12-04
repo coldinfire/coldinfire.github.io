@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ExtJS_Component/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_AmountToUpcase/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_GridALV_FieldcatCreate/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Grid ALV:Fieldcat 自动填充工具  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Grid ALV:Fieldcat 自动填充工具  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Grid ALV:Fieldcat 自动填充工具 "/>
+<meta name="twitter:description" content="TOP TYPE-POOLS slis. FORM frm_get_fields USING pt_data type any table CHANGING pt_fields TYPE ddfields. DATA: lr_tabdescr TYPE REF TO cl_abap_structdescr, lr_data TYPE REF TO data, lt_fields TYPE ddfields. CREATE DATA lr_data LIKE LINE OF pt_data. lr_tabdescr ?= cl_abap_structdescr=&gt;describe_by_data_ref( lr_data ). lt_fields = cl_salv_data_descr=&gt;read_structdescr( lr_tabdescr ). pt_fields = lt_fields. ENDFORM. Z_FALV_FIELD_CATALOG IMPORT：IT_ALV TYPE ANY TABLE. TABL"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Grid ALV:Fieldcat 自动填充工具 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_GridALV_FieldcatCreate\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  130 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_GridALV_FieldcatCreate\/",
+  "datePublished": "2021-06-07T00:00:00\x2b00:00",
+  "dateModified": "2021-06-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Grid ALV:Fieldcat 自动填充工具 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-06-07 >7 June 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="top">TOP</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPE-POOLS</span> slis.
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_fields</span> <span style="color:#66d9ef">USING</span> pt_data <span style="color:#66d9ef">type </span>any <span style="color:#66d9ef">table</span>
+                    <span style="color:#66d9ef">CHANGING</span> pt_fields <span style="color:#66d9ef">TYPE </span>ddfields.
+  <span style="color:#66d9ef">DATA</span>: lr_tabdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_structdescr,
+        lr_data <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+        lt_fields <span style="color:#66d9ef">TYPE </span>ddfields.
+  <span style="color:#66d9ef">CREATE DATA</span> lr_data <span style="color:#66d9ef">LIKE LINE OF</span> pt_data.
+  lr_tabdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data_ref</span>( lr_data ).
+  lt_fields <span style="color:#f92672">=</span> cl_salv_data_descr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">read_structdescr</span>( lr_tabdescr ).
+  pt_fields <span style="color:#f92672">=</span> lt_fields.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><h3 id="z_falv_field_catalog">Z_FALV_FIELD_CATALOG</h3>
+<p>IMPORT：IT_ALV TYPE ANY TABLE.</p>
+<p>TABLES：FIELD_CATALOG TYPE SLIS_T_FIELDCAT_ALV.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lt_ddfields <span style="color:#66d9ef">TYPE </span>ddfields,
+      ls_fields <span style="color:#66d9ef">TYPE </span>dfies.
+<span style="color:#66d9ef">DATA</span>: ls_fieldcat <span style="color:#66d9ef">TYPE </span>slis_fieldcat_alv,
+      lt_fieldcat <span style="color:#66d9ef">TYPE </span>slis_t_fieldcat_alv.
+
+<span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_get_fields</span> <span style="color:#66d9ef">USING</span> it_alv[] <span style="color:#66d9ef">CHANGING</span> lt_ddfields[].
+<span style="color:#66d9ef">LOOP AT </span>lt_ddfields <span style="color:#66d9ef">into</span> ls_fields.
+  <span style="color:#66d9ef">MOVE-CORRESPONDING</span> ls_fields <span style="color:#66d9ef">TO</span> ls_fieldcat.
+  <span style="color:#66d9ef">APPEND</span> ls_fieldcat <span style="color:#66d9ef">TO</span> lt_fieldcat.
+  <span style="color:#66d9ef">CLEAR</span> ls_fieldcat.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">APPEND LINES OF</span> lt_fieldcat <span style="color:#66d9ef">TO</span> field_catalog.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>130</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ExtJS_Component/" class="prev" rel="prev" title=" Ext.js 组件 "><i class="iconfont icon-dajiantou"></i>&nbsp; Ext.js 组件 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_AmountToUpcase/" class="next" rel="next" title=" ABAP 数字金额转为大写 "> ABAP 数字金额转为大写 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-06-07 00:00:00 \x2b0000 UTC',
+        title: ' Grid ALV:Fieldcat 自动填充工具 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

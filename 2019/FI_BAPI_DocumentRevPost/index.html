@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_BAPI_MIRO_Create/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/FI_BAPI_DocumentPost/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/FI_BAPI_DocumentRevPost/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证 "/>
+<meta name="twitter:description" content="反冲会计凭证：可以冲销自开发程序生成的凭证，必须传入交易码参数。 使用实例 DATA: L_BKPF TYPE TABLE OF bkpf WITH HEADER LINE. DATA: REVERSAL TYPE BAPIACREV. SELECT SINGLE * FROM BKPF INTO L_BKPF WHERE BUKRS = P_BUKRS AND BELNR = P_BELNR AND GJAHR = P_GJAHR. REVERSAL-OBJ_TYPE ="/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/FI_BAPI_DocumentRevPost\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI, FICO, DEMO",
+  "wordcount":  141 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/FI_BAPI_DocumentRevPost\/",
+  "datePublished": "2019-12-04T00:00:00\x2b00:00",
+  "dateModified": "2019-12-04T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-12-04 >4 December 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>反冲会计凭证：可以冲销自开发程序生成的凭证，必须传入交易码参数。</p>
+<h3 id="使用实例">使用实例</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: L_BKPF <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> bkpf <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: REVERSAL <span style="color:#66d9ef">TYPE </span>BAPIACREV.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> BKPF <span style="color:#66d9ef">INTO</span> L_BKPF
+ <span style="color:#66d9ef">WHERE</span> BUKRS <span style="color:#f92672">=</span> P_BUKRS
+   <span style="color:#f92672">AND</span> BELNR <span style="color:#f92672">=</span> P_BELNR
+   <span style="color:#f92672">AND</span> GJAHR <span style="color:#f92672">=</span> P_GJAHR.
+REVERSAL<span style="color:#f92672">-</span>OBJ_TYPE <span style="color:#f92672">=</span> L_BKPF<span style="color:#f92672">-</span>AWTYP.
+<span style="color:#66d9ef">CONCATENATE</span> IW_<span style="color:#f92672">-</span>BELNR IW_<span style="color:#f92672">-</span>BUKRS IW_<span style="color:#f92672">-</span>GJAHR <span style="color:#66d9ef">INTO</span> REVERSAL<span style="color:#f92672">-</span>OBJ_KEY_R.
+REVERSAL<span style="color:#f92672">-</span>OBJ_KEY <span style="color:#f92672">=</span> REVERSAL<span style="color:#f92672">-</span>OBJ_KEY_R.
+REVERSAL<span style="color:#f92672">-</span>OBJ_KEY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;$&#39;</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;OWN_LOGICAL_SYSTEM_GET&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    OWN_LOGICAL_SYSTEM <span style="color:#f92672">=</span> REVERSAL<span style="color:#f92672">-</span>OBJ_SYS
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    OWN_LOGICAL_SYSTEM_NOT_DEFINED <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+REVERSAL<span style="color:#f92672">-</span>REASON_REV <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.  <span style="color:#75715e">&#34;原因&#34;
+</span><span style="color:#75715e"></span>REVERSAL<span style="color:#f92672">-</span>PSTNG_DATE <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+<span style="color:#66d9ef">CLEAR</span>: <span style="color:#66d9ef">RETURN</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_ACC_DOCUMENT_REV_POST&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    REVERSAL       <span style="color:#f92672">=</span> REVERSAL
+    BUS_ACT        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RFBU&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    OBJ_TYPE       <span style="color:#f92672">=</span> OBJTYPE
+    OBJ_KEY        <span style="color:#f92672">=</span> OBJKEY
+    OBJ_SYS        <span style="color:#f92672">=</span> OBJSYS
+  <span style="color:#66d9ef">TABLES</span>
+    <span style="color:#66d9ef">RETURN</span>         <span style="color:#f92672">=</span> <span style="color:#66d9ef">RETURN</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>141</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/FICO/">
+                    #FICO</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/DEMO/">
+                    #DEMO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_BAPI_MIRO_Create/" class="prev" rel="prev" title=" BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证 "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/FI_BAPI_DocumentPost/" class="next" rel="next" title=" BAPI:BAPI_ACC_DOCUMENT_POST 创建固定资产凭证 "> BAPI:BAPI_ACC_DOCUMENT_POST 创建固定资产凭证 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-12-04 00:00:00 \x2b0000 UTC',
+        title: ' BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_EXCEL_CLASS/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Utils_Timestamp/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Smartfomrs_PDF/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Smartforms 打印成 PDF  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Smartforms 打印成 PDF  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Smartforms 打印成 PDF "/>
+<meta name="twitter:description" content="1.程序中使用 Smartform 模板 &#34;SMARTFORMS变量定义&#34; DATA: form_name TYPE tdsfname VALUE &#39;ZZ_TEST&#39;, &#34;Smartforms Name&#34; function_name type rs38l_fnam, &#34;Function Name&#34; control type ssfctrlop, &#34;Control structure&#34; option type ssfcompop, &#34;Smart Composer (transfer) options&#34; result type ssfcrescl. &#34;Return value at end of form printing&#34; &"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Smartforms 打印成 PDF ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartfomrs_PDF\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "smartforms",
+  "wordcount":  656 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartfomrs_PDF\/",
+  "datePublished": "2018-12-05T00:00:00\x2b00:00",
+  "dateModified": "2018-12-05T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Smartforms 打印成 PDF </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-12-05 >5 December 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="1程序中使用-smartform-模板">1.程序中使用 Smartform 模板</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;SMARTFORMS变量定义&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: form_name <span style="color:#66d9ef">TYPE </span>tdsfname <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;ZZ_TEST&#39;</span>, <span style="color:#75715e">&#34;Smartforms Name&#34;
+</span><span style="color:#75715e"></span>      function_name   <span style="color:#66d9ef">type </span>rs38l_fnam, <span style="color:#75715e">&#34;Function Name&#34;
+</span><span style="color:#75715e"></span>      control   <span style="color:#66d9ef">type </span>ssfctrlop,  <span style="color:#75715e">&#34;Control structure&#34;
+</span><span style="color:#75715e"></span>      option    <span style="color:#66d9ef">type </span>ssfcompop,  <span style="color:#75715e">&#34;Smart Composer (transfer) options&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">result    </span><span style="color:#66d9ef">type </span>ssfcrescl.  <span style="color:#75715e">&#34;Return value at end of form printing&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">&#34;获取SMARTFORMS经由SAP编译后的函数名&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SSF_FUNCTION_MODULE_NAME&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      FORMNAME           <span style="color:#f92672">=</span> form_name
+<span style="color:#75715e">*     VARIANT            = &#39; &#39;</span>
+<span style="color:#75715e">*     direct_call        = &#39; &#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      FM_NAME            <span style="color:#f92672">=</span> function_name
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      NO_FORM            <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      NO_FUNCTION_MODULE <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+     <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+             <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+     <span style="color:#66d9ef">EXIT</span>.
+  <span style="color:#66d9ef">ENDIF</span>.  
+ <span style="color:#75715e">&#34; Parameters when call smartforms &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">clear</span>: control.
+  control<span style="color:#f92672">-</span>no_open <span style="color:#f92672">=</span> abap_true.
+  control<span style="color:#f92672">-</span>no_close <span style="color:#f92672">=</span> abap_true.
+  control<span style="color:#f92672">-</span>langu <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu.
+  control<span style="color:#f92672">-</span>no_dialog <span style="color:#f92672">=</span> space.    <span style="color:#75715e">&#34;不显示对话框&#34;
+</span><span style="color:#75715e"></span>  control<span style="color:#f92672">-</span>preview <span style="color:#f92672">=</span> abap_false. <span style="color:#75715e">&#34;不预览&#34;
+</span><span style="color:#75715e"></span>  control<span style="color:#f92672">-</span>getotf <span style="color:#f92672">=</span> abap_true.   <span style="color:#75715e">&#34;取得OTF数据&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">clear</span>: option.
+  option<span style="color:#f92672">-</span>tddest <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.   <span style="color:#75715e">&#34;指定打印机&#34;
+</span><span style="color:#75715e"></span>  option<span style="color:#f92672">-</span>tdimmed <span style="color:#f92672">=</span> abap_true.  <span style="color:#75715e">&#34;直接打印&#34;
+</span><span style="color:#75715e"></span>  option<span style="color:#f92672">-</span>tdcopies <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.  <span style="color:#75715e">&#34;打印的次数&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34; Open pinting request &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SSF_OPEN&#39;</span>
+    <span style="color:#66d9ef">exporting</span>
+<span style="color:#75715e">*       ARCHIVE_PARAMETERS = ARCHIVE_PARAMETERS</span>
+      user_settings      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+<span style="color:#75715e">*       MAIL_SENDER        = MAIL_SENDER</span>
+<span style="color:#75715e">*       MAIL_RECIPIENT     = MAIL_RECIPIENT</span>
+<span style="color:#75715e">*       MAIL_APPL_OBJ      = MAIL_APPL_OBJ</span>
+      output_options     <span style="color:#f92672">=</span> option
+      control_parameters <span style="color:#f92672">=</span> control
+<span style="color:#75715e">*   IMPORTING</span>
+<span style="color:#75715e">*       JOB_OUTPUT_OPTIONS = JOB_OUTPUT_OPTIONS</span>
+    <span style="color:#66d9ef">exceptions</span>
+      formatting_error   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      internal_error     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      send_error         <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      user_canceled      <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">ne</span> <span style="color:#ae81ff">0</span>.
+     <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+             <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+     <span style="color:#66d9ef">EXIT</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34;Call smartforms to print&#34;  
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> function_name
+  <span style="color:#66d9ef">EXPORTING</span>
+    CONTROL_PARAMETERS <span style="color:#f92672">=</span> control
+    OUTPUT_OPTIONS     <span style="color:#f92672">=</span> option
+  <span style="color:#66d9ef">IMPORTING</span>
+    JOB_OUTPUT_OPTIONS <span style="color:#f92672">=</span> result <span style="color:#75715e">&#34;输出参数&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">EXCEPTIONS</span>
+    FORMATTING_ERROR   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    INTERNAL_ERROR     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    SEND_ERROR         <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    USER_CANCELED      <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+ <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span>.
+   <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">id</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">type </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">number</span> sy<span style="color:#f92672">-</span>msgno
+         <span style="color:#66d9ef">with</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4 . 
+ <span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="2打印成-pdf">2.打印成 PDF</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:
+  bin_filesize <span style="color:#66d9ef">TYPE </span>i, 
+  <span style="color:#75715e">&#34; Internal table to hold the OTF data &#34;
+</span><span style="color:#75715e"></span>  t_otf <span style="color:#66d9ef">TYPE </span>itcoo OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+  <span style="color:#75715e">&#34; Internal table to hold OTF data recd from the SMARTFORM &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">result </span><span style="color:#66d9ef">TYPE </span>ssfcrescl,
+  <span style="color:#75715e">&#34; Internal table to hold the data from the FM CONVERT_OTF &#34;
+</span><span style="color:#75715e"></span>  t_pdf_tab <span style="color:#66d9ef">LIKE </span>tline OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  
+t_otf[] <span style="color:#f92672">=</span> result<span style="color:#f92672">-</span>otfdata[].
+<span style="color:#75715e">* FM -&gt; CONVERT_OTF 将 OTF 转为 PDF</span>
+ <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERT_OTF&#39;</span>
+   <span style="color:#66d9ef">EXPORTING</span>
+     <span style="color:#66d9ef">format</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PDF&#39;</span>
+     max_linewidth <span style="color:#f92672">=</span> <span style="color:#ae81ff">132</span>
+   <span style="color:#66d9ef">IMPORTING</span>
+     bin_filesize <span style="color:#f92672">=</span> bin_filesize
+   <span style="color:#66d9ef">TABLES</span>
+     otf <span style="color:#f92672">=</span> t_otf
+     <span style="color:#66d9ef">lines</span> <span style="color:#f92672">=</span> t_pdf_tab
+   <span style="color:#66d9ef">EXCEPTIONS</span>
+     err_max_linewidth <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+     err_format <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+     err_conv_not_possible <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+     err_bad_otf <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+     <span style="color:#66d9ef">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+  <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* 显示保存对话框</span>
+<span style="color:#66d9ef">CALL METHOD</span> cl_gui_frontend_services<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>file_save_dialog
+  <span style="color:#66d9ef">CHANGING</span>
+    filename <span style="color:#f92672">=</span> w_file_name
+    path <span style="color:#f92672">=</span> w_file_path
+    fullpath <span style="color:#f92672">=</span> w_full_path
+<span style="color:#75715e">* USER_ACTION =</span>
+<span style="color:#75715e">* FILE_ENCODING =</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    cntl_error <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    error_no_gui <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    not_supported_by_gui <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+  <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* FM -&gt; GUI_DOWNLOAD 下载PDF </span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;GUI_DOWNLOAD&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    bin_filesize <span style="color:#f92672">=</span> w_bin_filesize
+    filename <span style="color:#f92672">=</span> w_full_path
+    filetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BIN&#39;</span>
+  <span style="color:#66d9ef">TABLES</span>
+    data_tab <span style="color:#f92672">=</span> t_pdf_tab
+<span style="color:#75715e">&#34;Close print request&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SSF_CLOSE&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    JOB_OUTPUT_INFO  <span style="color:#f92672">=</span> ls_ssfcrescl
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    FORMATTING_ERROR <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    INTERNAL_ERROR   <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    SEND_ERROR       <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">ne</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#75715e">&#34;Error
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>656</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/smartforms/">
+                    #smartforms</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_EXCEL_CLASS/" class="prev" rel="prev" title=" SAP Excel 操作实例(CLASS) "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Excel 操作实例(CLASS) </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_Timestamp/" class="next" rel="next" title=" 时间戳操作 "> 时间戳操作 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-12-05 00:00:00 \x2b0000 UTC',
+        title: ' Smartforms 打印成 PDF ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

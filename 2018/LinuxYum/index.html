@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/LinuxLn/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/LinuxShell/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/LinuxYum/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Linux软件包管理  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Linux软件包管理  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Linux软件包管理 "/>
+<meta name="twitter:description" content="安装包分类 源码包 源码包：即程序软件的源代码（将软件的源码以 tar 打包后再压缩的资源包）。 RPM 最大的特点就是需要安装的软件已经编译过，并已经打包成 RPM"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Linux软件包管理 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/LinuxYum\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "linux",
+  "wordcount":  2276 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/LinuxYum\/",
+  "datePublished": "2018-01-23T00:00:00\u002b00:00",
+  "dateModified": "2018-01-23T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Linux软件包管理 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-01-23 >23 January 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/Linux/"> Linux </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="安装包分类">安装包分类</h3>
+<h4 id="源码包">源码包</h4>
+<p>源码包：即程序软件的源代码（将软件的源码以 tar 打包后再压缩的资源包）。</p>
+<p>RPM 最大的特点就是需要安装的软件已经编译过，并已经打包成 RPM 机制的安装包，通过里头默认的数据库记录这个软件安装时需要的依赖软件。当安装在你的 Linux 主机时，RPM 会先依照软件里头的数据查询 Linux 主机的依赖属性软件是否满足，若满足则予以安装，若不满足则不予安装。</p>
+<p><strong>RPM包命名规则</strong>
+以<code>gcc-4.8.5-36.el7_6.2.x86_64</code>为例：</p>
+<ul>
+<li>gcc：软件包名</li>
+<li>4.8.5：软件版本</li>
+<li>36：软件发布的次数</li>
+<li>e17_6.2：适合的Linux平台</li>
+<li>x86_64：适合的硬件平台</li>
+</ul>
+<p><strong>安装默认路径：</strong></p>
+<ul>
+<li>/etc  配置文件放置目录</li>
+<li>/usr/bin  一些可执行文件</li>
+<li>/usr/lib  一些程序使用的动态链接库</li>
+<li>/usr/share/doc  一些基本的软件使用手册与说明文件</li>
+<li>/usr/share/man  一些 man page 文件</li>
+</ul>
+<p><strong>查看安装软件路径</strong></p>
+<ul>
+<li><code>rpm -qa|grep [pack_name]</code></li>
+<li><code>rpm -ql [pack_name]</code></li>
+</ul>
+<p><strong>RPM的安装依赖性太强，使用yum在线管理来解决安装依赖问题</strong></p>
+<h4 id="二进制包">二进制包</h4>
+<p><strong>二进制包</strong>：如 Red Hat 发行版的.rpm 包，Debian 发行版的.deb 包。</p>
+<h3 id="源码安装过程">源码安装过程</h3>
+<ul>
+<li>wget [下载路径]：下载对应的文件</li>
+<li>解包：tar xvf file.tgz_将下载的压缩文件进行解压</li>
+<li>./configure：执行configure脚本添加编译参数：
+<ul>
+<li>./configure &ndash;prefix=/fire_path指定安装路径</li>
+</ul>
+</li>
+<li>编译：make</li>
+<li>安装：make install</li>
+</ul>
+<h3 id="yum安装">Yum安装</h3>
+<p>yum 管理是从指定的服务器（网络 yum 源）下载。YUM 的存在很好的解决了 RPM 的属性依赖问题。YUM 通过依赖 rpm 软件包管理器，实现了 rpm 软件包管理器在功能上的扩展，因此 YUM 是不能脱离 rpm 而独立运行的。yum 提供了查找、安装、删除某一个、一组甚至全部软件包的命令，方便快捷。</p>
+<h4 id="yum-的特点">YUM 的特点</h4>
+<ul>
+<li>
+<p>可以同时配置多个资源库 (Repository)</p>
+</li>
+<li>
+<p>简洁的配置文件 (/etc/yum.conf)</p>
+</li>
+<li>
+<p>自动解决增加或删除 rpm 包时遇到的依赖性问题</p>
+</li>
+<li>
+<p>使用方便</p>
+</li>
+<li>
+<p>保持与 RPM 数据库的一致性</p>
+</li>
+</ul>
+<h4 id="yum-原理说明">YUM 原理说明 </h4>
+<p>Server 端先对程序包进行分类后存储到不同 repository 容器中；再通过收集到大量的 rpm 的数据库文件中程序包之间的依赖关系数据，生成对应的依赖关系和所需文件在本地的存放位置的说明文件 (.xml 格式), 存放在本地的 repodata 目录下供 Client 端取用。       </p>
+<p>Cilent 端通过 yum 命令安装软件时发现缺少某些依赖性程序包，Client 会根据本地的配置文件 (/etc/yum.repos.d/*.repo) 找到指定的 Server 端，从 Server 端 repo 目录下获取说明文件 xxx.xml 后存储在本地 /var/cache/yum 中方便以后读取，通过 xxx.xml 文件查找到需要安装的依赖性程序包在 Server 端的存放位置，再进入 Server 端 yum 库中的指定 repository 容器中获取所需程序包，下载完成后在本地实现安装。</p>
+<h4 id="网络yum源">网络yum源</h4>
+<p>yum的一切信息都存储在 <code>/etc/yum.reops.d</code>目录下</p>
+<p>一般来讲，以 .repo 结尾的文件都是 yum 源。如果能联网，会使用 CentOS-Base.repo 作为默认的 yum 源，如果不能联网我们使用 CentOS-Media.repo 作为本地光盘 yum 源。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">[<span style="color:#a6e22e">base</span>]
+<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">CentOS</span><span style="color:#f92672">-</span><span style="color:#a6e22e">$releasever</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">Base</span>
+<span style="color:#a6e22e">mirrorlist</span><span style="color:#f92672">=</span><span style="color:#a6e22e">http</span><span style="color:#f92672">:</span><span style="color:#75715e">//mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">baseurl</span><span style="color:#f92672">=</span><span style="color:#a6e22e">http</span><span style="color:#f92672">:</span><span style="color:#75715e">//mirror.centos.org/centos/$releasever/os/$basearch/
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">gpgcheck</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">gpgkey</span><span style="color:#f92672">=</span><span style="color:#a6e22e">file</span><span style="color:#f92672">:</span><span style="color:#75715e">///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+</span></code></pre></div><ul>
+<li>[base]：容器名称，放在【】内，本地有多个yum源时，必须保持唯一</li>
+<li>name：容器说明，可以自定义</li>
+<li>mirrorlist：镜像站点，可以注释掉</li>
+<li>basseurl：yum源服务器的地址，可以更改为国内站定，默认是国外站点
+<ul>
+<li>阿里的：http://mirrors.aliyun.com/repo/Centos-7.repo</li>
+</ul>
+</li>
+<li>enabled：此容器是否生效，不写默认生效</li>
+<li>gpgcheck：是否需要验证；0：取消验证；1：使用公钥检验rpm的正确性</li>
+<li>gpgkey：检验秘钥</li>
+</ul>
+<p><code>/etc/yum.conf</code>：该文件是yum的配置文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">[<span style="color:#a6e22e">main</span>]
+<span style="color:#a6e22e">cachedir</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">/var/cache/yum/$basearch/$releasever</span>
+<span style="color:#a6e22e">keepcache</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">debuglevel</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+<span style="color:#a6e22e">logfile</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">/var/log/yum.log</span>
+<span style="color:#a6e22e">exactarch</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">obsoletes</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">gpgcheck</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">plugins</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">installonly_limit</span><span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+<span style="color:#a6e22e">bugtracker_url</span><span style="color:#f92672">=</span><span style="color:#a6e22e">http</span><span style="color:#f92672">:</span><span style="color:#75715e">//bugs.centos.org/set_project.php?project_id=23&amp;ref=http://bugs.centos.org/bug_report_page.php?category=yum
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">distroverpkg</span><span style="color:#f92672">=</span><span style="color:#a6e22e">centos</span><span style="color:#f92672">-</span><span style="color:#a6e22e">release</span>
+</code></pre></div><ul>
+<li>cachedir：yum下载的RPM包的缓存目录，存储下载的rpm包和数据库，一般是/var/cache/yum</li>
+<li>keepcache=0：缓存是否保存，1：保存；0：不包存</li>
+<li>debuglevel=2：调试级别（0-10），默认2</li>
+<li>logfile：yum的日志文件所在的位置，默认/var/log/yum.log</li>
+<li>distroverpkg：指定一个软件包，yum 会根据这个包判断你的发行版本，默认是 redhat-release</li>
+<li>exactarch：有两个选项 1 和 0, 代表是否只升级和你安装软件包 cpu 体系一致的包</li>
+</ul>
+<h4 id="yum命令">yum命令</h4>
+<p>yum makecache</p>
+<p><strong>清空缓存列表</strong></p>
+<ul>
+<li>yum clean packages：清除缓存目录下的软件包，清空的是 (/var/cache/yum) 下的缓存</li>
+<li>yum clean headers：清除缓存目录下的 headers</li>
+<li>yum clean oldheaders：清除缓存目录下旧的 headers</li>
+<li>yum clean, yum clean all： (= yum clean packages; yum clean oldheaders) 清除缓存目录下的软件包及旧的 headers</li>
+</ul>
+<p><strong>查询安装包</strong></p>
+<ul>
+<li>yum info [package_name]：显示指定安装包详细信息</li>
+<li>yum info updates：列出所有可更新的软件包信息</li>
+<li>yum info installed：列出所有已安裝的软件包信息</li>
+<li>yum list：查询所有可用软件包列表</li>
+<li>yum list [package_name]：显示指定程序包安装情况</li>
+<li>yum list updates：列出所有已安装的软件包</li>
+<li>yum search [keyword]：查询服务器上和关键字相关的软件包</li>
+<li>yum provides [package_name]：列出软件包提供哪些文件</li>
+</ul>
+<p><strong>安装</strong></p>
+<ul>
+<li>yum -y install [package_name..]：-y自动回答yes；-q不显示安装过程</li>
+<li>yum list [package_name]：查询安装是否成功</li>
+<li>yum reinstall [package_name..]：重新安装</li>
+</ul>
+<p><strong>升级</strong></p>
+<ul>
+<li>yum check-update：检查可更新的程序</li>
+<li>yum upgrade [package_name]：升级指定程序包</li>
+<li>yum update [package_name]：更新指定软件包
+<ul>
+<li>如果不指定包名，那么将会升级系统中所有的软件包，包括 Linux 内核。</li>
+</ul>
+</li>
+</ul>
+<p><strong>卸载</strong></p>
+<ul>
+<li>
+<p>yum remove [package_name]：卸载软件包</p>
+<ul>
+<li>卸载和升级也一样，而且由于软件包很多都有依赖性，你卸载 A，而 B 和 C 都依赖于 A，那么 B 和 C 都会卸载。</li>
+</ul>
+</li>
+<li>
+<p>yum deplist rpm：查看程序rpm依赖情况</p>
+</li>
+</ul>
+<h4 id="yum软件组管理">yum软件组管理</h4>
+<p>安装某个软件组，会比我们一个一个安装某个软件包要方便的多。</p>
+<ul>
+<li>yum grouplist：列出所有可用的软件组列表</li>
+<li>yum groupinstall [group_name]：安装指定软件组</li>
+<li>yum groupremove [group_name]：卸载指定软件组</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2276</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/linux/">
+                    #linux</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/LinuxLn/" class="prev" rel="prev" title=" Linux链接和网络管理 "><i class="iconfont icon-dajiantou"></i>&nbsp; Linux链接和网络管理 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/LinuxShell/" class="next" rel="next" title=" Shell 脚本"> Shell 脚本&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-01-23 00:00:00 \u002b0000 UTC',
+        title: ' Linux软件包管理 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

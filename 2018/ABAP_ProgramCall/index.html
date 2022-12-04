@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_SQL_DBOpt/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Utils_DataConversion/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ProgramCall/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 程序间调用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 程序间调用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 程序间调用 "/>
+<meta name="twitter:description" content="同步调用 同步调用的实质：程序进行单线程执行。 中断执行 调用程序被打断，当被调用程序执行完毕之后，调用程序继续执行。 CALL FUNCTION [function]. SUBMIT [program] AND RETURN. CALL TRANSACTION [TCode]. CALL FUNCTION [function] 使"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 程序间调用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ProgramCall\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1399 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ProgramCall\/",
+  "datePublished": "2018-06-05T00:00:00\x2b00:00",
+  "dateModified": "2018-06-05T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 程序间调用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-05 >5 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="同步调用">同步调用</h3>
+<p>同步调用的实质：程序进行单线程执行。</p>
+<h4 id="中断执行">中断执行</h4>
+<p>调用程序被打断，当被调用程序执行完毕之后，调用程序继续执行。</p>
+<ul>
+<li><code>CALL FUNCTION [function].</code></li>
+<li><code>SUBMIT [program] AND RETURN.</code></li>
+<li><code>CALL TRANSACTION [TCode].</code></li>
+</ul>
+<h4 id="call-function-function">CALL FUNCTION [function]</h4>
+<p>使用 CALL FUNCTION &lsquo;AAA&rsquo; 调用 FM 时，相应的 FUNCTION GROUP 被加载到调用程序所在的 internal session。当 FM 执行完毕后，接着执行调用程序。</p>
+<ul>
+<li>FUNCTION GROUP 和其 GLOBAL DATA 会一直保存在这个 internal session 直到调用程序结束。</li>
+<li>当调用程序再次调用这个 FM 的时候，不会再次加载相应的 FUNCTION GROUP。这个 FUNCTON GROUP 的 GLOBAL DATA 和第一次调用它时的内容是一样的。</li>
+</ul>
+<h4 id="submit-program-and-return">SUBMIT [program] AND RETURN</h4>
+<p>使用 SUBMIT [program] AND RETURN 或者 CALL TRANSACTION [tcode] 的时候，实际是插入了一个新的 internal session，当被调用的程序执行完毕之后，新插入的 internal session 会被删除，继续执行调用程序。可以使用 LEAVE PROGRAM 语句来结束程序。</p>
+<ul>
+<li>
+<p>如果省略 AND RETURN 选项，主调程序的所有数据与所有级别的 List 都会从 internal session 中删除。在被调程序执行完后，会返回到主调程序启动的地方。</p>
+</li>
+<li>
+<p>如果带 AND RETURN 选项，系统将会保持主调程序的所有数，并在被调程序执行完后返回到主调程序调用处（SUBMIT…AND RETURN 语句调用处），然后系统会继续执行主调程序 SUBMIT…AND RETURN 后面的语句。</p>
+</li>
+</ul>
+<h4 id="call-transactionleave-to-transaction">CALL TRANSACTION、LEAVE TO TRANSACTION</h4>
+<p>1、 如果调用后不需要返回到主调程序，则可以使用下面这种方式：</p>
+<ul>
+<li>LEAVE TO TRANSACTION |()[AND SKIP FIRST SCREEN].</li>
+</ul>
+<p>该语句会结束当前主调程序去执行事务码，并且会将主调程序从 internal sessions 中删除，而被调用事物码将会在该 external session 中新开一个 internal session 再运行，并且被调程序执行后，并不会回到主调程序调用处继续往下执行，而是系统返回到区域菜单，从该菜单开始调用堆栈中的原始程序。</p>
+<p>2、 如果调用后还要返回到主调程序，则使用下面这种方式：</p>
+<ul>
+<li>
+<p>SET PARAMETER ID &lsquo;[Screen Parameter ID]&rsquo; FIELD [field_value].</p>
+</li>
+<li>
+<p>CALL TRANSACTION |()  [AND SKIP FIRST SCREEN] [USING &lt;bdc_tab &gt;].</p>
+</li>
+</ul>
+<p>系统会重新开启一个 internal session, 当被调程序结束后，被调事物码所在的这个 internal session 会被 delete 掉，然后返回到主调程序调用处，继续运行主调程序后面的语句 &lt;bdc_tab&gt; 用在 BDC 调用输入参数传递。</p>
+<p>3、 退出程序：LEAVE PROGRAM.</p>
+<p>退出整个程序，并删除所在内部会话、包括加载的程序、实例、数据。</p>
+<h4 id="顺序执行">顺序执行</h4>
+<ul>
+<li><code>SUBMIT [program].</code></li>
+<li><code>LEAVE TO TRANSACTION [TCode].</code></li>
+</ul>
+<p>使用 SUBMIT 语句之后，调用程序从所在的 internal session 中被删除了，被调用的程序被加载到这个 internal session.</p>
+<p>使用 <code>LEAVE TO TRANSACTION &lt;tcode&gt;</code> 之后，当前 external session 中的所有 internal session 会被删除，并产生一个新的 internal session，被调用的 tcode 会加载到这个新的 internal session 中。特别要注意的是，使用这个语句之后，ABAP MEMORY 会被初始化，意思就是你不可以通过 ABAP MEMORY 向被调用的 tcode 传值。</p>
+<h3 id="异步调用">异步调用</h3>
+<p>异步调用函数，前提是该函数的 processing type 必须要是 REMOTE-CAPABLE MODULE 才能异步调用，常用函数不可进行异步调用。</p>
+<ul>
+<li>异步调用时不能有 IMPORTING 参数，函数的返回结果可在子程序中查看并处理</li>
+<li>只要有 STARTING NEW TASK 选项，即为异步调用</li>
+<li>如果是异步调用同一目标端的 RFC 函数，则可以省略 DESTINATION</li>
+</ul>
+<pre><code class="language-LS" data-lang="LS">CALL FUNCTION 'AAA' 
+  STARTING NEW TASK &lt;taskname&gt;           &quot;开启事务&quot;
+  DESTINATION IN GROUP &lt;RFC Serve Group&gt;
+  PERFORMING &lt;subroutine&gt; ON END OF TASK &quot;子程序&quot;
+  EXPORTING
+  TABLES
+ .....
+</code></pre><p>DESTINATION 取值</p>
+<ul>
+<li>NONE：当前程序所在应用服务器作为目标系统，但调用过程还是 RFC 远程方式来调用，与 SPACE 相同</li>
+<li>SPACE：DESTINATION 选项将会被忽略，被调功能函数将作为普通函数在本机调用</li>
+<li>BACK：用于被远程调用的 RFM 程序内部的 CALL FUNCTION 语句中的目标指定，通过已建立的 RFC 连接反过来调用该函数的主调者系统中的其他功能模块
+<ul>
+<li>主调程序 —&gt; 远程系统中的RFM —&gt; 又回调主调程序所在系统中的其他函数</li>
+</ul>
+</li>
+</ul>
+<p>使用异步执行语句之后，FM：AAA 和调用它的程序会并行运行。可以在 subroutine 中使用 <code>RECEIVE RESULTS FROM FUNCTION 'AAA'</code> 语句来获得 FM：AAA 运行的结果。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">subroutine</span> <span style="color:#66d9ef">USING</span> name.
+  <span style="color:#66d9ef">RECEIVE</span> RESULTS <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">FUNCTION</span> <span style="color:#e6db74">&#39;AAA&#39;</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><p>等待异步调用的返回结果：</p>
+<ul>
+<li><code>WAIT UNTIL log_exp [UP TO sec SECONDS].</code></li>
+</ul>
+<h3 id="关联文档">关联文档</h3>
+<ul>
+<li><a href="https://coldinfire.github.io/2018/ABAP_Submit/">ABAP Submit 实现程序间互相调用</a></li>
+<li><a href="https://coldinfire.github.io/2018/ABAP_BDC/">ABAP CALL TRANSACTION 详解</a></li>
+<li><a href="https://coldinfire.github.io/2018/ABAP_RFC/">ABAP CALL FUNCTION 详解</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1399</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SQL_DBOpt/" class="prev" rel="prev" title=" ABAP 性能优化(数据操作) "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 性能优化(数据操作) </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_DataConversion/" class="next" rel="next" title=" 数据输入输出转换 "> 数据输入输出转换 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-05 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 程序间调用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

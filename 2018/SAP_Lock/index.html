@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Excel_TemplateOperate/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/PP_Enhance_ProductOrder/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAP_Lock/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 锁机制  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 锁机制  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 锁机制 "/>
+<meta name="twitter:description" content="SAP 为什么要设置锁 保持数据的一致性 同时多个用户操作同一数据，防止数据出现不一致性而采用了锁机制。一般 sap 会在操作数据前设置锁，防止第二个用户进行"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 锁机制 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAP_Lock\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "saputils",
+  "wordcount":  2971 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAP_Lock\/",
+  "datePublished": "2018-11-16T00:00:00\x2b00:00",
+  "dateModified": "2018-11-16T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 锁机制 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-11-16 >16 November 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-为什么要设置锁">SAP 为什么要设置锁</h3>
+<h4 id="保持数据的一致性">保持数据的一致性</h4>
+<p>同时多个用户操作同一数据，防止数据出现不一致性而采用了锁机制。一般 sap 会在操作数据前设置锁，防止第二个用户进行修改操作，当操作结束后系统在释放锁。</p>
+<h4 id="仅仅用-database-锁是不够的">仅仅用 Database 锁是不够的</h4>
+<p>数据库锁定：与 DB LUW 机制类似，数据库本身一般也提供数据锁定机制。数据库将当前正在执行修改操作的所有数据进行锁定，其他用户要等到数据库锁释放才能访问这个记录。该锁定将随着数据库的 LUW 的结束而被重置，因而每当数据库提交或者回滚之后该锁定就被释放。因为 SAP 的 LUW 概念独立于数据库 LUW 和对话步骤，出于同样的原因，SAP 还需要定义自己的数据锁定机制。</p>
+<p>SAP 锁定：在 SAP 系统中，当一个新屏幕显示的时候会释放掉 Database 锁，因为屏幕的改变会触发一个隐式的 DB COMMIT。如果数据是从好几个屏幕收集来的话，而且在这段时间内这些数据会分别被锁定，仅仅用 Database 锁就不够了。</p>
+<ul>
+<li>SAP提供了一个逻辑数据锁定机制，SAP 系统在应用服务器层面有一个全局的 LOCK TABLE，可以用来设置逻辑锁来锁定相关的表条目，并有 ENQUEUE 工作进程来管理这些锁。一个ABAP程序在访问数据之前，将希望锁定的数据表关键字发送给该表，因而所有的程序在访问一个数据库表之前必须首先判断该表是否已经被锁定了。</li>
+<li>SAP 锁定与数据库物理锁定是不同的，它是一种业务逻辑上的锁定。它不会在物理表上进行加锁，而是将关键字传递加锁函数，加锁函数会在特定表中进加锁信息登记。</li>
+<li>SAP LUW 在结束时（提交或回滚），SAP 锁定将会隐式解除。</li>
+</ul>
+<h3 id="锁对象和其对应的-fm">锁对象和其对应的 FM</h3>
+<h4 id="创建锁对象">创建锁对象</h4>
+<p>自定义的锁对象都必须以 EZ 或者 EY 开头来命名。一个锁对象里只包含一个 PRIMARY TABLE，可以包含若干个SECONDARY TABLE。在设定一个 SAP 锁定，必须在数据字典中创建一个锁定对象。一或多个数据库表或关键字段可以被指定为锁定对象中的一或多行。</p>
+<p>当激活锁对象的时候，系统会自动创建两个 FM，<code>ENQUEUE_&lt;锁对象名&gt;</code> 和 <code>DEQUEUE_&lt;锁对象名&gt;</code>，分别用来锁定和解锁。</p>
+<ul>
+<li>通用数据库表锁函数：ENQUEUE_E_TABLE、DEQUEUE_E_TABLE、DEQUEUE_ALL</li>
+</ul>
+<h4 id="锁模式">锁模式</h4>
+<p>锁的模式有三种：E (Exclusive lock)，S (Shared lock)，X (Exclusive but not cumulative lock)。</p>
+<ul>
+<li>
+<p>模式 E：当更改数据的时候设置为此模式。在同一时间内容，数据只能被一个用户读取和修改。</p>
+</li>
+<li>
+<p>模式 S：本身不需要更改数据，但是希望显示的数据不被别人更改。</p>
+</li>
+<li>
+<p>模式 X：和 E 类似，但是不允许累加，完全独占。</p>
+</li>
+</ul>
+<p>如果你在一个程序里成功对一个锁对象加锁之后，如果模式为 E，其他用户不能再对这个锁对象加 E、X、S 模式的任意一种锁；</p>
+<p>如果你在一个程序里成功对一个锁对象加锁之后，如果模式为 X，其他用户不能再对这个锁对象加 E、X、S 模式的任意一种锁；</p>
+<p>如果你在一个程序里成功对一个锁对象加锁之后，如果模式为 S，其他用户不能再对这个锁对象加 E、X 模式的锁，但是可以加 S 模式的锁；</p>
+<p>如果你在一个程序里成功对一个锁对象加锁之后，如果模式为 E，在这个程序，你还可以再对这个锁对象加 E、S 模式的锁，X 模式的不可以。</p>
+<p>如果你在一个程序里成功对一个锁对象加锁之后，如果模式为 X，在这个程序，你不可以再对这个锁对象加 E、X、S 模式的锁。</p>
+<p>如果你在一个程序里成功对一个锁对象加锁之后，如果模式为 S，在这个程序，你还可以再对这个锁对象加 S 模式的锁，如果没有别的用户对其加 S 模式的锁，那么你还可以对其加 E 模式的锁。X 模式的不可以。</p>
+<h3 id="锁定和解锁">锁定和解锁</h3>
+<h4 id="锁定">锁定</h4>
+<ul>
+<li><code>ENQUEUE_&lt;lock object的名字&gt; 对象</code> ：EZZSOPR0032 要求的锁定</li>
+</ul>
+<p>当用逻辑锁来锁定表条目的时候，系统会自动向 LOCK TABLE 中写入记录。</p>
+<p><strong>当调用设置锁的 FM 时，LOCK PARAMETERS 如果没有指明，系统会锁定整个表。</strong> 当然，LOCK PARAMETER：CLIENT 有点特殊，如果不指定，默认是 SY-MANDT；如果指定相应的 CLIENT，会锁定对应 CLIENT 上的相应的表记录；如果设置为 SPACE，则锁定涉及所有的 CLIENT。</p>
+<p>当逻辑锁设置失败后，一般会有两种例外。一个是 EXCEPTION：FOREIGN_LOCK，意思是已经被锁定了；另一个是 EXCEPTION：SYSTEM_FAILURE。</p>
+<h4 id="解锁">解锁</h4>
+<ul>
+<li><code>DEQUEUE_&lt;lock object的名字&gt;</code> ：释放对象 EZZSOPR0032 的锁定</li>
+</ul>
+<p>在程序的结束可以用 DEQUEUE FUNCTION MODULE 来解锁（当然如果你不写这个，程序结束的时候也会自动的解锁），这个时候，系统会自动从 LOCK TABLE 把相应的记录删除。使用 DEQUEUE FUNCTION MODULE 来解锁的时候，不会产生 EXCEPTION。</p>
+<ul>
+<li>FM：DEQUEUE_ALL 解开程序中创建的所有的逻辑锁</li>
+</ul>
+<p>有些情况下，程序中设置成功的逻辑锁会隐式的自己解锁。比如说程序结束发生的时候（MESSAGE TYPE 为 A 或者 X 的时候），使用语句 LEAVE PROGRAM，LEAVE TO TRANSACTION，或者在命令行输入 /n 回车以后。</p>
+<h3 id="使用-sap-锁的一般步骤">使用 SAP 锁的一般步骤</h3>
+<p>先上锁；上锁成功之后，从数据库取数据、更改数据、更新到数据库；最后解锁。按照这个步骤，才能保证更改完全运行在锁的保护机制下。</p>
+<h4 id="demo">DEMO</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TABLES</span>: zspfli.
+<span style="color:#66d9ef">DATA</span> it_zspfli <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> zspfli <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ENQUEUE_EZ_ZSPFLI&#39;</span>  <span style="color:#75715e">&#34;加锁&#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">EXPORTING</span>
+   mode_zspfli          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>
+   mandt                <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>mandt
+   carrid               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AA&#39;</span>
+   connid               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0011&#39;</span>
+<span style="color:#75715e">*   X_CARRID             = &#39; &#39;     &#34;是否使用初始值填充参数 CARRID&#34;</span>
+<span style="color:#75715e">*   X_CONNID             = &#39; &#39;     &#34;是否使用初始值填充参数 CONNID&#34;</span>
+<span style="color:#75715e">*   _SCOPE               = &#39;2&#39;</span>
+<span style="color:#75715e">*   _WAIT                = &#39; &#39;</span>
+<span style="color:#75715e">*   _COLLECT             = &#39; &#39;</span>
+ <span style="color:#66d9ef">EXCEPTIONS</span>
+   foreign_lock         <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+   system_failure       <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> .
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>. <span style="color:#75715e">&#34;判断锁定是否成功&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;本行数据不能修改！&#39;</span> TYPE <span style="color:#e6db74">&#39;I&#39;</span>.
+<span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> it_zspfli <span style="color:#66d9ef">FROM</span> zspfli.
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> it_zspfli <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> carrid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AA&#39;</span> connid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0011&#39;</span>.
+  it_zspfli<span style="color:#f92672">-</span>distance <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>.
+  <span style="color:#66d9ef">MODIFY</span> zspfli <span style="color:#66d9ef">FROM</span> it_zspfli. <span style="color:#75715e">&#34;修改数据&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">BREAK-POINT</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;DEQUEUE_EZ_ZSPFLI&#39;</span> <span style="color:#75715e">&#34;解锁&#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">EXPORTING</span>
+   mode_zspfli       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>
+   mandt             <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>mandt
+   carrid            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AA&#39;</span>
+   connid            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0011&#39;</span>
+<span style="color:#75715e">*   X_CARRID          = &#39; &#39;</span>
+<span style="color:#75715e">*   X_CONNID          = &#39; &#39;</span>
+<span style="color:#75715e">*   _SCOPE            = &#39;3&#39;</span>
+<span style="color:#75715e">*   _SYNCHRON         = &#39; &#39;</span>
+<span style="color:#75715e">*   _COLLECT          = &#39; &#39;.</span>
+</code></pre></div><ul>
+<li>
+<p><code>_SCOPE</code>：1 表示程序内有效；2 表示 update module 内有效； 3 全部范围都生效</p>
+</li>
+<li>
+<p><code>_WAIT</code>：如果对象已经被锁定，是否等待后再尝试加锁，最大的等待时间有系统参数 ENQUE/DELAY_MAX控制</p>
+</li>
+<li>
+<p><code>_COLLECT</code>：该参数设置是否收集后进行统一提交，COLLECT 是一种缓存与批处理方法，即如果指定了Collect，加锁信息会放到 Lock Container 中，Lock Container 实际上是一个 Function Group 控制的内存区域，如果程序中加了很多锁，锁信息会先放到内存中，这样可以减少对 SAP 锁管理系统访问。若使 Lock Container 中的锁生效，需执行 FLUSH_ENQUEUE 这个 Function 将锁信息更新到锁管理系统中。此时加锁操作生效，使用函数RESET_ENQUEUE 可以清除 Lock Container 中的锁信息</p>
+</li>
+</ul>
+<h3 id="通过断点找程序所用到的锁">通过断点找程序所用到的锁</h3>
+<p>用 SE38 打开程序 LSENAF01，并定位到 send_enqueue 子过程，在该过程中的任一语句设置断点。完成断点设置后，则去执行标准 T-Code, 系统就会在程序调用锁时自动停止在断点处，这时就可以通过调用堆栈获取加锁函数 (ENQUEUE_XXXXXX), 其中 &ldquo;XXXXXX&rdquo; 就是锁名称，可以通过 SE11 查看锁信息。</p>
+<h3 id="通用加锁与解锁函数">通用加锁与解锁函数</h3>
+<p>通用加锁与解锁函数不需要创建表的锁对象就可以直接使用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ENQUEUE_E_TABLE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+<span style="color:#75715e">*   MODE_RSTABLE         = &#39;E&#39;</span>
+    tabname              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SFLIGHT&#39;</span>
+<span style="color:#75715e">*   VARKEY               =</span>
+<span style="color:#75715e">*   X_TABNAME            = &#39; &#39;&#34;标示参数tabname是否是十六进制的</span>
+<span style="color:#75715e">*   X_VARKEY             = &#39; &#39;&#34;标示参数VARKEy是否是十六进制的</span>
+<span style="color:#75715e">*   _SCOPE               = &#39;2&#39;</span>
+<span style="color:#75715e">*   _WAIT                = &#39; &#39;</span>
+<span style="color:#75715e">*   _COLLECT             = &#39; &#39;</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    foreign_lock         <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    system_failure       <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">WRITE</span>: <span style="color:#e6db74">&#39;Lock table successfully!&#39;</span>.
+<span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#66d9ef">WRITE</span>: <span style="color:#e6db74">&#39;Failed&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;DEQUEUE_E_TABLE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+<span style="color:#75715e">*   MODE_RSTABLE       = &#39;E&#39;</span>
+    tabname            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SFLIGHT&#39;</span>
+<span style="color:#75715e">*   VARKEY             =</span>
+<span style="color:#75715e">*   X_TABNAME          = &#39; &#39;</span>
+<span style="color:#75715e">*   X_VARKEY           = &#39; &#39;</span>
+<span style="color:#75715e">*   _SCOPE             = &#39;3&#39;</span>
+<span style="color:#75715e">*   _SYNCHRON          = &#39; &#39;</span>
+<span style="color:#75715e">*   _COLLECT           = &#39; &#39;.</span>
+</code></pre></div><h3 id="sap-锁相关的表和相关函数">SAP 锁相关的表和相关函数</h3>
+<h4 id="相关表">相关表</h4>
+<p>DD25L：组合标题 (方式，MC 目标，锁定目标)(纪录了锁主表)</p>
+<p>DD25T：视图和锁定对象的短文本</p>
+<p>DD26S：视图的基本表和外来码关系 (纪录了所有和锁相关的表)</p>
+<p>DD27S：合计 (视图，MC 对象，锁定对象) 字段</p>
+<h4 id="相关函数">相关函数</h4>
+<p><code>RS_DD_ENQU_EDIT</code></p>
+<p><code>RS_DD_ENQU_ADD</code></p>
+<p><code>DEQUEUE_ALL</code>：释放当前 LUW 的所有锁</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2971</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/saputils/">
+                    #saputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Excel_TemplateOperate/" class="prev" rel="prev" title=" SAP Excel 文件操作 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Excel 文件操作 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/PP_Enhance_ProductOrder/" class="next" rel="next" title=" Product Order 的增强 "> Product Order 的增强 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-11-16 00:00:00 \x2b0000 UTC',
+        title: ' SAP 锁机制 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

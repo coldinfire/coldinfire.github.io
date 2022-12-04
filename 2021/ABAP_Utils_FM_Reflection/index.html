@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/PP_COOIS_AddFiled/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ExtJS_Basic/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_FM_Reflection/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP 获取FM参数结果 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP 获取FM参数结果 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP 获取FM参数结果"/>
+<meta name="twitter:description" content="获取FM的参数 REPORT zz_get_fm_detail. DATA: ls_trans_callstack TYPE sys_calls, lt_trans_callstack TYPE sys_callst. DATA: lv_trans_funtion_name TYPE string. DATA: ls_trans_fupararef TYPE fupararef, lt_trans_fupararef TYPE TABLE OF fupararef. CLEAR lt_trans_callstack[]. CALL FUNCTION &#39;SYSTEM_CALLSTACK&#39; IMPORTING * callstack = callstack et_callstack = lt_trans_callstack. CLEAR: ls_trans_callstack. READ TABLE lt_trans_callstack INTO ls_trans_callstack WITH KEY eventtype = &#39;FUNC&#39;. IF ls_trans_callstack IS INITIAL. EXIT. ENDIF. &#34;获取FM的"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP 获取FM参数结果",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_FM_Reflection\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  734 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_FM_Reflection\/",
+  "datePublished": "2021-04-21T00:00:00\u002b00:00",
+  "dateModified": "2021-04-21T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP 获取FM参数结果</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-04-21 >21 April 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="获取fm的参数">获取FM的参数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> zz_get_fm_detail.
+<span style="color:#66d9ef">DATA</span>: ls_trans_callstack <span style="color:#66d9ef">TYPE </span>sys_calls,
+      lt_trans_callstack <span style="color:#66d9ef">TYPE </span>sys_callst.
+<span style="color:#66d9ef">DATA</span>: lv_trans_funtion_name <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">DATA</span>: ls_trans_fupararef <span style="color:#66d9ef">TYPE </span>fupararef,
+      lt_trans_fupararef <span style="color:#66d9ef">TYPE TABLE OF</span> fupararef.
+
+<span style="color:#66d9ef">CLEAR</span> lt_trans_callstack[].
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SYSTEM_CALLSTACK&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+<span style="color:#75715e">*   callstack    = callstack</span>
+    et_callstack <span style="color:#f92672">=</span> lt_trans_callstack.
+<span style="color:#66d9ef">CLEAR</span>: ls_trans_callstack.
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_trans_callstack <span style="color:#66d9ef">INTO</span> ls_trans_callstack <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> eventtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FUNC&#39;</span>.
+<span style="color:#66d9ef">IF</span> ls_trans_callstack <span style="color:#f92672">IS INITIAL</span>.
+  <span style="color:#66d9ef">EXIT</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34;获取FM的参数集合&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span> lt_trans_fupararef[].
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+  <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> lt_trans_fupararef
+  <span style="color:#66d9ef">FROM</span> fupararef
+ <span style="color:#66d9ef">WHERE</span> funcname <span style="color:#f92672">=</span> ls_trans_callstack<span style="color:#f92672">-</span>eventname
+   <span style="color:#f92672">AND</span> paramtype <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">&#34;通过反射获取参数的详细信息&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_get_detail</span>.
+</code></pre></div><h3 id="通过反射的方式获取结构详细数据">通过反射的方式获取结构详细数据</h3>
+<pre><code>
+LOOP AT lt_zz_trans_fupararef INTO ls_zz_trans_fupararef WHERE paramtype NE 'E'.
+  IF ls_zz_trans_fupararef-paramtype = 'I' AND ls_zz_trans_fupararef-reference = 'X'.&quot;非值传递的传入值，不修改例程
+    CONTINUE.
+  ENDIF.
+
+  IF ls_zz_trans_fupararef-paramtype NE 'T'.
+    ASSIGN (ls_zz_trans_fupararef-parameter) TO &lt;fs_zz_trans_workarea&gt;.
+    IF &lt;fs_zz_trans_workarea&gt; IS ASSIGNED.
+      IF &lt;fs_zz_trans_workarea&gt; IS NOT INITIAL.
+        &quot;反射
+        lo_cl_abap_typedescr = cl_abap_typedescr=&gt;describe_by_data( &lt;fs_zz_trans_workarea&gt; ).
+        CASE lo_cl_abap_typedescr-&gt;kind.
+          WHEN 'E'. &quot;元素
+            lo_cl_abap_elemdescr ?= lo_cl_abap_typedescr.
+            IF lo_cl_abap_elemdescr-&gt;edit_mask IS NOT INITIAL. &quot;存在转换例程
+              CONCATENATE 'CONVERSION_EXIT_' lo_cl_abap_elemdescr-&gt;edit_mask+2 '_INPUT' INTO lv_zz_trans_funtion_name.
+*            lv_zz_trans_funtion_name = 'CONVERSION_EXIT_' &amp;&amp; lo_cl_abap_elemdescr-&gt;edit_mask+2 &amp;&amp; '_INPUT'.
+              TRY .
+                  CALL FUNCTION lv_zz_trans_funtion_name
+                    EXPORTING
+                      input         = &lt;fs_zz_trans_workarea&gt;
+                    IMPORTING
+                      output        = &lt;fs_zz_trans_workarea&gt;
+                    EXCEPTIONS
+                      error_message = 99.
+                  IF sy-subrc &lt;&gt; 0.
+
+                  ENDIF.
+                CATCH cx_root INTO lo_zz_trans_root_error.
+              ENDTRY.
+            ENDIF.
+          WHEN 'S'.&quot;结构
+            &quot;反射
+            lo_cl_abap_structdescr ?= cl_abap_typedescr=&gt;describe_by_data( &lt;fs_zz_trans_workarea&gt; ).
+            lt_zz_trans_comp_tab[] = lo_cl_abap_structdescr-&gt;get_components( ).&quot;组成结构体的各个字段组件
+            LOOP AT lt_zz_trans_comp_tab INTO ls_zz_trans_comp_descr WHERE as_include = 'X'. &quot;递归INCLUDE结构
+              REFRESH e_components_result.
+              CLEAR: e_components_result.
+              lo_cl_abap_structdescr ?= ls_zz_trans_comp_descr-type.
+              e_components_result = lo_cl_abap_structdescr-&gt;get_components( ).
+              APPEND LINES OF e_components_result[] TO lt_zz_trans_comp_tab[].
+            ENDLOOP.
+            LOOP AT lt_zz_trans_comp_tab INTO ls_zz_trans_comp_descr.
+              IF ls_zz_trans_comp_descr-as_include = 'X'.
+                DELETE lt_zz_trans_comp_tab.
+                CONTINUE.
+              ENDIF.
+              lo_cl_abap_elemdescr ?= ls_zz_trans_comp_descr-type.
+              IF lo_cl_abap_elemdescr-&gt;edit_mask IS INITIAL. &quot;不存在转换例程
+                DELETE lt_zz_trans_comp_tab.
+                CONTINUE.
+              ENDIF.
+              &quot;存在例程
+              ASSIGN COMPONENT ls_zz_trans_comp_descr-name OF STRUCTURE &lt;fs_zz_trans_workarea&gt; TO &lt;fs_zz_trans_field&gt;.
+              IF &lt;fs_zz_trans_field&gt; IS ASSIGNED.
+                CONCATENATE 'CONVERSION_EXIT_' lo_cl_abap_elemdescr-&gt;edit_mask+2 '_INPUT' INTO lv_zz_trans_funtion_name.
+*              lv_zz_trans_funtion_name = 'CONVERSION_EXIT_' &amp;&amp; lo_cl_abap_elemdescr-&gt;edit_mask+2 &amp;&amp; '_INPUT'.
+                TRY .
+                    CALL FUNCTION lv_zz_trans_funtion_name
+                      EXPORTING
+                        input         = &lt;fs_zz_trans_field&gt;
+                      IMPORTING
+                        output        = &lt;fs_zz_trans_field&gt;
+                      EXCEPTIONS
+                        error_message = 99.
+                    IF sy-subrc &lt;&gt; 0.
+                    ENDIF.
+                  CATCH cx_root INTO lo_zz_trans_root_error.
+                ENDTRY.
+              ENDIF.
+            ENDLOOP.
+          WHEN OTHERS.
+        ENDCASE.
+
+      ENDIF.
+    ENDIF.
+  ELSE.
+    CONCATENATE ls_zz_trans_fupararef-parameter '[]' INTO lv_zz_trans_table_name.
+*    lv_zz_trans_table_name = ls_zz_trans_fupararef-PARAMETER &amp;&amp; '[]'.
+    ASSIGN (lv_zz_trans_table_name) TO &lt;fs_zz_trans_tab&gt;.
+    IF &lt;fs_zz_trans_tab&gt; IS ASSIGNED.
+      IF &lt;fs_zz_trans_tab&gt; IS NOT INITIAL.
+        &quot;获取字段转换例程
+        LOOP AT &lt;fs_zz_trans_tab&gt; ASSIGNING &lt;fs_zz_trans_workarea&gt;.
+          EXIT.
+        ENDLOOP.
+        IF sy-subrc = 0.
+          &quot;反射
+          lo_cl_abap_structdescr ?= cl_abap_typedescr=&gt;describe_by_data( &lt;fs_zz_trans_workarea&gt; ).
+          lt_zz_trans_comp_tab[] = lo_cl_abap_structdescr-&gt;get_components( ).&quot;组成结构体的各个字段组件
+          LOOP AT lt_zz_trans_comp_tab INTO ls_zz_trans_comp_descr WHERE as_include = 'X'. &quot;递归INCLUDE结构
+            CLEAR: e_components_result.
+            lo_cl_abap_structdescr ?= ls_zz_trans_comp_descr-type.
+            e_components_result = lo_cl_abap_structdescr-&gt;get_components( ).
+            APPEND LINES OF e_components_result TO lt_zz_trans_comp_tab[].
+          ENDLOOP.
+          LOOP AT lt_zz_trans_comp_tab INTO ls_zz_trans_comp_descr.
+            IF ls_zz_trans_comp_descr-as_include = 'X'.
+              DELETE lt_zz_trans_comp_tab.
+              CONTINUE.
+            ENDIF.
+            lo_cl_abap_elemdescr ?= ls_zz_trans_comp_descr-type.
+            IF lo_cl_abap_elemdescr-&gt;edit_mask IS INITIAL. &quot;不存在转换例程
+              DELETE lt_zz_trans_comp_tab.
+              CONTINUE.
+            ENDIF.
+          ENDLOOP.
+        ENDIF.
+        &quot;转换处理
+        LOOP AT &lt;fs_zz_trans_tab&gt; ASSIGNING &lt;fs_zz_trans_workarea&gt;.
+          LOOP AT lt_zz_trans_comp_tab INTO ls_zz_trans_comp_descr.
+            lo_cl_abap_elemdescr ?= ls_zz_trans_comp_descr-type.
+            ASSIGN COMPONENT ls_zz_trans_comp_descr-name OF STRUCTURE &lt;fs_zz_trans_workarea&gt; TO &lt;fs_zz_trans_field&gt;.
+            IF &lt;fs_zz_trans_field&gt; IS ASSIGNED.
+              CONCATENATE 'CONVERSION_EXIT_' lo_cl_abap_elemdescr-&gt;edit_mask+2 '_INPUT' INTO  lv_zz_trans_funtion_name.
+*              lv_zz_trans_funtion_name = 'CONVERSION_EXIT_' &amp;&amp; lo_cl_abap_elemdescr-&gt;edit_mask+2 &amp;&amp; '_INPUT'.
+              TRY.
+                  CALL FUNCTION lv_zz_trans_funtion_name
+                    EXPORTING
+                      input         = &lt;fs_zz_trans_field&gt;
+                    IMPORTING
+                      output        = &lt;fs_zz_trans_field&gt;
+                    EXCEPTIONS
+                      error_message = 99.
+                  IF sy-subrc &lt;&gt; 0.
+                  ENDIF.
+                CATCH cx_root INTO lo_zz_trans_root_error.
+              ENDTRY.
+            ENDIF.
+          ENDLOOP.
+        ENDLOOP.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+ENDLOOP.
+</code></pre>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>734</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/PP_COOIS_AddFiled/" class="prev" rel="prev" title="COOIS 添加字段"><i class="iconfont icon-dajiantou"></i>&nbsp;COOIS 添加字段</a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ExtJS_Basic/" class="next" rel="next" title="ExtJS 基础知识">ExtJS 基础知识&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-04-21 00:00:00 \u002b0000 UTC',
+        title: 'ABAP 获取FM参数结果',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

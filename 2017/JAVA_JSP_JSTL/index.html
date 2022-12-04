@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_JSP_Basic/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_DB_MySQL_Basic/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/JAVA_JSP_JSTL/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            JSP 标签库  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" JSP 标签库  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" JSP 标签库 "/>
+<meta name="twitter:description" content="EL表达式 表达式语言（Expression Language，EL），EL 表达式是用 ${expression} 括起来的脚本，用来更方便的读取对象。EL 表达式主要用来读"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " JSP 标签库 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/JAVA_JSP_JSTL\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JSP",
+  "wordcount":  5215 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/JAVA_JSP_JSTL\/",
+  "datePublished": "2017-11-18T00:00:00\x2b00:00",
+  "dateModified": "2017-11-18T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> JSP 标签库 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-11-18 >18 November 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                11 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="el表达式">EL表达式</h2>
+<p>表达式语言（Expression Language，EL），EL 表达式是用 <code>${expression}</code> 括起来的脚本，用来更方便的读取对象。EL 表达式主要用来读取数据，进行内容的显示。</p>
+<p>使用 EL 表达式获取 4 个内置对象（域）中的数据，自定义对象中的数据、提交的参数、JavaBean、甚至集合。</p>
+<p>使用 EL 表达式可以很方便地引用一些 JavaBean 以及其属性，不会抛出 NullPointerException 之类的错误。但是，EL 表达式非常有限，它不能遍历集合，做逻辑的控制。</p>
+<p>EL 表达式允许用户开发自定义 EL 函数，以在 JSP 页面中通过 EL 表达式调用 Java 类的方法。</p>
+<h3 id="获取数据">获取数据</h3>
+<h4 id="运算符">运算符</h4>
+<p>算术运算符：+、-、*、/、%</p>
+<p>比较运算符：&gt;、&lt;、&gt;=、&lt;=、==、!=</p>
+<p>逻辑运算符：&amp;&amp;、||、!</p>
+<p>空运算符：用于判断字符串、集合、数组对象是否长度为0；</p>
+<ul>
+<li>
+<p>表达式：<code>${empty list}</code></p>
+</li>
+<li>
+<p>EL 三元运算符: ${empty 对象 ? 表达式1 : 表达式2}</p>
+</li>
+</ul>
+<h4 id="获取值">获取值</h4>
+<p>EL 表达式只能从域对象中获取值，<code>${域名称.键名}</code> 从指定域中获取指定键的值。</p>
+<p>EL 域名称:</p>
+<table>
+<thead>
+<tr>
+<th>EL 名称</th>
+<th>JSP 内置对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageScope</td>
+<td>pageContext</td>
+</tr>
+<tr>
+<td>requestScope</td>
+<td>request</td>
+</tr>
+<tr>
+<td>sessionScope</td>
+<td>session</td>
+</tr>
+<tr>
+<td>applicationScope</td>
+<td>application (ServletContext)</td>
+</tr>
+</tbody>
+</table>
+<p>web 中的四个域对象（容器对象）范围：从小到大顺序：</p>
+<ul>
+<li>page &lt; request &lt; session &lt; application(ServletContext)</li>
+</ul>
+<p>EL 表达式从四个域中取值，就是在代替使用 pageContext 中的 getAttribute 方法取值的麻烦，底层依然在使用 pageContext 中的 getAttribute 方法。</p>
+<p>使用 pageContext 的 getAttribute方法或者 findAttribute 方法从4个范围中取出数据的时候，如果指定的 key 不存在会得到 null，而使用 EL 表达式取出的时候指定的 key 不存在，返回 &quot; &quot; 空字符串。</p>
+<p>如果不知道数据在哪个范围中，这时可以不用指定范围直接书写 key值即可：<code>${键名}</code>。依次从最小的域中查找是否有该键对应的值，知道找到为止。</p>
+<h4 id="el-表达式获取复杂数据">EL 表达式获取复杂数据</h4>
+<p>在 EL 表达式中，获取对象的属性的值的时候，其实不是在看这个对象所在的类是否有这个属性，只要这个对象所在的类中有 getXxxxx 方法，就可以使用 EL 表达式获取 Xxxx 值。</p>
+<ul>
+<li>
+<p>获取自定义对象的属性值：<code>${object.attirbute}</code></p>
+</li>
+<li>
+<p>获取数组数据：<code>${arr1[3]}</code></p>
+</li>
+<li>
+<p>获取集合中的值：<code>${list[2]}</code></p>
+</li>
+<li>
+<p>获取Map 集合中的值：<code>${map.key}</code> ，<code>${map.key.attribute}</code></p>
+</li>
+</ul>
+<h4 id="el-隐式对象">EL 隐式对象</h4>
+<table>
+<thead>
+<tr>
+<th>隐式对象</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageContext</td>
+<td>pageContext 实例对应于当前页面的处理，可以获取其他8个内置对象</td>
+</tr>
+<tr>
+<td>pageScope</td>
+<td>与页面作用域属性的名称和值相关联的 Map 类</td>
+</tr>
+<tr>
+<td>requestScope</td>
+<td>与请求作用域属性的名称和值相关联的 Map 类</td>
+</tr>
+<tr>
+<td>sessionScope</td>
+<td>与会话作用域属性的名称和值相关联的 Map 类</td>
+</tr>
+<tr>
+<td>applicationScope</td>
+<td>与应用程序作用域属性的名称和值相关联的 Map 类</td>
+</tr>
+<tr>
+<td>param</td>
+<td>按名称存储请求参数的主要值的 Map 类</td>
+</tr>
+<tr>
+<td>paramValues</td>
+<td>将请求参数的所有值作为 String 数组存储的 Map 类</td>
+</tr>
+<tr>
+<td>Header</td>
+<td>按名称存储请求头主要值的 Map 类</td>
+</tr>
+<tr>
+<td>headerValues</td>
+<td>将请求头的所有值作为 Sting 数组存储的 Map 类</td>
+</tr>
+<tr>
+<td>cookie</td>
+<td>按名称存储请求附带的 cookie 的 Map 类</td>
+</tr>
+<tr>
+<td>initParam</td>
+<td>按名称存储 Web 应用程序上下文初始化参数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jsp-标准标签库jstl">JSP 标准标签库（JSTL）</h2>
+<p>JSP 标准标签库（JSTL）是一个 JSP 标签集合，它封装了 JSP 应用的通用核心功能。只不过它不是 JSP 内置的标签，需要我们自己导包，以及指定标签库。</p>
+<p>为什么要使用 JSTL：使用 JSLT 标签的目的就是不希望在 jsp 页面中出现 java 逻辑代码。EL 表达式不够完美，需要 JSTL 的支持。JSTL 与 HTML 代码十分类似，遵循着 XML 标签语法，使用 JSTL 让 JSP 页面显得整洁，可读性非常好，重用性非常高，可以完成复杂的功能。</p>
+<p>JSTL 支持通用的、结构化的任务，比如迭代，条件判断，XML 文档操作，国际化标签，SQL 标签。 除了这些，它还提供了一个框架来使用集成 JSTL 的自定义标签。</p>
+<h3 id="jstl-使用">JSTL 使用</h3>
+<h4 id="jstl-库安装">JSTL 库安装</h4>
+<p>下载 <a href="http://archive.apache.org/dist/jakarta/taglibs/standard/binaries/"> jakarta-taglibs-standard-1.1.2.zip</a> 包并解压，将 jakarta-taglibs-standard-1.1.2/lib/ 下的两个 jar 文件：<strong>standard.jar</strong> 和 <strong>jstl.jar</strong> 文件拷贝到 <strong>/WEB-INF/lib/</strong> 下。不要忘了把 jar 包选中—右键—Build Path—Add to Build Path。这样做可以让jar包随着项目走，绑在了一起。</p>
+<h4 id="jstl-库使用">JSTL 库使用</h4>
+<p>使用任何库，必须在每个 JSP 文件中的头部包含<code>&lt;taglib&gt;</code>标签。</p>
+<p>在页面中使用 JSTL 定义的 EL 函数：<code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt;</code></p>
+<h3 id="jstl-标签分类">JSTL 标签分类</h3>
+<p>根据 JSTL 标签所提供的功能，可以将其分为5个类别。</p>
+<ul>
+<li>核心标签 ：<code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt;</code></li>
+<li>JSTL 函数：<code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/functions&quot; prefix=&quot;fn&quot;%&gt;</code></li>
+<li>格式化标签：<code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; prefix=&quot;fmt&quot;%&gt;</code></li>
+<li>SQL 标签：<code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/sql&quot; prefix=&quot;sql&quot;%&gt;</code></li>
+<li>XML 标签：<code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/xml&quot; prefix=&quot;x&quot;%&gt;</code></li>
+</ul>
+<h4 id="核心标签">核心标签</h4>
+<table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-out-tag.html">c:out</a></td>
+<td align="left">用于在JSP中显示数据，就像&lt;%= &hellip; &gt;，通过 escapeXml 控制是否忽略 XML 特殊字符</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:out value=&quot;输出内容 X&rdquo; default=&quot;输出默认值&rdquo; escapeXml=&quot;&lt;true|false&gt;&quot;&gt;&lt;/c:out&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-set-tag.html">c:set</a></td>
+<td align="left">相当于&lt;jsp:setProperty &gt;，用于存值到scope中(page,request,session,application)；存值到 JavaBean 的属性中</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:set    var=&quot;信息变量&rdquo;    value=&quot;存储值&rdquo;    target=&quot;对象&rdquo;    property=&quot;对象属性&rdquo;    scope=&quot;作用域&quot;&gt;&lt;/c:set&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-remove-tag.html">c:remove</a></td>
+<td align="left">用于删除数据,只能remove掉某个变量,var  属性必选，scope 可选</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:remove var=&quot;要移除的变量名称 X&rdquo; scope=&quot;变量所属的作用域&quot;&gt;&lt;/c:remove&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-catch-tag.html">c:catch</a></td>
+<td align="left">用来处理产生错误的异常状况，并且将错误信息储存起来</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:catch var=&quot;用来储存错误信息的变量&quot;&gt; &hellip; &lt;/c:catch&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-if-tag.html">c:if</a></td>
+<td align="left">与我们在一般程序中用的if一样,用来实现分支条件控制，没有 else 情况</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:if test=&quot;条件 X&rdquo; var=&quot;存储条件结果的变量&rdquo; scope=&quot;变量所属作用域&quot;&gt;    &hellip; &lt;/c:if&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-choose-tag.html">c:choose</a></td>
+<td align="left">本身只当做&lt;c:when&gt;和&lt;c:otherwise&gt;的父标签，相当于 switch 声明</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-choose-tag.html">c:when</a></td>
+<td align="left">&lt;c:choose&gt;的子标签，用来判断条件是否成立，相当于 case</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-choose-tag.html">c:otherwise</a></td>
+<td align="left">&lt;c:choose&gt;的子标签，接在&lt;c:when&gt;标签后，当&lt;c:when&gt;标签判断为false时被执行 相当于 default</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:choose&gt; &lt;c:when test=&quot;条件 X&quot;&gt; &hellip; &lt;/c:when&gt;&lt;c:when test=&quot;条件&quot;&gt;&hellip;&lt;/c:when&gt;&hellip;&lt;c:otherwise&gt;&hellip;&lt;/c:otherwise&gt; &lt;/c:choose&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-import-tag.html">c:import</a></td>
+<td align="left">检索一个绝对或相对 URL，然后将其内容暴露给页面；动态包含</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:import url=&quot;URL X&rdquo;    var=&quot;变量&rdquo;    scope=&quot;作用域&rdquo;    varReader=&quot;Reader对象&rdquo;    context=&quot;相对路径资源名&rdquo;    charEncoding=&quot;字符集编码&quot;&gt;&lt;/c:import&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-foreach-tag.html">c:forEach</a></td>
+<td align="left">基础迭代标签，接受多种集合类型，索引从 0 开始</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:forEach     items=&quot;要被循环的信息&rdquo;     begin=&quot;开始的元素&rdquo;     end=&quot;最后一个元素&rdquo;     step=&quot;迭代的步长&rdquo;     var=&quot;变量&rdquo;     varStatus=&quot;循环状态变量&quot;&gt;&lt;/c:forEach&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-foreach-tag.html">c:forTokens</a></td>
+<td align="left">根据指定的分隔符来分隔内容并迭代输出，索引从 0 开始</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:forTokens     items=&quot;要被循环的信息&rdquo;     delims=&quot;分隔符 X&rdquo;     begin=&quot;开始的元素&rdquo;     end=&quot;最后一个元素&rdquo;     step=&quot;迭代的步长&rdquo;     var=&quot;变量&rdquo;     varStatus=&quot;循环状态变量&quot;&gt;&lt;/c:forTokens&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-param-tag.html">c:param</a></td>
+<td align="left">用来给包含或重定向的页面传递参数</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:param name=&quot;URL中要设置的参数的名称 X&rdquo; value=&quot;参数的值&quot;&gt;&lt;/c:param&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-redirect-tag.html">c:redirect</a></td>
+<td align="left">重定向至一个新的URL.</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:redirect url=&quot;目标URL X&rdquo; context=&quot;本地网络应用程序的名称&quot;&gt;&lt;/c:redirect&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-core-url-tag.html">c:url</a></td>
+<td align="left">使用可选的查询参数来创造一个URL</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;c:url   var=&quot;代表URL的变量名 X&rdquo;   scope=&quot;var属性的作用域&rdquo;   value=&quot;基础URL&rdquo;   context=&quot;本地网络应用程序的名称&quot;&gt;&lt;/c:url&gt;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="jstl-函数">JSTL 函数</h4>
+<p>JSTL包含一系列标准函数，大部分是通用的字符串处理函数。</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-contains.html">fn:contains()</a></td>
+<td align="left">测试输入的字符串是否包含指定的子串—fn:contains(原始字符串, &lsquo;要查找的子字符串&rsquo;)</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-containsignoreCase.html">fn:containsIgnoreCase()</a></td>
+<td align="left">测试输入的字符串是否包含指定的子串，大小写不敏感—fn:containsIgnoreCase(原始字符串, &lsquo;要查找的子字符串&rsquo;)</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-startswith.html">fn:startsWith()</a></td>
+<td align="left">测试输入字符串是否以指定的前缀开始—fn:startsWith(原始字符串, &lsquo;搜索的前缀&rsquo;)</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-endswith.html">fn:endsWith()</a></td>
+<td align="left">测试输入的字符串是否以指定的后缀结尾—fn:endsWith(原始字符串, &lsquo;搜索的后缀&rsquo;)</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-escapexml.html">fn:escapeXml()</a></td>
+<td align="left">跳过可以作为XML标记的字符</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-indexof.html">fn:indexOf()</a></td>
+<td align="left">返回指定字符串在输入字符串中出现的位置—${fn:indexOf(原始字符串,&ldquo;子字符串&rdquo;)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-join.html">fn:join()</a></td>
+<td align="left">将数组中的元素合成一个字符串然后输出—${fn:join([数组], &lsquo;分隔符&rsquo;)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-length.html">fn:length()</a></td>
+<td align="left">返回字符串长度—${fn:length(collection | string)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-replace.html">fn:replace()</a></td>
+<td align="left">将输入字符串中指定的位置替换为指定的字符串然后返回 — ${fn:replace(原始字符串, &lsquo;被替换的字符串&rsquo;, &lsquo;要替换的字符串&rsquo;)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-split.html">fn:split()</a></td>
+<td align="left">将字符串用指定的分隔符分隔然后组成一个子字符串数组并返回—${fn:split(待分隔的字符串, &lsquo;分隔符&rsquo;)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-substring.html">fn:substring()</a></td>
+<td align="left">返回字符串的子集— ${fn:substring(待分隔的字符串,开始索引, 结束索引)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-tolowercase.html">fn:toLowerCase()</a></td>
+<td align="left">将字符串中的字符转为小写 — ${fn.toLowerCase(待转换字符串)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-touppercase.html">fn:toUpperCase()</a></td>
+<td align="left">将字符串中的字符转为大写 — ${fn.toUpperCase(待转换字符串)}</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-function-trim.html">fn:trim()</a></td>
+<td align="left">移除首尾的空白符 — ${fn:trim(待处理字符串)}</td>
+</tr>
+</tbody>
+</table>
+<h4 id="格式化标签">格式化标签</h4>
+<p>JSTL格式化标签用来格式化并输出文本、日期、时间、数字。</p>
+<table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-formatnumber-tag.html">fmt:formatNumber</a></td>
+<td align="left">使用指定的格式或精度格式化数字</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-parsenumber-tag.html">fmt:parseNumber</a></td>
+<td align="left">解析一个代表着数字，货币或百分比的字符串</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-formatdate-tag.html">fmt:formatDate</a></td>
+<td align="left">使用指定的风格或模式格式化日期和时间</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-parsedate-tag.html">fmt:parseDate</a></td>
+<td align="left">解析一个代表着日期或时间的字符串</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-bundle-tag.html">fmt:bundle</a></td>
+<td align="left">绑定资源</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-setlocale-tag.html">fmt:setLocale</a></td>
+<td align="left">指定地区</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-setbundle-tag.html">fmt:setBundle</a></td>
+<td align="left">绑定资源</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-timezone-tag.html">fmt:timeZone</a></td>
+<td align="left">指定时区</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-settimezone-tag.html">fmt:setTimeZone</a></td>
+<td align="left">指定时区</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-message-tag.html">fmt:message</a></td>
+<td align="left">显示资源配置文件信息</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-format-requestencoding-tag.html">fmt:requestEncoding</a></td>
+<td align="left">设置request的字符编码</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sql-标签">SQL 标签</h4>
+<p>JSTL SQL标签库提供了与关系型数据库（Oracle，MySQL，SQL Server等等）进行交互的标签。</p>
+<table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-sql-setdatasource-tag.html">sql:setDataSource</a></td>
+<td align="left">指定数据源</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;sql:setDataSource var=&quot;代表数据库的变量&rdquo; scope=&quot;var属性的作用域&rdquo;  dataSource='事先准备好的数据库&rsquo; driver=&quot;JDBC驱动&rdquo;      url=&quot;数据库连接的JDBC URL&rdquo;      user=&quot;数据库用户名&rdquo;  password=&quot;数据库密码&quot;&gt;&lt;/sql:setDataSource&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-sql-query-tag.html">sql:query</a></td>
+<td align="left">运行SQL查询语句</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;sql:query   var=&quot;存储查询结果(ResultSet对象)的变量&rdquo;   scope=&quot;属性的作用域&rdquo;   sql=&quot;SQL命令&rdquo;   dataSource=&quot;所使用的数据库连接&rdquo;   startRow=&quot;开始记录的结果的行数&rdquo;   maxRows=&quot;最大结果数&quot;&gt;&lt;/sql:query&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-sql-update-tag.html">sql:update</a></td>
+<td align="left">运行SQL更新语句</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;sql:update var=&quot;用来存储所影响行数的变量&rdquo; scope=&quot;属性的作用域&rdquo; sql=&quot;SQL命令&rdquo; dataSource=&quot;所使用的数据库连接&quot;&gt;&lt;/sql:update&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-sql-param-tag.html">sql:param</a></td>
+<td align="left">将SQL语句中的参数设为指定值 — &lt;sql:param value=&quot;需要设置的参数值&rdquo;/&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-sql-dateparam-tag.html">sql:dateParam</a></td>
+<td align="left">将SQL语句中的日期参数设为指定的java.util.Date 对象值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;sql:dateParam value=&quot;需要设置的日期参数(java.util.Date)&rdquo; type=&quot;DATE | TIME | TIMESTAMP&quot;&gt;&lt;/sql:dateParam&gt;</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/jsp/jstl-sql-transaction-tag.html">sql:transaction</a></td>
+<td align="left">在共享数据库连接中提供嵌套的数据库行为元素，将所有语句以一个事务的形式来运行</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">&lt;sql:transaction dataSource=&quot;所使用的数据库&rdquo; isolation=&quot;事务隔离等级 (READ_COMMITTED | READ_UNCOMMITTED | REPEATABLE_READ |  SERIALIZABLE)&ldquo;&gt;&lt;/sql:transaction&gt;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="自定义标签">自定义标签</h2>
+<p>要创建自定义的JSP标签，你首先必须创建处理标签的Java类。</p>
+<p>可以继承SimpleTagSupport类并重写的doTag()方法来开发一个最简单的自定义标签。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>5215</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JSP/">
+                    #JSP</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_JSP_Basic/" class="prev" rel="prev" title=" JSP 使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; JSP 使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_DB_MySQL_Basic/" class="next" rel="next" title=" MySQL 基本操作 "> MySQL 基本操作 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-11-18 00:00:00 \x2b0000 UTC',
+        title: ' JSP 标签库 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

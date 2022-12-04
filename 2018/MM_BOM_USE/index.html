@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAP_WorkFlow/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_EXCEL_BAPI/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/MM_BOM_USE/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BOM 展开  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BOM 展开  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BOM 展开 "/>
+<meta name="twitter:description" content="SAP BOM读取逻辑 相关表 Table Description Table Description MAST Material BOM PLKO Routing Group Header STKO BOM Header PLSO Routing Group Sequence STPO BOM Positions (detail) PLPO Routing Group Operations MAPL Assignment fo Task Lists to Materials AFKO Production Order Header STZU Permanent BOM data AFPO Production Order Position (details) 可用函数：CSAP_MAT"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BOM 展开 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/MM_BOM_USE\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BOM",
+  "wordcount":  2242 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/MM_BOM_USE\/",
+  "datePublished": "2018-11-25T00:00:00\x2b00:00",
+  "dateModified": "2018-11-25T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BOM 展开 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-11-25 >25 November 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="sap-bom读取逻辑">SAP BOM读取逻辑</h2>
+<h3 id="相关表">相关表</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Table</th>
+<th align="left">Description</th>
+<th align="left">Table</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">MAST</td>
+<td align="left">Material BOM</td>
+<td align="left">PLKO</td>
+<td align="left">Routing Group Header</td>
+</tr>
+<tr>
+<td align="left">STKO</td>
+<td align="left">BOM Header</td>
+<td align="left">PLSO</td>
+<td align="left">Routing Group Sequence</td>
+</tr>
+<tr>
+<td align="left">STPO</td>
+<td align="left">BOM Positions (detail)</td>
+<td align="left">PLPO</td>
+<td align="left">Routing Group Operations</td>
+</tr>
+<tr>
+<td align="left">MAPL</td>
+<td align="left">Assignment fo Task Lists to Materials</td>
+<td align="left">AFKO</td>
+<td align="left">Production Order Header</td>
+</tr>
+<tr>
+<td align="left">STZU</td>
+<td align="left">Permanent BOM data</td>
+<td align="left">AFPO</td>
+<td align="left">Production Order Position (details)</td>
+</tr>
+</tbody>
+</table>
+<p>可用函数：<code>CSAP_MAT_BOM_READ</code></p>
+<h3 id="读取逻辑-">读取逻辑</h3>
+<h4 id="查找-materialplantmaterial-desc">查找 Material，Plant，Material Desc</h4>
+<p>TABLE：MARA、MARC、MAKT</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">MARA<span style="color:#f92672">-</span>MATNR    
+MARC<span style="color:#f92672">-</span>WERKS   
+MARA<span style="color:#f92672">-</span>MTART (Material type)
+Note: Proceeding <span style="color:#66d9ef">to</span> Step <span style="color:#ae81ff">2</span> <span style="color:#f92672">or</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">or</span> <span style="color:#ae81ff">4</span> depends <span style="color:#66d9ef">on</span> the input radio button <span style="color:#66d9ef">for</span> 
+      Production <span style="color:#f92672">or</span> Engineering <span style="color:#f92672">or</span> ALL BOM option.
+</code></pre></div><h4 id="查找-bom---engineering">查找 BOM - Engineering</h4>
+<p>TABLE：MAST、STKO、STOP、STZU</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">Material (MAST<span style="color:#f92672">-</span>MATNR) <span style="color:#f92672">=</span> Materials selected above
+  <span style="color:#f92672">AND</span> Plant (MAST<span style="color:#960050;background-color:#1e0010">–</span>WERKS) <span style="color:#f92672">=</span> <span style="color:#66d9ef">As</span> <span style="color:#66d9ef">in</span> input 
+  <span style="color:#f92672">AND</span> BOM usage (MAST<span style="color:#f92672">-</span>STLAN) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> (Engineering usage).
+<span style="color:#66d9ef">Read</span> BOM Header <span style="color:#f92672">and</span> Item
+      <span style="color:#66d9ef">Read</span> BOM Header <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span>  [STKO].
+          BOM <span style="color:#66d9ef">Number</span> (STKO<span style="color:#f92672">-</span>STLNR) <span style="color:#f92672">=</span> BOM <span style="color:#66d9ef">number</span> got <span style="color:#66d9ef">in</span> previous step <span style="color:#f92672">and</span>
+          BOM alternative (STKO<span style="color:#f92672">-</span>STLAL) <span style="color:#f92672">=</span> BOM alternative got <span style="color:#66d9ef">in</span> previous step.
+      <span style="color:#66d9ef">Read</span> BOM Item details <span style="color:#66d9ef">from</span>  [STOP].
+          BOM <span style="color:#66d9ef">number</span> (STOP<span style="color:#f92672">-</span>STLNR) <span style="color:#f92672">=</span> STKO<span style="color:#f92672">-</span>STNLR.
+      <span style="color:#66d9ef">Read</span> BOM text <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span>  STZU.
+</code></pre></div><h4 id="查找-bom--production">查找 BOM – Production</h4>
+<p>TABLE：MAST、STKO、STOP、STZU、MKAL</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">Material (MAST<span style="color:#f92672">-</span>MATNR) <span style="color:#f92672">=</span> Materials selected above <span style="color:#f92672">AND</span> Plant (MAST<span style="color:#960050;background-color:#1e0010">–</span>WERKS) <span style="color:#f92672">=</span> <span style="color:#66d9ef">As</span> <span style="color:#66d9ef">in</span> input 
+  <span style="color:#f92672">AND</span> BOM usage (MAST<span style="color:#f92672">-</span>STLAN) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> (Production usage).
+<span style="color:#66d9ef">Read</span> BOM Header <span style="color:#f92672">and</span> Item
+  <span style="color:#66d9ef">Read</span> BOM Header <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span>  [STKO].
+    BOM <span style="color:#66d9ef">Number</span> (STKO<span style="color:#f92672">-</span>STLNR) <span style="color:#f92672">=</span> BOM <span style="color:#66d9ef">number</span> got <span style="color:#66d9ef">in</span> previous step
+    <span style="color:#f92672">AND</span> BOM alternative (STKO<span style="color:#f92672">-</span>STLAL) <span style="color:#f92672">=</span> BOM alternative got <span style="color:#66d9ef">in</span> previous step.
+  <span style="color:#66d9ef">Read</span> BOM Item details <span style="color:#66d9ef">from</span>  [STOP].
+    BOM <span style="color:#66d9ef">number</span> (STOP<span style="color:#f92672">-</span>STLNR) <span style="color:#f92672">=</span> STKO<span style="color:#f92672">-</span>STNLR.
+  <span style="color:#66d9ef">Read</span> BOM text <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span> STZU.
+<span style="color:#66d9ef">Search</span> <span style="color:#66d9ef">for</span> Resource / Production Version (Production BOM<span style="color:#960050;background-color:#1e0010">’</span>s only)   [MKAL]
+  Material <span style="color:#66d9ef">number</span> (MKAL<span style="color:#960050;background-color:#1e0010">–</span>MATNR) <span style="color:#f92672">=</span> Material <span style="color:#66d9ef">number</span> <span style="color:#66d9ef">from</span> above selection (MAST) 
+    <span style="color:#f92672">And</span> Plant (MKAL<span style="color:#960050;background-color:#1e0010">–</span>WERKS) <span style="color:#f92672">=</span> Plant <span style="color:#66d9ef">from</span> above selection (MAST)
+    <span style="color:#f92672">And</span> Alternative BOM (MKAL<span style="color:#f92672">-</span>STLAL) <span style="color:#f92672">=</span> Alternative BOM <span style="color:#66d9ef">from</span> above selection (MAST) 
+    <span style="color:#f92672">And</span>  BOM Usage (MKAL<span style="color:#f92672">-</span>STLAN) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> (Production BOM).
+Note:
+<span style="color:#ae81ff">1</span>. <span style="color:#66d9ef">If</span> no production version exists <span style="color:#66d9ef">for</span> any <span style="color:#66d9ef">of</span> the BOM<span style="color:#960050;background-color:#1e0010">’</span>s <span style="color:#66d9ef">write</span> such records <span style="color:#66d9ef">at</span> the bottom <span style="color:#66d9ef">of</span> 
+   the <span style="color:#66d9ef">report</span> <span style="color:#66d9ef">under</span> the heading <span style="color:#960050;background-color:#1e0010">“</span>No Production Version Exists (Production BOM<span style="color:#960050;background-color:#1e0010">’</span>s)<span style="color:#960050;background-color:#1e0010">”</span>.
+<span style="color:#ae81ff">2</span>. <span style="color:#66d9ef">Sort</span> the output <span style="color:#66d9ef">on</span> Plant, Usage <span style="color:#f92672">and</span> then <span style="color:#66d9ef">on</span> Material.
+<span style="color:#ae81ff">3</span>. <span style="color:#66d9ef">If</span> multiple plants then the <span style="color:#66d9ef">report</span> will be displayed Plant wise.
+   <span style="color:#960050;background-color:#1e0010">•</span> Header <span style="color:#66d9ef">to</span> be displayed <span style="color:#66d9ef">for</span> Production / Engineering BOM option.
+<span style="color:#ae81ff">4</span>. Material BOM Comparison.  [MAST]
+   Material (MAST<span style="color:#f92672">-</span>MATNR) <span style="color:#f92672">=</span> Materials selected above <span style="color:#f92672">AND</span> Plant (MAST<span style="color:#960050;background-color:#1e0010">–</span>WERKS) <span style="color:#f92672">=</span> <span style="color:#66d9ef">As</span> <span style="color:#66d9ef">in</span> input.
+   <span style="color:#960050;background-color:#1e0010">●</span> <span style="color:#66d9ef">Read</span> BOM Header <span style="color:#f92672">and</span> Item
+  	 <span style="color:#66d9ef">Read</span> BOM Header <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span> [STKO].
+    	  BOM <span style="color:#66d9ef">Number</span> (STKO<span style="color:#f92672">-</span>STLNR) <span style="color:#f92672">=</span> BOM <span style="color:#66d9ef">number</span> got <span style="color:#66d9ef">in</span> previous step <span style="color:#f92672">and</span>
+    	  BOM alternative (STKO<span style="color:#f92672">-</span>STLAL) <span style="color:#f92672">=</span> BOM alternative got <span style="color:#66d9ef">in</span> previous step.
+  	 <span style="color:#66d9ef">Read</span> BOM Item details <span style="color:#66d9ef">from</span> [STOP].
+          BOM <span style="color:#66d9ef">number</span> (STOP<span style="color:#f92672">-</span>STLNR) <span style="color:#f92672">=</span> STKO<span style="color:#f92672">-</span>STNLR.
+</code></pre></div><h2 id="bom逆向和正向查询-">BOM逆向和正向查询</h2>
+<h3 id="顺查bomcs12">顺查BOM（CS12）</h3>
+<p><code>CS_BOM_EXPL_MAT_V2</code>：展 BOM 表。</p>
+<p>capid 参数，一般情况下所取的 BOM 都是生产用 BOM（capid = PP01）。</p>
+<ul>
+<li>PP01：Production - general</li>
+<li>BEST：Inventory management</li>
+<li>INST：Plant maintenance</li>
+<li>PC01：Costing</li>
+<li>PI01：Process manufacturing</li>
+<li>SD01：Sales and distribution</li>
+</ul>
+<p>其它参数注意事项：</p>
+<ul>
+<li>DATUV 一定不能省，否则运行出错。</li>
+<li>输出的数量一般用 MNGKO 而不是 MENGE，因为 MNGKO 计算了用量、替代的实际值。</li>
+</ul>
+<h4 id="展开单层bom多层bom">展开单层BOM、多层BOM</h4>
+<table>
+<thead>
+<tr>
+<th>MDMPS (虚拟件)</th>
+<th>MEHRS (多层展开)</th>
+<th>展开模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPACE</td>
+<td>X</td>
+<td>全展（显示包含虚拟件）</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>展1或2层（下层遇虚拟件则展开至其下一层，显示包含虚拟件）</td>
+</tr>
+<tr>
+<td>SPACE</td>
+<td>SPACE</td>
+<td>展一层（下层为虚拟件，不再向下展开）</td>
+</tr>
+<tr>
+<td>X</td>
+<td>SPACE</td>
+<td>展一层 （同3，下层为虚拟件，不再向下展开）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>即：MEHRS 置空，不论 MDMPS 如何设置，都只展一层，并且如果下层就是虚拟件，不展开虚拟件至其更下一层，与2）要区别开来。</li>
+</ul>
+<p>BOM 说明：</p>
+<ul>
+<li>MQ（成品）&lt;——MC（虚拟件）
+<ul>
+<li>MA &lt;—— 底层材料 a、b、c</li>
+<li>MF &lt;—— 底层材料 d、e、f</li>
+</ul>
+</li>
+</ul>
+<h4 id="bapi-使用">BAPI 使用</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: selpool <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> cstmat <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: dstst_flg <span style="color:#66d9ef">LIKE </span>csdata<span style="color:#f92672">-</span>xfeld.
+<span style="color:#66d9ef">DATA</span>: matcat <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> cscmat <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: stb <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> stpox <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> bapireturn <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CS_BOM_EXPL_MAT_V2&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    capid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PP01&#39;</span>       <span style="color:#75715e">&#34;BOM应用程序，应用程序一般为PP01&#34;
+</span><span style="color:#75715e"></span>    datuv <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum     <span style="color:#75715e">&#34;有效开始日通常为系统的当前日期&#34;
+</span><span style="color:#75715e"></span>    ehndl <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+    emeng <span style="color:#f92672">=</span> menge        <span style="color:#75715e">&#34;需求数量&#34;
+</span><span style="color:#75715e"></span>    mtnrv <span style="color:#f92672">=</span> p_matnr      <span style="color:#75715e">&#34;物料专用号，要展开BOM的物料&#34;
+</span><span style="color:#75715e"></span>    mehrs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>          <span style="color:#75715e">&#34;x表示多层展开﹐space表示只展开第一层&#34;
+</span><span style="color:#75715e"></span>    werks <span style="color:#f92672">=</span> p_werks      <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>    stlan <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>          <span style="color:#75715e">&#34;BOM用途&#34;
+</span><span style="color:#75715e"></span>    stlal <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>          <span style="color:#75715e">&#34;可选BOM的编号&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IMPORTING</span>
+    topmat <span style="color:#f92672">=</span> selpool     <span style="color:#75715e">&#34;抬头明细&#34;
+</span><span style="color:#75715e"></span>    dstst  <span style="color:#f92672">=</span> dstst_flg
+  <span style="color:#66d9ef">TABLES</span>
+    stb <span style="color:#f92672">=</span> stb           <span style="color:#75715e">&#34;展开的BOM存放在该内表&#34;
+</span><span style="color:#75715e"></span>    matcat <span style="color:#f92672">=</span> matcat     <span style="color:#75715e">&#34;下面含有元件的物料存放在该内表&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">EXCEPTIONS</span>
+    ALT_NOT_FOUND               <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    CALL_INVALID                <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    MATERIAL_NOT_FOUND          <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    MISSING_AUTHORIZATION       <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+    NO_BOM_FOUND                <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+    NO_PLANT_DATA               <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+    NO_SUITABLE_BOM_FOUND       <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+    CONVERSION_ERROR            <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
+    <span style="color:#66d9ef">OTHERS</span>                      <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+            .
+<span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+        <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34;获取物料BOM清单 Items&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CSAP_MAT_BOM_ITEM_SELECT&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    i_stpo                     <span style="color:#f92672">=</span> ls_i_stpo
+    material                   <span style="color:#f92672">=</span> lv_i_matnr
+    plant                      <span style="color:#f92672">=</span> lv_i_plant
+    bom_usage                  <span style="color:#f92672">=</span> lv_i_usage
+    alternative                <span style="color:#f92672">=</span> lv_i_alter
+    fl_material_check          <span style="color:#f92672">=</span> lc_check
+    fl_foreign_key_check       <span style="color:#f92672">=</span> lc_check
+    valid_from                 <span style="color:#f92672">=</span> lv_i_datuv
+    valid_to                   <span style="color:#f92672">=</span> lv_i_datub
+  <span style="color:#66d9ef">TABLES</span>
+    t_stpo                     <span style="color:#f92672">=</span> lt_e_stpo
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    error                      <span style="color:#f92672">=</span> error_msg
+    <span style="color:#66d9ef">others</span>                     <span style="color:#f92672">=</span> error_other.
+</code></pre></div><h3 id="逆查-bomcs15取物料的上层物料">逆查 BOM(CS15)：取物料的上层物料</h3>
+<p><code>CS_WHERE_USED_MAT</code>：反查BOM表；反查单层BOM、多层BOM。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: WULTB <span style="color:#66d9ef">LIKE STANDARD TABLE OF</span> STPOV <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      IT_WULTB <span style="color:#66d9ef">LIKE </span>STPOV OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      IT_EQUICAT <span style="color:#66d9ef">LIKE </span>CSCEQUI OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      IT_KNDCAT <span style="color:#66d9ef">LIKE </span>CSCKND OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      IT_MATCAT <span style="color:#66d9ef">LIKE </span>CSCMAT OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      IT_STDCAT <span style="color:#66d9ef">LIKE </span>CSCSTD OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      IT_TPLCAT <span style="color:#66d9ef">LIKE </span>CSCTPL OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      IT_PRJCAT <span style="color:#66d9ef">LIKE </span>CSCPRJ OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">WHERE_USER_BOM</span> .
+  <span style="color:#66d9ef">CLEAR</span>:IT_WULTB,IT_WULTB[].
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CS_WHERE_USED_MAT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      DATUB        <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM    <span style="color:#75715e">&#34;有效日期To&#34;
+</span><span style="color:#75715e"></span>      DATUV        <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM    <span style="color:#75715e">&#34;有效日期From&#34;
+</span><span style="color:#75715e"></span>      MATNR        <span style="color:#f92672">=</span> MARA<span style="color:#f92672">-</span>MATNR  <span style="color:#75715e">&#34;物料号&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*     POSTP        = &#39; &#39;</span>
+<span style="color:#75715e">*     RETCODE_ONLY = &#39; &#39;</span>
+<span style="color:#75715e">*     STLAN        = &#39; &#39;         &#34;BOM用途&#34;</span>
+<span style="color:#75715e">*     MCLMT        = &#39;00000000&#39;</span>
+      WERKS        <span style="color:#f92672">=</span> P_WERKS
+<span style="color:#75715e">*    IMPORTING</span>
+<span style="color:#75715e">*    TOPMAT        =</span>
+    <span style="color:#66d9ef">TABLES</span>
+       WULTB       <span style="color:#f92672">=</span> IT_WULTB    <span style="color:#75715e">&#34;上层物料明细，包含编码、编码描述、上层需求数量、子件需求数量等&#34;
+</span><span style="color:#75715e"></span>       EQUICAT     <span style="color:#f92672">=</span> IT_EQUICAT
+       KNDCAT      <span style="color:#f92672">=</span> IT_KNDCAT
+       MATCAT      <span style="color:#f92672">=</span> IT_MATCAT   <span style="color:#75715e">&#34;反查出的子件上层物料明细（按物料号汇总后的结果）&#34;
+</span><span style="color:#75715e"></span>       STDCAT      <span style="color:#f92672">=</span> IT_STDCAT
+       TPLCAT      <span style="color:#f92672">=</span> IT_TPLCAT
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+       CALL_INVALID               <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+       MATERIAL_NOT_FOUND         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+       NO_WHERE_USED_REC_FOUND    <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+       NO_WHERE_USED_REC_SELECTED <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+       NO_WHERE_USED_REC_VALID    <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+       <span style="color:#66d9ef">OTHERS</span>                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+  <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>. 
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+          <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.   <span style="color:#75715e">&#34; WHERE_USER_BOM &#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">WHERE_USER_BOM_MULIT</span> .
+  <span style="color:#66d9ef">DATA</span>: lv_index <span style="color:#66d9ef">TYPE </span>I,
+        p_matnr <span style="color:#66d9ef">TYPE </span>matnr.
+  <span style="color:#66d9ef">DESCRIBE TABLE</span> wultb <span style="color:#66d9ef">LINES</span> lv_index.
+  <span style="color:#66d9ef">IF</span> lv_index <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> wultb <span style="color:#66d9ef">INDEX</span> lv_index.
+    p_matnr <span style="color:#f92672">=</span> wultb<span style="color:#f92672">-</span>matnr.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CLEAR</span> IT_WULTB[].
+  <span style="color:#66d9ef">CALL  FUNCTION</span>  <span style="color:#e6db74">&#39;CS_WHERE_USED_MAT&#39;</span>
+     <span style="color:#66d9ef">EXPORTING</span>
+      DATUB              <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+      DATUV              <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+      MATNR              <span style="color:#f92672">=</span> p_matnr
+<span style="color:#75715e">*     POSTP               = &#39; &#39;</span>
+<span style="color:#75715e">*     RETCODE_ONLY        = &#39; &#39;</span>
+<span style="color:#75715e">*     STLAN               = &#39; &#39;</span>
+      MCLMT              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00000000&#39;</span>
+      WERKS              <span style="color:#f92672">=</span> p_werks
+<span style="color:#75715e">*    IMPORTING</span>
+<span style="color:#75715e">*    TOPMAT              =</span>
+     <span style="color:#66d9ef">TABLES</span>
+       WULTB           <span style="color:#f92672">=</span> IT_WULTB
+       EQUICAT         <span style="color:#f92672">=</span> IT_EQUICAT
+       KNDCAT          <span style="color:#f92672">=</span> IT_KNDCAT
+       MATCAT          <span style="color:#f92672">=</span> IT_MATCAT
+       STDCAT          <span style="color:#f92672">=</span> IT_STDCAT
+       TPLCAT          <span style="color:#f92672">=</span> IT_TPLCAT
+     <span style="color:#66d9ef">EXCEPTIONS</span>
+       CALL_INVALID        <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+       MATERIAL_NOT_FOUND          <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+       NO_WHERE_USED_REC_FOUND     <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+       NO_WHERE_USED_REC_SELECTED <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+       NO_WHERE_USED_REC_VALID     <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+       <span style="color:#66d9ef">OTHERS</span>              <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+<span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.<span style="color:#75715e">&#34;如果展开到最顶层，该值为3，不继续展开&#34;
+</span><span style="color:#75715e"></span>    IT_WULTB<span style="color:#f92672">-</span>LEVEL <span style="color:#f92672">=</span> lv_index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">APPEND</span> IT_WULTB <span style="color:#66d9ef">TO</span> WULTB.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">WHERE_USER_BOM_MULIT</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; WHERE_USER_BOM_MULIT &#34;
+</span></code></pre></div><p><strong>T-Code：CS02</strong> :确保递归 BOM 的比例在 0.95 左右。即：产品 A，其 BOM 中的 A 的消耗量应该小于 0.95.</p>
+<h3 id="创建-bom">创建 BOM</h3>
+<p>BAPI_MATERIAL_BOM_GROUP_CREATE：可以创建 BOM 组</p>
+<p>CSAP_MAT_BOM_CREATE：创建 BOM</p>
+<p>CSAP_MAT_BOM_MAINTAIN：维护 BOM，创建可选的 BOM 会有问题</p>
+<h3 id="批量删除-bom-分配">批量删除 BOM 分配</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CSAP_MAT_BOM_ALLOC_DELETE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    MATERIAL                 <span style="color:#f92672">=</span> ITAB<span style="color:#f92672">-</span>MATNR
+    PLANT                    <span style="color:#f92672">=</span> ITAB<span style="color:#f92672">-</span>WERKS
+    BOM_USAGE                <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>  <span style="color:#75715e">&#34;BOM 用途&#34;
+</span><span style="color:#75715e"></span>    ALTERNATIVE              <span style="color:#f92672">=</span>
+    FL_NO_CHANGE_DOC         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>
+    FL_COMMIT_AND_WAIT       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    FL_WARNING               <span style="color:#f92672">=</span> FLG_WARNING
+    BOM_NO                   <span style="color:#f92672">=</span> BOM_NO
+  <span style="color:#66d9ef">TABLES</span>
+    T_PLANT                  <span style="color:#f92672">=</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    ERROR                    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>                   <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">IF</span> FLG_WARNING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">WRITE</span> :/ ITAB<span style="color:#f92672">-</span>WERKS,ITAB<span style="color:#f92672">-</span>MATNR , <span style="color:#e6db74">&#39;删除成功&#39;</span>.
+<span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#66d9ef">WRITE</span> :/ ITAB<span style="color:#f92672">-</span>WERKS,ITAB<span style="color:#f92672">-</span>MATNR , <span style="color:#e6db74">&#39;删除失败&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2242</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BOM/">
+                    #BOM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAP_WorkFlow/" class="prev" rel="prev" title=" SAP 工作流 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 工作流 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_EXCEL_BAPI/" class="next" rel="next" title=" SAP Excel 操作实例(BAPI) "> SAP Excel 操作实例(BAPI) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-11-25 00:00:00 \x2b0000 UTC',
+        title: ' BOM 展开 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

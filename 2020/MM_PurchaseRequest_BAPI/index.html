@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/WM_Table/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_PurchaseOrder_BAPI/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_PurchaseRequest_BAPI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           使用BAPI创建Purchase Request | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="使用BAPI创建Purchase Request | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用BAPI创建Purchase Request"/>
+<meta name="twitter:description" content="Purchase Request 内容： PR Header : 采购订单编号、供应商、货币、付款期限、采购订单日期 PR Item : 物料编号、短文本、发货日期、采购订单数量、采购订单价格、分类 BAPI: BAP"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用BAPI创建Purchase Request",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_PurchaseRequest_BAPI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  1842 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_PurchaseRequest_BAPI\/",
+  "datePublished": "2020-06-04T00:00:00\u002b00:00",
+  "dateModified": "2020-06-04T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">使用BAPI创建Purchase Request</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-06-04 >4 June 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="purchase-request-内容">Purchase Request 内容：</h4>
+<ul>
+<li>
+<p>PR Header : 采购订单编号、供应商、货币、付款期限、采购订单日期</p>
+</li>
+<li>
+<p>PR Item : 物料编号、短文本、发货日期、采购订单数量、采购订单价格、分类</p>
+</li>
+</ul>
+<p>BAPI:</p>
+<ul>
+<li>
+<p>BAPI_PR_CREATE：单个创建PR</p>
+</li>
+<li>
+<p>BAPI_REQUISITION_CREATE：批量创建PR</p>
+</li>
+</ul>
+<h4 id="bapi_pr_create-实例">BAPI_PR_CREATE 实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">PREQ_NO</span>      <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">BAPIMEREQHEADER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PREQ_NO</span>,
+     <span style="color:#a6e22e">PRHEADER</span>    <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">BAPIMEREQHEADER</span>,
+     <span style="color:#a6e22e">PRHEADERX</span>   <span style="color:#a6e22e">TYPE</span>  <span style="color:#a6e22e">BAPIMEREQHEADERX</span>,
+     <span style="color:#a6e22e">RETURN</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span>  <span style="color:#a6e22e">BAPIRET2</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>,
+     <span style="color:#a6e22e">PRITEM</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BAPIMEREQITEMIMP</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>,
+     <span style="color:#a6e22e">PRITEMX</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BAPIMEREQITEMX</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">LV_POS</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">I</span>.
+<span style="color:#e6db74">&#34; Fill Header &#34;</span>
+<span style="color:#a6e22e">PRHEADER</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PR_TYPE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NB&#39;</span>.
+<span style="color:#a6e22e">PRHEADERX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PR_TYPE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#e6db74">&#34; Fill Item &#34;</span>
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PREQ_ITEM</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_POS</span>. <span style="color:#e6db74">&#34; Item Number of Purchase Requisition &#34;</span>
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PUR_GROUP</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;011&#39;</span>.  <span style="color:#e6db74">&#34; Purchasing Group &#34;</span>
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MATERIAL</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_MATNR</span>.
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PLANT</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_PLANT</span>.
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">STORE_LOC</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_LGORT</span>. 
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">QUANTITY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_MENGE</span>.
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">UNIT</span>     <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_MEINS</span>.
+<span style="color:#a6e22e">PRITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DELIV_DATE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SY_DATUM</span>. <span style="color:#e6db74">&#34;Delivery Date of Goods&#34;</span>
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">PRITEM</span>.
+
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PREQ_ITEM</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_POS</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PREQ_ITEMX</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PUR_GROUP</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PREQ_NAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MATERIAL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PLANT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">STORE_LOC</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">QUANTITY</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">UNIT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">PRITEMX</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DELIV_DATE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">PRITEMX</span>.  
+
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PR_CREATE&#39;</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">PRHEADER</span>              <span style="color:#f92672">=</span> <span style="color:#a6e22e">PRHEADER</span>
+    <span style="color:#a6e22e">PRHEADERX</span>             <span style="color:#f92672">=</span> <span style="color:#a6e22e">PRHEADERX</span>
+    <span style="color:#a6e22e">TESTRUN</span>               <span style="color:#f92672">=</span> <span style="color:#a6e22e">TESTRUN</span>
+  <span style="color:#a6e22e">IMPORTING</span>
+    <span style="color:#a6e22e">NUMBER</span>                <span style="color:#f92672">=</span> <span style="color:#a6e22e">PREQ_NO</span>
+    <span style="color:#a6e22e">PRHEADEREXP</span>           <span style="color:#f92672">=</span> <span style="color:#a6e22e">PRHEADEREXP</span>
+  <span style="color:#a6e22e">TABLES</span>
+    <span style="color:#a6e22e">RETURN</span>                <span style="color:#f92672">=</span> <span style="color:#a6e22e">RETURN</span>
+    <span style="color:#a6e22e">PRITEM</span>                <span style="color:#f92672">=</span> <span style="color:#a6e22e">PRITEM</span>
+    <span style="color:#a6e22e">PRITEMX</span>               <span style="color:#f92672">=</span> <span style="color:#a6e22e">PRITEMX</span>.
+
+<span style="color:#a6e22e">READ</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">RETURN</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">KEY</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#a6e22e">TRANSPORTING</span> <span style="color:#a6e22e">NO</span> <span style="color:#a6e22e">FIELDS</span>.
+<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBRC</span> <span style="color:#a6e22e">NE</span> <span style="color:#ae81ff">0.</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">WAIT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">ELSE</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">PREQ_NO</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+</code></pre></div><h4 id="bapi_requisition_create-实例">BAPI_REQUISITION_CREATE 实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">create_pr_batch</span> .
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_data1</span> <span style="color:#a6e22e">OCCURS</span> <span style="color:#ae81ff">0</span>,
+    <span style="color:#a6e22e">bsart</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;凭证类型&#34;</span>
+    <span style="color:#a6e22e">bnfpo</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;项目&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">KNTTP</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>, <span style="color:#e6db74">&#34;科目分配类别&#34;</span>
+    <span style="color:#a6e22e">matnr</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;商品代码&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">TXZ01</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>, <span style="color:#e6db74">&#34;短文本&#34;</span>
+    <span style="color:#a6e22e">menge</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;数量&#34;</span>
+    <span style="color:#a6e22e">meins</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;单位&#34;</span>
+    <span style="color:#a6e22e">eeind</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;交货日期&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">MATKL</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>, <span style="color:#e6db74">&#34;物料组&#34;</span>
+    <span style="color:#a6e22e">werks</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;工厂&#34;</span>
+    <span style="color:#a6e22e">ekgrp</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;采购组&#34;</span>
+    <span style="color:#a6e22e">afnam</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;申请者&#34;</span>
+    <span style="color:#a6e22e">bednr</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;需求跟踪号&#34;</span>
+    <span style="color:#a6e22e">sakto</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;总帐科目&#34;</span>
+    <span style="color:#a6e22e">kostl</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;成本中心&#34;</span>
+    <span style="color:#a6e22e">anln1</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;资产&#34;</span>
+    <span style="color:#a6e22e">aufnr</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;订单&#34;</span>
+    <span style="color:#a6e22e">waers</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;币种&#34;</span>
+    <span style="color:#a6e22e">peinh</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;价格单位&#34;</span>
+    <span style="color:#a6e22e">dispo</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;MRP控制者&#34;</span>
+    <span style="color:#a6e22e">str1</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;行项目文本-传送文本&#34;</span>
+    <span style="color:#a6e22e">str2</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;行项目文本-预算年度&#34;</span>
+    <span style="color:#a6e22e">str3</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;行项目文本-资产类别&#34;</span>
+  <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_data1</span>.
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_data</span> <span style="color:#a6e22e">OCCURS</span> <span style="color:#ae81ff">0</span>,
+    <span style="color:#a6e22e">bednr</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;需求跟踪号&#34;</span>
+    <span style="color:#a6e22e">bsart</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;凭证类型&#34;</span>
+    <span style="color:#a6e22e">bnfpo</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;项目&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">KNTTP</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>, <span style="color:#e6db74">&#34;科目分配类别&#34;</span>
+    <span style="color:#a6e22e">matnr</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;商品代码&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">TXZ01</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>, <span style="color:#e6db74">&#34;短文本&#34;</span>
+    <span style="color:#a6e22e">menge</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;数量&#34;</span>
+    <span style="color:#a6e22e">meins</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;单位&#34;</span>
+    <span style="color:#a6e22e">eeind</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;交货日期&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">MATKL</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>, <span style="color:#e6db74">&#34;物料组&#34;</span>
+    <span style="color:#a6e22e">werks</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;工厂&#34;</span>
+    <span style="color:#a6e22e">ekgrp</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;采购组&#34;</span>
+    <span style="color:#a6e22e">afnam</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;申请者&#34;</span>
+    <span style="color:#a6e22e">sakto</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;总帐科目&#34;</span>
+    <span style="color:#a6e22e">kostl</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;成本中心&#34;</span>
+    <span style="color:#a6e22e">anln1</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;资产&#34;</span>
+    <span style="color:#a6e22e">aufnr</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;订单&#34;</span>
+    <span style="color:#a6e22e">preis</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;评估价格&#34;</span>
+    <span style="color:#a6e22e">waers</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;币种&#34;</span>
+    <span style="color:#a6e22e">peinh</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;价格单位&#34;</span>
+    <span style="color:#a6e22e">dispo</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;MRP控制者&#34;</span>
+    <span style="color:#a6e22e">str1</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;行项目文本-传送文本&#34;</span>
+    <span style="color:#a6e22e">str2</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;行项目文本-预算年度&#34;</span>
+    <span style="color:#a6e22e">str3</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>, <span style="color:#e6db74">&#34;行项目文本-资产类别&#34;</span>
+  <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_data</span>.
+  <span style="color:#e6db74">&#34;=============== Upload File ===============&#34;</span>
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">gt_data</span>.
+    <span style="color:#a6e22e">bnfpo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bnfpo</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">input</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">bnfpo</span>
+      <span style="color:#a6e22e">IMPORTING</span>
+        <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bnfpo</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">input</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">matnr</span>
+      <span style="color:#a6e22e">IMPORTING</span>
+        <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">matnr</span>.
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">doc_type</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bsart</span>.     <span style="color:#e6db74">&#34;凭证类型&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preq_item</span>         <span style="color:#f92672">=</span> <span style="color:#a6e22e">bnfpo</span>.             <span style="color:#e6db74">&#34;项目&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">PR_ITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ACCTASSCAT</span>        <span style="color:#f92672">=</span> <span style="color:#a6e22e">GT_DATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">KNTTP</span>.     <span style="color:#e6db74">&#34;科目分配类别&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">material</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">matnr</span>.             <span style="color:#e6db74">&#34;商品代码&#34;</span>
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">PR_ITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SHORT_TEXT</span>        <span style="color:#f92672">=</span> <span style="color:#a6e22e">GT_DATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">TXZ01</span>.     <span style="color:#e6db74">&#34;短文本&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">quantity</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">menge</span>.     <span style="color:#e6db74">&#34;数量&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">unit</span>              <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">meins</span>.     <span style="color:#e6db74">&#34;单位&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">deliv_date</span>        <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">eeind</span>.     <span style="color:#e6db74">&#34;交货日期&#34;</span>
+<span style="color:#f92672">*</span>    <span style="color:#a6e22e">PR_ITEM</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MAT_GRP</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">GT_DATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MATKL</span>.     <span style="color:#e6db74">&#34;物料组&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">plant</span>             <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">werks</span>.     <span style="color:#e6db74">&#34;工厂&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pur_group</span>         <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ekgrp</span>.     <span style="color:#e6db74">&#34;采购组&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preq_name</span>         <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">afnam</span>.     <span style="color:#e6db74">&#34;申请者&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">trackingno</span>        <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bednr</span>.     <span style="color:#e6db74">&#34;需求跟踪号&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">c_amt_bapi</span>        <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preis</span>.     <span style="color:#e6db74">&#34;评估价格&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">currency</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">waers</span>.     <span style="color:#e6db74">&#34;货币码&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">price_unit</span>        <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">peinh</span>.     <span style="color:#e6db74">&#34;价格单位&#34;</span>
+    <span style="color:#a6e22e">pr_item</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mrp_contr</span>         <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dispo</span>.     <span style="color:#e6db74">&#34;MRP控制者&#34;</span>
+    <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">pr_item</span>.
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">pr_item</span>.
+    <span style="color:#a6e22e">pr_account</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preq_item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bnfpo</span>.        <span style="color:#e6db74">&#34;项目&#34;</span>
+    <span style="color:#a6e22e">pr_account</span><span style="color:#f92672">-</span><span style="color:#a6e22e">g_l_acct</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sakto</span>. <span style="color:#e6db74">&#34;总帐科目&#34;</span>
+    <span style="color:#a6e22e">pr_account</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cost_ctr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">kostl</span>. <span style="color:#e6db74">&#34;成本中心&#34;</span>
+    <span style="color:#a6e22e">pr_account</span><span style="color:#f92672">-</span><span style="color:#a6e22e">asset_no</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">anln1</span>. <span style="color:#e6db74">&#34;资产&#34;</span>
+    <span style="color:#a6e22e">pr_account</span><span style="color:#f92672">-</span><span style="color:#a6e22e">order_no</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">aufnr</span>. <span style="color:#e6db74">&#34;订单&#34;</span>
+    <span style="color:#a6e22e">pr_account</span><span style="color:#f92672">-</span><span style="color:#a6e22e">co_area</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BELL&#39;</span>.
+    <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">pr_account</span>.
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">pr_account</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preq_item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bnfpo</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text_id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B03&#39;</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text_line</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str1</span>.<span style="color:#e6db74">&#34;行项目文本-传送文本&#34;</span>
+    <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">pr_item_id</span>.
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">pr_item_id</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preq_item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bnfpo</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text_id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B07&#39;</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text_line</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str2</span>.<span style="color:#e6db74">&#34;行项目文本-预算年度&#34;</span>
+    <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">pr_item_id</span>.
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">pr_item_id</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preq_item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bnfpo</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text_id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B08&#39;</span>.
+    <span style="color:#a6e22e">pr_item_id</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text_line</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str3</span>.<span style="color:#e6db74">&#34;行项目文本-资产类别&#34;</span>
+    <span style="color:#a6e22e">APPEND</span>  <span style="color:#a6e22e">pr_item_id</span>.
+    <span style="color:#a6e22e">CLEAR</span>  <span style="color:#a6e22e">pr_item_id</span>.
+    <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">bednr</span>.
+    
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_REQUISITION_CREATE&#39;</span>
+	<span style="color:#e6db74">&#34; EXPORTING
+</span><span style="color:#e6db74">	&#34;</span>   <span style="color:#a6e22e">SKIP_ITEMS_WITH_ERROR</span>                <span style="color:#f92672">=</span>
+	<span style="color:#e6db74">&#34;   AUTOMATIC_SOURCE                     = &#39;X&#39;
+</span><span style="color:#e6db74">      IMPORTING
+</span><span style="color:#e6db74">        number                               = pr_no
+</span><span style="color:#e6db74">      TABLES
+</span><span style="color:#e6db74">        requisition_items                    = pr_item
+</span><span style="color:#e6db74">        requisition_account_assignment       = pr_account
+</span><span style="color:#e6db74">        requisition_item_text                = pr_item_id
+</span><span style="color:#e6db74">	&#34;</span>   <span style="color:#a6e22e">REQUISITION_LIMITS</span>                   <span style="color:#f92672">=</span>
+	<span style="color:#e6db74">&#34;   REQUISITION_CONTRACT_LIMITS          =
+</span><span style="color:#e6db74">	&#34;</span>   <span style="color:#a6e22e">REQUISITION_SERVICES</span>                 <span style="color:#f92672">=</span>
+	<span style="color:#e6db74">&#34;   REQUISITION_SRV_ACCASS_VALUES        =
+</span><span style="color:#e6db74">        return                               = pr_return
+</span><span style="color:#e6db74">	&#34;</span>   <span style="color:#a6e22e">REQUISITION_SERVICES_TEXT</span>            <span style="color:#f92672">=</span>
+	<span style="color:#e6db74">&#34;   REQUISITION_ADDRDELIVERY             =
+</span><span style="color:#e6db74">	&#34;</span>   <span style="color:#a6e22e">EXTENSIONIN</span>                          <span style="color:#f92672">=</span>
+                .
+      <span style="color:#a6e22e">CLEAR</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lv_message</span>.
+      <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">pr_return</span> <span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#a6e22e">OR</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+        <span style="color:#a6e22e">MESSAGE</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgid</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgty</span> <span style="color:#a6e22e">NUMBER</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgno</span>
+			<span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">lv_message</span>
+            <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv1</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv2</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv3</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv4</span>.
+      <span style="color:#a6e22e">ENDLOOP</span>.
+      <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+        <span style="color:#a6e22e">CLEAR</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lv_message</span>.
+        <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+        <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">pr_return</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">l_return</span> <span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+          <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">lv_message</span> <span style="color:#a6e22e">l_return</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">lv_message</span>.
+        <span style="color:#a6e22e">ENDLOOP</span>.
+        <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">gt_data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bednr</span> <span style="color:#a6e22e">lv_message</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">gt_out</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text</span>.
+        <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">gt_out</span>.
+        <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">gt_out</span>.
+      <span style="color:#a6e22e">ELSE</span>.
+        <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+          <span style="color:#a6e22e">EXPORTING</span>
+            <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+        <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">pr_no</span> <span style="color:#e6db74">&#39;创建成功&#39;</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">gt_out</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text</span>.
+        <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">gt_out</span>.
+        <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">gt_out</span>.
+      <span style="color:#a6e22e">ENDIF</span>.
+      <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">pr_item</span>.
+      <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">pr_account</span>.
+      <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">pr_item_id</span>.
+      <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">pr_return</span>.
+    <span style="color:#a6e22e">ENDAT</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#a6e22e">CREATE_PR</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1842</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/WM_Table/" class="prev" rel="prev" title="SAP WM 常用表"><i class="iconfont icon-dajiantou"></i>&nbsp;SAP WM 常用表</a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_PurchaseOrder_BAPI/" class="next" rel="next" title="使用BAPI创建Purchase Order">使用BAPI创建Purchase Order&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-04 00:00:00 \u002b0000 UTC',
+        title: '使用BAPI创建Purchase Request',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

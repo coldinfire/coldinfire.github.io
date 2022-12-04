@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/SAPHANA_DevEnv/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/SAPHANA_CDS/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/SAPHANA_SQLScript/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP HANA SQLScript 使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP HANA SQLScript 使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP HANA SQLScript 使用 "/>
+<meta name="twitter:description" content="SQLScript 是 SAP HANA 的专用 SQL 语言。SQLScript 是为 SAP HANA 数据库层的 SAP HANA 开发而设计的。SQLScript 在 code pushdown paradigm 转换中起着关键作用。 SQLScript 背后的动机是将数"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP HANA SQLScript 使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/SAPHANA_SQLScript\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "HANA",
+  "wordcount":  1856 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/SAPHANA_SQLScript\/",
+  "datePublished": "2021-11-18T00:00:00\x2b00:00",
+  "dateModified": "2021-11-18T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP HANA SQLScript 使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-11-18 >18 November 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SQLScript 是 SAP HANA 的专用 SQL 语言。SQLScript 是为 SAP HANA 数据库层的 SAP HANA 开发而设计的。SQLScript 在 code pushdown paradigm 转换中起着关键作用。</p>
+<p>SQLScript 背后的动机是将数据密集型逻辑嵌入 SAP HANA 数据库本身，这称为 Code Pushdown：</p>
+<p><img src="/images/HANA/HANA_CodePushdown.png" alt="Code Pushdown"></p>
+<h4 id="准备条件">准备条件</h4>
+<p>在使用 SQLScript 进行 SAP HANA 开发之前，必须安装所需的软件并拥有适当的访问权限和权限：</p>
+<ul>
+<li>拥有数据库开发人员账号，用来访问 SAP HANA 数据库</li>
+<li>安装访问 SAP HANA 的开发者工具，例如 SAP HANA Studio 或 Eclipse</li>
+<li>安装 SAP HANA 数据库开发插件，SAP HANA Tools &ndash;&gt; SAP HANA Database Development</li>
+</ul>
+<h4 id="sqlscript-特点">SQLScript 特点</h4>
+<p>SQLScript 是结构化查询语言 (SQL) 的扩展集合。 扩展包括：</p>
+<ul>
+<li>
+<p>数据扩展，允许在没有对应表的情况下定义表类型</p>
+</li>
+<li>
+<p>功能扩展，允许定义（无副作用）函数，可用于表达和封装复杂的数据流</p>
+</li>
+<li>
+<p>过程扩展，它提供在数据库进程上下文中执行的命令式构造。</p>
+</li>
+</ul>
+<p>SQLScript 特点</p>
+<ul>
+<li>在 SQLScript 中，可以从单个 SQLScript 语句中获得多个结果集，而单个 SQL 语句将只返回一个结果集。</li>
+<li>在 SQLScript 中也可以进行模块化； 也就是说，一组业务逻辑可以拆分为更小的代码片段，然后捆绑成可重用的逻辑语句组。这些组更具可读性和可理解性。</li>
+<li>在 SQLScript 中可以使用像 IF/ELSE 语句这样的控制语句，但在常规命令行 SQL 中不可用。</li>
+<li>在 SQLScript 中可以使用局部变量以及用于过渡结果的控制语句。</li>
+</ul>
+<h3 id="ddl-data-definition-language">DDL (Data Definition Language)</h3>
+<p>使用 DDL 定义底层关系数据库管理系统 (RDBMS) 的数据模型。 简单来说，DDL 定义了数据库的整个结构，负责创建表和修改表的表类型和存储类型（即列存储或行存储）。 表字段的域级约束可以保证表中只保存特定类型的数据。DDL 还负责确保维护表之间的关系完整性。</p>
+<p>要创建数据库对象，必须首先确定是否有权访问的 Catalog 文件夹下的正确 Schema。</p>
+<h4 id="schema">Schema</h4>
+<p>Database Schema 是相关对象（如表、视图和存储过程）的逻辑分组。 如果没有 Schema 将无法写入 Database Catalog。SAP HANA 允许将 Schema 创建为设计时库中的可传输文件。</p>
+<p>使用 <code>CREATE SCHEMA</code> 关键字创建 Schema：</p>
+<ul>
+<li><code>CREATE SCHEMA &lt;schema_name&gt; [OWNED BY &lt;user_name&gt;]</code></li>
+</ul>
+<h4 id="create">CREATE</h4>
+<p>表是关系数据库级别的最低数据存储形式。 视图和更高级别的数据库对象是在表之上创建的。</p>
+<p>Create Table：</p>
+<ul>
+<li>
+<p>通过 SQL 语句创建</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CREATE</span> [&lt;table_type&gt;] <span style="color:#66d9ef">TABLE</span> <span style="color:#75715e">&#34;&lt;schema_name&gt;&#34;.&#34;&lt;table_name&gt;&#34;( 
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;&lt;column_name&gt;&#34; &lt;data_type&gt; not null,
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;&lt;column_name&gt;&#34; &lt;data_type&gt; ,
+</span><span style="color:#75715e"></span>  ...
+  PRIMARY <span style="color:#66d9ef">KEY</span>(&lt;column_name&gt;,...)
+);
+<span style="color:#75715e">&#34;示例代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> COLUMN <span style="color:#66d9ef">TABLE</span> airport(
+  CODE NVARCHAR(<span style="color:#ae81ff">3</span>) <span style="color:#f92672">not</span> null,
+  NAME NVARCHAR(<span style="color:#ae81ff">50</span>),
+  CITY NVARCHAR(<span style="color:#ae81ff">20</span>),
+  PRIMARY <span style="color:#66d9ef">KEY</span> (CODE)
+);
+</code></pre></div><ul>
+<li>table_type定义了表类型，COLUMN、ROW、HISTORY COLUMN 等。 默认值为 ROW。 一般使用 COLUMN</li>
+</ul>
+</li>
+<li>
+<p>通过 HANA Studio 提供的工具视图创建</p>
+<p><img src="/images/HANA/HANA_SQLScript_1.png" alt="Create Table"></p>
+</li>
+</ul>
+<p>Create Table Type：借助 Table Type，SQLScript 可以处理并返回结果集的一堆行</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CREATE</span> TYPE <span style="color:#75715e">&#34;&lt;schema_name&gt;&#34;.&#34;&lt;table_type_name&gt;&#34;( AS TABLE (
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;&lt;column_name&gt;&#34; &lt;data_type&gt; not null,
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;&lt;column_name&gt;&#34; &lt;data_type&gt; ,
+</span><span style="color:#75715e"></span>  ...
+));
+</code></pre></div></li>
+</ul>
+<h4 id="alter">ALTER</h4>
+<p><code>ALTER TABLE &quot;&lt;schema_name&gt;&quot;.&quot;&lt;table_name&gt;&quot;( &quot;&lt;column&gt;&quot; &lt;type&gt; ); </code></p>
+<h4 id="drop">DROP</h4>
+<p><code>DROP TABLE &quot;&lt;schema_name&gt;&quot;.&quot;&lt;table_name&gt;&quot;;</code></p>
+<h3 id="dml-data-manipulation-language">DML (Data Manipulation Language)</h3>
+<p>当数据库模型创建后，数据将存储在数据库中的相关表和字段中。 DML 用于检索、存储、修改、删除、插入和更新数据库中的数据。</p>
+<h4 id="select">SELECT</h4>
+<p>查询语句种，选择的列用逗号 (,) 分隔，并且语句以分号 (;) 结尾。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">SELECT</span> column1 [,column2,column3] count(<span style="color:#f92672">*</span>)
+  <span style="color:#66d9ef">FROM</span> <span style="color:#75715e">&#34;&lt;schema_name&gt;&#34;.&#34;&lt;table_name&gt;&#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">WHERE</span> condition 
+ GROUPBY column1,column2
+ <span style="color:#66d9ef">HAVING</span> &lt;Group_Conditon&gt;
+ <span style="color:#66d9ef">ORDER BY</span> column1 ASC, column2 DESC;
+</code></pre></div><h4 id="insert">INSERT</h4>
+<ul>
+<li><code>INSERT INTO &quot;&lt;schema_name&gt;&quot;.&quot;&lt;table_name&gt;&quot; [&lt;column_list&gt;] VALUES('val1','val2',...,'valn');</code></li>
+</ul>
+<h4 id="update">UPDATE</h4>
+<ul>
+<li><code>UPDATE &quot;&lt;schema_name&gt;&quot;.&quot;&lt;table_name&gt;&quot; SET column1 = val1 ... ; </code></li>
+</ul>
+<h4 id="delete">DELETE</h4>
+<h3 id="dcl-data-control-language">DCL (Data Control Language)</h3>
+<p>使用 DCL 管理数据库中数据的授权和控制。 使用 DCL 语句，可以创建角色并将其授予用户，以授予他们执行某些数据操作所需的权限。 GRANT 和 REVOKE 语句是授予和撤销用户权限的基本构建块。
+使用查询语言，可以将实时对象保存在由引用到其他表的相关字段链接的二维表中。</p>
+<h3 id="存储过程-stored-procedures">存储过程 Stored Procedures</h3>
+<p>存储过程：是一组可执行语句，用于实现一组任务或操作。 在 SQLScript 的上下文中，可以将存储过程用作一种容器，而不是单独编写一组独立的 SQL 语句。使用存储过程的一些优点：</p>
+<ul>
+<li>相关的 SQL 语句可以组织到一个容器中，专注于实现一组业务逻辑。</li>
+<li>可以将这些过程进行参数化并多次调用。</li>
+<li>可以将具有各种条件语句和循环语句的命令式逻辑放入过程中。</li>
+<li>可以从 SAP HANA 系统外部远程调用这些过程。</li>
+</ul>
+<h4 id="create-procedures">Create Procedures</h4>
+<p>右键单击存储过程将保存的 Database Schema，打开 SQL 的命令提示符。 命令提示符打开后，使用 SQLScript 关键字 <code>CREATE PROCEDURE</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CREATE</span> [<span style="color:#f92672">OR</span> <span style="color:#66d9ef">REPLACE</span>] PROCEDURE &lt;proc_name&gt; [(&lt;parameter_clause&gt;)]
+  [LANGUAGE &lt;lang&gt;] [SQL SECURITY &lt;mode&gt;] [DEFAULT SCHEMA &lt;default_schema_name&gt;]
+  [READS SQLDATA] [WITH ENCRYPTION] [AUTOCOMMIT DDL <span style="color:#66d9ef">ON</span><span style="color:#960050;background-color:#1e0010">|</span>OFF]  <span style="color:#66d9ef">AS</span> 
+BEGIN [SEQUENTIAL EXECUTION]
+  &lt;procedure_body&gt;
+END
+</code></pre></div><h4 id="修改存储过程">修改存储过程</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">ALTER PROCEDURE &lt;proc_name&gt; [(&lt;parameter_clause&gt;)]
+  [LANGUAGE &lt;lang&gt;] [SQL SECURITY &lt;mode&gt;] [DEFAULT SCHEMA &lt;default_schema_name&gt;]
+  [READS SQLDATA] [WITH ENCRYPTION] [AUTOCOMMIT DDL <span style="color:#66d9ef">ON</span><span style="color:#960050;background-color:#1e0010">|</span>OFF] <span style="color:#66d9ef">AS</span>
+BEGIN [SEQUENTIAL EXECUTION]
+  &lt;procedure_body&gt;
+END
+</code></pre></div><h4 id="调用存储过程">调用存储过程</h4>
+<p><code>CALL &lt;proc_name&gt; (&lt;param_list&gt;);</code></p>
+<h4 id="删除存储过程">删除存储过程</h4>
+<p><code>DROP PROCEDURE &lt;proc_name&gt;;</code></p>
+<h3 id="用户自定义函数-udfsuser-defined-functions">用户自定义函数 UDFs(User-Defined Functions)</h3>
+<p>用户自定义函数也是 SQLScript 语句的集合，用于实现特定功能。</p>
+<p>SQLScript 中存在两种类型的用户自定义函数：</p>
+<ul>
+<li>Scalar UDFs：返回值类型是 Scalar</li>
+<li>Table UDFs：返回值类型是 Table</li>
+</ul>
+<h4 id="udfs-create">UDFs Create</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CREATE</span> [<span style="color:#f92672">OR</span> <span style="color:#66d9ef">REPLACE</span>] <span style="color:#66d9ef">FUNCTION</span> &lt;func_name&gt; [(&lt;parameter_clause&gt;)] 
+ RETURNS &lt;return_type&gt; [LANGUAGE &lt;lang&gt;] [SQL SECURITY &lt;mode&gt;]
+ [DEFAULT SCHEMA &lt;default_schema_name&gt; [DETERMINISTIC]] [WITH ENCRYPTION] <span style="color:#66d9ef">AS</span>
+BEGIN
+  &lt;function_body&gt;
+END
+</code></pre></div><h4 id="删除-udfs">删除 UDFs</h4>
+<p><code>DROP FUNCTION &lt;func_name&gt; [&lt;drop_option&gt;];</code></p>
+<h3 id="sqlscript-constructs">SQLScript Constructs</h3>
+<p>SQLScript 编程通过在数据库层执行数据密集型操作（例如，命令式逻辑）来实现 Code Pushdown。在 SQLScript 中，可以创建局部变量、局部内表、条件语句和各种循环语句。</p>
+<h4 id="本地变量">本地变量</h4>
+<p>创建本地变量：<code>DECLARE &lt;variable&gt; &lt;variable_type&gt;;</code></p>
+<p>变量类型：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric types</td>
+<td>TINYINT、INT、BIGINT、DECIMAL、SMALL-DECIMAL、REAL、DOUBLE</td>
+</tr>
+<tr>
+<td>Character string types</td>
+<td>VARCHAR、NVARCHAR、ALPHANUM</td>
+</tr>
+<tr>
+<td>Date-time types</td>
+<td>TIMESTAMP、SECOND DATE、DATE-TIME</td>
+</tr>
+<tr>
+<td>Binary types</td>
+<td>VARBINARY</td>
+</tr>
+<tr>
+<td>Large object types</td>
+<td>CLOB、NCLOB、BLOB</td>
+</tr>
+<tr>
+<td>Spatial types</td>
+<td>ST_GEOMETRY</td>
+</tr>
+</tbody>
+</table>
+<h3 id="arrays">Arrays</h3>
+<h4 id="创建数组">创建数组</h4>
+<h3 id="sqlscript-debug">SQLScript Debug</h3>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1856</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/HANA/">
+                    #HANA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/SAPHANA_DevEnv/" class="prev" rel="prev" title=" SAP HANA 开发环境 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP HANA 开发环境 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/SAPHANA_CDS/" class="next" rel="next" title=" SAP CDS-Views "> SAP CDS-Views &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-11-18 00:00:00 \x2b0000 UTC',
+        title: ' SAP HANA SQLScript 使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

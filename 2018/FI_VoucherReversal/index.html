@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Enhance3/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAPAuthorization/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/FI_VoucherReversal/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            财务凭证冲销  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 财务凭证冲销  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 财务凭证冲销 "/>
+<meta name="twitter:description" content="凭证的更改 1：已经过帐的 TCODE：FB02. 过完帐的允许更改的地方有限，只有凭证抬头文本，参照，分配，文本，原因代码等 2：预制凭证的更改."/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 财务凭证冲销 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/FI_VoucherReversal\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SAPbusiness",
+  "wordcount":  832 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/FI_VoucherReversal\/",
+  "datePublished": "2018-09-20T00:00:00\u002b00:00",
+  "dateModified": "2018-09-20T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 财务凭证冲销 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-20 >20 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="凭证的更改">凭证的更改</h3>
+<h4 id="1已经过帐的">1：已经过帐的</h4>
+<p>TCODE：FB02.</p>
+<p>过完帐的允许更改的地方有限，只有凭证抬头文本，参照，分配，文本，原因代码等</p>
+<h4 id="2预制凭证的更改">2：预制凭证的更改.</h4>
+<p>TCODE：FBV2.</p>
+<p>预制凭证可以更改的地方很多，只有凭证编码 + 公司代码 + 记帐码不允许更改.</p>
+<p>如果科目错误，可以把金额置为 0 , 这样凭证保存后打印出来就不会含有那个科目了.</p>
+<h3 id="凭证冲销">凭证冲销</h3>
+<p>原则：通过后勤产生的会计凭证只能够通过冲销相应的物料凭证 (后勤凭证) 来达到冲销会计凭证的目的。二：固定资产的产生的凭证不可通过冲销，只可做一个相反的会计凭证来调整.</p>
+<h4 id="1财务模块手工输入的凭证的冲销">1：财务模块手工输入的凭证的冲销</h4>
+<p>TCODE:FB08</p>
+<p>输入凭证号码，会计年度，公司代码，冲销原因 (如果冲销当月凭证就选择 01, 以前月分的用 02 如果选择 02 需要输入记帐日期). 回车.</p>
+<p>如果出现下面的显示 “财务中不能冲销的凭证” 就说明这不是通过财务做进去的凭证，而是后勤产生的凭证。不可在 FB08 冲销.</p>
+<p>当输入凭证属于手工输入的凭证时，保存即可。就会出现提示：出现凭证 XXXXXXXXXX 已经保存。表明是冲销完成.</p>
+<h4 id="2mm-模块的凭证冲销">2：MM 模块的凭证冲销</h4>
+<p><strong>2.1：MM 模块产生的会计凭证的冲销</strong></p>
+<p>TCODE:MBST</p>
+<p>输入凭证类型和记帐日期，会计年度等.</p>
+<p>保存。系统出现：出现凭证 XXXXXXXXXX 已经记帐，表明冲销完成。以前物料凭证关联生成的会计凭证也相应的被冲销.</p>
+<p><strong>2.2：发票校验的取消</strong></p>
+<p>TCODE:MR8M</p>
+<p>输入发票号码，冲销原因</p>
+<p>保存即可.</p>
+<p>提示需要手工清除会计的凭证的提示。表明已经无错误的冲销完成。然后要手工清除此两张凭证（它们是不能自动清账的）.</p>
+<h4 id="3sd-的凭证冲销">3：SD 的凭证冲销</h4>
+<p><strong>3.1：SD 发货凭证的冲销</strong></p>
+<p>注意：如果已经在系统中开票了，必须先冲销开票然后再冲销发货过帐。再才能按下列步骤进行 SD 发货凭证的冲销。</p>
+<p>操作：</p>
+<p>TCODE:VL09</p>
+<p>输入相应的界定条件</p>
+<p>系统根据用户输入列出所有交货凭证。</p>
+<p>用户选中相应要冲销的凭证点击工具条的 “冲销” 按钮，系统会出现 “确实需要冲销次发货吗？” 提示框，选择 “OK” 按钮确认。</p>
+<p><strong>3.2：发票的取消 (在 SD 开发票的时候错误)</strong></p>
+<p>操作：</p>
+<p>TCODE:VF11 （如果要反记账冲销，则在 S1 类开票类别中 “反记账” 填写 A/B）</p>
+<p>输入要取消的发票号码</p>
+<p>点击：保存</p>
+<p>冲销完毕.</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>832</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SAPbusiness/">
+                    #SAPbusiness</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Enhance3/" class="prev" rel="prev" title="查找增强程序3"><i class="iconfont icon-dajiantou"></i>&nbsp;查找增强程序3</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAPAuthorization/" class="next" rel="next" title="SAP Authorization">SAP Authorization&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-20 00:00:00 \u002b0000 UTC',
+        title: ' 财务凭证冲销 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

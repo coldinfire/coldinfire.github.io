@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Utils_ConvertMaterialUnit/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Utils_NegativeSignFront/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Utils_PopUpBox/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 弹出框设置  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 弹出框设置  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 弹出框设置 "/>
+<meta name="twitter:description" content="可输入弹出框：POPUP_GET_VALUES_USER_HELP 在对话框中列出以选择一个或多个条目（或仅显示）弹出的 ALV 。 输入参数 Importing Description I_TITLE Dialog box"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 弹出框设置 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_PopUpBox\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils, ALV",
+  "wordcount":  1336 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_PopUpBox\/",
+  "datePublished": "2018-08-10T00:00:00\x2b00:00",
+  "dateModified": "2018-08-10T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 弹出框设置 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-08-10 >10 August 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="可输入弹出框popup_get_values_user_help">可输入弹出框：POPUP_GET_VALUES_USER_HELP</h3>
+<p>在对话框中列出以选择一个或多个条目（或仅显示）弹出的 ALV 。</p>
+<h4 id="输入参数">输入参数</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Importing</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">I_TITLE</td>
+<td align="left">Dialog box title</td>
+</tr>
+<tr>
+<td align="left">I_SELECTION</td>
+<td align="left">X : Selection possible；space : Display</td>
+</tr>
+<tr>
+<td align="left">I_ALLOW_NO_SELECTION</td>
+<td align="left">Allow copy although nothing is selected</td>
+</tr>
+<tr>
+<td align="left">I_ZEBRA</td>
+<td align="left">Line output with alternating color</td>
+</tr>
+<tr>
+<td align="left">I_SCREEN_START_COLUMN</td>
+<td align="left">Coordinates for list in dialog box</td>
+</tr>
+<tr>
+<td align="left">I_SCREEN_START_LINE</td>
+<td align="left">Coordinates for list in dialog box</td>
+</tr>
+<tr>
+<td align="left">I_SCREEN_END_COLUMN</td>
+<td align="left">Coordinates for list in dialog box</td>
+</tr>
+<tr>
+<td align="left">I_SCREEN_END_LINE</td>
+<td align="left">Coordinates for list in dialog box</td>
+</tr>
+<tr>
+<td align="left">I_CHECKBOX_FIELDNAME</td>
+<td align="left">Output table checkbox field name</td>
+</tr>
+<tr>
+<td align="left">I_LINEMARK_FIELDNAME</td>
+<td align="left">Line selection color information field name</td>
+</tr>
+<tr>
+<td align="left">I_SCROLL_TO_SEL_LINE</td>
+<td align="left">Scroll to default selection if necessary</td>
+</tr>
+<tr>
+<td align="left">I_TABNAME</td>
+<td align="left">Table name with chosen values</td>
+</tr>
+<tr>
+<td align="left">I_STRUCTURE_NAME</td>
+<td align="left">Internal output table structure name</td>
+</tr>
+<tr>
+<td align="left">IT_FIELDCAT</td>
+<td align="left">Field catalog with field descriptions</td>
+</tr>
+<tr>
+<td align="left">IT_EXCLUDING</td>
+<td align="left">Table of inactive function codes</td>
+</tr>
+<tr>
+<td align="left">I_CALLBACK_PROGRAM</td>
+<td align="left">Name of the calling program</td>
+</tr>
+<tr>
+<td align="left">I_CALLBACK_USER_COMMAND</td>
+<td align="left">USER_COMMAND handling form routine name</td>
+</tr>
+</tbody>
+</table>
+<p>输出参数 &amp; TABLE</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ES_SELFIELD</td>
+<td>包含弹出 ALV 中简单选择的信息</td>
+</tr>
+<tr>
+<td>E_EXIT</td>
+<td>当用户取消操作时，此字段设置为 “X”</td>
+</tr>
+<tr>
+<td>T_OUTTAB</td>
+<td>包含要在弹出窗口中的 ALV 中显示的数据</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sample">Sample</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span>  zpopup_sample.
+<span style="color:#66d9ef">TYPE-POOLS</span>: slis.
+<span style="color:#66d9ef">DATA</span>: gt_outtab <span style="color:#66d9ef">TYPE </span>sflight OCCURS <span style="color:#ae81ff">0</span>,
+      gs_private <span style="color:#66d9ef">TYPE </span>slis_data_caller_exit,
+      gs_selfield <span style="color:#66d9ef">TYPE </span>slis_selfield,
+      gt_fieldcat <span style="color:#66d9ef">TYPE </span>slis_t_fieldcat_alv <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      g_exit(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">PARAMETERS</span>: p_title <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>title.
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> sflight <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> gt_outtab UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">5</span> ROWS.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;REUSE_ALV_FIELDCATALOG_MERGE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_structure_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SFLIGHT&#39;</span>
+    <span style="color:#66d9ef">CHANGING</span>
+      ct_fieldcat      <span style="color:#f92672">=</span> gt_fieldcat[].
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> gt_fieldcat <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PLANETYPE&#39;</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    gt_fieldcat<span style="color:#f92672">-</span>no_out <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">MODIFY</span> gt_fieldcat <span style="color:#66d9ef">INDEX</span> sy<span style="color:#f92672">-</span>tabix.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;REUSE_ALV_POPUP_TO_SELECT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_title                 <span style="color:#f92672">=</span> p_title
+      i_selection             <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      i_zebra                 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      i_screen_start_column   <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+      i_screen_start_line     <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      i_screen_end_column     <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+      i_screen_end_line       <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+<span style="color:#75715e">*     I_CHECKBOX_FIELDNAME    =</span>
+<span style="color:#75715e">*     I_LINEMARK_FIELDNAME    =</span>
+      i_scroll_to_sel_line    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      i_tabname               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+      it_fieldcat             <span style="color:#f92672">=</span> gt_fieldcat[]
+<span style="color:#75715e">*     IT_EXCLUDING            =</span>
+      i_callback_program      <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid
+<span style="color:#75715e">*     I_CALLBACK_USER_COMMAND =</span>
+      is_private              <span style="color:#f92672">=</span> gs_private
+    <span style="color:#66d9ef">IMPORTING</span>
+      es_selfield             <span style="color:#f92672">=</span> gs_selfield
+      e_exit                  <span style="color:#f92672">=</span> g_exit
+    <span style="color:#66d9ef">TABLES</span>
+      t_outtab                <span style="color:#f92672">=</span> gt_outtab
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      program_error           <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#66d9ef">OTHERS</span>                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> i000(<span style="color:#ae81ff">0</span>k) <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>subrc.
+  <span style="color:#66d9ef">ENDIF</span>.
+
+  <span style="color:#66d9ef">WRITE</span>: / g_exit,
+  gs_selfield<span style="color:#f92672">-</span>tabname,
+  gs_selfield<span style="color:#f92672">-</span>tabindex.
+</code></pre></div><h3 id="模仿系统标准弹出框fb_messages_display_popup">模仿系统标准弹出框：FB_MESSAGES_DISPLAY_POPUP</h3>
+<p><img src="/images/ABAP/ABAP_Popup01.png" alt="弹出框"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: 
+  i_smesg <span style="color:#66d9ef">TYPE </span>tsmesg <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  i_smesg<span style="color:#f92672">-</span>msgty <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>arbgb <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>txtnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;001&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>msgv1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test1&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>msgv2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;箱码未扫描装车&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>msgv3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> i_smesg.
+<span style="color:#66d9ef">IF</span> i_smesg[] <span style="color:#f92672">IS NOT INITIAL</span>.
+  <span style="color:#66d9ef">CLEAR</span> i_smesg.
+  i_smesg<span style="color:#f92672">-</span>msgty <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>arbgb <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>txtnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;001&#39;</span>.
+  i_smesg<span style="color:#f92672">-</span>msgv1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;下列箱码未扫描装车&#39;</span>.
+  <span style="color:#66d9ef">INSERT</span> i_smesg <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;FB_MESSAGES_DISPLAY_POPUP&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      it_smesg        <span style="color:#f92672">=</span> i_smesg[]
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      no_messages     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      popup_cancelled <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">RETURN</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="弹出警示框让用户确认popup_to_confirm">弹出警示框让用户确认：POPUP_TO_CONFIRM</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: quest <span style="color:#66d9ef">TYPE </span>string,
+      g_return <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;是否确认删除数据&#39;</span> <span style="color:#66d9ef">INTO</span> quest.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;POPUP_TO_CONFIRM&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+<span style="color:#75715e">*   TITLEBAR                    = &#39; &#39;    &#34;弹出标题&#34;</span>
+<span style="color:#75715e">*   DIAGNOSE_OBJECT             = &#39; &#39;    &#34;诊断文本(通过 SE61 维护)&#34;</span>
+    TEXT_QUESTION               <span style="color:#f92672">=</span> quest  <span style="color:#75715e">&#34;弹出框提示的文本信息&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   TEXT_BUTTON_1               = &#39;Ja&#39;   &#34;第一个按钮上的文本&#34;     </span>
+<span style="color:#75715e">*   ICON_BUTTON_1               = &#39; &#39;    &#34;第一个按钮上的图标&#34;</span>
+<span style="color:#75715e">*   TEXT_BUTTON_2               = &#39;Nein&#39; &#34;第二个按钮上的文本&#34;</span>
+<span style="color:#75715e">*   ICON_BUTTON_2               = &#39; &#39;    &#34;第二个按钮上的图标&#34;</span>
+<span style="color:#75715e">*   DEFAULT_BUTTON              = &#39;1&#39;    &#34;光标默认位置&#34;</span>
+<span style="color:#75715e">*   DISPLAY_CANCEL_BUTTON       = &#39;X&#39;</span>
+<span style="color:#75715e">*   USERDEFINED_F1_HELP         = &#39; &#39;    &#34;用户定义的F1帮助&#34;</span>
+<span style="color:#75715e">*   START_COLUMN                = 25     &#34;弹出框的起始列&#34;</span>
+<span style="color:#75715e">*   START_ROW                   = 6      &#34;弹出框的起始行&#34;</span>
+<span style="color:#75715e">*   POPUP_TYPE                  =        &#34;ICON type&#34;</span>
+<span style="color:#75715e">*   IV_QUICKINFO_BUTTON_1       = &#39; &#39;</span>
+<span style="color:#75715e">*   IV_QUICKINFO_BUTTON_2       = &#39; &#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    ANSWER                      <span style="color:#f92672">=</span> g_return  <span style="color:#75715e">&#34;1 (Yes);2 (No);A (Abort)&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">* TABLES</span>
+<span style="color:#75715e">*   PARAMETER                   =</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    TEXT_NOT_FOUND              <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>                      <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">IF</span> g_return <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>. 
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;删除操作已确认！&#39;</span> TYPE <span style="color:#e6db74">&#39;S&#39;</span> .
+<span style="color:#66d9ef">ELSEIF</span> g_return <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;</span> <span style="color:#f92672">OR</span> g_return <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;删除操作已经取消！&#39;</span> TYPE <span style="color:#e6db74">&#39;S&#39;</span> .
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="展示单列信息弹出框popup_to_decide_list">展示单列信息弹出框：POPUP_TO_DECIDE_LIST</h3>
+<p><img src="/images/ABAP/ABAP_Popup02.png" alt="弹出框"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TABLES</span>: spopli.
+<span style="color:#66d9ef">DATA</span>: t_spop <span style="color:#66d9ef">LIKE </span>spopli OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>. <span style="color:#75715e">&#34;定义供用户选择列表&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">data</span>: answer <span style="color:#66d9ef">type </span>string.              <span style="color:#75715e">&#34;用于存储用户选择&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">REFRESH</span> t_spop.
+<span style="color:#66d9ef">CLEAR</span> t_spop. 
+t_spop<span style="color:#f92672">-</span>selflag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.                  <span style="color:#75715e">&#34;设置选中&#34;
+</span><span style="color:#75715e"></span>t_spop<span style="color:#f92672">-</span>varoption <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MBEW&#39;</span>.             <span style="color:#75715e">&#34;设置显示的文本&#34; 
+</span><span style="color:#75715e"></span>t_spop<span style="color:#f92672">-</span>inactive  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.                 <span style="color:#75715e">&#34;设置不可编辑&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">APPEND</span> t_spop.
+<span style="color:#66d9ef">CLEAR</span> t_spop. 
+t_spop<span style="color:#f92672">-</span>selflag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>. 
+t_spop<span style="color:#f92672">-</span>varoption <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EKPO&#39;</span>. 
+t_spop<span style="color:#f92672">-</span>inactive  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>. 
+<span style="color:#66d9ef">APPEND</span> t_spop.
+<span style="color:#66d9ef">CLEAR</span> t_spop. 
+t_spop<span style="color:#f92672">-</span>selflag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>. 
+t_spop<span style="color:#f92672">-</span>varoption <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MSEG&#39;</span>. 
+t_spop<span style="color:#f92672">-</span>inactive  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>. 
+<span style="color:#66d9ef">APPEND</span> t_spop.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;POPUP_TO_DECIDE_LIST&#39;</span> 
+  <span style="color:#66d9ef">EXPORTING</span> 
+    cursorline               <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+    mark_flag                <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span> 
+    mark_max                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+    start_col                <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>             <span style="color:#75715e">&#34;设置开始的列&#34;
+</span><span style="color:#75715e"></span>    start_row                <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>              <span style="color:#75715e">&#34;设置开始的行&#34;
+</span><span style="color:#75715e"></span>    textline1                <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;The order not release&#39;</span>        <span style="color:#75715e">&#34;设置文本行内容1&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   TEXTLINE2                = &#39; &#39; </span>
+<span style="color:#75715e">*   TEXTLINE3                = &#39; &#39; </span>
+    titel                    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Not realease order list&#39;</span>   <span style="color:#75715e">&#34;设置标题&#34;
+</span><span style="color:#75715e"></span>    DISPLAY_ONLY             <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> 
+  <span style="color:#66d9ef">IMPORTING</span> 
+    answer                   <span style="color:#f92672">=</span> answer         
+    <span style="color:#75715e">&#34;获得用户选择,这里返回的值对应是当前列表NO，比如第一个就返回1，第二个返回2&#34; 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">TABLES</span> 
+    t_spopli                 <span style="color:#f92672">=</span> t_spop         <span style="color:#75715e">&#34;设置选择列表&#34; 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">EXCEPTIONS</span> 
+    NOT_ENOUGH_ANSWERS       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+    TOO_MUCH_ANSWERS         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> 
+    TOO_MUCH_MARKS           <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> 
+    <span style="color:#66d9ef">OTHERS</span>                   <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> 
+    . 
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>. 
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+     <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>. 
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1336</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_ConvertMaterialUnit/" class="prev" rel="prev" title=" 物料单位转换 "><i class="iconfont icon-dajiantou"></i>&nbsp; 物料单位转换 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_NegativeSignFront/" class="next" rel="next" title=" 负号前置 "> 负号前置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-08-10 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 弹出框设置 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

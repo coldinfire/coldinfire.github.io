@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_TABLE_BAPI_Maintenance/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_Reflection/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/PP_Enhance_COOIS_AddFiled/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            COOIS 添加字段  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" COOIS 添加字段  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" COOIS 添加字段 "/>
+<meta name="twitter:description" content="参考文档 :Add New or Custom Fields to COOIS Output COOIS 添加并显示自定义字段 要在订单信息系统的 ALV OUTPUT 中增强/添加/显示其他字段或列，而 COOIS ALV 输出中的标准系统中未提供这些字段或"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " COOIS 添加字段 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/PP_Enhance_COOIS_AddFiled\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "PP, Enhance",
+  "wordcount":  387 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/PP_Enhance_COOIS_AddFiled\/",
+  "datePublished": "2021-04-09T00:00:00\x2b00:00",
+  "dateModified": "2021-04-09T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> COOIS 添加字段 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-04-09 >9 April 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>参考文档 :<a href="https://blogs.sap.com/2015/10/07/add-new-or-custom-fields-to-coois-output/">Add New or Custom Fields to COOIS Output</a></p>
+<h3 id="coois-添加并显示自定义字段">COOIS 添加并显示自定义字段</h3>
+<p>要在订单信息系统的 ALV OUTPUT 中增强/添加/显示其他字段或列，而 COOIS ALV 输出中的标准系统中未提供这些字段或列。</p>
+<p>USING BADI <code>WORKORDER_INFOSYSTEM</code> ：METHOD – <code>TABLES_MODIFY_LAY</code></p>
+<h4 id="step-1添加字段结构">Step 1：添加字段结构</h4>
+<p>Go to SE11, display the structure <strong>IOHEADER</strong> ，Click on <strong>Append Structure</strong> button。</p>
+<p>添加自己需要添加的字段到 append structure。</p>
+<h4 id="step-2配置显示界面">Step 2：配置显示界面</h4>
+<p>Use transaction SE38 to execute the report <strong>RCNCT000.</strong></p>
+<p><img src="/images/PP/COOIS_3.png" alt="SE38 RCNCT000"></p>
+<p>Input <strong>IOHEADER</strong> in the field string name and <strong>RCNHEAD</strong> in the include name as shown below and click on Execute ：</p>
+<p><img src="/images/PP/COOIS_4.png" alt="RCNCT000 IOHEADER RCNHEAD"></p>
+<p>In the following screen, click on the <strong>GENERATE</strong> Button:</p>
+<p><img src="/images/PP/COOIS_5.png" alt="Result"></p>
+<p>Use transaction SE38 to execute the report <strong>RCOTX000</strong> .</p>
+<p><img src="/images/PP/COOIS_0.png" alt="SE38 RCOTX000"></p>
+<p>Input the name of the structure <strong>IOHEADER</strong> in the field string name Choose F8 to execute the report.</p>
+<p><img src="/images/PP/COOIS_1.png" alt="RCOTX000 IOHEADER"></p>
+<p>Below is the screen print of the report RCOTX000 output. You will be able to identify your fields in the below screen (fields per this requirement are not shown below though)</p>
+<p><img src="/images/PP/COOIS_2.png" alt="RCOTX000 IOHEADER"></p>
+<p>Click “SAVE” and you will be taken to back to the selection screen.</p>
+<h4 id="step-3实现-badi-并在方法中获取字段值">Step 3：实现 BADI 并在方法中获取字段值</h4>
+<p>实现 BAPI : WORKORDER_INFOSYSTEM</p>
+<p>转到事务 SE19，创建 BADI  WORKORDER_INFOSYSTEM 的实现。 对于将新/客户字段添加到COOIS 输出的要求，这是适当的 BADI。</p>
+<p><img src="/images/PP/COOIS_6.png" alt="WORKORDER_INFOSYSTEM"></p>
+<p>方法中添加逻辑：TABLES_MODIFY_LAY</p>
+<p>双击方法名称 TABLES_MODIFY_LAY 继续执行业务逻辑，以将数据填充到必填字段中。</p>
+<p><img src="/images/PP/COOIS_7.png" alt="TABLES_MODIFY_LAY"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>387</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/PP/">
+                    #PP</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Enhance/">
+                    #Enhance</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_TABLE_BAPI_Maintenance/" class="prev" rel="prev" title=" BAPI:VIEW_MAINTENANCE_CALL 使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI:VIEW_MAINTENANCE_CALL 使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_Reflection/" class="next" rel="next" title=" ABAP 反射 "> ABAP 反射 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-04-09 00:00:00 \x2b0000 UTC',
+        title: ' COOIS 添加字段 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

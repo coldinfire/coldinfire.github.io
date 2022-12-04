@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Enhance/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Enhance1/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Enhance2/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            查找增强程序(2)  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 查找增强程序(2)  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 查找增强程序(2) "/>
+<meta name="twitter:description" content="查找增强出口和BADI *&amp;---------------------------------------------------------------------* *&amp; Report Z_FIND_EXIT_AND_BADI *&amp; *&amp;---------------------------------------------------------------------* *&amp; *&amp; *&amp;---------------------------------------------------------------------* report z_find_exit_and_badi no standard page heading. *&amp;---------------------------------------------------------------------* *&amp; Enter the transaction code that you want to search through in order *&amp; to find which Standard SAP User Exits and BADIs *&amp; *&amp;---------------------------------------------------------------------* *&amp; For field &#39;SUBC&#39; of table &#39;TRDIR&#39;: *&amp; M Module Pool *&amp; F Function group *&amp; S Subroutine"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 查找增强程序(2) ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Enhance2\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Enhance",
+  "wordcount":  728 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Enhance2\/",
+  "datePublished": "2018-09-15T00:00:00\u002b00:00",
+  "dateModified": "2018-09-15T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 查找增强程序(2) </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-15 >15 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="查找增强出口和badi">查找增强出口和BADI</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Report</span>  <span style="color:#a6e22e">Z_FIND_EXIT_AND_BADI</span>
+<span style="color:#f92672">*&amp;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span>
+<span style="color:#f92672">*&amp;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">report</span> <span style="color:#a6e22e">z_find_exit_and_badi</span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">page</span> <span style="color:#a6e22e">heading</span>.
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span>  <span style="color:#a6e22e">Enter</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">transaction</span> <span style="color:#a6e22e">code</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">want</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">search</span> <span style="color:#a6e22e">through</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">order</span>
+<span style="color:#f92672">*&amp;</span>  <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">find</span> <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">Standard</span> <span style="color:#a6e22e">SAP</span> <span style="color:#a6e22e">User</span> <span style="color:#a6e22e">Exits</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">BADIs</span>
+<span style="color:#f92672">*&amp;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">For</span> <span style="color:#a6e22e">field</span> <span style="color:#e6db74">&#39;SUBC&#39;</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">table</span> <span style="color:#e6db74">&#39;TRDIR&#39;</span><span style="color:#f92672">:</span>
+<span style="color:#f92672">*&amp;</span>   <span style="color:#a6e22e">M</span>  <span style="color:#a6e22e">Module</span> <span style="color:#a6e22e">Pool</span>
+<span style="color:#f92672">*&amp;</span>   <span style="color:#a6e22e">F</span>  Function <span style="color:#a6e22e">group</span>
+<span style="color:#f92672">*&amp;</span>   <span style="color:#a6e22e">S</span>  <span style="color:#a6e22e">Subroutine</span> <span style="color:#a6e22e">Pool</span>
+<span style="color:#f92672">*&amp;</span>   <span style="color:#a6e22e">J</span>  <span style="color:#a6e22e">Interface</span> <span style="color:#a6e22e">pool</span>
+<span style="color:#f92672">*&amp;</span>   <span style="color:#a6e22e">K</span>  <span style="color:#a6e22e">Class</span> <span style="color:#a6e22e">pool</span>
+<span style="color:#f92672">*&amp;</span>   <span style="color:#a6e22e">T</span>  <span style="color:#a6e22e">Type</span> <span style="color:#a6e22e">Pool</span>
+<span style="color:#f92672">*&amp;</span>   <span style="color:#a6e22e">X</span>  <span style="color:#a6e22e">XSLT</span> <span style="color:#a6e22e">Program</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Tables</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">tables</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tstc</span>     , <span style="color:#e6db74">&#34; SAP Transaction Codes
+</span><span style="color:#e6db74">  tadir    , &#34;</span> <span style="color:#a6e22e">Directory</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">Repository</span> <span style="color:#a6e22e">Objects</span>
+  <span style="color:#a6e22e">modsapt</span>  , <span style="color:#e6db74">&#34; SAP Enhancements - Short Texts
+</span><span style="color:#e6db74">  sxs_attrt, &#34;</span> <span style="color:#a6e22e">SAP</span> <span style="color:#a6e22e">BADI</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">short</span> <span style="color:#a6e22e">text</span>
+  <span style="color:#a6e22e">modact</span>   , <span style="color:#e6db74">&#34; Modifications
+</span><span style="color:#e6db74">  trdir    , &#34;</span> <span style="color:#a6e22e">System</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">TRDIR</span>
+  <span style="color:#a6e22e">tfdir</span>    , <span style="color:#e6db74">&#34; Function Module
+</span><span style="color:#e6db74">  enlfdir  , &#34;</span> <span style="color:#a6e22e">Additional</span> <span style="color:#a6e22e">Attributes</span> <span style="color:#66d9ef">for</span> Function <span style="color:#a6e22e">Modules</span>
+  <span style="color:#a6e22e">tstct</span>    . <span style="color:#e6db74">&#34; Transaction Code Texts
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">*&amp; Variables
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">data: jtab        like tadir occurs 0 with header line.
+</span><span style="color:#e6db74">data: field1(30).
+</span><span style="color:#e6db74">data: v_devclass  like tadir-devclass.
+</span><span style="color:#e6db74">data: object      like tadir-object.
+</span><span style="color:#e6db74">data: bdcdata_wa  type bdcdata,
+</span><span style="color:#e6db74">      bdcdata_tab type table of bdcdata.
+</span><span style="color:#e6db74">data: opt         type ctu_params.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">*&amp; Selection Screen Parameters
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">selection-screen begin of block a01 with frame title text-001.
+</span><span style="color:#e6db74">  selection-screen skip.
+</span><span style="color:#e6db74">  parameters: p_tcode like tstc-tcode obligatory.
+</span><span style="color:#e6db74">  selection-screen skip.
+</span><span style="color:#e6db74">  parameters: exit radiobutton group 1 default &#39;X&#39;,
+</span><span style="color:#e6db74">  badi radiobutton group 1.
+</span><span style="color:#e6db74">selection-screen end of block a01.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">define bdc_program.
+</span><span style="color:#e6db74">  clear bdcdata_wa.
+</span><span style="color:#e6db74">  bdcdata_wa-program  = &amp;1.
+</span><span style="color:#e6db74">  bdcdata_wa-dynpro   = &amp;2.
+</span><span style="color:#e6db74">  bdcdata_wa-dynbegin = &amp;3.
+</span><span style="color:#e6db74">  append bdcdata_wa to bdcdata_tab.
+</span><span style="color:#e6db74">end-of-definition.
+</span><span style="color:#e6db74">define bdc_detail.
+</span><span style="color:#e6db74">  clear bdcdata_wa.
+</span><span style="color:#e6db74">  bdcdata_wa-fnam = &amp;1.
+</span><span style="color:#e6db74">  bdcdata_wa-fval = &amp;2.
+</span><span style="color:#e6db74">  append bdcdata_wa to bdcdata_tab.
+</span><span style="color:#e6db74">end-of-definition.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">*&amp; Start of main program
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">start-of-selection.
+</span><span style="color:#e6db74">if exit = &#39;X&#39;.
+</span><span style="color:#e6db74">  object = &#39;SMOD&#39;.  &#34;</span> <span style="color:#a6e22e">User</span><span style="color:#f92672">-</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">!</span>
+<span style="color:#66d9ef">else</span>.
+  <span style="color:#a6e22e">object</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SXSD&#39;</span>.  <span style="color:#e6db74">&#34; BADI!
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Validate Transaction Code:
+</span><span style="color:#e6db74">select single * from tstc where tcode eq p_tcode.
+</span><span style="color:#e6db74">* Find Repository Objects for transaction code:
+</span><span style="color:#e6db74">if sy-subrc eq 0.                                         &#34;</span> <span style="color:#a6e22e">IF</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">tadir</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">pgmid</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;R3TR&#39;</span>
+  <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">object</span>   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PROG&#39;</span>
+  <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">obj_name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span>.<span style="color:#e6db74">&#34;Program
+</span><span style="color:#e6db74">*    name!
+</span><span style="color:#e6db74">  move: tadir-devclass to v_devclass. &#34;</span> <span style="color:#a6e22e">Package</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#a6e22e">ne</span> <span style="color:#ae81ff">0.</span>
+    <span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">trdir</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subc</span> <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;F&#39;</span>.  <span style="color:#e6db74">&#34; Function Group
+</span><span style="color:#e6db74">      select single * from tfdir   where pname    = tstc-pgmna.
+</span><span style="color:#e6db74">      select single * from enlfdir where funcname = tfdir-funcname.
+</span><span style="color:#e6db74">      select single * from tadir   where pgmid    = &#39;R3TR&#39;
+</span><span style="color:#e6db74">      and object   = &#39;FUGR&#39;
+</span><span style="color:#e6db74">      and obj_name = enlfdir-area.
+</span><span style="color:#e6db74">      move: tadir-devclass to v_devclass.
+</span><span style="color:#e6db74">    endif.
+</span><span style="color:#e6db74">  endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">*   Find SAP Modifactions:
+</span><span style="color:#e6db74">  select * from tadir into table jtab where pgmid    = &#39;R3TR&#39;
+</span><span style="color:#e6db74">*                                          AND object   = &#39;SMOD&#39;
+</span><span style="color:#e6db74">  and object   = object
+</span><span style="color:#e6db74">  and devclass = v_devclass.
+</span><span style="color:#e6db74">  select single * from tstct where sprsl eq sy-langu
+</span><span style="color:#e6db74">  and tcode eq p_tcode.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">  format color col_positive intensified off.
+</span><span style="color:#e6db74">  write: /(19)  &#39;Transaction Code - &#39;,
+</span><span style="color:#e6db74">  20(20) p_tcode,
+</span><span style="color:#e6db74">  45(50) tstct-ttext.
+</span><span style="color:#e6db74">  skip.
+</span><span style="color:#e6db74">  if not jtab[] is initial.                               &#34;</span> <span style="color:#a6e22e">IF</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/(95) sy-uline.</span>
+    <span style="color:#a6e22e">format</span> <span style="color:#a6e22e">color</span> <span style="color:#a6e22e">col_heading</span> <span style="color:#a6e22e">intensified</span> <span style="color:#a6e22e">on</span>.
+<span style="color:#f92672">*</span>     <span style="color:#a6e22e">Exit</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">exit</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/1  sy-vline,</span>
+ <span style="color:#e6db74">&#39;Exit Name&#39;</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span> ,
+<span style="color:#e6db74">&#39;Description&#39;</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span>.
+<span style="color:#f92672">*</span>     <span style="color:#a6e22e">BADI</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">else</span>.
+      <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/1  sy-vline,</span>
+ <span style="color:#e6db74">&#39;BADI Name&#39;</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span> ,
+<span style="color:#e6db74">&#39;Description&#39;</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span>.
+    <span style="color:#a6e22e">endif</span>.
+    <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">/(95) sy-uline.</span>
+    <span style="color:#a6e22e">loop</span> <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">jtab</span>.
+<span style="color:#f92672">*</span>       <span style="color:#a6e22e">EXIT</span><span style="color:#f92672">:</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">exit</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+        <span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">modsapt</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">sprsl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">langu</span>
+        <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">name</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">jtab</span><span style="color:#f92672">-</span><span style="color:#a6e22e">obj_name</span>.
+        <span style="color:#a6e22e">format</span> <span style="color:#a6e22e">color</span> <span style="color:#a6e22e">col_normal</span> <span style="color:#a6e22e">intensified</span> <span style="color:#a6e22e">off</span>.
+        <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/1  sy-vline,</span>
+ <span style="color:#a6e22e">jtab</span><span style="color:#f92672">-</span><span style="color:#a6e22e">obj_name</span> <span style="color:#a6e22e">hotspot</span> <span style="color:#a6e22e">on</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span> ,
+<span style="color:#a6e22e">modsapt</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modtext</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span>.
+<span style="color:#f92672">*</span>       <span style="color:#a6e22e">BADI</span><span style="color:#f92672">:</span>
+      <span style="color:#66d9ef">else</span>.
+        <span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">sxs_attrt</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">sprsl</span>     <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">langu</span>
+        <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">exit_name</span> <span style="color:#f92672">=</span>
+        <span style="color:#a6e22e">jtab</span><span style="color:#f92672">-</span><span style="color:#a6e22e">obj_name</span>.
+        <span style="color:#a6e22e">format</span> <span style="color:#a6e22e">color</span> <span style="color:#a6e22e">col_normal</span> <span style="color:#a6e22e">intensified</span> <span style="color:#a6e22e">off</span>.
+        <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/1  sy-vline,</span>
+ <span style="color:#a6e22e">jtab</span><span style="color:#f92672">-</span><span style="color:#a6e22e">obj_name</span> <span style="color:#a6e22e">hotspot</span> <span style="color:#a6e22e">on</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span> ,
+<span style="color:#a6e22e">sxs_attrt</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text</span>,
+<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">vline</span>.
+      <span style="color:#a6e22e">endif</span>.
+    <span style="color:#a6e22e">endloop</span>.
+    <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/(95) sy-uline.</span>
+    <span style="color:#a6e22e">describe</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">jtab</span>.
+    <span style="color:#a6e22e">skip</span>.
+    <span style="color:#a6e22e">format</span> <span style="color:#a6e22e">color</span> <span style="color:#a6e22e">col_total</span> <span style="color:#a6e22e">intensified</span> <span style="color:#a6e22e">on</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">exit</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/ &#39;No of Exits:&#39;, sy-tfill.</span>
+    <span style="color:#66d9ef">else</span>.
+      <span style="color:#a6e22e">write</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/ &#39;No of BADIs:&#39;, sy-tfill.</span>
+    <span style="color:#a6e22e">endif</span>.
+  <span style="color:#66d9ef">else</span>.                                                   <span style="color:#e6db74">&#34; IF 2
+</span><span style="color:#e6db74">    format color col_negative intensified on.
+</span><span style="color:#e6db74">    write: /(95) &#39;No User Exit exists&#39;.
+</span><span style="color:#e6db74">  endif.                                                  &#34;</span> <span style="color:#a6e22e">IF</span> <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">else</span>.                                                     <span style="color:#e6db74">&#34; IF 1
+</span><span style="color:#e6db74">  format color col_negative intensified on.
+</span><span style="color:#e6db74">  write: /(95) &#39;Transaction Code Does Not Exist&#39;.
+</span><span style="color:#e6db74">endif.                                                    &#34;</span> <span style="color:#a6e22e">IF</span> <span style="color:#ae81ff">1</span>
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Take</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">SMOD</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">Exit</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">was</span> <span style="color:#a6e22e">selected</span><span style="color:#f92672">:</span>
+    <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">line</span><span style="color:#f92672">-</span><span style="color:#a6e22e">selection</span>.
+    <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">cursor</span> <span style="color:#a6e22e">field</span> <span style="color:#a6e22e">field1</span>.
+    <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">field1</span>(<span style="color:#ae81ff">4</span>) <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;JTAB&#39;</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">For</span> <span style="color:#a6e22e">exit</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">exit</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">parameter</span> <span style="color:#a6e22e">id</span> <span style="color:#e6db74">&#39;MON&#39;</span> <span style="color:#a6e22e">field</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lisel</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">10</span>).
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">transaction</span> <span style="color:#e6db74">&#39;SMOD&#39;</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">skip</span> <span style="color:#a6e22e">first</span> <span style="color:#a6e22e">screen</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">For</span> <span style="color:#a6e22e">BADI</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">else</span>.
+      <span style="color:#a6e22e">clear</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">bdcdata_wa</span>, <span style="color:#a6e22e">bdcdata_tab</span>[].
+      <span style="color:#a6e22e">bdc_program</span> <span style="color:#e6db74">&#39;SAPLSEXO&#39;</span> <span style="color:#e6db74">&#39;0100&#39;</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">bdc_detail</span> <span style="color:#e6db74">&#39;BDC_CURSOR&#39;</span> <span style="color:#e6db74">&#39;G_IS_BADI&#39;</span>.
+      <span style="color:#a6e22e">bdc_detail</span> <span style="color:#e6db74">&#39;BDC_OKCODE&#39;</span> <span style="color:#e6db74">&#39;=ISSPOT&#39;</span>.
+      <span style="color:#a6e22e">bdc_detail</span> <span style="color:#e6db74">&#39;G_IS_BADI&#39;</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">bdc_program</span> <span style="color:#e6db74">&#39;SAPLSEXO&#39;</span> <span style="color:#e6db74">&#39;0100&#39;</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">bdc_detail</span> <span style="color:#e6db74">&#39;BDC_CURSOR&#39;</span> <span style="color:#e6db74">&#39;G_BADINAME&#39;</span>.
+      <span style="color:#a6e22e">bdc_detail</span> <span style="color:#e6db74">&#39;BDC_OKCODE&#39;</span> <span style="color:#e6db74">&#39;=SHOW&#39;</span>.
+      <span style="color:#a6e22e">bdc_detail</span> <span style="color:#e6db74">&#39;G_BADINAME&#39;</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lisel</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">20</span>).
+      <span style="color:#a6e22e">opt</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dismode</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+      <span style="color:#a6e22e">opt</span><span style="color:#f92672">-</span><span style="color:#a6e22e">defsize</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">transaction</span> <span style="color:#e6db74">&#39;SE18&#39;</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">bdcdata_tab</span> <span style="color:#a6e22e">options</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">opt</span>.
+    <span style="color:#a6e22e">endif</span>.
+</code></pre></div><p>​</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>728</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Enhance/">
+                    #Enhance</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Enhance/" class="prev" rel="prev" title=" SAP 增强 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 增强 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Enhance1/" class="next" rel="next" title=" 查找增强程序(1) "> 查找增强程序(1) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-15 00:00:00 \u002b0000 UTC',
+        title: ' 查找增强程序(2) ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

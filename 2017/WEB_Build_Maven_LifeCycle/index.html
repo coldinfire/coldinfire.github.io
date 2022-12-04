@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_Build_Maven_POM/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_Build_Maven_Dependency/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_Build_Maven_LifeCycle/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Maven 构建生命周期  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Maven 构建生命周期  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Maven 构建生命周期 "/>
+<meta name="twitter:description" content="Maven指令的生命周期 Maven 对项目构建过程分为三套相互独立的生命周期，分别是： Clean Lifecycle：在进行真正的构建之前进行一些清理工作 Default Li"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Maven 构建生命周期 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_Build_Maven_LifeCycle\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Maven",
+  "wordcount":  1677 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_Build_Maven_LifeCycle\/",
+  "datePublished": "2017-12-16T00:00:00\x2b00:00",
+  "dateModified": "2017-12-16T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Maven 构建生命周期 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-12-16 >16 December 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="maven指令的生命周期">Maven指令的生命周期</h2>
+<p>Maven 对项目构建过程分为三套相互独立的生命周期，分别是：</p>
+<ul>
+<li>
+<p>Clean Lifecycle：在进行真正的构建之前进行一些清理工作</p>
+</li>
+<li>
+<p>Default Lifecycle：构建项目过程，是 Maven 最核心的</p>
+</li>
+<li>
+<p>Site Lifecycle：生成项目报告，站点，发布站点</p>
+</li>
+</ul>
+<p>每一个大的生命周期又分为很多个阶段。后面的阶段依赖于前面的阶段，这点有点像 Ant 的构建依赖。每一个构建项目的命令都对应了 maven 底层一个插件。</p>
+<p>生命周期本身相互独立，用户可以仅仅调用生命周期的某一个阶段，也就是说用户调用了 default 周期的任何阶段，并不会触发 clean 周期以及 site 周期的任何事情。</p>
+<p>三大生命周期蕴含着小小的阶段，我们按顺序看一下：</p>
+<h3 id="clean-生命周期">clean 生命周期</h3>
+<p>pre-clean：执行一些清理前需要完成的工作</p>
+<p><code>clean</code>：清理上一次构建生成的文件</p>
+<p>post-clean：执行一些清理后需要完成的工作</p>
+<h3 id="default-生命周期">default 生命周期</h3>
+<p>validate：验证项目是否正确且所有必须信息是可用的</p>
+<p>initialize：初始化配置</p>
+<p>generate-sources：生成源代码编译目录</p>
+<p>process-sources：处理项目主资源文件。一般来说，是对 src/main/resources 目录的内容进行变量替换等工作后，复制到项目输出的主 classpath 目录中</p>
+<p>generate-resources：生成资源目录</p>
+<p>process-resources：复制和处理资源文件到目标目录，为打包阶段做好准备</p>
+<p><code>complie</code>：编译项目的主源码。一般来说，是编译 src/main/java 目录下的 Java 文件至项目输出的主 classpath 目录中</p>
+<p>process-classes：处理编译后文件</p>
+<p>generate-test-sources：生成测试目录</p>
+<p>process-test-sources：处理项目测试资源文件。一般来说，是对 src/test/resources 目录的内容进行变量替换等工作后，复制到项目输出的测试 classpath 目录中</p>
+<p>generate-test-resources：生成测试资源文件</p>
+<p>process-test-resources：处理测试资源文件，复制和处理测试资源到目标文件</p>
+<p>test-compile：编译项目的测试代码。一般来说，是编译 src/test/java 目录下的 Java 文件至项目输出的测试 classpath 目录中</p>
+<p>process-test-classes：处理测试源码编译生成的文件</p>
+<p><code>test</code>：使用单元测试框架(JUnit)运行测试代码，测试代码不会被打包或部署</p>
+<p>prepare-package：打包前的准备</p>
+<p><code>package</code>：将编译好的代码打包成为 jar 或者 war 等</p>
+<p>pre-integration-test：集成测试前准备</p>
+<p>integration-test：集成测试</p>
+<p>post-integration-test：为集成测试收尾</p>
+<p>verify：验证，对集成测试的结果进行检查，保证质量达标</p>
+<p><code>install</code>：安装打包的项目到 Maven 本地仓库，供本地其他项目使用</p>
+<p><code>deploy</code>：将最终的工程包部署到远程 Maven 仓库，供其他开发人员和 Maven 项目使用</p>
+<h3 id="site-生命周期">site 生命周期</h3>
+<p>pre-site：执行一些在生成项目站点之前需要完成的工作</p>
+<p>site：生成项目站点及文档</p>
+<p>post-site：执行一些在生成项目站点之后需要完成的工作，并且为部署做准备</p>
+<p>site-deploy：将生成的项目站点发布到服务器上</p>
+<h3 id="命令行与生命周期">命令行与生命周期</h3>
+<p><strong>$mvn clean</strong> ：该命令调用 clean 生命周期的 clean 阶段。实际执行的阶段为 clean 生命周期的 pre-clean 和 clean 阶段</p>
+<p><strong>$mvn test</strong> ：该命令调用 default 生命周期的 test 阶段，实际执行的阶段为 default 周期的 validate、initialize 等，直到 test 的所有阶段</p>
+<p><strong>$mvn clean install</strong> ：该命令调用 clean 生命周期的 clean 阶段和 default 生命周期的 install 阶段。实际执行的阶段为 clean 生命周期的 pre-clean、clean 阶段，以及 default 生命周期的从 validate 至 install 的所有阶段。结合了两个生命周期，在执行真正的项目构建之前清理项目是一个很好的实践</p>
+<p><strong>$mvn clean deploy site-deploy</strong> ：该命令调用 clean 生命周期的 clean 阶段、default 生命周期的 deploy 阶段，以及 site 生命周期的 site-deploy 阶段。实际执行的阶段为 clean 生命周期的 pre-clean、clean 阶段，default 生命周期的所有阶段，以及 site 生命周期的所有阶段。该命令结合了 Maven 所有的三个生命周期，且 deploy 为 default 生命周期的最后一个阶段，site-deploy 为 site 生命周期的最后一个阶段。</p>
+<p>由于 Maven 中主要的生命周期阶段并不多，而常用的 Maven 命令实际都是基于这些阶段简单组合而成。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1677</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Maven/">
+                    #Maven</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Build_Maven_POM/" class="prev" rel="prev" title=" Maven POM 标签大全详解 "><i class="iconfont icon-dajiantou"></i>&nbsp; Maven POM 标签大全详解 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Build_Maven_Dependency/" class="next" rel="next" title=" Maven 依赖管理 "> Maven 依赖管理 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-12-16 00:00:00 \x2b0000 UTC',
+        title: ' Maven 构建生命周期 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/Python_Resource/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/Linux_File/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/Linux_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Linux 基础  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Linux 基础  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Linux 基础 "/>
+<meta name="twitter:description" content="主要内容 Linux目录组成结构及文件的增删改查，用户，权限管理 Linux软件包管理、磁盘管理 Linux网络基础 Linux状态监控命令 Linu"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Linux 基础 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/Linux_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "linux",
+  "wordcount":  1385 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/Linux_Basic\/",
+  "datePublished": "2018-12-28T00:00:00\u002b00:00",
+  "dateModified": "2018-12-28T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Linux 基础 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-12-28 >28 December 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/Linux/"> Linux </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="主要内容">主要内容</h3>
+<ul>
+<li>
+<p>Linux目录组成结构及文件的增删改查，用户，权限管理</p>
+</li>
+<li>
+<p>Linux软件包管理、磁盘管理</p>
+</li>
+<li>
+<p>Linux网络基础</p>
+</li>
+<li>
+<p>Linux状态监控命令</p>
+</li>
+<li>
+<p>Linux系统进程管理</p>
+</li>
+<li>
+<p>网络服务</p>
+</li>
+</ul>
+<h3 id="目录结构">目录结构</h3>
+<ul>
+<li>
+<p>/：根目录，整个文件系统层次结构的根目录</p>
+</li>
+<li>
+<p>/bin：需要在单用户模式可用的必要命令</p>
+</li>
+<li>
+<p>/boot：系统引导程序文件</p>
+</li>
+<li>
+<p>/dev：必要设备,磁盘等必须的硬件设备</p>
+</li>
+<li>
+<p>/etc：配置文件   /etc/xml:xml配置文件  、/etc/opt:/opt/配置文件</p>
+</li>
+<li>
+<p>/home：用户的家目录，包含保存的文件、个人设置等，一般为单独的分区</p>
+</li>
+<li>
+<p>/lib：/bin/ and /sbin/中二进制文件必要的库文件</p>
+</li>
+<li>
+<p>/opt：可选应用软件包</p>
+</li>
+<li>
+<p>/root：超级用户的家目录</p>
+</li>
+<li>
+<p>/sbin：必要的系统二进制文件，普通用户执行不了该目录命令</p>
+</li>
+<li>
+<p>/srv：站点的具体数据，由系统提供</p>
+</li>
+<li>
+<p>/tmp：临时文件，在系统重启时目录中文件不会被保留</p>
+</li>
+<li>
+<p>/usr：默认软件都会存于该目录下。用于存储只读用户数据的第二层次；包含绝大多数应用程序</p>
+</li>
+<li>
+<p>/var：在正常运行的系统中其内容不断变化的文件</p>
+</li>
+</ul>
+<h3 id="命令解析">命令解析</h3>
+<p><strong>Linux命令区分大小写</strong></p>
+<p>查找命令：</p>
+<p>♦ type：显示有关命令类型的信息</p>
+<p>♦ which：找到命令在哪个文件下</p>
+<p>♦ help -m [command]：显示shell内置的参考页面</p>
+<p>♦ man [command]：显示在线命令参考</p>
+<p>命令的语法格式：cmd 【options】【arguments】</p>
+<ul>
+<li>
+<p>命令：告诉Linux要做什么</p>
+</li>
+<li>
+<p>选项：说明运行方式</p>
+</li>
+<li>
+<p>参数：说明影响操作</p>
+</li>
+</ul>
+<p>Ctrl + a：跳到输入命令的头部</p>
+<p>Ctrl + e：跳到输入命令的尾部</p>
+<p>可执行命令分类：</p>
+<p>♦ 内置命令：在shell内部系统定义</p>
+<p>♦ 外置命令：存放在/bin、/sbin目录下的命令</p>
+<p>♦ 实用命令：放在/usr/bin,/usrlocal/bin等目录下的实用程序</p>
+<p>♦ 用户程序：用户的程序经过编译生产可执行文件后，可作为Shell执行</p>
+<p>♦ Shell脚本：由Shell语言编写的批处理文件，可作为Shell命令运行</p>
+<p>通配符：与其他语言表达式类似</p>
+<p>♦ *：匹配任何字符和任何数目的字符</p>
+<p>♦ ？：匹配单一数目的任何字符</p>
+<p>♦ [ ]：匹配[ ]之内的任意一个字符</p>
+<p>♦ [! ]：匹配除了[! ]之外的任意一个字符，!表示非的意思</p>
+<h3 id="系统工具">系统工具</h3>
+<h4 id="磁盘分析">磁盘分析</h4>
+<ul>
+<li>df [-ah]：系统磁盘使用信息</li>
+<li>du [-ah]：显示当前磁盘文件的大小</li>
+<li>free：显示内存剩余大小</li>
+<li>fdisk [-l] [/dev/sda]:磁盘分区表操作工具</li>
+<li>fdisk  /dev/sda：设置分区</li>
+<li>partprobe：更新分区表</li>
+<li>mkfs [tab tab]：查看mkfs支持文件格式</li>
+<li>mkfs [-t 文件格式] 装置文件名：磁盘格式化
+<ul>
+<li>mkfs.ex4 /dev/sda{1..3}：将该磁盘格式为ex4格式</li>
+</ul>
+</li>
+<li>fsck :磁盘检验</li>
+<li>mount【装置文件名】【挂载点】：磁盘挂载
+<ul>
+<li>mount /dev/sdb1  /sdb1/</li>
+</ul>
+</li>
+<li>umount [-ln]：卸载
+<ul>
+<li>[-l]：强制卸除</li>
+<li>[-n]：不升级/etc/mtab下卸除</li>
+</ul>
+</li>
+<li>mount -o remount,ro /dev/sdb3：修改权限</li>
+</ul>
+<h4 id="网络性能">网络性能</h4>
+<ul>
+<li>ifconfig [card] <input checked="" disabled="" type="checkbox"> ：网络状态
+<ul>
+<li>[-a]：显示全部接口信息</li>
+<li>[up/down]：开启关闭网卡</li>
+<li>etho:第一块网卡   lo:回环地址</li>
+</ul>
+</li>
+<li>ps [-aux]：显示系统所有在运行的进程
+<ul>
+<li>配合 <code>grep</code>实现查找特定的进程</li>
+</ul>
+</li>
+<li>pstree：以树形显示进程</li>
+<li>top：动态进程</li>
+<li>free：查看内存的使用状况 [-h]：以G为单位显示</li>
+<li>kill [-9] pid：杀死对应的pid进程  [-9]：强制杀死</li>
+<li>[command] &amp;：后台运行该程序</li>
+<li>jobs：列出后台程序的一种方式，显示后台程序的工作号和PID</li>
+<li>bg：后台放置一个进程 <code>bg  %[程序工作号]</code></li>
+<li>fg：在前台放置一个进程 <code>fg  %[程序工作号]</code></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1385</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/linux/">
+                    #linux</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/Python_Resource/" class="prev" rel="prev" title=" Python 学习资源 "><i class="iconfont icon-dajiantou"></i>&nbsp; Python 学习资源 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/Linux_File/" class="next" rel="next" title=" Linux 文件操作 "> Linux 文件操作 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-12-28 00:00:00 \u002b0000 UTC',
+        title: ' Linux 基础 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

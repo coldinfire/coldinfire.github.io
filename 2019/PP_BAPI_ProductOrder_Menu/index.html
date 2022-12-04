@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Utils_LongText/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_BADI_PurchaseOrder/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/PP_BAPI_ProductOrder_Menu/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI 操作生产订单  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI 操作生产订单  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI 操作生产订单 "/>
+<meta name="twitter:description" content="创建Product Order：BAPI_PRODORD_CREATE *---------------------------------------------------------------------* * Form FRM_ORDER_CREATE *---------------------------------------------------------------------* *----------------------------------------------------------------------* * p1 text * p2 text *----------------------------------------------------------------------* FORM frm_order_create . DATA: ls_upload LIKE LINE OF gt_upload, ls_style TYPE lvc_s_styl, lv_index LIKE sy-tabix. DATA: ls_order TYPE bapi_pp_order_create, ls_return TYPE bapiret2, lv_ordnum"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI 操作生产订单 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/PP_BAPI_ProductOrder_Menu\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI, MM",
+  "wordcount":  674 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/PP_BAPI_ProductOrder_Menu\/",
+  "datePublished": "2019-09-07T00:00:00\x2b00:00",
+  "dateModified": "2019-09-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI 操作生产订单 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-09-07 >7 September 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="创建product-orderbapi_prodord_create">创建Product Order：BAPI_PRODORD_CREATE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      Form  FRM_ORDER_CREATE</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*  p1        text </span>
+<span style="color:#75715e">*  p2        text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_order_create</span> .
+  <span style="color:#66d9ef">DATA</span>: ls_upload <span style="color:#66d9ef">LIKE LINE OF</span> gt_upload,
+        ls_style  <span style="color:#66d9ef">TYPE </span>lvc_s_styl,
+        lv_index  <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>tabix.
+  <span style="color:#66d9ef">DATA</span>: ls_order  <span style="color:#66d9ef">TYPE </span>bapi_pp_order_create,
+        ls_return <span style="color:#66d9ef">TYPE </span>bapiret2,
+        lv_ordnum <span style="color:#66d9ef">TYPE </span>bapi_order_key<span style="color:#f92672">-</span>order_number,
+        lv_ordtyp <span style="color:#66d9ef">TYPE </span>bapi_order_copy<span style="color:#f92672">-</span>order_type.
+  <span style="color:#66d9ef">LOOP AT </span>gt_upload <span style="color:#66d9ef">INTO</span> ls_upload <span style="color:#66d9ef">WHERE</span> ztype <span style="color:#f92672">EQ</span> space <span style="color:#f92672">AND</span> box <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    lv_index <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>tabix.
+    <span style="color:#66d9ef">CLEAR</span>: ls_order, ls_return, lv_ordnum, lv_ordtyp, ls_style.
+    <span style="color:#66d9ef">IF</span> ls_upload<span style="color:#f92672">-</span>externind <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      ls_order<span style="color:#f92672">-</span>order_number <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>aufnr.
+    <span style="color:#66d9ef">ENDIF</span>.
+    ls_order<span style="color:#f92672">-</span>material <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>plnbez.
+    ls_order<span style="color:#f92672">-</span>plant <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>dwerk.
+    ls_order<span style="color:#f92672">-</span>planning_plant <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>dwerk.
+    ls_order<span style="color:#f92672">-</span>order_type <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>dauat.
+    ls_order<span style="color:#f92672">-</span>quantity <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gamng.
+    ls_order<span style="color:#f92672">-</span>quantity_uom <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gmein.
+    ls_order<span style="color:#f92672">-</span>basic_start_date <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gstps.
+    ls_order<span style="color:#f92672">-</span>basic_start_time <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gsuzs.
+    ls_order<span style="color:#f92672">-</span>basic_end_date <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gltps.
+    ls_order<span style="color:#f92672">-</span>basic_end_time  <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gluzs.
+    ls_order<span style="color:#f92672">-</span>unloading_point <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>ablad.
+    ls_order<span style="color:#f92672">-</span>sequence_number <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>cy_seqnr.
+    <span style="color:#66d9ef">IF</span> ls_upload<span style="color:#f92672">-</span>verid <span style="color:#f92672">NE</span> space.
+      ls_order<span style="color:#f92672">-</span>prod_version <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>verid.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> ls_upload<span style="color:#f92672">-</span>lgort <span style="color:#f92672">NE</span> space.
+      ls_order<span style="color:#f92672">-</span>storage_location <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>lgort.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PRODORD_CREATE&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        orderdata    <span style="color:#f92672">=</span> ls_order
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">return</span>       <span style="color:#f92672">=</span> ls_return
+        order_number <span style="color:#f92672">=</span> lv_ordnum
+        order_type   <span style="color:#f92672">=</span> lv_ordtyp.
+    <span style="color:#66d9ef">IF</span> lv_ordnum <span style="color:#f92672">NE</span> space.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+        <span style="color:#66d9ef">EXPORTING</span>
+          <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">CLEAR</span>: ls_upload<span style="color:#f92672">-</span>fstyle, ls_upload<span style="color:#f92672">-</span>fstyle[].
+      ls_style<span style="color:#f92672">-</span>style <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_style_disabled.
+      <span style="color:#66d9ef">INSERT</span> ls_style <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> ls_upload<span style="color:#f92672">-</span>fstyle.
+      ls_upload<span style="color:#f92672">-</span>aufnr <span style="color:#f92672">=</span> lv_ordnum.
+      ls_upload<span style="color:#f92672">-</span>ztype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+      ls_upload<span style="color:#f92672">-</span>message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Update successfully&#39;</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      ls_upload<span style="color:#f92672">-</span>ztype <span style="color:#f92672">=</span> ls_return<span style="color:#f92672">-</span>type.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> ls_return<span style="color:#f92672">-</span>type <span style="color:#f92672">NE</span> space.
+      <span style="color:#66d9ef">APPEND</span> ls_return <span style="color:#66d9ef">TO</span> ls_upload<span style="color:#f92672">-</span>retmsg.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> ls_upload<span style="color:#f92672">-</span>ztype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+      ls_upload<span style="color:#f92672">-</span>zcol <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C610&#39;</span> .
+    <span style="color:#66d9ef">ENDIF</span> .
+    <span style="color:#66d9ef">MODIFY</span> gt_upload <span style="color:#66d9ef">FROM</span> ls_upload <span style="color:#66d9ef">INDEX</span> lv_index.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_ORDER_CREATE &#34;
+</span></code></pre></div><h3 id="修改product-orderbapi_prodord_change">修改Product Order：BAPI_PRODORD_CHANGE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  frm_order_change</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_order_change</span>.
+  <span style="color:#66d9ef">DATA</span>: ls_upload <span style="color:#66d9ef">LIKE LINE OF</span> gt_upload,
+        ls_style  <span style="color:#66d9ef">TYPE </span>lvc_s_styl,
+        lv_index  <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>tabix.
+  <span style="color:#66d9ef">DATA</span>: ls_order  <span style="color:#66d9ef">TYPE </span>bapi_pp_order_change,
+        ls_orderx <span style="color:#66d9ef">TYPE </span>bapi_pp_order_changex,
+        ls_return <span style="color:#66d9ef">TYPE </span>bapiret2,
+        lv_ordnum <span style="color:#66d9ef">TYPE </span>bapi_order_key<span style="color:#f92672">-</span>order_number,
+        lv_ordtyp <span style="color:#66d9ef">TYPE </span>bapi_order_copy<span style="color:#f92672">-</span>order_type.
+  <span style="color:#66d9ef">LOOP AT </span>gt_upload <span style="color:#66d9ef">INTO</span> ls_upload <span style="color:#66d9ef">WHERE</span> box <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    lv_index <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>tabix.
+    <span style="color:#66d9ef">CLEAR</span>: ls_order, ls_return, lv_ordnum, lv_ordtyp, ls_style, ls_orderx.
+    ls_order<span style="color:#f92672">-</span>quantity <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gamng.
+    ls_order<span style="color:#f92672">-</span>quantity_uom <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gmein.
+    ls_order<span style="color:#f92672">-</span>basic_start_date <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gstps.
+    ls_upload<span style="color:#f92672">-</span>gltps <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gstps <span style="color:#f92672">+</span> ls_upload<span style="color:#f92672">-</span>nlfzt .
+    ls_order<span style="color:#f92672">-</span>basic_end_date <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>gltps .
+    ls_order<span style="color:#f92672">-</span>unloading_point <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>ablad.
+    ls_order<span style="color:#f92672">-</span>sequence_number <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>cy_seqnr.
+    ls_order<span style="color:#f92672">-</span>prod_version <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>verid.
+    ls_order<span style="color:#f92672">-</span>storage_location <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>lgort.
+<span style="color:#75715e">*    ls_order-TERKZ</span>
+    ls_orderx<span style="color:#f92672">-</span>quantity <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    ls_orderx<span style="color:#f92672">-</span>basic_start_date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    ls_orderx<span style="color:#f92672">-</span>basic_end_date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    ls_orderx<span style="color:#f92672">-</span>sequence_number <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    ls_orderx<span style="color:#f92672">-</span>unloading_point <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    ls_orderx<span style="color:#f92672">-</span>storage_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    ls_orderx<span style="color:#f92672">-</span>prod_version <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PRODORD_CHANGE&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        <span style="color:#66d9ef">number</span>     <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>aufnr
+        orderdata  <span style="color:#f92672">=</span> ls_order
+        orderdatax <span style="color:#f92672">=</span> ls_orderx
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">return</span>     <span style="color:#f92672">=</span> ls_return.
+    <span style="color:#66d9ef">IF</span> ls_return<span style="color:#f92672">-</span>type <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;S&#39;</span> <span style="color:#f92672">OR</span> ls_return<span style="color:#f92672">-</span>type <span style="color:#f92672">EQ</span> space.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+        <span style="color:#66d9ef">EXPORTING</span>
+          <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">CLEAR</span>: ls_upload<span style="color:#f92672">-</span>fstyle, ls_upload<span style="color:#f92672">-</span>fstyle[].
+      ls_style<span style="color:#f92672">-</span>style <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_style_disabled.
+      <span style="color:#66d9ef">INSERT</span> ls_style <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> ls_upload<span style="color:#f92672">-</span>fstyle.
+      ls_upload<span style="color:#f92672">-</span>ztype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+      ls_upload<span style="color:#f92672">-</span>id <span style="color:#f92672">=</span> c_green.
+      ls_upload<span style="color:#f92672">-</span>message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Updated successfully&#39;</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      ls_upload<span style="color:#f92672">-</span>ztype <span style="color:#f92672">=</span> ls_return<span style="color:#f92672">-</span>type.
+      ls_upload<span style="color:#f92672">-</span>id <span style="color:#f92672">=</span> c_red.
+      ls_upload<span style="color:#f92672">-</span>message <span style="color:#f92672">=</span> ls_return<span style="color:#f92672">-</span>message.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> ls_return<span style="color:#f92672">-</span>type <span style="color:#f92672">NE</span> space.
+      <span style="color:#66d9ef">APPEND</span> ls_return <span style="color:#66d9ef">TO</span> ls_upload<span style="color:#f92672">-</span>retmsg.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> ls_upload<span style="color:#f92672">-</span>ztype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+      ls_upload<span style="color:#f92672">-</span>zcol <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C610&#39;</span> .
+    <span style="color:#66d9ef">ENDIF</span> .
+    <span style="color:#66d9ef">MODIFY</span> gt_upload <span style="color:#66d9ef">FROM</span> ls_upload <span style="color:#66d9ef">INDEX</span> lv_index.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;frm_order_change&#34;
+</span></code></pre></div><h3 id="product-order-releasebapi_prodord_release">Product Order Release：BAPI_PRODORD_RELEASE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  frm_order_RELEASE</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_order_release</span>.
+  <span style="color:#66d9ef">DATA</span>: ls_upload <span style="color:#66d9ef">LIKE LINE OF</span> gt_upload,
+        ls_style  <span style="color:#66d9ef">TYPE </span>lvc_s_styl,
+        lv_index  <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>tabix.
+  <span style="color:#66d9ef">DATA</span>: lt_orders  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> bapi_order_key <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        ls_return  <span style="color:#66d9ef">TYPE </span>bapiret2,
+        lt_detail_return <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> bapi_order_return <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  <span style="color:#66d9ef">LOOP AT </span>gt_upload <span style="color:#66d9ef">INTO</span> ls_upload <span style="color:#66d9ef">WHERE</span> ztype <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;S&#39;</span> <span style="color:#f92672">AND</span> box <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    lv_index <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>tabix.
+    <span style="color:#66d9ef">CLEAR</span>:lt_orders.
+    lt_orders<span style="color:#f92672">-</span>order_number <span style="color:#f92672">=</span> ls_upload<span style="color:#f92672">-</span>aufnr.
+    <span style="color:#66d9ef">APPEND</span> lt_orders .
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PRODORD_RELEASE&#39;</span>
+     <span style="color:#66d9ef">EXPORTING</span>
+       release_control          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+<span style="color:#75715e">*     WORK_PROCESS_GROUP       = &#39;COWORK_BAPI&#39;</span>
+<span style="color:#75715e">*     WORK_PROCESS_MAX         = 99</span>
+     <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">return</span>                   <span style="color:#f92672">=</span> ls_return
+     <span style="color:#66d9ef">TABLES</span>
+        orders                   <span style="color:#f92672">=</span> lt_orders
+        detail_return            <span style="color:#f92672">=</span> lt_detail_return
+<span style="color:#75715e">*     APPLICATION_LOG          =</span>
+         .
+    <span style="color:#66d9ef">IF</span> ls_return<span style="color:#f92672">-</span>number <span style="color:#f92672">EQ</span> space.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+        <span style="color:#66d9ef">EXPORTING</span>
+          <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">CLEAR</span>: ls_upload<span style="color:#f92672">-</span>fstyle, ls_upload<span style="color:#f92672">-</span>fstyle[].
+      ls_style<span style="color:#f92672">-</span>style <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_style_disabled.
+      <span style="color:#66d9ef">INSERT</span> ls_style <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> ls_upload<span style="color:#f92672">-</span>fstyle.
+      ls_upload<span style="color:#f92672">-</span>aufnr <span style="color:#f92672">=</span> lt_orders<span style="color:#f92672">-</span>order_number.
+      ls_upload<span style="color:#f92672">-</span>xtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#75715e">&#34;if lt_DETAIL_RETURN-NUMBER eq &#39;093&#39;.&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">&#34; ls_upload-xtype = lt_DETAIL_RETURN-MESSAGE.&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">&#34;endif.&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">IF</span> lt_detail_return<span style="color:#f92672">-</span>number <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;086&#39;</span>.
+        ls_upload<span style="color:#f92672">-</span>xtype <span style="color:#f92672">=</span> lt_detail_return<span style="color:#f92672">-</span>message.
+        ls_upload<span style="color:#f92672">-</span>zcol <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C610&#39;</span> .
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">MODIFY</span> gt_upload <span style="color:#66d9ef">FROM</span> ls_upload <span style="color:#66d9ef">INDEX</span> lv_index.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;frm_order_RELEASE&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>674</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Utils_LongText/" class="prev" rel="prev" title=" SAP 长文本 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 长文本 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_BADI_PurchaseOrder/" class="next" rel="next" title=" Purchase Order 增强 "> Purchase Order 增强 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-09-07 00:00:00 \x2b0000 UTC',
+        title: ' BAPI 操作生产订单 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

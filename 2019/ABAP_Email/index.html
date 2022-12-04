@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAP_JOB/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_Email_FM/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_Email/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 发送 Email  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 发送 Email  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 发送 Email "/>
+<meta name="twitter:description" content="SAP 的邮件功能可以使用系统标准的邮件工作台收发邮件，也可以调用邮件 API 接口函数进行收发邮件。 标准邮件工作台收发邮件 RZ10：设置 Profile 参数 1、运行事"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 发送 Email ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_Email\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1315 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_Email\/",
+  "datePublished": "2019-04-07T00:00:00\x2b00:00",
+  "dateModified": "2019-04-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 发送 Email </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-07 >7 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SAP 的邮件功能可以使用系统标准的邮件工作台收发邮件，也可以调用邮件 API 接口函数进行收发邮件。</p>
+<h2 id="标准邮件工作台收发邮件">标准邮件工作台收发邮件</h2>
+<h3 id="rz10设置-profile-参数">RZ10：设置 Profile 参数</h3>
+<p>1、运行事务码 RZ10</p>
+<p><img src="/images/ABAP/EMAIL_RZ10_1.png" alt="RZ10"></p>
+<p>2、进入修改界面，点击图中的 Parameter 按钮新建参数</p>
+<p><img src="/images/ABAP/EMAIL_RZ10_2.png" alt="RZ10"></p>
+<p>3、新建参数 <em>icm/server_port_1</em> 赋值为  <em>PROT=SMTP,PORT=25000,TIMEOUT=90,PROCTIMEOUT=3600</em></p>
+<p><img src="/images/ABAP/EMAIL_RZ10_3.png" alt="RZ10"></p>
+<p>默认情况下系统已经有一个参数文件 <em>icm/server_port_0 = PORT=HTTP,PORT=XXXX</em> (每个服务可能不一样)，那么这里的 <em>PORT = #</em> 就要根据你的参数文件的具体情况，如果已经有了 0，这里你就需要设成 port = 1, 以此类推，PORT 一般设置成 25；这里还有一个选项是timeout 可以设定等待邮件服务器回复时间的最大值。</p>
+<p>4、返回，并点击图中的 Parameter 按钮定义虚拟邮件主机</p>
+<p>参数格式：<code>is/SMTP/virt_host_&lt;#&gt; = host:port,port...;</code></p>
+<p>新建参数 <em>is/SMTP/virt_host_0</em> 赋值为 *<em>:25000;</em> 。；定义虚拟邮件主机主要用来接收邮件的。要注意，参数值最后是有一个分号的。完成后保存，激活。 配置完成后需要重启服务，参数才能生效。</p>
+<p><img src="/images/ABAP/EMAIL_RZ10_4.png" alt="RZ10"></p>
+<h3 id="su01sap-发送邮件用户的维护">SU01：SAP 发送邮件用户的维护</h3>
+<p>1、对于每一个 client，需要创建一个用户作为邮件的接收者，创建了用户，用户类型设置为 Service</p>
+<p><img src="/images/ABAP/EMAIL_SU01_2.png" alt="SU01"></p>
+<p>2、给该用户的 Profile 标签添加 S_A.SCON</p>
+<p><img src="/images/ABAP/EMAIL_SU01_1.png" alt="SU01"></p>
+<p>3、配置 Address：Email 信息</p>
+<p><img src="/images/ABAP/EMAIL_SU01_3.png" alt="SU01"></p>
+<h3 id="sicf配置服务">SICF：配置服务</h3>
+<p>1、执行事务码 SICF，在 Hierarchy Type 中输入 service 执行</p>
+<p><img src="/images/ABAP/EMAIL_SICF_1.png" alt="SICF"></p>
+<p>2、执行结果中，双击 SAPconnect</p>
+<p><img src="/images/ABAP/EMAIL_SICF_2.png" alt="SICF">
+3、双击后显示 Host data 主机数据。对于 Profile Parameter Number，输入 is/STMP/virt_host_# 中的 # 的值，一般可能是 0，如果不存在的话，下面会有提示的。</p>
+<p><img src="/images/ABAP/EMAIL_SICF_3.png" alt="SICF"></p>
+<p>4、登陆数据配置</p>
+<ul>
+<li>客户端：当前客户端编号</li>
+<li>用户：前面 SU01 中创建的 service 类型用户</li>
+<li>语言：EN</li>
+</ul>
+<p><img src="/images/ABAP/EMAIL_SICF_4.png" alt="SICF"></p>
+<p>5、Handler List，输入 CL_SMTP_EXT_SAPCONNECT</p>
+<p><img src="/images/ABAP/EMAIL_SICF_5.png" alt="SICF"></p>
+<p>6、完成以上配置后，返回保存激活</p>
+<h3 id="scotsapconnect-配置">SCOT：SAPconnect 配置</h3>
+<p><img src="/images/ABAP/EMAIL_SCOT_1.png" alt="SCOT"></p>
+<p>1、菜单栏 ：Settings—&gt;Default domain，此处填写邮件服务器。
+这个邮件的默认域名比如 sap.com，那么如果在你发送邮件的时候收件人地址如果只写 test 的话，系统会自动加上 @sap.com，如果收件人地址是全的话，这个 domain 不维护关系也不大。</p>
+<p>2、维护 SMTP 节点：View—&gt;Note</p>
+<p>Nodes—&gt;Display 或者双击上图 SMTP 后弹出对话框，维护以下信息勾上 &ldquo;Node in user&rdquo;。</p>
+<p>在 MAIL HOST 和 MAIL PORT 里面，指定发送邮件服务器的地址，比如如果是 163 的话，就应该是 smtp.163.com。</p>
+<p>这里 MAIL HOST 填写公司邮件服务器地址，MAIL PORT 填写 25000 选中 Internet 的 Set，弹出新对话框，指定接收地址的地址区域，一般用 * 表示所有邮件都用 SMTP 来发送，其他信息用默认。</p>
+<p>这里 SAPconnect 的信息可以有两种方式显示的，如果双击 SMTP 节点弹出的是 JOB 的信息的话，选择菜单中 SYSTEM STATUS，切换到为另一种显示方式即可。</p>
+<p><img src="/images/ABAP/EMAIL_SCOT_2.png" alt="SCOT"></p>
+<p><img src="/images/ABAP/EMAIL_SCOT_3.png" alt="SCOT"></p>
+<p>3、<strong>Send job</strong>，选择菜单中的 View—&gt;Jobs，可以检查是否已经有 Jobs 被调度了。选择Jobs—&gt;Create，并指定 Job 名称，点执行按钮，选择SAP&amp;CONNECTALL 变式，并选择 Schedule Job。</p>
+<p>选择 Schedule periodically 定期计划，指定时间间隔比如10分钟，选择创建。到这里，基本配置成功了。</p>
+<p>4、可以在事物码 <strong>SBWP</strong> 中，选择发送邮件，来测试配置是否成功，输入收件人的邮件地址，点击发送。如果配置成功的话，收一下邮件，应该收到了来自登陆 SAP GUI 的账号中配置的邮件地址的邮件了。</p>
+<h4 id="sost查看发送情况">SOST：查看发送情况</h4>
+<h4 id="tips如果只是使用-sap-发送而不接收外部回复回来的邮件那么只需要配置步骤二四">Tips：如果只是使用 SAP 发送而不接收外部回复回来的邮件，那么只需要配置步骤二、四.</h4>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1315</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAP_JOB/" class="prev" rel="prev" title=" SAP Background Job "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Background Job </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Email_FM/" class="next" rel="next" title=" SAP 通过程序收发邮件 "> SAP 通过程序收发邮件 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-07 00:00:00 \x2b0000 UTC',
+        title: ' SAP 发送 Email ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

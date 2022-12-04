@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Utils_DataConversion/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Table_MaintenanceAddUser/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Utils_EventTerminated/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 事件终止  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 事件终止  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 事件终止 "/>
+<meta name="twitter:description" content="事件终止 RETURN 用来退出当前执行的程序块，而不仅仅是退出循环。如FORM，METHOD，报表事件块 STOP INITIALIZATION 中 STOP 会导致跳转到 AT SELECTION-SCREEN OUTPUT 事件块 如果 STOP 在 AT SELECTION-SCREEN OUTPUT 块"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 事件终止 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_EventTerminated\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  413 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_EventTerminated\/",
+  "datePublished": "2018-06-09T00:00:00\u002b00:00",
+  "dateModified": "2018-06-09T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 事件终止 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-09 >9 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="事件终止">事件终止</h3>
+<h4 id="return">RETURN</h4>
+<p>用来退出当前执行的程序块，而不仅仅是退出循环。如FORM，METHOD，报表事件块</p>
+<h4 id="stop">STOP</h4>
+<ul>
+<li>
+<p>INITIALIZATION 中 STOP 会导致跳转到 AT SELECTION-SCREEN OUTPUT 事件块</p>
+</li>
+<li>
+<p>如果 STOP 在 AT SELECTION-SCREEN OUTPUT 块里，则只是退出当前块，STOP 后面语句不执行而已</p>
+</li>
+<li>
+<p>如果 STOP 在循环中，FORM、METHOD 直接从被调用的点退出所在事件块</p>
+</li>
+</ul>
+<h4 id="exit">EXIT</h4>
+<p>INITIALIZATION 中的 EXIT 会跳转到 AT SELECTION-SCREEN OUTPUT 事件</p>
+<ul>
+<li>
+<p>如果 EXIT 在 AT SELECTION-SCREEN OUTPUT 块里，则只是退出当前块，EXIT 后面语句不执行而已</p>
+</li>
+<li>
+<p>如果 EXIT 在循环中，只是跳出当前循环而已；循环之外的模块则与 RETURN 类似</p>
+</li>
+</ul>
+<h4 id="check">CHECK</h4>
+<ul>
+<li>
+<p>CHECK 只是跳出当前事件块，继续下个事件块的处理，相当于方法的 RETURN</p>
+</li>
+<li>
+<p>CHECK 在循环中，只是跳出循环（DO,WHILE,LOOP）类似于 CONTINUE，在循环外则跳出当前执行的程序块</p>
+</li>
+</ul>
+<h4 id="leave">LEAVE</h4>
+<ul>
+<li>
+<p><code>LEAVE PROGRAM.</code>：退出整个程序</p>
+</li>
+<li>
+<p><code>LEAVE TO TRANSACTION &lt;tcode&gt;.</code>：跳转到另外的 TCode</p>
+</li>
+<li>
+<p><code>LEAVE LIST-PROCESSING.</code>：从 List Processor 回到 Dialog processor</p>
+</li>
+<li>
+<p><code>LEAVE TO LIST-PROCESSING. </code>：控制权从 Dialog processor 转交到 List processor</p>
+</li>
+<li>
+<p>LEAVE {SCREEN | {TO SCREEN dynnr}}</p>
+</li>
+</ul>
+<h4 id="reject">REJECT</h4>
+<p>用在逻辑数据库 GET event blocks 中，可以从循环或则一个 FORM 中直接跳出所在的 GET 事件块。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>413</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_DataConversion/" class="prev" rel="prev" title=" 数据输入输出转换 "><i class="iconfont icon-dajiantou"></i>&nbsp; 数据输入输出转换 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Table_MaintenanceAddUser/" class="next" rel="next" title=" 表维护添加修改人信息 "> 表维护添加修改人信息 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-09 00:00:00 \u002b0000 UTC',
+        title: ' ABAP 事件终止 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

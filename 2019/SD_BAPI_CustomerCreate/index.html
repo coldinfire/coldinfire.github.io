@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SD_BAPI_ALL_List/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SD_BAPI_SalesorderChange/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SD_BAPI_CustomerCreate/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI 创建 Customer  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI 创建 Customer  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI 创建 Customer "/>
+<meta name="twitter:description" content="SD_CUSTOMER_MAINTAIN_ALL TABLE 参数中有很多表，其中 X 开头代表要插入的数据，Y 开头代表要删除的数据。 DATA: TMP TYPE STRING, LEN TYPE I, FLAG TYPE CHAR1, SY_SUBRC(2) TYPE C. CLEAR:E_MESS. *--判断是否存在同名客户 IF I_KNA1-KUNNR IS INITIAL. SELECT SINGLE NAME1"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI 创建 Customer ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SD_BAPI_CustomerCreate\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI",
+  "wordcount":  1283 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SD_BAPI_CustomerCreate\/",
+  "datePublished": "2019-10-27T00:00:00\x2b00:00",
+  "dateModified": "2019-10-27T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI 创建 Customer </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-10-27 >27 October 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sd_customer_maintain_all">SD_CUSTOMER_MAINTAIN_ALL</h3>
+<p>TABLE 参数中有很多表，其中 X 开头代表要插入的数据，Y 开头代表要删除的数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: TMP   <span style="color:#66d9ef">TYPE </span>STRING,
+      LEN   <span style="color:#66d9ef">TYPE </span>I,
+      FLAG  <span style="color:#66d9ef">TYPE </span>CHAR1,
+      SY_SUBRC(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">TYPE </span>C.
+<span style="color:#66d9ef">CLEAR</span>:E_MESS.
+<span style="color:#75715e">*--判断是否存在同名客户</span>
+<span style="color:#66d9ef">IF</span> I_KNA1<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">IS INITIAL</span>.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> NAME1 <span style="color:#66d9ef">INTO</span> TMP
+    <span style="color:#66d9ef">FROM</span> KNA1
+   <span style="color:#66d9ef">WHERE</span> NAME1 <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>NAME1
+     <span style="color:#f92672">AND</span> NAME2 <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>NAME2.
+  <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    FLAG    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    E_STATU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    E_MESS  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;存在名称相同的客户&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*--判断邮编的长度</span>
+LEN <span style="color:#f92672">=</span> STRLEN( I_KNA1<span style="color:#f92672">-</span>PSTLZ ).
+<span style="color:#66d9ef">IF</span> LEN <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">6</span>.
+  FLAG    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  E_STATU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  E_MESS  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;邮编应该是6位数&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+
+<span style="color:#66d9ef">IF</span> FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      INPUT   <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR
+    <span style="color:#66d9ef">IMPORTING</span>
+      OUTPUT  <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+  I_KNA1<span style="color:#f92672">-</span>LAND1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN&#39;</span>.
+  I_KNA1<span style="color:#f92672">-</span>SPRAS <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#75715e">**--客户的销售数据</span>
+  I_KNVV<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+<span style="color:#75715e">*  I_KNVV-VKORG =  &#39; &#39; .   &#34;销售组织&#34;</span>
+  I_KNVV<span style="color:#f92672">-</span>VTWEG <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;10&#39;</span> .   <span style="color:#75715e">&#34;分销渠道&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>SPART <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;00&#39;</span> .   <span style="color:#75715e">&#34;产品组&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>BZIRK <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39; &#39;</span> .    <span style="color:#75715e">&#34;销售地区&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>VKBUR <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39; &#39;</span> .    <span style="color:#75715e">&#34;销售部门&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>WAERS <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;RMB&#39;</span> .  <span style="color:#75715e">&#34;货币&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>KALKS <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;1&#39;</span> .    <span style="color:#75715e">&#34;定价过程&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>VERSG <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;1&#39;</span> .    <span style="color:#75715e">&#34;客户统计组&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>ANTLF <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;9&#39;</span>.     <span style="color:#75715e">&#34;最大部分交货&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>VSBED <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.     <span style="color:#75715e">&#34;装运条件&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>KZAZU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.      <span style="color:#75715e">&#34;订单组合chk&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>ZTERM <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;9101&#39;</span>.   <span style="color:#75715e">&#34;付款条件&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>KABSS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0001&#39;</span>.   <span style="color:#75715e">&#34;付款担保过程&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>KKBER <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;9999&#39;</span>.   <span style="color:#75715e">&#34;信贷控制范围&#34;
+</span><span style="color:#75715e"></span>  I_KNVV<span style="color:#f92672">-</span>KTGRD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.     <span style="color:#75715e">&#34;账户分配组&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> I_KNA1<span style="color:#f92672">-</span>KTOKD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A001&#39;</span>.
+    I_KNVV<span style="color:#f92672">-</span>KDGRP <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;11&#39;</span>.  <span style="color:#75715e">&#34;客户组&#34;
+</span><span style="color:#75715e"></span>    I_KNVV<span style="color:#f92672">-</span>KONDA <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;01&#39;</span>.  <span style="color:#75715e">&#34;价格组&#34;
+</span><span style="color:#75715e"></span>    I_KNB1<span style="color:#f92672">-</span>FDGRV <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E1&#39;</span>.   <span style="color:#75715e">&#34;现金管理组&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ELSEIF</span> I_KNA1<span style="color:#f92672">-</span>KTOKD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A002&#39;</span>.
+    I_KNVV<span style="color:#f92672">-</span>KDGRP <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;21&#39;</span>.  <span style="color:#75715e">&#34;客户组&#34;
+</span><span style="color:#75715e"></span>    I_KNVV<span style="color:#f92672">-</span>KONDA <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;02&#39;</span>.  <span style="color:#75715e">&#34;价格组&#34;
+</span><span style="color:#75715e"></span>    I_KNB1<span style="color:#f92672">-</span>FDGRV <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E2&#39;</span>.   <span style="color:#75715e">&#34;现金管理组&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">**--客户的公司数据</span>
+  I_KNB1<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+  I_KNB1<span style="color:#f92672">-</span>BUKRS <span style="color:#f92672">=</span> I_KNVV<span style="color:#f92672">-</span>VKORG.
+  I_KNB1<span style="color:#f92672">-</span>AKONT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.       <span style="color:#75715e">&#34;统驭科目&#34;
+</span><span style="color:#75715e"></span>  I_KNB1<span style="color:#f92672">-</span>ZTERM <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;9101&#39;</span>.   <span style="color:#75715e">&#34;付款条件&#34;
+</span><span style="color:#75715e"></span>  I_KNB1<span style="color:#f92672">-</span>XZVER <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.      <span style="color:#75715e">&#34;付款历史记录chk&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">**--银行</span>
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> T_XKNBK <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">IF</span> I_KNA1<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> T_YKNBK
+      <span style="color:#66d9ef">FROM</span> KNBK
+     <span style="color:#66d9ef">WHERE</span> KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR
+       <span style="color:#f92672">AND</span> BANKS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN&#39;</span>.
+    <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">APPEND</span> T_YKNBK.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  T_XKNBK<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+  T_XKNBK<span style="color:#f92672">-</span>BANKS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN&#39;</span>.         <span style="color:#75715e">&#34;银行国家代码&#34;
+</span><span style="color:#75715e"></span>  T_XKNBK<span style="color:#f92672">-</span>BANKL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20000&#39;</span>.      <span style="color:#75715e">&#34;银行码&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">MODIFY</span> T_XKNBK <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span> TRANSPORTING KUNNR BANKS BANKL.
+<span style="color:#75715e">**--客户联系人</span>
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> T_XKNVK <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">IF</span> I_KNA1<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> T_YKNVK
+      <span style="color:#66d9ef">FROM</span> KNVK
+     <span style="color:#66d9ef">WHERE</span> KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+    <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">APPEND</span> T_YKNVK.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  T_XKNVK<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+  T_XKNVK<span style="color:#f92672">-</span>NAMEV <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#&#39;</span>.
+  T_XKNVK<span style="color:#f92672">-</span>ABTNR <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0002&#39;</span>.
+  T_XKNVK<span style="color:#f92672">-</span>PAFKT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;02&#39;</span>.
+  <span style="color:#66d9ef">MODIFY</span> T_XKNVK <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span> TRANSPORTING KUNNR NAMEV ABTNR PAFKT.
+<span style="color:#75715e">**--合作伙伴</span>
+  <span style="color:#66d9ef">IF</span> I_KNA1<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> T_YKNVP
+      <span style="color:#66d9ef">FROM</span> KNVP
+     <span style="color:#66d9ef">WHERE</span> KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR
+       <span style="color:#f92672">AND</span> VKORG <span style="color:#f92672">=</span> I_KNVV<span style="color:#f92672">-</span>VKORG
+       <span style="color:#f92672">AND</span> VTWEG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;10&#39;</span>
+       <span style="color:#f92672">AND</span> SPART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>
+       <span style="color:#f92672">AND</span> PARVW <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;VE&#39;</span>.
+    <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">APPEND</span> T_YKNVP.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  T_XKNVP<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+  T_XKNVP<span style="color:#f92672">-</span>VKORG <span style="color:#f92672">=</span>  I_KNVV<span style="color:#f92672">-</span>VKORG. <span style="color:#75715e">&#34;销售组织&#34;
+</span><span style="color:#75715e"></span>  T_XKNVP<span style="color:#f92672">-</span>VTWEG <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;10&#39;</span>.         <span style="color:#75715e">&#34;分销渠道&#34;
+</span><span style="color:#75715e"></span>  T_XKNVP<span style="color:#f92672">-</span>SPART <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;00&#39;</span>.         <span style="color:#75715e">&#34;产品组&#34;
+</span><span style="color:#75715e"></span>  T_XKNVP<span style="color:#f92672">-</span>PARVW <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;VE &#39;</span>.
+<span style="color:#75715e">*  T_XKNVP-PERNR = &#39;&#39;.</span>
+  <span style="color:#66d9ef">MODIFY</span> T_XKNVP <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span> TRANSPORTING KUNNR  VKORG VTWEG SPART PARVW.
+<span style="color:#75715e">**--税收</span>
+   <span style="color:#66d9ef">IF</span> I_KNA1<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">IS NOT INITIAL</span>.
+      <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> T_YKNVI
+        <span style="color:#66d9ef">FROM</span> KNVI
+       <span style="color:#66d9ef">WHERE</span> KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR
+         <span style="color:#f92672">AND</span> ALAND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN&#39;</span>
+         <span style="color:#f92672">AND</span> TATYP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MWST&#39;</span>.
+      <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+        <span style="color:#66d9ef">APPEND</span> T_YKNVI.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    T_XKNVI<span style="color:#f92672">-</span>KUNNR <span style="color:#f92672">=</span> I_KNA1<span style="color:#f92672">-</span>KUNNR.
+    T_XKNVI<span style="color:#f92672">-</span>ALAND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN&#39;</span>.
+    T_XKNVI<span style="color:#f92672">-</span>TATYP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MWST&#39;</span>.
+    T_XKNVI<span style="color:#f92672">-</span>TAXKD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+    <span style="color:#66d9ef">APPEND</span> T_XKNVI .
+
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SD_CUSTOMER_MAINTAIN_ALL&#39;</span>
+   <span style="color:#66d9ef">EXPORTING</span>
+     I_KNA1                              <span style="color:#f92672">=</span> I_KNA1
+     I_KNB1                              <span style="color:#f92672">=</span> I_KNB1
+     I_KNVV                              <span style="color:#f92672">=</span> I_KNVV
+     I_MAINTAIN_ADDRESS_BY_KNA1          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+     I_KNB1_REFERENCE                    <span style="color:#f92672">=</span> I_KNB1_REFERENCE
+     I_FORCE_EXTERNAL_NUMBER_RANGE       <span style="color:#f92672">=</span> I_FORCE_EXTERNAL_NUMBER_RANGE
+     I_NO_BANK_MASTER_UPDATE             <span style="color:#f92672">=</span> I_NO_BANK_MASTER_UPDATE
+     I_CUSTOMER_IS_CONSUMER              <span style="color:#f92672">=</span> I_CUSTOMER_IS_CONSUMER
+     I_RAISE_NO_BTE                      <span style="color:#f92672">=</span> I_RAISE_NO_BTE
+     PI_POSTFLAG                         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+     PI_CAM_CHANGED                      <span style="color:#f92672">=</span> PI_CAM_CHANGED
+     PI_ADD_ON_DATA                      <span style="color:#f92672">=</span> PI_ADD_ON_DATA
+     I_FROM_CUSTOMERMASTER               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+   <span style="color:#66d9ef">IMPORTING</span>
+     E_KUNNR                             <span style="color:#f92672">=</span> E_KUNNR
+     O_KNA1                              <span style="color:#f92672">=</span> O_KNA1
+   <span style="color:#66d9ef">TABLES</span>
+     T_XKNAS                             <span style="color:#f92672">=</span> T_XKNAS
+     T_XKNBK                             <span style="color:#f92672">=</span> T_XKNBK
+     T_XKNB5                             <span style="color:#f92672">=</span> T_XKNB5
+     T_XKNEX                             <span style="color:#f92672">=</span> T_XKNEX
+     T_XKNVA                             <span style="color:#f92672">=</span> T_XKNVA
+     T_XKNVD                             <span style="color:#f92672">=</span> T_XKNVD
+     T_XKNVI                             <span style="color:#f92672">=</span> T_XKNVI
+     T_XKNVK                             <span style="color:#f92672">=</span> T_XKNVK
+     T_XKNVL                             <span style="color:#f92672">=</span> T_XKNVL
+     T_XKNVP                             <span style="color:#f92672">=</span> T_XKNVP
+     T_XKNZA                             <span style="color:#f92672">=</span> T_XKNZA
+     
+     T_YKNAS                             <span style="color:#f92672">=</span> T_YKNAS
+     T_YKNBK                             <span style="color:#f92672">=</span> T_YKNBK
+     T_YKNB5                             <span style="color:#f92672">=</span> T_YKNB5
+     T_YKNEX                             <span style="color:#f92672">=</span> T_YKNEX
+     T_YKNVA                             <span style="color:#f92672">=</span> T_YKNVA
+     T_YKNVD                             <span style="color:#f92672">=</span> T_YKNVD
+     T_YKNVI                             <span style="color:#f92672">=</span> T_YKNVI
+     T_YKNVK                             <span style="color:#f92672">=</span> T_YKNVK
+     T_YKNVL                             <span style="color:#f92672">=</span> T_YKNVL
+     T_YKNVP                             <span style="color:#f92672">=</span> T_YKNVP
+     T_YKNZA                             <span style="color:#f92672">=</span> T_YKNZA
+     T_UPD_TXT                           <span style="color:#f92672">=</span> T_UPD_TXT
+   <span style="color:#66d9ef">EXCEPTIONS</span>
+     CLIENT_ERROR                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+     KNA1_INCOMPLETE                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+     KNB1_INCOMPLETE                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+     KNB5_INCOMPLETE                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+     KNVV_INCOMPLETE                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+     KUNNR_NOT_UNIQUE                    <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+     SALES_AREA_NOT_UNIQUE               <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+     SALES_AREA_NOT_VALID                <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
+     INSERT_UPDATE_CONFLICT              <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+     NUMBER_ASSIGNMENT_ERROR             <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+     NUMBER_NOT_IN_RANGE                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
+     NUMBER_RANGE_NOT_EXTERN             <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+     NUMBER_RANGE_NOT_INTERN             <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>
+     ACCOUNT_GROUP_NOT_VALID             <span style="color:#f92672">=</span> <span style="color:#ae81ff">14</span>
+     PARNR_INVALID                       <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>
+     BANK_ADDRESS_INVALID                <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
+     TAX_DATA_NOT_VALID                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>
+     NO_AUTHORITY                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>
+     COMPANY_CODE_NOT_UNIQUE             <span style="color:#f92672">=</span> <span style="color:#ae81ff">19</span>
+     DUNNING_DATA_NOT_VALID              <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+     KNB1_REFERENCE_INVALID              <span style="color:#f92672">=</span> <span style="color:#ae81ff">21</span>
+     CAM_ERROR                           <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>
+     <span style="color:#66d9ef">OTHERS</span>                              <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>
+            .
+  <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span>.
+    SY_SUBRC <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>SUBRC.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+    E_STATU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;客户更新失败（&#39;</span> SY_SUBRC <span style="color:#e6db74">&#39;）&#39;</span> <span style="color:#66d9ef">INTO</span> E_MESS.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        <span style="color:#66d9ef">WAIT</span>          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      E_STATU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+      E_MESS  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;客户更新成功&#39;</span>.
+      E_KUNNR <span style="color:#f92672">=</span> O_KNA1<span style="color:#f92672">-</span>KUNNR.
+    <span style="color:#66d9ef">ELSE</span>.
+      E_STATU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;客户更新失败（&#39;</span> SY_SUBRC <span style="color:#e6db74">&#39;）&#39;</span> <span style="color:#66d9ef">INTO</span> E_MESS.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1283</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SD_BAPI_ALL_List/" class="prev" rel="prev" title=" SD 模块常用BAPI "><i class="iconfont icon-dajiantou"></i>&nbsp; SD 模块常用BAPI </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SD_BAPI_SalesorderChange/" class="next" rel="next" title=" BAPI 销售订单修改 "> BAPI 销售订单修改 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-27 00:00:00 \x2b0000 UTC',
+        title: ' BAPI 创建 Customer ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

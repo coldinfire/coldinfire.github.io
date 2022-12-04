@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_ALV_TreeEvent/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_ObjectOriented_Overview/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_ALV_TreeDemo/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ALVTree Demo  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ALVTree Demo  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ALVTree Demo "/>
+<meta name="twitter:description" content="创建一个完整的 ALVTree Control SAP dynpro 程序 生成的 ALVTree Report 使用 OBJECT METHOD 功能来生成树结构的 ALV 输出。 创建 ALVtree Report 首先需要创建一个简单的程序来构建 ALV 详细信息(例如字段目录)，并"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ALVTree Demo ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_ALV_TreeDemo\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV, DEMO",
+  "wordcount":  1674 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_ALV_TreeDemo\/",
+  "datePublished": "2019-06-19T00:00:00\x2b00:00",
+  "dateModified": "2019-06-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ALVTree Demo </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-19 >19 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="创建一个完整的-alvtree-control-sap-dynpro-程序">创建一个完整的 ALVTree Control SAP dynpro 程序</h3>
+<p>生成的 ALVTree Report 使用 OBJECT METHOD 功能来生成树结构的 ALV 输出。 创建 ALVtree Report 首先需要创建一个简单的程序来构建 ALV 详细信息(例如字段目录)，并调用将用于显示 ALVTree 的屏幕。 使用 &ldquo;custom control&rdquo; 创建屏幕（SCREEN_CONTAINER），然后在其中显示 ALVtree Report。</p>
+<h4 id="创建主程序代码">创建主程序代码</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;-------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Example of a simple ALV Grid Report                         *</span>
+<span style="color:#75715e">*&amp; ...................................                         *</span>
+<span style="color:#75715e">*&amp; The basic requirement for this demo is to display a number  *</span>
+<span style="color:#75715e">*&amp; of fields from the EKPO and EKKO table in a tree structure. *</span>
+<span style="color:#75715e">*&amp;-------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  ZDEMO_ALVTREE.
+<span style="color:#75715e">*Data Declaration</span>
+<span style="color:#66d9ef">TABLES</span>:ekko.
+<span style="color:#66d9ef">TYPE-POOLS</span>: slis.
+<span style="color:#66d9ef">INCLUDE</span> &lt;icon&gt;.
+<span style="color:#75715e">&#34;ALV Declarations&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> t_ekko,
+  ebeln <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>ebeln,
+  ebelp <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>ebelp,
+  statu <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>statu,
+  aedat <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>aedat,
+  matnr <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>matnr,
+  menge <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>menge,
+  meins <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>meins,
+  netpr <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>netpr,
+  peinh <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>peinh,
+<span style="color:#66d9ef">END OF</span> t_ekko.
+<span style="color:#66d9ef">DATA</span>: it_ekko     <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> t_ekko INITIAL <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">0</span>,
+      it_ekpo     <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> t_ekko INITIAL <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">0</span>,
+      it_emptytab <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> t_ekko INITIAL <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">0</span>,
+      wa_ekko     <span style="color:#66d9ef">TYPE </span>t_ekko,
+      wa_ekpo     <span style="color:#66d9ef">TYPE </span>t_ekko.
+<span style="color:#66d9ef">DATA</span>: ok_code <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>ucomm,           <span style="color:#75715e">&#34;OK-Code&#34;
+</span><span style="color:#75715e"></span>      save_ok <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>ucomm.
+<span style="color:#75715e">*ALV data declarations</span>
+<span style="color:#66d9ef">DATA</span>: fieldcatalog  <span style="color:#66d9ef">TYPE </span>lvc_t_fcat <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: gd_fieldcat   <span style="color:#66d9ef">TYPE </span>lvc_t_fcat,
+      gd_tab_group  <span style="color:#66d9ef">TYPE </span>slis_t_sp_group_alv,
+      gd_layout     <span style="color:#66d9ef">TYPE </span>slis_layout_alv.
+<span style="color:#75715e">*ALVtree data declarations</span>
+<span style="color:#66d9ef">CLASS</span> cl_gui_column_tree <span style="color:#66d9ef">DEFINITION</span> <span style="color:#66d9ef">LOAD</span>.
+<span style="color:#66d9ef">CLASS</span> cl_gui_cfw <span style="color:#66d9ef">DEFINITION</span> <span style="color:#66d9ef">LOAD</span>.
+<span style="color:#66d9ef">DATA</span>: gd_tree             <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_tree,
+      gd_hierarchy_header <span style="color:#66d9ef">TYPE </span>treev_hhdr,
+      gd_report_title     <span style="color:#66d9ef">TYPE </span>slis_t_listheader,
+      gd_logo             <span style="color:#66d9ef">TYPE </span>sdydo_value,
+      gd_variant          <span style="color:#66d9ef">TYPE </span>disvariant.
+<span style="color:#75715e">*Create container for alv-tree</span>
+<span style="color:#66d9ef">DATA</span>: gd_tree_container_name(<span style="color:#ae81ff">30</span>) <span style="color:#66d9ef">TYPE </span>c,
+      gd_custom_container        <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_custom_container.
+
+<span style="color:#66d9ef">DEFINE</span> frm_fieldcat.
+  <span style="color:#66d9ef">CLEAR</span>: &amp;1.
+  &amp;1<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> &amp;2 .
+  &amp;1<span style="color:#f92672">-</span>scrtext_m <span style="color:#f92672">=</span> &amp;3 .
+  &amp;1<span style="color:#f92672">-</span>outputlen <span style="color:#f92672">=</span> &amp;4 .
+  &amp;1<span style="color:#f92672">-</span>col_pos   <span style="color:#f92672">=</span> &amp;5 .
+  <span style="color:#66d9ef">APPEND</span> &amp;1.
+<span style="color:#66d9ef">END-OF-DEFINITION</span>.
+<span style="color:#75715e">************************************************************************</span>
+<span style="color:#75715e">*Includes</span>
+<span style="color:#66d9ef">INCLUDE</span> ZDEMO_ALVTREEO01. <span style="color:#75715e">&#34;Screen PBO Modules&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INCLUDE</span> ZDEMO_ALVTREEI01. <span style="color:#75715e">&#34;Screen PAI Modules&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INCLUDE</span> ZDEMO_ALVTREEF01. <span style="color:#75715e">&#34;ABAP Subroutines(FORMS)&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INCLUDE</span> ZTEST_TOOLBAR_EVENT_RECEIVER. <span style="color:#75715e">&#34;Toobar Process&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INCLUDE</span> 
+<span style="color:#75715e">************************************************************************</span>
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+<span style="color:#75715e">* ALVtree setup data</span>
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">data_retrieval</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">build_fieldcatalog</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">build_layout</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">build_report_title</span> <span style="color:#66d9ef">USING</span> gd_report_title gd_logo.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">build_variant</span>.
+<span style="color:#75715e">* Display ALVtree report</span>
+  <span style="color:#66d9ef">CALL SCREEN</span> <span style="color:#ae81ff">100</span>.
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  DATA_RETRIEVAL</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       Retrieve data into Internal tables</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">data_retrieval</span>.
+  <span style="color:#66d9ef">SELECT</span> ebeln UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">10</span> ROWS
+   <span style="color:#66d9ef">FROM</span> ekko
+   <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> it_ekko.
+  <span style="color:#66d9ef">LOOP AT </span>it_ekko <span style="color:#66d9ef">INTO</span> wa_ekko.
+    <span style="color:#66d9ef">SELECT</span> ebeln ebelp statu aedat matnr menge meins netpr peinh
+     <span style="color:#66d9ef">FROM</span> ekpo
+     APPENDING <span style="color:#66d9ef">TABLE</span> it_ekpo
+     <span style="color:#66d9ef">WHERE</span> ebeln <span style="color:#f92672">EQ</span> wa_ekko<span style="color:#f92672">-</span>ebeln.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; DATA_RETRIEVAL &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  BUILD_FIELDCATALOG</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       Build Fieldcatalog for ALV Report</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">build_fieldcatalog</span>.
+<span style="color:#75715e">* Please notice there are a number of differences between the structure of</span>
+<span style="color:#75715e">* ALVtree fieldcatalogs and ALVgrid fieldcatalogs.</span>
+<span style="color:#75715e">* For example the field seltext_m is replace by scrtext_m in ALVtree.</span>
+  frm_fieldcat:
+    fieldcatalog <span style="color:#e6db74">&#39;EBELN&#39;</span> <span style="color:#e6db74">&#39;Purchase Order&#39;</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;EBELP&#39;</span> <span style="color:#e6db74">&#39;PO Item&#39;</span>            <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;STATU&#39;</span> <span style="color:#e6db74">&#39;Status&#39;</span>             <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;AEDAT&#39;</span> <span style="color:#e6db74">&#39;Item change date&#39;</span>   <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;MATNR&#39;</span> <span style="color:#e6db74">&#39;Material Number&#39;</span>    <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;MENGE&#39;</span> <span style="color:#e6db74">&#39;PO quantity&#39;</span>        <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;MEINS&#39;</span> <span style="color:#e6db74">&#39;Order Unit&#39;</span>         <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;NETPR&#39;</span> <span style="color:#e6db74">&#39;Net Price&#39;</span>          <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">15</span>,
+    fieldcatalog <span style="color:#e6db74">&#39;PEINH&#39;</span> <span style="color:#e6db74">&#39;Price Unit&#39;</span>         <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">15</span>.
+
+  <span style="color:#66d9ef">LOOP AT </span>fieldcatalog.
+    <span style="color:#66d9ef">IF</span> fieldcatalog<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;NETPR&#39;</span>.
+      fieldcatalog<span style="color:#f92672">-</span>datatype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CURR&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">MODIFY</span> fieldcatalog.
+    <span style="color:#66d9ef">CLEAR</span> fieldcatalog.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+
+  gd_fieldcat[] <span style="color:#f92672">=</span> fieldcatalog[].
+
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; BUILD_FIELDCATALOG &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  BUILD_LAYOUT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       Build layout for ALV grid report</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">build_layout</span>.
+  gd_layout<span style="color:#f92672">-</span>no_input          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  gd_layout<span style="color:#f92672">-</span>colwidth_optimize <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  gd_layout<span style="color:#f92672">-</span>totals_text       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Totals&#39;</span>(<span style="color:#ae81ff">201</span>).
+<span style="color:#75715e">*  gd_layout-totals_only        = &#39;X&#39;.</span>
+<span style="color:#75715e">*  gd_layout-f2code            = &#39;DISP&#39;.  &#34;Sets fcode for when double</span>
+<span style="color:#75715e">*                                         &#34;click(press f2)</span>
+<span style="color:#75715e">*  gd_layout-zebra             = &#39;X&#39;.</span>
+<span style="color:#75715e">*  gd_layout-group_change_edit = &#39;X&#39;.</span>
+<span style="color:#75715e">*  gd_layout-header_text       = &#39;helllllo&#39;.</span>
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; BUILD_LAYOUT &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  BUILD_REPORT_TITLE</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       Build table for ALVtree header</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*  &lt;-&gt;  p1        Header details</span>
+<span style="color:#75715e">*  &lt;-&gt;  p2        Logo value</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">build_report_title</span> <span style="color:#66d9ef">CHANGING</span>
+  pt_report_title  <span style="color:#66d9ef">TYPE </span>slis_t_listheader
+  pa_logo             <span style="color:#66d9ef">TYPE </span>sdydo_value.
+  <span style="color:#66d9ef">DATA</span>: ls_line <span style="color:#66d9ef">TYPE </span>slis_listheader,
+        ld_date(<span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#75715e">* List Heading Line(TYPE H)</span>
+  <span style="color:#66d9ef">CLEAR</span> ls_line.
+  ls_line<span style="color:#f92672">-</span>typ  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;H&#39;</span>.
+<span style="color:#75715e">* ls_line-key     &#34;Not Used For This Type(H)&#34;</span>
+  ls_line<span style="color:#f92672">-</span>info <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PO ALVTree Display&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> ls_line <span style="color:#66d9ef">TO</span> pt_report_title.
+<span style="color:#75715e">* Status Line(TYPE S)</span>
+  ld_date(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum<span style="color:#f92672">+</span><span style="color:#ae81ff">6</span>(<span style="color:#ae81ff">2</span>).
+  ld_date<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span>.
+  ld_date<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>(<span style="color:#ae81ff">2</span>).
+  ld_date<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span>.
+  ld_date<span style="color:#f92672">+</span><span style="color:#ae81ff">6</span>(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum(<span style="color:#ae81ff">4</span>).
+  ls_line<span style="color:#f92672">-</span>typ  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+  ls_line<span style="color:#f92672">-</span>key  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Date&#39;</span>.
+  ls_line<span style="color:#f92672">-</span>info <span style="color:#f92672">=</span> ld_date.
+  <span style="color:#66d9ef">APPEND</span> ls_line <span style="color:#66d9ef">TO</span> pt_report_title.
+<span style="color:#75715e">* Action Line(TYPE A)</span>
+  <span style="color:#66d9ef">CLEAR</span> ls_line.
+  ls_line<span style="color:#f92672">-</span>typ  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+  <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;Report: &#39;</span> sy<span style="color:#f92672">-</span>repid <span style="color:#66d9ef">INTO</span> ls_line<span style="color:#f92672">-</span>info <span style="color:#66d9ef">SEPARATED BY</span> space.
+  <span style="color:#66d9ef">APPEND</span> ls_line <span style="color:#66d9ef">TO</span> pt_report_title.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; build_report_title &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  BUILD_VARIANT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       Build variant</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">build_variant</span>.
+<span style="color:#75715e">* Set repid for storing variants</span>
+  gd_variant<span style="color:#f92672">-</span>report <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; BUILD_VARIANT &#34;
+</span></code></pre></div><h4 id="屏幕设置">屏幕设置</h4>
+<p>创建屏幕并设置PBO、PAI；定义 OK_CODE 变量；设置 pf-status；创建 Custom control。</p>
+<p><img src="/images/ABAP/ALV_TreeDemo1.png" alt="Custom control"></p>
+<h4 id="alvtree-代码">ALVTree 代码</h4>
+<p>为了存储 ALVTree Report 所需的 ABAP 代码，需要创建三个 include：一个用于 PBO 模块，一个用于 PAI 模块，一个用于子例程（FORM）。</p>
+<p><code>INCLUDE ZDEMO_ALVTREEO01.</code>  ：Screen PBO Modules</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;  Include           ZDEMO_ALVTREEO01</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Module  STATUS_0100  OUTPUT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">status_0100</span> <span style="color:#66d9ef">OUTPUT</span>.
+  <span style="color:#66d9ef">SET PF-STATUS</span> <span style="color:#e6db74">&#39;STATUS1&#39;</span>.
+<span style="color:#75715e">*  SET TITLEBAR &#39;xxx&#39;.</span>
+<span style="color:#75715e">* If ALVtree already exists then it mush not be re-created as this will cause a runtime error.</span>
+<span style="color:#75715e">* Create ALVtree (must be performed within screen PBO module)</span>
+  <span style="color:#66d9ef">IF</span> gd_tree <span style="color:#f92672">IS INITIAL</span>.
+<span style="color:#75715e">*§1. Create container for alv-tree</span>
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">create_alvtree_container</span>.
+<span style="color:#75715e">*§2. Create tree control</span>
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">create_object_in_container</span>.
+<span style="color:#75715e">*§3. Create Hierarchy-header</span>
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">build_hierarchy_header</span> <span style="color:#66d9ef">CHANGING</span> gd_hierarchy_heade.
+<span style="color:#75715e">*§4. Create empty alvtree Control</span>
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">create_empty_alvtree_control</span>.
+<span style="color:#75715e">*§5. Create ALVtree Hierarchy</span>
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">create_alvtree_hierarchy</span>.
+<span style="color:#75715e">*§6. Send data to frontend.</span>
+  <span style="color:#75715e">&#34;this method must be called to send the data to the frontend&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>frontend_update.
+<span style="color:#75715e">*§7. Flush.</span>
+  <span style="color:#66d9ef">CALL METHOD</span> cl_gui_cfw<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>flush
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      cntl_system_error <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      cntl_error        <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;POPUP_TO_INFORM&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        titel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Automation Queue failure&#39;</span>(<span style="color:#ae81ff">801</span>)
+        txt1  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Internal error:&#39;</span>(<span style="color:#ae81ff">802</span>)
+        txt2  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A method in the automation queue&#39;</span>(<span style="color:#ae81ff">803</span>)
+        txt3  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;caused a failure.&#39;</span>(<span style="color:#ae81ff">804</span>).
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDMODULE</span>.                 <span style="color:#75715e">&#34; STATUS_0100  OUTPUT &#34;
+</span></code></pre></div><p><code>INCLUDE ZDEMO_ALVTREEI01.</code>   ：Screen PAI Modules</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;  Include           ZDEMO_ALVTREEI01</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Module  USER_COMMAND_0100  INPUT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">user_command_0100</span> <span style="color:#66d9ef">INPUT</span>.
+  <span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_event.
+  save_ok <span style="color:#f92672">=</span> ok_code.
+  <span style="color:#66d9ef">CASE</span> ok_code.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;BACK&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;%EX&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;RW&#39;</span>.
+      gd_custom_container<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">free</span>( ).
+      <span style="color:#66d9ef">LEAVE TO SCREEN</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">*   Process ALVtree user actions</span>
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> cl_gui_cfw<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>get_current_event_object
+        RECEIVING
+          event_object <span style="color:#f92672">=</span> <span style="color:#66d9ef">return</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> cl_gui_cfw<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>dispatch.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDMODULE</span>.                 <span style="color:#75715e">&#34; USER_COMMAND_0100  INPUT &#34;
+</span></code></pre></div><p><code>INCLUDE ZDEMO_ALVTREEF01.</code>  ：ABAP Subroutines(FORMS)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;  Include           ZDEMO_ALVTREEF01</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  CREATE_ALVTREE_CONTAINER</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*        Create container for alv-tree</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*  --&gt;  p1        text</span>
+<span style="color:#75715e">*  &lt;--  p2        text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">create_alvtree_container</span> .
+<span style="color:#75715e">* Create container for alv-tree</span>
+  gd_tree_container_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SCREEN_CONTAINER&#39;</span>.
+  <span style="color:#66d9ef">CREATE OBJECT</span> gd_custom_container
+    <span style="color:#66d9ef">EXPORTING</span>
+      container_name              <span style="color:#f92672">=</span> gd_tree_container_name
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      cntl_error                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      cntl_system_error           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      create_error                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      lifetime_error              <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      lifetime_dynpro_dynpro_link <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> x208(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;ERROR&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; CREATE_ALVTREE_CONTAINER &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  CREATE_OBJECT_IN_CONTAINER</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       Create ALVtree control</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*  --&gt;  p1        text</span>
+<span style="color:#75715e">*  &lt;--  p2        text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">create_object_in_container</span> .
+<span style="color:#75715e">* Create tree control</span>
+  <span style="color:#66d9ef">CREATE OBJECT</span> gd_tree
+    <span style="color:#66d9ef">EXPORTING</span>
+      parent                      <span style="color:#f92672">=</span> gd_custom_container
+      node_selection_mode         <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>node_sel_mode_single
+      item_selection              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      no_html_header              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      no_toolbar                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      cntl_error                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      cntl_system_error           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      create_error                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      lifetime_error              <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      illegal_node_selection_mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+      failed                      <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+      illegal_column_name         <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> x208(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;ERROR&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; CREATE_OBJECT_IN_CONTAINER &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  build_hierarchy_header</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       build hierarchy-header-information</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;P_L_HIERARCHY_HEADER  strucxture for hierarchy-header</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">build_hierarchy_header</span> <span style="color:#66d9ef">CHANGING</span> p_hierarchy_header <span style="color:#66d9ef">type </span>treev_hhdr.
+  p_hierarchy_header<span style="color:#f92672">-</span>heading <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Month/Carrier/Date&#39;</span>(<span style="color:#ae81ff">300</span>).
+  p_hierarchy_header<span style="color:#f92672">-</span>tooltip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Flights in a month&#39;</span>(<span style="color:#ae81ff">400</span>).
+  p_hierarchy_header<span style="color:#f92672">-</span>width <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>.
+  p_hierarchy_header<span style="color:#f92672">-</span>width_pix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>.
+<span style="color:#66d9ef">endform</span>.                               <span style="color:#75715e">&#34; build_hierarchy_header &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  CREATE_EMPTY_ALVTREE_CONTROL</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*  --&gt;  p1        text</span>
+<span style="color:#75715e">*  &lt;--  p2        text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">create_empty_alvtree_control</span> .
+<span style="color:#75715e">* Create emty tree-control</span>
+  <span style="color:#66d9ef">CLEAR</span>: it_emptytab.
+  <span style="color:#66d9ef">REFRESH</span>: it_emptytab.
+  <span style="color:#66d9ef">CALL METHOD</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_table_for_first_display
+    <span style="color:#66d9ef">EXPORTING</span>
+      is_hierarchy_header  <span style="color:#f92672">=</span> gd_hierarchy_header
+      it_list_commentary   <span style="color:#f92672">=</span> gd_report_title
+      i_logo               <span style="color:#f92672">=</span> gd_logo
+<span style="color:#75715e">*     i_background_id      = &#39;ALV_BACKGROUND&#39;</span>
+      i_save               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>
+      is_variant            <span style="color:#f92672">=</span> gd_variant
+    <span style="color:#66d9ef">CHANGING</span>
+      it_outtab            <span style="color:#f92672">=</span>  it_emptytab      <span style="color:#75715e">&#34;Must be empty&#34;
+</span><span style="color:#75715e"></span>      it_fieldcatalog      <span style="color:#f92672">=</span>  gd_fieldcat.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; CREATE_EMPTY_ALVTREE_CONTROL&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  CREATE_ALVTREE_HIERARCHY</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       Builds ALV tree display, (inserts nodes, subnodes etc)</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*  --&gt;  p1        text</span>
+<span style="color:#75715e">*  &lt;--  p2        text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">create_alvtree_hierarchy</span> .
+  <span style="color:#66d9ef">DATA</span>: ls_sflight <span style="color:#66d9ef">TYPE </span>sflight,
+        lt_sflight <span style="color:#66d9ef">TYPE </span>sflight OCCURS <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">DATA</span>: ld_ebeln_key <span style="color:#66d9ef">TYPE </span>lvc_nkey,
+        ld_ebelp_key <span style="color:#66d9ef">TYPE </span>lvc_nkey.
+  <span style="color:#66d9ef">LOOP AT </span>it_ekko <span style="color:#66d9ef">INTO</span> wa_ekko.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">add_ekko_node</span> <span style="color:#66d9ef">USING</span> wa_ekko <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#66d9ef">CHANGING</span> ld_ebeln_key.
+    <span style="color:#66d9ef">LOOP AT </span>it_ekpo <span style="color:#66d9ef">INTO</span> wa_ekpo <span style="color:#66d9ef">WHERE</span> ebeln <span style="color:#f92672">EQ</span> wa_ekko<span style="color:#f92672">-</span>ebeln.
+      <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">add_ekpo_line</span> <span style="color:#66d9ef">USING</span> wa_ekpo ld_ebeln_key <span style="color:#66d9ef">CHANGING</span> ld_ebelp_key.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">* calculate totals</span>
+<span style="color:#75715e">*  CALL METHOD gd_tree-&gt;update_calculations.</span>
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; CREATE_ALVTREE_HIERARCHY &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  ADD_EKKO_NODE</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;P_WA_EKPO  text</span>
+<span style="color:#75715e">*      --&gt;P_0553   text</span>
+<span style="color:#75715e">*      &lt;--P_EBELN_KEY  text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">add_ekko_node</span> <span style="color:#66d9ef">USING</span> ps_ekko <span style="color:#66d9ef">LIKE </span>wa_ekko <span style="color:#66d9ef">value</span>(p_relate_key)
+                <span style="color:#66d9ef">CHANGING</span> p_node_key.
+  <span style="color:#66d9ef">DATA</span>: ld_node_text <span style="color:#66d9ef">TYPE </span>lvc_value,
+        ls_sflight <span style="color:#66d9ef">TYPE </span>sflight.
+<span style="color:#75715e">* Set item-layout</span>
+  <span style="color:#66d9ef">DATA</span>: lt_item_layout <span style="color:#66d9ef">TYPE </span>lvc_t_layi,
+        ls_item_layout <span style="color:#66d9ef">TYPE </span>lvc_s_layi.
+  ls_item_layout<span style="color:#f92672">-</span>t_image   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@3P@&#39;</span>.
+  ls_item_layout<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>c_hierarchy_column_name.
+  ls_item_layout<span style="color:#f92672">-</span>style     <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>style_default.
+  ld_node_text             <span style="color:#f92672">=</span> ps_ekko<span style="color:#f92672">-</span>ebeln.
+  <span style="color:#66d9ef">APPEND</span> ls_item_layout <span style="color:#66d9ef">TO</span> lt_item_layout.
+<span style="color:#75715e">* Add node</span>
+  <span style="color:#66d9ef">CALL METHOD</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_node
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_relat_node_key <span style="color:#f92672">=</span> p_relate_key
+      i_relationship   <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>relat_last_child
+      i_node_text      <span style="color:#f92672">=</span> ld_node_text
+      is_outtab_line   <span style="color:#f92672">=</span> ps_ekko
+      it_item_layout   <span style="color:#f92672">=</span> lt_item_layout
+    <span style="color:#66d9ef">IMPORTING</span>
+      e_new_node_key   <span style="color:#f92672">=</span> p_node_key.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; ADD_EKKO_NODE &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  ADD_EKPO_LINE</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;P_WA_EKPO  text</span>
+<span style="color:#75715e">*      --&gt;P_LD_EBELN_KEY  text</span>
+<span style="color:#75715e">*      &lt;--P_LD_EBELP_KEY  text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">add_ekpo_line</span> <span style="color:#66d9ef">USING</span> ps_ekpo <span style="color:#66d9ef">LIKE </span>wa_ekpo <span style="color:#66d9ef">value</span>(p_relate_key)
+                <span style="color:#66d9ef">CHANGING</span> p_node_key.
+  <span style="color:#66d9ef">DATA</span>: ld_node_text <span style="color:#66d9ef">TYPE </span>lvc_value,
+        ls_sflight <span style="color:#66d9ef">TYPE </span>sflight.
+<span style="color:#75715e">* Set item-layout</span>
+  <span style="color:#66d9ef">DATA</span>: lt_item_layout <span style="color:#66d9ef">TYPE </span>lvc_t_layi,
+        ls_item_layout <span style="color:#66d9ef">TYPE </span>lvc_s_layi.
+  ls_item_layout<span style="color:#f92672">-</span>t_image   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@3P@&#39;</span>.
+  ls_item_layout<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>c_hierarchy_column_name.
+  ls_item_layout<span style="color:#f92672">-</span>style     <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>style_default.
+  ld_node_text             <span style="color:#f92672">=</span> ps_ekpo<span style="color:#f92672">-</span>ebelp.
+  <span style="color:#66d9ef">APPEND</span> ls_item_layout <span style="color:#66d9ef">TO</span> lt_item_layout.
+<span style="color:#75715e">* Add node</span>
+  <span style="color:#66d9ef">CALL METHOD</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_node
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_relat_node_key <span style="color:#f92672">=</span> p_relate_key
+      i_relationship   <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>relat_last_child
+      i_node_text      <span style="color:#f92672">=</span> ld_node_text
+      is_outtab_line   <span style="color:#f92672">=</span> ps_ekpo
+      it_item_layout   <span style="color:#f92672">=</span> lt_item_layout
+    <span style="color:#66d9ef">IMPORTING</span>
+      e_new_node_key   <span style="color:#f92672">=</span> p_node_key.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; ADD_EKPO_LINE &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1674</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/DEMO/">
+                    #DEMO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_ALV_TreeEvent/" class="prev" rel="prev" title=" ALVTree Event "><i class="iconfont icon-dajiantou"></i>&nbsp; ALVTree Event </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_ObjectOriented_Overview/" class="next" rel="next" title=" ABAP Object Oriented 概述 "> ABAP Object Oriented 概述 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-19 00:00:00 \x2b0000 UTC',
+        title: ' ALVTree Demo ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

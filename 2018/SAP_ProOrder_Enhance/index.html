@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Excel/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_WorkFlow/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAP_ProOrder_Enhance/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Product Order的增强 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Product Order的增强 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Product Order的增强"/>
+<meta name="twitter:description" content="生产订单的增强 如果SAP系统的标准功能不能满足业务需求，用户出口或 BADI 可能会有所帮助。 Customer Exit SMOD:SAP增强管理 CMOD:SAP增强编辑器维"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Product Order的增强",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAP_ProOrder_Enhance\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SAPbusiness",
+  "wordcount":  579 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAP_ProOrder_Enhance\/",
+  "datePublished": "2018-11-18T00:00:00\u002b00:00",
+  "dateModified": "2018-11-18T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Product Order的增强</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-11-18 >18 November 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="生产订单的增强">生产订单的增强</h3>
+<p>如果SAP系统的标准功能不能满足业务需求，用户出口或 BADI 可能会有所帮助。</p>
+<h4 id="customer-exit">Customer Exit</h4>
+<ul>
+<li>
+<p>SMOD:SAP增强管理</p>
+</li>
+<li>
+<p>CMOD:SAP增强编辑器维护。</p>
+</li>
+</ul>
+<p>用于订单创建和执行的用户出口：存在于Function Group <strong>XCO1</strong></p>
+<table>
+<thead>
+<tr>
+<th>Enhanment（SMOD）</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PPCO0001</td>
+<td>Application development: PP orders</td>
+</tr>
+<tr>
+<td>PPCO0002</td>
+<td>Check exit for setting delete mark / deletion indicator</td>
+</tr>
+<tr>
+<td>PPCO0003</td>
+<td>Check exit for order changes from sales order</td>
+</tr>
+<tr>
+<td>PPCO0004</td>
+<td>Sort and processing exit: Mass processing orders</td>
+</tr>
+<tr>
+<td>PPCO0005</td>
+<td>Storage location/backflushing when order is created</td>
+</tr>
+<tr>
+<td>PPCO0006</td>
+<td>Enhancement to specify defaults for fields in order header</td>
+</tr>
+<tr>
+<td>PPCO0007</td>
+<td>Exit when saving production order</td>
+</tr>
+<tr>
+<td>PPCO0008</td>
+<td>Enhancement in the adding and changing of components</td>
+</tr>
+<tr>
+<td>PPCO0009</td>
+<td>Enhancement in goods movements for prod. process order</td>
+</tr>
+<tr>
+<td>PPCO0010</td>
+<td>Enhancement in make-to-order production - Unit of measure</td>
+</tr>
+<tr>
+<td>PPCO0012</td>
+<td>Production Order: Display/Change Order Header Data</td>
+</tr>
+<tr>
+<td>PPCO0013</td>
+<td>Change priorities of selection crit. for batch determination</td>
+</tr>
+<tr>
+<td>PPCO0015</td>
+<td>Additional check for document links from BOMs</td>
+</tr>
+<tr>
+<td>PPCO0016</td>
+<td>Additional check for document links from master data</td>
+</tr>
+<tr>
+<td>PPCO0017</td>
+<td>Additional check for online processing of document links</td>
+</tr>
+<tr>
+<td>PPCO0018</td>
+<td>Check for changes to production order header</td>
+</tr>
+<tr>
+<td>PPCO0019</td>
+<td>Checks for changes to order operations</td>
+</tr>
+<tr>
+<td>PPCO0021</td>
+<td>Release Control for Automatic Batch Determination</td>
+</tr>
+<tr>
+<td>PPCO0022</td>
+<td>Determination of Production Memo</td>
+</tr>
+<tr>
+<td>PPCO0023</td>
+<td>Checks Changes to Order Components.</td>
+</tr>
+</tbody>
+</table>
+<p>用于确认时的User exits:</p>
+<table>
+<thead>
+<tr>
+<th>Enhancement（SMOD）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONFPP01</td>
+<td>PP order conf.: Determine customer specific default values</td>
+</tr>
+<tr>
+<td>CONFPP02</td>
+<td>PP order conf.: Customer specific input checks 1</td>
+</tr>
+<tr>
+<td>CONFPP03</td>
+<td>PP order conf.: Cust. specific check after op. selection</td>
+</tr>
+<tr>
+<td>CONFPP04</td>
+<td>PP order conf.: Cust. specific check after op. selection</td>
+</tr>
+<tr>
+<td>CONFPP05</td>
+<td>PP order conf.: Customer specific enhancements when saving</td>
+</tr>
+<tr>
+<td>CONFPP06</td>
+<td>PP Order Confirmations: Actual Data Transfer</td>
+</tr>
+<tr>
+<td>CONFPP07</td>
+<td>Single Screen Entry: Inclusion of User-Defined Subscreens</td>
+</tr>
+</tbody>
+</table>
+<h4 id="badi">BADI</h4>
+<p>这种增强使用事务码 SE18 定义、SE19 实现。</p>
+<p>SE18用于创建及维护BADI对象；SE19用于维护BADI的实例。</p>
+<p>SAP预定义了一些接口（Interface），客户可以自行定义实现Interface的类（Class），在标准程序中会调用客户自定义类的实例。</p>
+<table>
+<thead>
+<tr>
+<th>BADI（SE24）</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WORKORDER_CONFIRM</td>
+<td>Business Add-In PM/PP/PS/PI Orders  Operation: Confirmation</td>
+</tr>
+<tr>
+<td>WORKORDER_CONFIRM_CUST_SUBSCR</td>
+<td>Confirmation: Subscreen with Customer&rsquo;s Own Fields</td>
+</tr>
+<tr>
+<td>WORKORDER_CONFIRM_EA_APPL</td>
+<td>Confirmation: Function Calls from EA-APPL</td>
+</tr>
+<tr>
+<td>WORKORDER_DFPS_PIC_ATP</td>
+<td>Defense BADI for Availability Check</td>
+</tr>
+<tr>
+<td>WORKORDER_DOCLINKS</td>
+<td>BADI: Document Links (Production Orders)</td>
+</tr>
+<tr>
+<td>WORKORDER_FINANCIALS</td>
+<td>Connection between FIN Add-On and Manufacturing Orders</td>
+</tr>
+<tr>
+<td>WORKORDER_GOODSMVT</td>
+<td>BADI: PM/PP/PS/PI Orders: Automatic Goods Movement</td>
+</tr>
+<tr>
+<td>WORKORDER_INFOSYSTEM</td>
+<td>BADI: PP and PI Order Information System</td>
+</tr>
+<tr>
+<td>WORKORDER_MODIFY_SCREEN</td>
+<td>Screen Adjustments</td>
+</tr>
+<tr>
+<td>WORKORDER_PISHEET</td>
+<td>BADI: PM/PP/PS/PI Orders Operation: Discarding of PI sheets</td>
+</tr>
+<tr>
+<td>WORKORDER_REWORK</td>
+<td>BADI: PP Orders Operation: Rework</td>
+</tr>
+<tr>
+<td>WORKORDER_UPDATE</td>
+<td>BADI: PM/PP/PS/PI Orders  Operation: UPDATE.</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>579</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SAPbusiness/">
+                    #SAPbusiness</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Excel/" class="prev" rel="prev" title="SAP Excel 上传和下载"><i class="iconfont icon-dajiantou"></i>&nbsp;SAP Excel 上传和下载</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_WorkFlow/" class="next" rel="next" title="ABAP 工作流">ABAP 工作流&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-11-18 00:00:00 \u002b0000 UTC',
+        title: 'Product Order的增强',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

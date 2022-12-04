@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_NumberRange/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_NumberRangeType2/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_NumberRangeType1/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            维护客户号码范围  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 维护客户号码范围  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 维护客户号码范围 "/>
+<meta name="twitter:description" content="简介 定义并分配客户主数据的号码范围，分为两个步骤，两步操作的对象都针对整个 Client。 定义号码范围（Define Number Ranges for Customer Master） 分配"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 维护客户号码范围 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_NumberRangeType1\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  555 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_NumberRangeType1\/",
+  "datePublished": "2019-07-15T00:00:00\x2b00:00",
+  "dateModified": "2019-07-15T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 维护客户号码范围 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-07-15 >15 July 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="简介">简介</h3>
+<p>定义并分配客户主数据的号码范围，分为两个步骤，两步操作的对象都针对整个 Client。</p>
+<ul>
+<li>定义号码范围（Define Number Ranges for Customer Master）</li>
+<li>分配给指定客户账户组（Assign Number Ranges to Account Groups）</li>
+</ul>
+<h3 id="定义号码范围">定义号码范围</h3>
+<p>维护的号码段是由编号、号码起止段值组成，编号不可重复，段值不可重叠。它可以是内部编号也可以是外部，如果是内部，则只能由数字构成。</p>
+<p>在维护新号码段之前，要查看是否和已存在的号码段值冲突。若有，则可以通过以下两种方法解决：</p>
+<ul>
+<li>修改原号码段的段值</li>
+<li>重新设定新号码段的段值</li>
+</ul>
+<h4 id="操作步骤">操作步骤</h4>
+<table>
+<thead>
+<tr>
+<th>IMG路径</th>
+<th>TCODE</th>
+<th>SNRO/SNUM维护值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后勤 - 常规→业务合作伙伴→客户→控制→定义和分配客户号码范围 &lt;定义客户主数据的编号范围&gt;</td>
+<td>OVZC</td>
+<td>DEBITOR</td>
+</tr>
+</tbody>
+</table>
+<p>通过以上三种方法都可以进入操作界面：</p>
+<p><img src="/images/ABAP/ABAP_NumberRange6.png" alt="OVZC"></p>
+<p>修改Intervals，新创建与旧数据无冲突的号码段并保存。</p>
+<p><img src="/images/ABAP/ABAP_NumberRange7.png" alt="Change interval"></p>
+<h3 id="分配号码范围">分配号码范围</h3>
+<p>当号码范围定义完成后，还需要将其分配给指定的客户账户组，这样客户主数据的号码维护才算完整。</p>
+<h4 id="操作步骤-1">操作步骤</h4>
+<table>
+<thead>
+<tr>
+<th><strong>IMG</strong> <strong>路径</strong></th>
+<th><strong>SM30</strong> <strong>维护视图</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后勤 - 常规→业务合作伙伴→客户→控制→定义和分配客户号码范围 &lt;分配号码范围给科目组&gt;</td>
+<td>V_077D_B</td>
+</tr>
+</tbody>
+</table>
+<p>通过以上两种方法进入操作界面：</p>
+<p><img src="/images/ABAP/ABAP_NumberRange8.png" alt="V_077D_B"></p>
+<p>在号码范围栏输入相应的值，然后点击保存。</p>
+<p>根据 Client 配置的不同（使用 TCODE：SCC4 维护）, 系统也许会弹出请求号输入对话框，新建或选定一个请求号继续执行。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>555</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_NumberRange/" class="prev" rel="prev" title=" SAP Number Range Object "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Number Range Object </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_NumberRangeType2/" class="next" rel="next" title=" 维护物料主数据的编号范围 "> 维护物料主数据的编号范围 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-07-15 00:00:00 \x2b0000 UTC',
+        title: ' 维护客户号码范围 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

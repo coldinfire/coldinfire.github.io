@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_SubRoutines/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_NativeSQL/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OpenSQL/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP Open SQL | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP Open SQL | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP Open SQL"/>
+<meta name="twitter:description" content="Open SQL ABAP可以通过两种方式与数据库交互 Native SQL：数据库自身的 SQL，可以直接访问数据库，不够安全。 Open SQL：集成到ABAP中的标准 SQL 子集，"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP Open SQL",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OpenSQL\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  698 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OpenSQL\/",
+  "datePublished": "2018-05-24T00:00:00\u002b00:00",
+  "dateModified": "2018-05-24T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP Open SQL</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-24 >24 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="open-sql">Open SQL</h3>
+<p>ABAP可以通过两种方式与数据库交互</p>
+<ul>
+<li>Native SQL：数据库自身的 SQL，可以直接访问数据库，不够安全。</li>
+<li>Open SQL：集成到ABAP中的标准 SQL 子集，通过 SAP 数据库接口识别不同的数据库，然后将语句进行转换成底层数据库对应的语言。</li>
+</ul>
+<p>基本语法：与其他SQL语句类似，主要包括增删改查：Select、Update、Insert、Delete、Modify</p>
+<h4 id="select-语法">SELECT 语法</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">SELECT</span> [<span style="color:#a6e22e">SINGLE</span>] <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">result</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">FROM</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">dbtab</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">SINGLE表示查询单行数据</span>
+  <span style="color:#a6e22e">INTO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">target</span><span style="color:#f92672">&gt;</span>                <span style="color:#f92672">:</span><span style="color:#a6e22e">内表或结构</span>
+  [<span style="color:#a6e22e">INTO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">f1</span><span style="color:#f92672">&gt;</span>...<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fn</span><span style="color:#f92672">&gt;</span>]           <span style="color:#f92672">:</span><span style="color:#a6e22e">将查询结果赋值到具体字段</span>
+  [<span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">CORRESPONDING</span> <span style="color:#a6e22e">FILES</span> <span style="color:#a6e22e">OF</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">itab</span><span style="color:#f92672">&gt;</span>] <span style="color:#f92672">:</span><span style="color:#a6e22e">将查询结果按字段匹配赋值给具体的表或者结构体</span>
+  <span style="color:#a6e22e">WHERE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">condition</span><span style="color:#f92672">&gt;</span>            <span style="color:#f92672">:</span><span style="color:#a6e22e">查询条件</span>
+  <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">BY</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fields</span><span style="color:#f92672">&gt;</span>            <span style="color:#f92672">:</span><span style="color:#a6e22e">分组查询条件</span>
+  <span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fields</span><span style="color:#f92672">&gt;</span>.           <span style="color:#f92672">:</span><span style="color:#a6e22e">排序条件</span> 
+</code></pre></div><p>表连接:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">INNER</span> <span style="color:#a6e22e">JOIN</span><span style="color:#f92672">:</span><span style="color:#a6e22e">查询结果包含两个连接表中彼此相对应的数据记录</span>.
+<span style="color:#a6e22e">LEFT</span> <span style="color:#a6e22e">OUTER</span> <span style="color:#a6e22e">JOIN</span><span style="color:#f92672">:</span><span style="color:#a6e22e">查询结果集中包含左表中的所有数据记录</span>,<span style="color:#a6e22e">右表中仅查询出包含相匹配的数据</span>.
+<span style="color:#a6e22e">连接语句</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">使用</span> <span style="color:#a6e22e">ON</span> <span style="color:#a6e22e">和</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">语句将左右两个表关联起来</span>,<span style="color:#a6e22e">一般使用主键</span>.
+  <span style="color:#a6e22e">INNER</span> <span style="color:#a6e22e">JOIN不能使用NOT</span>,<span style="color:#a6e22e">LIKE</span>,<span style="color:#a6e22e">IN</span>;
+  <span style="color:#a6e22e">LEFT</span> <span style="color:#a6e22e">OUTER</span> <span style="color:#a6e22e">JOIN只能使用</span> <span style="color:#a6e22e">EQ</span>;
+<span style="color:#a6e22e">WHERE语句</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">至少有一个表达式的两个操作数分别来自于左右两个表建立连接关系</span>
+  <span style="color:#a6e22e">LEFT</span> <span style="color:#a6e22e">OUTER</span> <span style="color:#a6e22e">JOIN的右表字段不能在WHERE中使用</span> 
+</code></pre></div><p>以内表为查询条件：</p>
+<ul>
+<li>
+<p><code>SELECT &lt;f1...fn&gt; FROM &lt;dbtab&gt; FOR ALL ENTRIED IN &lt;itab&gt; WHERE &lt;cond&gt;.</code></p>
+</li>
+<li>
+<p>使用 <code>FOR ALL ENTRIED IN itab</code> 前，一定要检查itab表是否为空，否则会造成SQL的执行效率极低。</p>
+</li>
+</ul>
+<p>获取限制读取数据的条数：前n条</p>
+<ul>
+<li><code>SELECT * FROM &lt;dbtab&gt; INTO &lt;itab&gt; UP TO &lt;n&gt; ROWS. </code></li>
+</ul>
+<p>标准函数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">COUNT()</td>
+<td style="text-align:left">统计查询总数</td>
+<td style="text-align:left">MAX()</td>
+<td style="text-align:left">统计表中某个字段的最大值</td>
+</tr>
+<tr>
+<td style="text-align:left">SUM()</td>
+<td style="text-align:left">统计表中某个数值字段的总和</td>
+<td style="text-align:left">MIN()</td>
+<td style="text-align:left">统计表中某个字段的最小值</td>
+</tr>
+<tr>
+<td style="text-align:left">AVG()</td>
+<td style="text-align:left">统计表中某个数值字段的平均值</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="update">UPDATE</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">UPDATE</span> &lt;dbtab&gt; SET f1 <span style="color:#f92672">=</span> v1...fn <span style="color:#f92672">=</span> vn (WHERE &lt;condition&gt;).
+<span style="color:#66d9ef">UPDATE</span> &lt;dbtab&gt; <span style="color:#66d9ef">FROM</span> &lt;wa&gt;.
+<span style="color:#66d9ef">UPDATE</span> &lt;dbtab&gt; <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">TABLE</span> &lt;itab&gt; (WHERE &lt;condition&gt;).
+</code></pre></div><h4 id="insert">INSERT</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> &lt;dbtab&gt; <span style="color:#66d9ef">VALUES</span> &lt;conditin&gt;.
+<span style="color:#66d9ef">INSERT</span> &lt;dbtab&gt; <span style="color:#66d9ef">FROM</span> &lt;wa&gt;.
+<span style="color:#66d9ef">INSERT</span> &lt;dbtab&gt; <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">TABLE</span> &lt;itab&gt;.
+</code></pre></div><h4 id="delete">DELETE</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> &lt;dbtab&gt; <span style="color:#66d9ef">WHERE</span> &lt;condition&gt;.
+<span style="color:#66d9ef">DELETE</span> &lt;dbtab&gt; <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">TABLE</span> &lt;itab&gt;.
+</code></pre></div><h4 id="modify相当于update--insert">MODIFY(相当于Update &amp; Insert)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">MODIFY</span> &lt;dbtab&gt; <span style="color:#66d9ef">FROM</span> &lt;wa&gt;.  
+<span style="color:#66d9ef">MODIFY</span> &lt;dbtab&gt; <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">TABLE</span> &lt;itab&gt;.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>698</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SubRoutines/" class="prev" rel="prev" title="ABAP Form和Function"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP Form和Function</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_NativeSQL/" class="next" rel="next" title="ABAP Native SQL">ABAP Native SQL&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-24 00:00:00 \u002b0000 UTC',
+        title: 'ABAP Open SQL',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

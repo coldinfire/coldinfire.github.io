@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Utils_String/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_DynamicProgram/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAP_IDoc/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            IDoc 操作  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" IDoc 操作  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" IDoc 操作 "/>
+<meta name="twitter:description" content="参考链接 1.IDoc简介 IDoc：是基于文档，用作异步传输数据的载体，类似于XML;使用功能场景：假设 1040 和 1020 是同一个集团下两个不同子公司的 SAP"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " IDoc 操作 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAP_IDoc\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "IDoc",
+  "wordcount":  2360 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAP_IDoc\/",
+  "datePublished": "2019-09-22T00:00:00\x2b00:00",
+  "dateModified": "2019-09-22T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> IDoc 操作 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-09-22 >22 September 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p><a href="http://www.baidusap.com/abap/ale_edi_idoc/782">参考链接</a></p>
+<h3 id="1idoc简介">1.IDoc简介</h3>
+<p>IDoc：是基于文档，用作异步传输数据的载体，类似于XML;使用功能场景：假设 1040 和 1020 是同一个集团下两个不同子公司的 SAP 系统，1040 需要将其采购订单信息及时发送给 1020，可以使用IDoc传输。</p>
+<ul>
+<li>
+<p>IDOC 的整个配置，涉及了远程连接、ALE、消息控制、tRFC 等技术的集成</p>
+</li>
+<li>
+<p>IDoc支持异步、同步、可以收集一定数量的包后发送，最重要的是，IDOC有完整的监控系统和错误处理机制。</p>
+</li>
+<li>
+<p>IDoc支持SAP系统集团之间，SAP-CRM/SRM/PI等之间，SAP-第三方系统之间的集成</p>
+</li>
+<li>
+<p>通过系统预定义IDOC类型，可以自动收集IDoc，挂JOB定时发送，也可以配置消息控制。</p>
+</li>
+</ul>
+<p>数据段是IDoc结构组件，是IDoc构成的单元;有Segment type：数据段类型与Segment.definition：数据段定义</p>
+<ul>
+<li>:Segment type名称与SAP版本无关，以&quot;E1/Z1&quot;开头</li>
+<li>:Segment definition名称与SAP版本有关，外部系统确定数据段版本的关键；以&quot;E2/Z2&quot;开头+版本号
+访问IDoc中具体某个字段时，需要通过Segment type。</li>
+<li>IDoc包含多个Segment,每个Segment内包含有多个字段</li>
+<li>Segment类似于XML的节点以及节点属性</li>
+</ul>
+<p>IDoc特性：</p>
+<ul>
+<li>IDoc 包含有三种类型的记录：一条控制记录，一个或多个数据记录，一个或多个状态记录</li>
+<li>IDoc type：IDoc 结构，不同的 SAP 业务对象对应不同的 IDoc 类型（一个或多个）。</li>
+<li>IDoc 类型中定义了数据段（Segment）以及数据段的层级和次序。定义节点间的相互逻辑关系。</li>
+<li>标准 SAP 系统提供的 IDoc 类型称为基本类型（Basic type），该类型可以通过 IDoc 扩展（Extention）进行调整，即在 SAP IDoc 类型结构的基础上增加新的数据段或者在数据段中增加新字段。</li>
+<li>IDoc Basic Type: 是承载数据的一个类型，可以认为是一个数据结构。Basic Type 由 Segment 构成，有点类似于 XML 的格式。每个 Segment 指定了一些字段，在这些字段里面可以输入一些限定的数据。</li>
+</ul>
+<h3 id="2包含组件">2.包含组件</h3>
+<ul>
+<li>
+<p>ALE（Application Link and Enabling）是 SAP 专门为 SAP 与 SAP 之间所设计的整合中间件，多用于同一个企业中不同 SAP 系统之间的数据交换，通过 IDoc 格式的数据创建分布式系统 。分布式数据交换提供了可靠安全的通讯机制。</p>
+</li>
+<li>
+<p>EDI（Electronic Document Interchange，电子数据交换）其实就是采用标准格式的电子数据，用于在通讯网络中在业务伙伴间交换业务文档所用。按相同的排列放置数据到一个数据文档中，并按相同的排列解析此文档以得到所需的内容。</p>
+</li>
+<li>
+<p>IDoc（Intermediate Document，中转文档）是 SAP 提供的系统整合专用的数据 / 消息格式，它通过 ALE 方式来进行交换，IDoc 提供了 EDI 的支持，可以认为 IDoc 是 EDI 的一个实现。</p>
+</li>
+</ul>
+<h3 id="3idoc发送接收流程">3.IDoc发送接收流程</h3>
+<p>外发过程(Outbound Process : OP)：处理数据集并发出消息</p>
+<ul>
+<li>应用文档被创建</li>
+<li>IDoc 生成</li>
+<li>IDoc 从 SAP 传送到操作系统</li>
+<li>IDoc 被转换成 EDI 标准格式</li>
+<li>EDI 文件被传送到业务伙伴处（所以业务伙伴可以没有 SAP，因为 EDI 是个标准）</li>
+<li>EDI 子系统将传送的状态回报给 SAP</li>
+</ul>
+<p>接收过程(Inbound Process : IP)：接收消息并处理</p>
+<ul>
+<li>EDI 文档被接收</li>
+<li>EDI 文档被转换成 IDoc</li>
+<li>IDoc 传送到 SAP 层</li>
+<li>应用文档在 SAP 中创建</li>
+<li>应用文档现在可供浏览了</li>
+</ul>
+<h3 id="4idoc-流程步骤及-tcode">4.IDoc 流程步骤及 TCode</h3>
+<table>
+<thead>
+<tr>
+<th>外发配置(OP)</th>
+<th>描述</th>
+<th>接收配置(IP)</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WE31</td>
+<td>创建IDOC所需要的字段</td>
+<td>WE31</td>
+<td>开发Segment Type</td>
+</tr>
+<tr>
+<td>WE30</td>
+<td>开发IDOC基本类型和扩展，把Segment分配给IDOC</td>
+<td>WE81</td>
+<td>开发Message Type</td>
+</tr>
+<tr>
+<td>WE81</td>
+<td>开发Message Type</td>
+<td>WE82</td>
+<td>Message Type和IDoc Type绑定</td>
+</tr>
+<tr>
+<td>WE82</td>
+<td>Message Type和IDoc Type绑定</td>
+<td>BD64</td>
+<td>增加消息类型</td>
+</tr>
+<tr>
+<td>BD64</td>
+<td>添加视图模型，添加消息类型配置伙伴参数</td>
+<td>WE20</td>
+<td>配置接收系统入站信息</td>
+</tr>
+<tr>
+<td>WE20</td>
+<td>配置发送系统出站信息</td>
+<td>SE37</td>
+<td>编写接收接口</td>
+</tr>
+<tr>
+<td>SE38</td>
+<td>编写发送程序</td>
+<td>WE57</td>
+<td>分配IDOC类型给处理函数</td>
+</tr>
+<tr>
+<td>WE14</td>
+<td>若为黄灯，手动发送</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BD51</td>
+<td>配置进站函数模块属性</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>WE42</td>
+<td>配置进站处理代码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>WE02</td>
+<td>IDOC发送信息检查</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5process-code处理代码设定">5.Process Code处理代码设定</h3>
+<ul>
+<li>WE41、WE42、WE40、WE64</li>
+<li>处理代码用于确定数据写入 IDoc 或从 IDoc 读取的处理方式，处理代码对应具体的功能模块或者工作流。入站和出站处理的伙伴参数中都可以指定处理代码</li>
+<li>Outbound Process Code: 出站的处理代码。其实就是具体的一个操作流程。在得到了 Output Type，确定了 IDoc Basic Type 以后，需要从 Output Type 提供的所有数据里面，按 IDoc Basic Type 组合出 IDoc 来，即给 IDoc Basic Type 赋值。</li>
+<li>Inbound Process Code: 进站的处理代码。就是接收到一个 IDoc 以后，根据 Message Type 来确定要怎么处理这个 IDoc。</li>
+<li>程序的思路就是，把每个 IDOC 结点按字符串形式逐个添加，而字符串的添加次序自然也体现了 IDOC 结点间的逻辑关系。</li>
+</ul>
+<h3 id="6端口portwe21">6.端口（Port）：WE21</h3>
+<ul>
+<li>端口用于外发流程，它判断 EDI 子系统程序名称、IDoc 文件传送到操作系统的目录，IDoc 文件名和 RFC 目的地</li>
+<li>端口，指定这个 IDoc 的接收方，可以是任何其他系统，也可以发到当前的 SAP 当前的 Client。</li>
+</ul>
+<h3 id="7rfc目的地sm59">7.RFC目的地：SM59</h3>
+<ul>
+<li>用于定义到远程系统通讯连接的特性以及需要调用何种功能</li>
+</ul>
+<h3 id="8partnr-profilewe20">8.Partnr Profile：WE20</h3>
+<ul>
+<li>
+<p>Partnr:对口的合作伙伴</p>
+</li>
+<li>
+<p>Partner Profile：是Partner的一些参数，分为OP和IP.它们是为了让系统知道怎么去处理 Outbound/Inbound 的事件.</p>
+</li>
+<li>
+<p>Partner Profile 指定在外发过程中所用的各类组件（业务伙伴号、IDoc 类型、信息类型、端口、处理码等），通讯方式（异步或同步）以及当错误时通知何人</p>
+</li>
+</ul>
+<h3 id="9message-type">9.Message Type</h3>
+<ul>
+<li>
+<p>用于消息类型的处理，就是告诉 Inbound 一方，我这个 IDoc 是用来做什么的。</p>
+</li>
+<li>
+<p>WE81， 创建Message type</p>
+</li>
+<li>
+<p>WE82，连接 Message type和 IDOC type</p>
+</li>
+</ul>
+<h3 id="10idoc类型定义的相关函数">10.IDoc类型定义的相关函数</h3>
+<p>函数组 EDIM 中的 SAP 内部功能模块用于操作 IDoc 基本类型和扩展：OBJECT代指所操作的队象，既IDOCTYPE或EXTTYPE.</p>
+<ul>
+<li>[OBJECT]_CREATE</li>
+<li>[OBJECT]_UPDATE</li>
+<li>[OBJECT]_READ</li>
+<li>[OBJECT]_DELETE</li>
+<li>[OBJECT]_CLOSE</li>
+<li>[OBJECT]_UNCLOSE</li>
+<li>[OBJECT]_EXISTENCE_CHECK</li>
+<li>[OBJECT]_INTEGRITY_CHECK</li>
+<li>[OBJECT]_TRANSPORT</li>
+</ul>
+<p>函数组EDIJ中的SAP内部功能模块用于操作IDoc数据段</p>
+<ul>
+<li>SEGMENT_CREATE</li>
+<li>SEGMENT_MODIFY</li>
+<li>SEGMENT_DELETE</li>
+<li>SEGMENT_INITION_DELETE</li>
+</ul>
+<h3 id="11idoc常用事物码">11.IDoc常用事物码</h3>
+<p>SAP 提供了一个事务码列出的基本上所有的 IDoc 相关的事务码<code>WEDI</code> 。</p>
+<table>
+<thead>
+<tr>
+<th>/BD87</th>
+<th>/WE18</th>
+<th align="center">/SUIM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/SM58</td>
+<td>/WE19</td>
+<td align="center">/GS03</td>
+</tr>
+<tr>
+<td>/WE09</td>
+<td>/WE20</td>
+<td align="center">/BDLS</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2360</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/IDoc/">
+                    #IDoc</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Utils_String/" class="prev" rel="prev" title=" ABAP 字符串处理 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 字符串处理 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_DynamicProgram/" class="next" rel="next" title=" ABAP Dynnamic Programer "> ABAP Dynnamic Programer &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-09-22 00:00:00 \x2b0000 UTC',
+        title: ' IDoc 操作 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

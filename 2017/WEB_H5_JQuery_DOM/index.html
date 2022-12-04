@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_H5_JQuery/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Animation/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_DOM/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            JQuery 操作 DOM  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" JQuery 操作 DOM  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" JQuery 操作 DOM "/>
+<meta name="twitter:description" content="JQuery 操作DOM 设置和获取 html、text 和 val html() $(selector).html(); ：获取元素 HTML 元素 $(selector).html(content); ：设置元素 HTML 元素 $(selector).html(function(index,element)) ：使用函数设置元素内容；index — 返回集合中元素的索引"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " JQuery 操作 DOM ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_H5_JQuery_DOM\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JQuery",
+  "wordcount":  1285 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_H5_JQuery_DOM\/",
+  "datePublished": "2017-12-05T00:00:00\x2b00:00",
+  "dateModified": "2017-12-05T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> JQuery 操作 DOM </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-12-05 >5 December 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="jquery-操作dom">JQuery 操作DOM</h2>
+<h3 id="设置和获取-htmltext-和-val">设置和获取 html、text 和 val</h3>
+<h4 id="html">html()</h4>
+<ul>
+<li><code>$(selector).html();</code> ：获取元素 HTML 元素</li>
+<li><code>$(selector).html(content);</code> ：设置元素 HTML 元素</li>
+<li><code>$(selector).html(function(index,element))</code> ：使用函数设置元素内容；index — 返回集合中元素的索引值；element — 返回被选中元素的对象</li>
+</ul>
+<p>类似于 javascript 中的 innerHTML 属性，可以用来读取或设置某个元素中的 HTML 内容。设置内容时：新的内容会将原有内容覆盖，HTML标签会被解析执行。</p>
+<h4 id="text">text()</h4>
+<ul>
+<li><code>$(selector).text();</code> ：获取文本内容</li>
+<li><code>$(selector).text(content);</code> ：设置文本内容</li>
+<li><code>$(selector).text(function(index,element))</code> ：使用函数设置文本内容</li>
+</ul>
+<p>类似于 javascript 中的 innerText 属性，可以用来读取或设置某个元素中的纯文本内容。设置内容时：新的内容会将原有内容覆盖，HTML标签不会被解析执行。</p>
+<h4 id="val">val()</h4>
+<ul>
+<li>
+<p><code>$(&quot;#id&quot;).val();</code> ：获取 value 属性</p>
+</li>
+<li>
+<p><code>$(&quot;#id&quot;).val(value);</code> ：设置 value 属性</p>
+</li>
+<li>
+<p><code>$(&quot;#id&quot;).val(function(index,element));</code> ：使用函数设置 value 属性</p>
+</li>
+</ul>
+<p>类似于 javascript 中的 value 属性，可以用来设置和获取元素的值。文本框、下拉列表、单选框等都可以返回元素的值。如果元素为多选，则返回包含所有选择的值的数组。</p>
+<h3 id="属性操作">属性操作</h3>
+<p>使用 <code>attr()</code> / <code>prop()</code> 方法来获取和设置元素属性，<code>removeAttr()</code> /<code>removeProp()</code> 方法来删除元素属性。</p>
+<p>attr 和 prop 的区别：</p>
+<ul>
+<li>
+<p>如果操作的是元素的固有属性，建议使用 prop</p>
+</li>
+<li>
+<p>如果操作的是元素自定义的属性，建议使用 attr</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取属性</td>
+<td>var txt = $(&ldquo;p&rdquo;).attr(&ldquo;attr_name&rdquo;);</td>
+</tr>
+<tr>
+<td>设置单个属性</td>
+<td>$(&ldquo;p&rdquo;).attr(&ldquo;attr_name&rdquo;,&ldquo;new value&rdquo;);</td>
+</tr>
+<tr>
+<td>设置多个属性值</td>
+<td>$(&ldquo;p&rdquo;).attr(&ldquo;attr1_name&rdquo;:&ldquo;new value&rdquo;,&ldquo;attr2_name&rdquo;:&ldquo;new value&rdquo;);</td>
+</tr>
+<tr>
+<td>删除属性</td>
+<td>$(&ldquo;p&rdquo;).removeAttr(&ldquo;attr_name&rdquo;);</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="样式操作">样式操作</h3>
+<p><code>addClass(&quot;class1&quot;)</code>：向被选中元素添加一个或多个 class</p>
+<p><code>removeClass(&quot;class1 class2&quot;)</code>：从被选元素删除一个或多个 class，不输如指定 class 时移除所有 class</p>
+<p><code>toggleClass(&quot;class1&quot;)</code>：如果存在(不存在)就删除(添加) class 属性</p>
+<h4 id="css-dom-操作">CSS DOM 操作</h4>
+<p>就是读取和设置 style 对象的个各种属性。</p>
+<ul>
+<li><code>css()</code>：设置或返回样式属性，如果属性中带有&rdquo;-&ldquo;符号，设置属性时使用驼峰式写法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取元素的样式属性</td>
+<td>$(&quot;#test&rdquo;).css(&ldquo;color&rdquo;)</td>
+</tr>
+<tr>
+<td>设置某个元素的单个样式</td>
+<td>$(&quot;#test&rdquo;).css(&ldquo;color&rdquo;,&ldquo;red&rdquo;)</td>
+</tr>
+<tr>
+<td>设置某个元素的多个样式</td>
+<td>$(&quot;#test&rdquo;).css({&ldquo;color&rdquo;:&ldquo;red&rdquo;,&ldquo;fontSize&rdquo;:&ldquo;30px&rdquo;})</td>
+</tr>
+</tbody>
+</table>
+<p>其它方法使用：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height()</td>
+<td>获取和设置元素的高度，数字默认单位：px</td>
+<td>$(&ldquo;p&rdquo;).height() / $(&ldquo;p&rdquo;).height(100)</td>
+</tr>
+<tr>
+<td>width()</td>
+<td>获取和设置元素的宽度，数字默认单位：px</td>
+<td>$(&ldquo;p&rdquo;).width() / $(&ldquo;p&rdquo;).width(100)</td>
+</tr>
+<tr>
+<td>poistion()</td>
+<td>获取元素相对于最近的一个定位样式属性的祖父节点的相对偏移</td>
+<td>$(&ldquo;p&rdquo;).position().left / .top</td>
+</tr>
+<tr>
+<td>scrollTop()</td>
+<td>获取和设置元素的滚动条距离顶端的距离</td>
+<td>$(&ldquo;p&rdquo;).scrollTop() / $(&ldquo;p&rdquo;).scrollTop(300)</td>
+</tr>
+<tr>
+<td>scrollLeft()</td>
+<td>获取和设置元素的滚动条距离左侧的距离</td>
+<td>$(&ldquo;p&rdquo;).scrollLeft() / $(&ldquo;p&rdquo;).scrollLeft(300)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="节点操作">节点操作</h3>
+<h4 id="插入节点">插入节点</h4>
+<p>将动态创建的 HTML 元素插入到文档中。方法：将该元素成为文档某个节点的子节点。</p>
+<p>this：代表当前选中的节点对象。</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">append()</td>
+<td align="left">向每个匹配的元素(父)内部追加内容(子)</td>
+<td align="left">$(&ldquo;div&rdquo;).append(&ldquo;html&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">appendTo()</td>
+<td align="left">将所有匹配的元素(子)追加到指定的元素(父)中</td>
+<td align="left">$(&ldquo;html&rdquo;).appendTo(&ldquo;div&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">prepend()</td>
+<td align="left">向每个匹配的元素(父)内部前置内容(子)</td>
+<td align="left">$(&ldquo;div&rdquo;).prepend(&ldquo;html&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">prependTo()</td>
+<td align="left">将所有匹配的元素(子)前置到指定的元素(父)中</td>
+<td align="left">$(&ldquo;html&rdquo;).appendTo(&ldquo;div&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">before()</td>
+<td align="left">在每个匹配的元素之前插入内容，兄弟节点</td>
+<td align="left">$(&ldquo;div&rdquo;).before(&ldquo;html&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">insertBefore()</td>
+<td align="left">将所有匹配的元素插入到指定元素的前面，兄弟节点</td>
+<td align="left">$(&ldquo;html&rdquo;).insertBefore(&ldquo;div&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">after()</td>
+<td align="left">在每个匹配的元素之后插入内容，兄弟节点</td>
+<td align="left">$(&ldquo;div&rdquo;).after(&ldquo;html&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">insertAfter()</td>
+<td align="left">将所有匹配的元素插入到指定元素的后面，兄弟节点</td>
+<td align="left">$(&ldquo;html&rdquo;).insertAfter(&ldquo;div&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">remove([option])</td>
+<td align="left">从DOM中删除匹配的元素，当前和后代节点都被移除</td>
+<td align="left">$(&ldquo;div&rdquo;).remove();</td>
+</tr>
+<tr>
+<td align="left">empty()</td>
+<td align="left">清空元素的所有后代元素，保留当前对象以及其属性节点</td>
+<td align="left">$(&ldquo;div&rdquo;).empty();</td>
+</tr>
+<tr>
+<td align="left">clone([true])</td>
+<td align="left">克隆匹配的DOM元素并且选中这些克隆的副本,true复制事件</td>
+<td align="left">$(&ldquo;span&rdquo;).clone(true).append(&ldquo;div&rdquo;);</td>
+</tr>
+</tbody>
+</table>
+<h4 id="遍历节点">遍历节点</h4>
+<p>for 循环</p>
+<ul>
+<li>for(初始化值; 循环结束条件; 步长)</li>
+</ul>
+<p>$(selector).each(callback)：回调函数返回 false 则结束循环，返回 true 则继续循环</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;img&#34;</span>).<span style="color:#a6e22e">each</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">i</span>){<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.jpg&#34;</span>;});
+</code></pre></div></li>
+</ul>
+<p>$.each(object,callback)</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">each</span>(<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;img&#34;</span>),<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">i</span>){<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.jpg&#34;</span>;});
+</code></pre></div></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1285</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JQuery/">
+                    #JQuery</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_H5_JQuery/" class="prev" rel="prev" title=" JQuery 基础 "><i class="iconfont icon-dajiantou"></i>&nbsp; JQuery 基础 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Animation/" class="next" rel="next" title=" JQuery 动画 "> JQuery 动画 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-12-05 00:00:00 \x2b0000 UTC',
+        title: ' JQuery 操作 DOM ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

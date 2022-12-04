@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Util_Timestamp/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_SmartformsToftp/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Util_Date/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            日期操作  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 日期操作  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 日期操作 "/>
+<meta name="twitter:description" content="日期格式转换 系统标准Function CONVERSION_EXIT_IDATE_OUTPUT INPUT: 20080203 OUTPUT: 03FEB2008 CONVERT_DATE_TO_EXTERNAL INPUT: 20080203 OUTPUT: 02/03/2008 &#34;According to user&#39;s default setting. CONVERT_DATE_TO_INTERNAL INPUT: 02/03/2008 &#34;Should be same as the user&#39;s default setting OUPUT: 20080203 自定义工具 FUNCTION ZCONVERT_DATE_FORMAT. *&#34;---------------------------------------------------------------------- *&#34;*&#34;Local interface: *&#34; IMPORTING *&#34; REFERENCE(ZNAME) LIKE USR01-BNAME *&#34; CHANGING *&#34; REFERENCE(ZDATE) TYPE C *&#34;---------------------------------------------------------------------- DATA:"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 日期操作 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Util_Date\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  563 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Util_Date\/",
+  "datePublished": "2018-12-10T00:00:00\u002b00:00",
+  "dateModified": "2018-12-10T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 日期操作 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-12-10 >10 December 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="日期格式转换">日期格式转换</h3>
+<h4 id="系统标准function">系统标准Function</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">CONVERSION_EXIT_IDATE_OUTPUT
+  INPUT:   20080203
+  OUTPUT:  03FEB2008
+
+CONVERT_DATE_TO_EXTERNAL
+  INPUT:   20080203
+  OUTPUT:  02/03/2008  &#34;According to user&#39;s default setting.
+
+CONVERT_DATE_TO_INTERNAL
+  INPUT:   02/03/2008  &#34;Should be same as the user&#39;s default setting
+  OUPUT:   20080203
+</code></pre></div><h4 id="自定义工具">自定义工具</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">FUNCTION ZCONVERT_DATE_FORMAT.
+*&#34;----------------------------------------------------------------------
+*&#34;*&#34;Local interface:
+*&#34;  IMPORTING
+*&#34;     REFERENCE(ZNAME) LIKE  USR01-BNAME
+*&#34;  CHANGING
+*&#34;     REFERENCE(ZDATE) TYPE  C
+*&#34;----------------------------------------------------------------------
+DATA: date_format LIKE usr01-datfm,
+      year(4) TYPE c,
+      month(2) TYPE c,
+      day(2) TYPE c.
+  zdate = sy-datum.
+  lv_year = zdate+0(4).
+  lv_month = zdate+4(2).
+  lv_day = zdate+6(2).
+  SELECT SINGLE datfm 
+    INTO lv_datfm FROM usr01
+    UP TO 1 ROWS 
+    WHERE bname = zname .
+  IF sy-subrc = 0.
+    CLEAR zdate.
+    CASE lv_datfm.
+      WHEN &#39;1&#39;.
+        CONCATENATE lv_day lv_month lv_year INTO zdate SEPARATED BY &#39;.&#39;.
+      WHEN &#39;2&#39;.
+        CONCATENATE lv_month lv_day lv_year INTO zdate SEPARATED BY &#39;/&#39;.
+      WHEN &#39;3&#39;.
+        CONCATENATE lv_month lv_day lv_year INTO zdate SEPARATED BY &#39;-&#39;.
+      WHEN &#39;4&#39;.
+        CONCATENATE lv_year lv_month lv_day INTO zdate SEPARATED BY &#39;.&#39;.
+      WHEN &#39;5&#39;.
+        CONCATENATE lv_year lv_month lv_day INTO zdate SEPARATED BY &#39;/&#39;.
+      WHEN &#39;6&#39;.
+        CONCATENATE lv_year lv_month lv_day INTO zdate SEPARATED BY &#39;-&#39;.
+    ENDCASE.
+  ELSE.
+    CLEAR zdate.
+    CONCATENATE lv_month lv_day lv_year INTO zdate SEPARATED BY &#39;.&#39;.
+  ENDIF.
+ENDFUNCTION.
+</code></pre></div><h3 id="常用的日期函数">常用的日期函数</h3>
+<h4 id="日期有效性检查">日期有效性检查</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">CALL FUNCTION &#39;DATE_CHECK_PLAUSIBILITY&#39;
+  EXPORTING
+    date                            = sy-datum
+  EXCEPTIONS
+   PLAUSIBILITY_CHECK_FAILED       = 1
+   OTHERS                          = 2
+           .
+IF sy-subrc <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; 0.
+  MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+ENDIF.
+</code></pre></div><h4 id="根据日期计算另一个日期">根据日期计算另一个日期</h4>
+<p>输入一个日期，输入间隔的天、月、年，输入运算符，函数返回计算出的日期。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">CALL FUNCTION &#39;RP_CALC_DATE_IN_INTERVAL&#39;
+  EXPORTING
+    DATE            = SY-DATUM
+    DAYS            = 1
+    MONTHS          = 0
+    SIGNUM          = &#39;+&#39;
+    YEARS           = 0
+  IMPORTING
+    CALC_DATE       = DATE_RESULT.
+</code></pre></div><h4 id="查询两个日期间的日间间隔">查询两个日期间的日间间隔</h4>
+<p>两个日期作差，即是两个日期相减，包括当天时间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: datediff <span style="color:#66d9ef">TYPE </span>p,
+      timediff <span style="color:#66d9ef">TYPE </span>p,
+      earliest <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SD_DATETIME_DIFFERENCE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    date1            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20140101&#39;</span>
+    time1            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;240000&#39;</span>
+    date2            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20140101&#39;</span>
+    time2            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;083000&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    datediff         <span style="color:#f92672">=</span> datediff     <span style="color:#75715e">&#34;返回日期差：0 &#34;
+</span><span style="color:#75715e"></span>    timediff         <span style="color:#f92672">=</span> timediff     <span style="color:#75715e">&#34;返回时间差：16&#34;
+</span><span style="color:#75715e"></span>    earliest         <span style="color:#f92672">=</span> earliest     <span style="color:#75715e">&#34;返回时间正负：2，1-负 0-相等 2-正&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">EXCEPTIONS</span>
+    invalid_datetime <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+</code></pre></div><p>分别输入开始日期、开始时间、结束日期、结束时间，函数返回两个日期间隔秒数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: diff_second <span style="color:#66d9ef">TYPE </span>int4.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SALP_SM_CALC_TIME_DIFFERENCE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    date_1  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20080801&#39;</span>
+    time_1  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;17:22:12&#39;</span>
+    date_2  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20080802&#39;</span>
+    time_2  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;18:22:12&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    seconds <span style="color:#f92672">=</span> diff_second.   <span style="color:#75715e">&#34;86,400&#34;
+</span></code></pre></div><h4 id="获取日期所在的周数">获取日期所在的周数</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA WEEK LIKE SCAL-WEEK.
+CALL FUNCTION &#39;DATE_GET_WEEK&#39;
+  EXPORTING
+    date               = sy-datum
+  IMPORTING
+    WEEK               = WEEK
+  EXCEPTIONS
+    DATE_INVALID       = 1
+    OTHERS             = 2
+            .
+IF sy-subrc <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; 0.
+  MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+ENDIF.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>563</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Util_Timestamp/" class="prev" rel="prev" title="时间戳操作"><i class="iconfont icon-dajiantou"></i>&nbsp;时间戳操作</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SmartformsToftp/" class="next" rel="next" title=" 将Smartforms转换成PDF发送到FTP服务器 "> 将Smartforms转换成PDF发送到FTP服务器 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-12-10 00:00:00 \u002b0000 UTC',
+        title: ' 日期操作 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

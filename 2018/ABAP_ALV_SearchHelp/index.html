@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_Utils/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Dialog_Basis/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ALV_SearchHelp/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ALV 中自定义搜索帮助  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ALV 中自定义搜索帮助  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ALV 中自定义搜索帮助 "/>
+<meta name="twitter:description" content="方法一 如果希望 ALV 中某字段具有搜索帮助，第一种办法当然是对表中某字段的引用，设置ref_table、ref_field，将自动触发该字段所带的"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ALV 中自定义搜索帮助 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_SearchHelp\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  1731 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_SearchHelp\/",
+  "datePublished": "2018-08-24T00:00:00\x2b00:00",
+  "dateModified": "2018-08-24T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ALV 中自定义搜索帮助 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-08-24 >24 August 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="方法一">方法一</h3>
+<p>如果希望 ALV 中某字段具有搜索帮助，第一种办法当然是对表中某字段的引用，设置ref_table、ref_field，将自动触发该字段所带的搜索帮助。</p>
+<h3 id="方法二">方法二</h3>
+<p>第二种办法就是利用自定义代码来实现 ALV 的搜索帮助，显然它的功能更强大、更灵活。</p>
+<h4 id="oo-alv">OO ALV</h4>
+<p>针对在 OO ALV 中实现搜索帮助，其主要步骤有：</p>
+<p>1：对需要自定义搜索帮助的字段，设置其 fieldcat 时:</p>
+<ul>
+<li><code>gs_fieldcat-f4availabl = 'X'.</code></li>
+</ul>
+<p>2：在 ALV 的事件处理类中添加 Search Help Method，方法定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CLASS</span> lcl_event_receiver <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>: handle_onf4 <span style="color:#66d9ef">FOR EVENT</span> onf4 <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+            <span style="color:#66d9ef">IMPORTING</span> e_fieldname es_row_no er_event_data et_bad_cells sender.
+<span style="color:#66d9ef">ENDCLASS</span>.  <span style="color:#75715e">&#34;LCL_EVENT_RECEIVER DEFINITION&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLASS</span> lcl_event_receiver <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span>  <span style="color:#a6e22e">handle_onf4</span>.
+    <span style="color:#75715e">&#34;搜索帮助参数的自定义f4检索帮助&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">f4_help_value</span> <span style="color:#66d9ef">USING</span> e_fieldname es_row_no er_event_data sender.
+    <span style="color:#75715e">&#34;设置后，alv稳定刷新&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">refresh_table_alv</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.     <span style="color:#75715e">&#34;HANDLE_ONF4&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.   <span style="color:#75715e">&#34;LCL_EVENT_RECEIVER IMPLEMENTATION&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> go_evt_receiver <span style="color:#66d9ef">TYPE REF TO</span> lcl_event_receiver.
+</code></pre></div><ul>
+<li>e_fieldname：代表用户点击了 ALV 的哪个字段来触发搜索帮助</li>
+<li>es_row_no：代表了当前行信息，es_row_no-row_id：就是 ALV 中内表记录的 index</li>
+<li>er_event_data：代表了当前用户对 ALV 进行了哪些编辑的信息。在 Method 的最后，记得加上 <code>er_event_data-&gt;m_event_handled = 'X'.</code> 通知系统搜索事件处理完毕，这样就不会调用系统标准的Search Help。</li>
+<li>et_bad_cells：不正确的单元格</li>
+</ul>
+<p>3：在创建 ALV 对象之后，要对需要自定义搜索帮助的字段进行注册并为其指定事件处理类。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lt_f4 <span style="color:#66d9ef">TYPE </span>lvc_t_f4,
+      ls_f4 <span style="color:#66d9ef">TYPE </span>lvc_s_f4.
+<span style="color:#66d9ef">CLEAR</span>:lt_f4,ls_f4.
+ls_f4<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FIELD_NAME&#39;</span>. <span style="color:#75715e">&#34;需要添加搜索帮助的内表字段&#34;
+</span><span style="color:#75715e"></span>ls_f4<span style="color:#f92672">-</span>register <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+ls_f4<span style="color:#f92672">-</span>chngeafter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+ls_f4<span style="color:#f92672">-</span>getbefore <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">INSERT</span> ls_f4 <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> lt_f4.
+<span style="color:#75715e">&#34;事件注册&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL METHOD</span> go_alv_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>register_f4_for_fields
+  <span style="color:#66d9ef">EXPORTING</span>
+    it_f4 <span style="color:#f92672">=</span> lt_f4.
+<span style="color:#75715e">&#34;事件处理类&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE OBJECT</span> go_evt_receiver.
+<span style="color:#66d9ef">SET HANDLER</span> go_evt_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_onf4 <span style="color:#66d9ef">FOR</span> go_alv_grid.
+</code></pre></div><ul>
+<li>lvc_s_f4 中的字段 getbefore 和 changeafter 代表是否触发 data_changed 事件。</li>
+</ul>
+<p>4：方法代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  F4_HELP_VALUE</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       窗口时间参数的自定义f4检索帮助</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">f4_help_value</span> <span style="color:#66d9ef">USING</span> p_fieldname  <span style="color:#66d9ef">TYPE </span>lvc_fname
+                         p_row_no     <span style="color:#66d9ef">TYPE </span>lvc_s_roid
+                         p_event      <span style="color:#66d9ef">TYPE </span>cl_alv_event_data
+                         p_sender     <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+  <span style="color:#66d9ef">DATA</span>: lt_return <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> ddshretval,
+        ls_return <span style="color:#66d9ef">TYPE </span>ddshretval.
+  <span style="color:#66d9ef">DATA</span>: ls_modi <span style="color:#66d9ef">TYPE </span>lvc_s_modi.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;lv_itab&gt; <span style="color:#66d9ef">TYPE </span>lvc_t_modi.
+  <span style="color:#66d9ef">DATA</span>: lt_value_tab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> XXX.
+  <span style="color:#75715e">&#34;获取搜索帮助数据 存入表LT_VALUE_TAB 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4IF_INT_TABLE_VALUE_REQUEST&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      retfield         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WERKS&#39;</span>       <span style="color:#75715e">&#34;内表里面的字段&#34;
+</span><span style="color:#75715e"></span>      dynpprog         <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid
+      dynpnr           <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>dynnr
+      dynprofield      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WERKS&#39;</span>       <span style="color:#75715e">&#34;画面上绑定字段&#34;
+</span><span style="color:#75715e"></span>      value_org        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>
+      callback_program <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid
+    <span style="color:#66d9ef">TABLES</span>
+      value_tab        <span style="color:#f92672">=</span> lt_value_tab  <span style="color:#75715e">&#34;需要显示帮助的值内表&#34;
+</span><span style="color:#75715e"></span>      return_tab       <span style="color:#f92672">=</span> lt_return     <span style="color:#75715e">&#34;返回值&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">EXCEPTIONS</span>
+      parameter_error  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      no_values_found  <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">ASSIGN</span> p_event<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_data-&gt;* <span style="color:#66d9ef">TO</span> &lt;lv_itab&gt; .
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_return <span style="color:#66d9ef">INTO</span> ls_return <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span> .
+      ls_modi<span style="color:#f92672">-</span>row_id  <span style="color:#f92672">=</span> p_row_no<span style="color:#f92672">-</span>row_id.
+      ls_modi<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> p_fieldname.
+      ls_modi<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> ls_return<span style="color:#f92672">-</span>fieldval.
+      <span style="color:#66d9ef">APPEND</span> ls_modi <span style="color:#66d9ef">TO</span> &lt;lv_itab&gt;.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*  Inform ALV Grid that event &#39;onf4&#39; has been processed</span>
+   p_event<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_event_handled <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">ENDFORM</span>.  <span style="color:#75715e">&#34; F4_HELP_VALUE &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  REFRESH_TABLE_ALV</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       设置后，alv稳定刷新</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">refresh_table_alv</span> .
+  <span style="color:#66d9ef">DATA</span>: stbl <span style="color:#66d9ef">TYPE </span>lvc_s_stbl.
+  stbl<span style="color:#f92672">-</span>row <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.  <span style="color:#75715e">&#34; 基于行的稳定刷新 &#34;
+</span><span style="color:#75715e"></span>  stbl<span style="color:#f92672">-</span>col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.  <span style="color:#75715e">&#34; 基于列稳定刷新 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> go_alv_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>refresh_table_display
+    <span style="color:#66d9ef">EXPORTING</span>
+      is_stable <span style="color:#f92672">=</span> stbl.
+<span style="color:#66d9ef">ENDFORM</span>.       <span style="color:#75715e">&#34; REFRESH_TABLE_ALV &#34;
+</span></code></pre></div><h4 id="grid-alv">GRID ALV</h4>
+<p>注册事件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: gt_events <span style="color:#66d9ef">TYPE </span>slis_t_event <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      gs_event  <span style="color:#66d9ef">LIKE LINE OF</span> gt_events.
+<span style="color:#66d9ef">DATA</span>: go_grid <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+gt_events<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CALLER_EXIT&#39;</span>.   <span style="color:#75715e">&#34;slis_ev_caller_exit_at_start事件&#34;
+</span><span style="color:#75715e"></span>gt_events<span style="color:#f92672">-</span>form <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FRM_CALLER_EXIT&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> gt_events.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;REUSE_ALV_GRID_DISPLAY_LVC&#39;</span>
+ <span style="color:#66d9ef">EXPORTING</span>
+   it_evetns <span style="color:#f92672">=</span> gt_evetns[].
+</code></pre></div><p>事件功能：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_CALLER_EXIT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;E_GRID     text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_caller_exit</span> <span style="color:#66d9ef">USING</span> e_grid <span style="color:#66d9ef">TYPE </span>slis_data_caller_exit.
+  <span style="color:#66d9ef">DATA</span>: lt_f4 <span style="color:#66d9ef">TYPE </span>lvc_t_f4,
+        ls_f4 <span style="color:#66d9ef">TYPE </span>lvc_s_f4.
+  <span style="color:#66d9ef">CLEAR</span> ls_f4.
+  ls_f4<span style="color:#f92672">-</span>fieldname  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WERKS&#39;</span>.   <span style="color:#75715e">&#34;需要定义F4帮助按钮的字段&#34;
+</span><span style="color:#75715e"></span>  ls_f4<span style="color:#f92672">-</span>register   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  ls_f4<span style="color:#f92672">-</span>getbefore  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  ls_f4<span style="color:#f92672">-</span>chngeafter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">INSERT</span> ls_f4 <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> lt_f4.
+  <span style="color:#75715e">&#34;获取 OO ALV 对象&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;GET_GLOBALS_FROM_SLVC_FULLSCR&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      e_grid  <span style="color:#f92672">=</span> go_grid.
+  <span style="color:#75715e">&#34;事件注册&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>register_f4_for_fields
+    <span style="color:#66d9ef">EXPORTING</span>
+      it_f4 <span style="color:#f92672">=</span> lt_f4[].
+  <span style="color:#75715e">&#34;事件处理类&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CREATE OBJECT</span> go_evt_receiver.
+  <span style="color:#66d9ef">SET HANDLER</span> go_evt_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_onf4 <span style="color:#66d9ef">FOR</span> go_grid.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;frm_caller_exit&#34;
+</span></code></pre></div><h3 id="demo">DEMO</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPE-POOLS</span>: slis.
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_event_receiver DEFINITION</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_event_receiver <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">CLASS-METHODS</span>:
+    handle_onf4 <span style="color:#66d9ef">FOR EVENT</span> onf4 <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_fieldname es_row_no er_event_data,
+    on_f4 <span style="color:#66d9ef">FOR EVENT</span> onf4 <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> sender e_fieldname e_fieldvalue es_row_no
+                er_event_data et_bad_cells e_display,
+    on_data_changed <span style="color:#66d9ef">FOR EVENT</span> data_changed <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_onf4 e_onf4_before e_onf4_after er_data_changed
+                e_ucomm sender.
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">TYPES</span>: ddshretval_table <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ddshretval.
+    <span style="color:#66d9ef">CLASS-METHODS</span>: my_f4 
+    <span style="color:#66d9ef">IMPORTING</span> sender <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid
+      et_bad_cells   <span style="color:#66d9ef">TYPE </span>lvc_t_modi
+      es_row_no      <span style="color:#66d9ef">TYPE </span>lvc_s_roid
+      er_event_data  <span style="color:#66d9ef">TYPE REF TO</span> cl_alv_event_data
+      e_display      <span style="color:#66d9ef">TYPE </span>c
+      e_fieldname    <span style="color:#66d9ef">TYPE </span>lvc_fname
+    <span style="color:#66d9ef">EXPORTING</span> im_lt_f4 <span style="color:#66d9ef">TYPE </span>ddshretval_table.
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_event_receiver DEFINITION&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_event_receiver IMPLEMENTATION</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_event_receiver <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_onf4</span>.
+    <span style="color:#66d9ef">DATA</span>: ls_modi <span style="color:#66d9ef">TYPE </span>lvc_s_modi,
+          lt_ret_tab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ddshretval <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+    <span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;modtab&gt; <span style="color:#66d9ef">TYPE </span>lvc_t_modi.
+    <span style="color:#66d9ef">IF</span> e_fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FIELD_NAME&#39;</span>. <span style="color:#75715e">&#34;我们自定义搜索的字段名&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> gt_alv_data <span style="color:#66d9ef">INDEX</span> es_row_no<span style="color:#f92672">-</span>row_id.
+      <span style="color:#66d9ef">CHECK</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">**  这里可以添加代码以对lt_hitlist内表进行填充</span>
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4IF_INT_TABLE_VALUE_REQUEST&#39;</span>
+        <span style="color:#66d9ef">EXPORTING</span>
+          retfield        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;HIT_FIELD&#39;</span>
+          value_org       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>
+        <span style="color:#66d9ef">TABLES</span>
+          value_tab       <span style="color:#f92672">=</span> lt_hitlist
+          return_tab      <span style="color:#f92672">=</span> lt_ret_tab
+        <span style="color:#66d9ef">EXCEPTIONS</span>
+          parameter_error <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+          no_values_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+          <span style="color:#66d9ef">OTHERS</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+      <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">**  Update the value in ALV cell</span>
+        <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_ret_tab <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+        <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>. <span style="color:#75715e">&#34; User didn&#39;t cancel &#34;
+</span><span style="color:#75715e"></span>          ls_modi<span style="color:#f92672">-</span>row_id <span style="color:#f92672">=</span> es_row_no<span style="color:#f92672">-</span>row_id.
+          ls_modi<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> e_fieldname.
+          ls_modi<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> lt_ret_tab<span style="color:#f92672">-</span>fieldval.
+          <span style="color:#66d9ef">ASSIGN</span> er_event_data<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_data-&gt;* <span style="color:#66d9ef">TO</span> &lt;modtab&gt;.
+          <span style="color:#66d9ef">APPEND</span> ls_modi <span style="color:#66d9ef">TO</span> &lt;modtab&gt;.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">**  Inform ALV Grid that event &#39;onf4&#39; has been processed</span>
+      er_event_data<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_event_handled <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_onf4&#34;
+</span><span style="color:#75715e"></span>  
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_f4</span>.
+    <span style="color:#66d9ef">DATA</span>: ls_f4 <span style="color:#66d9ef">TYPE </span>ddshretval,
+          lt_f4 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ddshretval.
+    <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;itab&gt; <span style="color:#66d9ef">TYPE </span>lvc_t_modi.
+    <span style="color:#66d9ef">DATA</span>: ls_modi <span style="color:#66d9ef">TYPE </span>lvc_s_modi.
+    <span style="color:#66d9ef">CALL METHOD</span> my_f4
+      <span style="color:#66d9ef">EXPORTING</span>
+        sender        <span style="color:#f92672">=</span> sender
+        es_row_no     <span style="color:#f92672">=</span> es_row_no
+        er_event_data <span style="color:#f92672">=</span> er_event_data
+        et_bad_cells  <span style="color:#f92672">=</span> et_bad_cells
+        e_display     <span style="color:#f92672">=</span> e_display
+        e_fieldname   <span style="color:#f92672">=</span> e_fieldname
+      <span style="color:#66d9ef">IMPORTING</span>
+        im_lt_f4      <span style="color:#f92672">=</span> lt_f4.
+    <span style="color:#66d9ef">ASSIGN</span> er_event_data<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_data-&gt;* <span style="color:#66d9ef">TO</span> &lt;itab&gt;.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_f4 <span style="color:#66d9ef">INTO</span> ls_f4 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MTART&#39;</span>.
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> ls_f4 <span style="color:#f92672">IS INITIAL</span>.
+      ls_modi<span style="color:#f92672">-</span>row_id    <span style="color:#f92672">=</span> es_row_no<span style="color:#f92672">-</span>row_id.
+      ls_modi<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MTART&#39;</span>.
+      ls_modi<span style="color:#f92672">-</span>value     <span style="color:#f92672">=</span> ls_f4<span style="color:#f92672">-</span>fieldval.
+      <span style="color:#66d9ef">APPEND</span> ls_modi <span style="color:#66d9ef">TO</span> &lt;itab&gt;.
+      ls_modi<span style="color:#f92672">-</span>row_id <span style="color:#f92672">=</span> es_row_no<span style="color:#f92672">-</span>row_id.
+      ls_modi<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;VALUE&#39;</span>.
+      <span style="color:#66d9ef">IF</span> ls_f4<span style="color:#f92672">-</span>fieldval <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;D&#39;</span>.
+        ls_modi<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>.
+      <span style="color:#66d9ef">ELSEIF</span> ls_f4<span style="color:#f92672">-</span>fieldval <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;R&#39;</span>.
+        ls_modi<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>.
+      <span style="color:#66d9ef">ELSE</span>.
+        ls_modi<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">APPEND</span> ls_modi <span style="color:#66d9ef">TO</span> &lt;itab&gt;.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_f4 <span style="color:#66d9ef">INTO</span> ls_f4 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MTBEZ&#39;</span>.
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> ls_f4 <span style="color:#f92672">IS INITIAL</span>.
+      ls_modi<span style="color:#f92672">-</span>row_id    <span style="color:#f92672">=</span> es_row_no<span style="color:#f92672">-</span>row_id.
+      ls_modi<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MTBEZ&#39;</span>.
+      ls_modi<span style="color:#f92672">-</span>value     <span style="color:#f92672">=</span> ls_f4<span style="color:#f92672">-</span>fieldval.
+      <span style="color:#66d9ef">APPEND</span> ls_modi <span style="color:#66d9ef">TO</span> &lt;itab&gt;.
+    <span style="color:#66d9ef">ENDIF</span>.
+    er_event_data<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_event_handled <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                                                <span style="color:#75715e">&#34;on_f4&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       METHOD on_data_changed                                        *</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_data_changed</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_data_changed&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       METHOD my_f4  insert here your own f4-help                    *</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">my_f4</span>.
+    <span style="color:#66d9ef">DATA</span>: lw_tab      <span style="color:#66d9ef">LIKE LINE OF</span> gt_data,
+          lt_fcat     <span style="color:#66d9ef">TYPE </span>lvc_t_fcat,
+          ls_fieldcat <span style="color:#66d9ef">TYPE </span>lvc_s_fcat,
+          l_tabname   <span style="color:#66d9ef">TYPE </span>dd03v<span style="color:#f92672">-</span>tabname,
+          l_fieldname <span style="color:#66d9ef">TYPE </span>dd03v<span style="color:#f92672">-</span>fieldname,
+          l_help_valu <span style="color:#66d9ef">TYPE </span>help_info<span style="color:#f92672">-</span>fldvalue,
+          lt_bad_cell <span style="color:#66d9ef">TYPE </span>lvc_t_modi,
+    lp_wa       <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>.
+    <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;l_field_value&gt; <span style="color:#66d9ef">TYPE </span>ANY,
+                   &lt;ls_wa&gt;         <span style="color:#66d9ef">TYPE </span>ANY.
+    <span style="color:#66d9ef">CALL METHOD</span> sender<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_frontend_fieldcatalog
+      <span style="color:#66d9ef">IMPORTING</span>
+        et_fieldcatalog <span style="color:#f92672">=</span> lt_fcat.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> gt_data <span style="color:#66d9ef">INDEX</span> es_row_no<span style="color:#f92672">-</span>row_id <span style="color:#66d9ef">INTO</span> lw_tab.
+    <span style="color:#66d9ef">CREATE DATA</span> lp_wa <span style="color:#66d9ef">LIKE LINE OF</span> gt_data.
+    <span style="color:#66d9ef">ASSIGN</span> lp_wa-&gt;* <span style="color:#66d9ef">TO</span> &lt;ls_wa&gt;.
+    &lt;ls_wa&gt; <span style="color:#f92672">=</span> lw_tab.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_fcat <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> fieldname <span style="color:#f92672">=</span> e_fieldname <span style="color:#66d9ef">INTO</span> ls_fieldcat.
+    <span style="color:#66d9ef">MOVE</span> ls_fieldcat<span style="color:#f92672">-</span>ref_table <span style="color:#66d9ef">TO</span> l_tabname.
+    <span style="color:#66d9ef">MOVE</span> ls_fieldcat<span style="color:#f92672">-</span>fieldname <span style="color:#66d9ef">TO</span> l_fieldname.
+    <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> ls_fieldcat<span style="color:#f92672">-</span>fieldname <span style="color:#66d9ef">OF STRUCTURE</span> lw_tab <span style="color:#66d9ef">TO</span> &lt;l_field_value&gt;.
+    <span style="color:#66d9ef">WRITE</span> &lt;l_field_value&gt; <span style="color:#66d9ef">TO</span> l_help_valu.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">f4_set</span> <span style="color:#66d9ef">USING</span> sender
+          lt_fcat
+          lt_bad_cell
+          es_row_no<span style="color:#f92672">-</span>row_id
+          &lt;ls_wa&gt;.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4IF_FIELD_VALUE_REQUEST&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        tabname          <span style="color:#f92672">=</span> l_tabname
+        fieldname        <span style="color:#f92672">=</span> l_fieldname
+        display          <span style="color:#f92672">=</span> e_display
+        <span style="color:#66d9ef">value</span>            <span style="color:#f92672">=</span> l_help_valu
+        callback_program <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZTEST7&#39;</span>
+        callback_form    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;F4&#39;</span>
+      <span style="color:#66d9ef">TABLES</span>
+        return_tab       <span style="color:#f92672">=</span> im_lt_f4
+      <span style="color:#66d9ef">EXCEPTIONS</span>
+        parameter_error  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        no_values_found  <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                        <span style="color:#75715e">&#34;my_f4&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_event_receiver IMPLEMENTATION&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1731</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Utils/" class="prev" rel="prev" title=" ALV 常用工具 "><i class="iconfont icon-dajiantou"></i>&nbsp; ALV 常用工具 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_Basis/" class="next" rel="next" title=" Dialog 程序简介 "> Dialog 程序简介 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-08-24 00:00:00 \x2b0000 UTC',
+        title: ' ALV 中自定义搜索帮助 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

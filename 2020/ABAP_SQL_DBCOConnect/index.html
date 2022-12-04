@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseOrderCreate/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/SAP_Query/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_SQL_DBCOConnect/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SAP DBCO连接测试 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="SAP DBCO连接测试 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAP DBCO连接测试"/>
+<meta name="twitter:description" content="SAP 数据库配置 TCode: DBCO查看数据库连接信息 测试连通性 使用程序：ADBC_TEST_CONNECTION / 参考 ADBC* 输入Database connection name,"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SAP DBCO连接测试",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_SQL_DBCOConnect\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "utils",
+  "wordcount":  381 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_SQL_DBCOConnect\/",
+  "datePublished": "2020-06-18T00:00:00\u002b00:00",
+  "dateModified": "2020-06-18T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">SAP DBCO连接测试</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-06-18 >18 June 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="sap-数据库配置">SAP 数据库配置</h4>
+<p>TCode: DBCO查看数据库连接信息</p>
+<p><img src="/images/ABAP/DBCO1.png" alt="DBCO"></p>
+<h4 id="测试连通性">测试连通性</h4>
+<p>使用程序：ADBC_TEST_CONNECTION / 参考 ADBC*</p>
+<p><img src="/images/ABAP/DBCO3.png" alt="SE38"></p>
+<p>输入Database connection name,进行连接测试</p>
+<p><img src="/images/ABAP/DBCO2.png" alt="Connect test"></p>
+<h4 id="连接sqlserver数据库">连接SQLServer数据库</h4>
+<p>执行TCode:DBCO 新增连接数据，连接信息指定主机IP、数据库名即可</p>
+<ul>
+<li>MSSQL_SERVER=IP</li>
+<li>MSSQL_DBNAME=DatabaseName</li>
+<li>OBJECT_SOURCE=dbo</li>
+</ul>
+<p><img src="/images/ABAP/DBCO4.png" alt="DBCO SQLServer"></p>
+<h4 id="连接db2数据库">连接DB2数据库</h4>
+<p>执行TCode:DBCO 新增连接数据，连接信息分别是数据库名、端口号、主机IP地址</p>
+<ul>
+<li>DB6_DB_NAME=DatabaseName;</li>
+<li>DB6_DB_SVCENAME=Port;</li>
+<li>DB6_DB_HOST=IP</li>
+</ul>
+<p><img src="/images/ABAP/DBCO5.png" alt="DBCO DB2"></p>
+<h4 id="连接oracle数据库">连接Oracle数据库</h4>
+<p>执行TCode:DBCO 新增连接数据，连接信息比较隐晦。</p>
+<p>必须在 SAP 应用服务器上安装 Oracle Client，然后设置连接，并在这里将连接信息指定与连接名一致。
+为了防止乱码，我们还应该在链接信息后加如下参数：ZHS16GBK
+格式如下：ORCL.WORLD:ZHS16GBK</p>
+<p><img src="/images/ABAP/DBCO6.png" alt="DBCO Oracle"></p>
+<h4 id="连接maxdb数据库">连接MaxDB数据库</h4>
+<p>执行TCode:DBCO 新增连接数据,MaxDB是SAP自己的数据库，则是 NetWeaver Developer 版中默认创建的一个连接</p>
+<p><img src="/images/ABAP/DBCO7.png" alt="DBCO MaxDB"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>381</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/utils/">
+                    #utils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseOrderCreate/" class="prev" rel="prev" title="使用BAPI操作Purchase Order"><i class="iconfont icon-dajiantou"></i>&nbsp;使用BAPI操作Purchase Order</a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/SAP_Query/" class="next" rel="next" title="SAP Query 使用介绍">SAP Query 使用介绍&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-18 00:00:00 \u002b0000 UTC',
+        title: 'SAP DBCO连接测试',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_SQL_NativeSQL/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_SQL_DBOpt/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Message/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP Message 处理  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP Message 处理  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP Message 处理 "/>
+<meta name="twitter:description" content="MESSAGE 简单操作 SAP Message 存储的内表 T100、T100C、T100S、T100U、T160M T100：该表包括所有的消息 T100C：通常包括修改后的消息"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP Message 处理 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Message\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1132 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Message\/",
+  "datePublished": "2018-05-28T00:00:00\u002b00:00",
+  "dateModified": "2018-05-28T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP Message 处理 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-28 >28 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="message-简单操作">MESSAGE 简单操作</h3>
+<h4 id="sap-message-存储的内表">SAP Message 存储的内表</h4>
+<p>T100、T100C、T100S、T100U、T160M</p>
+<ul>
+<li>T100：该表包括所有的消息</li>
+<li>T100C：通常包括修改后的消息，即修改默认消息类型后的值存在该表中</li>
+<li>T100S：表示可以修改消息类型的表</li>
+</ul>
+<h4 id="消息类的操作">消息类的操作</h4>
+<p>使用事物码 SE91 对 Message 定义，还能够对 Message 进行创建，修改及删除等维护操作。</p>
+<p>Message Short Text 字段为类描述，可以定义输入参数&amp;，通过‘&amp;’定义多个占位符，如&quot;1&amp;2&amp;3&amp;&ldquo;表示有三个输入参数。</p>
+<p><img src="/images/ABAP/SE91.jpg" alt="定义消息类"></p>
+<p>MESSAGE E001(ZTEST).</p>
+<ul>
+<li>
+<p>E：消息显示类型 (Message共分以下几种类型：E:错误、W:警告、I:信息、A:异常中止、S:成功)</p>
+</li>
+<li>
+<p>001：自定义的消息字段</p>
+</li>
+<li>
+<p>ZTEST：自定义的消息类</p>
+</li>
+</ul>
+<h4 id="系统消息组成完整文本">系统消息组成完整文本</h4>
+<p>函数模块调用后的 sy-subrc：如果未引发异常，则调用会将 sy-subrc 设置为 0；这也适用于方法调用。</p>
+<p>使用 MESSAGE INOT text：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> msgtext <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#75715e">&#34;CALL BAPI&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+    <span style="color:#66d9ef">INTO</span> msgtext
+    <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+<span style="color:#66d9ef">ENDIF</span>. 
+</code></pre></div><p>调用函数将消息组成文本：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> msgtext <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MESSAGE_TEXT_BUILD&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    msgid <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgid
+    msgnr <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgno
+    msgv1 <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv1
+    msgv2 <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv2
+    msgv3 <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv3
+    msgv4 <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv4
+  <span style="color:#66d9ef">IMPORTING</span>
+    message_text_output <span style="color:#f92672">=</span> msgtext.
+</code></pre></div><h4 id="message-显示">MESSAGE 显示</h4>
+<p>利用定义的参数：<code>MESSAGE e001(00) WITH '12345678'. </code></p>
+<p>直接添加消息文本：<code>MESSAGE 'XXXXXXXXXX' TYPE 'X'. </code></p>
+<p>Display Like 使用：<code>MESSAGE s001(00) WITH 'No data' DISPLAY LIKE 'E'.</code></p>
+<h3 id="其它方式处理-message">其它方式处理 Message</h3>
+<h4 id="增强的-warning-message-不显示">增强的 Warning Message 不显示</h4>
+<p>在 ME22N 的增强面临这样的问题。 使用以下方法显示警告消息并将其附加到在检查文档时获得的日志中的警告消息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: msgv1 <span style="color:#66d9ef">TYPE </span>symsgv,
+      msgv2 <span style="color:#66d9ef">TYPE </span>symsgv,
+      msgv3 <span style="color:#66d9ef">TYPE </span>symsgv,
+      msgv4 <span style="color:#66d9ef">TYPE </span>symsgv.
+<span style="color:#66d9ef">CALL METHOD</span> cl_message_mm<span style="color:#f92672">=&gt;</span>create
+  <span style="color:#66d9ef">EXPORTING</span>
+    im_msgid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Z01&#39;</span>
+    im_msgty <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;W&#39;</span>
+    im_msgno <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;195&#39;</span>
+    im_msgv1 <span style="color:#f92672">=</span> msgv1
+    im_msgv2 <span style="color:#f92672">=</span> msgv2
+    im_msgv3 <span style="color:#f92672">=</span> msgv3
+    im_force_collect <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+</code></pre></div><h4 id="用函数方式返回消息显示">用函数方式返回消息显示</h4>
+<p>Message init：MESSAGES_INITIALIZE</p>
+<p>Sotrage message：MESSAGE_STORE</p>
+<p>Message show：MESSAGES_GIVE、MESSAGES_SHOW</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lt_mesg <span style="color:#66d9ef">TYPE TABLE OF</span> mesg <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">LOOP AT message</span>.
+  lt_mesg<span style="color:#f92672">-</span>zeile <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>row.
+  lt_mesg<span style="color:#f92672">-</span>msgty <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>type.
+  lt_mesg<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>message.
+  lt_mesg<span style="color:#f92672">-</span>arbgb <span style="color:#f92672">=</span> <span style="color:#66d9ef">message-id</span>.
+  lt_mesg<span style="color:#f92672">-</span>txtnr <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>number.
+  lt_mesg<span style="color:#f92672">-</span>msgv1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>message_v1.
+  lt_mesg<span style="color:#f92672">-</span>msgv2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>message_v2.
+  lt_mesg<span style="color:#f92672">-</span>msgv3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>message_v3.
+  lt_mesg<span style="color:#f92672">-</span>msgv4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">message</span><span style="color:#f92672">-</span>message_v4.
+  <span style="color:#66d9ef">APPEND</span> lt_mesg.
+  <span style="color:#66d9ef">CLEAR</span> lt_mesg.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">**--messages init</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MESSAGES_INITIALIZE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    collect_and_send <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#75715e">**--message store</span>
+<span style="color:#66d9ef">LOOP AT </span>lt_mesg.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MESSAGE_STORE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      arbgb                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>arbgb
+<span style="color:#75715e">*     EXCEPTION_IF_NOT_ACTIVE       = &#39;X&#39;</span>
+      msgty                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>msgty
+      msgv1                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>msgv1
+      msgv2                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>msgv2
+      msgv3                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>msgv3
+      msgv4                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>msgv4
+      txtnr                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>txtnr
+      zeile                  <span style="color:#f92672">=</span> lt_mesg<span style="color:#f92672">-</span>zeile
+<span style="color:#75715e">*   IMPORTING</span>
+<span style="color:#75715e">*     ACT_SEVERITY           =</span>
+<span style="color:#75715e">*     MAX_SEVERITY           =</span>
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      message_type_not_valid <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      not_active             <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">* Implement suitable error handling here</span>
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+            <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">**--message show</span>
+<span style="color:#66d9ef">REFRESH</span>: lt_mesg.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MESSAGES_GIVE&#39;</span>
+  <span style="color:#66d9ef">TABLES</span>
+    t_mesg <span style="color:#f92672">=</span> lt_mesg.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MESSAGES_SHOW&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    show_linno         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    i_use_grid         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    i_amodal_window    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    inconsistent_range <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    no_messages        <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+</code></pre></div><h4 id="获取消息内容的bapi">获取消息内容的BAPI</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> l_msgid    <span style="color:#66d9ef">TYPE </span>bapiret2<span style="color:#f92672">-</span>id.
+<span style="color:#66d9ef">DATA</span> l_msgnr    <span style="color:#66d9ef">TYPE </span>bapiret2<span style="color:#f92672">-</span>number.
+<span style="color:#66d9ef">DATA</span> l_message  <span style="color:#66d9ef">TYPE </span>bapiret2<span style="color:#f92672">-</span>message.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_MESSAGE_GETDETAIL&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">id</span>                 <span style="color:#f92672">=</span> l_msgid
+    <span style="color:#66d9ef">number</span>             <span style="color:#f92672">=</span> l_msgnr
+    <span style="color:#66d9ef">language</span>           <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu
+    textformat         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;HTM&#39;</span>
+<span style="color:#75715e">*   LINKPATTERN        =</span>
+<span style="color:#75715e">*   MESSAGE_V1         =</span>
+<span style="color:#75715e">*   MESSAGE_V2         =</span>
+<span style="color:#75715e">*   MESSAGE_V3         =</span>
+<span style="color:#75715e">*   MESSAGE_V4         =</span>
+<span style="color:#75715e">*   LANGUAGE_ISO       =</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    <span style="color:#66d9ef">message</span>            <span style="color:#f92672">=</span> l_message.
+<span style="color:#75715e">*   RETURN             =</span>
+<span style="color:#75715e">* TABLES</span>
+<span style="color:#75715e">*   TEXT               =    .</span>
+</code></pre></div><h3 id="处理-call-function-的错误">处理 CALL Function 的错误</h3>
+<p>当我们调用系统 Function 执行业务出现错误时，程序运行将停止，Function 会抛出对话框消息。</p>
+<p>当我们需要批量处理业务，并且如果其中一个调用出现错误，但是我们仍需继续处理时，要如何处理？SAP 为我们提供了一个隐藏功能：预定义异常 ERROR_MESSAGE 。此异常将捕获所有 E 和 A 类型的消息，并且可以在 SY 结构中访问消息详细信息 。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;RV_INVOICE_CREATE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    vbsk_i        <span style="color:#f92672">=</span> vbsk_i
+  <span style="color:#66d9ef">TABLES</span>
+    xkomfk        <span style="color:#f92672">=</span> xkomfk
+    xkomv         <span style="color:#f92672">=</span> xkomv
+    xthead        <span style="color:#f92672">=</span> xthead
+    xvbfs         <span style="color:#f92672">=</span> xvbfs
+    xvbpa         <span style="color:#f92672">=</span> xvbpa
+    xvbrk         <span style="color:#f92672">=</span> xvbrk
+    xvbrp         <span style="color:#f92672">=</span> xvbrp
+    xvbss         <span style="color:#f92672">=</span> xvbss
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    error_message <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+    <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1132</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SQL_NativeSQL/" class="prev" rel="prev" title=" ABAP Native SQL "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP Native SQL </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SQL_DBOpt/" class="next" rel="next" title=" ABAP 性能优化(数据操作) "> ABAP 性能优化(数据操作) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-28 00:00:00 \u002b0000 UTC',
+        title: ' ABAP Message 处理 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

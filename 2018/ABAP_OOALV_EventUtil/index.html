@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_OOALV_Diff_Containers/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_OOALV_Event/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OOALV_EventUtil/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           OO ALV 事件类工具 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="OO ALV 事件类工具 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OO ALV 事件类工具"/>
+<meta name="twitter:description" content="为了更加方便的使用 cl_gui_alv_grid 的事件功能，将一些基本事件的定义和实现放到一个 inclue 中，Report 程序中包含就可以使用。 事件的方法实际功能需要定义对应的 F"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OO ALV 事件类工具",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_EventUtil\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  608 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_EventUtil\/",
+  "datePublished": "2018-07-10T00:00:00\u002b00:00",
+  "dateModified": "2018-07-10T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">OO ALV 事件类工具</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-10 >10 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>为了更加方便的使用 cl_gui_alv_grid 的事件功能，将一些基本事件的定义和实现放到一个 inclue 中，Report 程序中包含就可以使用。</p>
+<p>事件的方法实际功能需要定义对应的 FORM，并在其中添加业务代码。</p>
+<h3 id="includezbc_incl_alvevt">Include：ZBC_INCL_ALVEVT</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;  Include           ZBC_INCL_ALVEVT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+
+<span style="color:#66d9ef">CLASS</span> lcl_event_handler <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+
+    <span style="color:#66d9ef">METHODS</span>:
+
+<span style="color:#75715e">*-- To add new functional buttons to the ALV toolbar</span>
+    toolbar
+    <span style="color:#66d9ef">FOR EVENT</span> toolbar <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_object
+              e_interactive,
+
+<span style="color:#75715e">*-- To implement user commands</span>
+    user_command
+    <span style="color:#66d9ef">FOR EVENT</span> user_command <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_ucomm,
+
+<span style="color:#75715e">*-- Hotspot click control</span>
+    hotspot_click
+    <span style="color:#66d9ef">FOR EVENT</span> hotspot_click <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_row_id
+              e_column_id
+              es_row_no,
+
+<span style="color:#75715e">*-- Handle double click</span>
+    double_click
+    <span style="color:#66d9ef">FOR EVENT</span> double_click <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_row
+              e_column
+              es_row_no,
+
+<span style="color:#75715e">*-- To be triggered before user commands</span>
+    before_user_command
+    <span style="color:#66d9ef">FOR EVENT</span> before_user_command <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_ucomm,
+
+<span style="color:#75715e">*-- To be triggered after user commands</span>
+    after_user_command
+    <span style="color:#66d9ef">FOR EVENT</span> after_user_command <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_ucomm
+              e_saved
+              e_not_processed,
+
+<span style="color:#75715e">*-- Controling data changes where ALV grid is changeable</span>
+    data_changed
+    <span style="color:#66d9ef">FOR EVENT</span> data_changed <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> er_data_changed
+              e_onf4
+              e_onf4_before
+              e_onf4_after
+              e_ucomm,
+
+<span style="color:#75715e">*-- To be triggered after data change has been finished</span>
+    data_changed_finished
+    <span style="color:#66d9ef">FOR EVENT</span> data_changed_finished <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_modified
+              et_good_cells,
+
+<span style="color:#75715e">*-- To control menu buttons</span>
+    menu_button
+    <span style="color:#66d9ef">FOR EVENT</span> menu_button <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_object
+              e_ucomm,
+
+<span style="color:#75715e">*-- To control button clicks</span>
+    button_click
+    <span style="color:#66d9ef">FOR EVENT</span> button_click <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> es_col_id
+              es_row_no,
+
+<span style="color:#75715e">*-- To control AFTER_REFRESH</span>
+    after_refresh
+    <span style="color:#66d9ef">FOR EVENT</span> after_refresh <span style="color:#66d9ef">OF</span> cl_gui_alv_grid,
+
+<span style="color:#75715e">*-- To control  HANDLE_F4</span>
+    onf4
+    <span style="color:#66d9ef">FOR EVENT</span> onf4 <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_fieldname
+              es_row_no
+              er_event_data
+              et_bad_cells,
+<span style="color:#75715e">*-- To control ONDROPCOMPLETE</span>
+    ondropcomplete
+    <span style="color:#66d9ef">FOR EVENT</span> ondropcomplete <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_row
+              e_column
+              es_row_no
+              e_dragdropobj,
+<span style="color:#75715e">*-- To control Context Menu</span>
+    context_menu_request
+    <span style="color:#66d9ef">FOR EVENT</span> context_menu_request <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+    <span style="color:#66d9ef">IMPORTING</span> e_object.
+
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+
+<span style="color:#66d9ef">ENDCLASS</span>. <span style="color:#75715e">&#34;LCL_EVENT_HANDLER DEFINITION
+</span><span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_event_handler IMPLEMENTATION</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_event_handler <span style="color:#66d9ef">IMPLEMENTATION</span>.
+
+<span style="color:#75715e">*-- Handle toolbar</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">toolbar</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_toolbar</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_object e_interactive <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_toolbar
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle user command</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">user_command</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_user_command</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_ucomm <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_user_command
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle hotspot click</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">hotspot_click</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_hotspot_click</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_row_id e_column_id es_row_no <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_hotspot_click
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle double click</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">double_click</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_double_click</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_row e_column es_row_no <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_double_click
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle before user command</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">before_user_command</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_before_user_command</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_ucomm <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_before_user_command
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle after user command</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">after_user_command</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_after_user_command</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_ucomm e_saved e_not_processed <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_after_user_command
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle data changed</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">data_changed</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_data_changed</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> er_data_changed e_onf4 e_onf4_before e_onf4_after e_ucomm <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle data_changed
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle data changed finished</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">data_changed_finished</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_data_changed_finished</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_modified et_good_cells <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_data_changed_finished
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle menu button</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">menu_button</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_menu_button</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_object e_ucomm <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_menu_button
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle button click</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">button_click</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_button_click</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> es_col_id es_row_no <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_button_click
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle after refresh</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">after_refresh</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_after_refresh</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_after_refresh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle f4</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">onf4</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_onf4</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_fieldname es_row_no er_event_data et_bad_cells <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                   <span style="color:#75715e">&#34;handle_f4
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle ondropcomplete</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">ondropcomplete</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_ondropcomplete</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_row e_column es_row_no e_dragdropobj <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_ondropcomplete
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*-- Handle Context Menu</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">context_menu_request</span>.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_alv_context_menu</span> <span style="color:#66d9ef">IN PROGRAM</span> (sy<span style="color:#f92672">-</span>repid) <span style="color:#66d9ef">USING</span> e_object <span style="color:#66d9ef">IF FOUND</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_ondropcomplete
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;LCL_EVENT_HANDLER IMPLEMENTATION
+</span><span style="color:#75715e"></span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>608</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_Diff_Containers/" class="prev" rel="prev" title=" OO ALV 不同Container "><i class="iconfont icon-dajiantou"></i>&nbsp; OO ALV 不同Container </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_Event/" class="next" rel="next" title="OO ALV 事件管理">OO ALV 事件管理&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-10 00:00:00 \u002b0000 UTC',
+        title: 'OO ALV 事件类工具',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

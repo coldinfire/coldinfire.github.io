@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_OOALV_Demo/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_OOALV_SortFilter/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OOALV_DiffContainers/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            OO ALV 不同Container使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" OO ALV 不同Container使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" OO ALV 不同Container使用 "/>
+<meta name="twitter:description" content="1.Custom container 自定义容器可以使用类 CL_GUI_CUSTOM_CONTAINER 创建，但它需要一个可以放置它的父容器，或者需要在自定义 Screen 中创建一个自定义控制区域。 这个解决方案是现在开发的应用程序"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " OO ALV 不同Container使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_DiffContainers\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "OOALV",
+  "wordcount":  1370 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_DiffContainers\/",
+  "datePublished": "2018-07-12T00:00:00\x2b00:00",
+  "dateModified": "2018-07-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> OO ALV 不同Container使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-12 >12 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="1custom-container">1.Custom container</h3>
+<p>自定义容器可以使用类 <code>CL_GUI_CUSTOM_CONTAINER</code> 创建，但它需要一个可以放置它的父容器，或者需要在自定义 Screen 中创建一个自定义控制区域。 这个解决方案是现在开发的应用程序中主要使用的。 但在一个开发中将自定义容器与其他容器混合使用也很常见。</p>
+<p>许多人在包含自定义容器区域的屏幕的 PBO 事件期间创建自定义容器，但是也可以不这样做。 也可以在调用屏幕之前创建它。</p>
+<p>为了能够显示 ALV Grid，必须创建一个 SCREEN ，在屏幕中创建自定义容器区域。将屏幕大小设置为 200 x 255 并且提供了垂直和水平调整区域大小的可能性，这样它可以适合所有屏幕。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZDEMO_CUSTOM_CONTAINER.
+<span style="color:#66d9ef">DATA</span>: flights <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> spfli.
+<span style="color:#66d9ef">DATA</span>: go_grid <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> up <span style="color:#66d9ef">to</span> <span style="color:#ae81ff">50</span> rows <span style="color:#66d9ef">from</span> spfli <span style="color:#66d9ef">into</span> <span style="color:#66d9ef">table</span> flights.
+go_grid <span style="color:#f92672">=</span> new cl_gui_alv_grid(
+  i_parent <span style="color:#f92672">=</span> new cl_gui_customg_container( container_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CC&#39;</span> )
+).
+go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_table_for_first_display</span>(
+  <span style="color:#66d9ef">exporting</span>
+    i_structure_name    <span style="color:#f92672">=</span>   <span style="color:#e6db74">&#39;SPFLI&#39;</span>
+  <span style="color:#66d9ef">changing</span>
+    it_outtab           <span style="color:#f92672">=</span>    flights
+  <span style="color:#66d9ef">exceptions</span>
+    invalid_parameter_combination <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    program_error                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    too_many_lines                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">others</span>                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+).
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">CALL SCREEN</span> <span style="color:#ae81ff">0100</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="2splitter-container">2.Splitter container</h3>
+<p>Splitter Container 可以使用类 <code>CL_GUI_SPLITTER_CONTAINER</code> 创建， 需要一个自定义容器作为父容器才能工作。 它用于将屏幕区域划分为多个容器。</p>
+<p>为简化起见，你可以决定拆分器将有多少行和列。 所以它就像一个表格，甚至是 HTML 中的 DIV，可以在其中放置自定义的内容。 你可以创建多级拆分器，因此如果你愿意，可以将区域拆分为两行一列，然后在顶行创建一个拆分器，该拆分器将分为两行三列。 你的想象力、屏幕尺寸和用户体验将提示您在这里进行最佳布局。</p>
+<p>程序 <em>ZDEMO_SPLITTER_CONTAINER</em> 中的简单示例将创建一个具有两行一列的拆分器。 此处的 <em>SCREEN</em> 0100 与 <em>ZDEMO_CUSTOM_CONTAINER</em> 中的完全相同。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZDEMO_SPLITTER_CONTAINER.
+<span style="color:#66d9ef">DATA</span>: flights <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> spfli.
+<span style="color:#66d9ef">DATA</span>: go_grid <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> up <span style="color:#66d9ef">to</span> <span style="color:#ae81ff">50</span> rows <span style="color:#66d9ef">from</span> spfli <span style="color:#66d9ef">into</span> <span style="color:#66d9ef">table</span> flights.
+<span style="color:#66d9ef">DATA</span>:go_splitter <span style="color:#66d9ef">TYPE REF TO</span> CL_GUI_SPLITTER_CONTAINER,
+     go_container_2000l <span style="color:#66d9ef">TYPE REF TO</span> CL_GUI_CONTAINER,
+     go_container_2000r <span style="color:#66d9ef">TYPE REF TO</span> CL_GUI_CONTAINER.
+<span style="color:#66d9ef">IF</span> go_splitter <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">CREATE OBJECT</span> go_splitter  <span style="color:#75715e">&#34;定义一个屏幕包含两个ALV&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">EXPORTING</span>
+        parent  <span style="color:#f92672">=</span> cl_gui_container<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>screen0
+        rows    <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        columns <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> go_splitter<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_border
+      <span style="color:#66d9ef">EXPORTING</span>
+        border <span style="color:#f92672">=</span> cl_gui_cfw<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>false.
+    go_container_2000l <span style="color:#f92672">=</span> go_splitter<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_container</span>( row <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> column <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+    go_container_2000r <span style="color:#f92672">=</span> go_splitter<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_container</span>( row <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> column <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+    go_splitter<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_row_height</span>( <span style="color:#66d9ef">id</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> height <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> ).
+    go_splitter<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_row_height</span>( <span style="color:#66d9ef">id</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> height <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span> ).
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">IF</span> go_grid <span style="color:#f92672">IS INITIAL</span>.
+  go_grid <span style="color:#f92672">=</span> new cl_gui_alv_grid(
+    i_parent <span style="color:#f92672">=</span> go_container_2000l
+  ).
+<span style="color:#66d9ef">ENDIF</span>.
+go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_table_for_first_display</span>(
+  <span style="color:#66d9ef">exporting</span>
+    i_structure_name    <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;SPFLI&#39;</span>
+    i_save              <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#66d9ef">changing</span>
+    it_outtab           <span style="color:#f92672">=</span>  flights
+  <span style="color:#66d9ef">exceptions</span>
+    invalid_parameter_combination <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    program_error                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    too_many_lines                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">others</span>                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+).
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">CALL SCREEN</span> <span style="color:#ae81ff">0100</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><p>由于我没有对除行数和列数之外的拆分器进行任何编程，然后它会自动将自定义容器区域拆分为两个相等的部分，在顶行我们将看到网格，在底部将有 一个空的空间，因为我们没有在那里放任何东西。</p>
+<h3 id="3docking-container">3.Docking container</h3>
+<p>Docking Container 可以使用类<code>CL_GUI_DOCKING_CONTAINER</code>创建，不需要任何父级，自定义屏幕上的自定义容器区域也不需要。</p>
+<p>创建和显示时，它停靠在屏幕的四个位置之一：顶部(top)、底部(bottom)、左侧(left)、右侧(right)。 在大多数情况下，Docking 容器用于显示一些导航菜单，但由于可以将其用作网格父级，因此也可以使用它来显示其中一些有限数量的列。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZDEMO_DOCKING_CONTAINER.
+<span style="color:#66d9ef">PARAMETERS</span>: <span style="color:#66d9ef">dummy</span> <span style="color:#66d9ef">AS CHECKBOX</span>.
+<span style="color:#66d9ef">DATA</span>: flights <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> spfli.
+<span style="color:#66d9ef">DATA</span>: go_docking <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_docking_container.
+<span style="color:#66d9ef">DATA</span>: go_grid <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+<span style="color:#66d9ef">AT SELECTION-SCREEN OUTPUT</span>.
+  <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> up <span style="color:#66d9ef">to</span> <span style="color:#ae81ff">50</span> rows <span style="color:#66d9ef">form</span> <span style="color:#a6e22e">spfli</span> <span style="color:#66d9ef">into</span> <span style="color:#66d9ef">table</span> flights.
+  go_docking <span style="color:#f92672">=</span> new cl_gui_docking_container(
+    side      <span style="color:#f92672">=</span> cl_gui_docking_container<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>dock_at_left
+    extension <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>
+    repid     <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid
+    dynnr     <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>dynnr
+  ).
+  go_grid <span style="color:#f92672">=</span> new cl_gui_alv_grid( i_parent <span style="color:#f92672">=</span> go_docking ).
+  go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_table_for_first_display</span>(
+    <span style="color:#66d9ef">exporting</span>
+      i_structure_name    <span style="color:#f92672">=</span>   <span style="color:#e6db74">&#39;SPFLI&#39;</span>
+    <span style="color:#66d9ef">changing</span>
+      it_outtab           <span style="color:#f92672">=</span>    flights
+    <span style="color:#66d9ef">exceptions</span>
+      invalid_parameter_combination <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      program_error                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      too_many_lines                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      <span style="color:#66d9ef">others</span>                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+  ).
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><p>为了能够在不创建任何屏幕的情况下使用 Docking Container，我只添加了一个虚拟参数，并将创建容器的代码移到了在 SELECTION-SCREEN OUTPUT 事件中。 这样 Docking Container 在程序运行后直接出现。</p>
+<h3 id="4dialgobox-container">4.Dialgobox container</h3>
+<p>对话框容器可以使用类 <code>CL_GUI_DIALOGBOX_CONTAINER</code> 创建，如果你需要显示带有网格的弹出窗口，并且不想花时间创建带有自定义控件的屏幕，则该对话框会很有用。</p>
+<p>在这种情况下使用它非常方便，但它也有一个限制，即这里没有可用的 GUI 工具栏。</p>
+<p>执行程序后，你可以找到带有网格的弹出屏幕。 如果需要，可以自由的调整其大小或最小化。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZDEMO_DIALOGBOX_CONTAINER.
+<span style="color:#66d9ef">PARAMETERS</span>: <span style="color:#66d9ef">dummy</span> <span style="color:#66d9ef">AS CHECKBOX</span>.
+<span style="color:#66d9ef">DATA</span>: flights <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> spfli.
+<span style="color:#66d9ef">DATA</span>: go_dialog <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_dialogbox_container.
+<span style="color:#66d9ef">DATA</span>: go_grid <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+<span style="color:#66d9ef">AT SELECTION-SCREEN OUTPUT</span>.
+  <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> up <span style="color:#66d9ef">to</span> <span style="color:#ae81ff">50</span> rows <span style="color:#66d9ef">from</span> spfli <span style="color:#66d9ef">into</span> <span style="color:#66d9ef">table</span> flights.
+  go_dialog <span style="color:#f92672">=</span> new cl_gui_dialogbox_container(
+    <span style="color:#66d9ef">width</span>  <span style="color:#f92672">=</span> <span style="color:#ae81ff">400</span>
+    height <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+  ).
+  go_grid <span style="color:#f92672">=</span> new cl_gui_alv_grid( i_parent <span style="color:#f92672">=</span> dialog ).
+  go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_table_for_first_display</span>(
+    <span style="color:#66d9ef">exporting</span>
+      i_structure_name    <span style="color:#f92672">=</span>   <span style="color:#e6db74">&#39;SPFLI&#39;</span>
+    <span style="color:#66d9ef">changing</span>
+      it_outtab           <span style="color:#f92672">=</span>    flights
+    <span style="color:#66d9ef">exceptions</span>
+      invalid_parameter_combination <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      program_error                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      too_many_lines                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      <span style="color:#66d9ef">others</span>                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+  ).
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1370</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/OOALV/">
+                    #OOALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_Demo/" class="prev" rel="prev" title=" OO ALV Demo "><i class="iconfont icon-dajiantou"></i>&nbsp; OO ALV Demo </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_SortFilter/" class="next" rel="next" title=" OO ALV 排序和过滤 "> OO ALV 排序和过滤 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-12 00:00:00 \x2b0000 UTC',
+        title: ' OO ALV 不同Container使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

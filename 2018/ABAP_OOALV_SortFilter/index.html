@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_OOALV_DiffContainers/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_OOALV_LayoutFcat/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OOALV_SortFilter/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            OO ALV 排序和过滤  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" OO ALV 排序和过滤  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" OO ALV 排序和过滤 "/>
+<meta name="twitter:description" content="OO ALV 设置排序条件 可以为 ALV 数据设置排序条件。 初始化排序功能，在方法 SET_TABLE_FOR_FIRST_DISPLAY 中的参数 IT_SORT 添加由系统标准的排序结构 LVC_T_SORT 生成的内表来实现。 FORM prepare_sort_table CHANGING pt_sort TYPE lvc_t_sort . DATA ls_sort TYPE"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " OO ALV 排序和过滤 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_SortFilter\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "OOALV",
+  "wordcount":  438 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_SortFilter\/",
+  "datePublished": "2018-07-15T00:00:00\x2b00:00",
+  "dateModified": "2018-07-15T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> OO ALV 排序和过滤 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-15 >15 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="oo-alv-设置排序条件">OO ALV 设置排序条件</h3>
+<p>可以为 ALV 数据设置排序条件。 初始化排序功能，在方法 SET_TABLE_FOR_FIRST_DISPLAY 中的参数 IT_SORT 添加由系统标准的排序结构 <code>LVC_T_SORT</code> 生成的内表来实现。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">prepare_sort_table</span> <span style="color:#66d9ef">CHANGING</span> pt_sort <span style="color:#66d9ef">TYPE </span>lvc_t_sort .
+  <span style="color:#66d9ef">DATA</span> ls_sort <span style="color:#66d9ef">TYPE </span>lvc_s_sort .
+  <span style="color:#66d9ef">CLEAR</span>: ls_sort,pt_sort.
+  ls_sort<span style="color:#f92672">-</span>spos <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXX&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>up <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> . <span style="color:#75715e">&#34;A to Z&#34;
+</span><span style="color:#75715e"></span>  ls_sort<span style="color:#f92672">-</span>down <span style="color:#f92672">=</span> space .
+  <span style="color:#66d9ef">APPEND</span> ls_sort <span style="color:#66d9ef">TO</span> pt_sort .
+  <span style="color:#66d9ef">CLEAR</span> ls_sort.
+  ls_sort<span style="color:#f92672">-</span>spos <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXX&#39;</span> .
+  ls_sort<span style="color:#f92672">-</span>up <span style="color:#f92672">=</span> space .
+  ls_sort<span style="color:#f92672">-</span>down <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> . <span style="color:#75715e">&#34;Z to A&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">APPEND</span> ls_sort <span style="color:#66d9ef">TO</span> pt_sort .
+  <span style="color:#66d9ef">CLEAR</span> ls_sort.
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34;prepare_sort_table&#34;
+</span></code></pre></div><h4 id="排序注意问题">排序注意问题</h4>
+<ul>
+<li>如果要排序的任何一个字段不在字段目录中，程序会 Dump。</li>
+<li>当使用 ALV Grid 对数据进行排序时，默认情况下它会垂直合并具有相同内容的字段。 为了避免所有的列都执行默认情况，可以设置布局结构的 <code>no_merging = 'X'</code>。 如果只想对某些列禁用合并，设置该列对应的字段目录行的 no_merging 字段即可。</li>
+</ul>
+<p>可以分别使用 <code>GET_SORT_CRITERIA</code> 和 <code>SET_SORT_CRITERIA</code> 方法获取和设置应用的排序标准。</p>
+<h3 id="filtering-设置过滤条件">Filtering 设置过滤条件</h3>
+<p>过滤和排序的使用类似。 使用过滤条件时，必须填写参照类型 <code>LVC_T_FILT</code> 生成的内表。 填充此类型内表类似于填充 RANGES 变量。</p>
+<p>然后把这个内表传递给方法 SET_TABLE_FOR_FIRST_DISPLAY 中的参数 IT_FILTER。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">prepare_filter_table</span> <span style="color:#66d9ef">CHANGING</span> pt_filt <span style="color:#66d9ef">TYPE </span>lvc_t_filt .
+  <span style="color:#66d9ef">DATA</span> ls_filt <span style="color:#66d9ef">TYPE </span>lvc_s_filt .
+  <span style="color:#66d9ef">CLEAR</span>: ls_filt,pt_filt .
+  ls_filt<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FLDATE&#39;</span> .
+  ls_filt<span style="color:#f92672">-</span>sign <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+  ls_filt<span style="color:#f92672">-</span>option <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BT&#39;</span> .
+  ls_filt<span style="color:#f92672">-</span>low <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20180101&#39;</span> .
+  ls_filt<span style="color:#f92672">-</span>high <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20181231&#39;</span> .
+  <span style="color:#66d9ef">APPEND</span> ls_filt <span style="color:#66d9ef">TO</span> pt_filt .
+  <span style="color:#66d9ef">CLEAR</span> ls_filt.
+<span style="color:#66d9ef">ENDFORM</span>.  <span style="color:#75715e">&#34; prepare_filter_table &#34;
+</span></code></pre></div><p>可以分别使用 <code>GET_FILTER_CRITERIA</code> 和 <code>SET_FILTER_CRITERIA</code> 方法获取和设置应用的过滤条件。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>438</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/OOALV/">
+                    #OOALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_DiffContainers/" class="prev" rel="prev" title=" OO ALV 不同Container使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; OO ALV 不同Container使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_LayoutFcat/" class="next" rel="next" title=" OO ALV 修改Layou和FieldCatalog "> OO ALV 修改Layou和FieldCatalog &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-15 00:00:00 \x2b0000 UTC',
+        title: ' OO ALV 排序和过滤 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

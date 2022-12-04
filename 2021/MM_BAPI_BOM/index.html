@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/MM_BAPI_ECN/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_SQL_DBCO_Result/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/MM_BAPI_BOM/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI 操作BOM数据  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI 操作BOM数据  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI 操作BOM数据 "/>
+<meta name="twitter:description" content="BOM 内部 API：Function Group &mdash; CSAI CSAI_BOM_XXX 和 CSAP_BOM_XX CSAI_BOM_XXX ：This function module is used to create/change BOM item for sales. CSAP_DOC_BOM_MAINTAIN：用于处理简单的文档结构"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI 操作BOM数据 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/MM_BAPI_BOM\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM, BAPI",
+  "wordcount":  849 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/MM_BAPI_BOM\/",
+  "datePublished": "2021-07-18T00:00:00\x2b00:00",
+  "dateModified": "2021-07-18T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI 操作BOM数据 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-07-18 >18 July 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>BOM 内部 API：Function Group &mdash; CSAI</p>
+<h3 id="csai_bom_xxx-和-csap_bom_xx">CSAI_BOM_XXX 和 CSAP_BOM_XX</h3>
+<p>CSAI_BOM_XXX ：This function module is used to create/change BOM item for sales.</p>
+<p>CSAP_DOC_BOM_MAINTAIN：用于处理简单的文档结构。主要用于改变结构，但也可用于创建结构。</p>
+<p>如果您只想创建结构，请使用 CSAP_DOC_BOM_CREATE.</p>
+<h3 id="创建-bomcsai_bom_create">创建 BOM：CSAI_BOM_CREATE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: LS_CSIN   <span style="color:#66d9ef">TYPE </span>CSIN,
+  LS_STKOB  <span style="color:#66d9ef">TYPE </span>STKOB,
+  LS_STZUB  <span style="color:#66d9ef">TYPE </span>STZUB,
+  LS_STPOB  <span style="color:#66d9ef">TYPE </span>STPOB,
+  LT_STPOB  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> STPOB,
+  LT_STPOB2 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> STPO_API03.
+<span style="color:#66d9ef">DATA</span>: LV_RESULT <span style="color:#66d9ef">TYPE </span>BAPI_MSGTY,
+      LV_MESSAGE <span style="color:#66d9ef">TYPE </span>BAPI_MSG.
+<span style="color:#66d9ef">DATA</span>: ZMAST <span style="color:#66d9ef">TYPE </span>MAST.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> MAST
+  <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> ZMAST
+ <span style="color:#66d9ef">WHERE</span> MATNR <span style="color:#f92672">=</span> MATNR
+   <span style="color:#f92672">AND</span> WERKS <span style="color:#f92672">=</span> WERKS
+   <span style="color:#f92672">AND</span> STLAN <span style="color:#f92672">=</span> STLAN
+   <span style="color:#f92672">AND</span> STLAL <span style="color:#f92672">=</span> STLAL
+<span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+  LV_RESULT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  <span style="color:#66d9ef">CONCATENATE</span> MATNR <span style="color:#e6db74">&#39;BOM already exists in SAP&#39;</span>
+     <span style="color:#66d9ef">INTO</span> LV_MESSAGE <span style="color:#66d9ef">SEPARATED BY</span> SPACE.
+  <span style="color:#66d9ef">CONTINUE</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34;Interface for BOM Access&#34;
+</span><span style="color:#75715e"></span>LS_CSIN<span style="color:#f92672">-</span>MATNR <span style="color:#f92672">=</span> MATNR. <span style="color:#75715e">&#34;物料编号&#34;
+</span><span style="color:#75715e"></span>LS_CSIN<span style="color:#f92672">-</span>WERKS <span style="color:#f92672">=</span> WERKS. <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>LS_CSIN<span style="color:#f92672">-</span>STLAN <span style="color:#f92672">=</span> STLAN. <span style="color:#75715e">&#34;BOM用途&#34;
+</span><span style="color:#75715e"></span>LS_CSIN<span style="color:#f92672">-</span>STLAL <span style="color:#f92672">=</span> STLAL. <span style="color:#75715e">&#34;替代物料清单&#34;
+</span><span style="color:#75715e"></span>LS_CSIN<span style="color:#f92672">-</span>DATUV <span style="color:#f92672">=</span> DATUV. <span style="color:#75715e">&#34;有效起始日期&#34;
+</span><span style="color:#75715e"></span>LS_CSIN<span style="color:#f92672">-</span>AENNR <span style="color:#f92672">=</span> AENNR. <span style="color:#75715e">&#34;更改编号&#34;
+</span><span style="color:#75715e"></span>LS_CSIN<span style="color:#f92672">-</span>STLTY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>.   <span style="color:#75715e">&#34;BOM category:M(Material BOM)&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;BOM Header Document Table&#34;
+</span><span style="color:#75715e"></span>LS_STKOB<span style="color:#f92672">-</span>STLTY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>.
+LS_STKOB<span style="color:#f92672">-</span>BMENG <span style="color:#f92672">=</span> BMENG. <span style="color:#75715e">&#34;基本数量&#34;
+</span><span style="color:#75715e"></span>LS_STKOB<span style="color:#f92672">-</span>STLST <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.  <span style="color:#75715e">&#34;BOM状态:01(Active)&#34;
+</span><span style="color:#75715e"></span>LS_STKOB<span style="color:#f92672">-</span>STKTX <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> .   <span style="color:#75715e">&#34;BOM文本&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;行项目数据&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>STLTY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>.
+LS_STPOB<span style="color:#f92672">-</span>SANFE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_STPOB<span style="color:#f92672">-</span>POSNR <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>.
+LS_STPOB<span style="color:#f92672">-</span>POSTP <span style="color:#f92672">=</span> POSTP. <span style="color:#75715e">&#34;项目类别&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>IDNRK <span style="color:#f92672">=</span> IDNRK.
+LS_STPOB<span style="color:#f92672">-</span>MENGE <span style="color:#f92672">=</span> MENGE <span style="color:#f92672">*</span> BMENG. <span style="color:#75715e">&#34;数量=原数量*放大倍数&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>MEINS <span style="color:#f92672">=</span> MEINS . <span style="color:#75715e">&#34;单位&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>NFGRP <span style="color:#f92672">=</span> NFGRP . <span style="color:#75715e">&#34;Follow-up group&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>NFEAG <span style="color:#f92672">=</span> NFEAG . <span style="color:#75715e">&#34;Discontinuation group&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>ALPST <span style="color:#f92672">=</span> ALPST . <span style="color:#75715e">&#34;Alternative item: strategy&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>DSPST <span style="color:#f92672">=</span> DSPST . <span style="color:#75715e">&#34;Explosion type&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>ALPGR <span style="color:#f92672">=</span> ALPGR . <span style="color:#75715e">&#34;Alternative item: group&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>ALPRF <span style="color:#f92672">=</span> ALPRF . <span style="color:#75715e">&#34;Alternative item: ranking order&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>SANKA <span style="color:#f92672">=</span> SANKA . <span style="color:#75715e">&#34;Indicator: item relevant to costing&#34;
+</span><span style="color:#75715e"></span>LS_STPOB<span style="color:#f92672">-</span>EWAHR <span style="color:#f92672">=</span> EWAHR . <span style="color:#75715e">&#34;Usage probability in % (alternative item)&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">APPEND</span> LS_STPOB <span style="color:#66d9ef">TO</span> LT_STPOB.
+<span style="color:#66d9ef">CLEAR</span> LS_STPOB.
+<span style="color:#75715e">&#34;调用 BAPI&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CSAI_BOM_CREATE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    ECSIN              <span style="color:#f92672">=</span> LS_CSIN
+    ESTKOB             <span style="color:#f92672">=</span> LS_STKOB
+    ESTZUB             <span style="color:#f92672">=</span> LS_STZUB
+    FL_COMMIT_AND_WAIT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    FL_WARNING         <span style="color:#f92672">=</span> L_WARNING
+    ASTLNR             <span style="color:#f92672">=</span> L_ASTLNR
+  <span style="color:#66d9ef">TABLES</span>
+    T_STPOB            <span style="color:#f92672">=</span> LT_STPOB
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    ERROR              <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+</code></pre></div><h3 id="修改-bomcsai_bom_maintain">修改 BOM：CSAI_BOM_MAINTAIN</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">  <span style="color:#66d9ef">DATA</span>: LS_STKO <span style="color:#66d9ef">LIKE </span>STKO_API01.
+  <span style="color:#66d9ef">DATA</span>: L_POS     <span style="color:#66d9ef">TYPE </span>STPOB<span style="color:#f92672">-</span>POSNR,
+        LS_STPOB  <span style="color:#66d9ef">LIKE </span>STPO_API03,
+        LT_STPOB  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> STPO_API03,
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CSAP_MAT_BOM_MAINTAIN&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    MATERIAL           <span style="color:#f92672">=</span> LS_HEAD<span style="color:#f92672">-</span>MATERIAL
+    PLANT              <span style="color:#f92672">=</span> LS_HEAD<span style="color:#f92672">-</span>PLANT
+    BOM_USAGE          <span style="color:#f92672">=</span> LS_HEAD<span style="color:#f92672">-</span>BOM_USAGE
+    VALID_FROM         <span style="color:#f92672">=</span> LS_HEAD<span style="color:#f92672">-</span>VALID_FROM
+    CHANGE_NO          <span style="color:#f92672">=</span> LS_HEAD<span style="color:#f92672">-</span>CHANGE_NO
+    I_STKO             <span style="color:#f92672">=</span> LS_STKO
+    FL_COMMIT_AND_WAIT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+<span style="color:#75715e">*   FL_NEW_ITEM        = &#39;X&#39;</span>
+<span style="color:#75715e">*   FL_BOM_CREATE      = &#39;X&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    FL_WARNING         <span style="color:#f92672">=</span> L_WARNING
+<span style="color:#75715e">*   O_STKO             = LT_O_STKO</span>
+  <span style="color:#66d9ef">TABLES</span>
+    T_STPO             <span style="color:#f92672">=</span> LT_STPOB[]
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    ERROR              <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BALW_BAPIRETURN_GET2&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        TYPE   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGTY
+        CL     <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGID
+        <span style="color:#66d9ef">NUMBER</span> <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGNO
+        PAR1   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV1
+        PAR2   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV2
+        PAR3   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV3
+        PAR4   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV4
+<span style="color:#75715e">*       PARAMETER  = P_PARAMETER</span>
+<span style="color:#75715e">*       ROW    = P_ROW</span>
+<span style="color:#75715e">*       FIELD  = &#39; &#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">RETURN</span> <span style="color:#f92672">=</span> LT_RETURN.
+    <span style="color:#66d9ef">APPEND</span> LT_RETURN.
+</code></pre></div><h3 id="读取-bomcsai_bom_read">读取 BOM：CSAI_BOM_READ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: gs_csin <span style="color:#66d9ef">TYPE </span>csin,
+      gs_stko <span style="color:#66d9ef">TYPE </span>stkob,
+      gs_stzu <span style="color:#66d9ef">TYPE </span>stzub.
+<span style="color:#66d9ef">DATA</span>: gt_stpo <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> stpob,
+      gt_stko <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> stkob,
+      gs_stpo <span style="color:#66d9ef">TYPE </span>stpob.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CSAI_BOM_READ&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    ecsin <span style="color:#f92672">=</span> gs_csin
+<span style="color:#75715e">* IMPORTING</span>
+<span style="color:#75715e">* FL_WARNING =</span>
+  <span style="color:#66d9ef">TABLES</span>
+    t_stpob <span style="color:#f92672">=</span> gt_stpo
+    t_stkob <span style="color:#f92672">=</span> gt_stko
+<span style="color:#75715e">* T_DEP_DATA =</span>
+<span style="color:#75715e">* T_DEP_DESCR =</span>
+<span style="color:#75715e">* T_DEP_ORDER =</span>
+<span style="color:#75715e">* T_DEP_SOURCE =</span>
+<span style="color:#75715e">* T_DEP_DOC =</span>
+<span style="color:#75715e">* EXCEPTIONS</span>
+<span style="color:#75715e">* ERROR = 1</span>
+<span style="color:#75715e">* OTHERS = 2</span>
+.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO</span>
+<span style="color:#75715e">* WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.</span>
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="删除-bomcsai_bom_delete">删除 BOM：CSAI_BOM_DELETE</h3>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>849</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/MM_BAPI_ECN/" class="prev" rel="prev" title=" BAPI 操作ECN数据 "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI 操作ECN数据 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_SQL_DBCO_Result/" class="next" rel="next" title=" DBCO 执行结果查询 "> DBCO 执行结果查询 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-07-18 00:00:00 \x2b0000 UTC',
+        title: ' BAPI 操作BOM数据 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

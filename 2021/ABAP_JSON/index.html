@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_JSON_Methods/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_HttpFunction/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_JSON/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP Json 转换  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP Json 转换  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP Json 转换 "/>
+<meta name="twitter:description" content="ABAP 对象和 JSON 格式的转换工具 创建工具类 SE24：创建类,输入描述并选择类型 点击保存 定义属性值 需要创建的方法 方法详细代码列表 定义Types Section 定义 Public"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP Json 转换 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_JSON\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  861 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_JSON\/",
+  "datePublished": "2021-03-06T00:00:00\x2b00:00",
+  "dateModified": "2021-03-06T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP Json 转换 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-03-06 >6 March 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="abap-对象和-json-格式的转换工具">ABAP 对象和 JSON 格式的转换工具</h2>
+<h3 id="创建工具类">创建工具类</h3>
+<p>SE24：创建类,输入描述并选择类型</p>
+<p><img src="/images/ABAP/ABAP_JSON0.png" alt="工具类创建"></p>
+<p>点击保存</p>
+<p><img src="/images/ABAP/ABAP_JSON1.png" alt="工具类创建"></p>
+<h3 id="定义属性值">定义属性值</h3>
+<p><img src="/images/ABAP/ABAP_JSON3.png" alt="Attributes"></p>
+<p><img src="/images/ABAP/ABAP_JSON4.png" alt="Attributes"></p>
+<p><img src="/images/ABAP/ABAP_JSON5.png" alt="Attributes"></p>
+<h3 id="需要创建的方法">需要创建的方法</h3>
+<ul>
+<li><a href="https://coldinfire.github.io/2021/ABAP_JSON_Methods/">方法详细代码列表</a></li>
+</ul>
+<p><img src="/images/ABAP/ABAP_JSON2.png" alt="包含方法"></p>
+<h3 id="定义types">定义Types</h3>
+<p><img src="/images/ABAP/ABAP_JSON6.png" alt="Types Define"></p>
+<h3 id="section-定义">Section 定义</h3>
+<h4 id="public-section">Public section</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">class</span> ZCL_FDT_JSON <span style="color:#66d9ef">definition</span>
+  <span style="color:#66d9ef">public</span>
+  final
+  <span style="color:#66d9ef">create public</span> .
+
+<span style="color:#75715e">*&#34;* public components of class ZCL_FDT_JSON</span>
+<span style="color:#75715e">*&#34;* do not include other source files here!!!</span>
+<span style="color:#66d9ef">public section</span>.
+
+  <span style="color:#66d9ef">types</span>:
+    <span style="color:#66d9ef">BEGIN OF</span> FDT_S_AMOUNT,
+          <span style="color:#66d9ef">NUMBER</span> <span style="color:#66d9ef">TYPE </span>FDT_NUMBER_DECFLOAT,
+          <span style="color:#66d9ef">CURRENCY</span> <span style="color:#66d9ef">TYPE </span>FDT_CURRENCY,
+          <span style="color:#66d9ef">END OF</span> FDT_S_AMOUNT .
+  <span style="color:#66d9ef">types</span>:
+    <span style="color:#66d9ef">BEGIN OF</span> FDT_S_QUANTITY,
+        <span style="color:#66d9ef">NUMBER</span> <span style="color:#66d9ef">TYPE </span>FDT_NUMBER_DECFLOAT,
+        UNIT <span style="color:#66d9ef">TYPE </span>FDT_UNIT,
+        <span style="color:#66d9ef">END OF</span> FDT_S_QUANTITY .
+  <span style="color:#66d9ef">types</span>:
+    <span style="color:#66d9ef">BEGIN OF</span> FDT_S_TIMEPOINT,
+        <span style="color:#66d9ef">DATE</span> <span style="color:#66d9ef">TYPE </span>DATS,
+        <span style="color:#66d9ef">TIME</span> <span style="color:#66d9ef">TYPE </span>TIMS,
+        <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">TYPE </span>FDT_TIMESTAMP,
+        OFFSET_TIME <span style="color:#66d9ef">TYPE </span>CHAR3,
+        OFFSET_SIGN <span style="color:#66d9ef">TYPE </span>TZNUTCSIGN,
+        <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TYPE </span>FDT_TIMEPOINT_TYPE,
+        <span style="color:#66d9ef">END OF</span> FDT_S_TIMEPOINT .
+
+  <span style="color:#66d9ef">class-methods</span> DATA_TO_JSON
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IA_DATA <span style="color:#66d9ef">type </span>ANY
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_JSON) <span style="color:#66d9ef">type </span>STRING .
+  <span style="color:#66d9ef">class-methods</span> JSON_TO_DATA
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IV_JSON <span style="color:#66d9ef">type </span>STRING
+    <span style="color:#66d9ef">changing</span>
+      <span style="color:#f92672">!</span>CA_DATA <span style="color:#66d9ef">type </span>ANY .
+  <span style="color:#66d9ef">interface</span> IF_FDT_TYPES <span style="color:#66d9ef">load</span> .
+  <span style="color:#66d9ef">class-methods</span> TO_STING
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IS_AMOUNT <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_AMOUNT
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_STRING) <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT .
+  <span style="color:#66d9ef">class-methods</span> QUANTITY_TO_STING
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IS_QUANTITY <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_QUANTITY
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_STRING) <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT .
+  <span style="color:#66d9ef">class-methods</span> CONVERT_TIMEPOINT_TO_TEXT
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IS_TIMEPOINT <span style="color:#66d9ef">type </span>FDT_S_TIMEPOINT
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_TEXT) <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT .
+  <span style="color:#66d9ef">class-methods</span> GET_CURRENCY_DECIMALS
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IV_CURRENCY <span style="color:#66d9ef">type </span>SYCURR
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_DECIMALS) <span style="color:#66d9ef">type </span>CURRDEC .
+  <span style="color:#66d9ef">class-methods</span> _ENSURE_DIGITS
+    <span style="color:#66d9ef">changing</span>
+      <span style="color:#f92672">!</span>CHV_OFFSET_MINUTES <span style="color:#66d9ef">type </span>CHAR3 optional
+      <span style="color:#f92672">!</span>CHV_OFFSET_TIME <span style="color:#66d9ef">type </span>CHAR5 optional
+      <span style="color:#f92672">!</span>CHV_YEAR <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT optional
+      <span style="color:#f92672">!</span>CHV_MONTH <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT optional
+      <span style="color:#f92672">!</span>CHV_WEEK <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT optional
+      <span style="color:#f92672">!</span>CHV_DAY <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT optional
+      <span style="color:#f92672">!</span>CHV_HOUR <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT optional
+      <span style="color:#f92672">!</span>CHV_MINUTE <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT optional
+      <span style="color:#f92672">!</span>CHV_SECOND <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT optional .
+  <span style="color:#66d9ef">class-methods</span> IS_VALID
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IS_TIMEPOINT <span style="color:#66d9ef">type </span>FDT_S_TIMEPOINT
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_IS_VALID) <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_BOOLEAN .
+  <span style="color:#66d9ef">class-methods</span> IS_NULL
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IS_TIMEPOINT <span style="color:#66d9ef">type </span>FDT_S_TIMEPOINT
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_IS_NULL) <span style="color:#66d9ef">type </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_BOOLEAN .
+  <span style="color:#66d9ef">class-methods</span> _GET_TIMEZONE
+    <span style="color:#66d9ef">importing</span>
+      <span style="color:#f92672">!</span>IV_SIGN <span style="color:#66d9ef">type </span>C
+      <span style="color:#f92672">!</span>IV_MINUTES <span style="color:#66d9ef">type </span>C
+    <span style="color:#66d9ef">returning</span>
+      <span style="color:#66d9ef">value</span>(RV_TIMEZONE) <span style="color:#66d9ef">type </span>TZNZONE .
+</code></pre></div><h4 id="protected-section">Protected Section</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&#34;* protected components of class ZCL_FDT_JSON</span>
+<span style="color:#75715e">*&#34;* do not include other source files here!!!</span>
+<span style="color:#66d9ef">PROTECTED SECTION</span>.
+  <span style="color:#66d9ef">CLASS-DATA</span>:GC_ABAP_DECIMALS_SEPARATOR <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;.&#39;</span>.
+  <span style="color:#66d9ef">CLASS-DATA</span>:GC_DECIMALS_DEFAULT <span style="color:#66d9ef">TYPE </span>I <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;3&#39;</span>.
+  <span style="color:#66d9ef">CLASS-DATA</span> GC_ELEMENT_AMOUNT <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\INTERFACE=IF_FDT_TYPES\TYPE=ELEMENT_AMOUNT&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT       &#34; .
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_ELEMENT_QUANTITY <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\INTERFACE=IF_FDT_TYPES\TYPE=ELEMENT_QUANTITY&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT       &#34; .
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_ELEMENT_BOOLEAN <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\INTERFACE=IF_FDT_TYPES\TYPE=ELEMENT_BOOLEAN&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT       &#34; .
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_ELEMENT_NUMBER <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\INTERFACE=IF_FDT_TYPES\TYPE=ELEMENT_NUMBER&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT       &#34; .
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_ELEMENT_TIMEPOINT <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\INTERFACE=IF_FDT_TYPES\TYPE=ELEMENT_TIMEPOINT&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT       &#34; .
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_ELEMENT_TEXT <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\INTERFACE=IF_FDT_TYPES\TYPE=ELEMENT_TEXT&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT       &#34; .
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_ABAP_BOOL <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\TYPE-POOL=ABAP\TYPE=ABAP_BOOL&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_FDT_BOOLEAN <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\TYPE=FDT_BOOLEAN&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_FDT_AMOUNT <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\TYPE=FDT_S_AMOUNT&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_FDT_QUANTITY <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\TYPE=FDT_S_QUANTITY&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_FDT_TIMEPOINT <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\TYPE=FDT_S_TIMEPOINT&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLASS-DATA</span> GC_FDT_NUMBER <span style="color:#66d9ef">TYPE </span>CHAR200 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;\TYPE=FDT_NUMBER_DECFLOAT&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span></code></pre></div><h4 id="private-section">Private Section</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&#34;* private components of class ZCL_FDT_JSON</span>
+<span style="color:#75715e">*&#34;* do not include other source files here!!!</span>
+<span style="color:#66d9ef">PRIVATE SECTION</span>.
+
+  <span style="color:#66d9ef">TYPES</span>:
+    <span style="color:#66d9ef">BEGIN OF</span> S_CURR_DEC,
+         CURR <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_CURRENCY,
+         DEC  <span style="color:#66d9ef">TYPE </span>I,
+      <span style="color:#66d9ef">END OF</span> S_CURR_DEC .
+  <span style="color:#66d9ef">TYPES</span>:
+    TH_CURR_DEC <span style="color:#66d9ef">TYPE HASHED TABLE OF</span> S_CURR_DEC <span style="color:#66d9ef">WITH UNIQUE KEY</span> CURR .
+
+  <span style="color:#66d9ef">CLASS-DATA</span> GTH_CURR_DEC <span style="color:#66d9ef">TYPE </span>TH_CURR_DEC .
+
+  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M000 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC N
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M060 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-1&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M120 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-2&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M180 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-3&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M210 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-33&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M240 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-4&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M270 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-43&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M300 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-5&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M360 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-6&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M420 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-7&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M480 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-8&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M510 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-83&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M540 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-9&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M600 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-10&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M660 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-11&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_M720 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC-12&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P000 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC N
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P060 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+1&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P120 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+2&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P180 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+3&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P210 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+33&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P240 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+4&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P270 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+43&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P300 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+5&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P330 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+53&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P345 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+45&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P360 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+6&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P390 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+63&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P420 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+7&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P480 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+8&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P540 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+9&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT. &#34;#EC
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P570 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+93&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P600 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+10&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P660 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+11&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P720 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+12&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P780 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+13&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_UTC_P840 <span style="color:#66d9ef">TYPE </span>TZNZONE <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;UTC+14&#39;</span>.<span style="color:#75715e">&#34; ##NO_TEXT.                                   &#34;#E
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">CLASS-METHODS</span> BRF_STRUC_TO_JSON
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#f92672">!</span>IA_DATA <span style="color:#66d9ef">TYPE </span>ANY
+      <span style="color:#f92672">!</span>IV_TYPE <span style="color:#66d9ef">TYPE </span>CHAR200
+    <span style="color:#66d9ef">RETURNING</span>
+      <span style="color:#66d9ef">VALUE</span>(RV_JSON) <span style="color:#66d9ef">TYPE </span>STRING .
+  <span style="color:#66d9ef">CLASS-METHODS</span> CONVERT_TOKEN
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#f92672">!</span>IA_DATA <span style="color:#66d9ef">TYPE </span>ANY
+    <span style="color:#66d9ef">CHANGING</span>
+      <span style="color:#f92672">!</span>CV_TOKEN <span style="color:#66d9ef">TYPE </span>ANY .
+  <span style="color:#66d9ef">CLASS-METHODS</span> DATA_TO_JSON_INTERNAL
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#f92672">!</span>IA_DATA <span style="color:#66d9ef">TYPE </span>ANY
+      <span style="color:#f92672">!</span>IO_DESCR <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TYPEDESCR OPTIONAL
+    <span style="color:#66d9ef">RETURNING</span>
+      <span style="color:#66d9ef">VALUE</span>(RV_JSON) <span style="color:#66d9ef">TYPE </span>STRING .
+  <span style="color:#66d9ef">CLASS-METHODS</span> GET_STRING
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#f92672">!</span>EV_STRING <span style="color:#66d9ef">TYPE </span>STRING
+    <span style="color:#66d9ef">CHANGING</span>
+      <span style="color:#f92672">!</span>CV_JSON <span style="color:#66d9ef">TYPE </span>STRING .
+  <span style="color:#66d9ef">CLASS-METHODS</span> JSON_TO_BRF_STRUC
+    <span style="color:#66d9ef">CHANGING</span>
+      <span style="color:#f92672">!</span>CV_JSON <span style="color:#66d9ef">TYPE </span>STRING
+      <span style="color:#f92672">!</span>CA_DATA <span style="color:#66d9ef">TYPE </span>ANY .
+  <span style="color:#66d9ef">CLASS-METHODS</span> JSON_TO_DATA_INTERNAL
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#f92672">!</span>IV_IS_TABLINE <span style="color:#66d9ef">TYPE </span>ABAP_BOOL <span style="color:#66d9ef">DEFAULT</span> ABAP_FALSE
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#f92672">!</span>EV_IS_FILLED <span style="color:#66d9ef">TYPE </span>ABAP_BOOL
+    <span style="color:#66d9ef">CHANGING</span>
+      <span style="color:#f92672">!</span>CV_JSON <span style="color:#66d9ef">TYPE </span>STRING
+      <span style="color:#f92672">!</span>CA_DATA <span style="color:#66d9ef">TYPE </span>ANY .
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>861</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_JSON_Methods/" class="prev" rel="prev" title=" ABAP&amp;Json 转换 Methods "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP&amp;Json 转换 Methods </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_HttpFunction/" class="next" rel="next" title=" ABAP 调用HTTP请求 "> ABAP 调用HTTP请求 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-03-06 00:00:00 \x2b0000 UTC',
+        title: ' ABAP Json 转换 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

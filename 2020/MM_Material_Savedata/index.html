@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/FI_DocumentPost/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_MIGO_Exits/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_Material_Savedata/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           批量创建/修改物料主数据 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="批量创建/修改物料主数据 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="批量创建/修改物料主数据"/>
+<meta name="twitter:description" content="程序实例 REPORT ZUPDATE_MATNR. data: headdata type bapimathead, &quot; 表头数据 &quot; clientdata type bapi_mara, &quot; 基本数据 &quot; clientdatax type bapi_marax. &quot; 变更数据标识 &quot; data: materialdescription type table of bapi_makt with header line. data: unitsofmeasure type table of bapi_marm with header line. data: unitsofmeasurex type table of bapi_marmx with header line. data: pr_unit type meins, &quot; 基本"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "批量创建\/修改物料主数据",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_Material_Savedata\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  849 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_Material_Savedata\/",
+  "datePublished": "2020-08-06T00:00:00\u002b00:00",
+  "dateModified": "2020-08-06T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">批量创建/修改物料主数据</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-08-06 >6 August 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="程序实例">程序实例</h3>
+<pre><code>REPORT ZUPDATE_MATNR.
+data: headdata      type bapimathead,     &quot; 表头数据 &quot;
+      clientdata    type bapi_mara,       &quot; 基本数据 &quot;
+      clientdatax   type bapi_marax.      &quot; 变更数据标识 &quot;
+data: materialdescription type table of bapi_makt with header line.
+data: unitsofmeasure type table of bapi_marm with header line.      
+data: unitsofmeasurex type table of bapi_marmx with header line.    
+data: pr_unit type meins,  &quot; 基本单位 &quot;
+      pr_unit2 type meins, &quot; 重量单位 &quot;
+      return type bapiret2.
+data: begin of msg occurs 0,
+  material type matnr,
+  description type maktx,
+  message(97) type c,
+end of msg.
+data:begin of itab occurs 0,
+  head_material type matnr,      &quot; 物料号 &quot;
+  head_ind_sector type mbrsh,    &quot; 行业领域 &quot;
+  head_matl_type type mtart,     &quot; 物料类型 &quot;
+  t_makt_matl_desc type maktx,   &quot; 物料描述 &quot;
+  mara_base_uom type meins,      &quot; 基本计量单位 &quot;
+  mara_matl_group type matkl,    &quot; 物料组 &quot;
+  t_old_mat_no type bismt,       &quot; 型号 &quot;
+  mara_division type spart,      &quot; 产品组 &quot;
+  t_dsn_office type labor,       &quot; 实验室 / 办公室 &quot;
+  mara_item_cat type mtpos_mara, &quot; 普通项目组类别 &quot;
+  t_marm_gross_wt type brgew,    &quot; 毛重 &quot;
+  mara_unit_of_wt type gewei,    &quot; 重量单位 &quot;
+  mara_net_weight type ntgew,    &quot; 净重 &quot;
+  mara_size_dim type groes,      &quot; 大小 / 量纲 &quot;
+end of itab.
+data itab1 type itab occurs 0 with header line.
+
+PERFORM putdata.
+PERFORM run.
+
+FORM run.
+loop at itab.
+  clear headdata.
+  headdata-material       = itab-head_material.
+  headdata-matl_type      = itab-head_matl_type.
+  headdata-ind_sector     = itab-head_ind_sector.
+  headdata-basic_view     = 'X'.  &quot; 基本数据视图 &quot;
+  clear pr_unit,pr_unit2.
+  PERFORM frm_unit using itab-mara_base_uom changing pr_unit.    &quot; 基本单位 &quot;
+  PERFORM frm_unit using itab-mara_unit_of_wt changing pr_unit2. &quot; 重量单位 &quot;
+  clear clientdata.
+  clientdata-base_uom = pr_unit.                 &quot; 基本计量单位 &quot;
+  clientdata-matl_group = itab-mara_matl_group.  &quot; 物料组 &quot;
+  clientdata-old_mat_no = itab-t_old_mat_no.     &quot; 型号 &quot;
+  clientdata-division = itab-mara_division.      &quot; 产品组 &quot;
+  clientdata-dsn_office = itab-t_dsn_office.     &quot; 实验室 / 办公室 &quot;
+  clientdata-item_cat = itab-mara_item_cat.      &quot; 普通项目组类别 &quot;
+  clientdata-unit_of_wt = pr_unit2.              &quot; 重量单位 &quot;
+  clientdata-net_weight = itab-mara_net_weight.  &quot; 净重 &quot;
+  clientdata-size_dim = itab-mara_size_dim.      &quot; 大小 / 量纲 &quot;
+  &quot; bapi_mara 的复选框结构 &quot;
+  clear clientdatax.
+  clientdatax-base_uom = 'X'.    
+  clientdatax-matl_group = 'X'.  
+  clientdatax-old_mat_no = 'X'.  
+  clientdatax-division = 'X'.    
+  clientdatax-dsn_office = 'X'.  
+  clientdatax-item_cat = 'X'.    
+  clientdatax-unit_of_wt = 'X'.  
+  clientdatax-net_weight = 'X'.  
+  clientdatax-size_dim = 'X'.    
+  &quot; 计量单位
+  unitsofmeasure-alt_unit = pr_unit.    &quot; 替换单位 (必须为基本计量单位，否则会报错：没有转换因子) &quot;
+  unitsofmeasure-numerator = 1.         &quot; 分子 &quot;
+  unitsofmeasure-denominatr = 1.        &quot; 分母 &quot;
+  unitsofmeasure-gross_wt = itab-t_marm_gross_wt. &quot; 毛重 &quot;
+  unitsofmeasure-unit_of_wt = pr_unit2. &quot; 填充毛重时，注意此处需要添加重量单位，否则会提示没有指定单位 &quot;
+  append unitsofmeasure.
+  clear unitsofmeasure.
+  unitsofmeasurex-alt_unit = pr_unit.   &quot; 注意此处不是填充 'X' &quot;
+  unitsofmeasurex-numerator = 'X'.
+  unitsofmeasurex-denominatr = 'X'.
+  unitsofmeasurex-gross_wt = 'X'.
+  unitsofmeasurex-unit_of_wt = 'X'.     &quot; 此处填充 'X' &quot;
+  if unitsofmeasurex-alt_unit is not initial and unitsofmeasurex-numerator is not initial 
+                                             and unitsofmeasurex-denominatr is not initial.
+    append unitsofmeasurex.
+  endif.
+  clear unitsofmeasurex.
+  &quot; 物料描述
+  clear materialdescription[].
+  materialdescription-langu_iso = 'ZH'.
+  materialdescription-matl_desc = itab-t_makt_matl_desc.
+  append materialdescription.
+  clear return.
+  call function 'BAPI_MATERIAL_SAVEDATA'
+    exporting
+      headdata            = headdata
+      clientdata          = clientdata
+      clientdatax         = clientdatax
+    importing
+      return              = return
+    tables
+      materialdescription = materialdescription[]
+      unitsofmeasure = unitsofmeasure[]
+      unitsofmeasurex = unitsofmeasurex[].
+  if return-type ne 'E'.
+    call function 'BAPI_TRANSACTION_COMMIT'
+      exporting
+        wait          = 'X' .
+  else.
+    call function 'bapi_transaction_rollback'.
+  endif.
+endloop.
+write : return-type,return-message.
+ENDFORM.
+FORM putdata.
+  itab-head_material = '10101010105'.
+  itab-head_ind_sector = 'M'.          
+  itab-head_matl_type = 'zroh'.        &quot; 物料类型 &quot;
+  itab-mara_base_uom = 'EA'.           &quot; 基本计量单位 &quot;
+  itab-mara_matl_group = '10235'.      &quot; 物料组 &quot;
+  itab-t_old_mat_no = 'testbapi05'.    &quot; 型号 &quot;
+  itab-mara_division = '00'.           &quot; 产品组 &quot;
+  itab-t_dsn_office = '001'.           &quot; 实验室 / 办公室 &quot;
+  itab-mara_item_cat = 'NORM'.         &quot; 普通项目组类别 &quot;
+  itab-mara_net_weight = 2.            &quot; 净重 &quot;
+*  itab-mara_normt = ''.               &quot; 行业标准描述 &quot;
+  itab-mara_size_dim = '2*3'.          &quot; 大小 / 量纲 &quot;
+  itab-t_marm_gross_wt = 22 / 10.      &quot; 毛重 &quot;
+  itab-mara_unit_of_wt = 'KG'.         &quot; 重量单位 &quot;
+  itab-t_makt_matl_desc = 'test mat'.  &quot; 物料描述 &quot;
+  call function 'CONVERSION_EXIT_ALPHA_INPUT'&quot;
+    exporting
+      input  = itab-head_material
+    importing
+      output = itab-head_material.
+  append itab.
+ENDFORM.
+* 获取基本计量单位内码
+FORM frm_unit using unit1 changing unit2.
+  call function 'CONVERSION_EXIT_CUNIT_INPUT'
+    exporting      
+      input          = unit1
+      language       = sy-langu
+    importing      
+      output         = unit2
+    exceptions      
+      unit_not_found = 1
+      others         = 2.
+  if sy-subrc &lt;&gt; 0.
+*   message id sy-msgid type sy-msgty number sy-msgno
+*           with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  endif.
+ENDFORM.                    &quot;frm_unit
+</code></pre>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>849</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/FI_DocumentPost/" class="prev" rel="prev" title=" SAP FI 会计凭证过账 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP FI 会计凭证过账 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_MIGO_Exits/" class="next" rel="next" title=" User Exit for MIGO "> User Exit for MIGO &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-08-06 00:00:00 \u002b0000 UTC',
+        title: '批量创建\/修改物料主数据',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

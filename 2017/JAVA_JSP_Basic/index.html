@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_Servlet_Filter/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/JAVA_JSP_JSTL/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/JAVA_JSP_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            JSP 使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" JSP 使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" JSP 使用 "/>
+<meta name="twitter:description" content="JSP 简介 JSP 全称 Java Server Pages，是一种动态网页开发技术。它使用 JSP 标签在 HTML 网页中插入 Java 代码。 JSP 基于Java Servlet API，JSP 网页就是用另一种方式来编"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " JSP 使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/JAVA_JSP_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JSP",
+  "wordcount":  3034 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/JAVA_JSP_Basic\/",
+  "datePublished": "2017-11-17T00:00:00\x2b00:00",
+  "dateModified": "2017-11-17T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> JSP 使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-11-17 >17 November 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                7 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="jsp-简介">JSP 简介</h3>
+<p>JSP 全称 Java Server Pages，是一种动态网页开发技术。它使用 JSP 标签在 HTML 网页中插入 Java 代码。</p>
+<p>JSP 基于Java Servlet API，JSP 网页就是用另一种方式来编写 Servlet 。JSP页面可以与处理业务逻辑的 Servlet 一起使用，这种模式被 Java servlet 模板引擎所支持。</p>
+<p>JSP 是服务器端的，它的局限性在于数据必须在返回给客户端之前就“装载”完毕。</p>
+<h4 id="jsp-优势">JSP 优势</h4>
+<ul>
+<li>与纯 Servlet 相比：JSP可以很方便的编写或者修改 HTML 网页而不用去面对大量的 println 语句</li>
+<li>与 JavaScript 相比：虽然 JavaScript 可以在客户端动态生成 HTML，但是很难与服务器交互，因此不能提供复杂的服务，比如访问数据库和图像处理等等</li>
+<li>与静态HTML相比：静态HTML不包含动态信息</li>
+</ul>
+<h4 id="jsp-解析过程">JSP 解析过程</h4>
+<p>Web 服务器使用 JSP 创建网页过程</p>
+<ul>
+<li>浏览器发送一个 HTTP 请求给服务器。</li>
+<li>Web 服务器识别出这是一个对 JSP 网页的请求(通过使用 URL 或者 .jsp 文件来完成)，并且将该请求传递给 JSP 引擎。</li>
+<li>JSP 引擎从磁盘中载入 JSP 文件，然后将它们转化为 Servlet。这种转化只是简单地将所有模板文本改用 println() 语句，并且将所有的 JSP 元素转化成 Java 代码。</li>
+<li>JSP 引擎将 Servlet 编译成可执行类，并且将原始请求传递给 Servlet 引擎。</li>
+<li>Web 服务器的某组件将会调用 Servlet 引擎，然后载入并执行 Servlet 类。在执行过程中，Servlet 产生 HTML 格式的输出并将其内嵌于 HTTP response 中上交给 Web 服务器。</li>
+<li>Web 服务器以静态 HTML 网页的形式将 HTTP response 返回到浏览器中。</li>
+<li>最终，Web 浏览器处理 HTTP response 中动态产生的HTML网页，就好像在处理静态网页一样。</li>
+</ul>
+<h4 id="jsp-生命周期">JSP 生命周期</h4>
+<p><img src="/images/JAVA/jsp_life_cycle.jpg" alt="JSP Life Cycle"></p>
+<p>编译阶段：当浏览器请求 JSP 页面时，JSP 引擎会首先去检查是否需要编译这个文件。如果这个文件没有被编译过，或者在上次编译后被更改过，则编译这个 JSP 文件。</p>
+<ul>
+<li>解析 JSP 文件</li>
+<li>将 JSP 文件转为 servlet</li>
+<li>编译 servlet</li>
+</ul>
+<p>初始化阶段：加载与 JSP 对应的 servlet 类，创建其实例，并调用它的初始化方法。</p>
+<ul>
+<li>在为请求提供任何服务前调用 <code>jspInit()</code> 方法</li>
+</ul>
+<p>执行阶段：调用与 JSP 对应的 servlet 实例的服务方法</p>
+<ul>
+<li>当 JSP 网页完成初始化后，JSP 引擎将会调用 <code>_jspService()</code> 方法，_jspService()方法需要一个HttpServletRequest对象和一个HttpServletResponse对象作为它的参数</li>
+</ul>
+<p>销毁阶段：调用与 JSP 对应的 servlet 实例的销毁方法，然后销毁 servlet 实例</p>
+<ul>
+<li><code>jspDestroy()</code> 方法在 JSP 中等价于 servlet 中的销毁方法</li>
+</ul>
+<h3 id="jsp-语法">JSP 语法</h3>
+<h4 id="jsp-注释">JSP 注释</h4>
+<p>JSP 注释主要有两个作用：为代码作注释以及将某段代码注释掉。</p>
+<p>JSP 注释的语法格式：<code>&lt;%-- 注释内容，不会在网页中显示 --%&gt; </code></p>
+<p>JSP 注释仅仅只是在 jsp 页面中存在，翻译后的 Java 源代码中是没有的。</p>
+<h4 id="jsp-常量">JSP 常量</h4>
+<p>JSP语言定义了以下几个常量：</p>
+<ul>
+<li>布尔值(boolean)：true 和 false；</li>
+<li>整型(int)：与 Java 中的一样;</li>
+<li>浮点型(float)：与 Java 中的一样;</li>
+<li>字符串(string)：以单引号或双引号开始和结束；</li>
+<li>Null：null。</li>
+</ul>
+<h4 id="jsp-声明">JSP 声明</h4>
+<p>一个声明语句可以声明一个或多个变量、方法，供后面的 Java 代码使用。在 JSP 文件中，您必须先声明这些变量和方法然后才能使用它们。</p>
+<p>JSP声明的语法格式：<code>&lt;%! declaration; [ declaration; ]+ ... %&gt;</code></p>
+<ul>
+<li>在 jsp 转换后的 java 类的成员位置</li>
+<li>&lt;%! int i = 0; Circle a = new Circle(2.0); %&gt;</li>
+</ul>
+<h4 id="jsp-表达式">JSP 表达式</h4>
+<p>一个 JSP 表达式中包含的脚本语言表达式，先被转化成 String，然后插入到表达式出现的地方。</p>
+<p>表达式元素中可以包含任何符合 Java 语言规范的表达式，但是不能使用分号来结束表达式。</p>
+<p>JSP表达式的语法格式：<code>&lt;%= 表达式 %&gt;</code></p>
+<ul>
+<li>输出到页面上，输出语句可以定义的内容在这里都可以定义</li>
+</ul>
+<h4 id="jsp-脚本程序">JSP 脚本程序</h4>
+<p>脚本程序可以包含任意量的 Java 语句、变量、方法或表达式，只要它们在脚本语言中是有效的。</p>
+<p>脚本程序的语法格式：<code>&lt;% 代码片段 %&gt;</code></p>
+<ul>
+<li>在 service 方法在，service 方法中可以定义的内容在这里都可以定义</li>
+</ul>
+<h4 id="jsp-指令">JSP 指令</h4>
+<p>JSP 指令用来设置与整个 JSP 页面相关的属性。如网页的编码方式和脚本语言。</p>
+<p>JSP 指令语法格式：<code>&lt;%@ directive attribute=&quot;value&quot; %&gt;</code></p>
+<p><em>page 指令</em>：为容器提供当前页面的使用说明，比如脚本语言、error 页面、缓存需求等等。一个 JSP 页面可以包含多个 page 指令。</p>
+<ul>
+<li>
+<p>语法：<code>&lt;%@ page attribute=&quot;value&quot; %&gt;</code></p>
+</li>
+<li>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">buffer</td>
+<td align="left">指定out对象使用缓冲区的大小，默认 8KB</td>
+</tr>
+<tr>
+<td align="left">autoFlush</td>
+<td align="left">控制out对象的 缓存区</td>
+</tr>
+<tr>
+<td align="left">contentType</td>
+<td align="left">指定当前JSP页面的MIME类型和字符编码</td>
+</tr>
+<tr>
+<td align="left">errorPage</td>
+<td align="left">指定当JSP页面发生异常时需要转向的错误处理页面</td>
+</tr>
+<tr>
+<td align="left">isErrorPage</td>
+<td align="left">指定当前页面是否可以作为错误处理页面，true可使用 exception 对象</td>
+</tr>
+<tr>
+<td align="left">extends</td>
+<td align="left">指定servlet从哪一个类继承</td>
+</tr>
+<tr>
+<td align="left">import</td>
+<td align="left">导入要使用的Java类</td>
+</tr>
+<tr>
+<td align="left">info</td>
+<td align="left">定义JSP页面的描述信息</td>
+</tr>
+<tr>
+<td align="left">isThreadSafe</td>
+<td align="left">指定对JSP页面的访问是否为线程安全</td>
+</tr>
+<tr>
+<td align="left">language</td>
+<td align="left">定义JSP页面所用的脚本语言，默认是Java</td>
+</tr>
+<tr>
+<td align="left">session</td>
+<td align="left">指定JSP页面是否使用session</td>
+</tr>
+<tr>
+<td align="left">isELIgnored</td>
+<td align="left">指定是否执行EL表达式，默认 false</td>
+</tr>
+<tr>
+<td align="left">isScriptingEnabled</td>
+<td align="left">确定脚本元素能否被使用</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p><em>include 指令</em>：静态包含。包含其他文件，被包含的文件可以是JSP文件、HTML文件或文本文件。包含的文件就好像是该 JSP 文件的一部分，会被同时编译执行。</p>
+<ul>
+<li>语法：<code>&lt;%@ include file=&quot;文件相对url地址&quot; %&gt;</code></li>
+<li>include 指令中的文件名实际上是一个相对的 URL 地址。如果没有给文件关联一个路径，JSP 编译器默认在当前路径下寻找</li>
+<li>在某个页面上引入其他的 jsp 页面的时候，要求其他的 jsp 页面中只写网页的主体内容，而不需要网页的框架，因为它们在翻译成 Java 代码的时候，会被翻译到同一个 Java 文件中。</li>
+</ul>
+<p><em>taglib 指令</em>：引入一个自定义标签集合的定义，包括库路径、自定义标签。主要是在页面上引入其他已经定义好的标签或者函数（其实就是在引入Java程序或者理解成类）。</p>
+<ul>
+<li>语法：<code>&lt;%@ taglib uri=&quot;uri&quot; prefix=&quot;prefixOfTag&quot; %&gt;</code>
+<ul>
+<li><code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;</code></li>
+</ul>
+</li>
+<li>uri : 是当前标签对应的 Java 代码封装之后绑定的名称空间（给java代码专门的命名）</li>
+<li>prefix : 是当前在页面上可以使用的标签的前缀</li>
+</ul>
+<h4 id="jsp-行为">JSP 行为</h4>
+<p>JSP 行为标签使用 XML 语法结构来控制 servlet 引擎。它能够动态插入一个文件，重用JavaBean 组件，引导用户去另一个页面，为 Java 插件产生相关的 HTML 等等。</p>
+<p>行为标签只有一种语法格式，它严格遵守XML标准：<code>&lt;jsp:action_name attribute=&quot;value&quot; /&gt;</code></p>
+<p>行为标签基本上都是预定义的函数，JSP 规范定义了一系列的标准动作，它用 jsp 作为前缀，可用的标准动作元素如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">jsp:include</td>
+<td align="left">用于在当前页面中包含静态或动态资源</td>
+</tr>
+<tr>
+<td align="left">jsp:useBean</td>
+<td align="left">寻找和初始化一个JavaBean组件</td>
+</tr>
+<tr>
+<td align="left">jsp:setProperty</td>
+<td align="left">设置 JavaBean组件的属性</td>
+</tr>
+<tr>
+<td align="left">jsp:getProperty</td>
+<td align="left">输出某个 JavaBean 组件的属性</td>
+</tr>
+<tr>
+<td align="left">jsp:forward</td>
+<td align="left">把请求转到一个新的页面</td>
+</tr>
+<tr>
+<td align="left">jsp:plugin</td>
+<td align="left">用于在生成的HTML页面中包含Applet和JavaBean对象</td>
+</tr>
+<tr>
+<td align="left">jsp:element</td>
+<td align="left">动态创建一个XML元素</td>
+</tr>
+<tr>
+<td align="left">jsp:attribute</td>
+<td align="left">定义动态创建的XML元素的属性</td>
+</tr>
+<tr>
+<td align="left">jsp:body</td>
+<td align="left">定义动态创建的XML元素的主体</td>
+</tr>
+<tr>
+<td align="left">jsp:text</td>
+<td align="left">在JSP页面和文档中使用写入文本的模板</td>
+</tr>
+</tbody>
+</table>
+<p>常见的属性：</p>
+<p>所有动作要素都有两个属性：id 属性和 scope 属性</p>
+<ul>
+<li>id 属性：id 属性是动作元素的唯一标识，可以在 JSP 页面中引用。动作元素创建的id值可以通过 PageContext 来调用</li>
+<li>scope 属性：该属性用于识别动作元素的生命周期。 id 属性和 scope 属性有直接关系，scope 属性定义了相关联 id 对象的寿命。 scope 属性有四个可能的值：page、request、session、application。</li>
+</ul>
+<h4 id="jsp-隐含对象">JSP 隐含对象</h4>
+<p>JSP 隐式对象是 JSP 容器为每个页面提供的 Java 对象，开发者可以直接使用它们而不用显式声明。JSP 隐式对象也被称为预定义变量。</p>
+<p>JSP 所支持的九大隐式对象：</p>
+<table>
+<thead>
+<tr>
+<th align="left">对象</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>request</strong></td>
+<td align="left">HttpServletRequest 接口的实例，一次请求访问的多个资源</td>
+</tr>
+<tr>
+<td align="left">response</td>
+<td align="left">HttpServletResponse 接口的实例</td>
+</tr>
+<tr>
+<td align="left">out</td>
+<td align="left">JspWriter 类的实例，用于把结果输出至网页上，优先级低于 response</td>
+</tr>
+<tr>
+<td align="left"><strong>session</strong></td>
+<td align="left">HttpSession 类的实例，和Java Servlets中的session对象有一样的行为</td>
+</tr>
+<tr>
+<td align="left"><strong>application</strong></td>
+<td align="left">ServletContext 类的实例，所有用户间共享数据</td>
+</tr>
+<tr>
+<td align="left">config</td>
+<td align="left">ServletConfig 类的实例，直接包装了servlet 的ServletConfig类的对象</td>
+</tr>
+<tr>
+<td align="left"><strong>pageContext</strong></td>
+<td align="left">PageContext 类的实例，当前页面共享数据，提供对JSP页面所有对象以及命名空间的访问</td>
+</tr>
+<tr>
+<td align="left">page</td>
+<td align="left">类似于Java类中的this关键字，它可以被看做是整个JSP页面的代表</td>
+</tr>
+<tr>
+<td align="left">exception</td>
+<td align="left">Exception 类的对象，包装了从先前页面中抛出的异常信息，被用来产生对出错条件的适当响应</td>
+</tr>
+</tbody>
+</table>
+<p>JSP 重定向：</p>
+<pre><code class="language-jsp" data-lang="jsp">&lt;%
+   // 重定向到新地址
+   String site = new String(&quot;url&quot;);
+   response.setStatus(response.SC_MOVED_TEMPORARILY);
+   response.setHeader(&quot;Location&quot;, site); 
+%&gt;
+</code></pre>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3034</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JSP/">
+                    #JSP</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_Servlet_Filter/" class="prev" rel="prev" title=" Filter 过滤器 "><i class="iconfont icon-dajiantou"></i>&nbsp; Filter 过滤器 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_JSP_JSTL/" class="next" rel="next" title=" JSP 标签库 "> JSP 标签库 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-11-17 00:00:00 \x2b0000 UTC',
+        title: ' JSP 使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

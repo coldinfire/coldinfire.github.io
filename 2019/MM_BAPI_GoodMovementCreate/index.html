@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Enhance_BADI/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_BAPI_GoodsMovementCancel/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_BAPI_GoodMovementCreate/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 物料移动BAPI介绍  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 物料移动BAPI介绍  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 物料移动BAPI介绍 "/>
+<meta name="twitter:description" content="Inventory Management 使用的 BAPI 解析 使用到的 BAPI BAPI Description BAPI_GOODSMVT_CREATE universal BAPI for posting Goods Movements BAPI_GOODSMVT_CANCEL only for reverting Goods Movements；MBST BAPI_GOODSMVT_GETDETAIL 获得凭证明细 BAPI_GOODSMVT_GETITEMS 查询凭证 BAPI_GOODSMVT_SAPCREATE SAP 内部使用的 BAPI 两个用于事务处理的"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 物料移动BAPI介绍 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_BAPI_GoodMovementCreate\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM, BAPI",
+  "wordcount":  719 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_BAPI_GoodMovementCreate\/",
+  "datePublished": "2019-07-04T00:00:00\x2b00:00",
+  "dateModified": "2019-07-04T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 物料移动BAPI介绍 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-07-04 >4 July 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="inventory-management-使用的-bapi-解析">Inventory Management 使用的 BAPI 解析</h2>
+<h3 id="使用到的-bapi">使用到的 BAPI</h3>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BAPI_GOODSMVT_CREATE</td>
+<td align="left">universal BAPI for posting Goods Movements</td>
+</tr>
+<tr>
+<td align="left">BAPI_GOODSMVT_CANCEL</td>
+<td align="left">only for reverting Goods Movements；<strong>MBST</strong></td>
+</tr>
+<tr>
+<td align="left">BAPI_GOODSMVT_GETDETAIL</td>
+<td align="left">获得凭证明细</td>
+</tr>
+<tr>
+<td align="left">BAPI_GOODSMVT_GETITEMS</td>
+<td align="left">查询凭证</td>
+</tr>
+<tr>
+<td align="left">BAPI_GOODSMVT_SAPCREATE</td>
+<td align="left">SAP 内部使用的 BAPI</td>
+</tr>
+</tbody>
+</table>
+<p>两个用于事务处理的 BAPI：</p>
+<ul>
+<li>BAPI_TRANSACTION_COMMIT (Commit the posting, general)</li>
+<li>BAPI_TRANSACTION_ROLLBACK (Rollback the posting, general)</li>
+</ul>
+<h3 id="参数">参数</h3>
+<p>关于要创建的物料凭证的以下信息需要传递到 BAPI</p>
+<ul>
+<li>
+<p>A structure with the header data</p>
+</li>
+<li>
+<p>A structure with the code for the movement</p>
+</li>
+<li>
+<p>A table with the item data</p>
+</li>
+<li>
+<p>A table with the serial numbers</p>
+</li>
+<li>
+<p>The posting is made by the function module <code>MB_CREATE_GOODS_MOVEMENT</code></p>
+</li>
+<li>
+<p>Messages are returned in the Return parameter</p>
+</li>
+<li>
+<p>BAPI also provides a test running function, incoming  <code>TESTRUN = 'X'</code></p>
+</li>
+</ul>
+<p>输入参数规则</p>
+<ul>
+<li>Material number 18-character with leading zeros</li>
+<li>Batches with uppercase letters</li>
+<li>必输：<code>PSTNG_DATE</code> field &amp; <code>DOC_DATE</code> field (import structure GOODSMVT_HEADER)</li>
+</ul>
+<h4 id="goods-movement-codet158g">Goods Movement Code：T158G</h4>
+<table>
+<thead>
+<tr>
+<th>GM_CODE</th>
+<th>TCODE</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>MB01</td>
+<td>Goods receipt for purchase order</td>
+</tr>
+<tr>
+<td>02</td>
+<td>MB31</td>
+<td>Goods receipt for production order</td>
+</tr>
+<tr>
+<td>03</td>
+<td>MB1A</td>
+<td>Goods issue</td>
+</tr>
+<tr>
+<td>04</td>
+<td>MB1B</td>
+<td>Transfer posting</td>
+</tr>
+<tr>
+<td>05</td>
+<td>MB1C</td>
+<td>Enter Other goods receipt</td>
+</tr>
+<tr>
+<td>06</td>
+<td>MB11</td>
+<td>Reversal of goods movements</td>
+</tr>
+<tr>
+<td>07</td>
+<td>MB04</td>
+<td>Subsequent adjustment with regard to a subcontract order</td>
+</tr>
+</tbody>
+</table>
+<p>根据 Goods Movement Code 输入 movement indicator (ITEM-MVT_IND)</p>
+<table>
+<thead>
+<tr>
+<th>Fixed Value</th>
+<th>Descript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPACE</td>
+<td>Goods movement w/o reference</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Goods movement for purchase order</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Goods movement for production order</td>
+</tr>
+<tr>
+<td>L</td>
+<td>Goods movement for delivery note</td>
+</tr>
+<tr>
+<td>K</td>
+<td>Goods movement for kanban requirement (WM - internal only)</td>
+</tr>
+<tr>
+<td>O</td>
+<td>Subsequent adjustment of &ldquo;material-provided&rdquo; consumption</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Subsequent adjustment of proportion/product unit material</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-code-for-calling-the-gm-bapi-to-post-a-561-goods-movement">Example Code for calling the GM BAPI to post a 561 Goods Movement</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  Z_BAPI_GDSMVT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  z_bapi_gdsmvt.
+<span style="color:#66d9ef">DATA</span>: ls_head   <span style="color:#66d9ef">LIKE </span>bapi2017_gm_head_01,
+      lt_item   <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapi2017_gm_item_create,
+      ls_item   <span style="color:#66d9ef">LIKE </span>bapi2017_gm_item_create,
+      lt_return <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapiret2,
+      ls_return <span style="color:#66d9ef">LIKE </span>bapiret2,
+      ls_headret <span style="color:#66d9ef">LIKE </span>bapi2017_gm_head_ret,
+      ls_serial   <span style="color:#66d9ef">LIKE </span>bapi2017_gm_serialnumber,
+      lt_serial   <span style="color:#66d9ef">LIKE  STANDARD TABLE OF</span> bapi2017_gm_serialnumber.
+<span style="color:#66d9ef">PARAMETERS</span>: p_pstdat <span style="color:#66d9ef">LIKE </span>bapi2017_gm_head_01<span style="color:#f92672">-</span>pstng_date,
+            p_docdat <span style="color:#66d9ef">LIKE </span>bapi2017_gm_head_01<span style="color:#f92672">-</span>doc_date,
+            p_matnr  <span style="color:#66d9ef">LIKE </span>bapi2017_gm_item_create<span style="color:#f92672">-</span>material,
+            p_plant  <span style="color:#66d9ef">LIKE </span>bapi2017_gm_item_create<span style="color:#f92672">-</span>plant,
+            p_sloc   <span style="color:#66d9ef">LIKE </span>bapi2017_gm_item_create<span style="color:#f92672">-</span>stge_loc,
+            p_quant  <span style="color:#66d9ef">LIKE </span>bapi2017_gm_item_create<span style="color:#f92672">-</span>entry_qnt,
+            p_batch  <span style="color:#66d9ef">LIKE </span>bapi2017_gm_item_create<span style="color:#f92672">-</span>batch.
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+<span style="color:#75715e">* Prepare Data for Goods Movement</span>
+  ls_head<span style="color:#f92672">-</span>pstng_date <span style="color:#f92672">=</span> p_pstdat.
+  ls_head<span style="color:#f92672">-</span>doc_date <span style="color:#f92672">=</span> p_docdat.
+  ls_head<span style="color:#f92672">-</span>pr_uname <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>uname.
+
+  ls_item<span style="color:#f92672">-</span>material <span style="color:#f92672">=</span> p_matnr.
+  ls_item<span style="color:#f92672">-</span>plant <span style="color:#f92672">=</span> p_plant.
+  ls_item<span style="color:#f92672">-</span>stge_loc <span style="color:#f92672">=</span> p_sloc.
+  ls_item<span style="color:#f92672">-</span>move_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;561&#39;</span>.
+  ls_item<span style="color:#f92672">-</span>entry_qnt <span style="color:#f92672">=</span> p_quant.
+  ls_item<span style="color:#f92672">-</span>batch <span style="color:#f92672">=</span> p_batch.
+  <span style="color:#66d9ef">APPEND</span> ls_item <span style="color:#66d9ef">TO</span> lt_item.
+  <span style="color:#66d9ef">CLEAR</span> ls_item.
+<span style="color:#75715e">* Call BAPI</span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_GOODSMVT_CREATE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      goodsmvt_header  <span style="color:#f92672">=</span> ls_header
+      goodsmvt_code    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;05&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      goodsmvt_headret <span style="color:#f92672">=</span> ls_headret
+    <span style="color:#66d9ef">TABLES</span>
+      goodsmvt_item    <span style="color:#f92672">=</span> lt_item
+      <span style="color:#66d9ef">return</span>           <span style="color:#f92672">=</span> lt_return.
+<span style="color:#75715e">* If no error, commit</span>
+  <span style="color:#66d9ef">IF</span> lt_return <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">WRITE</span>: <span style="color:#e6db74">&#39;Material Document posted:&#39;</span>, ls_headret<span style="color:#f92672">-</span>mat_doc, <span style="color:#e6db74">&#39; &#39;</span>, ls_headret<span style="color:#f92672">-</span>doc_year.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">*   Alternative COMMIT WORK.</span>
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+<span style="color:#75715e">*   Alternative ROLLBACK WORK.</span>
+    <span style="color:#66d9ef">WRITE</span>: <span style="color:#e6db74">&#39;Error during posting Material document:&#39;</span>, /.
+    <span style="color:#66d9ef">LOOP AT </span>lt_return <span style="color:#66d9ef">INTO</span> ls_return.
+      ...
+    <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="循环调用-gm-bapi-示例">循环调用 GM BAPI 示例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  ZBAPI_GDSMVT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  zbapi_gdsmvt. 
+<span style="color:#75715e">* DATA: ...</span>
+<span style="color:#75715e">* PARAMETERS: ...</span>
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+<span style="color:#75715e">* Prepare data for first Goods Movement</span>
+<span style="color:#75715e">* Call BAPI to create Goods Movement</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_GOODSMVT_CREATE&#39;</span> DESTINATION <span style="color:#e6db74">&#39;NONE&#39;</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span> DESTINATION <span style="color:#e6db74">&#39;NONE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">ELSE</span>.
+<span style="color:#75715e">* Error handling </span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span> DESTINATION <span style="color:#e6db74">&#39;NONE&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* Close RFC connection</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;RFC_CONNECTION_CLOSE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    destination <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NONE&#39;</span>.
+<span style="color:#75715e">* Prepare data for next Goods Movement</span>
+<span style="color:#75715e">* Call BAPI to create Goods Movement</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_GOODSMVT_CREATE&#39;</span> DESTINATION <span style="color:#e6db74">&#39;NONE&#39;</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span> DESTINATION <span style="color:#e6db74">&#39;NONE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">ELSE</span>.
+<span style="color:#75715e">* Error handling </span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span> DESTINATION <span style="color:#e6db74">&#39;NONE&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* Close RFC connection</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;RFC_CONNECTION_CLOSE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    destination <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NONE&#39;</span>.
+</code></pre></div><h3 id="特殊库存类型需要参数">特殊库存类型需要参数</h3>
+<p>Special stock (e.g. sales order, project, vendor etc.)</p>
+<h4 id="sales-order-stock">Sales Order Stock</h4>
+<ul>
+<li><code>SPEC_STOCK</code>：Special stock indicator for Sales order stock</li>
+<li><code>SALES_ORD</code> &amp; <code>S_ORD_ITEM</code></li>
+<li><code>VAL_SALES_ORD</code> &amp; <code>VAL_S_ORD_ITEM</code></li>
+</ul>
+<h4 id="project-stock">Project Stock</h4>
+<ul>
+<li><code>SPEC_STOCK</code>：Special stock indicator for Project stock</li>
+<li><code>WBS_ELEM</code> &amp; <code>VAL_WBS_ELEM</code></li>
+</ul>
+<h4 id="参考">参考</h4>
+<ul>
+<li><a href="https://wiki.scn.sap.com/wiki/display/ERPSCM/Goods+Movements+with+BAPI">Goods Movements with BAPI</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>719</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Enhance_BADI/" class="prev" rel="prev" title=" BADI 维护 "><i class="iconfont icon-dajiantou"></i>&nbsp; BADI 维护 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_BAPI_GoodsMovementCancel/" class="next" rel="next" title=" Goods Movement Cacel "> Goods Movement Cacel &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-07-04 00:00:00 \x2b0000 UTC',
+        title: ' SAP 物料移动BAPI介绍 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

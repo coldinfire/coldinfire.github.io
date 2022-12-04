@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Message/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ProgramOpt/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_DatabaseOpt/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP 性能优化(数据操作) | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP 性能优化(数据操作) | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP 性能优化(数据操作)"/>
+<meta name="twitter:description" content="性能分析工具 ST05：性能分析，追踪 SQL，分析哪条 SQL Statement 语句，最耗时间 STAD：得到某个程序或事务运行时的总体分析数据，系统时间，CPU 时间"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP 性能优化(数据操作)",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_DatabaseOpt\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  2258 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_DatabaseOpt\/",
+  "datePublished": "2018-06-01T00:00:00\u002b00:00",
+  "dateModified": "2018-06-01T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP 性能优化(数据操作)</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-01 >1 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="性能分析工具">性能分析工具</h3>
+<p>ST05：性能分析，追踪 SQL，分析哪条 SQL Statement 语句，最耗时间</p>
+<p>STAD：得到某个程序或事务运行时的总体分析数据，系统时间，CPU 时间等</p>
+<p>SE30： 分析某个事务或程序的执行时间，有一些性能分析的例子</p>
+<h3 id="数据库">数据库</h3>
+<ol>
+<li>
+<p>不要使用 SELECT * &hellip;，选择需要的字段, SELECT * 既浪费CPU，还需占用大量的ABAP内存</p>
+</li>
+<li>
+<p>不要使用SELECT DISTINCT .，会绕过缓存，可使用 SORT BY + DELETE ADJACENT DUPLICATES</p>
+</li>
+<li>
+<p>少用相关子查询，因为子查询对外层查询结果集中的每条记录都会执行一次</p>
+</li>
+<li>
+<p>少用嵌套SELECT … ENDSELECT，可以使用联合查询或FOR ALL ENTRIES来替换,减少循环次数</p>
+</li>
+<li>
+<p>如果确定只查一条数据时，使用 SELECT SINGLE&hellip; 或者是 SELECT &hellip;UP TO 1 ROWS &hellip;</p>
+</li>
+<li>
+<p>统计时，直接使用SQL聚合函数，而不是将数据读取出来后在程序里再进行统计</p>
+</li>
+<li>
+<p>使用 Filed-Symbol 读取数据，这样省掉了将从数据库中的取记录放入内表的INTO语句这一过程开销</p>
+</li>
+<li>
+<p>多使用inner join，必要时才使用left join</p>
+</li>
+<li>
+<p>inner join获取数据时，尽量不要用太多的表关联，特别是大表关联，关联顺序为：小表-大表；换言之，让查询第一个表后所得到的结果集就尽可能小;确定了表连接的次序后，应考虑将查询条件尽量限制在靠前的表里；两个表之间进行连接的时候，应考虑关键字段或索引字段的作用</p>
+</li>
+<li>
+<p>where 条件里面多用索引、主键，顺序也要遵循小表-大表</p>
+</li>
+<li>
+<p>inner join 条件放置的位置应该按照 On、Where、Having 的顺序放，因为SQL条件的的执行一般是按这个顺序来执行的，将条件放在最开始执行，则可过滤掉大部数据；但要注意Left Outer Join，是否可以将ON中的条件移动到Where 从句则要考虑（如果真能放在Where从句中，则应该用 Inner Join，而非Left Outer Join，因为Where条件会过滤掉那些包括在右表中不存在的左表数据），因为此时条件放在 On 后面与放在 Where 语句后面结果是不一样的（因为不管on中的条件是否为真，左表中在右边表不存在的数据也会被返回，但如放在where条件中，则会对On产生的数据再次过滤的条件，会滤掉不满足条件的记录，包括左表在右表中找不到的记录，这时已经没有left join的含义）</p>
+</li>
+<li>
+<p>要根据主键或索引字段查找数据，且 WHERE 从句中的条件字段需按 INDEX 字段顺序书写，且将索引字段条件靠前（左边），检查条件组合字段是否是主键，或者是上在上面创建了索引，避免条件组合字段即不是主键又没有索引</p>
+</li>
+<li>
+<p>SELECT语句 WHERE 条件，应该先将主键相关条件放在前面，然后按照比较符 = 、&lt; 、&gt;、 &lt;&gt; 、LIKE、IN 的顺序排列</p>
+</li>
+<li>
+<p>使用部分索引字段问题：如果一个索引是由多个字段组成的，只使用一部分关键字段来进行查询时，也是可以使用到索引，但使用时要注意要按照索引定义的顺序且取其前面部分</p>
+</li>
+<li>
+<p>请根据索引字段进行 ORDER BY，否则通过程序进行 SORT BY。与其在数据库在通过非索引字段进行排序，不如在程序中用 SORT BY 语句进行排序，因为此情况下应用服务器上的执行速度要比数据库服务器快(应用服务器上采用的是内存排序)</p>
+</li>
+<li>
+<p>避免在索引字段上使用：not、&lt;&gt;、!=、IS NULL、IS NOT NULL，可以用 &gt; 与 &lt; 来替代避免使用 LIKE，但LIKE &lsquo;销售组1000&rsquo;和LIKE &lsquo;销售组1000%&lsquo;可以用到，而LIKE &lsquo;%销售组1000&rsquo;（百分号前置）则用不到索引不要使用 OR 来连接
+多个索引字段(但同一字段多个值之间可以使用OR)；对于同一索引字段，可以使用IN来替代OR；带有 BETWEEN 的 WHERE 条件不能通过索引来搜索，也可使用IN代替。</p>
+</li>
+<li>
+<p>在下面情况下使用FOR ALL ENTRIES IN:在循环内表时 Loop&hellip;at itab 时 join 超过三个表会出现性能问题，当使用JOIN连接超过3个表时表数据非常大时，使用JOIN会很慢，此时改用FOR ALL ENTRIES IN</p>
+</li>
+<li>
+<p>避免使用以下语句，因为使用这些语句时，不能使用 Table Buffer：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">Aggregate</span> <span style="color:#a6e22e">expressions</span>
+<span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">distinct</span>
+<span style="color:#a6e22e">Select</span> <span style="color:#960050;background-color:#1e0010">…</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">update</span>
+<span style="color:#a6e22e">Order</span> <span style="color:#a6e22e">by</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">group</span> <span style="color:#a6e22e">by</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">having从句</span>
+<span style="color:#a6e22e">joins</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">使用JOIN时</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">会绕过SAP缓存</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">可以使用FOR</span> <span style="color:#a6e22e">ALL</span> <span style="color:#a6e22e">ENTRIES来代替</span>
+<span style="color:#a6e22e">where从句中使用Sub</span> <span style="color:#a6e22e">queries</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">子查询</span><span style="color:#960050;background-color:#1e0010">）</span>
+<span style="color:#a6e22e">shere从句中使用IS</span> <span style="color:#a6e22e">NULL条件</span>
+</code></pre></div><ul>
+<li>使用内表批量操作数据库，而不要使用工作区一条条操作,如：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">SELECT</span> ... <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">itab</span>
+<span style="color:#a6e22e">INSERT</span> <span style="color:#a6e22e">dbtab</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">itab</span>
+<span style="color:#a6e22e">DELETE</span> <span style="color:#a6e22e">dbtab</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">itab</span>
+<span style="color:#a6e22e">UPDATE</span><span style="color:#f92672">/</span><span style="color:#a6e22e">MODIFY</span> <span style="color:#a6e22e">dbtab</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">itab</span>		 
+</code></pre></div></li>
+<li>
+<p>针对 STANDARD TABLE 排序后可以进行二分法查找，使用 SORTED TABLE 也可进行二分法查找，那么二者有什么区别呢？</p>
+<ol>
+<li>由于 SORTED TABLE 自始至终都保持排序，如果需要对内部进行频繁的插入、删除操作，则不推荐使用 SORTED TABLE，性能会很差。</li>
+<li>而另一方面，如果我们要用的是类似 LOOP AT it_lips WHERE vgbel = ** 的语法（而非 READ TABLE）时，对于 STANDARD TABLE 就无法采用二分法查找，或者说会很麻烦。而对于 SORTED TABLE，系统会自动采用二分法优化查找过程。</li>
+</ol>
+</li>
+<li>
+<p>随着业务的持续，VBRK 表的条目将越来越多，而 “未导出” 的条目则会维持在一个较为平稳的数字上，为了有效区分历史数据和现用数据，可添加 TABLE INDEX，提高报表的查询速度。很多 SAP 标准表都自带了一些索引，这些索引大都比较实用。</p>
+<p>创建索引需要注意以下几点：</p>
+<p>（1）索引会占用额外的数据库空间，还会降低插入 / 修改的速度（虽然可提高查询速度），所以需要考虑实用性，肯定不是越多越好。如果表中已有类似的索引，则不推荐新建。而对于容量大的、被多个程序访问的表加索引就更要谨慎了，比如 VBFA、MSEG、FAGLFLEXA、LIPS、VBAP、EDIDC、STXH 等等。</p>
+<p>（2）创建索引时应注意字段的先后次序，MANDT 是必须的而且都要放在第一位。字段的先后次序取决于实际业务需要。另外索引的字段不宜太多，字段越多占用的数据库空间就越多，对于插入 / 修改的影响也更大。</p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2258</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Message/" class="prev" rel="prev" title="ABAP Message 处理"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP Message 处理</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ProgramOpt/" class="next" rel="next" title="ABAP 性能优化(程序逻辑)">ABAP 性能优化(程序逻辑)&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-01 00:00:00 \u002b0000 UTC',
+        title: 'ABAP 性能优化(数据操作)',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

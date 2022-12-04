@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAPUI5_Layout/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAPUI5_DataOption/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAPUI5_DialogAndFragment/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAPUI5 Dialog and Fragment  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAPUI5 Dialog and Fragment  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAPUI5 Dialog and Fragment "/>
+<meta name="twitter:description" content="Dialogs and Fragments Fragments 片段是一个轻量级的 UI 部分，它只是一组重用控件的容器。包含一到多个控件，不需要控制器。 定义并调用已存在的 Fragments : &ldquo;sap/ui/core/Fragment&rdquo; 定义xxx.fragme"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAPUI5 Dialog and Fragment ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_DialogAndFragment\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "sapui5",
+  "wordcount":  733 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_DialogAndFragment\/",
+  "datePublished": "2019-04-20T00:00:00\x2b00:00",
+  "dateModified": "2019-04-20T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAPUI5 Dialog and Fragment </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-20 >20 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="dialogs-and-fragments">Dialogs and Fragments</h2>
+<h3 id="fragments">Fragments</h3>
+<ol>
+<li>
+<p>片段是一个轻量级的 UI 部分，它只是一组重用控件的容器。包含一到多个控件，不需要控制器。</p>
+</li>
+<li>
+<p>定义并调用已存在的 Fragments : &ldquo;sap/ui/core/Fragment&rdquo;</p>
+<ol>
+<li>定义xxx.fragment.xml</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;core:FragmentDefinition</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;sap.m&#34;</span> <span style="color:#a6e22e">xmlns:core=</span><span style="color:#e6db74">&#34;sap.ui.core&#34;</span><span style="color:#f92672">&gt;</span>
+ <span style="color:#f92672">&lt;Dialog</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;helloDialog&#34;</span> <span style="color:#a6e22e">title=</span><span style="color:#e6db74">&#34;Hello {/recipient/name}&#34;</span><span style="color:#f92672">&gt;</span>
+     <span style="color:#f92672">&lt;content</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;core:Icon</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;sap-icon://hello-world&#34;</span> <span style="color:#a6e22e">size=</span><span style="color:#e6db74">&#34;80px&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;sapUiMediumMargin&#34;</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;/core:Icon&gt;</span>
+     <span style="color:#f92672">&lt;/content&gt;</span>
+     <span style="color:#f92672">&lt;beginButton</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;Button</span> <span style="color:#a6e22e">text=</span><span style="color:#e6db74">&#34;{i18n&gt;dialogCloseButtonText}&#34;</span> <span style="color:#a6e22e">press=</span><span style="color:#e6db74">&#34;.onCloseDialog&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;/Button&gt;</span>
+     <span style="color:#f92672">&lt;/beginButton&gt;</span>
+ <span style="color:#f92672">&lt;/Dialog&gt;</span>
+<span style="color:#f92672">&lt;/core:FragmentDefinition&gt;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// create dialog lazily
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">byId</span>(<span style="color:#e6db74">&#34;helloDialog&#34;</span>)) {  <span style="color:#75715e">//如果id为helloDialog的Dialog不存在
+</span><span style="color:#75715e"></span> <span style="color:#75715e">// load asynchronous XML fragment
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">Fragment</span>.<span style="color:#a6e22e">load</span>({
+     <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">oView</span>.<span style="color:#a6e22e">getId</span>(),
+     <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sap.ui.demo.walkthrough.view.HelloDialog&#34;</span>,
+          <span style="color:#a6e22e">controller</span><span style="color:#f92672">:</span><span style="color:#66d9ef">this</span>    <span style="color:#75715e">//函数的回调
+</span><span style="color:#75715e"></span> }).<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">oDialog</span>) {
+     <span style="color:#75715e">// connect dialog to the root view of this component (models, lifecycle)
+</span><span style="color:#75715e"></span>     <span style="color:#a6e22e">oView</span>.<span style="color:#a6e22e">addDependent</span>(<span style="color:#a6e22e">oDialog</span>);
+     <span style="color:#a6e22e">oDialog</span>.<span style="color:#a6e22e">open</span>();
+ });
+} <span style="color:#66d9ef">else</span> {
+ <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">byId</span>(<span style="color:#e6db74">&#34;helloDialog&#34;</span>).<span style="color:#a6e22e">open</span>();
+},  
+<span style="color:#a6e22e">onCloseDialog</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">byId</span>(<span style="color:#e6db74">&#34;helloDialog&#34;</span>).<span style="color:#a6e22e">close</span>();
+}
+</code></pre></div><ul>
+<li>始终使用addDependent方法将对话框连接到视图的生命周期管理和数据绑定，即使它未添加到其UI树中。</li>
+</ul>
+</li>
+<li>
+<p>如果片段中的对话框尚不存在，则通过使用以下方法调用sap.ui.xmlfragment方法来实例化片段</p>
+</li>
+<li>
+<p>回调open方法</p>
+</li>
+</ol>
+<h3 id="dialog">Dialog</h3>
+<p>1、不属于特定视图，不能将其定义为视图，这意味着必须在控制器代码中的某处实例化对话框。</p>
+<p>2、重用</p>
+<ul>
+<li>定义单独的控制来实现Dialog的创建 HelloDialog.js</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">define</span>([
+    <span style="color:#e6db74">&#34;sap/ui/base/ManagedObject&#34;</span>, <span style="color:#75715e">//实现该类
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;sap/ui/core/Fragment&#34;</span>
+  ],
+  <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">ManagedObject</span>, <span style="color:#a6e22e">Fragment</span>) {
+  <span style="color:#e6db74">&#34;use strict&#34;</span>;
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ManagedObject</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#34;SAPUI5.Walkthrough.controller.HelloDialog&#34;</span>, {
+    <span style="color:#a6e22e">constructor</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">oView</span>) { <span style="color:#75715e">//oView参数用于关联当前视图到对话框.
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_oView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oView</span>;
+    },
+    <span style="color:#a6e22e">exit</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+      <span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_oView</span>();
+    },
+    <span style="color:#a6e22e">open</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oView</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_oView</span>;
+      <span style="color:#75715e">//create dialog lazily
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">oView</span>.<span style="color:#a6e22e">byId</span>(<span style="color:#e6db74">&#34;helloDialog&#34;</span>)) {
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oFragmentController</span> <span style="color:#f92672">=</span> {
+          <span style="color:#a6e22e">onCloseDialog</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+            <span style="color:#a6e22e">oView</span>.<span style="color:#a6e22e">byId</span>(<span style="color:#e6db74">&#34;helloDialog&#34;</span>).<span style="color:#a6e22e">close</span>();
+          }
+        };
+        <span style="color:#75715e">//load asynchronous XML fragment
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">Fragment</span>.<span style="color:#a6e22e">load</span>({
+          <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">oView</span>.<span style="color:#a6e22e">getId</span>(),
+          <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;SAPUI5.Walkthrough.view.HelloDialog&#34;</span>,
+          <span style="color:#a6e22e">controller</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">oFragmentController</span>
+        }).<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">oDialog</span>) {
+          <span style="color:#75715e">//connect dialog to the root view of this component (models,lifecycle)
+</span><span style="color:#75715e"></span>          <span style="color:#a6e22e">oView</span>.<span style="color:#a6e22e">addDependent</span>(<span style="color:#a6e22e">oDialog</span>);
+          <span style="color:#a6e22e">oDialog</span>.<span style="color:#a6e22e">open</span>();
+        });
+      } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">oView</span>.<span style="color:#a6e22e">byId</span>(<span style="color:#e6db74">&#34;helloDialog&#34;</span>).<span style="color:#a6e22e">open</span>();
+      }
+    }
+  });
+});
+</code></pre></div><ul>
+<li>在Component.js文件中声明该控件为私有属性,并封装其方法</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">define</span>([
+    <span style="color:#e6db74">&#34;sap/ui/core/UIComponent&#34;</span>,
+    <span style="color:#e6db74">&#34;sap/ui/Device&#34;</span>,
+    <span style="color:#e6db74">&#34;SAPUI5/Walkthrough/model/models&#34;</span>,
+    <span style="color:#e6db74">&#34;sap/ui/model/json/JSONModel&#34;</span>,
+    <span style="color:#e6db74">&#34;./controller/HelloDialog&#34;</span>
+  ], <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">UIComponent</span>, <span style="color:#a6e22e">Device</span>, <span style="color:#a6e22e">models</span>,<span style="color:#a6e22e">JSONModel</span>,<span style="color:#a6e22e">HelloDialog</span>) {
+    <span style="color:#e6db74">&#34;use strict&#34;</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">UIComponent</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#34;SAPUI5.Walkthrough.Component&#34;</span>, {
+      <span style="color:#a6e22e">metadata</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">manifest</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;json&#34;</span>
+    },
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">    * The component is initialized by UI5 automatically during the startup of 
+</span><span style="color:#75715e">    the app and calls the init method once.
+</span><span style="color:#75715e">    * @public
+</span><span style="color:#75715e">    * @override
+</span><span style="color:#75715e">    */</span>
+    <span style="color:#a6e22e">init</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+      <span style="color:#75715e">// call the base component&#39;s init function
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">UIComponent</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+      <span style="color:#75715e">// enable routing
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getRouter</span>().<span style="color:#a6e22e">initialize</span>();
+      <span style="color:#75715e">// set the device model
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setModel</span>(<span style="color:#a6e22e">models</span>.<span style="color:#a6e22e">createDeviceModel</span>(), <span style="color:#e6db74">&#34;device&#34;</span>);
+      <span style="color:#75715e">//set dialog
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_helloDialog</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HelloDialog</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getRootControl</span>());
+    },
+    <span style="color:#a6e22e">exit</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_helloDialog</span>.<span style="color:#a6e22e">destory</span>();
+      <span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_helloDialog</span>;
+    },
+    <span style="color:#a6e22e">openHelloDialog</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_helloDialog</span>.<span style="color:#a6e22e">open</span>();
+    }
+  });
+});
+</code></pre></div><p>3、在按钮事件中通过<code>this.getOwnerComponent().openHelloDialog()</code>调用</p>
+<p>onOpenDialog 方法现在通过调用辅助方法 getOwnerComponent 来访问其组件。当调用重用对象的 open 方法时，我们传入当前视图以将其连接到对话框。</p>
+<p>4、Attention</p>
+<p>将跨多个控制器使用的所有资产放在单独的模块中</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>733</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/sapui5/">
+                    #sapui5</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_Layout/" class="prev" rel="prev" title=" SAPUI5 Layout "><i class="iconfont icon-dajiantou"></i>&nbsp; SAPUI5 Layout </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_DataOption/" class="next" rel="next" title=" SAPUI5 数据类型和操作 "> SAPUI5 数据类型和操作 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-20 00:00:00 \x2b0000 UTC',
+        title: ' SAPUI5 Dialog and Fragment ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

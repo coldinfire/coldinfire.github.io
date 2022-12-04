@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_FieldSymbol/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_RFC/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_SM30/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SM30表维护  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SM30表维护  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SM30表维护 "/>
+<meta name="twitter:description" content="表维护创建 创建自定义表 需要设置为 Display/Maintenance Allowed.允许修改，才可以在SM30中进行数据维护。否则会产生以下异常： 创建表维护 权限组：控制访问权"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SM30表维护 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_SM30\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  922 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_SM30\/",
+  "datePublished": "2018-10-09T00:00:00\u002b00:00",
+  "dateModified": "2018-10-09T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SM30表维护 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-09 >9 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="表维护创建">表维护创建</h3>
+<h4 id="创建自定义表">创建自定义表</h4>
+<p><img src="/images/ABAP/SM301.png" alt="自定义表创建"></p>
+<p>需要设置为 Display/Maintenance Allowed.允许修改，才可以在SM30中进行数据维护。否则会产生以下异常：</p>
+<p><img src="/images/ABAP/SM3011.png" alt="异常消息"></p>
+<h4 id="创建表维护">创建表维护</h4>
+<p><img src="/images/ABAP/SM302.png" alt="创建表维护"></p>
+<p><img src="/images/ABAP/SM303.png" alt="设置"></p>
+<p>权限组：控制访问权限</p>
+<p>函数组：放在自定义的函数组即可</p>
+<p>Maintenance type:</p>
+<ul>
+<li>one step：每次维护数据的时候不会产生请求号</li>
+<li>two step：每次维护数据的时候会产生请求号</li>
+</ul>
+<p>Recording rountine:</p>
+<ul>
+<li>Standard recording routine</li>
+<li>no,or user,recording routine：在其他Client上有权维护此表数据</li>
+</ul>
+<p><img src="/images/ABAP/SM304.png" alt="屏幕号生成"></p>
+<p>当保存完成后即可通过TCode：SM30，通过对应的表名就可以对已建立表维护的表进行数据的维护。</p>
+<h4 id="修改table-control显示控制">修改table control显示控制</h4>
+<p>双击Overview Screen 进入Screen Painter，修改Attributes显示界面的大小。</p>
+<p><img src="/images/ABAP/SM3013.png" alt="修改屏幕属性"></p>
+<p>然后进行字段修改设置为必输或则只显示，修改列描述，字段显示长度调整。</p>
+<p><img src="/images/ABAP/SM3014.png" alt="修改屏幕属性"></p>
+<h4 id="添加自定义module">添加自定义module</h4>
+<p>可以根据输入值获取并设置相关字段的值； 设置维护日期 ，维护人赋值等操作</p>
+<p><img src="/images/ABAP/sm3015.png" alt="自定义MODULE"></p>
+<p><img src="/images/ABAP/sm3016.png" alt="设置和维护值"></p>
+<h3 id="分配tcode">分配TCode</h3>
+<p>通常建立的自定义表不允许用户直接查看，有时可能需要人工维护某些数据。这时候，可以通过SM30建立表维护的方式开放给用户，但是SM30的权限比较大不适宜直接分配；因此需要给对应的表维护另外分配TCode，来控制其权限。</p>
+<h4 id="tcode创建并分配">TCode创建并分配</h4>
+<p>通过SE93创建TCode,并选择Transaction with parameters(parameter transaction)</p>
+<p><img src="/images/ABAP/SM308.png" alt="TCode分配"></p>
+<p>创建界面需要配置default values和一些默认值：</p>
+<ul>
+<li>UPDATE=X：是否可以对数据进行维护</li>
+<li>VIEWNAME=需要维护的表名</li>
+</ul>
+<p><img src="/images/ABAP/SM305.png" alt="TCode分配"></p>
+<h4 id="查找sm30表维护对应的tcode">查找SM30表维护对应的Tcode</h4>
+<p>通过SE16/SE16n输入表TSTCP,然后在<strong>Parameters</strong>中输入'* Tablename *' ,点击执行，将查找出表维护对应的Tcode.</p>
+<h4 id="对维护表进行增强操作">对维护表进行增强操作</h4>
+<p>可以通过增强的方式对维护表中的已知字段进行操作，比如每次修改后自动记录修改时间和修改人信息。</p>
+<p><img src="/images/ABAP/SM306.png" alt="查找源代码"></p>
+<p><img src="/images/ABAP/SM307.png" alt="Program"></p>
+<p><img src="/images/ABAP/SM309.png" alt="Source code"></p>
+<h4 id="事件定义">事件定义</h4>
+<p><img src="/images/ABAP/SM3010.png" alt="event"></p>
+<ul>
+<li>如果出现错误信息：function group XXXX cannot be processed,检查Function group并完全激活。</li>
+</ul>
+<p><img src="/images/ABAP/SM3012.png" alt="event"></p>
+<ul>
+<li>01：数据库保存数据前</li>
+<li>02：数据库保存数据后</li>
+<li>03：删除已显示的数据之前</li>
+<li>04：删除数据显示之后</li>
+<li>05：建立新的条目&hellip;..</li>
+</ul>
+<p>FORM Routine 定义</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">***INCLUDE </span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">test</span>.
+  <span style="color:#66d9ef">DATA</span>: lv_msg <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: lt_data <span style="color:#66d9ef">TYPE TABLE</span> z_table,
+        ls_data <span style="color:#66d9ef">TYPE </span>z_table.
+  <span style="color:#66d9ef">LOOP AT </span>total.
+    <span style="color:#66d9ef">IF</span> &lt;action&gt; <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;D&#39;</span> <span style="color:#f92672">AND</span> &lt;action&gt; <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;X&#39;</span>. <span style="color:#75715e">&#34;U:Update,D:Delete&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">APPEND</span> &lt;vim_total_struc&gt; <span style="color:#66d9ef">TO</span> lt_data.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">IF</span> lt_data <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#75715e">&#34;Sucess&#34;
+</span><span style="color:#75715e"></span>    vim_abort_saving <span style="color:#f92672">=</span> abap_false.
+    sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#75715e">&#34;Error Msg&#34;
+</span><span style="color:#75715e"></span>    lv_msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Error Message.&#39;</span>.
+    <span style="color:#66d9ef">MESSAGE</span> lv_msg TYPE <span style="color:#e6db74">&#39;S&#39;</span> DISPLAY <span style="color:#e6db74">&#39;E&#39;</span>. 
+    vim_abort_saving <span style="color:#f92672">=</span> abap_true.
+    sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;XXXX&#39;</span> TYPE <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><ul>
+<li><a href="http://remote-database.com/00000271/91ca9fb9a9d111d1a5690000e82deaaa.html">TOTAL 及 action 等字段解析</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>922</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_FieldSymbol/" class="prev" rel="prev" title=" SAP Field Symbols "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Field Symbols </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_RFC/" class="next" rel="next" title=" RFC 介绍 "> RFC 介绍 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-10-09 00:00:00 \u002b0000 UTC',
+        title: ' SM30表维护 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

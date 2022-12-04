@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/PP_BAPI_ProductOrder_Menu/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_Outsourcing_Business/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_BADI_PurchaseOrder/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Purchase Order 增强  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Purchase Order 增强  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Purchase Order 增强 "/>
+<meta name="twitter:description" content="采购订单(Purchase Order) TCode：ME21N，ME22N，ME23N，ME29N Customer Exit MM06E005 ：EXIT_SAPMM06E_016 Customer fields in purchasing document BADI:ME_PROCESS_PO_CUST"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Purchase Order 增强 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_BADI_PurchaseOrder\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM, BADI",
+  "wordcount":  2852 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_BADI_PurchaseOrder\/",
+  "datePublished": "2019-09-11T00:00:00\x2b00:00",
+  "dateModified": "2019-09-11T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Purchase Order 增强 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-09-11 >11 September 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>采购订单(Purchase Order)</p>
+<ul>
+<li>TCode：ME21N，ME22N，ME23N，ME29N</li>
+</ul>
+<h3 id="customer-exit">Customer Exit</h3>
+<h4 id="mm06e005-exit_sapmm06e_016">MM06E005 ：EXIT_SAPMM06E_016</h4>
+<ul>
+<li>Customer fields in purchasing document</li>
+</ul>
+<h3 id="badime_process_po_cust">BADI:ME_PROCESS_PO_CUST</h3>
+<ul>
+<li>PROCESS_HEADER：对 PO 抬头数据进行检查</li>
+<li>PROCESS_ITEM：对 PO 行项目做一些输入数据检查(限价检查)</li>
+<li>POST：点击保存时进行数据更新(底价更新)</li>
+</ul>
+<h4 id="method-if_ex_me_process_po_custprocess_item">METHOD： IF_EX_ME_PROCESS_PO_CUST~PROCESS_ITEM.</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">IF_EX_ME_PROCESS_PO_CUST~PROCESS_ITEM</span>.
+    <span style="color:#66d9ef">INCLUDE</span> MM_MESSAGES_MAC.
+    <span style="color:#66d9ef">DATA</span> : LW_ITEM <span style="color:#66d9ef">TYPE </span>MEPOITEM.
+    <span style="color:#66d9ef">DATA</span> : LT_KONV <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> KOMV .
+    <span style="color:#66d9ef">DATA</span> : LW_KONV <span style="color:#66d9ef">TYPE </span>KOMV .
+    <span style="color:#66d9ef">DATA</span> : LV_KNUMH <span style="color:#66d9ef">TYPE </span>A118<span style="color:#f92672">-</span>KNUMH .
+    <span style="color:#66d9ef">DATA</span> : LT_KONP <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> KONP .
+    <span style="color:#66d9ef">DATA</span> : LW_KONP <span style="color:#66d9ef">TYPE </span>KONP .
+    <span style="color:#66d9ef">DATA</span> : LV_MARKS(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">TYPE </span>C .
+    <span style="color:#66d9ef">DATA</span> : LT_KONM <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> KONM,
+           LW_KONM <span style="color:#66d9ef">TYPE  </span>KONM.
+    <span style="color:#66d9ef">DATA</span> : LO_HEADER <span style="color:#66d9ef">TYPE REF TO</span> IF_PURCHASE_ORDER_MM .
+    <span style="color:#66d9ef">DATA</span> : LW_HEADER <span style="color:#66d9ef">TYPE </span>MEPOHEADER .
+    <span style="color:#66d9ef">CLEAR</span>:LT_KONM[],LW_KONM.
+    <span style="color:#66d9ef">IF</span>  SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME21N&#39;</span> <span style="color:#f92672">OR</span> SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME22N&#39;</span>  <span style="color:#f92672">OR</span> SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME29N&#39;</span>
+      <span style="color:#f92672">OR</span> SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME23N&#39;</span>  .
+      LO_HEADER <span style="color:#f92672">=</span> IM_ITEM<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_HEADER</span>( ).
+      LW_HEADER <span style="color:#f92672">=</span> LO_HEADER<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_DATA</span>( ).
+      <span style="color:#66d9ef">IF</span> LW_HEADER<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;913&#39;</span> <span style="color:#f92672">OR</span>  LW_HEADER<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;914&#39;</span>
+        <span style="color:#f92672">OR</span>  LW_HEADER<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;915&#39;</span> <span style="color:#f92672">OR</span>  LW_HEADER<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;916&#39;</span> .
+      <span style="color:#66d9ef">ELSE</span> .
+        LW_ITEM <span style="color:#f92672">=</span> IM_ITEM<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_DATA</span>( ).
+        <span style="color:#66d9ef">CHECK</span> LW_ITEM<span style="color:#f92672">-</span>UMSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.  <span style="color:#75715e">&#34;免费货物不检查&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CHECK</span> LW_ITEM<span style="color:#f92672">-</span>LOEKZ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.  <span style="color:#75715e">&#34;删除货物不检查&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CHECK</span> LW_ITEM<span style="color:#f92672">-</span>MATNR <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;&#39;</span>. <span style="color:#75715e">&#34;无物料号不检查&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CALL METHOD</span> IM_ITEM<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>GET_CONDITIONS
+          <span style="color:#66d9ef">IMPORTING</span>
+            EX_CONDITIONS <span style="color:#f92672">=</span> LT_KONV[].
+        <span style="color:#66d9ef">CLEAR</span> LV_MARKS .
+        <span style="color:#66d9ef">CLEAR</span> LW_KONV .
+        <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONV <span style="color:#66d9ef">INTO</span> LW_KONV <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> KPOSN <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>EBELP KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PB00&#39;</span> .
+        <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span>  <span style="color:#ae81ff">0</span> .
+          <span style="color:#66d9ef">CLEAR</span> LW_KONV .
+          <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONV <span style="color:#66d9ef">INTO</span> LW_KONV <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> KPOSN <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>EBELP KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PBXX&#39;</span> .
+          <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> .
+            LV_MARKS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> .
+          <span style="color:#66d9ef">ENDIF</span> .
+        <span style="color:#66d9ef">ENDIF</span> .
+        <span style="color:#66d9ef">CHECK</span> LV_MARKS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> .
+        <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> KNUMH <span style="color:#66d9ef">INTO</span> LV_KNUMH <span style="color:#66d9ef">FROM</span> A901
+            <span style="color:#66d9ef">WHERE</span> KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PB00&#39;</span>
+              <span style="color:#f92672">AND</span> MATNR <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR
+              <span style="color:#f92672">AND</span> ZONWA <span style="color:#f92672">=</span> LW_HEADER<span style="color:#f92672">-</span>WAERS
+              <span style="color:#f92672">AND</span> DATBI <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+              <span style="color:#f92672">AND</span> DATAB <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM .
+        <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> .
+          <span style="color:#66d9ef">CLEAR</span> LT_KONP[] .
+          <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> LT_KONP <span style="color:#66d9ef">FROM</span> KONP
+            <span style="color:#66d9ef">WHERE</span> KNUMH <span style="color:#f92672">=</span> LV_KNUMH
+              <span style="color:#f92672">AND</span> KONWA <span style="color:#f92672">=</span> LW_HEADER<span style="color:#f92672">-</span>WAERS .
+          <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> .
+            <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> LT_KONM
+              <span style="color:#66d9ef">FROM</span> KONM
+              <span style="color:#66d9ef">FOR</span> ALL ENTRIES <span style="color:#66d9ef">IN</span> LT_KONP 
+              <span style="color:#66d9ef">WHERE</span> KNUMH <span style="color:#f92672">=</span> LT_KONP<span style="color:#f92672">-</span>KNUMH 
+              <span style="color:#f92672">AND</span> KOPOS <span style="color:#f92672">=</span> LT_KONP<span style="color:#f92672">-</span>KOPOS.<span style="color:#75715e">&#34; AND KSTBM &lt;= LW_ITEM-MENGE. &#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">CLEAR</span> LW_KONP .
+            <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONP <span style="color:#66d9ef">INTO</span> LW_KONP <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span> .
+            <span style="color:#66d9ef">SORT</span> LT_KONM BY KNUMH KOPOS KSTBM DESCENDING.  <span style="color:#75715e">&#34;按数量倒序&#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONM <span style="color:#66d9ef">INTO</span> LW_KONM <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.       <span style="color:#75715e">&#34;取最近最大的值对应的价格&#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">IF</span> LT_KONM[] <span style="color:#f92672">IS NOT INITIAL</span>. <span style="color:#75715e">&#34;如果存在，将阶梯价复制过来&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">LOOP AT </span>LT_KONM <span style="color:#66d9ef">INTO</span> LW_KONM <span style="color:#66d9ef">WHERE</span> KSTBM <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MENGE..
+                LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KBETR.
+              <span style="color:#66d9ef">ENDLOOP</span>.
+            <span style="color:#66d9ef">ENDIF</span>.
+            <span style="color:#66d9ef">IF</span> LW_HEADER<span style="color:#f92672">-</span>WAERS <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> LW_KONV<span style="color:#f92672">-</span>WAERS .
+              <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERT_TO_FOREIGN_CURRENCY&#39;</span>
+                <span style="color:#66d9ef">EXPORTING</span>
+                  <span style="color:#66d9ef">DATE</span>             <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+                  FOREIGN_CURRENCY <span style="color:#f92672">=</span> LW_HEADER<span style="color:#f92672">-</span>WAERS
+                  LOCAL_AMOUNT     <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KBETR
+                  LOCAL_CURRENCY   <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>WAERS
+                <span style="color:#66d9ef">IMPORTING</span>
+                  FOREIGN_AMOUNT   <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KBETR
+                <span style="color:#66d9ef">EXCEPTIONS</span>
+                  NO_RATE_FOUND    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                  OVERFLOW         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+                  NO_FACTORS_FOUND <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+                  NO_SPREAD_FOUND  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+                  DERIVED_2_TIMES  <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+                  <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+            <span style="color:#66d9ef">ENDIF</span> .
+
+            <span style="color:#66d9ef">IF</span> LW_KONP<span style="color:#f92672">-</span>KMEIN <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> LW_KONV<span style="color:#f92672">-</span>KMEIN .<span style="color:#75715e">&#34;数量单位转换&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">DATA</span> : LV_MENGE <span style="color:#66d9ef">TYPE </span>EKPO<span style="color:#f92672">-</span>MENGE .
+              LV_MENGE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KPEIN .
+              <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MD_CONVERT_MATERIAL_UNIT&#39;</span>
+                <span style="color:#66d9ef">EXPORTING</span>
+                  I_MATNR              <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR
+                  I_IN_ME              <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KMEIN
+                  I_OUT_ME             <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KMEIN
+                  I_MENGE              <span style="color:#f92672">=</span> LV_MENGE
+                <span style="color:#66d9ef">IMPORTING</span>
+                  E_MENGE              <span style="color:#f92672">=</span> LV_MENGE
+                <span style="color:#66d9ef">EXCEPTIONS</span>
+                  ERROR_IN_APPLICATION <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                  ERROR                <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+                  <span style="color:#66d9ef">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+              <span style="color:#66d9ef">IF</span> LV_MENGE <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> .
+                LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR  / LV_MENGE <span style="color:#f92672">*</span> LW_KONV<span style="color:#f92672">-</span>KPEIN .
+              <span style="color:#66d9ef">ELSE</span> .
+                MMPUR_MESSAGE <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#e6db74">&#39;ZMM&#39;</span> <span style="color:#e6db74">&#39;001&#39;</span> <span style="color:#e6db74">&#39;行项目&#39;</span> LW_ITEM<span style="color:#f92672">-</span>EBELP <span style="color:#e6db74">&#39;限价转换单位太小，程序无法判断&#39;</span>.
+              <span style="color:#66d9ef">ENDIF</span> .
+            <span style="color:#66d9ef">ELSE</span> .
+              LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR  / LW_KONP<span style="color:#f92672">-</span>KPEIN <span style="color:#f92672">*</span> LW_KONV<span style="color:#f92672">-</span>KPEIN .
+            <span style="color:#66d9ef">ENDIF</span> .
+            <span style="color:#66d9ef">IF</span> LW_KONV<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">&gt;</span> LW_KONP<span style="color:#f92672">-</span>KBETR .
+              MMPUR_MESSAGE <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#e6db74">&#39;ZMM&#39;</span> <span style="color:#e6db74">&#39;001&#39;</span> <span style="color:#e6db74">&#39;行项目&#39;</span> LW_ITEM<span style="color:#f92672">-</span>EBELP  <span style="color:#e6db74">&#39;采购价格超出物料最高限价！&#39;</span>.
+            <span style="color:#66d9ef">ENDIF</span> .
+          <span style="color:#66d9ef">ELSE</span> .
+            <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_MATN1_OUTPUT&#39;</span>
+              <span style="color:#66d9ef">EXPORTING</span>
+                INPUT  <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR
+              <span style="color:#66d9ef">IMPORTING</span>
+                OUTPUT <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR.
+            MMPUR_MESSAGE <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#e6db74">&#39;ZMM&#39;</span> <span style="color:#e6db74">&#39;001&#39;</span> <span style="color:#e6db74">&#39;行项目&#39;</span> LW_ITEM<span style="color:#f92672">-</span>EBELP  <span style="color:#e6db74">&#39;的最高限价货币记录为空！&#39;</span>.
+          <span style="color:#66d9ef">ENDIF</span> .
+        <span style="color:#66d9ef">ELSE</span> .
+          <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> KNUMH
+              <span style="color:#66d9ef">INTO</span> LV_KNUMH
+              <span style="color:#66d9ef">FROM</span> A901
+              <span style="color:#66d9ef">WHERE</span> KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PB00&#39;</span>
+                <span style="color:#f92672">AND</span> MATNR <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR
+                <span style="color:#f92672">AND</span> DATBI <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+                <span style="color:#f92672">AND</span> DATAB <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM .
+          <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> .
+            <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_MATN1_OUTPUT&#39;</span>
+              <span style="color:#66d9ef">EXPORTING</span>
+                INPUT  <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR
+              <span style="color:#66d9ef">IMPORTING</span>
+                OUTPUT <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR.
+            MMPUR_MESSAGE <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#e6db74">&#39;ZMM&#39;</span> <span style="color:#e6db74">&#39;001&#39;</span> <span style="color:#e6db74">&#39;行项目&#39;</span> LW_ITEM<span style="color:#f92672">-</span>EBELP  <span style="color:#e6db74">&#39;的最高限价货币记录为空！&#39;</span>.
+          <span style="color:#66d9ef">ELSE</span> .
+            <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_MATN1_OUTPUT&#39;</span>
+              <span style="color:#66d9ef">EXPORTING</span>
+                INPUT  <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR
+              <span style="color:#66d9ef">IMPORTING</span>
+                OUTPUT <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR.
+            MMPUR_MESSAGE <span style="color:#e6db74">&#39;W&#39;</span> <span style="color:#e6db74">&#39;ZMM&#39;</span> <span style="color:#e6db74">&#39;001&#39;</span> <span style="color:#e6db74">&#39;行项目&#39;</span> LW_ITEM<span style="color:#f92672">-</span>EBELP <span style="color:#e6db74">&#39;的最高限价记录为空，将自动维护.&#39;</span>.
+          <span style="color:#66d9ef">ENDIF</span> .
+        <span style="color:#66d9ef">ENDIF</span> .
+      <span style="color:#66d9ef">ENDIF</span> .
+    <span style="color:#66d9ef">ENDIF</span> .
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="method-if_ex_me_process_po_custpost">METHOD： IF_EX_ME_PROCESS_PO_CUST~POST</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">IF_EX_ME_PROCESS_PO_CUST~POST</span>.
+    <span style="color:#66d9ef">TYPES</span> : <span style="color:#66d9ef">BEGIN OF</span> LS_EKPO ,<span style="color:#75715e">&#34;物料对应&#34;
+</span><span style="color:#75715e"></span>              MATNR    <span style="color:#66d9ef">TYPE </span>EKPO<span style="color:#f92672">-</span>MATNR,
+              MENGE    <span style="color:#66d9ef">TYPE </span>EKPO<span style="color:#f92672">-</span>MENGE,
+              KBETR    <span style="color:#66d9ef">TYPE </span>KONV<span style="color:#f92672">-</span>KBETR,
+              WAERS    <span style="color:#66d9ef">TYPE </span>KONV<span style="color:#f92672">-</span>WAERS,
+              KMEIN    <span style="color:#66d9ef">TYPE </span>KONV<span style="color:#f92672">-</span>KMEIN,
+              KBET2    <span style="color:#66d9ef">TYPE </span>KONV<span style="color:#f92672">-</span>KBETR,
+              KPEIN    <span style="color:#66d9ef">TYPE </span>KONV<span style="color:#f92672">-</span>KPEIN,
+              MARKX(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">TYPE </span>C,
+            <span style="color:#66d9ef">END OF</span> LS_EKPO .
+    <span style="color:#66d9ef">DATA</span> : LW_EKPO <span style="color:#66d9ef">TYPE </span>LS_EKPO .
+    <span style="color:#66d9ef">DATA</span> : LT_EKPO <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> LS_EKPO .
+    <span style="color:#66d9ef">DATA</span> : LW_ITEM <span style="color:#66d9ef">TYPE </span>MEPOITEM.
+    <span style="color:#66d9ef">DATA</span> : LW_HEAD <span style="color:#66d9ef">TYPE </span>MEPOHEADER.
+    <span style="color:#66d9ef">DATA</span> : LT_ITEM <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> MEPOITEM.
+    <span style="color:#66d9ef">DATA</span> : LT_KONV <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> KOMV .
+    <span style="color:#66d9ef">DATA</span> : LT_KONV_01 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> KOMV .
+    <span style="color:#66d9ef">DATA</span> : LW_KONV <span style="color:#66d9ef">TYPE </span>KOMV .
+    <span style="color:#66d9ef">DATA</span> : LV_KNUMH <span style="color:#66d9ef">TYPE </span>A118<span style="color:#f92672">-</span>KNUMH .
+    <span style="color:#66d9ef">DATA</span> : LT_KONP <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> KONP .
+    <span style="color:#66d9ef">DATA</span> : LW_KONP <span style="color:#66d9ef">TYPE </span>KONP .
+    <span style="color:#66d9ef">DATA</span>: LT_ITEMS <span style="color:#66d9ef">TYPE </span>PURCHASE_ORDER_ITEMS,
+          LW_ITEMS <span style="color:#66d9ef">TYPE </span>PURCHASE_ORDER_ITEM.
+    <span style="color:#66d9ef">DATA</span> : LM_KONV <span style="color:#66d9ef">TYPE REF TO</span> IF_PURCHASE_ORDER_ITEM_MM .
+    <span style="color:#66d9ef">DATA</span>:LT_KONM <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span>  KONM,
+         LW_KONM <span style="color:#66d9ef">TYPE  </span>KONM.
+    <span style="color:#66d9ef">DATA</span>:LV_FLAG <span style="color:#66d9ef">TYPE </span>C.
+<span style="color:#75715e">***************************************************</span>
+<span style="color:#75715e">***************************************************</span>
+    <span style="color:#66d9ef">DATA</span>: LT_BAPICONDCT <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span>  BAPICONDCT,  
+          LW_BAPICONDCT <span style="color:#66d9ef">TYPE  </span>BAPICONDCT,
+          LT_BAPICONDHD <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPICONDHD ,  
+          LW_BAPICONDHD <span style="color:#66d9ef">TYPE  </span>BAPICONDHD,
+          LT_BAPICONDIT <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPICONDIT,
+          LW_BAPICONDIT <span style="color:#66d9ef">TYPE  </span>BAPICONDIT,
+          LT_BAPICONDQS <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPICONDQS,
+          LW_BAPICONDQS <span style="color:#66d9ef">TYPE  </span>BAPICONDQS,
+          LT_BAPICONDVS <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPICONDVS,
+          LW_BAPICONDVS <span style="color:#66d9ef">TYPE  </span>BAPICONDVS.
+
+    <span style="color:#66d9ef">DATA</span>: LT_BAPIRET2 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPIRET2 .
+    <span style="color:#66d9ef">DATA</span>: LW_BAPIRET2 <span style="color:#66d9ef">TYPE </span>BAPIRET2 .
+    <span style="color:#66d9ef">DATA</span>: LT_BAPIKNUMHS <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPIKNUMHS  .
+    <span style="color:#66d9ef">DATA</span>: LT_MEM_INITIAL <span style="color:#66d9ef">TYPE  </span><span style="color:#66d9ef">TABLE OF</span> CND_MEM_INITIAL.
+    <span style="color:#66d9ef">DATA</span> : LV_MARKX(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">TYPE </span>C .<span style="color:#75715e">&#34;需要扩大标识&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: H_VARKEY(<span style="color:#ae81ff">100</span>),
+          H_COND_UNIT <span style="color:#66d9ef">TYPE </span>MEINS .
+<span style="color:#75715e">***************************************************</span>
+<span style="color:#75715e">***************************************************</span>
+    <span style="color:#66d9ef">CLEAR</span> : LT_EKPO[] .
+    <span style="color:#66d9ef">CLEAR</span> : LT_ITEM[] .
+    <span style="color:#66d9ef">CLEAR</span> : LT_KONV[] .
+    <span style="color:#66d9ef">CLEAR</span> : LT_KONP[] .
+    <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME21N&#39;</span> <span style="color:#f92672">OR</span> SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME22N&#39;</span> <span style="color:#f92672">OR</span> SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME23N&#39;</span>
+      <span style="color:#f92672">OR</span> SY<span style="color:#f92672">-</span>TCODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ME29N&#39;</span> .
+      LT_ITEMS <span style="color:#f92672">=</span> IM_HEADER<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_ITEMS</span>( ).
+      LW_HEAD <span style="color:#f92672">=</span> IM_HEADER<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_DATA</span>( ).
+      <span style="color:#66d9ef">IF</span> LW_HEAD<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;913&#39;</span> <span style="color:#f92672">OR</span>  LW_HEAD<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;914&#39;</span>
+        <span style="color:#f92672">OR</span>  LW_HEAD<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;915&#39;</span> <span style="color:#f92672">OR</span>  LW_HEAD<span style="color:#f92672">-</span>BSART <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;916&#39;</span> .
+      <span style="color:#66d9ef">ELSE</span> .
+        <span style="color:#66d9ef">CLEAR</span> LW_ITEMS .
+        <span style="color:#66d9ef">LOOP AT </span>LT_ITEMS <span style="color:#66d9ef">INTO</span> LW_ITEMS .
+          <span style="color:#66d9ef">CLEAR</span> LW_ITEM .
+          LW_ITEM <span style="color:#f92672">=</span> LW_ITEMS<span style="color:#f92672">-</span>ITEM<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_DATA</span>( ).
+          <span style="color:#66d9ef">APPEND</span> LW_ITEM <span style="color:#66d9ef">TO</span> LT_ITEM .
+          <span style="color:#66d9ef">CLEAR</span> LT_KONV_01[] .
+          <span style="color:#66d9ef">CALL METHOD</span> LW_ITEMS<span style="color:#f92672">-</span>ITEM<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>GET_CONDITIONS
+            <span style="color:#66d9ef">IMPORTING</span>
+              EX_CONDITIONS <span style="color:#f92672">=</span> LT_KONV_01[].
+          <span style="color:#66d9ef">APPEND LINES OF</span> LT_KONV_01 <span style="color:#66d9ef">TO</span> LT_KONV .
+        <span style="color:#66d9ef">ENDLOOP</span>.
+        <span style="color:#66d9ef">CLEAR</span> LW_ITEM  .
+        <span style="color:#66d9ef">LOOP AT </span>LT_ITEM <span style="color:#66d9ef">INTO</span> LW_ITEM .
+          <span style="color:#66d9ef">CHECK</span> LW_ITEM<span style="color:#f92672">-</span>UMSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> . <span style="color:#75715e">&#34;免费货物不检查&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">CHECK</span> LW_ITEM<span style="color:#f92672">-</span>LOEKZ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> . <span style="color:#75715e">&#34;删除货物不检查&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">CHECK</span> LW_ITEM<span style="color:#f92672">-</span>MATNR <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;&#39;</span>. <span style="color:#75715e">&#34;无物料号不检查&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">CLEAR</span> LW_KONV .
+          <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONV <span style="color:#66d9ef">INTO</span> LW_KONV <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> KPOSN <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>EBELP KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PB00&#39;</span> .
+          <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> .
+            <span style="color:#66d9ef">CLEAR</span> LW_EKPO .
+            LW_EKPO<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KBETR  .
+            LW_EKPO<span style="color:#f92672">-</span>MENGE <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MENGE  .
+            LW_EKPO<span style="color:#f92672">-</span>MATNR <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR .
+            LW_EKPO<span style="color:#f92672">-</span>WAERS <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>WAERS .
+            LW_EKPO<span style="color:#f92672">-</span>KMEIN <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KMEIN .
+            LW_EKPO<span style="color:#f92672">-</span>KBET2 <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KBETR .
+            LW_EKPO<span style="color:#f92672">-</span>KPEIN <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KPEIN .
+            <span style="color:#66d9ef">APPEND</span> LW_EKPO <span style="color:#66d9ef">TO</span> LT_EKPO .
+          <span style="color:#66d9ef">ELSE</span> .
+            <span style="color:#66d9ef">CLEAR</span> LW_KONV .
+            <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONV <span style="color:#66d9ef">INTO</span> LW_KONV <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> KPOSN <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>EBELP KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PBXX&#39;</span> .
+            <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> .
+              <span style="color:#66d9ef">CLEAR</span> LW_EKPO .
+              LW_EKPO<span style="color:#f92672">-</span>MENGE <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MENGE  .
+              LW_EKPO<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KBETR  .
+              LW_EKPO<span style="color:#f92672">-</span>MATNR <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR .
+              LW_EKPO<span style="color:#f92672">-</span>WAERS <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>WAERS .
+              LW_EKPO<span style="color:#f92672">-</span>KMEIN <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KMEIN .
+              LW_EKPO<span style="color:#f92672">-</span>KBET2 <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KBETR .
+              LW_EKPO<span style="color:#f92672">-</span>KPEIN <span style="color:#f92672">=</span> LW_KONV<span style="color:#f92672">-</span>KPEIN .
+              <span style="color:#66d9ef">APPEND</span> LW_EKPO <span style="color:#66d9ef">TO</span> LT_EKPO .
+            <span style="color:#66d9ef">ENDIF</span> .
+          <span style="color:#66d9ef">ENDIF</span> .
+          <span style="color:#66d9ef">CLEAR</span> LW_ITEM  .
+        <span style="color:#66d9ef">ENDLOOP</span> .
+        <span style="color:#75715e">&#34;取到唯一的最小值&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">SORT</span> LT_EKPO BY MATNR KBETR ASCENDING .
+        <span style="color:#66d9ef">DELETE ADJACENT DUPLICATES FROM</span> LT_EKPO <span style="color:#66d9ef">COMPARING</span> MATNR .
+        <span style="color:#66d9ef">IF</span> LT_EKPO[] <span style="color:#f92672">IS NOT INITIAL</span> .
+          <span style="color:#66d9ef">CLEAR</span> LW_EKPO .
+          <span style="color:#66d9ef">LOOP AT </span>LT_EKPO <span style="color:#66d9ef">INTO</span> LW_EKPO .
+            <span style="color:#66d9ef">CLEAR</span> : LT_BAPICONDCT[]  ,
+                    LT_BAPICONDHD[]  ,
+                    LT_BAPICONDIT[]  ,
+                    LT_BAPICONDQS[]  ,
+                    LT_BAPICONDVS[]  ,
+                    LT_BAPIRET2[]    ,
+                    LT_BAPIKNUMHS[]  ,
+                    LT_MEM_INITIAL[] .
+            LW_EKPO<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KBET2 .
+            <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> KNUMH <span style="color:#66d9ef">INTO</span> LV_KNUMH <span style="color:#66d9ef">FROM</span> A901
+                <span style="color:#66d9ef">WHERE</span> KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PB00&#39;</span>
+                  <span style="color:#f92672">AND</span> MATNR <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>MATNR
+                  <span style="color:#f92672">AND</span> ZONWA <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>WAERS
+                  <span style="color:#f92672">AND</span> DATBI <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+                  <span style="color:#f92672">AND</span> DATAB <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM .
+            <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> .
+              <span style="color:#66d9ef">CLEAR</span>: LT_KONP[],LT_KONM .
+              <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+                <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> LT_KONP
+                <span style="color:#66d9ef">FROM</span> KONP
+                <span style="color:#66d9ef">WHERE</span> KNUMH <span style="color:#f92672">=</span> LV_KNUMH  .
+              <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+                <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> LT_KONM 
+                  <span style="color:#66d9ef">FROM</span> KONM
+                  <span style="color:#66d9ef">FOR</span> ALL ENTRIES <span style="color:#66d9ef">IN</span> LT_KONP
+                  <span style="color:#66d9ef">WHERE</span> KNUMH <span style="color:#f92672">=</span> LT_KONP<span style="color:#f92672">-</span>KNUMH 
+                  <span style="color:#f92672">AND</span> KOPOS <span style="color:#f92672">=</span> LT_KONP<span style="color:#f92672">-</span>KOPOS.<span style="color:#75715e">&#34; AND KSTBM &lt;= LW_EKPO-MENGE. &#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">ENDIF</span>.
+              <span style="color:#66d9ef">CLEAR</span> LW_KONP .
+              <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONP <span style="color:#66d9ef">INTO</span> LW_KONP <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span> .
+              <span style="color:#66d9ef">SORT</span> LT_KONM BY KNUMH KOPOS KSTBM DESCENDING.<span style="color:#75715e">&#34;先取最大的，然后倒序，小于等于当前数量赋值&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_KONM <span style="color:#66d9ef">INTO</span> LW_KONM <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+              <span style="color:#66d9ef">IF</span> LT_KONM[] <span style="color:#f92672">IS NOT INITIAL</span>.
+                LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KBETR.
+                <span style="color:#66d9ef">LOOP AT </span>LT_KONM <span style="color:#66d9ef">INTO</span> LW_KONM <span style="color:#66d9ef">WHERE</span> KSTBM <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>MENGE.
+                  LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KBETR.
+                <span style="color:#66d9ef">ENDLOOP</span>.
+              <span style="color:#66d9ef">ENDIF</span>.
+              <span style="color:#66d9ef">IF</span> LW_EKPO<span style="color:#f92672">-</span>WAERS <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> LW_KONP<span style="color:#f92672">-</span>KONWA .
+                <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERT_TO_FOREIGN_CURRENCY&#39;</span>
+                  <span style="color:#66d9ef">EXPORTING</span>
+                    <span style="color:#66d9ef">DATE</span>             <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+                    FOREIGN_CURRENCY <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KONWA
+                    LOCAL_AMOUNT     <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KBETR
+                    LOCAL_CURRENCY   <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>WAERS
+                  <span style="color:#66d9ef">IMPORTING</span>
+                    FOREIGN_AMOUNT   <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KBETR
+                  <span style="color:#66d9ef">EXCEPTIONS</span>
+                    NO_RATE_FOUND    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    OVERFLOW         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+                    NO_FACTORS_FOUND <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+                    NO_SPREAD_FOUND  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+                    DERIVED_2_TIMES  <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+                    <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+              <span style="color:#66d9ef">ENDIF</span> .
+              <span style="color:#66d9ef">IF</span> LW_EKPO<span style="color:#f92672">-</span>KMEIN <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> LW_KONP<span style="color:#f92672">-</span>KMEIN .<span style="color:#75715e">&#34;数量单位转换&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">DATA</span> : LV_MENGE <span style="color:#66d9ef">TYPE </span>EKPO<span style="color:#f92672">-</span>MENGE .
+                LV_MENGE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KPEIN .
+                <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MD_CONVERT_MATERIAL_UNIT&#39;</span>
+                  <span style="color:#66d9ef">EXPORTING</span>
+                    I_MATNR              <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR
+                    I_IN_ME              <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KMEIN
+                    I_OUT_ME             <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KMEIN
+                    I_MENGE              <span style="color:#f92672">=</span> LV_MENGE
+                  <span style="color:#66d9ef">IMPORTING</span>
+                    E_MENGE              <span style="color:#f92672">=</span> LV_MENGE
+                  <span style="color:#66d9ef">EXCEPTIONS</span>
+                    ERROR_IN_APPLICATION <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    ERROR                <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+                    <span style="color:#66d9ef">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+                LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR  / LV_MENGE <span style="color:#f92672">*</span> LW_EKPO<span style="color:#f92672">-</span>KPEIN .
+              <span style="color:#66d9ef">ELSE</span> .
+                LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR  / LW_KONP<span style="color:#f92672">-</span>KPEIN <span style="color:#f92672">*</span> LW_EKPO<span style="color:#f92672">-</span>KPEIN .
+              <span style="color:#66d9ef">ENDIF</span> .
+              <span style="color:#66d9ef">IF</span> LW_EKPO<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">&lt;</span> LW_KONP<span style="color:#f92672">-</span>KBETR .
+                <span style="color:#75715e">&#34; LW_KONP-KBETR = LW_EKPO-KBETR * LW_KONP-KPEIN  .&#34;
+</span><span style="color:#75715e"></span>                LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KBET2 .
+                <span style="color:#66d9ef">CHECK</span> LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> .
+                H_VARKEY  <span style="color:#f92672">=</span> LW_ITEM<span style="color:#f92672">-</span>MATNR  .
+                LW_BAPICONDCT<span style="color:#f92672">-</span>OPERATION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;004&#39;</span>.         <span style="color:#75715e">&#34;更改&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDCT<span style="color:#f92672">-</span>COND_USAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.          <span style="color:#75715e">&#34;条件表用途 ‘A&#39; 定价&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDCT<span style="color:#f92672">-</span>TABLE_NO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;901&#39;</span>.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>APPLICATIO <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KAPPL.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>COND_TYPE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KSCHL. <span style="color:#75715e">&#34;定价条件&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDCT<span style="color:#f92672">-</span>VARKEY <span style="color:#f92672">=</span> H_VARKEY.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>VALID_TO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;99991231&#39;</span>.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>VALID_FROM <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>COND_NO <span style="color:#f92672">=</span> LV_KNUMH.        <span style="color:#75715e">&#34;更改&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">APPEND</span> LW_BAPICONDCT <span style="color:#66d9ef">TO</span> LT_BAPICONDCT.
+
+                LW_BAPICONDHD<span style="color:#f92672">-</span>OPERATION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;004&#39;</span>.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>COND_NO <span style="color:#f92672">=</span> LV_KNUMH.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>COND_USAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>TABLE_NO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;901&#39;</span>.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>APPLICATIO <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KAPPL.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>COND_TYPE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KSCHL.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>VALID_FROM <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>VALID_TO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;99991231&#39;</span>.
+                <span style="color:#66d9ef">APPEND</span> LW_BAPICONDHD <span style="color:#66d9ef">TO</span>  LT_BAPICONDHD .
+
+                <span style="color:#66d9ef">IF</span> LT_KONM[] <span style="color:#f92672">IS NOT INITIAL</span>.
+                  <span style="color:#66d9ef">CLEAR</span>:LV_FLAG.
+                  <span style="color:#66d9ef">LOOP AT </span>LT_KONM <span style="color:#66d9ef">INTO</span> LW_KONM.
+                    <span style="color:#66d9ef">AT</span> LAST.
+                      <span style="color:#66d9ef">IF</span> LV_FLAG <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+                        LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+                      <span style="color:#66d9ef">ENDIF</span>.
+                    <span style="color:#66d9ef">ENDAT</span>.
+                    <span style="color:#66d9ef">IF</span> LW_KONM<span style="color:#f92672">-</span>KSTBM <span style="color:#f92672">&gt;</span> LW_EKPO<span style="color:#f92672">-</span>MENGE.<span style="color:#75715e">&#34; AND LV_FLAG &lt;&gt; &#39;E&#39;. 小于等于订单数量的第一个&#34;
+</span><span style="color:#75715e"></span>                      <span style="color:#66d9ef">IF</span> LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+                        LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+                      <span style="color:#66d9ef">ENDIF</span>.
+                    <span style="color:#66d9ef">ELSEIF</span> LW_KONM<span style="color:#f92672">-</span>KSTBM <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>MENGE.
+                      LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+                    <span style="color:#66d9ef">ELSEIF</span> LW_KONM<span style="color:#f92672">-</span>KSTBM <span style="color:#f92672">&lt;</span> LW_EKPO<span style="color:#f92672">-</span>MENGE.
+                      <span style="color:#66d9ef">IF</span> LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+                        LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+                      <span style="color:#66d9ef">ENDIF</span>.
+                    <span style="color:#66d9ef">ENDIF</span>.
+                    <span style="color:#66d9ef">IF</span> LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+                      LW_BAPICONDQS<span style="color:#f92672">-</span>CURRENCY <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR.
+                      LV_FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+                    <span style="color:#66d9ef">ELSE</span>.
+                      LW_BAPICONDQS<span style="color:#f92672">-</span>CURRENCY <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KBETR.
+                    <span style="color:#66d9ef">ENDIF</span>.
+                    LW_BAPICONDQS<span style="color:#f92672">-</span>OPERATION  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;004&#39;</span>.
+                    LW_BAPICONDQS<span style="color:#f92672">-</span>COND_NO    <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KNUMH.
+                    LW_BAPICONDQS<span style="color:#f92672">-</span>COND_COUNT <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KOPOS.
+                    LW_BAPICONDQS<span style="color:#f92672">-</span>LINE_NO    <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KLFN1.
+                    LW_BAPICONDQS<span style="color:#f92672">-</span>SCALE_QTY  <span style="color:#f92672">=</span> LW_KONM<span style="color:#f92672">-</span>KSTBM.
+                    LW_BAPICONDQS<span style="color:#f92672">-</span>COND_UNIT  <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KMEIN.
+                    LW_BAPICONDQS<span style="color:#f92672">-</span>CONDCURR   <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KONWA.
+                    <span style="color:#66d9ef">APPEND</span> LW_BAPICONDQS <span style="color:#66d9ef">TO</span> LT_BAPICONDQS.
+                  <span style="color:#66d9ef">ENDLOOP</span>.
+                  LW_BAPICONDIT<span style="color:#f92672">-</span>UNITMEASUR <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KMEIN.
+                <span style="color:#66d9ef">ENDIF</span>.
+
+                LW_BAPICONDIT<span style="color:#f92672">-</span>OPERATION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;004&#39;</span>.   <span style="color:#75715e">&#34;修改&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_NO <span style="color:#f92672">=</span> LV_KNUMH.
+                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_COUNT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.     <span style="color:#75715e">&#34;条件序列号&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>APPLICATIO <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KAPPL.
+                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_TYPE <span style="color:#f92672">=</span>  LW_KONP<span style="color:#f92672">-</span>KSCHL.  <span style="color:#75715e">&#34;条件类型&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>SCALETYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.             <span style="color:#75715e">&#34;STFKZ Staffelsoort&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>SCALEBASIN <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>STFKZ.  <span style="color:#75715e">&#34;KZBZG Teken:rekeneenheid &#34;
+</span><span style="color:#75715e"></span>                LW_bapicondit<span style="color:#f92672">-</span>scalebasin <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C&#39;</span>.            <span style="color:#75715e">&#34;存在数量等级&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>SCALE_QTY <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KSTBM.   <span style="color:#75715e">&#34;KSTBM Conditiestaffelbasis hoeveelheid&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_P_UNT <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KPEIN . <span style="color:#75715e">&#34;KPEIN prijseenheid&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_UNIT <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KMEIN.   <span style="color:#75715e">&#34;KMEIN Conditie-hoeveelheidseenheid&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>CALCTYPCON <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KRECH.  <span style="color:#75715e">&#34;KRECH Conditie-rekenregel&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_VALUE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR.
+                LW_BAPICONDIT<span style="color:#f92672">-</span>CONDCURR <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KONWA.
+                <span style="color:#66d9ef">APPEND</span>  LW_BAPICONDIT  <span style="color:#66d9ef">TO</span> LT_BAPICONDIT  .
+                <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PRICES_CONDITIONS&#39;</span>
+                  <span style="color:#66d9ef">TABLES</span>
+                    TI_BAPICONDCT  <span style="color:#f92672">=</span> LT_BAPICONDCT
+                    TI_BAPICONDHD  <span style="color:#f92672">=</span> LT_BAPICONDHD
+                    TI_BAPICONDIT  <span style="color:#f92672">=</span> LT_BAPICONDIT
+                    TI_BAPICONDQS  <span style="color:#f92672">=</span> LT_BAPICONDQS
+                    TI_BAPICONDVS  <span style="color:#f92672">=</span> LT_BAPICONDVS
+                    TO_BAPIRET2    <span style="color:#f92672">=</span> LT_BAPIRET2
+                    TO_BAPIKNUMHS  <span style="color:#f92672">=</span> LT_BAPIKNUMHS
+                    TO_MEM_INITIAL <span style="color:#f92672">=</span> LT_MEM_INITIAL
+                  <span style="color:#66d9ef">EXCEPTIONS</span>
+                    UPDATE_ERROR   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    <span style="color:#66d9ef">OTHERS</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+                <span style="color:#66d9ef">CLEAR</span> LW_BAPIRET2 .
+                <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_BAPIRET2 <span style="color:#66d9ef">INTO</span> LW_BAPIRET2 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+                <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> .
+                  <span style="color:#66d9ef">COMMIT</span> WORK <span style="color:#f92672">AND</span> <span style="color:#66d9ef">WAIT</span> .
+                <span style="color:#66d9ef">ELSE</span> .
+                  <span style="color:#66d9ef">ROLLBACK</span> WORK .
+                  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ZMMFM001&#39;</span>
+                    <span style="color:#66d9ef">EXPORTING</span>
+                      EBELN    <span style="color:#f92672">=</span> LW_HEAD<span style="color:#f92672">-</span>EBELN
+                      MATNR    <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>MATNR
+                      KBETR    <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR
+                    <span style="color:#66d9ef">TABLES</span>
+                      BAPIRET2 <span style="color:#f92672">=</span> LT_BAPIRET2.
+                <span style="color:#66d9ef">ENDIF</span> .
+              <span style="color:#66d9ef">ENDIF</span> .
+            <span style="color:#66d9ef">ELSE</span> .
+              <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> KNUMH
+                 <span style="color:#66d9ef">INTO</span> LV_KNUMH
+                 <span style="color:#66d9ef">FROM</span> A901
+                 <span style="color:#66d9ef">WHERE</span> KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PB00&#39;</span>
+                   <span style="color:#f92672">AND</span> MATNR <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>MATNR
+                   <span style="color:#f92672">AND</span> DATBI <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+                   <span style="color:#f92672">AND</span> DATAB <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM .
+              <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> .
+<span style="color:#75715e">*               CHECK LW_KONP-KBETR &lt;&gt; 0 .</span>
+                LW_KONP<span style="color:#f92672">-</span>KAPPL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span> .
+                LW_KONP<span style="color:#f92672">-</span>KSCHL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PB00&#39;</span> .
+                LW_KONP<span style="color:#f92672">-</span>STFKZ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span> .
+                LW_KONP<span style="color:#f92672">-</span>KSTBM <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> .
+                LW_KONP<span style="color:#f92672">-</span>KPEIN <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KPEIN .
+                LW_KONP<span style="color:#f92672">-</span>KMEIN <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KMEIN .
+                LW_KONP<span style="color:#f92672">-</span>KRECH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C&#39;</span> .
+                LW_KONP<span style="color:#f92672">-</span>KBETR <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>KBET2 .
+                LW_KONP<span style="color:#f92672">-</span>KONWA <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>WAERS .
+                LV_KNUMH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;$000000001&#39;</span>  .
+
+                <span style="color:#66d9ef">CONCATENATE</span>  LW_EKPO<span style="color:#f92672">-</span>MATNR LW_KONP<span style="color:#f92672">-</span>KONWA <span style="color:#66d9ef">INTO</span> H_VARKEY.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>OPERATION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;009&#39;</span>.   <span style="color:#75715e">&#34;更改&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDCT<span style="color:#f92672">-</span>COND_USAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.    <span style="color:#75715e">&#34;条件表用途 ‘A&#39; 定价&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDCT<span style="color:#f92672">-</span>TABLE_NO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;901&#39;</span>.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>APPLICATIO <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KAPPL.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>COND_TYPE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KSCHL. <span style="color:#75715e">&#34;定价条件&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDCT<span style="color:#f92672">-</span>VARKEY <span style="color:#f92672">=</span> H_VARKEY.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>VALID_TO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;99991231&#39;</span>.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>VALID_FROM <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+                LW_BAPICONDCT<span style="color:#f92672">-</span>COND_NO <span style="color:#f92672">=</span> LV_KNUMH.    <span style="color:#75715e">&#34;更改&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">APPEND</span> LW_BAPICONDCT <span style="color:#66d9ef">TO</span> LT_BAPICONDCT.
+
+                LW_BAPICONDHD<span style="color:#f92672">-</span>OPERATION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;009&#39;</span>.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>COND_NO <span style="color:#f92672">=</span> LV_KNUMH.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>COND_USAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>TABLE_NO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;901&#39;</span>.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>APPLICATIO <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KAPPL.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>COND_TYPE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KSCHL.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>VARKEY <span style="color:#f92672">=</span> H_VARKEY.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>VALID_FROM <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+                LW_BAPICONDHD<span style="color:#f92672">-</span>VALID_TO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;99991231&#39;</span>.
+                <span style="color:#66d9ef">APPEND</span> LW_BAPICONDHD <span style="color:#66d9ef">TO</span>  LT_BAPICONDHD .
+
+                LW_BAPICONDIT<span style="color:#f92672">-</span>OPERATION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;009&#39;</span>.   <span style="color:#75715e">&#34;修改&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_NO <span style="color:#f92672">=</span> LV_KNUMH.
+                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_COUNT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.   <span style="color:#75715e">&#34;条件序列号&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>APPLICATIO <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KAPPL.
+                <span style="color:#75715e">&#34;LW_BAPICONDIT-MATLSETTL = LW_EKPO-MATNR.&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_TYPE <span style="color:#f92672">=</span>  LW_KONP<span style="color:#f92672">-</span>KSCHL.   <span style="color:#75715e">&#34;条件类型&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>SCALETYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.              <span style="color:#75715e">&#34;STFKZ Staffelsoort&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>SCALEBASIN <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>STFKZ.   <span style="color:#75715e">&#34;KZBZG Teken:rekeneenheid &#34;  
+</span><span style="color:#75715e"></span>                LW_bapicondit<span style="color:#f92672">-</span>scalebasin <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C&#39;</span>.             <span style="color:#75715e">&#34;存在数量等级&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>SCALE_QTY <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KSTBM.    <span style="color:#75715e">&#34;KSTBM Conditiestaffelbasis hoeveelheid&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_P_UNT <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KPEIN .  <span style="color:#75715e">&#34;KPEIN prijseenheid&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_UNIT <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KMEIN.    <span style="color:#75715e">&#34;KMEIN Conditie-hoeveelheidseenheid&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>CALCTYPCON <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KRECH.   <span style="color:#75715e">&#34;KRECH Conditie-rekenregel&#34;
+</span><span style="color:#75715e"></span>                LW_BAPICONDIT<span style="color:#f92672">-</span>COND_VALUE <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR.
+                LW_BAPICONDIT<span style="color:#f92672">-</span>CONDCURR <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KONWA.
+                <span style="color:#66d9ef">APPEND</span>  LW_BAPICONDIT  <span style="color:#66d9ef">TO</span> LT_BAPICONDIT  .
+
+                <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PRICES_CONDITIONS&#39;</span>
+                  <span style="color:#66d9ef">TABLES</span>
+                    TI_BAPICONDCT  <span style="color:#f92672">=</span> LT_BAPICONDCT
+                    TI_BAPICONDHD  <span style="color:#f92672">=</span> LT_BAPICONDHD
+                    TI_BAPICONDIT  <span style="color:#f92672">=</span> LT_BAPICONDIT
+                    TI_BAPICONDQS  <span style="color:#f92672">=</span> LT_BAPICONDQS
+                    TI_BAPICONDVS  <span style="color:#f92672">=</span> LT_BAPICONDVS
+                    TO_BAPIRET2    <span style="color:#f92672">=</span> LT_BAPIRET2
+                    TO_BAPIKNUMHS  <span style="color:#f92672">=</span> LT_BAPIKNUMHS
+                    TO_MEM_INITIAL <span style="color:#f92672">=</span> LT_MEM_INITIAL
+                  <span style="color:#66d9ef">EXCEPTIONS</span>
+                    UPDATE_ERROR   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    <span style="color:#66d9ef">OTHERS</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+                <span style="color:#66d9ef">CLEAR</span> LW_BAPIRET2 .
+                <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_BAPIRET2 <span style="color:#66d9ef">INTO</span> LW_BAPIRET2 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+                <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> .
+                  <span style="color:#66d9ef">COMMIT</span> WORK <span style="color:#f92672">AND</span> <span style="color:#66d9ef">WAIT</span> .
+                <span style="color:#66d9ef">ELSE</span> .
+                  <span style="color:#66d9ef">ROLLBACK</span> WORK .
+                  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ZMMFM001&#39;</span>
+                    <span style="color:#66d9ef">EXPORTING</span>
+                      EBELN    <span style="color:#f92672">=</span> LW_HEAD<span style="color:#f92672">-</span>EBELN
+                      MATNR    <span style="color:#f92672">=</span> LW_EKPO<span style="color:#f92672">-</span>MATNR
+                      KBETR    <span style="color:#f92672">=</span> LW_KONP<span style="color:#f92672">-</span>KBETR
+                    <span style="color:#66d9ef">TABLES</span>
+                      BAPIRET2 <span style="color:#f92672">=</span> LT_BAPIRET2.
+                <span style="color:#66d9ef">ENDIF</span> .
+              <span style="color:#66d9ef">ENDIF</span> .
+            <span style="color:#66d9ef">ENDIF</span> .
+          <span style="color:#66d9ef">ENDLOOP</span> .
+        <span style="color:#66d9ef">ENDIF</span> .
+      <span style="color:#66d9ef">ENDIF</span> .
+    <span style="color:#66d9ef">ENDIF</span> .
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2852</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BADI/">
+                    #BADI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/PP_BAPI_ProductOrder_Menu/" class="prev" rel="prev" title=" BAPI 操作生产订单 "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI 操作生产订单 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_Outsourcing_Business/" class="next" rel="next" title=" MM 委外业务(外发加工) "> MM 委外业务(外发加工) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-09-11 00:00:00 \x2b0000 UTC',
+        title: ' Purchase Order 增强 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

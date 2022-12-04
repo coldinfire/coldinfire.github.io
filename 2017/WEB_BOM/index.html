@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_DOM/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_JavaScript_Improve/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_BOM/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           网页 BOM 知识汇总 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="网页 BOM 知识汇总 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="网页 BOM 知识汇总"/>
+<meta name="twitter:description" content="浏览器对象模型 (BOM) BOM 使 JavaScript 有能力与浏览器&quot;对话&quot;。 包含对象列表 对象 描述 对象 描述 对象 描述 Window 窗口对象 History 历史纪录对象 Navigator 浏览器对象 Screen"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "网页 BOM 知识汇总",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_BOM\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JS",
+  "wordcount":  968 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_BOM\/",
+  "datePublished": "2017-09-26T00:00:00\u002b00:00",
+  "dateModified": "2017-09-26T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">网页 BOM 知识汇总</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-09-26 >26 September 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="浏览器对象模型-bom">浏览器对象模型 (BOM)</h3>
+<p>BOM 使 JavaScript 有能力与浏览器&quot;对话&quot;。</p>
+<h4 id="包含对象列表">包含对象列表</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">对象</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">对象</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">对象</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Window</td>
+<td style="text-align:left">窗口对象</td>
+<td style="text-align:left">History</td>
+<td style="text-align:left">历史纪录对象</td>
+<td style="text-align:left">Navigator</td>
+<td style="text-align:left">浏览器对象</td>
+</tr>
+<tr>
+<td style="text-align:left">Screen</td>
+<td style="text-align:left">屏幕对象</td>
+<td style="text-align:left">Location</td>
+<td style="text-align:left">地址栏对象</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="window-浏览器窗口对象">Window 浏览器窗口对象</h3>
+<p>所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。</p>
+<ul>
+<li>
+<p>全局变量是 window 对象的属性。</p>
+</li>
+<li>
+<p>全局函数是 window 对象的方法。</p>
+</li>
+</ul>
+<h4 id="属性列表">属性列表</h4>
+<p>获取其他BOM对象：history、location、scrren、navigator</p>
+<p>获取DOM对象：document，HTML DOM 的 document 也是 window 对象的属性之一</p>
+<h4 id="方法列表">方法列表</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">alert()</td>
+<td style="text-align:left">显示带有消息和确认按钮的警告框</td>
+</tr>
+<tr>
+<td style="text-align:left">confirm()</td>
+<td style="text-align:left">显示带有消息及确认和取消按钮的对话框</td>
+</tr>
+<tr>
+<td style="text-align:left">prompt()</td>
+<td style="text-align:left">显示用户输入对话框</td>
+</tr>
+<tr>
+<td style="text-align:left">close()</td>
+<td style="text-align:left">关闭浏览器窗口，关闭调该方法的窗口</td>
+</tr>
+<tr>
+<td style="text-align:left">open(&ldquo;URL&rdquo;)</td>
+<td style="text-align:left">打开新的浏览器窗口，返回新的Window对象</td>
+</tr>
+<tr>
+<td style="text-align:left">setInterval(fun_name,2000)</td>
+<td style="text-align:left">按照指定的周期(以毫秒计算)来调用函数或计算表达式</td>
+</tr>
+<tr>
+<td style="text-align:left">clearInterval(intervalVariable)</td>
+<td style="text-align:left">取消由 setInterval 方法设置的 timeout</td>
+</tr>
+<tr>
+<td style="text-align:left">setTimeout(fun_name,3000)</td>
+<td style="text-align:left">在指定的毫秒数后调用函数或计算表达式;返回唯一标识</td>
+</tr>
+<tr>
+<td style="text-align:left">clearTimeout(timeoutlVariable)</td>
+<td style="text-align:left">取消由 setTimeout 方法设置的 timeout</td>
+</tr>
+</tbody>
+</table>
+<h4 id="特点">特点</h4>
+<ul>
+<li>Window 对象不需要创建可以直接使用 window.alert()</li>
+<li>window 引用可以省略，直接使用方法名 alert()</li>
+</ul>
+<h3 id="screen-对象">Screen 对象</h3>
+<p>包含了用户显示器屏幕相关信息。通过该对象，可以访问用户显示器屏幕宽、高、色深等信息。</p>
+<h4 id="属性列表-1">属性列表</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Desc</th>
+<th>Attribute</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>屏幕总宽度</td>
+<td>availWidth</td>
+<td>屏幕可用宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>屏幕总高度</td>
+<td>availHeight</td>
+<td>屏幕可用高度</td>
+</tr>
+<tr>
+<td>colorDepth</td>
+<td>色彩深度</td>
+<td>pixelDepth</td>
+<td>色彩分辨率</td>
+</tr>
+</tbody>
+</table>
+<h3 id="location-地址栏对象">Location 地址栏对象</h3>
+<p>Location 对象包含有关当前 URL 的信息，是对当前窗口URL地址的解析。该对象提供了可以访问URL中不同部分的信息属性。用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。</p>
+<h4 id="属性列表-2">属性列表</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Desc</th>
+<th style="text-align:left">Attribute</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">href</td>
+<td style="text-align:left">设置或返回页面完整的 URL</td>
+<td style="text-align:left">pathnmae</td>
+<td style="text-align:left">返回档期那页面的路径和文件名</td>
+</tr>
+<tr>
+<td style="text-align:left">hostname</td>
+<td style="text-align:left">返回 web 主机的域名</td>
+<td style="text-align:left">protocol</td>
+<td style="text-align:left">返回所使用的 web 协议</td>
+</tr>
+<tr>
+<td style="text-align:left">port</td>
+<td style="text-align:left">返回 web 主机的端口</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="方法列表-1">方法列表</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">assign(url)</td>
+<td style="text-align:left">加载 URL 指定的新的 HTML 文档。就相当于一个链接，跳转到指定的url。</td>
+</tr>
+<tr>
+<td style="text-align:left">reload()</td>
+<td style="text-align:left">重新加载当前文档</td>
+</tr>
+<tr>
+<td style="text-align:left">replace(url)</td>
+<td style="text-align:left">加载 URL 指定的文档来替换当前文档，前后两个页面共用一个窗口</td>
+</tr>
+</tbody>
+</table>
+<h3 id="history-历史纪录对象">History 历史纪录对象</h3>
+<p>保存浏览器历史记录信息，也就是用户访问的页面。浏览器的前进与后退功能本质上就是 history 的操作。history 对象记录了用户浏览过的页面，通过该对象提供的API可以实现与浏览器前进/后退类似的导航功能。</p>
+<h4 id="属性列表-3">属性列表</h4>
+<p>length：返回当前窗口历史列表中的 URL 数量</p>
+<h4 id="方法列表-2">方法列表</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">back()</td>
+<td style="text-align:left">加载 history 列表中的前一个 URL，与在浏览器点击后退按钮相同</td>
+</tr>
+<tr>
+<td style="text-align:left">forward()</td>
+<td style="text-align:left">加载 history 列表中的下一个 URL，与在浏览器点击向前按钮相同</td>
+</tr>
+<tr>
+<td style="text-align:left">go(index)</td>
+<td style="text-align:left">加载 history 列表中的某个具体页面 ，里面的参数表示跳转页面的个数，负数后退、整数前进</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>968</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JS/">
+                    #JS</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_DOM/" class="prev" rel="prev" title="DOM 知识汇总"><i class="iconfont icon-dajiantou"></i>&nbsp;DOM 知识汇总</a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_JavaScript_Improve/" class="next" rel="next" title="JavaScript其它技术点汇总">JavaScript其它技术点汇总&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-09-26 00:00:00 \u002b0000 UTC',
+        title: '网页 BOM 知识汇总',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

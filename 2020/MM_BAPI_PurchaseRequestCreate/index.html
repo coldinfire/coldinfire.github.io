@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_Utils_MointPerformanceCheck/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_BAPI_VL09/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseRequestCreate/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI 创建 Purchase Request  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI 创建 Purchase Request  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI 创建 Purchase Request "/>
+<meta name="twitter:description" content="Purchase Request 内容 PR Header : 采购订单编号、供应商、货币、付款期限、采购订单日期 PR Item : 物料编号、短文本、发货日期、采购订单数量、采购订单价格、分类 BAPI: ME51"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI 创建 Purchase Request ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_PurchaseRequestCreate\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  2197 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_PurchaseRequestCreate\/",
+  "datePublished": "2020-06-12T00:00:00\x2b00:00",
+  "dateModified": "2020-06-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI 创建 Purchase Request </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-06-12 >12 June 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="purchase-request-内容">Purchase Request 内容</h3>
+<ul>
+<li>
+<p>PR Header : 采购订单编号、供应商、货币、付款期限、采购订单日期</p>
+</li>
+<li>
+<p>PR Item : 物料编号、短文本、发货日期、采购订单数量、采购订单价格、分类</p>
+</li>
+</ul>
+<p>BAPI:</p>
+<ul>
+<li>
+<p>ME51N：BAPI_PR_CREATE &amp; BAPI_PR_CHANGE</p>
+</li>
+<li>
+<p>ME51：BAPI_REQUISITION_CREATE &amp; BAPI_REQUISITION_CHANGE</p>
+</li>
+</ul>
+<h4 id="bapi_pr_create-实例">BAPI_PR_CREATE 实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:PREQ_NO      <span style="color:#66d9ef">TYPE  </span>BAPIMEREQHEADER<span style="color:#f92672">-</span>PREQ_NO,
+     PRHEADER    <span style="color:#66d9ef">TYPE  </span>BAPIMEREQHEADER,
+     PRHEADERX   <span style="color:#66d9ef">TYPE  </span>BAPIMEREQHEADERX,
+     <span style="color:#66d9ef">RETURN</span>      <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span>  BAPIRET2 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+     PRITEM   <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPIMEREQITEMIMP <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+     PRITEMX  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPIMEREQITEMX <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>:LV_POS <span style="color:#66d9ef">TYPE </span>I.
+<span style="color:#75715e">&#34; Fill Header &#34;
+</span><span style="color:#75715e"></span>PRHEADER<span style="color:#f92672">-</span>PR_TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NB&#39;</span>.
+PRHEADERX<span style="color:#f92672">-</span>PR_TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">&#34; Fill Item &#34;
+</span><span style="color:#75715e"></span>PRITEM<span style="color:#f92672">-</span>PREQ_ITEM <span style="color:#f92672">=</span> LV_POS. <span style="color:#75715e">&#34; Item Number of Purchase Requisition &#34;
+</span><span style="color:#75715e"></span>PRITEM<span style="color:#f92672">-</span>PUR_GROUP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;011&#39;</span>.  <span style="color:#75715e">&#34; Purchasing Group &#34;
+</span><span style="color:#75715e"></span>PRITEM<span style="color:#f92672">-</span>MATERIAL <span style="color:#f92672">=</span> LV_MATNR.
+PRITEM<span style="color:#f92672">-</span>PLANT    <span style="color:#f92672">=</span> LV_PLANT.
+PRITEM<span style="color:#f92672">-</span>STORE_LOC <span style="color:#f92672">=</span> LV_LGORT. 
+PRITEM<span style="color:#f92672">-</span>QUANTITY <span style="color:#f92672">=</span> LV_MENGE.
+PRITEM<span style="color:#f92672">-</span>UNIT     <span style="color:#f92672">=</span> LV_MEINS.
+PRITEM<span style="color:#f92672">-</span>DELIV_DATE <span style="color:#f92672">=</span> SY_DATUM. <span style="color:#75715e">&#34;Delivery Date of Goods&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">APPEND</span> PRITEM.
+
+PRITEMX<span style="color:#f92672">-</span>PREQ_ITEM <span style="color:#f92672">=</span> LV_POS.
+PRITEMX<span style="color:#f92672">-</span>PREQ_ITEMX <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>PUR_GROUP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>PREQ_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>MATERIAL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>PLANT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>STORE_LOC <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>QUANTITY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>UNIT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+PRITEMX<span style="color:#f92672">-</span>DELIV_DATE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> PRITEMX.  
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PR_CREATE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    PRHEADER              <span style="color:#f92672">=</span> PRHEADER
+    PRHEADERX             <span style="color:#f92672">=</span> PRHEADERX
+    TESTRUN               <span style="color:#f92672">=</span> TESTRUN
+  <span style="color:#66d9ef">IMPORTING</span>
+    <span style="color:#66d9ef">NUMBER</span>                <span style="color:#f92672">=</span> PREQ_NO
+    PRHEADEREXP           <span style="color:#f92672">=</span> PRHEADEREXP
+  <span style="color:#66d9ef">TABLES</span>
+    <span style="color:#66d9ef">RETURN</span>                <span style="color:#f92672">=</span> <span style="color:#66d9ef">RETURN</span>
+    PRITEM                <span style="color:#f92672">=</span> PRITEM
+    PRITEMX               <span style="color:#f92672">=</span> PRITEMX.
+
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">RETURN</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#66d9ef">TRANSPORTING NO FIELDS</span>.
+<span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">WAIT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#66d9ef">CLEAR</span> PREQ_NO.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="bapi_requisition_create">BAPI_REQUISITION_CREATE</h3>
+<h4 id="demo1">Demo1</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">create_pr_batch</span> .
+  <span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">BEGIN OF</span> gt_data1 OCCURS <span style="color:#ae81ff">0</span>,
+    bsart   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;凭证类型&#34;
+</span><span style="color:#75715e"></span>    bnfpo   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;项目&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   KNTTP   TYPE STRING, &#34;科目分配类别&#34;</span>
+    matnr   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;商品代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   TXZ01   TYPE STRING, &#34;短文本&#34;</span>
+    menge   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;数量&#34;
+</span><span style="color:#75715e"></span>    meins   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;单位&#34;
+</span><span style="color:#75715e"></span>    eeind   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;交货日期&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   MATKL   TYPE STRING, &#34;物料组&#34;</span>
+    werks   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>    ekgrp   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;采购组&#34;
+</span><span style="color:#75715e"></span>    afnam   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;申请者&#34;
+</span><span style="color:#75715e"></span>    bednr   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;需求跟踪号&#34;
+</span><span style="color:#75715e"></span>    sakto   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;总帐科目&#34;
+</span><span style="color:#75715e"></span>    kostl   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;成本中心&#34;
+</span><span style="color:#75715e"></span>    anln1   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;资产&#34;
+</span><span style="color:#75715e"></span>    aufnr   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;订单&#34;
+</span><span style="color:#75715e"></span>    waers   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;币种&#34;
+</span><span style="color:#75715e"></span>    peinh   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;价格单位&#34;
+</span><span style="color:#75715e"></span>    dispo   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;MRP控制者&#34;
+</span><span style="color:#75715e"></span>    str1    <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;行项目文本-传送文本&#34;
+</span><span style="color:#75715e"></span>    str2    <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;行项目文本-预算年度&#34;
+</span><span style="color:#75715e"></span>    str3    <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;行项目文本-资产类别&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">END OF</span> gt_data1.
+  <span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">BEGIN OF</span> gt_data OCCURS <span style="color:#ae81ff">0</span>,
+    bednr   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;需求跟踪号&#34;
+</span><span style="color:#75715e"></span>    bsart   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;凭证类型&#34;
+</span><span style="color:#75715e"></span>    bnfpo   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;项目&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   KNTTP   TYPE STRING, &#34;科目分配类别&#34;</span>
+    matnr   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;商品代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   TXZ01   TYPE STRING, &#34;短文本&#34;</span>
+    menge   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;数量&#34;
+</span><span style="color:#75715e"></span>    meins   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;单位&#34;
+</span><span style="color:#75715e"></span>    eeind   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;交货日期&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   MATKL   TYPE STRING, &#34;物料组&#34;</span>
+    werks   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>    ekgrp   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;采购组&#34;
+</span><span style="color:#75715e"></span>    afnam   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;申请者&#34;
+</span><span style="color:#75715e"></span>    sakto   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;总帐科目&#34;
+</span><span style="color:#75715e"></span>    kostl   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;成本中心&#34;
+</span><span style="color:#75715e"></span>    anln1   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;资产&#34;
+</span><span style="color:#75715e"></span>    aufnr   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;订单&#34;
+</span><span style="color:#75715e"></span>    preis   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;评估价格&#34;
+</span><span style="color:#75715e"></span>    waers   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;币种&#34;
+</span><span style="color:#75715e"></span>    peinh   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;价格单位&#34;
+</span><span style="color:#75715e"></span>    dispo   <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;MRP控制者&#34;
+</span><span style="color:#75715e"></span>    str1    <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;行项目文本-传送文本&#34;
+</span><span style="color:#75715e"></span>    str2    <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;行项目文本-预算年度&#34;
+</span><span style="color:#75715e"></span>    str3    <span style="color:#66d9ef">TYPE </span>string, <span style="color:#75715e">&#34;行项目文本-资产类别&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">END OF</span> gt_data.
+  <span style="color:#75715e">&#34;=============== Upload File ===============&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">LOOP AT </span>gt_data.
+    bnfpo <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>bnfpo.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        input  <span style="color:#f92672">=</span> bnfpo
+      <span style="color:#66d9ef">IMPORTING</span>
+        output <span style="color:#f92672">=</span> bnfpo.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        input  <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>matnr
+      <span style="color:#66d9ef">IMPORTING</span>
+        output <span style="color:#f92672">=</span> matnr.
+    pr_item<span style="color:#f92672">-</span>doc_type          <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>bsart.     <span style="color:#75715e">&#34;凭证类型&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>preq_item         <span style="color:#f92672">=</span> bnfpo.             <span style="color:#75715e">&#34;项目&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   PR_ITEM-ACCTASSCAT        = GT_DATA-KNTTP.     &#34;科目分配类别&#34;</span>
+    pr_item<span style="color:#f92672">-</span>material          <span style="color:#f92672">=</span> matnr.             <span style="color:#75715e">&#34;商品代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   PR_ITEM-SHORT_TEXT        = GT_DATA-TXZ01.     &#34;短文本&#34;</span>
+    pr_item<span style="color:#f92672">-</span>quantity          <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>menge.     <span style="color:#75715e">&#34;数量&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>unit              <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>meins.     <span style="color:#75715e">&#34;单位&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>deliv_date        <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>eeind.     <span style="color:#75715e">&#34;交货日期&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*    PR_ITEM-MAT_GRP          = GT_DATA-MATKL.     &#34;物料组&#34;</span>
+    pr_item<span style="color:#f92672">-</span>plant             <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>werks.     <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>pur_group         <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>ekgrp.     <span style="color:#75715e">&#34;采购组&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>preq_name         <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>afnam.     <span style="color:#75715e">&#34;申请者&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>trackingno        <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>bednr.     <span style="color:#75715e">&#34;需求跟踪号&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>c_amt_bapi        <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>preis.     <span style="color:#75715e">&#34;评估价格&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>currency          <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>waers.     <span style="color:#75715e">&#34;货币码&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>price_unit        <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>peinh.     <span style="color:#75715e">&#34;价格单位&#34;
+</span><span style="color:#75715e"></span>    pr_item<span style="color:#f92672">-</span>mrp_contr         <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>dispo.     <span style="color:#75715e">&#34;MRP控制者&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> pr_item.
+    <span style="color:#66d9ef">CLEAR</span> pr_item.
+    pr_account<span style="color:#f92672">-</span>preq_item <span style="color:#f92672">=</span> bnfpo.        <span style="color:#75715e">&#34;项目&#34;
+</span><span style="color:#75715e"></span>    pr_account<span style="color:#f92672">-</span>g_l_acct <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>sakto. <span style="color:#75715e">&#34;总帐科目&#34;
+</span><span style="color:#75715e"></span>    pr_account<span style="color:#f92672">-</span>cost_ctr <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>kostl. <span style="color:#75715e">&#34;成本中心&#34;
+</span><span style="color:#75715e"></span>    pr_account<span style="color:#f92672">-</span>asset_no <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>anln1. <span style="color:#75715e">&#34;资产&#34;
+</span><span style="color:#75715e"></span>    pr_account<span style="color:#f92672">-</span>order_no <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>aufnr. <span style="color:#75715e">&#34;订单&#34;
+</span><span style="color:#75715e"></span>    pr_account<span style="color:#f92672">-</span>co_area <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BELL&#39;</span>.
+    <span style="color:#66d9ef">APPEND</span> pr_account.
+    <span style="color:#66d9ef">CLEAR</span> pr_account.
+    pr_item_id<span style="color:#f92672">-</span>preq_item <span style="color:#f92672">=</span> bnfpo.
+    pr_item_id<span style="color:#f92672">-</span>text_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B03&#39;</span>.
+    pr_item_id<span style="color:#f92672">-</span>text_line <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>str1.<span style="color:#75715e">&#34;行项目文本-传送文本&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> pr_item_id.
+    <span style="color:#66d9ef">CLEAR</span> pr_item_id.
+    pr_item_id<span style="color:#f92672">-</span>preq_item <span style="color:#f92672">=</span> bnfpo.
+    pr_item_id<span style="color:#f92672">-</span>text_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B07&#39;</span>.
+    pr_item_id<span style="color:#f92672">-</span>text_line <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>str2.<span style="color:#75715e">&#34;行项目文本-预算年度&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> pr_item_id.
+    <span style="color:#66d9ef">CLEAR</span> pr_item_id.
+    pr_item_id<span style="color:#f92672">-</span>preq_item <span style="color:#f92672">=</span> bnfpo.
+    pr_item_id<span style="color:#f92672">-</span>text_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B08&#39;</span>.
+    pr_item_id<span style="color:#f92672">-</span>text_line <span style="color:#f92672">=</span> gt_data<span style="color:#f92672">-</span>str3.<span style="color:#75715e">&#34;行项目文本-资产类别&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span>  pr_item_id.
+    <span style="color:#66d9ef">CLEAR</span>  pr_item_id.
+    <span style="color:#66d9ef">AT END OF</span> bednr.
+    
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_REQUISITION_CREATE&#39;</span>
+	<span style="color:#75715e">&#34; EXPORTING
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">&#34;   SKIP_ITEMS_WITH_ERROR                =
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">&#34;   AUTOMATIC_SOURCE                     = &#39;X&#39;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">number</span>                               <span style="color:#f92672">=</span> pr_no
+      <span style="color:#66d9ef">TABLES</span>
+        requisition_items                    <span style="color:#f92672">=</span> pr_item
+        requisition_account_assignment       <span style="color:#f92672">=</span> pr_account
+        requisition_item_text                <span style="color:#f92672">=</span> pr_item_id
+	<span style="color:#75715e">&#34;   REQUISITION_LIMITS                   =
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">&#34;   REQUISITION_CONTRACT_LIMITS          =
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">&#34;   REQUISITION_SERVICES                 =
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">&#34;   REQUISITION_SRV_ACCASS_VALUES        =
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span>                               <span style="color:#f92672">=</span> pr_return
+	<span style="color:#75715e">&#34;   REQUISITION_SERVICES_TEXT            =
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">&#34;   REQUISITION_ADDRDELIVERY             =
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">&#34;   EXTENSIONIN                          =
+</span><span style="color:#75715e"></span>                .
+      <span style="color:#66d9ef">CLEAR</span>: lv_message.
+      <span style="color:#66d9ef">LOOP AT </span>pr_return <span style="color:#66d9ef">WHERE</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#f92672">OR</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+        <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+			<span style="color:#66d9ef">INTO</span> lv_message
+            <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+      <span style="color:#66d9ef">ENDLOOP</span>.
+      <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+        <span style="color:#66d9ef">CLEAR</span>: lv_message.
+        <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+        <span style="color:#66d9ef">LOOP AT </span>pr_return <span style="color:#66d9ef">INTO</span> l_return <span style="color:#66d9ef">WHERE</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+          <span style="color:#66d9ef">CONCATENATE</span> lv_message l_return<span style="color:#f92672">-</span>message <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#66d9ef">INTO</span> lv_message.
+        <span style="color:#66d9ef">ENDLOOP</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> gt_data<span style="color:#f92672">-</span>bednr lv_message <span style="color:#66d9ef">INTO</span> gt_out<span style="color:#f92672">-</span>text.
+        <span style="color:#66d9ef">APPEND</span> gt_out.
+        <span style="color:#66d9ef">CLEAR</span> gt_out.
+      <span style="color:#66d9ef">ELSE</span>.
+        <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+          <span style="color:#66d9ef">EXPORTING</span>
+            <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> pr_no <span style="color:#e6db74">&#39;创建成功&#39;</span> <span style="color:#66d9ef">INTO</span> gt_out<span style="color:#f92672">-</span>text.
+        <span style="color:#66d9ef">APPEND</span> gt_out.
+        <span style="color:#66d9ef">CLEAR</span> gt_out.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">FREE </span>pr_item.
+      <span style="color:#66d9ef">FREE </span>pr_account.
+      <span style="color:#66d9ef">FREE </span>pr_item_id.
+      <span style="color:#66d9ef">FREE </span>pr_return.
+    <span style="color:#66d9ef">ENDAT</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; CREATE_PR &#34;
+</span></code></pre></div><h4 id="demo2">Demo2</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; BAPI_REQUISITION_CREATE 和 BAPI_PR_CREATE 相关问题查看NOTE</span>
+<span style="color:#75715e">*&amp; 499627 - FAQ BAPIs for purchase requisitions</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span> ZLM_CREATE_PR.
+<span style="color:#66d9ef">DATA</span>: LT_ITEM     <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span>  BAPIEBANC,
+      LT_RETURN   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span>  BAPIRETURN,
+      LS_RETURN   <span style="color:#66d9ef">LIKE  </span>BAPIRETURN,
+      LS_ITEM     <span style="color:#66d9ef">LIKE </span>BAPIEBANC.
+<span style="color:#75715e">*&amp;如果有增强字段</span>
+<span style="color:#66d9ef">DATA</span>: LT_EXTENSIONIN  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span>  BAPIPAREX .
+<span style="color:#66d9ef">DATA</span>: LW_ITM    <span style="color:#66d9ef">TYPE </span>BAPI_TE_REQUISITION_ITEM.
+<span style="color:#66d9ef">DATA</span>: LV_PR_NO  <span style="color:#66d9ef">TYPE </span>BAPIEBANC<span style="color:#f92672">-</span>PREQ_NO.
+<span style="color:#66d9ef">PARAMETERS</span>:P_MATNR1 <span style="color:#66d9ef">TYPE </span>MATNR .
+<span style="color:#66d9ef">PARAMETERS</span>:P_MATNR2 <span style="color:#66d9ef">TYPE </span>MATNR.
+<span style="color:#66d9ef">PARAMETERS</span>:P_EKORG  <span style="color:#66d9ef">TYPE </span>EKORG .
+<span style="color:#66d9ef">PARAMETERS</span>:P_WERKS  <span style="color:#66d9ef">TYPE </span>WERKS_D.
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">CLEAR</span> LT_ITEM[].
+  <span style="color:#66d9ef">CLEAR</span> LS_ITEM.
+  LS_ITEM<span style="color:#f92672">-</span>DOC_TYPE      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NB&#39;</span>.              <span style="color:#75715e">&#34;凭证类型&#34;
+</span><span style="color:#75715e"></span>  LS_ITEM<span style="color:#f92672">-</span>PREQ_ITEM     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00010&#39;</span>.           <span style="color:#75715e">&#34;项目&#34;
+</span><span style="color:#75715e"></span>  LS_ITEM<span style="color:#f92672">-</span>MATERIAL      <span style="color:#f92672">=</span> P_MATNR1.          <span style="color:#75715e">&#34;商品代码&#34;
+</span><span style="color:#75715e"></span>  LS_ITEM<span style="color:#f92672">-</span>QUANTITY      <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.                 <span style="color:#75715e">&#34;数量&#34;
+</span><span style="color:#75715e"></span>  LS_ITEM<span style="color:#f92672">-</span>DELIV_DATE    <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.          <span style="color:#75715e">&#34;交货日期&#34;
+</span><span style="color:#75715e"></span>  LS_ITEM<span style="color:#f92672">-</span>PLANT         <span style="color:#f92672">=</span> P_WERKS.           <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>  LS_ITEM<span style="color:#f92672">-</span>PURCH_ORG     <span style="color:#f92672">=</span> P_EKORG.
+
+  <span style="color:#66d9ef">APPEND</span> LS_ITEM <span style="color:#66d9ef">TO</span> LT_ITEM.
+  <span style="color:#66d9ef">IF</span> P_MATNR2 <span style="color:#f92672">IS NOT INITIAL</span>.
+    LS_ITEM<span style="color:#f92672">-</span>DOC_TYPE     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NB&#39;</span>.           <span style="color:#75715e">&#34;凭证类型&#34;
+</span><span style="color:#75715e"></span>    LS_ITEM<span style="color:#f92672">-</span>PREQ_ITEM    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00020&#39;</span>.        <span style="color:#75715e">&#34;项目&#34;
+</span><span style="color:#75715e"></span>    LS_ITEM<span style="color:#f92672">-</span>MATERIAL     <span style="color:#f92672">=</span> P_MATNR2.       <span style="color:#75715e">&#34;商品代码&#34;
+</span><span style="color:#75715e"></span>    LS_ITEM<span style="color:#f92672">-</span>QUANTITY     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.              <span style="color:#75715e">&#34;数量&#34;
+</span><span style="color:#75715e"></span>    LS_ITEM<span style="color:#f92672">-</span>DELIV_DATE   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.       <span style="color:#75715e">&#34;交货日期&#34;
+</span><span style="color:#75715e"></span>    LS_ITEM<span style="color:#f92672">-</span>PLANT        <span style="color:#f92672">=</span> P_WERKS.        <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>    LS_ITEM<span style="color:#f92672">-</span>PURCH_ORG    <span style="color:#f92672">=</span> P_EKORG.
+    <span style="color:#66d9ef">APPEND</span> LS_ITEM <span style="color:#66d9ef">TO</span> LT_ITEM.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*  extensionin-structure = &#39;BAPI_TE_REQUISITION_ITEM&#39;.</span>
+<span style="color:#75715e">*  extensionin-valuepart1 = lw_itm.</span>
+<span style="color:#75715e">*  APPEND EXTENSIONIN.</span>
+
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_REQUISITION_CREATE&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#66d9ef">NUMBER</span>            <span style="color:#f92672">=</span> LV_PR_NO
+    <span style="color:#66d9ef">TABLES</span>
+      REQUISITION_ITEMS <span style="color:#f92672">=</span> LT_ITEM
+<span style="color:#75715e">*     requisition_account_assignment = pr_account</span>
+<span style="color:#75715e">*     requisition_item_text          = pr_item_id</span>
+      <span style="color:#66d9ef">RETURN</span>            <span style="color:#f92672">=</span> LT_RETURN.
+<span style="color:#75715e">*      extensionin                    = extensionin[].</span>
+
+  <span style="color:#66d9ef">LOOP AT </span>LT_RETURN <span style="color:#66d9ef">INTO</span> LS_RETURN <span style="color:#66d9ef">WHERE</span> TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+    <span style="color:#66d9ef">WRITE</span> LS_RETURN<span style="color:#f92672">-</span>MESSAGE.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">WRITE</span> LV_PR_NO.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2197</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Utils_MointPerformanceCheck/" class="prev" rel="prev" title=" SAP 系统监控和性能检查 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 系统监控和性能检查 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_BAPI_VL09/" class="next" rel="next" title=" BAPI 冲销 Delivery Note "> BAPI 冲销 Delivery Note &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-12 00:00:00 \x2b0000 UTC',
+        title: ' BAPI 创建 Purchase Request ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

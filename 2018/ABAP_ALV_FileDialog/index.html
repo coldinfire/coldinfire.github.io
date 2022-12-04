@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Utils_Date/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_SmartformsToftp/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ALV_FileDialog/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Screen 文件对话框  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Screen 文件对话框  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Screen 文件对话框 "/>
+<meta name="twitter:description" content="在 selection screen 中，经常要用到文件相关的对话框，比如选择本地文件上传，将数据从 iternal table 下载到本地等，为了增加程序的友好性，需要用到文件相关的对话框。 KD_GET_FILENAME_ON_F4 这个"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Screen 文件对话框 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_FileDialog\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  453 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_FileDialog\/",
+  "datePublished": "2018-12-13T00:00:00\x2b00:00",
+  "dateModified": "2018-12-13T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Screen 文件对话框 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-12-13 >13 December 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>在 selection screen 中，经常要用到文件相关的对话框，比如选择本地文件上传，将数据从 iternal table 下载到本地等，为了增加程序的友好性，需要用到文件相关的对话框。</p>
+<h3 id="kd_get_filename_on_f4">KD_GET_FILENAME_ON_F4</h3>
+<p>这个函数比较简单，只需要提供一个参数  file_name。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">PARAMETERS</span>: p_file <span style="color:#66d9ef">TYPE </span>localfile <span style="color:#66d9ef">OBLIGATORY</span>.
+<span style="color:#66d9ef">AT SELECTION-SCREEN ON VALUE-REQUEST FOR</span> p_file.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_get_filepath</span> <span style="color:#66d9ef">USING</span> p_file.
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">WRITE</span>: / p_file.
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_filepath</span> <span style="color:#66d9ef">USING</span> p_file <span style="color:#66d9ef">TYPE </span>localfile.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;KD_GET_FILENAME_ON_F4&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      static       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+      mask         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;,All Files(*.*),*.*,&#39;</span>
+    <span style="color:#66d9ef">CHANGING</span>
+      file_name    <span style="color:#f92672">=</span> p_file.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><h3 id="ws_filename_get">WS_FILENAME_GET</h3>
+<p>该函数的作用也是提供文件对话框，返回文件的完整路径。SAP 对这个函数已经标注为<strong>过时</strong> (obosete）。所以不建议在代码中使用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_filepath</span> <span style="color:#66d9ef">USING</span> p_file <span style="color:#66d9ef">TYPE </span>localfile.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;WS_FILENAME_GET&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      def_path     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;default_path&#39;</span>
+      mask         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;,All Files(*.*),*.*,&#39;</span>
+      mode         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#75715e">&#34;0 For read&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IMPORTING</span>
+      filename     <span style="color:#f92672">=</span> p_file
+    <span style="color:#66d9ef">EXCEPTION</span>
+      inv_winsys   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      no_batch     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      selection_cancel <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      selection_error  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      <span style="color:#66d9ef">OTHERS</span>       <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><h3 id="f4_filename">F4_FILENAME</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">AT SELECTION-SCREEN ON VALUE-REQUEST FOR</span> p_file.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4_FILENAME&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span> 
+      file_name <span style="color:#f92672">=</span> p_file.
+</code></pre></div><h3 id="file_open_dialog">FILE_OPEN_DIALOG</h3>
+<p>cl_gui_frontend_services 类的静态方法 file_open_dialog 方法提供对话框的方式获取文件的完整路径。这个方法功能比较强大，比如可以修饰文件选择框，指定默认选择路径，设置文件类型过滤，同时打开多个文件，返回用户操作等。RC 是返回值, 如果成功获取文件名，返回值 rc 值为 1。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_filepath</span> <span style="color:#66d9ef">USING</span> p_file <span style="color:#66d9ef">TYPE </span>localfile.
+  <span style="color:#66d9ef">DATA</span>: l_files <span style="color:#66d9ef">TYPE </span>filetable,
+        l_file  <span style="color:#66d9ef">TYPE LINE OF</span> filetable,
+        rc <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>subrc.
+  <span style="color:#66d9ef">CALL METHOD</span> cl_gui_frontend_services<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>file_open_dialog
+    <span style="color:#66d9ef">EXPORTING</span>
+      window_title          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;File Select&#39;</span>
+      initial_directory     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;default_path&#39;</span>
+      default_extension     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;*.xls&#39;</span>
+      file_filter           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;All Files (*.*)|*.*|Excel Files (*.xls)|*.xls&#39;</span>
+    <span style="color:#66d9ef">CHANGING</span>
+      file_table            <span style="color:#f92672">=</span> l_files
+      rc                    <span style="color:#f92672">=</span> rc
+    <span style="color:#66d9ef">EXCEPTION</span>
+      file_open_dialog_failed   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      cntl_error                <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      error_no_gui              <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      no_supported_by_gui       <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      <span style="color:#66d9ef">OTHERS</span>                    <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">AND</span> rc <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> l_files <span style="color:#66d9ef">INTO</span> l_file <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+    p_file <span style="color:#f92672">=</span> l_file.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>453</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_Date/" class="prev" rel="prev" title=" 日期操作 "><i class="iconfont icon-dajiantou"></i>&nbsp; 日期操作 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SmartformsToftp/" class="next" rel="next" title=" Smartforms 转换成PDF发送到FTP服务器 "> Smartforms 转换成PDF发送到FTP服务器 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-12-13 00:00:00 \x2b0000 UTC',
+        title: ' Screen 文件对话框 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

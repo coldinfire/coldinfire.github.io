@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/WM_TransferOrder/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_MIGO_Print/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/WM_TransferOrder_BAPI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Transfer Order(L_TO_CREATE_SINGLE) | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Transfer Order(L_TO_CREATE_SINGLE) | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Transfer Order(L_TO_CREATE_SINGLE)"/>
+<meta name="twitter:description" content="L_TO_CREATE_SINGLE Create a transfer order with one item. You can call this FM more than once if you want to transfer more items. CALL FUNCTION &#39;L_TO_CREATE_SINGLE&#39; exporting i_lgnum = wh_number &#34;Warehouse number&#34; i_bwlvs = &#39;999&#39; &#34;MvT999&#34; i_matnr = lqua-matnr &#34;Material no.&#34; i_werks = lqua-werks &#34;Plant&#34; i_lgort = lqua-lgort &#34;Storage location&#34; i_anfme = lqua-verme &#34;Requested Qty&#34; i_altme = lqua-meins &#34;Unit of measure&#34; i_letyp = ltap-letyp &#34;SU Type&#34; i_vlpla = lqua-lgpla &#34;Source"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Transfer Order(L_TO_CREATE_SINGLE)",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/WM_TransferOrder_BAPI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  203 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/WM_TransferOrder_BAPI\/",
+  "datePublished": "2020-05-06T00:00:00\u002b00:00",
+  "dateModified": "2020-05-06T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Transfer Order(L_TO_CREATE_SINGLE)</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-05-06 >6 May 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="l_to_create_single">L_TO_CREATE_SINGLE</h4>
+<p>Create a transfer order with one item.</p>
+<p>You can call this FM more than once if you want to transfer more items.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;L_TO_CREATE_SINGLE&#39;</span>
+  <span style="color:#a6e22e">exporting</span>
+	<span style="color:#a6e22e">i_lgnum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wh_number</span>  <span style="color:#e6db74">&#34;Warehouse number&#34;</span>
+	<span style="color:#a6e22e">i_bwlvs</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;999&#39;</span>      <span style="color:#e6db74">&#34;MvT999&#34;</span>
+	<span style="color:#a6e22e">i_matnr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">matnr</span> <span style="color:#e6db74">&#34;Material no.&#34;</span>
+	<span style="color:#a6e22e">i_werks</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">werks</span> <span style="color:#e6db74">&#34;Plant&#34;</span>
+	<span style="color:#a6e22e">i_lgort</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lgort</span> <span style="color:#e6db74">&#34;Storage location&#34;</span>
+	<span style="color:#a6e22e">i_anfme</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">verme</span> <span style="color:#e6db74">&#34;Requested Qty&#34;</span>
+	<span style="color:#a6e22e">i_altme</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">meins</span> <span style="color:#e6db74">&#34;Unit of measure&#34;</span>
+	<span style="color:#a6e22e">i_letyp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ltap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">letyp</span> <span style="color:#e6db74">&#34;SU Type&#34;</span>
+	<span style="color:#a6e22e">i_vlpla</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lgpla</span> <span style="color:#e6db74">&#34;Source storage bin&#34;</span>
+	<span style="color:#a6e22e">i_vlqnr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lqnum</span> <span style="color:#e6db74">&#34;Quant&#34;</span>
+	<span style="color:#a6e22e">i_vltyp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lqua</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lgtyp</span> <span style="color:#e6db74">&#34;Source storage type&#34;</span>
+	<span style="color:#a6e22e">i_nlpla</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ltap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">nlpla</span> <span style="color:#e6db74">&#34;Destination storage bin&#34;</span>
+	<span style="color:#a6e22e">i_nltyp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">v_nltyp</span>    <span style="color:#e6db74">&#34;Destination storage type&#34;</span>
+	<span style="color:#a6e22e">i_squit</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">squit</span>      
+  <span style="color:#a6e22e">importing</span>
+	<span style="color:#a6e22e">e_tanum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_tanum</span>    <span style="color:#e6db74">&#34;Transfer Order&#34;</span>
+	<span style="color:#a6e22e">e_ltap</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_ltap</span>     
+  <span style="color:#a6e22e">exceptions</span>
+	<span style="color:#a6e22e">no_to_created</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#a6e22e">benum_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+	<span style="color:#a6e22e">bwlvs_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+	<span style="color:#a6e22e">betyp_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+	<span style="color:#a6e22e">foreign_lock</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+	<span style="color:#a6e22e">vltyp_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+	<span style="color:#a6e22e">vlpla_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+	<span style="color:#a6e22e">vltyp_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
+	<span style="color:#a6e22e">nltyp_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+	<span style="color:#a6e22e">nlpla_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+	<span style="color:#a6e22e">nltyp_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
+	<span style="color:#a6e22e">rltyp_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+	<span style="color:#a6e22e">rlpla_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>
+	<span style="color:#a6e22e">rltyp_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">14</span>
+	<span style="color:#a6e22e">squit_forbidden</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>
+	<span style="color:#a6e22e">manual_to_forbidden</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
+	<span style="color:#a6e22e">letyp_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>
+	<span style="color:#a6e22e">vlpla_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>
+	<span style="color:#a6e22e">nlpla_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">19</span>
+	<span style="color:#a6e22e">sobkz_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+	<span style="color:#a6e22e">sonum_missing</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">21</span>
+	<span style="color:#a6e22e">bestq_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>
+	<span style="color:#a6e22e">lgber_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>
+	<span style="color:#a6e22e">xfeld_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span>
+	<span style="color:#a6e22e">date_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>
+	<span style="color:#a6e22e">drukz_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">26</span>
+	<span style="color:#a6e22e">ldest_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">27</span>
+	<span style="color:#a6e22e">update_without_commit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">28</span>
+	<span style="color:#a6e22e">no_authority</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">29</span>
+	<span style="color:#a6e22e">material_not_found</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+	<span style="color:#a6e22e">lenum_wrong</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">31</span>
+	<span style="color:#a6e22e">others</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">32.</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>203</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/WM_TransferOrder/" class="prev" rel="prev" title="Transfer Order(TO)"><i class="iconfont icon-dajiantou"></i>&nbsp;Transfer Order(TO)</a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_MIGO_Print/" class="next" rel="next" title="MIGO 收货后自动打印功能">MIGO 收货后自动打印功能&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-05-06 00:00:00 \u002b0000 UTC',
+        title: 'Transfer Order(L_TO_CREATE_SINGLE)',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

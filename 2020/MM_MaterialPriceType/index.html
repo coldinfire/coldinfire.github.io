@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_ALV_ItabToClip/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/SAPAuthorization_Table/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_MaterialPriceType/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            移动平均价和标准价  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 移动平均价和标准价  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 移动平均价和标准价 "/>
+<meta name="twitter:description" content="引用链接：移动平均价和标准价 移动平均价和标准价的概念 标准价：S 以一个标准的价格表示一个物料在一段时间内的价值。来源于实际成本估算。用以财务提"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 移动平均价和标准价 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_MaterialPriceType\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SAPbusiness",
+  "wordcount":  1306 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_MaterialPriceType\/",
+  "datePublished": "2020-03-08T00:00:00\x2b00:00",
+  "dateModified": "2020-03-08T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 移动平均价和标准价 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-03-08 >8 March 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>引用链接：<a href="https://mp.weixin.qq.com/s?__biz=MzI1MDUxMjc0MQ==&amp;mid=2247486851&amp;idx=1&amp;sn=3745a657b8a31ec8bd8b83598db74e85&amp;chksm=e9805989def7d09fe6f057b6d4b1139e9a1e31f623b7012f66568d4d476fcea8b6b6c23307e4&amp;scene=126&amp;sessionid=1593480219&amp;key=0cbf0c27a004d84da57c1b899d43e15abc4ef55c6a4022885611966c16f60c4872334d1b43695d7d9436f070fb7fe0696775c887b1d3e676ee125ca1d5db8c2e8068520882e8a5a2235b6c663f78f74c&amp;ascene=1&amp;uin=OTM0MDM1NTY2&amp;devicetype=Windows+8.1+x64&amp;version=62090070&amp;lang=en&amp;exportkey=AxdvZHCgKaVzLhUhkVngCgQ%3D&amp;pass_ticket=5SnaMqqW%2BkXzDMWpHwYuMh0kLMk9oqxZyQGqx81xLPaxdJ4AVrXnO0jxwqu1575h"><strong>移动平均价和标准价</strong></a></p>
+<h3 id="移动平均价和标准价的概念">移动平均价和标准价的概念</h3>
+<h4 id="标准价s">标准价：S</h4>
+<p>以一个标准的价格表示一个物料在一段时间内的价值。来源于实际成本估算。用以财务提前估算成本，以便做出预算。是一个财务上的概念。一般应用于制造业企业的产品核算上。</p>
+<p>标准价在一段时间内是不变动的，当然，发布了新的标准价另算。一般而言，是成本核算人员根据实际情况进行调整。</p>
+<p>如果收货或者发票校验与标准价不等，则计入到差异科目中。</p>
+<h4 id="移动平均价v">移动平均价：V</h4>
+<p>当前收货的价格计算，基本接近于市场价格，反映企业获得材料的历史成本。一般用以外购材料，包括原材料、零部件和产成品。</p>
+<ul>
+<li><code>移动平均价 = 库存价值 / 库存数量</code></li>
+</ul>
+<h3 id="系统实现方式">系统实现方式</h3>
+<p>物料的移动平均价在货物发生移动时和发票校验时以及订单结算时发生变动。具体如下：</p>
+<ul>
+<li>
+<p>物料移动平均价在货物移动时发生变化最主要体现在收货时，即采购订单收货（MIGO）。</p>
+</li>
+<li>
+<p>发票校验则根据实际发票价格调整物料的移动平均价。</p>
+</li>
+</ul>
+<p>根据以上的描述，可以将上述的移动平均价公式进行调整：</p>
+<ul>
+<li><code>移动平均价 = ( 交易前库存价值 + 本次交易数量 * 价格) / ( 交易前库存数量 + 本次交易数量 )</code></li>
+</ul>
+<p>以收货和发票校验为例</p>
+<table>
+<thead>
+<tr>
+<th align="left">收货</th>
+<th align="left">发票校验</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">借：库存科目</td>
+<td align="left">借：GR/IR 待清科目</td>
+</tr>
+<tr>
+<td align="left">贷：GR/IR 待清科目</td>
+<td align="left">贷：应付账款</td>
+</tr>
+</tbody>
+</table>
+<p>如果发票价格与 PO 价格不等，则分两种情况考虑：</p>
+<ul>
+<li>
+<p>库存数量充足：将差异部分更新到库存科目中</p>
+<ul>
+<li>借：GR/IR 待清科目；库存科目</li>
+<li>贷：应付账款</li>
+</ul>
+</li>
+<li>
+<p>库存数量不足：按比例进行分配，一部分更新到库存，一部分更新到差异科目</p>
+<ul>
+<li>
+<p>借：GR/IR 待清科目；库存科目；库存差异科目</p>
+</li>
+<li>
+<p>贷：应付账款</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>标准价</strong></p>
+<p>如上所述，物料的标准价是为了财务估算成本而用。</p>
+<p>如果收货或者发票校验与标准价不等，则计入到差异科目中。</p>
+<p>收货时：价格大于标准价</p>
+<ul>
+<li>
+<p>借：库存科目；价格差异科目</p>
+</li>
+<li>
+<p>贷：GR/IR 待清科目</p>
+</li>
+</ul>
+<p>发票校验分两种情况：</p>
+<p>A：价格与收货时价格一致</p>
+<ul>
+<li>
+<p>借：GR/IR 待清科目</p>
+</li>
+<li>
+<p>贷：应付账款</p>
+</li>
+</ul>
+<p>B：价格与收货时不一致（价格大于标准价）</p>
+<ul>
+<li>
+<p>借：GR/IR 待清科目</p>
+</li>
+<li>
+<p>贷：差异科目；应付账款</p>
+</li>
+</ul>
+<h4 id="差异的后续处理">差异的后续处理</h4>
+<p><strong>标准价</strong></p>
+<p>由标准价和实际成本价不同而导致的差异会结转到产品，归集到成本中，最后到利润。一般处理方法有两种：</p>
+<ul>
+<li>
+<p>在已发出材料和期末结存材料之间进行分配，属于发出材料的差异，结转到制造差异等科目。</p>
+</li>
+<li>
+<p>直接结转到当期损益中。</p>
+</li>
+</ul>
+<p><strong>移动平均价</strong></p>
+<p>如果库存充足，直接更新到库存科目中，如果不充足，则记到差异科目。在本期结束后，结余移动平均价。</p>
+<h4 id="最后总结">最后总结</h4>
+<p>按照发票价格重新计算材料价格差异。标准成本法在生产过程中的计价比较容易理解。原材料按照标准价格发货到生产订单，这时原材料减少，变动成本增加；在生产订单结束确认后，产生的产成品按标准价格计价，同时变动成本减少；原材料标准价格与产成品之间的标准价格差异均被转到当期的损益中。</p>
+<p>移动平均价格和标准价格计价的主要区别是，移动平均价主要通过当前收货价格计算得出，基本接近于的市场价格；但建立采购订单时如果估计价格与实际价格相比过高或过低，在收到发票前会造成系统存货价格不准。</p>
+<p>而标准价格是一种计划价格，标准价格与实际价格的差异不再分配到存货中，直接转到当期损益。如果标准价格制定合理，通过分析该差异，可以对采购部门和生产部门进行考核，促使其降低采购成本，节约支出。但标准价值计算的存货不能准确反映当时市场价格。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1306</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SAPbusiness/">
+                    #SAPbusiness</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_ALV_ItabToClip/" class="prev" rel="prev" title=" ALV 复制内容到剪贴板 "><i class="iconfont icon-dajiantou"></i>&nbsp; ALV 复制内容到剪贴板 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/SAPAuthorization_Table/" class="next" rel="next" title=" SAP Authorization table "> SAP Authorization table &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-03-08 00:00:00 \x2b0000 UTC',
+        title: ' 移动平均价和标准价 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

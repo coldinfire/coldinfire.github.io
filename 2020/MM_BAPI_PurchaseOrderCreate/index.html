@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_BAPI_VL09/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_SQL_DBConnect/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseOrderCreate/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI 操作 Purchase Order  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI 操作 Purchase Order  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI 操作 Purchase Order "/>
+<meta name="twitter:description" content="通过 BAPI：BAPI_PO_CREATE1 创建 PO TABLE 中的行项目参数 poitem 的货币字段 poitem-orderpr_un ：行项目的货币类型是根据供应商自动带出，不需要传入。 实际业务"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI 操作 Purchase Order ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_PurchaseOrderCreate\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  1562 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_PurchaseOrderCreate\/",
+  "datePublished": "2020-06-16T00:00:00\x2b00:00",
+  "dateModified": "2020-06-16T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI 操作 Purchase Order </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-06-16 >16 June 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="通过-bapibapi_po_create1-创建-po">通过 BAPI：BAPI_PO_CREATE1 创建 PO</h3>
+<p>TABLE 中的行项目参数 poitem 的货币字段 poitem-orderpr_un ：行项目的货币类型是根据供应商自动带出，不需要传入。</p>
+<p>实际业务中有可能创建 PO 的人员会变换货币的类型，通过设置抬头参数 poheader 的货币字段：poheader-currency = ‘货币’，这样即可实现对新建 PO 的货币类型的强制修改。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> zcreate_po.
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+<span style="color:#75715e">*&#34;*&#34;Local interface:</span>
+<span style="color:#75715e">*&#34;  IMPORTING</span>
+<span style="color:#75715e">*&#34;     VALUE(CALLNO) TYPE  ZCALLNO</span>
+<span style="color:#75715e">*&#34;     VALUE(DOC_TYPE) LIKE  BAPIMEPOHEADER-DOC_TYPE DEFAULT &#39;ZIPR&#39;</span>
+<span style="color:#75715e">*&#34;     VALUE(PURCH_ORG) LIKE  BAPIMEPOHEADER-PURCH_ORG DEFAULT &#39;POIC&#39;</span>
+<span style="color:#75715e">*&#34;     VALUE(PUR_GROUP) LIKE  BAPIMEPOHEADER-PUR_GROUP</span>
+<span style="color:#75715e">*&#34;     VALUE(VENDOR) LIKE  BAPIMEPOHEADER-VENDOR</span>
+<span style="color:#75715e">*&#34;     VALUE(COMP_CODE) LIKE  BAPIMEPOHEADER-COMP_CODE DEFAULT &#39;GF50&#39;</span>
+<span style="color:#75715e">*&#34;     VALUE(DZTERM) TYPE  DZTERM DEFAULT &#39;0001&#39;</span>
+<span style="color:#75715e">*&#34;  EXPORTING</span>
+<span style="color:#75715e">*&#34;     VALUE(PO_NUMBER) LIKE  BAPIMEPOHEADER-PO_NUMBER</span>
+<span style="color:#75715e">*&#34;     VALUE(FLAG) LIKE  BAPIRET2-TYPE</span>
+<span style="color:#75715e">*&#34;     VALUE(MESSAGE) LIKE  BAPIRET2-MESSAGE</span>
+<span style="color:#75715e">*&#34;  TABLES</span>
+<span style="color:#75715e">*&#34;      POITEM STRUCTURE  ZPOITEM</span>
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+<span style="color:#66d9ef">DATA</span>: lv_currency <span style="color:#66d9ef">TYPE </span>bapimepoheader<span style="color:#f92672">-</span>currency <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;RMB&#39;</span>,        <span style="color:#75715e">&#34;货币码&#34;
+</span><span style="color:#75715e"></span>      ls_poitem   <span style="color:#66d9ef">TYPE </span>zpoitem,
+      lv_message  <span style="color:#66d9ef">TYPE </span>bapiret2<span style="color:#f92672">-</span>message,
+      lv_po_item  <span style="color:#66d9ef">TYPE </span>bapimepoitem<span style="color:#f92672">-</span>po_item,                       <span style="color:#75715e">&#34;行项目号&#34;
+</span><span style="color:#75715e"></span>      lv_pckg_no  <span style="color:#66d9ef">TYPE </span>bapimepoitem<span style="color:#f92672">-</span>pckg_no.                       <span style="color:#75715e">&#34;PCKG_NO&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: quantity(<span style="color:#ae81ff">18</span>),
+      net_price(<span style="color:#ae81ff">37</span>),
+      limit(<span style="color:#ae81ff">27</span>),
+      exp_value(<span style="color:#ae81ff">27</span>),
+      l_lifnr   <span style="color:#66d9ef">TYPE </span>lfa1<span style="color:#f92672">-</span>lifnr,
+      lv_datano <span style="color:#66d9ef">TYPE </span>zdatano.
+<span style="color:#66d9ef">DATA</span>: lt_eskl <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> eskl <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">CLEAR</span>:gs_poheader,gs_poheaderx,gv_po_number,  gt_return,gs_return,gt_poitem,gs_poitem,gt_poitemx,
+   gs_poitemx,gt_poschedule,gs_poschedule,gt_poschedulex,gs_poschedulex,gt_poaccount,gs_poaccount,
+   gt_poaccountx,gs_poaccountx,gt_polimits,gs_polimits.
+<span style="color:#75715e">*数据检查.</span>
+<span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_check_data</span> <span style="color:#66d9ef">USING</span> doc_type purch_org pur_group vendor comp_code poitem[]
+                       <span style="color:#66d9ef">CHANGING</span> flag <span style="color:#66d9ef">message</span>.
+<span style="color:#75715e">*补齐前导零</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    input    <span style="color:#f92672">=</span> vendor
+ <span style="color:#66d9ef">IMPORTING</span>
+   output    <span style="color:#f92672">=</span> l_lifnr.
+<span style="color:#75715e">*抬头数据</span>
+gs_poheader<span style="color:#f92672">-</span>doc_type   <span style="color:#f92672">=</span> doc_type.      <span style="color:#75715e">&#34;采购凭证类型
+</span><span style="color:#75715e"></span>gs_poheader<span style="color:#f92672">-</span>purch_org  <span style="color:#f92672">=</span> purch_org.     <span style="color:#75715e">&#34;采购组织
+</span><span style="color:#75715e"></span>gs_poheader<span style="color:#f92672">-</span>pur_group  <span style="color:#f92672">=</span> pur_group.     <span style="color:#75715e">&#34;采购组
+</span><span style="color:#75715e"></span>gs_poheader<span style="color:#f92672">-</span>vendor     <span style="color:#f92672">=</span> l_lifnr.       <span style="color:#75715e">&#34;供应商帐户号
+</span><span style="color:#75715e"></span>gs_poheader<span style="color:#f92672">-</span>comp_code  <span style="color:#f92672">=</span> comp_code.     <span style="color:#75715e">&#34;公司代码
+</span><span style="color:#75715e"></span>gs_poheader<span style="color:#f92672">-</span>currency   <span style="color:#f92672">=</span> lv_currency.   <span style="color:#75715e">&#34;货币码
+</span><span style="color:#75715e"></span>gs_poheader<span style="color:#f92672">-</span>pmnttrms   <span style="color:#f92672">=</span> dzterm.        <span style="color:#75715e">&#34;付款条件
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;抬头数据标识&#34;
+</span><span style="color:#75715e"></span>gs_poheaderx<span style="color:#f92672">-</span>doc_type  <span style="color:#f92672">=</span> g_flag.
+gs_poheaderx<span style="color:#f92672">-</span>purch_org <span style="color:#f92672">=</span> g_flag.
+gs_poheaderx<span style="color:#f92672">-</span>pur_group <span style="color:#f92672">=</span> g_flag.
+gs_poheaderx<span style="color:#f92672">-</span>vendor    <span style="color:#f92672">=</span> g_flag.
+gs_poheaderx<span style="color:#f92672">-</span>comp_code <span style="color:#f92672">=</span> g_flag.
+gs_poheaderx<span style="color:#f92672">-</span>currency  <span style="color:#f92672">=</span> g_flag.
+gs_poheaderx<span style="color:#f92672">-</span>pmnttrms  <span style="color:#f92672">=</span> g_flag.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span>  lt_eskl <span style="color:#66d9ef">FROM</span> eskl UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">500</span> ROWS
+    <span style="color:#66d9ef">WHERE</span> loekz <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> .
+<span style="color:#66d9ef">LOOP AT </span>poitem <span style="color:#66d9ef">INTO</span> ls_poitem.
+<span style="color:#75715e">*行项目</span>
+   <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_eskl <span style="color:#66d9ef">INDEX</span> sy<span style="color:#f92672">-</span>tabix.
+   lv_pckg_no <span style="color:#f92672">=</span> lt_eskl<span style="color:#f92672">-</span>packno.
+   lv_po_item <span style="color:#f92672">=</span> lv_po_item <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>.
+   <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_poitem</span> <span style="color:#66d9ef">USING</span> ls_poitem lv_po_item lv_pckg_no.
+<span style="color:#75715e">*计划行</span>
+   <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_poschedule</span> <span style="color:#66d9ef">USING</span> ls_poitem lv_po_item.
+<span style="color:#75715e">*账户分配</span>
+   <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_poaccount</span> <span style="color:#66d9ef">USING</span> ls_poitem lv_po_item.
+<span style="color:#75715e">*服务限制</span>
+   <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_polimits</span> <span style="color:#66d9ef">USING</span> ls_poitem lv_po_item lv_pckg_no.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">*创建采购订单</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PO_CREATE1&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    poheader             <span style="color:#f92672">=</span> gs_poheader
+    poheaderx            <span style="color:#f92672">=</span> gs_poheaderx
+  <span style="color:#66d9ef">IMPORTING</span>
+    exppurchaseorder     <span style="color:#f92672">=</span> gv_po_number
+  <span style="color:#66d9ef">TABLES</span>
+    <span style="color:#66d9ef">return</span>               <span style="color:#f92672">=</span> gt_return
+    poitem               <span style="color:#f92672">=</span> gt_poitem
+    poitemx              <span style="color:#f92672">=</span> gt_poitemx
+    poschedule           <span style="color:#f92672">=</span> gt_poschedule
+    poschedulex          <span style="color:#f92672">=</span> gt_poschedulex
+    poaccount            <span style="color:#f92672">=</span> gt_poaccount
+    poaccountx           <span style="color:#f92672">=</span> gt_poaccountx
+    polimits             <span style="color:#f92672">=</span> gt_polimits.
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> gt_return <span style="color:#66d9ef">INTO</span> gs_return <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span>.
+    po_number <span style="color:#f92672">=</span> gv_po_number.
+    flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;生成PO:&#39;</span> po_number <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">message</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+    <span style="color:#66d9ef">LOOP AT </span>gt_return <span style="color:#66d9ef">INTO</span> gs_return <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">type </span><span style="color:#f92672">CA</span> <span style="color:#e6db74">&#39;AEX&#39;</span>.
+      <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> gs_return<span style="color:#f92672">-</span>id
+            <span style="color:#66d9ef">TYPE </span>gs_return<span style="color:#f92672">-</span>type
+          <span style="color:#66d9ef">NUMBER</span> gs_return<span style="color:#f92672">-</span>number
+            <span style="color:#66d9ef">WITH</span> gs_return<span style="color:#f92672">-</span>message_v1 gs_return<span style="color:#f92672">-</span>message_v2
+                 gs_return<span style="color:#f92672">-</span>message_v3 gs_return<span style="color:#f92672">-</span>message_v4
+            <span style="color:#66d9ef">INTO</span> lv_message.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#66d9ef">message</span> lv_message <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">message</span> <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;｜&#39;</span>.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+    <span style="color:#66d9ef">SHIFT</span> <span style="color:#66d9ef">message</span> LEFT DELETING LEADING  <span style="color:#e6db74">&#39;｜&#39;</span>.
+    flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div><h3 id="根据-purchase-request-创建-purchase-order">根据 Purchase Request 创建 Purchase Order</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">LOOP AT </span>PRITEM.
+   <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>TABIX <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+     LS_POHEADER<span style="color:#f92672">-</span>DOC_TYPE   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSTL&#39;</span>.
+     <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;000000&#39;</span> PRITEM<span style="color:#f92672">-</span>PLANT <span style="color:#66d9ef">INTO</span> LS_POHEADER<span style="color:#f92672">-</span>VENDOR.
+     <span style="color:#66d9ef">IF</span> LS_WERKS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1020&#39;</span>.
+       LS_POHEADER<span style="color:#f92672">-</span>PURCH_ORG  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1022&#39;</span>.  <span style="color:#75715e">&#34;pritem-purch_org&#34;
+</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">ELSEIF</span> LS_WERKS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1040&#39;</span>.
+       LS_POHEADER<span style="color:#f92672">-</span>PURCH_ORG  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1042&#39;</span>.
+     <span style="color:#66d9ef">ENDIF</span>.
+     LS_POHEADER<span style="color:#f92672">-</span>COMP_CODE  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1000&#39;</span>.
+     LS_POHEADER<span style="color:#f92672">-</span>PUR_GROUP  <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>PUR_GROUP.
+     LS_POHEADER<span style="color:#f92672">-</span>DOC_DATE   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+   <span style="color:#66d9ef">ENDIF</span>.
+   LT_POITEM<span style="color:#f92672">-</span>PO_ITEM    <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>PREQ_ITEM.
+   LT_POITEM<span style="color:#f92672">-</span>MATERIAL   <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>MATERIAL.
+   LT_POITEM<span style="color:#f92672">-</span>PLANT      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1000&#39;</span>.
+   LT_POITEM<span style="color:#f92672">-</span>VEND_MAT   <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>VEND_MAT.
+   LT_POITEM<span style="color:#f92672">-</span>QUANTITY   <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>QUANTITY.
+   LT_POITEM<span style="color:#f92672">-</span>PO_UNIT    <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>UNIT.
+   <span style="color:#66d9ef">IF</span> PRITEM<span style="color:#f92672">-</span>CURRENCY <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;HKD&#39;</span>.
+   	 <span style="color:#66d9ef">CLEAR</span>:LT_TCURR,LT_TCURR[],LS_EXCHRATE.
+     <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TCURR <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> LT_TCURR
+       <span style="color:#66d9ef">WHERE</span> KURST <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>
+       <span style="color:#f92672">AND</span> FCURR <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>CURRENCY
+       <span style="color:#f92672">AND</span> TCURR <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;HKD&#39;</span>.
+     <span style="color:#66d9ef">SORT</span> LT_TCURR BY GDATU ASCENDING.
+     <span style="color:#66d9ef">LOOP AT </span>LT_TCURR.
+       LT_TCURR<span style="color:#f92672">-</span>GDATU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;99999999&#39;</span> <span style="color:#f92672">-</span> LT_TCURR<span style="color:#f92672">-</span>GDATU.
+       <span style="color:#66d9ef">IF</span> LT_TCURR<span style="color:#f92672">-</span>GDATU <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+         LS_EXCHRATE <span style="color:#f92672">=</span> LT_TCURR<span style="color:#f92672">-</span>UKURS.
+         <span style="color:#66d9ef">EXIT</span>.
+       <span style="color:#66d9ef">ENDIF</span>.
+     <span style="color:#66d9ef">ENDLOOP</span>.
+     <span style="color:#66d9ef">IF</span> LS_EXCHRATE <span style="color:#f92672">IS NOT INITIAL</span>.
+       LT_POITEM<span style="color:#f92672">-</span>NET_PRICE  <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>PREQ_PRICE <span style="color:#f92672">*</span> LS_EXCHRATE.
+     <span style="color:#66d9ef">ELSE</span>.
+       LT_POITEM<span style="color:#f92672">-</span>NET_PRICE  <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>PREQ_PRICE.
+     <span style="color:#66d9ef">ENDIF</span>.
+   <span style="color:#66d9ef">ELSE</span>.
+     LT_POITEM<span style="color:#f92672">-</span>NET_PRICE  <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>PREQ_PRICE.
+   <span style="color:#66d9ef">ENDIF</span>.
+   
+   LT_POITEM<span style="color:#f92672">-</span>PRICE_UNIT <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>PRICE_UNIT.
+   LT_POITEM<span style="color:#f92672">-</span>ACCTASSCAT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;F&#39;</span>.
+   <span style="color:#66d9ef">APPEND</span> LT_POITEM <span style="color:#66d9ef">TO</span> LT_POITEM.
+   
+   LT_POCOND<span style="color:#f92672">-</span>ITM_NUMBER <span style="color:#f92672">=</span> PRITEM<span style="color:#f92672">-</span>PREQ_ITEM.
+   LT_POCOND<span style="color:#f92672">-</span>COND_TYPE  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PBXX&#39;</span>.
+   LT_POCOND<span style="color:#f92672">-</span>COND_VALUE <span style="color:#f92672">=</span> LT_POITEM<span style="color:#f92672">-</span>NET_PRICE.
+   LT_POCOND<span style="color:#f92672">-</span>CURRENCY   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;HKD&#39;</span>.
+   LT_POCOND<span style="color:#f92672">-</span>CHANGE_ID  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;U&#39;</span>.
+   <span style="color:#66d9ef">APPEND</span> LT_POCOND <span style="color:#66d9ef">TO</span> LT_POCOND.
+   <span style="color:#66d9ef">CLEAR</span>:LT_POCOND,LT_POITEM.
+   <span style="color:#66d9ef">CLEAR</span>:PRITEM<span style="color:#f92672">-</span>ACCTASSCAT.
+   <span style="color:#66d9ef">MODIFY</span> PRITEM TRANSPORTING ACCTASSCAT.
+<span style="color:#66d9ef">ENDLOOP</span>.
+
+<span style="color:#66d9ef">LOOP AT </span>PRITEMX.
+  <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>TABIX <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    LS_POHEADERX<span style="color:#f92672">-</span>DOC_TYPE  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    LS_POHEADERX<span style="color:#f92672">-</span>VENDOR    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    LS_POHEADERX<span style="color:#f92672">-</span>PURCH_ORG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    LS_POHEADERX<span style="color:#f92672">-</span>PUR_GROUP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    LS_POHEADERX<span style="color:#f92672">-</span>DOC_DATE  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>PO_ITEM    <span style="color:#f92672">=</span> PRITEMX<span style="color:#f92672">-</span>PREQ_ITEM.
+  LT_POITEMX<span style="color:#f92672">-</span>PO_ITEMX   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>MATERIAL   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>PLANT      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>VEND_MAT   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>QUANTITY   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>NET_PRICE  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>PRICE_UNIT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POITEMX<span style="color:#f92672">-</span>ACCTASSCAT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> LT_POITEMX <span style="color:#66d9ef">TO</span> LT_POITEMX.
+  <span style="color:#66d9ef">CLEAR</span>: LT_POITEMX.
+  LT_POCONDX<span style="color:#f92672">-</span>ITM_NUMBER <span style="color:#f92672">=</span> PRITEMX<span style="color:#f92672">-</span>PREQ_ITEM.
+  LT_POCONDX<span style="color:#f92672">-</span>COND_TYPE  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POCONDX<span style="color:#f92672">-</span>COND_VALUE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POCONDX<span style="color:#f92672">-</span>CURRENCY   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POCONDX<span style="color:#f92672">-</span>CHANGE_ID  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> LT_POCONDX <span style="color:#66d9ef">TO</span> LT_POCONDX.
+  <span style="color:#66d9ef">CLEAR</span>:LT_POCONDX.
+  <span style="color:#66d9ef">CLEAR</span> PRITEMX<span style="color:#f92672">-</span>ACCTASSCAT.
+  <span style="color:#66d9ef">MODIFY</span> PRITEMX TRANSPORTING ACCTASSCAT.
+<span style="color:#66d9ef">ENDLOOP</span>.
+
+<span style="color:#66d9ef">LOOP AT </span>PRACCOUNT.
+  LT_POACCOUNT<span style="color:#f92672">-</span>PO_ITEM    <span style="color:#f92672">=</span> PRACCOUNT<span style="color:#f92672">-</span>PREQ_ITEM.
+  LT_POACCOUNT<span style="color:#f92672">-</span>SERIAL_NO  <span style="color:#f92672">=</span> PRACCOUNT<span style="color:#f92672">-</span>SERIAL_NO.
+  LT_POACCOUNT<span style="color:#f92672">-</span>GL_ACCOUNT <span style="color:#f92672">=</span> PRACCOUNT<span style="color:#f92672">-</span>GL_ACCOUNT.
+  LT_POACCOUNT<span style="color:#f92672">-</span>ORDERID    <span style="color:#f92672">=</span> PRACCOUNT<span style="color:#f92672">-</span>ORDERID.
+  <span style="color:#66d9ef">APPEND</span> LT_POACCOUNT <span style="color:#66d9ef">TO</span> LT_POACCOUNT.
+  <span style="color:#66d9ef">CLEAR</span>: LT_POACCOUNT.
+<span style="color:#66d9ef">ENDLOOP</span>.
+
+<span style="color:#66d9ef">LOOP AT </span>PRACCOUNTX.
+  LT_POACCOUNTX<span style="color:#f92672">-</span>PO_ITEM    <span style="color:#f92672">=</span> PRACCOUNTX<span style="color:#f92672">-</span>PREQ_ITEM.
+  LT_POACCOUNTX<span style="color:#f92672">-</span>SERIAL_NO  <span style="color:#f92672">=</span> PRACCOUNTX<span style="color:#f92672">-</span>SERIAL_NO.
+  LT_POACCOUNTX<span style="color:#f92672">-</span>PO_ITEMX   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POACCOUNTX<span style="color:#f92672">-</span>GL_ACCOUNT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  LT_POACCOUNTX<span style="color:#f92672">-</span>ORDERID    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> LT_POACCOUNTX <span style="color:#66d9ef">TO</span> LT_POACCOUNTX.
+  <span style="color:#66d9ef">CLEAR</span>: LT_POACCOUNTX.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">CLEAR</span>:PRACCOUNT,PRACCOUNT[],PRACCOUNTX,PRACCOUNTX[].
+
+<span style="color:#66d9ef">LOOP AT </span>PRHEADERTEXT.
+  LT_POTEXTHEADER<span style="color:#f92672">-</span>PO_NUMBER  <span style="color:#f92672">=</span> PRHEADERTEXT<span style="color:#f92672">-</span>PREQ_NO.
+  LT_POTEXTHEADER<span style="color:#f92672">-</span>PO_ITEM    <span style="color:#f92672">=</span> PRHEADERTEXT<span style="color:#f92672">-</span>PREQ_ITEM.
+  LT_POTEXTHEADER<span style="color:#f92672">-</span>TEXT_ID    <span style="color:#f92672">=</span> PRHEADERTEXT<span style="color:#f92672">-</span>TEXT_ID.
+  LT_POTEXTHEADER<span style="color:#f92672">-</span>TEXT_LINE  <span style="color:#f92672">=</span> PRHEADERTEXT<span style="color:#f92672">-</span>TEXT_LINE.
+  <span style="color:#66d9ef">APPEND</span> LT_POTEXTHEADER <span style="color:#66d9ef">TO</span> LT_POTEXTHEADER.
+  <span style="color:#66d9ef">CLEAR</span>: LT_POTEXTHEADER.
+<span style="color:#66d9ef">ENDLOOP</span>.
+        
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PO_CREATE1&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+	POHEADER               <span style="color:#f92672">=</span> LS_POHEADER
+	POHEADERX              <span style="color:#f92672">=</span> LS_POHEADERX
+  	POADDRVENDOR           <span style="color:#f92672">=</span> LS_POADDRVENDOR
+   	TESTRUN                <span style="color:#f92672">=</span> LS_TESTRUNPO
+   	MEMORY_UNCOMPLETE      <span style="color:#f92672">=</span> LS_MEMORY_UNCOMPLETE
+    MEMORY_COMPLETE        <span style="color:#f92672">=</span> LS_MEMORY_COMPLETE
+    POEXPIMPHEADER         <span style="color:#f92672">=</span> LS_POEXPIMPHEADER
+    POEXPIMPHEADERX        <span style="color:#f92672">=</span> LS_POEXPIMPHEADERX
+    VERSIONS               <span style="color:#f92672">=</span> LS_VERSIONS
+    NO_MESSAGING           <span style="color:#f92672">=</span> LS_NO_MESSAGING
+    NO_MESSAGE_REQ         <span style="color:#f92672">=</span> LS_NO_MESSAGE_REQ
+    NO_AUTHORITY           <span style="color:#f92672">=</span> LS_NO_AUTHORITY
+    NO_PRICE_FROM_PO       <span style="color:#f92672">=</span> LS_NO_PRICE_FROM_PO
+  <span style="color:#66d9ef">IMPORTING</span>
+    EXPPURCHASEORDER       <span style="color:#f92672">=</span> LS_EXPPURCHASEORDER
+    EXPHEADER              <span style="color:#f92672">=</span> LS_EXPHEADER
+    EXPPOEXPIMPHEADER      <span style="color:#f92672">=</span> LS_EXPPOEXPIMPHEADER
+  <span style="color:#66d9ef">TABLES</span>
+    <span style="color:#66d9ef">RETURN</span>                 <span style="color:#f92672">=</span> LT_RETURNPO
+    POITEM                 <span style="color:#f92672">=</span> LT_POITEM
+    POITEMX                <span style="color:#f92672">=</span> LT_POITEMX
+    POADDRDELIVERY         <span style="color:#f92672">=</span> LT_POADDRDELIVERY
+    POSCHEDULE             <span style="color:#f92672">=</span> LT_POSCHEDULE
+    POSCHEDULEX            <span style="color:#f92672">=</span> LT_POSCHEDULEX
+    POACCOUNT              <span style="color:#f92672">=</span> LT_POACCOUNT
+    POACCOUNTPROFITSEGMENT <span style="color:#f92672">=</span> LT_POACCOUNTPROFITSEGMENT
+    POACCOUNTX             <span style="color:#f92672">=</span> LT_POACCOUNTX
+    POCONDHEADER           <span style="color:#f92672">=</span> LT_POCONDHEADER
+    POCONDHEADERX          <span style="color:#f92672">=</span> LT_POCONDHEADERX
+    POCOND                 <span style="color:#f92672">=</span> LT_POCOND
+    POCONDX                <span style="color:#f92672">=</span> LT_POCONDX
+    POLIMITS               <span style="color:#f92672">=</span> LT_POLIMITS
+    POCONTRACTLIMITS       <span style="color:#f92672">=</span> LT_POCONTRACTLIMITS
+    POSERVICES             <span style="color:#f92672">=</span> LT_POSERVICES
+    POSRVACCESSVALUES      <span style="color:#f92672">=</span> LT_POSRVACCESSVALUES
+    POSERVICESTEXT         <span style="color:#f92672">=</span> LT_POSERVICESTEXT
+    EXTENSIONIN            <span style="color:#f92672">=</span> LT_EXTENSIONIN
+    EXTENSIONOUT           <span style="color:#f92672">=</span> LT_EXTENSIONOUT
+    POEXPIMPITEM           <span style="color:#f92672">=</span> LT_POEXPIMPITEM
+    POEXPIMPITEMX          <span style="color:#f92672">=</span> LT_POEXPIMPITEMX
+    POTEXTHEADER           <span style="color:#f92672">=</span> LT_POTEXTHEADER
+    POTEXTITEM             <span style="color:#f92672">=</span> LT_POTEXTITEM
+    ALLVERSIONS            <span style="color:#f92672">=</span> LT_ALLVERSIONS
+    POPARTNER              <span style="color:#f92672">=</span> LT_POPARTNER
+    POCOMPONENTS           <span style="color:#f92672">=</span> LT_POCOMPONENTS
+    POCOMPONENTSX          <span style="color:#f92672">=</span> LT_POCOMPONENTSX
+    POSHIPPING             <span style="color:#f92672">=</span> LT_POSHIPPING
+    POSHIPPINGX            <span style="color:#f92672">=</span> LT_POSHIPPINGX
+    POSHIPPINGEXP          <span style="color:#f92672">=</span> LT_POSHIPPINGEXP.
+    
+    <span style="color:#66d9ef">LOOP AT </span>pr_return <span style="color:#66d9ef">WHERE</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#f92672">OR</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">CLEAR</span>: lv_message.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+      <span style="color:#66d9ef">LOOP AT </span>pr_return <span style="color:#66d9ef">INTO</span> l_return <span style="color:#66d9ef">WHERE</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span> .
+        <span style="color:#66d9ef">CONCATENATE</span> lv_message l_return<span style="color:#f92672">-</span>message <span style="color:#e6db74">&#39;;&#39;</span>
+            <span style="color:#66d9ef">INTO</span> lv_message.
+      <span style="color:#66d9ef">ENDLOOP</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> gt_data<span style="color:#f92672">-</span>bednr lv_message <span style="color:#66d9ef">INTO</span> gt_out<span style="color:#f92672">-</span>text.
+      <span style="color:#66d9ef">APPEND</span> gt_out.
+      <span style="color:#66d9ef">CLEAR</span> gt_out.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+        <span style="color:#66d9ef">EXPORTING</span>
+          <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> pr_no <span style="color:#e6db74">&#39;创建成功&#39;</span> <span style="color:#66d9ef">INTO</span> gt_out<span style="color:#f92672">-</span>text.
+      <span style="color:#66d9ef">APPEND</span> gt_out.
+      <span style="color:#66d9ef">CLEAR</span> gt_out.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">FREE </span>pr_item.
+    <span style="color:#66d9ef">FREE </span>pr_account.
+    <span style="color:#66d9ef">FREE </span>pr_item_id.
+    <span style="color:#66d9ef">FREE </span>pr_return.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h3 id="删除和修改-purchase-order">删除和修改 Purchase Order</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> zchange_po.
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+<span style="color:#75715e">*&#34;*&#34;Local interface:</span>
+<span style="color:#75715e">*&#34;  IMPORTING</span>
+<span style="color:#75715e">*&#34;     VALUE(CALLNO) TYPE  ZCALLNO</span>
+<span style="color:#75715e">*&#34;     VALUE(PO_NUMBER) LIKE  BAPIMEPOHEADER-PO_NUMBER</span>
+<span style="color:#75715e">*&#34;  EXPORTING</span>
+<span style="color:#75715e">*&#34;     VALUE(FLAG) LIKE  BAPIRET2-TYPE</span>
+<span style="color:#75715e">*&#34;     VALUE(MESSAGE) LIKE  BAPIRET2-MESSAGE</span>
+<span style="color:#75715e">*&#34;  TABLES</span>
+<span style="color:#75715e">*&#34;      ZPOITEM STRUCTURE  ZPOITEM01</span>
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+<span style="color:#66d9ef">DATA</span>: ls_zpoitem <span style="color:#66d9ef">TYPE </span>zpoitem01,
+      lv_message <span style="color:#66d9ef">TYPE </span>bapiret2<span style="color:#f92672">-</span>message,
+      lv_datano  <span style="color:#66d9ef">TYPE </span>zdatano.
+<span style="color:#66d9ef">DATA</span>: gv_po_number <span style="color:#66d9ef">LIKE  </span>bapimepoheader<span style="color:#f92672">-</span>po_number,              
+      gt_return    <span style="color:#66d9ef">LIKE  </span><span style="color:#66d9ef">TABLE OF</span> bapiret2,                
+      gs_return    <span style="color:#66d9ef">LIKE  LINE  OF</span> gt_return,
+      gt_poitem    <span style="color:#66d9ef">LIKE  </span><span style="color:#66d9ef">TABLE OF</span> bapimepoitem,   
+      gs_poitem    <span style="color:#66d9ef">LIKE  LINE  OF</span> gt_poitem,
+      gt_poitemx   <span style="color:#66d9ef">LIKE  </span><span style="color:#66d9ef">TABLE OF</span> bapimepoitemx,
+      gs_poitemx   <span style="color:#66d9ef">LIKE  LINE  OF</span> gt_poitemx.
+<span style="color:#66d9ef">CLEAR</span>:gv_po_number,gs_poitemx,gs_poitem,gs_return,gt_poitemx,gt_poitem,gt_return.
+<span style="color:#75715e">&#34;准备BAPI数据&#34;
+</span><span style="color:#75715e"></span>gv_po_number <span style="color:#f92672">=</span> po_number.
+<span style="color:#66d9ef">LOOP AT </span>zpoitem <span style="color:#66d9ef">INTO</span> ls_zpoitem.
+  gs_poitem<span style="color:#f92672">-</span>po_item    <span style="color:#f92672">=</span> ls_zpoitem<span style="color:#f92672">-</span>po_item.
+  gs_poitem<span style="color:#f92672">-</span>delete_ind <span style="color:#f92672">=</span> ls_zpoitem<span style="color:#f92672">-</span>delete_ind.
+  <span style="color:#66d9ef">APPEND</span> gs_poitem <span style="color:#66d9ef">TO</span> gt_poitem.
+  gs_poitemx<span style="color:#f92672">-</span>po_item    <span style="color:#f92672">=</span> ls_zpoitem<span style="color:#f92672">-</span>po_item.
+  gs_poitemx<span style="color:#f92672">-</span>po_itemx   <span style="color:#f92672">=</span> g_flag.
+  gs_poitemx<span style="color:#f92672">-</span>delete_ind <span style="color:#f92672">=</span> g_flag.
+  <span style="color:#66d9ef">APPEND</span> gs_poitemx <span style="color:#66d9ef">TO</span> gt_poitemx.
+  <span style="color:#66d9ef">CLEAR</span>:gs_poitemx,gs_poitem.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">&#34;执行BAPI BAPI_PO_CHANGE&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_PO_CHANGE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    purchaseorder  <span style="color:#f92672">=</span> gv_po_number
+  <span style="color:#66d9ef">TABLES</span>
+    <span style="color:#66d9ef">return</span>         <span style="color:#f92672">=</span> gt_return
+    poitem         <span style="color:#f92672">=</span> gt_poitem
+    poitemx        <span style="color:#f92672">=</span> gt_poitemx.
+<span style="color:#75715e">&#34;判断执行结果，并记录错误信息&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> gt_return <span style="color:#66d9ef">INTO</span> gs_return <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span>.
+  flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;PO：&#39;</span>gv_po_number <span style="color:#e6db74">&#39;处理完成&#39;</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">message</span> .
+<span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+  <span style="color:#66d9ef">LOOP AT </span>gt_return <span style="color:#66d9ef">INTO</span> gs_return <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">type </span><span style="color:#f92672">CA</span> <span style="color:#e6db74">&#39;AEX&#39;</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span>     gs_return<span style="color:#f92672">-</span>id
+            <span style="color:#66d9ef">TYPE   </span>gs_return<span style="color:#f92672">-</span>type
+            <span style="color:#66d9ef">NUMBER</span> gs_return<span style="color:#f92672">-</span>number
+            <span style="color:#66d9ef">WITH</span>   gs_return<span style="color:#f92672">-</span>message_v1 gs_return<span style="color:#f92672">-</span>message_v2
+                   gs_return<span style="color:#f92672">-</span>message_v3 gs_return<span style="color:#f92672">-</span>message_v4
+            <span style="color:#66d9ef">INTO</span> lv_message.
+    <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#66d9ef">message</span> lv_message <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">message</span> <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;｜&#39;</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">SHIFT</span> <span style="color:#66d9ef">message</span> LEFT DELETING LEADING  <span style="color:#e6db74">&#39;｜&#39;</span>.
+  flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1562</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_BAPI_VL09/" class="prev" rel="prev" title=" BAPI 冲销 Delivery Note "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI 冲销 Delivery Note </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_SQL_DBConnect/" class="next" rel="next" title=" SAP 数据库连接配置 "> SAP 数据库连接配置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-16 00:00:00 \x2b0000 UTC',
+        title: ' BAPI 操作 Purchase Order ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

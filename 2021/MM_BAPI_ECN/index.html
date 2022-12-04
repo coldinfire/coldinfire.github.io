@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_ALV_Screen_Layout/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/MM_BAPI_BOM/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/MM_BAPI_ECN/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI 操作ECN数据  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI 操作ECN数据  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI 操作ECN数据 "/>
+<meta name="twitter:description" content="API modules for ECM： Function Group &ndash; CCAP Create Change Master Record BAPI：CCAP_ECN_HEADER_CREATE / CCAP_ECN_CREATE 使用 BAPI 创建更改主记录的表头数据：status、aut"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI 操作ECN数据 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/MM_BAPI_ECN\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM, BAPI",
+  "wordcount":  1088 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/MM_BAPI_ECN\/",
+  "datePublished": "2021-07-14T00:00:00\x2b00:00",
+  "dateModified": "2021-07-14T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI 操作ECN数据 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-07-14 >14 July 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>API modules for ECM： Function Group &ndash; CCAP</p>
+<h3 id="create-change-master-record">Create Change Master Record</h3>
+<h4 id="bapiccap_ecn_header_create--ccap_ecn_create">BAPI：CCAP_ECN_HEADER_CREATE / CCAP_ECN_CREATE</h4>
+<p>使用 BAPI 创建更改主记录的表头数据：status、authorization group、valid-from date、description、reason for change。还可以定义更改编号对其有效的对象类型。</p>
+<ul>
+<li>必输字段：ECN、Status、Valid-from Date、Description。</li>
+</ul>
+<p>如果多次调用此函数，则可以使用参数 <code>FL_COMMIT_AND_WAIT</code> 来确保每次更改都保存到数据库中，然后才能进行下一次更改。</p>
+<h4 id="参数列表">参数列表</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CHANGE_HEADER</td>
+<td align="left">表头数据信息</td>
+</tr>
+<tr>
+<td align="left">Object Type : OBJECT_MAT</td>
+<td align="left">设定有效的对象类型：Material、BOM、Task list等</td>
+</tr>
+<tr>
+<td align="left">FL_COMMIT_AND_WAIT</td>
+<td align="left">多次调用保证每次都保存到数据库</td>
+</tr>
+<tr>
+<td align="left">FL_NO_COMMIT_WORK</td>
+<td align="left">不提交事务，可以用来做测试</td>
+</tr>
+<tr>
+<td align="left">CHANGE_NO</td>
+<td align="left">BAPI 返回创建的 ECN 号码</td>
+</tr>
+<tr>
+<td align="left">T_TEXT</td>
+<td align="left">Long text table</td>
+</tr>
+</tbody>
+</table>
+<h4 id="程序实例">程序实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:L_CHANGENO <span style="color:#66d9ef">LIKE </span>AENRB<span style="color:#f92672">-</span>AENNR,
+  LS_HEADER <span style="color:#66d9ef">LIKE </span>AENR_API01,
+  LS_OBJECT_MAT <span style="color:#66d9ef">LIKE </span>AENV_API01,
+  LS_OBJECT_BOM <span style="color:#66d9ef">LIKE </span>AENV_API01,
+  LS_OBJECT_TLIST <span style="color:#66d9ef">LIKE </span>AENV_API01,
+  LT_ITEM <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> AEOI_API01 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: LT_RETURN <span style="color:#66d9ef">LIKE </span>BAPIRET2 OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: LV_RESULT <span style="color:#66d9ef">TYPE </span>BAPI_MTYPE,
+      LV_MESSAGE <span style="color:#66d9ef">TYPE </span>BAPI_MSG.
+<span style="color:#75715e">&#34;CHANGE_HEADER&#34;
+</span><span style="color:#75715e"></span>LS_HEADER<span style="color:#f92672">-</span>CHANGE_NO <span style="color:#f92672">=</span> AENR<span style="color:#f92672">-</span>AENNR
+LS_HEADER<span style="color:#f92672">-</span>STATUS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.
+LS_HEADER<span style="color:#f92672">-</span>VALID_FROM <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM. <span style="color:#75715e">&#34;Valid From Must &gt;= Today&#34;
+</span><span style="color:#75715e"></span>LS_HEADER<span style="color:#f92672">-</span>DESCRIPT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Demo&#39;</span>.
+LS_HEADER<span style="color:#f92672">-</span>REASON_CHG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;For Test&#39;</span>.
+<span style="color:#75715e">&#34;物件类型&#34;
+</span><span style="color:#75715e"></span>LS_OBJECT_MAT<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_MAT<span style="color:#f92672">-</span>OBJ_REQU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_MAT<span style="color:#f92672">-</span>MGTREC_GEN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">&#34;BOM类型&#34;
+</span><span style="color:#75715e"></span>LS_OBJECT_BOM<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_BOM<span style="color:#f92672">-</span>OBJ_REQU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_BOM<span style="color:#f92672">-</span>MGTREC_GEN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">&#34;Task List类型&#34;
+</span><span style="color:#75715e"></span>LS_OBJECT_TLIST<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_TLIST<span style="color:#f92672">-</span>OBJ_REQU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_TLIST<span style="color:#f92672">-</span>MGTREC_GEN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">&#34;CALL BAPI&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CCAP_ECN_CREATE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    CHANGE_HEADER            <span style="color:#f92672">=</span> LS_HEADER
+    OBJECT_MAT               <span style="color:#f92672">=</span> LS_OBJECT_MAT
+    OBJECT_BOM               <span style="color:#f92672">=</span> LS_OBJECT_BOM
+    OBJECT_TLIST             <span style="color:#f92672">=</span> LS_OBJECT_TLIST
+  <span style="color:#66d9ef">IMPORTING</span>
+    CHANGE_NO                <span style="color:#f92672">=</span> L_CHANGENO
+  <span style="color:#66d9ef">TABLES</span>
+<span style="color:#75715e">*   ALT_DATES                =</span>
+    OBJMGREC                 <span style="color:#f92672">=</span> LT_ITEM
+<span style="color:#75715e">*   EFFECTIVITY              =</span>
+<span style="color:#75715e">*   TEXTHEADER               =</span>
+<span style="color:#75715e">*   TEXTLINES                =</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    CHANGE_NO_ALREADY_EXISTS <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    ERROR                    <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">OTHERS</span>                   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+<span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  LV_RESULT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BALW_BAPIRETURN_GET2&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      TYPE   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGTY
+      CL     <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGID
+      <span style="color:#66d9ef">NUMBER</span> <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGNO
+      PAR1   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV1
+      PAR2   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV2
+      PAR3   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV3
+      PAR4   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV4
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#66d9ef">RETURN</span> <span style="color:#f92672">=</span> LT_RETURN.
+  <span style="color:#66d9ef">APPEND</span> LT_RETURN.
+  <span style="color:#66d9ef">LOOP AT </span>LT_RETURN <span style="color:#66d9ef">WHERE</span> TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> LT_RETURN<span style="color:#f92672">-</span>MESSAGE <span style="color:#e6db74">&#39;;&#39;</span> <span style="color:#66d9ef">INTO</span> LV_MESSAGE.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ELSE</span>.
+  LV_RESULT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+  LV_MESSAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ECN change successfully&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="change-change-master-record">Change Change Master Record</h3>
+<h4 id="bapiccap_ecn_header_change">BAPI：CCAP_ECN_HEADER_CHANGE</h4>
+<p>该 BAPI 用于更改 ECN 的标题数据和对象类型。</p>
+<p>该 BAPI 支持两种初始化字段的过程。 在 CALO_INIT_API 模块的 DATA_RESET 字段中选择过程：</p>
+<ul>
+<li>如果 DATA_RESET 字段与其初始值一起传输，则所有字段，包括包含其初始值的字段，都将从接口复制。 如果传输的字段包含其初始值，则会初始化更改主记录中的相关字段。</li>
+<li>如果 DATA_RESET 字段被传送一个值，或者如果默认值不被覆盖，具有初始值的字段不会从界面复制。 要初始化字段，必须在接口字段的开头输入 DATA_RESET 字段中定义的字符。</li>
+</ul>
+<h4 id="参数列表-1">参数列表</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHANGE_HEADER</td>
+<td>表头数据信息</td>
+</tr>
+<tr>
+<td>Object type</td>
+<td>设定有效的对象类型：Material、BOM、Task list等</td>
+</tr>
+<tr>
+<td>FL_COMMIT_AND_WAIT</td>
+<td>多次调用保证每次都保存到数据库</td>
+</tr>
+<tr>
+<td>T_TEXT</td>
+<td>Long text table</td>
+</tr>
+</tbody>
+</table>
+<h4 id="程序实例-1">程序实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:L_CHANGENO <span style="color:#66d9ef">LIKE </span>AENRB<span style="color:#f92672">-</span>AENNR,
+  LS_HEADER <span style="color:#66d9ef">LIKE </span>AENR_API01,
+  LS_OBJECT_MAT <span style="color:#66d9ef">LIKE </span>AENV_API01,
+  LS_OBJECT_BOM <span style="color:#66d9ef">LIKE </span>AENV_API01,
+  LS_OBJECT_TLIST <span style="color:#66d9ef">LIKE </span>AENV_API01,
+  LT_TEXT <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TLINE <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: LT_RETURN <span style="color:#66d9ef">LIKE </span>BAPIRET2 OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#75715e">&#34;CHANGE_HEADER&#34;
+</span><span style="color:#75715e"></span>LS_HEADER<span style="color:#f92672">-</span>CHANGE_NO <span style="color:#f92672">=</span> AENR<span style="color:#f92672">-</span>AENNR
+LS_HEADER<span style="color:#f92672">-</span>STATUS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>.
+LS_HEADER<span style="color:#f92672">-</span>VALID_FROM <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM. <span style="color:#75715e">&#34;Valid From Must &gt;= Today&#34;
+</span><span style="color:#75715e"></span>LS_HEADER<span style="color:#f92672">-</span>DESCRIPT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Demo&#39;</span>.
+LS_HEADER<span style="color:#f92672">-</span>REASON_CHG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;For Test&#39;</span>.
+<span style="color:#75715e">&#34;物件类型&#34;
+</span><span style="color:#75715e"></span>LS_OBJECT_MAT<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_MAT<span style="color:#f92672">-</span>OBJ_REQU <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_OBJECT_MAT<span style="color:#f92672">-</span>MGTREC_GEN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CCAP_ECN_HEADER_CHANGE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    CHANGE_HEADER        <span style="color:#f92672">=</span> LS_HEADER
+    OBJECT_MAT           <span style="color:#f92672">=</span> LS_OBJECT_MAT
+    FL_COMMIT_AND_WAIT   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#66d9ef">TABLES</span>
+    T_TEXT               <span style="color:#f92672">=</span> LT_TEXT
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    ERROR                <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  LV_RESULT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BALW_BAPIRETURN_GET2&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      TYPE   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGTY
+      CL     <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGID
+      <span style="color:#66d9ef">NUMBER</span> <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGNO
+      PAR1   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV1
+      PAR2   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV2
+      PAR3   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV3
+      PAR4   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>MSGV4
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#66d9ef">RETURN</span> <span style="color:#f92672">=</span> LT_RETURN.
+  <span style="color:#66d9ef">APPEND</span> LT_RETURN.
+  <span style="color:#66d9ef">LOOP AT </span>LT_RETURN <span style="color:#66d9ef">WHERE</span> TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> LT_RETURN<span style="color:#f92672">-</span>MESSAGE <span style="color:#e6db74">&#39;;&#39;</span> <span style="color:#66d9ef">INTO</span> LV_MESSAGE.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ELSE</span>.
+  LV_RESULT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+  LV_MESSAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ECN change successfully&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="delete-change-master-record">Delete Change Master Record</h3>
+<h4 id="bapiccap_ecn_header_delete">BAPI：CCAP_ECN_HEADER_DELETE</h4>
+<p>该 BAPI 用于删除变更主记录， 输入更改编号作为导入参数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CCAP_ECN_HEADER_DELETE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    CHANGE_NO          <span style="color:#f92672">=</span> aenr<span style="color:#f92672">-</span>aennr
+    FL_COMMIT_AND_WAIT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1088</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_ALV_Screen_Layout/" class="prev" rel="prev" title=" 选择屏幕添加 Layout 选择 "><i class="iconfont icon-dajiantou"></i>&nbsp; 选择屏幕添加 Layout 选择 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/MM_BAPI_BOM/" class="next" rel="next" title=" BAPI 操作BOM数据 "> BAPI 操作BOM数据 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-07-14 00:00:00 \x2b0000 UTC',
+        title: ' BAPI 操作ECN数据 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

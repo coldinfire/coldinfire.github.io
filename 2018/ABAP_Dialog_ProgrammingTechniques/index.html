@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Dialog_Detail/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Dialog_TableControl/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Dialog_ProgrammingTechniques/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Dialog 编程技术  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Dialog 编程技术  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Dialog 编程技术 "/>
+<meta name="twitter:description" content="ABAP Dialog 编程技术 模块池对象的命名约定：BC410 SAPMV45A：Program name MV45AF01：Form include MV45AO01：PBO include MV45"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Dialog 编程技术 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_ProgrammingTechniques\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Dialog",
+  "wordcount":  518 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_ProgrammingTechniques\/",
+  "datePublished": "2018-09-01T00:00:00\x2b00:00",
+  "dateModified": "2018-09-01T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Dialog 编程技术 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-01 >1 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="abap-dialog-编程技术">ABAP Dialog 编程技术</h3>
+<h4 id="模块池对象的命名约定bc410">模块池对象的命名约定：BC410</h4>
+<ul>
+<li>SAPMV45A：Program name</li>
+<li>MV45A<strong>F01</strong>：Form include</li>
+<li>MV45A<strong>O01</strong>：PBO include</li>
+<li>MV45A<strong>I01</strong>：PAI include</li>
+<li>MV45A<strong>TOP</strong>：Data declaration</li>
+<li>SAPZNAME：User defined Program</li>
+<li>ZNAMEF01：User defined Form include</li>
+</ul>
+<h4 id="basic-screen-processing">Basic Screen Processing</h4>
+<ul>
+<li><code>Leave to screen 0.</code>：Exits back to first screen</li>
+<li><code>Leave to screen 200</code>：Leaves to screen 20</li>
+<li><code>Call screen 100. </code>：Calls screen 100</li>
+<li><code>Set screen 100.</code>：Reassigns next screen value</li>
+<li><code>Leave screen. </code>：Leaves to next screen</li>
+<li><code>Leave program. </code>：Leaves Program)</li>
+</ul>
+<h4 id="screen-numbers">Screen numbers</h4>
+<ul>
+<li>大于 9000 的数字保留给 SAP 客户自定义屏幕</li>
+<li>数字 1000 到 1010 保留用于 ABAP 字典表的维护屏幕和标准选择屏幕报告</li>
+</ul>
+<h4 id="dialog-gui-components">Dialog GUI Components</h4>
+<ul>
+<li>Menu Bar</li>
+<li>Standard Toolbar</li>
+<li>Application Toolbar</li>
+<li>Key Settings</li>
+</ul>
+<h4 id="gui-status-declaration">GUI Status Declaration</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">SET PF-STATUS</span> &lt;ZSTATUS&gt;. 
+<span style="color:#66d9ef">SET TITLEBAR</span> &lt;TITLE&gt;.	<span style="color:#75715e">&#34; i.e. 100 &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;Exclude multiple function codes. &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">Data</span>: <span style="color:#66d9ef">Begin of</span> ex_tab occurs <span style="color:#ae81ff">0</span>. 
+  fcode <span style="color:#66d9ef">like </span>sy<span style="color:#f92672">-</span>ucomm. 
+<span style="color:#66d9ef">Data</span>: <span style="color:#66d9ef">End of</span> itab. 
+ex_tab<span style="color:#f92672">-</span>fcode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&amp;ODN&#39;</span>. <span style="color:#66d9ef">APPEND</span> ex_tab. <span style="color:#75715e">&#34;升序&#34;
+</span><span style="color:#75715e"></span>ex_tab<span style="color:#f92672">-</span>fcode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&amp;OUP&#39;</span>. <span style="color:#66d9ef">APPEND</span> ex_tab. <span style="color:#75715e">&#34;降序&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SET PF-STATUS</span> <span style="color:#e6db74">&#39;STATUS&#39;</span> EXCLUDING ex_tab. 
+<span style="color:#75715e">&#34;To deactivate previous status and activate default list&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SET PF-STATUS</span> SPACE.  
+</code></pre></div><p><strong>Function Codes</strong></p>
+<p>Function Type:</p>
+<ul>
+<li>' &lsquo;：Normal</li>
+<li>&lsquo;E&rsquo;：Exit</li>
+<li>&lsquo;S&rsquo;：System</li>
+<li>&lsquo;T&rsquo;：Transaction</li>
+<li>&lsquo;P&rsquo;：Tabst. Control</li>
+<li>&lsquo;H&rsquo;：Help request</li>
+</ul>
+<h4 id="get-field-clicked-on">Get field clicked on</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">GET CURSOR</span> <span style="color:#66d9ef">FIELD</span> fieldname [LINE] fieldname <span style="color:#f92672">or</span> structure(store rep line).
+</code></pre></div><p><em>CURSOR Position</em></p>
+<ul>
+<li>Within the ABAP(PBO)：<code>SET CURSOR field 'SFLIGHT-CONNID'. </code></li>
+<li>Within screen attributes (Settings)</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>518</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Dialog/">
+                    #Dialog</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_Detail/" class="prev" rel="prev" title=" Dialog 逻辑控制 "><i class="iconfont icon-dajiantou"></i>&nbsp; Dialog 逻辑控制 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_TableControl/" class="next" rel="next" title=" Dialog 表格控件使用 "> Dialog 表格控件使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-01 00:00:00 \x2b0000 UTC',
+        title: ' Dialog 编程技术 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

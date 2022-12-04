@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/SAP_Report_config/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_DomainEnhancement/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_Util_ClientTableCopy/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP系统间数据表的Copy  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP系统间数据表的Copy  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP系统间数据表的Copy "/>
+<meta name="twitter:description" content="需求场景 在功能开发完成后，需要使用一些测试数据来进行测试，有时可能需要将一些比较新的生产数据复制到测试系统，为了完成数据表的复制，需要使用一"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP系统间数据表的Copy ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_Util_ClientTableCopy\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  585 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_Util_ClientTableCopy\/",
+  "datePublished": "2020-10-14T00:00:00\u002b00:00",
+  "dateModified": "2020-10-14T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP系统间数据表的Copy </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-10-14 >14 October 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="需求场景">需求场景</h3>
+<p>在功能开发完成后，需要使用一些测试数据来进行测试，有时可能需要将一些比较新的生产数据复制到测试系统，为了完成数据表的复制，需要使用一些SAP标准的BAPI来完成。</p>
+<h3 id="功能实现">功能实现</h3>
+<h4 id="bapirfc_read_table">BAPI：RFC_READ_TABLE</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: SO_OPTION <span style="color:#66d9ef">TYPE TABLE OF</span> rfc_db_opt <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      SO_FIELDS <span style="color:#66d9ef">TYPE TABLE OF</span> rfc_db_fld,
+      WA_FIELDS <span style="color:#66d9ef">TYPE </span>rfc_db_fld,
+      SO_DATA <span style="color:#66d9ef">TYPE TABLE OF</span> tab512,
+      WA_SO_DATA <span style="color:#66d9ef">TYPE </span>tab512.
+<span style="color:#66d9ef">DATA</span>: T_FIELDS <span style="color:#66d9ef">TYPE TABLE OF</span> DDSHSELOPT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: LV_WHERE <span style="color:#66d9ef">TYPE </span>STRING.
+<span style="color:#75715e">&#34;Screen Define&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">PARAMETERS</span>: p_table <span style="color:#66d9ef">TYPE </span>dd02l<span style="color:#f92672">-</span>tabname <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;RSEG&#39;</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_dest <span style="color:#66d9ef">TYPE </span>rfcdes<span style="color:#f92672">-</span>rfcdest.
+<span style="color:#75715e">&#34;Begin Business&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">START-OF-SELECTION</span>.
+<span style="color:#66d9ef">REFRESH</span>:T_RSEG1,I_WHERE,I_FIELDS.
+<span style="color:#66d9ef">CLEAR</span> T_FIELDS.
+T_FIELDS<span style="color:#f92672">-</span>SHLPFIELD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BELNR&#39;</span>.
+T_FIELDS<span style="color:#f92672">-</span>SIGN      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I&#39;</span>.
+T_FIELDS<span style="color:#f92672">-</span>OPTION    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BT&#39;</span>.
+T_FIELDS<span style="color:#f92672">-</span>LOW       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;5100000009&#39;</span>.
+T_FIELDS<span style="color:#f92672">-</span>HIGH      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;5100000019&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> T_FIELDS.
+<span style="color:#75715e">* Convert selopt into string               *</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4_CONV_SELOPT_TO_WHERECLAUSE&#39;</span>
+<span style="color:#75715e">*   EXPORTING</span>
+<span style="color:#75715e">*     GEN_ALIAS_NAMES       = &#39; &#39;</span>
+<span style="color:#75715e">*     ESCAPE_ALLOWED        = &#39; &#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    WHERE_CLAUSE          <span style="color:#f92672">=</span> LV_WHERE
+  <span style="color:#66d9ef">TABLES</span>
+    SELOPT_TAB            <span style="color:#f92672">=</span> T_FIELDS.
+SO_OPTIONS<span style="color:#f92672">-</span>TEXT <span style="color:#f92672">=</span> LV_WHERE.
+<span style="color:#66d9ef">APPEND</span> SO_OPTIONS.
+
+<span style="color:#66d9ef">REFRESH</span> T_FIELDS.
+<span style="color:#66d9ef">CLEAR</span> T_FIELDS.
+T_FIELDS<span style="color:#f92672">-</span>SHLPFIELD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GJAHR&#39;</span>.
+T_FIELDS<span style="color:#f92672">-</span>SIGN      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I&#39;</span>.
+T_FIELDS<span style="color:#f92672">-</span>OPTION    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EQ&#39;</span>.
+T_FIELDS<span style="color:#f92672">-</span>LOW       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2020&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> T_FIELDS.
+<span style="color:#66d9ef">CLEAR</span> LV_WHERE.
+<span style="color:#75715e">* Convert selopt into string               *</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4_CONV_SELOPT_TO_WHERECLAUSE&#39;</span>
+<span style="color:#75715e">*   EXPORTING</span>
+<span style="color:#75715e">*     GEN_ALIAS_NAMES       = &#39; &#39;</span>
+<span style="color:#75715e">*     ESCAPE_ALLOWED        = &#39; &#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    WHERE_CLAUSE          <span style="color:#f92672">=</span> LV_WHERE
+  <span style="color:#66d9ef">TABLES</span>
+    SELOPT_TAB            <span style="color:#f92672">=</span> T_FIELDS.
+
+<span style="color:#66d9ef">CLEAR</span> T_WHERE.
+SO_OPTIONS<span style="color:#f92672">-</span>TEXT(<span style="color:#ae81ff">3</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AND&#39;</span>.
+SO_OPTIONS<span style="color:#f92672">-</span>TEXT<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>  <span style="color:#f92672">=</span> LV_WHERE.
+<span style="color:#66d9ef">APPEND</span> SO_OPTIONS.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;RFC_READ_TABLE&#39;</span> DESTINATION p_dest
+  <span style="color:#66d9ef">EXPORTING</span>
+    query_table                <span style="color:#f92672">=</span> p_table
+<span style="color:#75715e">*   DELIMITER                  = &#39; &#39;</span>
+<span style="color:#75715e">*   NO_DATA                    = &#39; &#39;</span>
+<span style="color:#75715e">*   ROWSKIPS                   = 0</span>
+<span style="color:#75715e">*   ROWCOUNT                   = 0</span>
+  <span style="color:#66d9ef">TABLES</span>
+    OPTIONS                    <span style="color:#f92672">=</span> SO_OPTIONS
+    <span style="color:#66d9ef">fields</span>                     <span style="color:#f92672">=</span> SO_FIELDS
+    <span style="color:#66d9ef">data</span>                       <span style="color:#f92672">=</span> SO_DATA
+<span style="color:#75715e">* EXCEPTIONS</span>
+<span style="color:#75715e">*   TABLE_NOT_AVAILABLE        = 1</span>
+<span style="color:#75715e">*   TABLE_WITHOUT_DATA         = 2</span>
+<span style="color:#75715e">*   OPTION_NOT_VALID           = 3</span>
+<span style="color:#75715e">*   FIELD_NOT_VALID            = 4</span>
+<span style="color:#75715e">*   NOT_AUTHORIZED             = 5</span>
+<span style="color:#75715e">*   DATA_BUFFER_EXCEEDED       = 6</span>
+<span style="color:#75715e">*   OTHERS                     = 7</span>
+            .
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+         <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#66d9ef">MODIFY</span> (p_table) <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">TABLE</span> SO_DATA.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">COMMIT</span> WORK <span style="color:#f92672">AND</span> <span style="color:#66d9ef">WAIT</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="跨-client-获取数据">跨 Client 获取数据</h4>
+<p>RFC_READ_TABLE 获取其它 Client 的数据时，需要增加 <code>DESTINATION dest_client</code> 选项。</p>
+<ul>
+<li>dest_client：SM59 中维护的远端功能呼叫目的地</li>
+</ul>
+<h4 id="bapirfc_read_table-使用限制">BAPI：RFC_READ_TABLE 使用限制</h4>
+<ul>
+<li>行数限制：RFC_READ_TABLE的行数限制为512个字符；也就是说，每行数据不能超过 512 个字符</li>
+<li>OPTION 保留查询条件： 查询的长度限制为 75 个字符</li>
+<li>Float：RFC_READ_TABLE 不返回任何包含 Float 数据类型的字段</li>
+<li>数据量太大：600,000 多个条目将导致 SYSTEM FAILURE 或 PAGE ALLOC FAILED 错误。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>585</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/SAP_Report_config/" class="prev" rel="prev" title=" SAP Report 选择和显示栏位配置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Report 选择和显示栏位配置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_DomainEnhancement/" class="next" rel="next" title=" SAP Domain 增强 "> SAP Domain 增强 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-10-14 00:00:00 \u002b0000 UTC',
+        title: ' SAP系统间数据表的Copy ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

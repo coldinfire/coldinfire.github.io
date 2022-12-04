@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_DynamicProgram/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SO10/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_ALV_Screen_SearchHelp/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 屏幕搜索帮助  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 屏幕搜索帮助  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 屏幕搜索帮助 "/>
+<meta name="twitter:description" content="搜索帮助优先级 先检查 PROCESS ON VALUE-REQUEST 、AT SELECTION-SCREEN ON VALUE-REQUEST 再检查 PARAMETERS VALUE CHECK / SELECT-OPTIONS MATCHCODE OBJECT XXXX 其次是Check Table、然后检查表（或结构 ）字段是否绑定了搜索帮助 然后检查 Data"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 屏幕搜索帮助 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_ALV_Screen_SearchHelp\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  2771 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_ALV_Screen_SearchHelp\/",
+  "datePublished": "2019-10-12T00:00:00\x2b00:00",
+  "dateModified": "2019-10-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 屏幕搜索帮助 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-10-12 >12 October 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="搜索帮助优先级">搜索帮助优先级</h3>
+<ul>
+<li>
+<p>先检查 <code>PROCESS ON VALUE-REQUEST</code> 、<code>AT SELECTION-SCREEN ON VALUE-REQUEST</code></p>
+</li>
+<li>
+<p>再检查 <code>PARAMETERS VALUE CHECK</code> / <code>SELECT-OPTIONS MATCHCODE OBJECT XXXX</code></p>
+</li>
+<li>
+<p>其次是<code>Check Table</code>、然后检查表（或结构 ）字段是否绑定了搜索帮助</p>
+</li>
+<li>
+<p>然后检查 Data element 是否绑定了搜索帮助 ，再检查 Domain 是否存在 Fixed Values</p>
+</li>
+<li>
+<p>最后才是 SAP 中的 DATS、TIMS 搜索帮助</p>
+</li>
+</ul>
+<h3 id="参照数据库字段">参照数据库字段</h3>
+<p>参照数据库字段，用 SAP 数据字典自带的检索帮助，或者参照字段的定义域实现F4检索帮助。是最简单的方法，参照字段定义即可。</p>
+<ul>
+<li><code>PARAMETERS p_matnr TYPE mara-matnr.</code></li>
+</ul>
+<h3 id="value-check">VALUE CHECK</h3>
+<ul>
+<li><code>PARAMETER p_matnr TYPE mara-matnr VALUE CHECK.</code></li>
+</ul>
+<p>如果选择屏幕字段参考数据元素所对应的 Domain 设置了 **固定值（ Fixed Values ）**或 **值表（ Value Table ）**时，使用 VALUE CHECK 选项后，会验证输入值是否在固定值或值表范围之内。</p>
+<ul>
+<li>
+<p>若要使值表检查生效，则首先需要将此 Domain 引用到表字段，再对此表字段通过 Foreign Keys 按钮进行外键分配，并且外键一定是来自值表的主键，最后使用 PARAMETERS 定义屏幕参数时要参照此表字段，否则如果只是直接参照所对应的 Data Element 是不起作用， <strong>即 Value Table 一定要经过转换为 Check Table 后再起作用</strong>。</p>
+</li>
+<li>
+<p>如果要使用 VALUE CHECK 选项，则 Domain 的类型只能是 <strong>C</strong> 或者 <strong>N</strong> 类型 ， 否则运行会抛异常。另外， <strong>如果未使用该选项，但</strong> <strong>F4 Help</strong> <strong>还是会出现</strong> （有固定值或检查表的情况下），但不进行有效性检查。</p>
+</li>
+</ul>
+<h3 id="搜索帮助对象">搜索帮助对象</h3>
+<ul>
+<li><code>PARAMETERS p_bwart(4) MATCHCODE OBJECT zsh_bwart.</code></li>
+</ul>
+<p>当某个表字段有检查表，并且又有搜索帮助，则数据一般来自源于检查表，而 <strong>F4 的输入输出则由搜索帮助来决定</strong>。 可以通过 SE11 里面创建一个检索帮助ID（search_help），然后在屏幕定义的时候，使用<code>MATCHCODE OBJECT search_help</code> 绑定即可。</p>
+<h4 id="定义-search-help">定义 Search Help</h4>
+<p>在命令字段中输入事务代码 SE11；选择搜索帮助单选按钮，然后输入自定义搜索帮助的名称。然后点击创建按钮。</p>
+<p>1、在下一个屏幕上，选择 “基本搜索帮助” 选项。</p>
+<p><img src="/images/ABAP/SearchHelp1.png" alt="Search Help"></p>
+<p>2、输入搜索帮助的描述。在选择方法字段中，应输入数据库表名称（我们将从该表中选择信息类型编号字段的值）。</p>
+<p><img src="/images/ABAP/SearchHelp.png" alt="Search Help"></p>
+<p>3、选择对话框类型：Display values immediately</p>
+<p>4、下面的 “参数” 结构中，输入选择条件所需的字段并显示在值帮助上。参数的各种选项包括：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Search help para</strong></td>
+<td>来自数据源的字段，选择条件所需的字段</td>
+</tr>
+<tr>
+<td><strong>IMP</strong></td>
+<td>输入参数，即将选择屏幕上的字段值传递给搜索帮助</td>
+</tr>
+<tr>
+<td><strong>EXP</strong></td>
+<td>输出参数，即将从搜索帮助中传递到报表屏幕上</td>
+</tr>
+<tr>
+<td><strong>LPOS</strong></td>
+<td>控制选择列表中搜索帮助参数或字段出现在匹配列表中的位置，如果为 0 或留空的列则不会显示</td>
+</tr>
+<tr>
+<td><strong>SPOS</strong></td>
+<td>控制限制性对话框中的搜索帮助参数或字段显示的位置</td>
+</tr>
+<tr>
+<td><strong>SDIS</strong></td>
+<td>使该字段在选择屏幕中 “仅显示”</td>
+</tr>
+<tr>
+<td><strong>Data element</strong></td>
+<td>设置搜索帮助参数的属性。通常由系统填写</td>
+</tr>
+<tr>
+<td><strong>MOD</strong></td>
+<td>选中此框可以分配与系统提供的数据元素不同的数据元素</td>
+</tr>
+<tr>
+<td><strong>Default</strong></td>
+<td>以以下三种方式之一指定默认值：&ldquo;文字&rdquo;(带引号)，参数ID（ZRD）或系统字段(SY-UNAME)</td>
+</tr>
+</tbody>
+</table>
+<p>6、搜索帮助准备就绪后，将其选中并激活。</p>
+<h4 id="使用搜索帮助对象">使用搜索帮助对象</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF LINE</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN COMMENT</span> <span style="color:#ae81ff">2</span>(<span style="color:#ae81ff">15</span>) text1 .
+<span style="color:#66d9ef">PARAMETERS</span> p_bwart(<span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">MATCHCODE OBJECT</span> zsh_bwart.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF LINE</span>.
+<span style="color:#66d9ef">INITIALIZATION</span>.
+  text1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Reason Code&#39;</span>.
+</code></pre></div><p><img src="/images/ABAP/SearchHelp2.png" alt="SE11 Serch help"></p>
+<h4 id="搜索帮助出口">搜索帮助出口</h4>
+<p><code>Z_REASON_CODE</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> Z_REASON_CODE.
+<span style="color:#75715e">*----------------------------------------------------------------------</span>
+<span style="color:#75715e">*Local Interface:</span>
+<span style="color:#75715e">*  TABLES</span>
+<span style="color:#75715e">*      SHLP_TAB TYPE  SHLP_DESCT</span>
+<span style="color:#75715e">*      RECORD_TAB STRUCTURE  SEAHLPRES</span>
+<span style="color:#75715e">*  CHANGING</span>
+<span style="color:#75715e">*     VALUE(SHLP) TYPE  SHLP_DESCR</span>
+<span style="color:#75715e">*     VALUE(CALLCONTROL) LIKE  DDSHF4CTRL STRUCTURE  DDSHF4CTRL</span>
+<span style="color:#75715e">*----------------------------------------------------------------------</span>
+<span style="color:#66d9ef">DATA</span>: it_ddshselopt <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ddshselopt <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      it_ddshfprops <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ddshfprop <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      <span style="color:#66d9ef">BEGIN OF</span> it_shlpfld OCCURS <span style="color:#ae81ff">0</span>,
+        parameter <span style="color:#66d9ef">TYPE </span>shlpfield,
+        fieldname <span style="color:#66d9ef">TYPE </span>fnam_____4,
+        <span style="color:#66d9ef">END OF</span> it_shlpfld,
+      <span style="color:#66d9ef">BEGIN OF</span> rang_template OCCURS <span style="color:#ae81ff">0</span>,
+        <span style="color:#66d9ef">sign</span>   <span style="color:#66d9ef">TYPE </span>tvarv_sign,
+        option <span style="color:#66d9ef">TYPE </span>tvarv_opti,
+        low    <span style="color:#66d9ef">TYPE </span>rsdsselop_,
+        high   <span style="color:#66d9ef">TYPE </span>rsdsselop_,
+        <span style="color:#66d9ef">END OF</span> rang_template,
+      <span style="color:#75715e">&#34; 用于存储从选择屏幕上传进的屏幕字段的选择条件值 &#34;
+</span><span style="color:#75715e"></span>      ranges_bwart   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> rang_template <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      ranges_grund   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> rang_template <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      ranges_grtxt   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> rang_template <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#75715e">&#34; 此内表用于存储命中清单数据. 注：字段的名称一定要与搜索参数名一样，但顺序可以不同 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:<span style="color:#66d9ef">BEGIN OF</span> l_it_t157d OCCURS <span style="color:#ae81ff">0</span>,
+       bwart <span style="color:#66d9ef">TYPE </span>bwart,
+       grund <span style="color:#66d9ef">TYPE </span>mb_grbew,
+       grtxt <span style="color:#66d9ef">TYPE </span>grtxt,
+      <span style="color:#66d9ef">END OF</span> l_it_t157d ,
+      l_it_tmp <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> l_it_t157d <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;wa&gt; <span style="color:#66d9ef">like  </span>l_it_t157d.
+
+  it_ddshfprops[] <span style="color:#f92672">=</span> shlp<span style="color:#f92672">-</span>fieldprop.
+  <span style="color:#66d9ef">LOOP AT </span>it_ddshfprops <span style="color:#66d9ef">WHERE</span> shlplispos <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    it_shlpfld<span style="color:#f92672">-</span>parameter <span style="color:#f92672">=</span> it_ddshfprops<span style="color:#f92672">-</span>fieldname.
+    it_shlpfld<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> it_ddshfprops<span style="color:#f92672">-</span>fieldname.
+    <span style="color:#66d9ef">APPEND</span> it_shlpfld.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#75715e">&#34;DISP：在命中清单显示之前调用,表示数据已经查出,下一步就该显示了。&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CHECK</span> callcontrol<span style="color:#f92672">-</span>step <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DISP&#39;</span>. 
+  <span style="color:#75715e">&#34;shlp-selopt存储的是经过映射转换后选择屏幕上字段的值，而不是直接为选择屏幕字段名，而是转映射为Help参数&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34; 名后再存储到 selopt 内表中，屏幕字段到 Help 参数映射是通过 shlp-interface 来映射的。&#34;
+</span><span style="color:#75715e"></span>  it_ddshselopt[] <span style="color:#f92672">=</span> shlp<span style="color:#f92672">-</span>selopt.
+  <span style="color:#66d9ef">LOOP AT </span>it_ddshselopt <span style="color:#66d9ef">WHERE</span> shlpfield <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BWART&#39;</span>.
+    <span style="color:#66d9ef">MOVE-CORRESPONDING</span> it_ddshselopt <span style="color:#66d9ef">TO</span> ranges_bwart.
+    <span style="color:#66d9ef">APPEND</span> ranges_bwart.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">LOOP AT </span>it_ddshselopt <span style="color:#66d9ef">WHERE</span> shlpfield <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GRUND&#39;</span>.
+    <span style="color:#66d9ef">MOVE-CORRESPONDING</span> it_ddshselopt <span style="color:#66d9ef">TO</span> ranges_grund.
+    <span style="color:#66d9ef">APPEND</span> ranges_grund.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">LOOP AT </span>it_ddshselopt <span style="color:#66d9ef">WHERE</span> shlpfield <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GRTXT2&#39;</span>.
+    <span style="color:#66d9ef">MOVE-CORRESPONDING</span> it_ddshselopt <span style="color:#66d9ef">TO</span> ranges_grtxt.
+    <span style="color:#66d9ef">APPEND</span> ranges_grtxt.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#75715e">&#34; 根据屏幕上传进的条件查询数据 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">SELECT</span> bwart grund  <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> l_it_t157d
+    <span style="color:#66d9ef">FROM</span> t157d
+   <span style="color:#66d9ef">WHERE</span> bwart <span style="color:#66d9ef">IN</span> ranges_bwart
+     <span style="color:#f92672">AND</span> grund <span style="color:#66d9ef">IN</span> ranges_grund
+     <span style="color:#f92672">AND</span> bwart <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Z21&#39;</span>.
+  <span style="color:#66d9ef">SELECT</span> bwart grund grtxt <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> l_it_tmp
+    <span style="color:#66d9ef">FROM</span> t157e
+    <span style="color:#66d9ef">WHERE</span> spras <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>
+      <span style="color:#f92672">AND</span> bwart <span style="color:#66d9ef">IN</span> ranges_bwart
+      <span style="color:#f92672">AND</span> grund <span style="color:#66d9ef">IN</span> ranges_grund
+      <span style="color:#f92672">AND</span> grtxt <span style="color:#66d9ef">IN</span> ranges_grtxt
+      <span style="color:#f92672">AND</span> bwart <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Z21&#39;</span>.
+  <span style="color:#66d9ef">SORT</span> l_it_tmp BY bwart grund.
+
+  <span style="color:#66d9ef">LOOP AT </span>l_it_t157d <span style="color:#66d9ef">ASSIGNING</span> &lt;wa&gt;.
+    <span style="color:#66d9ef">CLEAR</span> l_it_tmp.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> l_it_tmp <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> bwart <span style="color:#f92672">=</span> &lt;wa&gt;<span style="color:#f92672">-</span>bwart grund <span style="color:#f92672">=</span> &lt;wa&gt;<span style="color:#f92672">-</span>grund BINARY <span style="color:#66d9ef">SEARCH</span>.
+    &lt;wa&gt;<span style="color:#f92672">-</span>grtxt <span style="color:#f92672">=</span> l_it_tmp<span style="color:#f92672">-</span>grtxt.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+
+  callcontrol<span style="color:#f92672">-</span>maxexceed <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+  <span style="color:#75715e">&#34; 该函数的作用是将内表 lt_tab 中的数据转换成 record_tab ，即将某内表中的数据显示在命中清单中 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">LOOP AT </span>it_shlpfld.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4UT_PARAMETER_RESULTS_PUT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        parameter   <span style="color:#f92672">=</span> it_shlpfld<span style="color:#f92672">-</span>parameter
+        fieldname   <span style="color:#f92672">=</span> it_shlpfld<span style="color:#f92672">-</span>fieldname
+      <span style="color:#66d9ef">TABLES</span>
+        shlp_tab    <span style="color:#f92672">=</span> shlp_tab   <span style="color:#75715e">&#34; Reference to field of Seatinfo &#34;
+</span><span style="color:#75715e"></span>        record_tab  <span style="color:#f92672">=</span> record_tab <span style="color:#75715e">&#34; 结果集 &#34;
+</span><span style="color:#75715e"></span>        source_tab  <span style="color:#f92672">=</span> l_it_t157d
+      <span style="color:#66d9ef">CHANGING</span>
+        shlp        <span style="color:#f92672">=</span> shlp
+        callcontrol <span style="color:#f92672">=</span> callcontrol.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div><h3 id="搜索帮助创建函数">搜索帮助创建函数</h3>
+<p>在屏幕的 ON VALUE-REQUEST 事件中可以通过以下几个函数来创建搜索帮助：</p>
+<ul>
+<li>F4IF_FIELD_VALUE_REQUEST：在程序运行时，可以动态的为屏幕上某个字段指定 Search Help。被引用的搜索帮助来自于某个表（结构）字段上绑定的 Search Help</li>
+<li>F4IF_INT_TABLE_VALUE_REQUEST：在程序运行时，将某个内表动态的用作 Search Help 的数据，可实现联动效果</li>
+</ul>
+<h4 id="fmf4if_field_value_request">FM：F4IF_FIELD_VALUE_REQUEST</h4>
+<p>运行这个函数就会弹出 F4 帮助界面的值选择窗口，窗口中的值就是 tabname 中字段 fieldname 的所有可选值，当选择某个值后，那么这个值和其相关的属性就会存放到表 return_tab 中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4IF_FIELD_VALUE_REQUEST&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    tabname    <span style="color:#f92672">=</span> gs_selfields<span style="color:#f92672">-</span>tabname      <span style="color:#75715e">&#34;数据字典中的表名&#34;
+</span><span style="color:#75715e"></span>    fieldname  <span style="color:#f92672">=</span> gt_Selfields<span style="color:#f92672">-</span>fieldname    <span style="color:#75715e">&#34;数据字典中的字段名&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">*</span> <span style="color:#66d9ef">value</span>    <span style="color:#f92672">=</span> selval
+  <span style="color:#66d9ef">TABLES</span>
+    return_tab <span style="color:#f92672">=</span> return_tab
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    FIELD_NOT_FOUND    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    NO_HELP_FOR_FIELD  <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    INCONSISTENT_HELP  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    NO_VALUES_FOUND    <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+</code></pre></div><h4 id="fmf4if_int_table_value_request">FM：F4IF_INT_TABLE_VALUE_REQUEST</h4>
+<p>在程序运行时，将某个内表动态的用作 <strong>Search help</strong>  的数据来源 ，即使用该函数可以将某个内表转换为 Search help ，可实现联动效果。</p>
+<p>单值选择</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">SELECT-OPTIONS</span>: s_insmk <span style="color:#66d9ef">FOR</span> mseg<span style="color:#f92672">-</span>insmk <span style="color:#66d9ef">NO INTERVALS</span>.
+<span style="color:#66d9ef">AT SELECTION-SCREEN ON VALUE-REQUEST FOR</span> s_insmk<span style="color:#f92672">-</span>low.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_request_f4_insmk</span> <span style="color:#66d9ef">USING</span> <span style="color:#e6db74">&#39;S_INSMK-LOW&#39;</span>.
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_REQUEST_F4_INSMK</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_request_f4_insmk</span> <span style="color:#66d9ef">USING</span> pv_field <span style="color:#66d9ef">TYPE </span>help_info<span style="color:#f92672">-</span>dynprofld.
+  <span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> ty_value_tab,
+          insmk  <span style="color:#66d9ef">TYPE </span>mseg<span style="color:#f92672">-</span>insmk,
+          insmkt <span style="color:#66d9ef">TYPE </span>dd07t<span style="color:#f92672">-</span>ddtext,
+        <span style="color:#66d9ef">END OF</span> ty_value_tab.
+  <span style="color:#66d9ef">DATA</span>: lt_value_tab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ty_value_tab <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>. 
+
+  <span style="color:#66d9ef">DEFINE</span> add_value.
+    <span style="color:#66d9ef">CLEAR</span> lt_value_tab.
+    lt_value_tab<span style="color:#f92672">-</span>INSMK  <span style="color:#f92672">=</span> &amp;1.
+    lt_value_tab<span style="color:#f92672">-</span>INSMKT <span style="color:#f92672">=</span> &amp;2.
+    <span style="color:#66d9ef">APPEND</span> lt_value_tab.
+  <span style="color:#66d9ef">END-OF-DEFINITION</span>.
+ 
+  add_value <span style="color:#e6db74">&#39;U&#39;</span>  <span style="color:#66d9ef">text</span>-r03. <span style="color:#75715e">&#34; Unrestricted
+</span><span style="color:#75715e"></span>  add_value <span style="color:#e6db74">&#39;B&#39;</span>  <span style="color:#66d9ef">text</span>-r04. <span style="color:#75715e">&#34; Blocked
+</span><span style="color:#75715e"></span>  add_value <span style="color:#e6db74">&#39;Q&#39;</span>  <span style="color:#66d9ef">text</span>-r05. <span style="color:#75715e">&#34; Quality inspection
+</span><span style="color:#75715e"></span>  add_value <span style="color:#e6db74">&#39;T&#39;</span>  <span style="color:#66d9ef">text</span>-r06. <span style="color:#75715e">&#34; Transfer stock between storage location
+</span><span style="color:#75715e"></span>  add_value <span style="color:#e6db74">&#39;P&#39;</span>  <span style="color:#66d9ef">text</span>-r07. <span style="color:#75715e">&#34; Transfer stock between plant
+</span><span style="color:#75715e"></span> 
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4IF_INT_TABLE_VALUE_REQUEST&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      retfield        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSMK&#39;</span>
+      dynpprog        <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid
+      dynpnr          <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>dynnr
+      dynprofield     <span style="color:#f92672">=</span> pv_field
+      value_org       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>
+    <span style="color:#66d9ef">TABLES</span>
+      value_tab       <span style="color:#f92672">=</span> lt_value_tab
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      parameter_error <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      no_values_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">*   Implement suitable error handling here</span>
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><p>多个值选择，显示列名设置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">PARAMETERS</span>: p_bname <span style="color:#66d9ef">LIKE </span>usr02<span style="color:#f92672">-</span>bname,
+            p_class <span style="color:#66d9ef">LIKE </span>usr02<span style="color:#f92672">-</span>class.
+
+<span style="color:#66d9ef">AT SELECTION-SCREEN ON VALUE-REQUEST FOR</span> p_bname.
+	<span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_valuereq_bname</span>.
+	
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_valuereq_bname</span>.
+  <span style="color:#75715e">&#34; 需要显示的结果集 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">BEGIN OF</span> t_data OCCURS <span style="color:#ae81ff">1</span>,
+      <span style="color:#66d9ef">data</span>(<span style="color:#ae81ff">20</span>),
+  <span style="color:#66d9ef">END OF</span> t_data.
+  <span style="color:#75715e">&#34; 字段 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: lv_retfield <span style="color:#66d9ef">TYPE </span>dfies<span style="color:#f92672">-</span>fieldname.
+  <span style="color:#66d9ef">DATA</span>: h_field_wa <span style="color:#66d9ef">LIKE </span>dfies,
+        h_field_tab <span style="color:#66d9ef">LIKE </span>dfies OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        h_dselc <span style="color:#66d9ef">LIKE </span>dselc OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> usr02.
+    t_data<span style="color:#f92672">-</span>data <span style="color:#f92672">=</span> usr02<span style="color:#f92672">-</span>bname. <span style="color:#66d9ef">APPEND</span> t_data. <span style="color:#66d9ef">CLEAR</span> t_data.
+    t_data<span style="color:#f92672">-</span>data <span style="color:#f92672">=</span> usr02<span style="color:#f92672">-</span>class. <span style="color:#66d9ef">APPEND</span> t_data. <span style="color:#66d9ef">CLEAR</span> t_data.
+  <span style="color:#66d9ef">ENDSELECT</span>.
+  <span style="color:#75715e">&#34;搜索帮助显示列表ALV的列名显示成用户指定的名称&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">f_fieldinfo_get</span> <span style="color:#66d9ef">USING</span> <span style="color:#e6db74">&#39;USR02&#39;</span> <span style="color:#e6db74">&#39;BNAME&#39;</span> <span style="color:#66d9ef">CHANGING</span> h_field_wa.
+  <span style="color:#66d9ef">APPEND</span> h_field_wa <span style="color:#66d9ef">TO</span> h_field_tab.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">f_fieldinfo_get</span> <span style="color:#66d9ef">USING</span> <span style="color:#e6db74">&#39;USR02&#39;</span> <span style="color:#e6db74">&#39;CLASS&#39;</span> <span style="color:#66d9ef">CHANGING</span> h_field_wa.
+  <span style="color:#66d9ef">APPEND</span> h_field_wa <span style="color:#66d9ef">TO</span> h_field_tab.
+
+  h_dselc<span style="color:#f92672">-</span>fldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BNAME&#39;</span>.
+  h_dselc<span style="color:#f92672">-</span>dyfldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;P_BNAME&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> h_dselc.
+  h_dselc<span style="color:#f92672">-</span>fldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CLASS&#39;</span>.
+  h_dselc<span style="color:#f92672">-</span>dyfldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;P_CLASS&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> h_dselc.
+  <span style="color:#75715e">&#34;将获取到的值绑定到对应屏幕字段&#34;
+</span><span style="color:#75715e"></span>  lv_retfield <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BNAME&#39;</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;F4IF_INT_TABLE_VALUE_REQUEST&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      retfield         <span style="color:#f92672">=</span> lv_retfield  <span style="color:#75715e">&#34;可选值表的字段名&#34;
+</span><span style="color:#75715e"></span>      dynpprog         <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid     <span style="color:#75715e">&#34;输入框所在主程序&#34;
+</span><span style="color:#75715e"></span>      dynpnr           <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>dynnr     <span style="color:#75715e">&#34;输入框所在屏幕&#34;
+</span><span style="color:#75715e"></span>      dynprofield      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;P_BNAME&#39;</span>    <span style="color:#75715e">&#34;选择屏幕上需要添加F4帮助的字段&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*     multiple_choice  = &#39;X&#39;          &#34;多项选择，屏幕字段可输入多值时使用&#34;</span>
+      value_org        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>          <span style="color:#75715e">&#34;C:CELL逐行，S:STRUCTURE结构化(在DILOG中必选S)&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*     display          = &#39;C&#39;          &#34;C:只能显示不能选择&#34;</span>
+    <span style="color:#66d9ef">TABLES</span>
+      value_tab        <span style="color:#f92672">=</span> t_data       <span style="color:#75715e">&#34;F4 帮助可选值表&#34;
+</span><span style="color:#75715e"></span>      field_tab        <span style="color:#f92672">=</span> h_field_tab  <span style="color:#75715e">&#34;自定义ALV显示列名&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*    return_tab       = return_tab</span>
+      dynprld_mapping  <span style="color:#f92672">=</span> h_dselc
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      <span style="color:#66d9ef">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#66d9ef">ENDFORM</span>. 
+
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">f_fieldinfo_get</span> <span style="color:#66d9ef">USING</span> fu_tabname fu_fieldname
+                     <span style="color:#66d9ef">CHANGING</span> fwa_field_tab.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;DDIF_FIELDINFO_GET&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      TABNAME    <span style="color:#f92672">=</span> fu_tabname
+      FIELDNAME  <span style="color:#f92672">=</span> fu_fieldname
+      LANGU      <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu
+      LFIELDNAME <span style="color:#f92672">=</span> fu_fieldname
+    <span style="color:#66d9ef">IMPORTING</span>
+      DFIES_WA   <span style="color:#f92672">=</span> fwa_field_tab
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      NOT_FOUND  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      INTERNAL_ERROR <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+    <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2771</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_DynamicProgram/" class="prev" rel="prev" title=" ABAP Dynnamic Programer "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP Dynnamic Programer </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SO10/" class="next" rel="next" title=" SO10 创建标准文本 "> SO10 创建标准文本 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-12 00:00:00 \x2b0000 UTC',
+        title: ' SAP 屏幕搜索帮助 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

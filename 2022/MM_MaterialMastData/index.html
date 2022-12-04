@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2022/MM_MaterialView/" />
+  <link rel="next" href="https://coldinfire.github.io/2022/ABAP_Utils_XLSXWorkbench/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2022/MM_MaterialMastData/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 常用主数据及描述获取  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 常用主数据及描述获取  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 常用主数据及描述获取 "/>
+<meta name="twitter:description" content="常用主数据表 DATA GT_Z0001 TYPE TABLE OF T001 WITH HEADER LINE. &#34;公司代码&#34; DATA GT_Z0002 TYPE TABLE OF T001W WITH HEADER LINE. &#34;工厂&#34; DATA GT_Z0003 TYPE TABLE OF T001L WITH HEADER LINE. &#34;库存地点&#"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 常用主数据及描述获取 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2022\/MM_MaterialMastData\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  776 ,
+  "url": "https:\/\/coldinfire.github.io\/2022\/MM_MaterialMastData\/",
+  "datePublished": "2022-03-14T00:00:00\x2b00:00",
+  "dateModified": "2022-03-14T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 常用主数据及描述获取 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2022-03-14 >14 March 2022</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="常用主数据表">常用主数据表</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> GT_Z0001 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T001  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;公司代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0002 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T001W <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0003 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T001L <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;库存地点&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0004 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> MAKT  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;物料描述&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0005 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> LFA1  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;供应商号&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0006 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> KNA1  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;客户号&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0007 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> CSKT  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;财务成本中心&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0008 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> CEPCT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;财务利润中心&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0009 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TVKBT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;销售片区代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0010 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T024E <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;采购组织代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0011 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TVKOT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;销售组织代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0012 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TSPAT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;产品组代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0013 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T171T <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;销售大区代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0014 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T003T <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;凭证类型&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0015 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> SKAT  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;总账科目&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0016 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> CSKU  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;成本要素&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0017 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T134T <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;物料类型&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0018 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T023T <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;物料组&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0019 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T156T <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;移动类型&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0020 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TVAKT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;销售凭证类型&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0021 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T053S <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;现金流原因代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0022 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TCURT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;货币代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0023 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> PA0001 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.  <span style="color:#75715e">&#34;员工工号&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0024 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> M_WSOHA <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>. <span style="color:#75715e">&#34;品类/分类模块代码&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0025 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TMFGT <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;物料运输组（承运商）&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0026 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ANKT  <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;固定资产分类&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> GT_Z0027 <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> T148T <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34;特殊库存标识&#34;
+</span></code></pre></div><h4 id="获取数据">获取数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;company code.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0001 <span style="color:#66d9ef">FROM</span> T001 <span style="color:#66d9ef">WHERE</span> KTOPL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CACN&#39;</span>.
+<span style="color:#75715e">&#34;plant.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0002 <span style="color:#66d9ef">FROM</span> T001W <span style="color:#66d9ef">WHERE</span> WERKS <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;0001&#39;</span>.
+<span style="color:#75715e">&#34;storage location.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0003 <span style="color:#66d9ef">FROM</span> T001L <span style="color:#66d9ef">WHERE</span> WERKS <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;0001&#39;</span>. 
+<span style="color:#75715e">&#34;material number description.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0004 <span style="color:#66d9ef">FROM</span> MAKT.
+<span style="color:#75715e">&#34;vendor number.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0005 <span style="color:#66d9ef">FROM</span> LFA1. 
+<span style="color:#75715e">&#34;customer number.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0006 <span style="color:#66d9ef">FROM</span> KNA1. 
+<span style="color:#75715e">&#34;cost center.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0007 <span style="color:#66d9ef">FROM</span> CSKT <span style="color:#66d9ef">WHERE</span> KOKRS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN00&#39;</span>. 
+<span style="color:#75715e">&#34;profit center.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> GT_Z0008 <span style="color:#66d9ef">FROM</span> CEPCT <span style="color:#66d9ef">WHERE</span> KOKRS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN00&#39;</span>.
+ 
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>776</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2022/MM_MaterialView/" class="prev" rel="prev" title=" 物料主数据视图 "><i class="iconfont icon-dajiantou"></i>&nbsp; 物料主数据视图 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2022/ABAP_Utils_XLSXWorkbench/" class="next" rel="next" title=" XLSXWorkbench 安装和使用 "> XLSXWorkbench 安装和使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2022-03-14 00:00:00 \x2b0000 UTC',
+        title: ' SAP 常用主数据及描述获取 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Table_Basic/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_SubRoutines/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_InnerTable/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP 内表使用 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP 内表使用 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP 内表使用"/>
+<meta name="twitter:description" content="内表定义 工作区域 工作区域可以存放多个变量数据，相当于一维数组。 间接定义：通过 Type 定义结构类型，然后通过DATA赋值 TYPES: BEGIN OF str_order. aufnr TYPE afko-aufnr, dauat TYPE afpo-dauat, END OF str_order. &#34;"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP 内表使用",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_InnerTable\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  2138 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_InnerTable\/",
+  "datePublished": "2018-05-16T00:00:00\u002b00:00",
+  "dateModified": "2018-05-16T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP 内表使用</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-16 >16 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="内表定义">内表定义</h3>
+<h4 id="工作区域">工作区域</h4>
+<p>工作区域可以存放多个变量数据，相当于一维数组。</p>
+<p>间接定义：通过 Type 定义结构类型，然后通过DATA赋值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_order.
+  aufnr  <span style="color:#66d9ef">TYPE </span>afko<span style="color:#f92672">-</span>aufnr,
+  dauat  <span style="color:#66d9ef">TYPE </span>afpo<span style="color:#f92672">-</span>dauat,
+ <span style="color:#66d9ef">END OF</span> str_order.
+<span style="color:#75715e">&#34; TYPE定义的只是一个类型，不可以在程序中直接使用，必须用DATA赋值 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: lt_table <span style="color:#66d9ef">TYPE TABLE OF</span> str_order,
+      ls_table <span style="color:#66d9ef">TYPE </span>str_order.
+</code></pre></div><p>直接定义：直接使用 DATA 声明一个结构对象，可以在后续程序中直接使用该工作区</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">BEGIN OF</span> str_matnr,   
+  matnr <span style="color:#66d9ef">TYPE </span>matnr,
+  werks <span style="color:#66d9ef">TYPE </span>bukrs,
+<span style="color:#66d9ef">END OF</span> str_matnr.
+</code></pre></div><p>参照DB或则结构创建工作区：<code>DATA &lt;wa&gt; TYPE &lt;dbtab&gt;|&lt;str&gt;.</code></p>
+<p>参照内表创建工作区：<code>DATA  &lt;wa&gt;  LIKE LINE OF &lt;dbtab&gt;.</code></p>
+<p>继承结构：结构复用，作用是将结构类型 structure_type 与结构变量 structure 的所有组件字段拷贝到当前结构定义的指定位置。</p>
+<ul>
+<li>
+<p><code>INCLUDE { {TYPE struc_type} | {STRUCTURE struc} } [AS name [RENAMING WITH SUFFIX suffix]]</code>.</p>
+</li>
+<li>
+<p>结构对象复用</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_result</span> <span style="color:#a6e22e">OCCURS</span> <span style="color:#ae81ff">0</span>,
+  <span style="color:#a6e22e">endcount</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">zz_final_count</span>,
+  <span style="color:#a6e22e">enddiffs</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">zz_final_diffs</span>. <span style="color:#e6db74">&#34;直接定义组件字段，但前面语句后面使用逗号&#34;</span>
+  <span style="color:#a6e22e">INCLUDE</span> <span style="color:#a6e22e">STRUCTURE</span> <span style="color:#a6e22e">str_matnr</span>.  <span style="color:#e6db74">&#34;直接将结构对象包括进来,也可以是已经定义的结构&#34;</span>
+  <span style="color:#a6e22e">INCLUDE</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">str_order</span>.   <span style="color:#e6db74">&#34;直接将结构类型包括进来&#34;</span>
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">comm</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">ztest_str</span>. <span style="color:#e6db74">&#34;直接参照&#34;</span>
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">gt_result</span>.
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>结构类型复用</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_result,
+  endcount <span style="color:#66d9ef">TYPE </span>zz_final_count,
+  enddiffs <span style="color:#66d9ef">TYPE </span>zz_final_diffs. <span style="color:#75715e">&#34;直接定义字段，但是保留前面的逗号&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">INCLUDE</span> STRUCTURE str_matnr.  <span style="color:#75715e">&#34;直接将结构对象包括进来&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">INCLUDE</span> <span style="color:#66d9ef">TYPE </span>str_order.       <span style="color:#75715e">&#34;直接将结构类型包括进来&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">TYPES</span>: uname <span style="color:#66d9ef">type </span>c,
+    ustatus <span style="color:#66d9ef">type </span>c.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">END OF</span> str_pidoc.
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="内表类型">内表类型</h4>
+<ul>
+<li>
+<p>索引内表：标准内表(Standard table)、排序表(Sorted table)</p>
+</li>
+<li>
+<p>标准内表：每一行数据都有关键字和系统生成的逻辑索引。</p>
+</li>
+<li>
+<p>排序表：排序表按照关键字升序排序后再进行存储。</p>
+</li>
+<li>
+<p>哈希表：(Hashed table) 没有索引的表，只能靠关键字进行寻址，用哈希算法管理数据。</p>
+</li>
+</ul>
+<h4 id="内表定义-1">内表定义</h4>
+<p>可以参考结构体、其他内表、透明表等方式定义内表。</p>
+<p>参考结构：<code>DATA table_name TYPE TABLE OF structure [WITH HEADER LINE].</code></p>
+<p>参考内表：<code>DATA table_name TYPE TABLE OF 内表或透明表 [WITH HEADER LINE].</code></p>
+<ul>
+<li>WITH HEADER LINE ，用 itab[] 和 itab 来区分内表和工作区</li>
+<li>分别定义内表和工作区</li>
+<li>定义结构时用 OCCUR 0 直接定义</li>
+<li>LIKE LINE OF 后面接一个内表，表示一个 data 参数具有和内表一样的结构，可当做 Work Area 使用</li>
+<li>LIKE TABLE OF 后面接一个结构，表示一个 data 参数是一个内表，这个内表和后面接的结构一样</li>
+</ul>
+<h3 id="内表操作">内表操作</h3>
+<h4 id="内表清空">内表清空</h4>
+<ul>
+<li>
+<p><code>CLEAR itab</code>：仅清空工作区，对内表数据存储空间不影响。</p>
+</li>
+<li>
+<p><code>REFRESH itab</code>：清空内表数据存储空间，对工作区不影响。</p>
+</li>
+<li>
+<p><code>REFRESH itab FROM TABLE dbtab</code>：清空内表存储空间，填充从数据库表所获数据。</p>
+</li>
+<li>
+<p><code>FREE itab</code>：清空内表数据存储空间，对工作区不影响。</p>
+</li>
+</ul>
+<h4 id="append增加内表赋值">APPEND(增加，内表赋值)</h4>
+<p>有 HEADER LINE 的内表，数据被赋给内表 HEADER LINE后再 APPEND 到表中最后一行。</p>
+<ul>
+<li><code>APPEND itab.</code></li>
+</ul>
+<p>对于没有 HEADER LINE 的内表，只能通表外部工作区来传递数据。</p>
+<ul>
+<li>
+<p><code>APPEND wa TO itab.</code></p>
+</li>
+<li>
+<p><code>APPEND LINES OF itab1 [FROM idx1] [TO idx2]  TO itab2.</code></p>
+</li>
+</ul>
+<h4 id="insert向内表插入数据">INSERT(向内表插入数据)</h4>
+<ul>
+<li>
+<p><code>INSERT wa INTO TABLE itab.</code>：将结构体中数据新增到内表</p>
+</li>
+<li>
+<p><code>INSERT wa INTO TABLE itab INDEX index.</code> ：将结构体中数据插入到内表指定位置</p>
+</li>
+<li>
+<p><code>INSERT LINES OF itab1 [FROM idx1] [TO idx2] INTO itab2 [INDEX idx3].</code>：将 itab1 指定范围数据插入到 itab2 中</p>
+</li>
+</ul>
+<h4 id="delete删除数据">DELETE(删除数据)</h4>
+<ul>
+<li>
+<p><code>DELETE TABLE itab WITH TABLE KEY k1=v1...kn=vn.</code>：删除单条。多条时只删除第一条，条件为表关键字。</p>
+</li>
+<li>
+<p><code>DELETE TABLE itab [FROM wa].</code>：删除单条。多条数据时，只删除第一条。条件为所有关键字段，值来自 wa。</p>
+</li>
+<li>
+<p><code>DELETE itab INDEX idx.</code>：根据索引删除具体行数据。</p>
+</li>
+<li>
+<p><code>DELETE itab [FROM n1] [TO n2] WHERE cond1 AND cond2 .</code>: 根据条件删除多条数据</p>
+</li>
+<li>
+<p><code>DELETE itab FROM idx1 TO idx2.</code>：根据索引删除具体行数范围间数据。</p>
+</li>
+<li>
+<p><code>DELETE ADJACENT DUPLICATES FROM itab [COMPARING f1 f2 | ALL FIELDS].</code>：删除重复数据，仅保留第一条。执行此条件前必须先按照内表关键字声明的顺序进行排序。</p>
+<ul>
+<li>如果指定了COMPARING 选项，则需要根据指定的比较字段顺序进行排序，才能删除所有重复数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="modify修改内表数据">MODIFY:(修改内表数据)</h4>
+<p>按内表位置或者具体内表字段值相等条件修改内表数据。</p>
+<ul>
+<li><code>MODIFY itab [INDEX idx] FROM wa  [TRANSPORTING f1...fn] WHERE condition.</code></li>
+</ul>
+<h4 id="read从内表中读取数据">READ:(从内表中读取数据)</h4>
+<ul>
+<li>
+<p><code>READ TABLE itab [INTO wa] FROM wa.</code>：以表关键字为查找条件，条件来自 wa。</p>
+</li>
+<li>
+<p><code>READ TABLE itab [INTO wa] WITH KEY k1=v1...kn=vn [BINARY SEARCH].</code></p>
+<ul>
+<li>二分法查找出来的数据是第一条符合条件的数据，必须先按指定的关键字段排序</li>
+</ul>
+</li>
+<li>
+<p><code>READ TABLE itab [INTO wa] INDEX index.</code></p>
+</li>
+</ul>
+<h4 id="loopendloop循环读取内表数据">LOOP&hellip;.ENDLOOP：（循环读取内表数据)</h4>
+<p>循环读取内表数据，在循环中使用系统变量SY-TABIX可获取当前所执行的行数。</p>
+<ul>
+<li>
+<p><code>LOOP AT ITAB [INTO WA] FROM n1 TO n2.</code>：读取内表具体索引行数之间的数据。</p>
+</li>
+<li>
+<p><code>LOOP AT ITAB [INTO WA] WHERE cond.</code>：按具体字段条件读取内表。</p>
+</li>
+<li>
+<p><code>LOOP AT ITAB [ASSIGNING wa ] WHERE cond.</code>：根据查询条件循环内表数据并分配给字段符号。</p>
+</li>
+</ul>
+<h4 id="atendat设置内表循环触发条件">AT&hellip;ENDAT（设置内表循环触发条件）</h4>
+<p>该语法为事件控制函数，应用于LOOP循环语句中，用于获取内表的数据变化事件。</p>
+<p>Loop 的时候不能加条件；AT 和 ENDAT 之间不能使用 loop into 的 working area。</p>
+<ul>
+<li>
+<p><code>AT NEW field.</code>：当某个字段数据与上一行数据值不同时触发该事件。</p>
+<ul>
+<li>当 field 字段或者 field 字段左边的字段内容发生变化时该事件后面的语句都会执行</li>
+<li>field 必须是内表的第一个字段</li>
+<li>内表中 field 之后的字段的值都会变成 &quot; * &quot;</li>
+</ul>
+</li>
+<li>
+<p><code>AT END OF field.</code>：当内表中某个字段当前行值与下一行值不同时触发该事件。</p>
+</li>
+<li>
+<p><code>AT FIRST.</code>：当执行内表第一行时触发该事件。</p>
+</li>
+<li>
+<p><code>AT LAST.</code>：当执行内表最后一行时触发该事件。</p>
+</li>
+</ul>
+<h4 id="collect内表数据分类汇总">COLLECT（内表数据分类汇总）</h4>
+<p>将内表中相同的字段合并，若有类型为<code>I</code>的字段，则将其值加总。</p>
+<ul>
+<li><code>COLLECT [wa INTO] itab.</code></li>
+</ul>
+<h4 id="describe获取内表具体属性">DESCRIBE（获取内表具体属性）</h4>
+<ul>
+<li><code>DESCRIBE TABLE itab LINES n.</code>：获取内表当前总行数，n 为整型 i。</li>
+<li><code>n = lines (itab). </code></li>
+</ul>
+<h4 id="sort内表排序操作">SORT（内表排序操作）</h4>
+<ul>
+<li><code>SORT itab ASCENDING|DESCENDING BY field1 field2 field3.</code>
+<ul>
+<li>指示符在 BY 在前面，表示后面的字段都用这个升降序，作用范围是后面 BY 所有的字段</li>
+</ul>
+</li>
+<li><code>SORT itab BY field1 field2 field3 ASCENDING|DESCENDING.</code>
+<ul>
+<li>指示符在 BY 的后面，则只是对这个指示符前面的字段起作用，其他的字段还是默认的方式排序</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2138</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Table_Basic/" class="prev" rel="prev" title="SAP 数据表"><i class="iconfont icon-dajiantou"></i>&nbsp;SAP 数据表</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SubRoutines/" class="next" rel="next" title="ABAP Form和Function">ABAP Form和Function&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-16 00:00:00 \u002b0000 UTC',
+        title: 'ABAP 内表使用',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

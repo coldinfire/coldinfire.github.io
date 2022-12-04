@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_BAPI_Find/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/FI_BAPI_DocumentRevPost/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_BAPI_MIRO_Create/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证 "/>
+<meta name="twitter:description" content="引用链接：https://mp.weixin.qq.com/s/7Wvo452ZJN3MBemD-ehJlw BAPI_INCOMINGINVOICE_CREATE *&amp;---------------------------------------------------------------------* *&amp; Report ZTEST_MIRO. *&amp;---------------------------------------------------------------------* REPORT ZTEST_MIRO. DATA: LS_HEADERDATA LIKE BAPI_INCINV_CREATE_HEADER, LT_RETURN LIKE TABLE OF"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_BAPI_MIRO_Create\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI, MM",
+  "wordcount":  371 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_BAPI_MIRO_Create\/",
+  "datePublished": "2019-11-26T00:00:00\x2b00:00",
+  "dateModified": "2019-11-26T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-11-26 >26 November 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>引用链接：<a href="https://mp.weixin.qq.com/s/7Wvo452ZJN3MBemD-ehJlw">https://mp.weixin.qq.com/s/7Wvo452ZJN3MBemD-ehJlw</a></p>
+<h3 id="bapi_incominginvoice_create">BAPI_INCOMINGINVOICE_CREATE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  ZTEST_MIRO.</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span> ZTEST_MIRO.
+<span style="color:#66d9ef">DATA</span>: LS_HEADERDATA       <span style="color:#66d9ef">LIKE </span>BAPI_INCINV_CREATE_HEADER,
+      LT_RETURN           <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> BAPIRET2,
+      LS_RETURN           <span style="color:#66d9ef">LIKE </span>BAPIRET2,
+      LV_INVOICEDOCNUMBER <span style="color:#66d9ef">LIKE </span>BAPI_INCINV_FLD<span style="color:#f92672">-</span>INV_DOC_NO.
+
+<span style="color:#66d9ef">DATA</span>:LT_TAXDATA         <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPI_INCINV_CREATE_TAX.
+<span style="color:#66d9ef">DATA</span>:LS_TAXDATA         <span style="color:#66d9ef">TYPE </span>BAPI_INCINV_CREATE_TAX.
+<span style="color:#66d9ef">DATA</span>:LT_ITEMDATA        <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPI_INCINV_CREATE_ITEM.
+<span style="color:#66d9ef">DATA</span>:LS_ITEMDATA        <span style="color:#66d9ef">TYPE </span>BAPI_INCINV_CREATE_ITEM.
+<span style="color:#66d9ef">DATA</span>:LT_MATERIALDATA    <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> BAPI_INCINV_CREATE_MATERIAL.
+<span style="color:#66d9ef">DATA</span>:LS_MATERIALDATA    <span style="color:#66d9ef">LIKE </span>BAPI_INCINV_CREATE_MATERIAL.
+<span style="color:#66d9ef">DATA</span>:LT_GLACC           <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> BAPI_INCINV_CREATE_GL_ACCOUNT.
+<span style="color:#66d9ef">DATA</span>:LS_GLACC           <span style="color:#66d9ef">LIKE </span>BAPI_INCINV_CREATE_GL_ACCOUNT.
+<span style="color:#66d9ef">DATA</span>:LV_ITEM            <span style="color:#66d9ef">TYPE </span>RBLGP.
+<span style="color:#66d9ef">DATA</span>:LV_GROSS           <span style="color:#66d9ef">TYPE </span>BAPI_RMWWR.
+<span style="color:#75715e">&#34;Screen&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">PARAMETERS</span> P_MATNR  <span style="color:#66d9ef">TYPE  </span>MATNR <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;V700000526&#39;</span>.
+<span style="color:#66d9ef">PARAMETERS</span> P_AMOUNT <span style="color:#66d9ef">TYPE  </span>BAPIWRBTR <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;9&#39;</span>  .
+<span style="color:#66d9ef">PARAMETERS</span> P_BWKEY  <span style="color:#66d9ef">TYPE  </span>BWKEY <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;9110&#39;</span> .
+<span style="color:#66d9ef">PARAMETERS</span> P_UOM    <span style="color:#66d9ef">TYPE  </span>MEINS <span style="color:#66d9ef">DEFAULT</span>  <span style="color:#e6db74">&#39;EA&#39;</span>.
+<span style="color:#66d9ef">PARAMETERS</span> P_MENGE  <span style="color:#66d9ef">TYPE  </span>MENGE_D <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+<span style="color:#66d9ef">PARAMETERS</span> P_TAX    <span style="color:#66d9ef">TYPE  </span>MWSKZ_MRM <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;J1&#39;</span>.
+<span style="color:#66d9ef">PARAMETERS</span> P_CA_TAX <span style="color:#66d9ef">AS CHECKBOX</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span>.<span style="color:#75715e">&#34;自动计算税费&#34;
+</span><span style="color:#75715e"></span>
+LS_MATERIALDATA<span style="color:#f92672">-</span>INVOICE_DOC_ITEM <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+LS_MATERIALDATA<span style="color:#f92672">-</span>MATERIAL <span style="color:#f92672">=</span> P_MATNR.
+LS_MATERIALDATA<span style="color:#f92672">-</span>DB_CR_IND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;H&#39;</span>.
+LS_MATERIALDATA<span style="color:#f92672">-</span>ITEM_AMOUNT <span style="color:#f92672">=</span> P_AMOUNT.
+LS_MATERIALDATA<span style="color:#f92672">-</span>QUANTITY <span style="color:#f92672">=</span> P_MENGE.
+LS_MATERIALDATA<span style="color:#f92672">-</span>TAX_CODE <span style="color:#f92672">=</span> P_TAX.
+LS_MATERIALDATA<span style="color:#f92672">-</span>BASE_UOM <span style="color:#f92672">=</span> P_UOM.
+LS_MATERIALDATA<span style="color:#f92672">-</span>VAL_AREA <span style="color:#f92672">=</span> P_BWKEY.
+<span style="color:#66d9ef">APPEND</span> LS_MATERIALDATA <span style="color:#66d9ef">TO</span> LT_MATERIALDATA.
+LV_GROSS <span style="color:#f92672">=</span> LV_GROSS <span style="color:#f92672">+</span> P_AMOUNT <span style="color:#f92672">+</span> P_AMOUNT  <span style="color:#f92672">*</span> <span style="color:#ae81ff">17</span> / <span style="color:#ae81ff">100</span>.
+<span style="color:#75715e">&#34; Header &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span>: LS_HEADERDATA.
+LS_HEADERDATA<span style="color:#f92672">-</span>INVOICE_IND  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>. <span style="color:#75715e">&#34;贷项凭证&#34;
+</span><span style="color:#75715e"></span>LS_HEADERDATA<span style="color:#f92672">-</span>GROSS_AMOUNT <span style="color:#f92672">=</span> LV_GROSS.
+LS_HEADERDATA<span style="color:#f92672">-</span>BLINE_DATE   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+LS_HEADERDATA<span style="color:#f92672">-</span>DIFF_INV     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S0021&#39;</span>.
+LS_HEADERDATA<span style="color:#f92672">-</span>REF_DOC_NO   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;4690000030&#39;</span>.
+LS_HEADERDATA<span style="color:#f92672">-</span>DOC_DATE     <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+LS_HEADERDATA<span style="color:#f92672">-</span>PSTNG_DATE   <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+LS_HEADERDATA<span style="color:#f92672">-</span>COMP_CODE    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;9110&#39;</span>..
+LS_HEADERDATA<span style="color:#f92672">-</span>CURRENCY     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CNY&#39;</span>.
+LS_HEADERDATA<span style="color:#f92672">-</span>CURRENCY_ISO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CNY&#39;</span>.
+LS_HEADERDATA<span style="color:#f92672">-</span>CALC_TAX_IND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+LS_HEADERDATA<span style="color:#f92672">-</span>PMNTTRMS     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0001&#39;</span>.
+LS_HEADERDATA<span style="color:#f92672">-</span>ITEM_TEXT    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text&#39;</span>.
+LS_HEADERDATA<span style="color:#f92672">-</span>GROSS_AMOUNT <span style="color:#f92672">=</span> LV_GROSS.
+
+<span style="color:#66d9ef">IF</span> P_CA_TAX <span style="color:#f92672">IS INITIAL</span>.
+  LS_HEADERDATA<span style="color:#f92672">-</span>CALC_TAX_IND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>.
+  <span style="color:#66d9ef">CLEAR</span> LS_TAXDATA.
+  LS_TAXDATA<span style="color:#f92672">-</span>TAX_CODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;J1&#39;</span>.
+  LS_TAXDATA<span style="color:#f92672">-</span>TAX_AMOUNT <span style="color:#f92672">=</span> P_AMOUNT  <span style="color:#f92672">*</span> <span style="color:#ae81ff">17</span> / <span style="color:#ae81ff">100</span>.<span style="color:#75715e">&#34;默认17%&#34;
+</span><span style="color:#75715e"></span>  LS_TAXDATA<span style="color:#f92672">-</span>ITEMNO_TAX <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">APPEND</span> LS_TAXDATA <span style="color:#66d9ef">TO</span> LT_TAXDATA.
+<span style="color:#66d9ef">ENDIF</span>.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_INCOMINGINVOICE_CREATE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    HEADERDATA       <span style="color:#f92672">=</span> LS_HEADERDATA
+  <span style="color:#66d9ef">IMPORTING</span>
+    INVOICEDOCNUMBER <span style="color:#f92672">=</span> LV_INVOICEDOCNUMBER
+  <span style="color:#66d9ef">TABLES</span>
+    ITEMDATA         <span style="color:#f92672">=</span> LT_ITEMDATA
+    MATERIALDATA     <span style="color:#f92672">=</span> LT_MATERIALDATA
+    TAXDATA          <span style="color:#f92672">=</span> LT_TAXDATA
+    <span style="color:#66d9ef">RETURN</span>           <span style="color:#f92672">=</span> LT_RETURN.
+<span style="color:#66d9ef">IF</span> d_docno <span style="color:#f92672">IS INITIAL</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+<span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">WRITE</span> LV_INVOICEDOCNUMBER. 
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>371</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_BAPI_Find/" class="prev" rel="prev" title=" TCode 可用BAPI查找 "><i class="iconfont icon-dajiantou"></i>&nbsp; TCode 可用BAPI查找 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/FI_BAPI_DocumentRevPost/" class="next" rel="next" title=" BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证 "> BAPI:BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-11-26 00:00:00 \x2b0000 UTC',
+        title: ' BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据物料创建贷项凭证 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

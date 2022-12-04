@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/Linux_ShellFlow/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_EXCEL_DOI/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAP_Utils_Webservice/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Webservice 使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Webservice 使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Webservice 使用 "/>
+<meta name="twitter:description" content="ABAP 调用外部 Webservice 创建代理类 Step1：SE80 选择 package，点击创建 Enterprise Service / Web service-proxy client Step2：参数填写，没有错误的话，会根据指定的 wsdl 文件，产"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Webservice 使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAP_Utils_Webservice\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "saputils",
+  "wordcount":  539 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAP_Utils_Webservice\/",
+  "datePublished": "2019-02-18T00:00:00\x2b00:00",
+  "dateModified": "2019-02-18T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Webservice 使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-02-18 >18 February 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="abap-调用外部-webservice">ABAP 调用外部 Webservice</h3>
+<h4 id="创建代理类">创建代理类</h4>
+<p>Step1：SE80 选择 package，点击创建 Enterprise Service / Web service-proxy client</p>
+<p><img src="/images/ABAP/ABAP_WebService1.png" alt="Create Enterprise Service"></p>
+<p>Step2：参数填写，没有错误的话，会根据指定的 wsdl 文件，产生代理类，激活后可以使用</p>
+<ul>
+<li>
+<p>选择 service consumer</p>
+<p><img src="/images/ABAP/ABAP_WebService2.png" alt="Web service-proxy client"></p>
+</li>
+<li>
+<p>点击继续，选择 URL/HTTP Destination；如果文件在本地，选择 Local File</p>
+<p><img src="/images/ABAP/ABAP_WebService3.png" alt="Web service-proxy client"></p>
+</li>
+<li>
+<p>选择 URL，输入 wsdl 地址，若为 local host 的，需更改为本机的地址</p>
+</li>
+</ul>
+<p><img src="/images/ABAP/ABAP_WebService4.png" alt="Web service-proxy client"></p>
+<ul>
+<li>
+<p>点击继续，输入选择包，前缀</p>
+<p><img src="/images/ABAP/ABAP_WebService5.png" alt="Web service-proxy client"></p>
+</li>
+<li>
+<p>点击继续，没有错误的话，点击 Complete</p>
+<p><img src="/images/ABAP/ABAP_WebService6.png" alt="Web service-proxy client"></p>
+</li>
+</ul>
+<h4 id="创建逻辑端口logical-portlpconfig-或者-soamanager">创建逻辑端口(Logical Port)：LPCONFIG 或者 SOAMANAGER</h4>
+<p>通过 Tcode: LPCONFIG 创建逻辑端口；输入代理类，逻辑端口名称，可以设为默认端口。点击创建后，维护逻辑端口的描述。</p>
+<p><img src="/images/ABAP/ABAP_WebService7.png" alt="LPCONFIG"></p>
+<p>一般设置</p>
+<ul>
+<li>运行环境选择 web 服务基础结构</li>
+<li>调用参数：勾选 url，文本框里输入 web service 地址</li>
+<li>操作：为每个具体的方法，在 soap 操作里输入 wsdl 文件中定义的 soapAction 等号后面的内容</li>
+</ul>
+<p>应用程序里特定设置</p>
+<ul>
+<li>全局设置里，勾选消息标记，状态管理；否则在激活的时候会提示‘激活不成功’</li>
+</ul>
+<h4 id="编写-webservice-程序">编写 webservice 程序</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ztest_webservice.
+<span style="color:#66d9ef">DATA</span>:obj_certif <span style="color:#66d9ef">TYPE REF TO</span> ztcertifco_certificate_request,
+     obj_output <span style="color:#66d9ef">TYPE </span>ztcertifhello_world_soap_out,
+     obj_input  <span style="color:#66d9ef">TYPE </span>ztcertifhello_world_soap_in,
+     wa_obj_input <span style="color:#66d9ef">LIKE </span>prxctrl,
+     erro_msg   <span style="color:#66d9ef">TYPE </span>string,
+     obj_exception <span style="color:#66d9ef">TYPE REF TO</span> cx_ai_system_fault.
+<span style="color:#66d9ef">TRY</span>.
+  <span style="color:#66d9ef">CREATE OBJECT</span> obj_certif
+    <span style="color:#66d9ef">EXPORTING</span>
+      logical_port_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;LP01&#39;</span>.
+<span style="color:#66d9ef">CATCH</span> cx_ai_system_fault <span style="color:#66d9ef">INTO</span> obj_exception .
+  <span style="color:#66d9ef">CALL METHOD</span> obj_exception<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_text
+    RECEIVING
+      result <span style="color:#f92672">=</span> erro_msg.
+  <span style="color:#66d9ef">WRITE</span> /<span style="color:#ae81ff">1</span> erro_msg.
+<span style="color:#66d9ef">ENDTRY</span>.
+<span style="color:#75715e">*wa_obj_input-field = &#39;head world&#39;.</span>
+<span style="color:#75715e">*wa_obj_input-value = &#39;1&#39;.</span>
+<span style="color:#75715e">*APPEND wa_obj_input TO obj_input-controller.</span>
+<span style="color:#66d9ef">TRY</span>.
+  <span style="color:#66d9ef">CALL METHOD</span> obj_certif<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>hello_world
+    <span style="color:#66d9ef">EXPORTING</span>
+      input  <span style="color:#f92672">=</span> obj_input
+    <span style="color:#66d9ef">IMPORTING</span>
+      output <span style="color:#f92672">=</span> obj_output.
+  <span style="color:#66d9ef">WRITE</span>:obj_output<span style="color:#f92672">-</span>hello_world_result.
+<span style="color:#66d9ef">CATCH</span> cx_ai_system_fault <span style="color:#66d9ef">INTO</span> obj_exception .
+  <span style="color:#66d9ef">CALL METHOD</span> obj_exception<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_text
+    RECEIVING
+      result <span style="color:#f92672">=</span> erro_msg.
+  <span style="color:#66d9ef">WRITE</span> /<span style="color:#ae81ff">1</span> erro_msg.
+<span style="color:#66d9ef">ENDTRY</span>.
+</code></pre></div><h4 id="测试程序">测试程序</h4>
+<h3 id="sap-发布-webservice-供其他系统调用">SAP 发布 Webservice 供其他系统调用</h3>
+<p>a. 服务配置，- sicf</p>
+<p>b. 函数创建，- SE37：YRFC_TEST_WEB</p>
+<p>c. 生产 webservice, 函数 -&gt; 设置</p>
+<p>d. 进行 IE 发布 SOAMANAGER</p>
+<p>e. 外部语言进行调用测试，</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>539</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/saputils/">
+                    #saputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/Linux_ShellFlow/" class="prev" rel="prev" title=" Shell 脚本-流程控制 "><i class="iconfont icon-dajiantou"></i>&nbsp; Shell 脚本-流程控制 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_EXCEL_DOI/" class="next" rel="next" title=" ABAP DOI 使用 "> ABAP DOI 使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-02-18 00:00:00 \x2b0000 UTC',
+        title: ' SAP Webservice 使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

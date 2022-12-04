@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Enhance_BTE/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_ALV_Progress/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_BAPI_MIRO_INCOMINGINVOICE_CREATE/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据退货PO创建贷项凭证  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据退货PO创建贷项凭证  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据退货PO创建贷项凭证 "/>
+<meta name="twitter:description" content="引用链接：https://mp.weixin.qq.com/s/_6CL2fdz6WYCc4gMO8t3Zw MIRO根据退货PO创建贷项凭证"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据退货PO创建贷项凭证 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_BAPI_MIRO_INCOMINGINVOICE_CREATE\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI, FICO",
+  "wordcount":  446 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_BAPI_MIRO_INCOMINGINVOICE_CREATE\/",
+  "datePublished": "2019-12-26T00:00:00\x2b00:00",
+  "dateModified": "2019-12-26T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据退货PO创建贷项凭证 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-12-26 >26 December 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>引用链接：<a href="https://mp.weixin.qq.com/s/_6CL2fdz6WYCc4gMO8t3Zw">https://mp.weixin.qq.com/s/_6CL2fdz6WYCc4gMO8t3Zw</a></p>
+<h4 id="miro根据退货po创建贷项凭证bapi_incominginvoice_create">MIRO根据退货PO创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE</h4>
+<p><img src="/images/ABAP/MIRO_PO.png" alt="MIRO"></p>
+<p>或者不勾选计算税额，手动输入税额。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  ZLM_MIRO_2</span>
+<span style="color:#75715e">*&amp; SAP干货铺</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; 根据po创建贷项凭证</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span> ZLM_MIRO_2.
+<span style="color:#66d9ef">TABLES</span> EKKO.
+<span style="color:#66d9ef">TABLES</span> EKPO.
+<span style="color:#66d9ef">PARAMETERS</span> P_EBELN   <span style="color:#66d9ef">TYPE </span>EKKO<span style="color:#f92672">-</span>EBELN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;4690000030&#39;</span>.
+<span style="color:#66d9ef">PARAMETERS</span> P_CA_TAX <span style="color:#66d9ef">AS CHECKBOX</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span>.  <span style="color:#75715e">&#34;自动计算税费&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:LS_EKKO <span style="color:#66d9ef">TYPE </span>EKKO,
+     LT_EKPO <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> EKPO.
+<span style="color:#66d9ef">DATA</span>:LS_EKPO <span style="color:#66d9ef">TYPE   </span>EKPO.
+<span style="color:#66d9ef">DATA</span>:LT_MSEG <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> MSEG,
+     LS_MSEG <span style="color:#66d9ef">TYPE   </span>MSEG.
+     
+<span style="color:#66d9ef">DATA</span>:LS_HEADER <span style="color:#66d9ef">TYPE </span>BAPI_INCINV_CREATE_HEADER.
+<span style="color:#66d9ef">DATA</span>:LT_TAXDATA  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPI_INCINV_CREATE_TAX.
+<span style="color:#66d9ef">DATA</span>:LT_ITEM <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPI_INCINV_CREATE_ITEM.
+<span style="color:#66d9ef">DATA</span>:LT_RETURN <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BAPIRET2.
+<span style="color:#66d9ef">DATA</span>:LS_TAXDATA  <span style="color:#66d9ef">TYPE   </span>BAPI_INCINV_CREATE_TAX.
+<span style="color:#66d9ef">DATA</span>:LS_ITEM <span style="color:#66d9ef">TYPE   </span>BAPI_INCINV_CREATE_ITEM.
+<span style="color:#66d9ef">DATA</span>:LS_RETURN <span style="color:#66d9ef">TYPE   </span>BAPIRET2.
+<span style="color:#66d9ef">DATA</span>:LV_DOC <span style="color:#66d9ef">TYPE </span>BAPI_INCINV_FLD<span style="color:#f92672">-</span>INV_DOC_NO.
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> EKKO <span style="color:#66d9ef">INTO</span> LS_EKKO <span style="color:#66d9ef">WHERE</span> EBELN <span style="color:#f92672">=</span> P_EBELN.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> EKPO <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> LT_EKPO <span style="color:#66d9ef">WHERE</span> EBELN <span style="color:#f92672">=</span> P_EBELN.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> MSEG <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> LT_MSEG <span style="color:#66d9ef">WHERE</span> EBELN <span style="color:#f92672">=</span> P_EBELN.
+  <span style="color:#66d9ef">CHECK</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">CLEAR</span> LS_HEADER.
+  LS_HEADER<span style="color:#f92672">-</span>DOC_DATE <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+  LS_HEADER<span style="color:#f92672">-</span>PSTNG_DATE <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+  LS_HEADER<span style="color:#f92672">-</span>BLINE_DATE <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM.
+  LS_HEADER<span style="color:#f92672">-</span>REF_DOC_NO <span style="color:#f92672">=</span> P_EBELN.
+  LS_HEADER<span style="color:#f92672">-</span>COMP_CODE <span style="color:#f92672">=</span> LS_EKKO<span style="color:#f92672">-</span>BUKRS.
+  LS_HEADER<span style="color:#f92672">-</span>DIFF_INV <span style="color:#f92672">=</span> LS_EKKO<span style="color:#f92672">-</span>LIFNR.
+  LS_HEADER<span style="color:#f92672">-</span>CURRENCY <span style="color:#f92672">=</span> LS_EKKO<span style="color:#f92672">-</span>WAERS.
+  
+<span style="color:#75715e">*LS_HEADER-GROSS_AMOUNT =  .</span>
+<span style="color:#75715e">*LS_HEADER-HEADER_TXT = p_EBELN.</span>
+  <span style="color:#66d9ef">CLEAR</span> LT_ITEM[].
+  <span style="color:#66d9ef">CLEAR</span> LT_TAXDATA[].
+  <span style="color:#66d9ef">CLEAR</span> LT_RETURN[].
+  <span style="color:#66d9ef">CLEAR</span> LS_ITEM.
+  <span style="color:#66d9ef">LOOP AT </span>LT_EKPO <span style="color:#66d9ef">INTO</span> LS_EKPO.
+    <span style="color:#66d9ef">CLEAR</span> LS_MSEG.
+    <span style="color:#66d9ef">CLEAR</span> LS_ITEM.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> LT_MSEG <span style="color:#66d9ef">INTO</span> LS_MSEG <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span>
+             			EBELN  <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>EBELN
+             			EBELP  <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>EBELP.
+    LS_ITEM<span style="color:#f92672">-</span>INVOICE_DOC_ITEM <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>TABIX.
+    LS_ITEM<span style="color:#f92672">-</span>PO_NUMBER      <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>EBELN.
+    LS_ITEM<span style="color:#f92672">-</span>PO_ITEM        <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>EBELP.
+    LS_ITEM<span style="color:#f92672">-</span>REF_DOC        <span style="color:#f92672">=</span> LS_MSEG<span style="color:#f92672">-</span>MBLNR.
+    LS_ITEM<span style="color:#f92672">-</span>REF_DOC_YEAR   <span style="color:#f92672">=</span> LS_MSEG<span style="color:#f92672">-</span>MJAHR.
+    LS_ITEM<span style="color:#f92672">-</span>REF_DOC_IT     <span style="color:#f92672">=</span> LS_MSEG<span style="color:#f92672">-</span>ZEILE.
+    LS_ITEM<span style="color:#f92672">-</span>TAX_CODE       <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>MWSKZ.
+    LS_ITEM<span style="color:#f92672">-</span>ITEM_AMOUNT    <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>NETWR.
+    LS_ITEM<span style="color:#f92672">-</span>QUANTITY       <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>MENGE.
+    LS_ITEM<span style="color:#f92672">-</span>PO_UNIT        <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>MEINS.
+    LS_HEADER<span style="color:#f92672">-</span>GROSS_AMOUNT  <span style="color:#f92672">=</span> LS_HEADER<span style="color:#f92672">-</span>GROSS_AMOUNT  <span style="color:#f92672">+</span> LS_EKPO<span style="color:#f92672">-</span>NETWR.
+    <span style="color:#66d9ef">APPEND</span> LS_ITEM <span style="color:#66d9ef">TO</span> LT_ITEM.
+
+    <span style="color:#66d9ef">CLEAR</span> LS_TAXDATA.
+    LS_TAXDATA<span style="color:#f92672">-</span>TAX_CODE <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>MWSKZ.
+    LS_TAXDATA<span style="color:#f92672">-</span>TAX_AMOUNT <span style="color:#f92672">=</span> LS_EKPO<span style="color:#f92672">-</span>NETWR <span style="color:#f92672">*</span>  <span style="color:#ae81ff">17</span> / <span style="color:#ae81ff">100</span>.<span style="color:#75715e">&#34; demo 默认17%&#34;
+</span><span style="color:#75715e"></span>    LS_TAXDATA<span style="color:#f92672">-</span>ITEMNO_TAX <span style="color:#f92672">=</span> LS_ITEM<span style="color:#f92672">-</span>INVOICE_DOC_ITEM.
+    LS_HEADER<span style="color:#f92672">-</span>GROSS_AMOUNT  <span style="color:#f92672">=</span> LS_HEADER<span style="color:#f92672">-</span>GROSS_AMOUNT  <span style="color:#f92672">+</span>
+    LS_TAXDATA<span style="color:#f92672">-</span>TAX_AMOUNT .
+    <span style="color:#66d9ef">APPEND</span> LS_TAXDATA <span style="color:#66d9ef">TO</span> LT_TAXDATA.
+    <span style="color:#66d9ef">CLEAR</span> LS_EKPO.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">IF</span> P_CA_TAX <span style="color:#f92672">IS NOT INITIAL</span>.
+    LS_HEADER<span style="color:#f92672">-</span>CALC_TAX_IND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">CLEAR</span> LT_TAXDATA[].
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_INCOMINGINVOICE_CREATE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      HEADERDATA       <span style="color:#f92672">=</span> LS_HEADER
+    <span style="color:#66d9ef">IMPORTING</span>
+      INVOICEDOCNUMBER <span style="color:#f92672">=</span> LV_DOC
+    <span style="color:#66d9ef">TABLES</span>
+      ITEMDATA         <span style="color:#f92672">=</span> LT_ITEM
+      TAXDATA          <span style="color:#f92672">=</span> LT_TAXDATA
+      <span style="color:#66d9ef">RETURN</span>           <span style="color:#f92672">=</span> LT_RETURN.
+  <span style="color:#66d9ef">LOOP AT </span>LT_RETURN <span style="color:#66d9ef">INTO</span> LS_RETURN <span style="color:#66d9ef">WHERE</span> TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">WRITE</span> LS_RETURN<span style="color:#f92672">-</span>MESSAGE.
+    <span style="color:#66d9ef">SKIP</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">WRITE</span> LV_DOC.
+  <span style="color:#66d9ef">ROLLBACK</span> WORK.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>446</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/FICO/">
+                    #FICO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Enhance_BTE/" class="prev" rel="prev" title=" BTE 增强使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; BTE 增强使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_ALV_Progress/" class="next" rel="next" title=" ALV 添加执行进度功能 "> ALV 添加执行进度功能 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-12-26 00:00:00 \x2b0000 UTC',
+        title: ' BAPI:BAPI_INCOMINGINVOICE_CREATE MIRO根据退货PO创建贷项凭证 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

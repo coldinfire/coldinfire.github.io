@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_OpenSQL/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Message/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_NativeSQL/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP Native SQL | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP Native SQL | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP Native SQL"/>
+<meta name="twitter:description" content="Native SQL EXEC SQL 和 ADBC 是所谓的 Native SQL，这种方式直接进入指定数据库，不涉及到 DBI，这样就没有 Table buffer。相对 EXEC SQL 来说，更推荐 ADBC 的方式执行 native sql"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP Native SQL",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_NativeSQL\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  892 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_NativeSQL\/",
+  "datePublished": "2018-05-26T00:00:00\u002b00:00",
+  "dateModified": "2018-05-26T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP Native SQL</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-26 >26 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="native-sql">Native SQL</h2>
+<p>EXEC SQL 和 ADBC 是所谓的 Native SQL，这种方式直接进入指定数据库，不涉及到 DBI，这样就没有 Table buffer。相对 EXEC SQL 来说，更推荐 ADBC 的方式执行 native sql，这种方式的好处是更加容易追踪错误。</p>
+<p><strong>连接其他的数据库</strong>：TCode : <code>DBCO</code></p>
+<p>存储数据表：<code>DBCON</code></p>
+<p>添加新的连接：<code>MSSQL_SERVER=IP adress MSSQL_DBNAME=dbname OBJECT_SOURCE=dbname</code></p>
+<h4 id="注意事项">注意事项：</h4>
+<ul>
+<li>
+<p>Native SQL 语句不能有结尾符号</p>
+</li>
+<li>
+<p>EXEC SQL &hellip; ENDEXEC间不能有注释</p>
+</li>
+<li>
+<p>参数占位符是冒号<code>:para_value</code></p>
+</li>
+</ul>
+<h3 id="程序调用">程序调用</h3>
+<h4 id="连接db">连接DB</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA: CON_NAME LIKE DBCON-CON_NAME VALUE &#39;DBNAME&#39;,
+DATA: sql_error TYPE REF TO cx_sy_native_sql_error, 
+      error_text TYPE string.
+...
+ 内表数据准备
+...
+&#34; 连接数据库 &#34;
+TRY. 
+  EXEC SQL. 
+    CONNECT TO :CON_NAME
+  ENDEXEC.
+  EXEC SQL.
+    SET CONNECTION &#39;CON_NAME&#39;
+  ENDEXEC.
+  IF SY-SUBRC NE 0.
+    error_text = &#39;Open Database Connection Error&#39;.
+    STOP.
+  ENDIF.
+ENDTRY. 
+</code></pre></div><h4 id="查询语句">查询语句</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;执行SQL&#34;
+</span><span style="color:#75715e"></span>LOOP demo_datas.
+  <span style="color:#66d9ef">TRY</span>.
+    EXEC SQL PERFORMING frm_download_data.
+      <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">into</span> :wa_emp <span style="color:#66d9ef">FROM</span> emp
+            <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">index</span> <span style="color:#f92672">=</span> :demo_datas<span style="color:#f92672">-</span>index
+    ENDEXEC.
+    <span style="color:#66d9ef">CATCH</span> CX_SY_NATIVE_SQL_ERROR.
+      <span style="color:#66d9ef">CLEAR</span>: e_type,e_message.
+      E_TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+      E_MESSAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Download RQM data Error&#39;</span>.
+      <span style="color:#66d9ef">CLEAR</span>: wa_emp.
+  <span style="color:#66d9ef">ENDTRY</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h4 id="插入语句">插入语句</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TRY</span>. 
+ <span style="color:#66d9ef">LOOP AT </span>gt_room <span style="color:#66d9ef">INTO</span> gs_room. 
+  EXEC SQL. 
+   <span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> ljc_room ( room_id, room_name, room_people, room_desc ) 
+   <span style="color:#66d9ef">values</span>(:gs_room<span style="color:#f92672">-</span>room_id, :gs_room<span style="color:#f92672">-</span>room_name, :gs_room<span style="color:#f92672">-</span>room_people, :gs_room<span style="color:#f92672">-</span>room_desc)
+  ENDEXEC.
+ <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">CATCH</span> cx_sy_native_sql_error <span style="color:#66d9ef">INTO</span> sql_error. 
+ error_text <span style="color:#f92672">=</span> l_sql_error<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_text</span>( ). 
+<span style="color:#66d9ef">ENDTRY</span>. 
+</code></pre></div><h4 id="异常处理和连接断开">异常处理和连接断开</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;异常处理&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">IF</span> error_text <span style="color:#f92672">IS INITIAL</span>.
+ EXEC SQL.
+  <span style="color:#66d9ef">commit</span>
+ ENDEXEC.
+<span style="color:#66d9ef">ELSE</span>.
+ <span style="color:#66d9ef">CLEAR</span> error_text. 
+ EXEC SQL. 
+  <span style="color:#66d9ef">rollback</span> 
+ ENDEXEC.  
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34;断开连接&#34;
+</span><span style="color:#75715e"></span>EXEC SQL. 
+ DISCONNECT :p_dbname 
+ENDEXEC.
+</code></pre></div><h3 id="游标使用">游标使用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> : arg1 <span style="color:#66d9ef">TYPE </span>string <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;800&#39;</span> .
+<span style="color:#66d9ef">TABLES</span> : t001 .
+EXEC SQL .
+  OPEN c1 <span style="color:#66d9ef">FOR</span>  <span style="color:#75715e">&#34; 打开游标 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">SELECT</span> MANDT , BUKRS 
+	<span style="color:#66d9ef">FROM</span> T001      <span style="color:#75715e">&#34; 远程数据库表 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">WHERE</span> MANDT <span style="color:#f92672">=</span> :arg1 <span style="color:#f92672">AND</span> BUKRS <span style="color:#f92672">&gt;=</span> <span style="color:#e6db74">&#39;ZA01&#39;</span>
+ENDEXEC .
+<span style="color:#66d9ef">DO</span> .
+  EXEC SQL .
+    <span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">NEXT</span> c1 <span style="color:#66d9ef">INTO</span> :t001<span style="color:#f92672">-</span>mandt, :t001<span style="color:#f92672">-</span>bukrs  <span style="color:#75715e">&#34;读取游标&#34;
+</span><span style="color:#75715e"></span>  ENDEXEC .
+  <span style="color:#66d9ef">IF</span> sy <span style="color:#f92672">-</span> subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span> .
+    <span style="color:#66d9ef">EXIT</span> .
+  <span style="color:#66d9ef">ELSE</span> .
+    <span style="color:#66d9ef">WRITE</span> : / t001<span style="color:#f92672">-</span>mandt, t001<span style="color:#f92672">-</span>bukrs .
+  <span style="color:#66d9ef">ENDIF</span> .
+<span style="color:#66d9ef">ENDDO</span> .
+EXEC SQL .
+  CLOSE c1 <span style="color:#75715e">&#34;关闭游标&#34;
+</span><span style="color:#75715e"></span>ENDEXEC .
+</code></pre></div><h3 id="使用类调用--native-sql">使用类调用  Native SQL</h3>
+<h4 id="程序实例">程序实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> z_sql_demo.
+<span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">index</span> <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#66d9ef">DATA</span>: sql(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">DATA</span>: retcode  <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> sql_data,
+	sql(<span style="color:#ae81ff">300</span>) <span style="color:#66d9ef">TYPE </span>c,
+<span style="color:#66d9ef">END OF</span> sql_data. 
+<span style="color:#66d9ef">DATA</span>: sql_datas <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> sql_data <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#75715e">&#34;get datas&#34;
+</span><span style="color:#75715e">&#34;excute data&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">LOOP AT </span>datas.
+  <span style="color:#66d9ef">index</span> <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>tabix.
+  <span style="color:#66d9ef">CLEAR</span>: sql.
+  <span style="color:#66d9ef">CLEAR</span>: sql_datas, sql_datas[].
+  <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;INSERT INTO table(id,para1,para2,para3,para4)&#39;</span> <span style="color:#e6db74">&#39;values(&#39;</span> 
+         <span style="color:#66d9ef">INTO</span> sql <span style="color:#66d9ef">SEPARATED BY</span> space.
+  <span style="color:#66d9ef">CONDENSE</span> sql.
+  <span style="color:#66d9ef">CONCATENATE</span> sql
+    <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span> <span style="color:#66d9ef">index</span> <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span>        <span style="color:#e6db74">&#39;,&#39;</span>
+    <span style="color:#e6db74">&#39;1&#39;</span>                    <span style="color:#e6db74">&#39;,&#39;</span>
+    <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span> datas<span style="color:#f92672">-</span>para2 <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span>  <span style="color:#e6db74">&#39;,&#39;</span>
+    <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span> datas<span style="color:#f92672">-</span>para3 <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span>  <span style="color:#e6db74">&#39;,&#39;</span>
+    <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span> datas<span style="color:#f92672">-</span>para4 <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span>             
+    <span style="color:#e6db74">&#39;)&#39;</span> <span style="color:#66d9ef">INTO</span> sql_datas<span style="color:#f92672">-</span>sql .
+  <span style="color:#66d9ef">APPEND</span> sql_datas.
+  <span style="color:#66d9ef">CLEAR</span>: retcode.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ZUU_EXEC_SQL&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      dbconn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CONN_NAME&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      result <span style="color:#f92672">=</span> retcode
+    <span style="color:#66d9ef">TABLES</span>
+      sql    <span style="color:#f92672">=</span> sql_datas.
+  <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#75715e">&#34;SQL Excute Success&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h4 id="子程序zuu_exec_sql">子程序：ZUU_EXEC_SQL</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> ZUU_EXEC_SQL .
+<span style="color:#75715e">*&#34;-------------------------------------------------------------</span>
+<span style="color:#75715e">*&#34;*&#34;Local Interface:</span>
+<span style="color:#75715e">*&#34;  IMPORTING</span>
+<span style="color:#75715e">*&#34;     REFERENCE(DBCONN) TYPE  C</span>
+<span style="color:#75715e">*&#34;  EXPORTING</span>
+<span style="color:#75715e">*&#34;     REFERENCE(RESULT) TYPE  I</span>
+<span style="color:#75715e">*&#34;  TABLES</span>
+<span style="color:#75715e">*&#34;      SQL</span>
+<span style="color:#75715e">*&#34;---------------------------------------------------------------</span>
+  <span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> t_sp_test,
+    a <span style="color:#66d9ef">TYPE </span>char10,
+  <span style="color:#66d9ef">END OF</span> t_sp_test,
+  t_sp_test_tab <span style="color:#66d9ef">TYPE TABLE OF</span> t_sp_test.
+  <span style="color:#66d9ef">DATA</span>: lt_sp_test <span style="color:#66d9ef">TYPE </span>t_sp_test_tab,
+        ls_sp_test <span style="color:#66d9ef">TYPE </span>t_sp_test.
+  <span style="color:#66d9ef">DATA</span>: lv_root_message <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: lv_sql_message <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: lv_param_message <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: lr_cxsql <span style="color:#66d9ef">TYPE REF TO</span> cx_sql_exception.
+  <span style="color:#66d9ef">DATA</span>: lr_cxpar <span style="color:#66d9ef">TYPE REF TO</span> cx_parameter_invalid.
+  <span style="color:#66d9ef">DATA</span>: l_con_ref <span style="color:#66d9ef">TYPE REF TO</span> cl_sql_connection.
+  <span style="color:#66d9ef">DATA</span>: l_stmt_ref <span style="color:#66d9ef">TYPE REF TO</span> cl_sql_statement.
+  <span style="color:#66d9ef">DATA</span>: l_res_ref <span style="color:#66d9ef">TYPE REF TO</span> cl_sql_result_set.
+  <span style="color:#66d9ef">DATA</span>: lv_stmt <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: l_dref <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">DATA</span>,
+        ncount <span style="color:#66d9ef">TYPE </span>I.
+  <span style="color:#66d9ef">TRY</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> cl_sql_connection<span style="color:#f92672">=&gt;</span>get_connection
+      <span style="color:#66d9ef">EXPORTING</span>
+        con_name <span style="color:#f92672">=</span> DBCONN
+      RECEIVING
+        con_ref <span style="color:#f92672">=</span> l_con_ref.
+  <span style="color:#66d9ef">CATCH</span> cx_sql_exception <span style="color:#66d9ef">INTO</span> lr_cxsql.
+    lv_root_message <span style="color:#f92672">=</span> lr_cxsql<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_text</span>( ).
+    lv_sql_message <span style="color:#f92672">=</span> lr_cxsql<span style="color:#f92672">-&gt;</span>sql_message.
+    <span style="color:#66d9ef">WRITE</span>: / lv_root_message, / lv_sql_message.
+  <span style="color:#66d9ef">ENDTRY</span>.
+  result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">LOOP AT </span>sql <span style="color:#66d9ef">INTO</span> lv_stmt.
+    <span style="color:#66d9ef">CALL METHOD</span> l_con_ref<span style="color:#f92672">-&gt;</span>create_statement
+      RECEIVING
+        stmt_ref <span style="color:#f92672">=</span> l_stmt_ref.
+    <span style="color:#66d9ef">TRY</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> l_stmt_ref<span style="color:#f92672">-&gt;</span>execute_update
+        <span style="color:#66d9ef">EXPORTING</span>
+          statement <span style="color:#f92672">=</span> lv_stmt
+        receiving
+          ROWS_PROCESSED <span style="color:#f92672">=</span> ncount.
+    <span style="color:#66d9ef">CATCH</span> cx_sql_exception <span style="color:#66d9ef">INTO</span> lr_cxsql.
+      result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+      lv_root_message <span style="color:#f92672">=</span> lr_cxsql<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_text</span>( ).
+      lv_sql_message <span style="color:#f92672">=</span> lr_cxsql<span style="color:#f92672">-&gt;</span>sql_message.
+      <span style="color:#66d9ef">WRITE</span>: / lv_root_message, / lv_sql_message.
+      <span style="color:#66d9ef">MESSAGE</span> lv_stmt TYPE <span style="color:#e6db74">&#39;I&#39;</span>.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">CATCH</span> cx_parameter_invalid <span style="color:#66d9ef">INTO</span> lr_cxpar.
+      result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+      lv_root_message <span style="color:#f92672">=</span> lr_cxpar<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_text</span>( ).
+      lv_param_message <span style="color:#f92672">=</span> lr_cxpar<span style="color:#f92672">-&gt;</span>parameter.
+      <span style="color:#66d9ef">WRITE</span>: / lv_root_message, / lv_param_message.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">IF</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> l_con_ref<span style="color:#f92672">-&gt;</span>ROLLBACK.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> l_con_ref<span style="color:#f92672">-&gt;</span>COMMIT.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">GET REFERENCE OF</span> ls_sp_test <span style="color:#66d9ef">INTO</span> l_dref.
+  <span style="color:#66d9ef">IF</span> DBCONN <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#39;DEFAULT&#39;</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> l_con_ref<span style="color:#f92672">-&gt;</span>CLOSE.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>892</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OpenSQL/" class="prev" rel="prev" title="ABAP Open SQL"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP Open SQL</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Message/" class="next" rel="next" title="ABAP Message 处理">ABAP Message 处理&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-26 00:00:00 \u002b0000 UTC',
+        title: 'ABAP Native SQL',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

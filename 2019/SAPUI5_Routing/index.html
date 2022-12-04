@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAPUI5_DataBinding/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAPUI5_MockServer/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAPUI5_Routing/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAPUI5 Routing 导航  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAPUI5 Routing 导航  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAPUI5 Routing 导航 "/>
+<meta name="twitter:description" content="Routing导航 Openui5 的 routing 基于模式 ( pattern )，使用 # 符号表示不同的路径 ( route )，导航通过路径的改变来实现。 Pattern 表达式 Openui5 一共有 5 种 pattern表达式:"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAPUI5 Routing 导航 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Routing\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "sapui5",
+  "wordcount":  1014 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Routing\/",
+  "datePublished": "2019-04-24T00:00:00\x2b00:00",
+  "dateModified": "2019-04-24T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAPUI5 Routing 导航 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-24 >24 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="routing导航">Routing导航</h2>
+<p>Openui5 的 routing 基于模式 ( pattern )，使用 <code>#</code> 符号表示不同的路径 ( route )，导航通过路径的改变来实现。</p>
+<h3 id="pattern-表达式">Pattern 表达式</h3>
+<p>Openui5 一共有 5 种 pattern表达式:</p>
+<ol>
+<li><strong>硬编码模式</strong> : 页面之间根据模式导航，没有参数传递，比如 product/settings 表示导航到产品配置。</li>
+<li><strong>路径含有必输参数模式</strong> : 模式中 大括号({}) 包含的部分表示参数必须输入。比如 product/{id} 表示导航到产品某一 id，比如 product/5 表示 id 为 5 的产品，id 为必输。</li>
+<li><strong>路径含有可选参数模式</strong> : 模式中 冒号 包含的部分为必输参数。比如 product/{id}/detail/:detailId:，detailId 为可选参数。product/5/detail 以及 product/3/detail/2 都能与此模式匹配。</li>
+<li><strong>路径含有查询参数模式</strong> : 查询参数 ( query parameter ) 在问号之后。比如 product{?query}，query 这个参数为必输项。product:?query: 中的 query 这个参数为可选参数。</li>
+<li><strong>通配参数模式</strong>  :以星号结尾的参数是通配参数，通配参数将根据模式尽可能匹配。</li>
+</ol>
+<h3 id="导航调用">导航调用</h3>
+<ol>
+<li>
+<p>父导航</p>
+<ol>
+<li>
+<p>跳转到Detail view子导航</p>
+</li>
+<li>
+<p>向Detail view传递一个参数，参数为当前点击的路径，Detail获取该路径完成数据绑定</p>
+</li>
+</ol>
+<ul>
+<li>var oRouter = UIComponent.getRouterFor(this);获取当前的router</li>
+<li>var oItem = oEvent.getSource();获取点击所在的行</li>
+<li>oItem.getBindingContext().getPath();获取点击的路径，String类型（/Sup/0）路径传到Detail</li>
+<li>oRouter.navTo(&ldquo;detail&rdquo;,{supplierPath:encodeURIComponent(sPath)});方法不能包含<code>/</code>所以使用 <code>encodeURIComponent()</code> 函数编码，在Detail controller 中用<code>decodeURIComponent()</code>函数解码。</li>
+</ul>
+</li>
+<li>
+<p>子导航</p>
+<ol>
+<li>
+<p>获取 Master view 传递的路径，根据此路径完成 element binding。比如当 Master view 传过来 <code>/Suppliers/0</code>，则与第一条数据绑定;</p>
+</li>
+<li>
+<p>根据页面之间的关系，当点击 <strong>返回</strong> 按钮时，返回到上一个页面。</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><code>var oRouter = UIComponent.getRouterFor(this);</code>获取当前Router</p>
+</li>
+<li>
+<p><code>oRouter.getRoute(&quot;detail&quot;).attachPatternMatched(this._onObjectMatched, this);</code>，当模式匹配时，附加事件处理器为 <code>_onObjectMatched</code>。然后在 <code>_onObjectMatched</code> 中获取 Master view 传递的路径并绑定数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">_onObjectMatched</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">oEvent</span>) {           
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sPath</span> <span style="color:#f92672">=</span> decodeURIComponent(
+            <span style="color:#a6e22e">oEvent</span>.<span style="color:#a6e22e">getParameter</span>(<span style="color:#e6db74">&#34;arguments&#34;</span>).<span style="color:#a6e22e">supplierPath</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getView</span>().<span style="color:#a6e22e">bindElement</span>({<span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sPath</span>});
+}   
+</code></pre></div></li>
+<li>
+<p>当用户点击导航按钮，判断是否有上一个路径 ( previous hash )，如果有就返回上一个路径，否则跳转到 Master view:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">onNavPress</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oHistory</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">History</span>.<span style="color:#a6e22e">getInstance</span>();
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sPreviousHash</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oHistory</span>.<span style="color:#a6e22e">getPreviousHash</span>();
+         
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sPreviousHash</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">undefined</span>){
+        window.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">go</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+    }<span style="color:#66d9ef">else</span>{
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oRouter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">UIComponent</span>.<span style="color:#a6e22e">getRouterFor</span>(<span style="color:#66d9ef">this</span>);
+        <span style="color:#a6e22e">oRouter</span>.<span style="color:#a6e22e">navTo</span>(<span style="color:#e6db74">&#34;master&#34;</span>,{}, <span style="color:#66d9ef">true</span>);
+    }
+}
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1014</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/sapui5/">
+                    #sapui5</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_DataBinding/" class="prev" rel="prev" title=" SAPUI5 数据绑定 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAPUI5 数据绑定 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_MockServer/" class="next" rel="next" title=" SAPUI5 Mock Server "> SAPUI5 Mock Server &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-24 00:00:00 \x2b0000 UTC',
+        title: ' SAPUI5 Routing 导航 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

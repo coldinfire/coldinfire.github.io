@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_ALV_Progress/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_MaterialPriceType/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_ALV_ItabToClip/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ALV 复制内容到剪贴板  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ALV 复制内容到剪贴板  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ALV 复制内容到剪贴板 "/>
+<meta name="twitter:description" content="引用链接：ALV复制内容到剪贴板 使用场景 用在 ALV 的 USER_COMMAND 里面；复制 ALV 内容到剪贴板，已经考虑了 ALV 的列隐藏、筛选，负号已经提前；如果有选中的列，则复制"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ALV 复制内容到剪贴板 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_ALV_ItabToClip\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV, abaputils",
+  "wordcount":  509 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_ALV_ItabToClip\/",
+  "datePublished": "2020-03-04T00:00:00\x2b00:00",
+  "dateModified": "2020-03-04T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ALV 复制内容到剪贴板 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-03-04 >4 March 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>引用链接：<a href="https://mp.weixin.qq.com/s/h9vRrzQUir8epaypNdcC6w">ALV复制内容到剪贴板</a></p>
+<h3 id="使用场景">使用场景</h3>
+<p>用在 ALV 的 USER_COMMAND 里面；复制 ALV 内容到剪贴板，已经考虑了 ALV 的列隐藏、筛选，负号已经提前；如果有选中的列，则复制选中的列，如果没有选中的列，复制所有可见的列 。</p>
+<p>如果要保存 ALV 的数据到 Excel，可以先复制，然后到 Excel 粘贴。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">user_command</span> <span style="color:#66d9ef">USING</span> r_ucomm <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>ucomm
+                        rs_selfield <span style="color:#66d9ef">TYPE </span>slis_selfield.
+  <span style="color:#66d9ef">CASE</span> r_ucomm.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;TOCLIP&#39;</span>.
+      <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">itabtoclip_alv</span> <span style="color:#66d9ef">TABLES</span> itab_dis.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDFORM</span>. 
+</code></pre></div><h3 id="程序实例">程序实例</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;--------------------------------------</span>
+<span style="color:#75715e">*&amp;  用在ALV的USER_COMMAND里面</span>
+<span style="color:#75715e">*&amp;  复制ALV内容到剪贴板，已经考虑了ALV的列隐藏、筛选，负号已经提前</span>
+<span style="color:#75715e">*&amp;  如果有选中的列，则复制选中的列，如果没有选中的列，复制所有可见的列 </span>
+<span style="color:#75715e">*&amp;  Form  itabtoclip_alv</span>
+<span style="color:#75715e">*---------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">itabtoclip_alv</span> <span style="color:#66d9ef">TABLES</span> itab.
+  <span style="color:#66d9ef">DATA</span>: fldcat <span style="color:#66d9ef">TYPE </span>slis_t_fieldcat_alv <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        marked <span style="color:#66d9ef">TYPE </span>slis_t_fieldcat_alv <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        entries <span style="color:#66d9ef">TYPE </span>slis_t_fieldcat_entries <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  <span style="color:#66d9ef">DATA</span>: charc <span style="color:#66d9ef">TYPE </span>char256,
+        ftype.
+  <span style="color:#66d9ef">DATA</span>: htab <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">VALUE</span> cl_abap_char_utilities<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>horizontal_tab.
+  <span style="color:#66d9ef">DATA</span>: lt_clip <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> char2048 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;fs_fld&gt;.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;REUSE_ALV_GRID_LAYOUT_INFO_GET&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      et_fieldcat         <span style="color:#f92672">=</span> fldcat[]
+      et_marked_columns   <span style="color:#f92672">=</span> marked[]
+      et_filtered_entries <span style="color:#f92672">=</span> entries[]
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      no_infos            <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      program_error       <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>              <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+         <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">IF</span> marked[] <span style="color:#f92672">IS INITIAL</span>.
+    marked[] <span style="color:#f92672">=</span> fldcat[].
+    <span style="color:#66d9ef">DELETE</span> marked <span style="color:#66d9ef">WHERE</span> no_out <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">SORT</span> entries.
+  <span style="color:#66d9ef">CHECK</span> marked[] <span style="color:#f92672">IS NOT INITIAL</span>.
+  <span style="color:#66d9ef">CHECK</span> itab[] <span style="color:#f92672">IS NOT INITIAL</span>.
+
+  <span style="color:#66d9ef">LOOP AT </span>itab.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> entries <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> table_line <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>tabix BINARY <span style="color:#66d9ef">SEARCH</span>.
+    <span style="color:#66d9ef">CHECK</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">CLEAR</span> lt_clip.
+    <span style="color:#66d9ef">LOOP AT </span>marked.
+      <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> marked<span style="color:#f92672">-</span>filename <span style="color:#66d9ef">OF STRUCTURE</span> itab <span style="color:#66d9ef">TO</span> &lt;fs_fld&gt;.
+      <span style="color:#66d9ef">CHECK</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">DESCRIBE FIELD</span> &lt;fs_fld&gt; <span style="color:#66d9ef">TYPE </span>ftype.
+      <span style="color:#66d9ef">CASE</span>  ftype.
+        <span style="color:#66d9ef">WHEN</span>  <span style="color:#e6db74">&#39;I&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;P&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;F&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;e&#39;</span>.
+          charc <span style="color:#f92672">=</span> ABS( &lt;fs_fld&gt; ).
+          <span style="color:#66d9ef">CONDENSE</span>  charc NO<span style="color:#f92672">-</span>GAPS.
+          <span style="color:#66d9ef">IF</span> &lt;fs_fld&gt; <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>.
+            <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;-&#39;</span> charc <span style="color:#66d9ef">INTO</span> charc.
+          <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+          <span style="color:#66d9ef">WRITE</span> &lt;fs_fld&gt; <span style="color:#66d9ef">TO</span> charc.
+      <span style="color:#66d9ef">ENDCASE</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> lt_clip htab <span style="color:#66d9ef">INTO</span> lt_clip.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+    <span style="color:#66d9ef">SHIFT</span> lt_clip.
+    <span style="color:#66d9ef">APPEND</span> lt_clip.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">CHECK</span> lt_clip[] <span style="color:#f92672">IS NOT INITIAL</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CLPB_EXPORT&#39;</span>
+    <span style="color:#66d9ef">TABLES</span>
+      data_tab   <span style="color:#f92672">=</span> lt_clip
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      clpb_error <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#66d9ef">OTHERS</span>     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> s000(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;已经导出到剪贴板&#39;</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">MESSAGE</span> e000(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;导出到剪切板错误&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;itabtoclip_alv&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>509</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_ALV_Progress/" class="prev" rel="prev" title=" ALV 添加执行进度功能 "><i class="iconfont icon-dajiantou"></i>&nbsp; ALV 添加执行进度功能 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_MaterialPriceType/" class="next" rel="next" title=" 移动平均价和标准价 "> 移动平均价和标准价 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-03-04 00:00:00 \x2b0000 UTC',
+        title: ' ALV 复制内容到剪贴板 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

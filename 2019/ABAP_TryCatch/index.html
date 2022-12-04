@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_BAPI_GoodsMovementCancel/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_NumberRange/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_TryCatch/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SAP 异常处理 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="SAP 异常处理 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAP 异常处理"/>
+<meta name="twitter:description" content="SAP 异常处理 异常是在程序执行期间出现的问题。 当异常发生时，程序的正常流程中断，程序应用程序异常终止，这是不推荐的，因此这些异常将被处理。 异常处"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SAP 异常处理",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_TryCatch\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  695 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_TryCatch\/",
+  "datePublished": "2019-07-09T00:00:00\u002b00:00",
+  "dateModified": "2019-07-09T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">SAP 异常处理</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-07-09 >9 July 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-异常处理">SAP 异常处理</h3>
+<p><strong>异常</strong>是在程序执行期间出现的问题。 当异常发生时，程序的正常流程中断，程序应用程序异常终止，这是不推荐的，因此这些异常将被处理。</p>
+<h4 id="异常处理方式"><strong>异常处理方式：</strong></h4>
+<p><strong>RAISE</strong> - 提出异常，表示发生了一些异常情况。 通常，异常处理程序会尝试修复错误或找到替代解决方案。</p>
+<p><strong>TRY</strong> - TRY 块包含要处理其异常的应用程序编码。 此语句块按顺序处理。 它可以包含进一步的控制结构和程序调用或其他 ABAP 程序。 它后面是一个或多个 catch 块。</p>
+<p><strong>CATCH</strong> - 程序在要处理问题的程序中的地方使用异常处理程序捕获异常。 CATCH 关键字表示捕获异常。</p>
+<p><strong>CLEANUP</strong> - 每当在 TRY 块中发生异常，而 TRY 块未被同一 TRY - ENDTRY 结构的处理程序捕获时，将执行 CLEANUP 块的语句。 在 CLEANUP 子句中，系统可以将对象恢复到一致状态或释放外部资源。 也就是说，可以对 TRY 块的上下文执行清除工作。</p>
+<h4 id="抛出异常">抛出异常</h4>
+<p>可以在方法中的任何点，函数模型，子例程抛出异常信息。</p>
+<p>引发异常原因：</p>
+<ul>
+<li>ABAP运行时系统引发的异常</li>
+<li>程序中写的异常代码：同是创建异常对象和抛出异常 <code>RAISE EXCEPTION exep</code></li>
+</ul>
+<h4 id="捕捉异常">捕捉异常</h4>
+<p>假设块将引发异常，则方法使用 TRY 和 CATCH 关键字的组合捕获异常。 TRY - CATCH 块放置在可能生成异常的代码周围。 以下是使用 TRY - CATCH 的语法:cx_root可以捕获一切异常。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lv</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">i</span>.
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lv_message</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>.
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lr_exc</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cx_root</span>.
+<span style="color:#a6e22e">TRY</span> .
+  <span style="color:#a6e22e">lv</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_sy_arithmetic_error</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">lr_exc</span>.
+  <span style="color:#a6e22e">lv_message</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lr_exc</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_text</span>( ).
+  <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">/ lv_message.</span>
+<span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_root</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">lr_exc</span>.
+  <span style="color:#a6e22e">lv_message</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lr_exc</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_text</span>( ).
+  <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">/ lv_message.</span>
+<span style="color:#a6e22e">ENDTRY</span>.
+</code></pre></div><h4 id="异常的属性和方法">异常的属性和方法</h4>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>属性和说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Textid</strong>：用于定义异常的不同文本，并且也影响方法 get_text 的结果</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Previous</strong>：此属性可以存储原始异常，允许您构建异常链</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>get_text</strong>：这将根据异常的系统语言将文本表示作为字符串返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>get_longtext</strong>：这会将异常的文本表示的长变体作为字符串返回</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>get_source_position</strong>：给出引发异常的程序名和行号</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>695</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_BAPI_GoodsMovementCancel/" class="prev" rel="prev" title=" Goods Movement Cacel "><i class="iconfont icon-dajiantou"></i>&nbsp; Goods Movement Cacel </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_NumberRange/" class="next" rel="next" title=" SAP Number Range Object "> SAP Number Range Object &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-07-09 00:00:00 \u002b0000 UTC',
+        title: 'SAP 异常处理',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

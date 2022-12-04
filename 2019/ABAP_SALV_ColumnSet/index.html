@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_DisplaySet/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_Color/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_ColumnSet/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV Columns 设置字段目录  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV Columns 设置字段目录  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV Columns 设置字段目录 "/>
+<meta name="twitter:description" content="Fieldcat 设置 Function ALV、OO ALV 可通过 Fieldcat 对列进行相关设置，SALV 也有类似于这样的东西，只不过不是 Fieldcat，而是通过 CL_SALV_COLUMN 对象来实现的。可以修改列"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV Columns 设置字段目录 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_ColumnSet\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  873 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_ColumnSet\/",
+  "datePublished": "2019-06-06T00:00:00\x2b00:00",
+  "dateModified": "2019-06-06T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV Columns 设置字段目录 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-06 >6 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="fieldcat-设置">Fieldcat 设置</h3>
+<p>Function ALV、OO ALV 可通过 Fieldcat 对列进行相关设置，SALV 也有类似于这样的东西，只不过不是 Fieldcat，而是通过 <code>CL_SALV_COLUMN</code> 对象来实现的。可以修改列的相关属性，包括列宽度，列的名字，删除列，列显示的位置，列字段参照的 DDIC 对象等。</p>
+<p><img src="/images/ABAP/SALV5.png" alt="CL_SALV_COLUMN"></p>
+<h4 id="cl_salv_columns_table">CL_SALV_COLUMNS_TABLE</h4>
+<p>设置整体的属性。当使用 set_optimize 时，单列属性设置 set_output_length 方法无效。</p>
+<p><img src="/images/ABAP/SALV6.png" alt="CL_SALV_COLUMNS_TABLE"></p>
+<h4 id="cl_salv_column_table">CL_SALV_COLUMN_TABLE</h4>
+<p>设置单个列的属性。</p>
+<p><img src="/images/ABAP/SALV7.png" alt="CL_SALV_COLUMN_TABLE"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+<span style="color:#75715e">*Set the various column properties</span>
+    <span style="color:#66d9ef">METHODS</span>: set_columns <span style="color:#66d9ef">CHANGING</span> co_table <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+<span style="color:#75715e">*Setting up the Columns</span>
+    <span style="color:#66d9ef">CALL METHOD</span> me<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_columns <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#f92672">=</span> gr_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_columns</span>.
+    <span style="color:#66d9ef">DATA</span>: lr_columns <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_columns_table.
+    <span style="color:#66d9ef">DATA</span>: lr_column  <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_column_table.
+    <span style="color:#75715e">&#34;Get all the Columns&#34;
+</span><span style="color:#75715e"></span>    lr_columns <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_columns</span>( ).
+    <span style="color:#75715e">&#34;Set the Column optimization&#34;
+</span><span style="color:#75715e"></span>    lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_optimize</span>( <span style="color:#e6db74">&#39;X&#39;</span> ).
+    <span style="color:#75715e">&#34;Process individual columns&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: ls_color <span style="color:#66d9ef">TYPE </span>lvc_s_colo. <span style="color:#75715e">&#34;颜色设置&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;Change the properties of the Columns KUNNR&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        lr_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;KUNNR&#39;</span> ). <span style="color:#75715e">&#34;需要处理的列&#34;
+</span><span style="color:#75715e"></span>        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_long_text</span>( <span style="color:#e6db74">&#39;Sold-To Party&#39;</span> ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_medium_text</span>( <span style="color:#e6db74">&#39;Sold-To Party&#39;</span> ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_short_text</span>( <span style="color:#e6db74">&#39;Sold-To&#39;</span> ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_output_length</span>( <span style="color:#ae81ff">10</span> ).
+        <span style="color:#75715e">&#34;隐藏设置&#34;
+</span><span style="color:#75715e"></span>        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_visible</span>( if_salv_c_bool_sap<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>false ).  <span style="color:#75715e">&#34;隐藏在Layout里&#34;
+</span><span style="color:#75715e"></span>        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_technical</span>( if_salv_c_bool_sap<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>true ). <span style="color:#75715e">&#34;完全隐藏&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">&#34;颜色设置&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CLEAR</span> ls_color.
+        ls_color<span style="color:#f92672">-</span>col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;6&#39;</span>.
+        ls_color<span style="color:#f92672">-</span>int <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+        ls_color<span style="color:#f92672">-</span>inv <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_color</span>( ls_color ).
+        <span style="color:#75715e">&#34;数值为空时，不显示0&#34;
+</span><span style="color:#75715e"></span>        lr_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;BET01&#39;</span> ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_zero</span>( <span style="color:#e6db74">&#39; &#39;</span> ).
+        <span style="color:#75715e">&#34;热点列设置&#34;
+</span><span style="color:#75715e"></span>        lr_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;AUFNR&#39;</span> ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_cell_type</span>( if_salv_c_cell_type<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>hotspot ).
+        ...
+      <span style="color:#66d9ef">CATCH</span> cx_salv_not_found.  <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;SET_COLUMNS&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div><h3 id="单元格-style设置">单元格 Style设置</h3>
+<p>单元格 style 在 ALV 中扮演着十分重要的角色，可以通过单元格 style 将单元格设置成文本、checkbox、热点(hotspot)、链接(link)、按钮、下拉列表等。</p>
+<p><img src="/images/ABAP/SALV10.png" alt="IF_SALV_C_CELL_TYPE"></p>
+<ul>
+<li>在 SALV 最终输出内表中定义一个保存 style 的字段，字段类型为 salv_t_int4_column(表类型)，表类型中的结构(structure)定义如下，由一个列名和对应值组成。当不指定列名，只对 value 赋值，意味着整行的单元格都应用同一个style
+<ul>
+<li><img src="/images/ABAP/SALV11.png" alt="SALV_S_INT4_COLUMN"></li>
+</ul>
+</li>
+<li>将单元格的 style 保存到内表定义的字段</li>
+<li>调用 cl_salv_columns_table-&gt;set_cell_type_column( ) 指定保存 style 的字段</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">get_data</span>.
+    <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;lfs_vbak&gt; <span style="color:#66d9ef">LIKE LINE OF</span> gt_vbak.
+    <span style="color:#66d9ef">DATA</span>: lt_celltype <span style="color:#66d9ef">TYPE </span>salv_t_int4_column.
+          ls_celltype <span style="color:#66d9ef">LIKE LINE OF</span> lt_celltype.
+    <span style="color:#66d9ef">LOOP AT </span>gt_vbak <span style="color:#66d9ef">ASSIGNING</span> &lt;lfs_vbak&gt;.
+      <span style="color:#66d9ef">CLEAR</span>: lt_celltype.
+      <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>tabix <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+        <span style="color:#75715e">&#34;第二行VBELN列设定hotspot&#34;
+</span><span style="color:#75715e"></span>        ls_celltype<span style="color:#f92672">-</span>columnname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;VBELN&#39;</span>.
+        ls_celltype<span style="color:#f92672">-</span>value      <span style="color:#f92672">=</span> if_salv_c_cell_type<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>hotspot.
+        <span style="color:#66d9ef">APPEND</span> ls_celltype <span style="color:#66d9ef">TO</span> lt_celltype.
+      <span style="color:#66d9ef">ELSEIF</span> sy<span style="color:#f92672">-</span>tabix <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+        <span style="color:#75715e">&#34;第三行ERDAT单元格设定成按钮&#34;
+</span><span style="color:#75715e"></span>        ls_celltype<span style="color:#f92672">-</span>columnname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ERDAT&#39;</span>.
+        ls_celltype<span style="color:#f92672">-</span>value      <span style="color:#f92672">=</span> if_salv_c_cell_type<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>button.
+        <span style="color:#66d9ef">APPEND</span> ls_celltype <span style="color:#66d9ef">TO</span> lt_celltype.
+      <span style="color:#66d9ef">ELSEIF</span> sy<span style="color:#f92672">-</span>tabix <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+        <span style="color:#75715e">&#34;不指定列就意味着整个第5行都设置成hotspot&#34;
+</span><span style="color:#75715e"></span>        ls_celltype<span style="color:#f92672">-</span>columnname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+        ls_celltype<span style="color:#f92672">-</span>value      <span style="color:#f92672">=</span> if_salv_c_cell_type<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>hotspot.
+        <span style="color:#66d9ef">APPEND</span> ls_celltype <span style="color:#66d9ef">TO</span> lt_celltype.
+      <span style="color:#66d9ef">ENDIF</span>.
+      &lt;lfs_vbak&gt;<span style="color:#f92672">-</span>t_celltype <span style="color:#f92672">=</span> lt_celltype.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;get_data&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_columns</span>.
+    <span style="color:#75715e">&#34;Get all the Columns&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: lr_columns <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_columns_table.
+    lr_columns <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_columns</span>( ).
+    lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_optimize</span>( <span style="color:#e6db74">&#39;X&#39;</span> ).
+    <span style="color:#75715e">&#34;设置单元格style的字段&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_cell_type_column</span>( <span style="color:#e6db74">&#39;T_CELLTYPE&#39;</span> ).
+      <span style="color:#66d9ef">CATCH</span> cx_salv_data_error.
+    <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;SET_COLUMNS&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>873</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_DisplaySet/" class="prev" rel="prev" title=" SALV Display 设置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV Display 设置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Color/" class="next" rel="next" title=" SALV Color 设置 "> SALV Color 设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-06 00:00:00 \x2b0000 UTC',
+        title: ' SALV Columns 设置字段目录 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

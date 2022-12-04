@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_ColumnSpecificGroup/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_Editable/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_ResultRead/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ALV 结果读取  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ALV 结果读取  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ALV 结果读取 "/>
+<meta name="twitter:description" content="传递 ALV 内表数据到被调用的程序 使用 SAP MEMORY 或者 ABAP MEMORY 在调用的程序中：EXPORT it_tab TO MEMORY &lsquo;Z_SUBMIT_MEMORY&rsquo;. 在被调用的程序中：IMPORT T_ITAB FROM MEMORY &lsquo;Z_SUBMIT_MEMORY&rsquo;. 使用类 CL_SALV_BS_RUNTIME_INFO 这个是 SAP 提供的"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ALV 结果读取 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_ResultRead\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  749 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_ResultRead\/",
+  "datePublished": "2019-06-09T00:00:00\x2b00:00",
+  "dateModified": "2019-06-09T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ALV 结果读取 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-09 >9 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="传递-alv-内表数据到被调用的程序">传递 ALV 内表数据到被调用的程序</h3>
+<h4 id="使用-sap-memory-或者-abap-memory">使用 SAP MEMORY 或者 ABAP MEMORY</h4>
+<ul>
+<li>
+<p>在调用的程序中：EXPORT it_tab TO MEMORY &lsquo;Z_SUBMIT_MEMORY&rsquo;.</p>
+</li>
+<li>
+<p>在被调用的程序中：IMPORT T_ITAB FROM MEMORY &lsquo;Z_SUBMIT_MEMORY&rsquo;.</p>
+</li>
+</ul>
+<h4 id="使用类-cl_salv_bs_runtime_info">使用类 CL_SALV_BS_RUNTIME_INFO</h4>
+<p>这个是 SAP 提供的 API 所以我们不关心如何存储所以该方法不需要修改目标程序就可以直接得到 ALV 显示的结果， 但不能设置目标程序的中断点，需显示 ALV 的函数执行完毕方可获取到数据。</p>
+<p>CL_SALV_BS_RUNTIME_INFO 与读取 ALV 有关的方法：</p>
+<ul>
+<li>
+<p>SET( )：此方法初始化类（清除内存区域），然后允许标志的设置让任何后续 ALV 对象如何工作。它应该在装程序调用 ALV 报告程序之前被调用。</p>
+<ul>
+<li>DISPLAY：将它设为 abap_false 强制所有后续 ALV 报告不会被输出到 GUI。</li>
+<li>METADATA：将它设为 abap_false 防止基本信息（布局，字段目录等）被取到内存中，一般我们不需要。</li>
+<li>DATA：将它设为 abap_true 迫使数据表导出到内存而不是显示报表。</li>
+</ul>
+</li>
+<li>
+<p>GET_DATA_REF( )：非常灵活的 GET_DATA * 方法，这种方法可以用来访问该数据表变量的引用（动态而且易用），所以即使不知道 ALV 数据表的结构也没关系。</p>
+<ul>
+<li>R_DATA：输出 ALV 数据表。</li>
+<li>R_DATA_LINE：如果执行的 ALV 有 HEADER 的（可选）。</li>
+</ul>
+</li>
+<li>
+<p>GET_DATA( )：如果知道需要调用的 ALV 数据表的结构，可以使用这个方法。</p>
+<ul>
+<li>T_DATA：输出参数数据表。</li>
+<li>T_DATA_LINE：如果执行的 ALV 有 HEADER（可选）。</li>
+</ul>
+</li>
+<li>
+<p>CLEAR_ALL( )： 此方法清除在 set 方法设置的标志。如果之后本程序还需要显示其他 ALV 那么这个方法尤为重要。如果不清除设置，你的 ALV 就不会被显示出来。</p>
+</li>
+</ul>
+<h4 id="代码示例">代码示例</h4>
+<ul>
+<li>将 Submit 的 salv 设置为不显示模式</li>
+<li>Submit SALV 程序</li>
+<li>调用 cl_salv_bs_runtime_info=&gt;get_data_ref() 取得结果</li>
+<li>调用 cl_salv_bs_runtime_info=&gt;clear_all() 清空设置</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> zalv_result_get.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;lt_data&gt; <span style="color:#66d9ef">TYPE </span>STANDARD <span style="color:#66d9ef">TABLE</span>.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fs&gt;.
+<span style="color:#66d9ef">DATA</span>: lr_data <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>.
+<span style="color:#66d9ef">DATA</span>: lr_data_descr  <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_datadescr.
+<span style="color:#75715e">&#34;设定SALV运行模式&#34;
+</span><span style="color:#75715e"></span>cl_salv_bs_runtime_info<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set</span>( 
+  <span style="color:#66d9ef">EXPORTING</span>  
+    display   <span style="color:#f92672">=</span> abap_false
+    metadata  <span style="color:#f92672">=</span> abap_false
+    <span style="color:#66d9ef">data</span>      <span style="color:#f92672">=</span> abap_true ).
+<span style="color:#75715e">&#34; 调用目标程序 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SUBMIT</span> z_report
+  <span style="color:#66d9ef">EXPORTING</span> LIST <span style="color:#66d9ef">TO</span> MEMORY <span style="color:#66d9ef">AND RETURN</span>
+    <span style="color:#66d9ef">WITH</span> s_pspid <span style="color:#66d9ef">IN</span> it_project_number
+    <span style="color:#66d9ef">WITH</span> s_erdat <span style="color:#66d9ef">IN</span> it_wbs_creat_date.
+<span style="color:#66d9ef">TRY</span>.
+   <span style="color:#75715e">&#34; 获取ALV显示数据 &#34;
+</span><span style="color:#75715e"></span>   cl_salv_bs_runtime_info<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_data_ref</span>(
+       <span style="color:#66d9ef">IMPORTING</span> 
+         r_data_descr <span style="color:#f92672">=</span> lr_data_descr ).
+   <span style="color:#66d9ef">CHECK</span> lr_data_descr <span style="color:#f92672">IS NOT INITIAL</span>.
+   <span style="color:#66d9ef">CREATE DATA</span> lr_data <span style="color:#66d9ef">TYPE </span>HANDLE lr_data_descr.
+   <span style="color:#66d9ef">ASSIGN</span> lr_data-&gt;* <span style="color:#66d9ef">TO</span> &lt;lt_data&gt;.
+   cl_salv_bs_runtime_info<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_data</span>(
+      <span style="color:#66d9ef">IMPORTING</span>
+        t_data <span style="color:#f92672">=</span> &lt;lt_data&gt; ).
+   <span style="color:#66d9ef">IF</span> &lt;lt_data&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+     LOOP <span style="color:#66d9ef">AT</span> &lt;lt_data&gt; <span style="color:#66d9ef">ASSIGNING</span> &lt;fs&gt;.
+       <span style="color:#66d9ef">MOVE-CORRESPONDING</span> &lt;fs&gt; <span style="color:#66d9ef">TO</span> result_data.
+       <span style="color:#66d9ef">APPEND</span> result_data.
+       <span style="color:#66d9ef">CLEAR</span>: result_data.
+     <span style="color:#66d9ef">ENDLOOP</span>.
+   <span style="color:#66d9ef">ENDIF</span>.
+ <span style="color:#66d9ef">CATCH</span> cx_salv_bs_sc_runtime_info.
+   <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">`Error when call function get data`</span> TYPE <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#66d9ef">ENDTRY</span>.
+<span style="color:#75715e">&#34; 清除初始设置 &#34;
+</span><span style="color:#75715e"></span>cl_salv_bs_runtime_info<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">clear_all</span>( ).
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>749</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_ColumnSpecificGroup/" class="prev" rel="prev" title=" SALV 布局列分组 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV 布局列分组 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Editable/" class="next" rel="next" title=" SALV 可编辑设置 "> SALV 可编辑设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-09 00:00:00 \x2b0000 UTC',
+        title: ' ALV 结果读取 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

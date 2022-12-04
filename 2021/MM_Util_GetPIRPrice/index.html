@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_HttpFunction/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/WEB_H5_ECS6/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/MM_Util_GetPIRPrice/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            获取 Purchase Info Record Price  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 获取 Purchase Info Record Price  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 获取 Purchase Info Record Price "/>
+<meta name="twitter:description" content="Tables EINA：Purchasing Info Record: General Data INFNR：Number of Purchasing Info Record MATNR：Material Number LIFNR：Vendor Account Number EINE："/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 获取 Purchase Info Record Price ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/MM_Util_GetPIRPrice\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  613 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/MM_Util_GetPIRPrice\/",
+  "datePublished": "2021-03-17T00:00:00\x2b00:00",
+  "dateModified": "2021-03-17T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 获取 Purchase Info Record Price </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-03-17 >17 March 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="tables">Tables</h3>
+<ul>
+<li><code>EINA</code>：Purchasing Info Record: General Data
+<ul>
+<li><strong>INFNR</strong>：Number of Purchasing Info Record</li>
+<li><strong>MATNR</strong>：Material Number</li>
+<li><strong>LIFNR</strong>：Vendor Account Number</li>
+</ul>
+</li>
+<li><code>EINE</code>：Purchasing Info Record: Purchasing Organization Data
+<ul>
+<li><strong>INFNR</strong>：Number of Purchasing Info Record</li>
+<li><strong>EKORG</strong>：Purchasing Organization</li>
+<li><strong>ESOKZ</strong>：Purchasing info record category</li>
+<li><strong>WERKS</strong>：Plant</li>
+</ul>
+</li>
+<li><code>A017</code>：Material Info Record (Plant-Specific)
+<ul>
+<li><strong>LIFNR</strong>：Vendor Account Number</li>
+<li><strong>MATNR</strong>：Material Number</li>
+<li><strong>EKORG</strong>：Purchasing Organization</li>
+<li><strong>ESOKZ</strong>：Purchasing info record category</li>
+<li><strong>WERKS</strong>：Plant</li>
+<li><strong>KNUMH</strong>：Condition record number</li>
+</ul>
+</li>
+<li><code>KONV</code>：Conditions for Transaction Data</li>
+<li><code>KONP</code>：Conditions (Item)
+<ul>
+<li><strong>KNUMH</strong>：Condition record number</li>
+</ul>
+</li>
+<li><code>KOND</code>：Conditions(Data)</li>
+<li><code>KONH</code>：Conditions(Header)</li>
+<li><code>KONM</code>：Conditions (1-Dimensional Quantity Scale)
+<ul>
+<li><strong>KNUMH</strong>：Condition record number, if the <em>KONP-KZBZG</em> eq &lsquo;C&rsquo;, there is a tiered price, normally, the highest price in <em>KONM</em> will be recorded into <em>KONP</em>.</li>
+</ul>
+</li>
+<li><code>EORD</code>：Purchasing Source List
+<ul>
+<li><strong>MATNR</strong>：Material Number</li>
+<li><strong>WERKS</strong>：Plant</li>
+<li><strong>LIFNR</strong>：Vendor Account Number</li>
+<li><strong>FLIFN</strong>：Indicator: Fixed vendor</li>
+</ul>
+</li>
+<li><code>LFA1</code>：Vendor Info
+<ul>
+<li><strong>LIFNR：Vendor Account Numbe</strong>r</li>
+</ul>
+</li>
+</ul>
+<h3 id="condition-types-t685t-table">Condition Types T685T Table</h3>
+<p>标准表 T685T 包含定价的所有 Condition Types。</p>
+<p>T685T Condition Types 表的字段是：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>T685T FIELDS</strong></th>
+<th align="left">DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SPRAS</td>
+<td align="left">Language Key</td>
+</tr>
+<tr>
+<td align="left">KVEWE</td>
+<td align="left">Usage of the condition table</td>
+</tr>
+<tr>
+<td align="left">KAPPL</td>
+<td align="left">Application</td>
+</tr>
+<tr>
+<td align="left">KSCHL</td>
+<td align="left">Condition Type</td>
+</tr>
+<tr>
+<td align="left">VTEXT</td>
+<td align="left">Name</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sap-most-common-condition-types">SAP Most Common Condition Types</h4>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>CONDITION TYPES</strong></th>
+<th align="left">DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">A001</td>
+<td align="left">Rebates</td>
+</tr>
+<tr>
+<td align="left">FRA1</td>
+<td align="left">Freight %</td>
+</tr>
+<tr>
+<td align="left">HB00</td>
+<td align="left">Header Surch.(Value)</td>
+</tr>
+<tr>
+<td align="left">HB01</td>
+<td align="left">Header Disc.(Value)</td>
+</tr>
+<tr>
+<td align="left">K000</td>
+<td align="left">Contrct HeaderDisc %</td>
+</tr>
+<tr>
+<td align="left">MM00</td>
+<td align="left">Minimum Qty (Amount)</td>
+</tr>
+<tr>
+<td align="left">MM01</td>
+<td align="left">Minimum Qty (%)</td>
+</tr>
+<tr>
+<td align="left">MP01</td>
+<td align="left">Market Price</td>
+</tr>
+<tr>
+<td align="left">MWST</td>
+<td align="left">Input Tax</td>
+</tr>
+<tr>
+<td align="left">P000</td>
+<td align="left">Gross Price</td>
+</tr>
+<tr>
+<td align="left">R000</td>
+<td align="left">Discount % on Gross</td>
+</tr>
+<tr>
+<td align="left">PA00</td>
+<td align="left">Promotion Price</td>
+</tr>
+<tr>
+<td align="left">P001</td>
+<td align="left">Gross Price</td>
+</tr>
+<tr>
+<td align="left">PRS</td>
+<td align="left">Total Price</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>613</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_HttpFunction/" class="prev" rel="prev" title=" ABAP 调用HTTP请求 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 调用HTTP请求 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/WEB_H5_ECS6/" class="next" rel="next" title=" ECMAScript6 知识了解 "> ECMAScript6 知识了解 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-03-17 00:00:00 \x2b0000 UTC',
+        title: ' 获取 Purchase Info Record Price ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

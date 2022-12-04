@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P4/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_SearchOVS/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_TriggerEvents/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Web Dynpro ABAP:Trigger ALV Events  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Web Dynpro ABAP:Trigger ALV Events  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Web Dynpro ABAP:Trigger ALV Events "/>
+<meta name="twitter:description" content="Question 由于需要一个可编辑的 ALV 表，因此必须使用 ALV 事件，例如 on_cell_action事件和 on_click 事件。 尽管我已经注册了 ALV 事件，但是在调试过程中，无法"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Web Dynpro ABAP:Trigger ALV Events ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_TriggerEvents\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  581 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_TriggerEvents\/",
+  "datePublished": "2018-10-23T00:00:00\x2b00:00",
+  "dateModified": "2018-10-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Web Dynpro ABAP:Trigger ALV Events </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-23 >23 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="question">Question</h3>
+<p>由于需要一个可编辑的 ALV 表，因此必须使用 ALV 事件，例如 on_cell_action事件和 on_click 事件。</p>
+<p>尽管我已经注册了 ALV 事件，但是在调试过程中，无法触发 ALV 事件，例如 on cell action 事件。由于未启用 ALV 事件，因此该事件触发失败。</p>
+<p>在以 WDDOMODIFYVIEW 方法在 Web Dynpro 组件中为动态创建的 ALV 启用 ALV 事件后，成功地成功触发了 ALV 事件。</p>
+<p>在本 Web Dynpro 教程中，我将展示如何为 ALV 事件注册事件处理程序以及如何使用 ABAP 代码以 WDDOMODIFYVIEW 方法启用事件。</p>
+<h3 id="在-web-dynpro-组件中注册-alv-事件处理程序">在 Web Dynpro 组件中注册 ALV 事件处理程序</h3>
+<p>要在 Web Dynpro 中触发 ALV 事件，例如 ON_CLICK 或 ON_CELL_ACTION， ABAP开发人员应为相应的事件方法注册事件处理程序，并应在 Web Dynpro 组件的 WDDOMODIFYVIEW 方法中启用相关事件。</p>
+<p>为了注册上述事件，请转到 View 对象，ABAP 开发人员将在其中显示 ALV 表对象。然后切换到 Methods 选项卡，如下面的屏幕截图所示:</p>
+<p><img src="/images/webdynpro/webdynproABAP/Portal32.png" alt="Method Types"></p>
+<p>首先从 Method Type 下拉列中选择 <strong>Event Handler</strong>。然后在 <strong>Event</strong> 的列上使用搜索帮助,选择相关组件使用所需的事件。然后键入事件处理程序方法的名称和描述。</p>
+<p><img src="/images/webdynpro/webdynproABAP/Portal33.png" alt="Event Types"></p>
+<h3 id="在-web-dynpro-wddomodifyview-方法中启用-alv-事件">在 Web Dynpro WDDOMODIFYVIEW 方法中启用 ALV 事件</h3>
+<p>在成功触发 ALV 事件之前，应修改 Web Dynpro 组件 WDDOMODIFYVIEW 方法以启用 ALV 事件。以下 ABAP 代码可用于启用 WDDOMODIFYVIEW 方法中的 ALV 事件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* Data Declaration</span>
+<span style="color:#66d9ef">data</span> alv_cmp_usage <span style="color:#66d9ef">type ref to</span> if_wd_component_usage.
+<span style="color:#66d9ef">data</span> alv_controller <span style="color:#66d9ef">type ref to</span> iwci_salv_wd_table .
+<span style="color:#66d9ef">data</span> alv_config <span style="color:#66d9ef">type ref to</span> cl_salv_wd_config_table.
+<span style="color:#75715e">* Instantiate ALV </span>
+alv_cmp_usage <span style="color:#f92672">=</span> WD_THIS<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">WD_CPUSE_ALV_OPENITEMS</span>( ).
+<span style="color:#66d9ef">IF</span> alv_cmp_usage<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">HAS_ACTIVE_COMPONENT</span>( ) <span style="color:#f92672">is initial</span>.
+  alv_cmp_usage<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">CREATE_COMPONENT</span>( ).
+<span style="color:#66d9ef">ENDIF</span>.
+alv_controller <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">wd_cpifc_alv_openitems</span>( ).
+<span style="color:#75715e">* Call get_model of Interface Controller to get reference of ALV</span>
+alv_config <span style="color:#f92672">=</span> lalv_controller<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_model</span>( ).
+<span style="color:#75715e">* Enable the ON_CELL_ACTION Event</span>
+<span style="color:#66d9ef">call method</span> alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>if_salv_wd_table_settings~set_cell_action_event_enabled
+ <span style="color:#66d9ef">exporting</span>
+  <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> ABAP_TRUE .
+</code></pre></div><p>当单击 ALV 行或在可编辑的 ALV 表单元上按 Enter 键时，将触发这些事件处理程序。可以在这些 ALV 事件处理程序方法中添加自定义代码。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>581</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P4/" class="prev" rel="prev" title=" Web Dynpro ABAP Program:ALV_VIEW-Function "><i class="iconfont icon-dajiantou"></i>&nbsp; Web Dynpro ABAP Program:ALV_VIEW-Function </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_SearchOVS/" class="next" rel="next" title=" Web Dynpro ABAP:OVS搜索帮助 "> Web Dynpro ABAP:OVS搜索帮助 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-10-23 00:00:00 \x2b0000 UTC',
+        title: ' Web Dynpro ABAP:Trigger ALV Events ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

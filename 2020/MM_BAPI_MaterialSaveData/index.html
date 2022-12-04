@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/FI_DocumentPost/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_Enhance_MIGO_Exits/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_BAPI_MaterialSaveData/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            批量创建/修改物料主数据  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 批量创建/修改物料主数据  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 批量创建/修改物料主数据 "/>
+<meta name="twitter:description" content="BAPI_MATERIAL_SAVEDATA 使用实例 REPORT ZUPDATE_MATNR. &#34;$. Region BAPI Data&#34; DATA gs_bapimathead TYPE bapimathead. &#34; 物料号 物料类型 物料视图表 &#34; DATA gs_bapi_mara TYPE bapi_mara. &#34; MARA数据-基本视图数据 &#34; DATA gs_bapi_marax TYPE bapi_marax. &#34; 变更数据标识 &#34; DATA gs_bapi_mvke TYPE bapi_mvke. &#34; 销售视图 &#34;"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 批量创建\/修改物料主数据 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_MaterialSaveData\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  2174 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_MaterialSaveData\/",
+  "datePublished": "2020-08-06T00:00:00\x2b00:00",
+  "dateModified": "2020-08-06T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 批量创建/修改物料主数据 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-08-06 >6 August 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="bapi_material_savedata-使用实例">BAPI_MATERIAL_SAVEDATA 使用实例</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZUPDATE_MATNR.
+<span style="color:#75715e">&#34;$. Region BAPI Data&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapimathead <span style="color:#66d9ef">TYPE </span>bapimathead. <span style="color:#75715e">&#34; 物料号 物料类型 物料视图表 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mara   <span style="color:#66d9ef">TYPE </span>bapi_mara.   <span style="color:#75715e">&#34; MARA数据-基本视图数据 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_marax  <span style="color:#66d9ef">TYPE </span>bapi_marax.  <span style="color:#75715e">&#34; 变更数据标识 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mvke   <span style="color:#66d9ef">TYPE </span>bapi_mvke.   <span style="color:#75715e">&#34; 销售视图 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mvkex  <span style="color:#66d9ef">TYPE </span>bapi_mvkex.
+<span style="color:#66d9ef">DATA</span> gs_bapi_marc   <span style="color:#66d9ef">TYPE </span>bapi_marc.   <span style="color:#75715e">&#34; 工厂级别数据 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_marcx  <span style="color:#66d9ef">TYPE </span>bapi_marcx.
+<span style="color:#66d9ef">DATA</span> gs_bapi_mpgd   <span style="color:#66d9ef">TYPE </span>bapi_mpgd.   <span style="color:#75715e">&#34; 计划数据 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mpgdx  <span style="color:#66d9ef">TYPE </span>bapi_mpgdx.
+<span style="color:#66d9ef">DATA</span> gs_bapi_mbew   <span style="color:#66d9ef">TYPE </span>bapi_mbew.   <span style="color:#75715e">&#34; 会计成本视图 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mbewx  <span style="color:#66d9ef">TYPE </span>bapi_mbewx.
+<span style="color:#66d9ef">DATA</span> gs_bapi_mard   <span style="color:#66d9ef">TYPE </span>bapi_mard.   <span style="color:#75715e">&#34; 存储位置 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mardx  <span style="color:#66d9ef">TYPE </span>bapi_mardx. 
+<span style="color:#66d9ef">DATA</span> gs_bapi_mlgn   <span style="color:#66d9ef">TYPE </span>bapi_mlgn.   <span style="color:#75715e">&#34; 仓库数据 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mlgnx  <span style="color:#66d9ef">TYPE </span>bapi_mlgnx.
+<span style="color:#66d9ef">DATA</span> gs_bapi_mlgt   <span style="color:#66d9ef">TYPE </span>bapi_mlgt.   <span style="color:#75715e">&#34; 存储类型数据 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gs_bapi_mlgtx  <span style="color:#66d9ef">TYPE </span>bapi_mlgtx.
+<span style="color:#66d9ef">DATA</span> gs_return      <span style="color:#66d9ef">TYPE </span>bapiret2.    <span style="color:#75715e">&#34; 返回参数 &#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">DATA</span> gt_bapi_makt   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> bapi_makt <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34; 物料描述 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gt_bapi_marm   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> bapi_marm <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.   <span style="color:#75715e">&#34; 物料的单位换算 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gt_bapi_marmx  <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> bapi_marmx <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span> gt_bapi_mlan   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> bapi_mlan <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span> .  <span style="color:#75715e">&#34; 税分类 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gt_bapi_mltx   <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> bapi_mltx <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span> .  <span style="color:#75715e">&#34; 文本数据 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> gt_return1 <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span>  bapi_matreturn2 <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.<span style="color:#75715e">&#34; 返回信息 &#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">DATA</span>:gs_bapi_te_mara  <span style="color:#66d9ef">LIKE </span>bapi_te_mara,     <span style="color:#75715e">&#34; 自定i增强字段:客户级别的物料数据 &#34;
+</span><span style="color:#75715e"></span>     gs_bapi_te_marax <span style="color:#66d9ef">LIKE </span>bapi_te_marax.
+<span style="color:#66d9ef">DATA</span>:gs_bapi_te_e1mvke  <span style="color:#66d9ef">LIKE </span>bapi_te_e1mvke, <span style="color:#75715e">&#34; 自定义增强字段：销售视图 &#34;
+</span><span style="color:#75715e"></span>     gs_bapi_te_e1mvkex <span style="color:#66d9ef">LIKE </span>bapi_te_e1mvkex.
+<span style="color:#66d9ef">DATA</span>:gt_extensionin  <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span>  bapiparex <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>, <span style="color:#75715e">&#34; 附加结构 &#34;
+</span><span style="color:#75715e"></span>     gt_extensioninx <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span>  bapiparexx <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>:l_valuepart(<span style="color:#ae81ff">960</span>),l_valuepartx(<span style="color:#ae81ff">960</span>).
+
+<span style="color:#66d9ef">DATA</span>: pr_unit <span style="color:#66d9ef">TYPE </span>meins,  <span style="color:#75715e">&#34; 基本单位 &#34;
+</span><span style="color:#75715e"></span>      pr_unit2 <span style="color:#66d9ef">TYPE </span>meins. <span style="color:#75715e">&#34; 重量单位 &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;$. Endregion BAPI Data&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">&#34;$. Region Structure&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:<span style="color:#66d9ef">BEGIN OF</span> itab OCCURS <span style="color:#ae81ff">0</span>,
+  head_material <span style="color:#66d9ef">TYPE </span>matnr,      <span style="color:#75715e">&#34; 物料号 &#34;
+</span><span style="color:#75715e"></span>  head_ind_sector <span style="color:#66d9ef">TYPE </span>mbrsh,    <span style="color:#75715e">&#34; 行业领域 &#34;
+</span><span style="color:#75715e"></span>  head_matl_type <span style="color:#66d9ef">TYPE </span>mtart,     <span style="color:#75715e">&#34; 物料类型 &#34;
+</span><span style="color:#75715e"></span>  t_makt_matl_desc <span style="color:#66d9ef">TYPE </span>maktx,   <span style="color:#75715e">&#34; 物料描述 &#34;
+</span><span style="color:#75715e"></span>  mara_base_uom <span style="color:#66d9ef">TYPE </span>meins,      <span style="color:#75715e">&#34; 基本计量单位 &#34;
+</span><span style="color:#75715e"></span>  mara_matl_group <span style="color:#66d9ef">TYPE </span>matkl,    <span style="color:#75715e">&#34; 物料组 &#34;
+</span><span style="color:#75715e"></span>  t_old_mat_no <span style="color:#66d9ef">TYPE </span>bismt,       <span style="color:#75715e">&#34; 型号 &#34;
+</span><span style="color:#75715e"></span>  mara_division <span style="color:#66d9ef">TYPE </span>spart,      <span style="color:#75715e">&#34; 产品组 &#34;
+</span><span style="color:#75715e"></span>  t_dsn_office <span style="color:#66d9ef">TYPE </span>labor,       <span style="color:#75715e">&#34; 实验室 / 办公室 &#34;
+</span><span style="color:#75715e"></span>  mara_item_cat <span style="color:#66d9ef">TYPE </span>mtpos_mara, <span style="color:#75715e">&#34; 普通项目组类别 &#34;
+</span><span style="color:#75715e"></span>  t_marm_gross_wt <span style="color:#66d9ef">TYPE </span>brgew,    <span style="color:#75715e">&#34; 毛重 &#34;
+</span><span style="color:#75715e"></span>  mara_unit_of_wt <span style="color:#66d9ef">TYPE </span>gewei,    <span style="color:#75715e">&#34; 重量单位 &#34;
+</span><span style="color:#75715e"></span>  mara_net_weight <span style="color:#66d9ef">TYPE </span>ntgew,    <span style="color:#75715e">&#34; 净重 &#34;
+</span><span style="color:#75715e"></span>  mara_size_dim <span style="color:#66d9ef">TYPE </span>groes,      <span style="color:#75715e">&#34; 大小 / 量纲 &#34;
+</span><span style="color:#75715e"></span>  zz_model <span style="color:#66d9ef">TYPE </span>char30,          <span style="color:#75715e">&#34; 屏幕增强字段 &#34;
+</span><span style="color:#75715e"></span>  zz_drawing <span style="color:#66d9ef">TYPE </span>char27,        <span style="color:#75715e">&#34; 屏幕增强字段 &#34;
+</span><span style="color:#75715e"></span>  zz_color <span style="color:#66d9ef">TYPE </span>char20,          <span style="color:#75715e">&#34; 屏幕增强字段 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">END OF</span> itab.
+<span style="color:#66d9ef">DATA</span> itab1 <span style="color:#66d9ef">TYPE </span>itab OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#75715e">* 原材料</span>
+<span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">BEGIN OF</span> str_material,
+  marc_plant <span style="color:#66d9ef">TYPE </span>werks_d,   <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>  mard_stge_loc <span style="color:#66d9ef">TYPE </span>lgort_d,<span style="color:#75715e">&#34;库存地点
+</span><span style="color:#75715e"></span>  mvke_sales_org <span style="color:#66d9ef">TYPE </span>vkorg, <span style="color:#75715e">&#34;销售组织
+</span><span style="color:#75715e"></span>  mvke_distr_chan <span style="color:#66d9ef">TYPE </span>vtweg,<span style="color:#75715e">&#34;分销渠道
+</span><span style="color:#75715e"></span>  head_material <span style="color:#66d9ef">TYPE </span>matnr,  <span style="color:#75715e">&#34;物料号
+</span><span style="color:#75715e"></span>  head_ind_sector <span style="color:#66d9ef">TYPE </span>mbrsh,<span style="color:#75715e">&#34;行业领域
+</span><span style="color:#75715e"></span>  head_matl_type <span style="color:#66d9ef">TYPE </span>mtart, <span style="color:#75715e">&#34;物料类型
+</span><span style="color:#75715e"></span>  t_makt_matl_desc <span style="color:#66d9ef">TYPE </span>maktx,<span style="color:#75715e">&#34;物料描述
+</span><span style="color:#75715e"></span>  mara_base_uom <span style="color:#66d9ef">TYPE </span>meins,  <span style="color:#75715e">&#34;基本计量单位
+</span><span style="color:#75715e"></span>  mara_matl_group <span style="color:#66d9ef">TYPE </span>matkl,<span style="color:#75715e">&#34;物料组
+</span><span style="color:#75715e"></span>  mara_extmatlgrp <span style="color:#66d9ef">TYPE </span>extwg,<span style="color:#75715e">&#34;外部物料组
+</span><span style="color:#75715e"></span>  mara_item_cat <span style="color:#66d9ef">TYPE </span>mtpos_mara,<span style="color:#75715e">&#34;普通项目组类别
+</span><span style="color:#75715e"></span>  t_marm_gross_wt <span style="color:#66d9ef">TYPE </span>brgew,<span style="color:#75715e">&#34;毛重
+</span><span style="color:#75715e"></span>  t_marm_unit_of_wt <span style="color:#66d9ef">TYPE </span>gewei,<span style="color:#75715e">&#34;重量单位
+</span><span style="color:#75715e"></span>  mara_net_weight <span style="color:#66d9ef">TYPE </span>ntgew,<span style="color:#75715e">&#34;净重
+</span><span style="color:#75715e"></span>  t_marm_volume <span style="color:#66d9ef">TYPE </span>volum,  <span style="color:#75715e">&#34;标准箱
+</span><span style="color:#75715e"></span>   t_marm_volumeunit <span style="color:#66d9ef">TYPE </span>voleh,<span style="color:#75715e">&#34;体积单位
+</span><span style="color:#75715e"></span>  mvke_sales_unit <span style="color:#66d9ef">TYPE </span>vrkme,<span style="color:#75715e">&#34;销售单位 
+</span><span style="color:#75715e"></span>
+  t_mlan_taxclass1 <span style="color:#66d9ef">TYPE </span>taxkm,  <span style="color:#75715e">&#34;税分类1
+</span><span style="color:#75715e"></span>  t_mlan_taxclass2 <span style="color:#66d9ef">TYPE </span>taxkm,  <span style="color:#75715e">&#34;税分类2
+</span><span style="color:#75715e"></span>  mvke_matl_stats <span style="color:#66d9ef">TYPE </span>stgma,   <span style="color:#75715e">&#34;物料统计组
+</span><span style="color:#75715e"></span>  mvke_acct_assgt <span style="color:#66d9ef">TYPE </span>ktgrm,   <span style="color:#75715e">&#34;科目设置组
+</span><span style="color:#75715e"></span>  mvke_item_cat <span style="color:#66d9ef">TYPE </span>mtpos,     <span style="color:#75715e">&#34;来自物料主文件的项目主类别
+</span><span style="color:#75715e"></span>  marc_availcheck <span style="color:#66d9ef">TYPE </span>mtvfp,   <span style="color:#75715e">&#34;可用性检查
+</span><span style="color:#75715e"></span>  mara_trans_grp <span style="color:#66d9ef">TYPE </span>tragr,    <span style="color:#75715e">&#34;运输组
+</span><span style="color:#75715e"></span>  marc_loadinggrp <span style="color:#66d9ef">TYPE </span>ladgr,   <span style="color:#75715e">&#34;装载组
+</span><span style="color:#75715e"></span>  marc_pur_group <span style="color:#66d9ef">TYPE </span>ekgrp,    <span style="color:#75715e">&#34;采购组
+</span><span style="color:#75715e"></span>  marc_batch_mgmt <span style="color:#66d9ef">TYPE </span>xchpf,   <span style="color:#75715e">&#34;批次管理标示
+</span><span style="color:#75715e"></span>  marc_auto_p_ord <span style="color:#66d9ef">TYPE </span>kautb,   <span style="color:#75715e">&#34;自动采购订单
+</span><span style="color:#75715e"></span>  marc_ind_post_to_insp_stock <span style="color:#66d9ef">TYPE </span>insmk_mat,<span style="color:#75715e">&#34;过账到检验库存
+</span><span style="color:#75715e"></span>  marc_quotausage <span style="color:#66d9ef">TYPE </span>usequ,   <span style="color:#75715e">&#34;配额安排
+</span><span style="color:#75715e"></span>  marc_sourcelist <span style="color:#66d9ef">TYPE </span>kordb,   <span style="color:#75715e">&#34;源清单
+</span><span style="color:#75715e"></span>  marc_mrp_group <span style="color:#66d9ef">TYPE </span>disgr,    <span style="color:#75715e">&#34;MRP组
+</span><span style="color:#75715e"></span>  marc_mrp_type <span style="color:#66d9ef">TYPE </span>dismm,     <span style="color:#75715e">&#34;MRP类型
+</span><span style="color:#75715e"></span>  marc_mrp_ctrler <span style="color:#66d9ef">TYPE </span>dispo,   <span style="color:#75715e">&#34;MRP控制者
+</span><span style="color:#75715e"></span>  marc_lotsizekey <span style="color:#66d9ef">TYPE </span>disls,   <span style="color:#75715e">&#34;批量
+</span><span style="color:#75715e"></span>  marc_minlotsize <span style="color:#66d9ef">TYPE </span>bstmi,   <span style="color:#75715e">&#34;最小批量
+</span><span style="color:#75715e"></span>  marc_maxlotsize <span style="color:#66d9ef">TYPE </span>bstma,   <span style="color:#75715e">&#34;最大批量
+</span><span style="color:#75715e"></span>  marc_round_val <span style="color:#66d9ef">TYPE </span>bstrf,    <span style="color:#75715e">&#34;舍入值
+</span><span style="color:#75715e"></span>  marc_proc_type <span style="color:#66d9ef">TYPE </span>beskz,    <span style="color:#75715e">&#34;采购类型
+</span><span style="color:#75715e"></span>  marc_backflush <span style="color:#66d9ef">TYPE </span>rgekm,    <span style="color:#75715e">&#34;反冲
+</span><span style="color:#75715e"></span>  marc_plnd_delry <span style="color:#66d9ef">TYPE </span>plifz,   <span style="color:#75715e">&#34;计划交货时间
+</span><span style="color:#75715e"></span>  marc_gr_pr_time <span style="color:#66d9ef">TYPE </span>webaz,   <span style="color:#75715e">&#34;收货处理时间
+</span><span style="color:#75715e"></span>  marc_safety_stk <span style="color:#66d9ef">TYPE </span>eisbe,   <span style="color:#75715e">&#34;安全库存
+</span><span style="color:#75715e"></span>  marc_sm_key <span style="color:#66d9ef">TYPE </span>fhori,       <span style="color:#75715e">&#34;计划边际码
+</span><span style="color:#75715e"></span>  marc_plan_strgp <span style="color:#66d9ef">TYPE </span>strgp,   <span style="color:#75715e">&#34;策略组
+</span><span style="color:#75715e"></span>  marc_alt_bom_id <span style="color:#66d9ef">TYPE </span>altsl,   <span style="color:#75715e">&#34;选择方法
+</span><span style="color:#75715e"></span>  stge_loc <span style="color:#66d9ef">TYPE </span>lgort_d,        <span style="color:#75715e">&#34;库存地点,占位，不用取出赋值，同上边库存地点
+</span><span style="color:#75715e"></span>  mbew_val_class <span style="color:#66d9ef">TYPE </span>bklas,    <span style="color:#75715e">&#34;评估类
+</span><span style="color:#75715e"></span>  mbew_price_ctrl <span style="color:#66d9ef">TYPE </span>vprsv,   <span style="color:#75715e">&#34;价格控制
+</span><span style="color:#75715e"></span>  mbew_price_unit <span style="color:#66d9ef">TYPE </span>peinh,   <span style="color:#75715e">&#34;价格单位
+</span><span style="color:#75715e"></span>  mbew_moving_pr <span style="color:#66d9ef">TYPE </span>verpr_bapi,<span style="color:#75715e">&#34;移动平均价
+</span><span style="color:#75715e"></span>  mbew_std_price <span style="color:#66d9ef">TYPE </span>stprs_bapi,<span style="color:#75715e">&#34;标准价格
+</span><span style="color:#75715e"></span>  mbew_qty_struct <span style="color:#66d9ef">TYPE </span>ck_ekalrel,<span style="color:#75715e">&#34;用QS的成本估算
+</span><span style="color:#75715e"></span>  mbew_orig_mat <span style="color:#66d9ef">TYPE </span>hkmat,      <span style="color:#75715e">&#34;物料来源
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">END OF</span> str_material.
+<span style="color:#66d9ef">DATA</span>: it_material <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> str_material.
+<span style="color:#75715e">&#34;$. Endregion Structure&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">prepare_data</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">excute_bapi</span>.
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  PREPARE_DATA</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">prepare_data</span> .
+  <span style="color:#66d9ef">DATA</span> : lv_matnr <span style="color:#66d9ef">TYPE </span>char18.
+  itab<span style="color:#f92672">-</span>head_material <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1500-620&#39;</span>.
+  itab<span style="color:#f92672">-</span>head_ind_sector <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>.
+  itab<span style="color:#f92672">-</span>head_matl_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;HIBE&#39;</span>.        <span style="color:#75715e">&#34; 物料类型 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>mara_base_uom <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CSE&#39;</span>.           <span style="color:#75715e">&#34; 基本计量单位 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>mara_matl_group <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;010&#39;</span>.      <span style="color:#75715e">&#34; 物料组 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>t_old_mat_no <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test007&#39;</span>.       <span style="color:#75715e">&#34; 型号 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>mara_division <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>.           <span style="color:#75715e">&#34; 产品组 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>t_dsn_office <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;001&#39;</span>.           <span style="color:#75715e">&#34; 实验室 / 办公室 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>mara_item_cat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NORM&#39;</span>.         <span style="color:#75715e">&#34; 普通项目组类别 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>mara_net_weight <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.            <span style="color:#75715e">&#34; 净重 &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*  itab-mara_normt = &#39;&#39;.               &#34; 行业标准描述 &#34;</span>
+  itab<span style="color:#f92672">-</span>mara_size_dim <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2*3&#39;</span>.          <span style="color:#75715e">&#34; 大小 / 量纲 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>t_marm_gross_wt <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span> / <span style="color:#ae81ff">10</span>.      <span style="color:#75715e">&#34; 毛重 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>mara_unit_of_wt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;KG&#39;</span>.         <span style="color:#75715e">&#34; 重量单位 &#34;
+</span><span style="color:#75715e"></span>  itab<span style="color:#f92672">-</span>t_makt_matl_desc <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;10W40 MOTOR OIL CASE test&#39;</span>.  <span style="color:#75715e">&#34; 物料描述 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      input  <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>head_material
+    <span style="color:#66d9ef">IMPORTING</span>
+      output <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>head_material.
+  lv_matnr <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>head_material.
+  <span style="color:#66d9ef">TRANSLATE</span> lv_matnr <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">UPPER CASE</span>.
+  itab<span style="color:#f92672">-</span>head_material <span style="color:#f92672">=</span> lv_matnr.
+  <span style="color:#66d9ef">APPEND</span> itab.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; PREPARE_DATA &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  EXCUTE_BAPI</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">excute_bapi</span> .
+  <span style="color:#66d9ef">LOOP AT </span>itab.
+    <span style="color:#66d9ef">CLEAR</span>: gs_bapimathead,gs_bapi_mara,gs_bapi_marax,gs_bapi_marc,
+    gs_bapi_marcx,gs_bapi_mbew,gs_bapi_mbewx,gs_return.
+    <span style="color:#66d9ef">CLEAR</span>: gt_bapi_makt,gt_bapi_marm,gt_bapi_marmx,gt_bapi_mlan,gt_return1.
+    <span style="color:#66d9ef">REFRESH</span>:gt_bapi_makt,gt_bapi_marm,gt_bapi_marmx,gt_bapi_mlan,gt_return1.
+    <span style="color:#75715e">&#34; 表头控制数据 &#34;
+</span><span style="color:#75715e"></span>    gs_bapimathead<span style="color:#f92672">-</span>material   <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>head_material.  <span style="color:#75715e">&#34; 物料编码 &#34;
+</span><span style="color:#75715e"></span>    gs_bapimathead<span style="color:#f92672">-</span>matl_type  <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>head_matl_type. <span style="color:#75715e">&#34; 物料类型 &#34;
+</span><span style="color:#75715e"></span>    gs_bapimathead<span style="color:#f92672">-</span>ind_sector <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>head_ind_sector.<span style="color:#75715e">&#34; 行业领域 &#34;
+</span><span style="color:#75715e"></span>    gs_bapimathead<span style="color:#f92672">-</span>basic_view <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.      <span style="color:#75715e">&#34; 基本数据视图 &#34;
+</span><span style="color:#75715e"></span>    gs_bapimathead<span style="color:#f92672">-</span>purchase_view <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.   <span style="color:#75715e">&#34; 采购视图 &#34;
+</span><span style="color:#75715e"></span>    gs_bapimathead<span style="color:#f92672">-</span>mrp_view <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.        <span style="color:#75715e">&#34; MRP数据视图 &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   gs_bapimathead-work_sched_view = &#39;X&#39;. &#34; 工作计划 &#34;</span>
+<span style="color:#75715e">*   gs_bapimathead-quality_view    = &#39;X&#39;. &#34; 质量管理视图 &#34;</span>
+<span style="color:#75715e">*   gs_bapimathead-storage_view    = &#39;X&#39;. &#34; 工厂存储 &#34;</span>
+<span style="color:#75715e">*   gs_bapimathead-sales_view      = &#39;X&#39;. &#34; 销售 &#34;</span>
+<span style="color:#75715e">*   gs_bapimathead-account_view    = &#39;X&#39;. &#34; 会计 &#34;</span>
+<span style="color:#75715e">*   gs_bapimathead-cost_view       = &#39;X&#39;. &#34; 成本 &#34;</span>
+    <span style="color:#66d9ef">CLEAR</span>: pr_unit,pr_unit2.
+    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_unit</span> <span style="color:#66d9ef">USING</span> itab<span style="color:#f92672">-</span>mara_base_uom <span style="color:#66d9ef">CHANGING</span> pr_unit.    <span style="color:#75715e">&#34; 基本单位 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_unit</span> <span style="color:#66d9ef">USING</span> itab<span style="color:#f92672">-</span>mara_unit_of_wt <span style="color:#66d9ef">CHANGING</span> pr_unit2. <span style="color:#75715e">&#34; 重量单位 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34; 基本数据视图数据 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>base_uom <span style="color:#f92672">=</span> pr_unit.                 <span style="color:#75715e">&#34; 基本计量单位 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>matl_group <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>mara_matl_group.  <span style="color:#75715e">&#34; 物料组 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>old_mat_no <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>t_old_mat_no.     <span style="color:#75715e">&#34; 型号 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>division <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>mara_division.      <span style="color:#75715e">&#34; 产品组 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>dsn_office <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>t_dsn_office.     <span style="color:#75715e">&#34; 实验室 / 办公室 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>item_cat <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>mara_item_cat.      <span style="color:#75715e">&#34; 普通项目组类别 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>unit_of_wt <span style="color:#f92672">=</span> pr_unit2.              <span style="color:#75715e">&#34; 重量单位 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>net_weight <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>mara_net_weight.  <span style="color:#75715e">&#34; 净重 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_mara<span style="color:#f92672">-</span>size_dim <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>mara_size_dim.      <span style="color:#75715e">&#34; 大小 / 量纲 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_marax<span style="color:#f92672">-</span>base_uom <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>matl_group <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>old_mat_no <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>division <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>dsn_office <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>item_cat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>unit_of_wt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>net_weight <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_marax<span style="color:#f92672">-</span>size_dim <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#75715e">&#34; 计量单位 &#34;
+</span><span style="color:#75715e"></span>    gt_bapi_marm<span style="color:#f92672">-</span>alt_unit <span style="color:#f92672">=</span> pr_unit.    <span style="color:#75715e">&#34; 替换单位 (必须为基本计量单位，否则会报错：没有转换因子) &#34;
+</span><span style="color:#75715e"></span>    gt_bapi_marm<span style="color:#f92672">-</span>numerator <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.         <span style="color:#75715e">&#34; 分子 &#34;
+</span><span style="color:#75715e"></span>    gt_bapi_marm<span style="color:#f92672">-</span>denominatr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.        <span style="color:#75715e">&#34; 分母 &#34;
+</span><span style="color:#75715e"></span>    gt_bapi_marm<span style="color:#f92672">-</span>gross_wt <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>t_marm_gross_wt. <span style="color:#75715e">&#34; 毛重 &#34;
+</span><span style="color:#75715e"></span>    gt_bapi_marm<span style="color:#f92672">-</span>unit_of_wt <span style="color:#f92672">=</span> pr_unit2. <span style="color:#75715e">&#34; 填充毛重时，注意此处需要添加重量单位，否则会提示没有指定单位 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> gt_bapi_marm.
+    <span style="color:#66d9ef">CLEAR</span> gt_bapi_marmx.
+    gt_bapi_marmx<span style="color:#f92672">-</span>alt_unit <span style="color:#f92672">=</span> pr_unit.   <span style="color:#75715e">&#34; 注意此处不是填充 &#39;X&#39; &#34;
+</span><span style="color:#75715e"></span>    gt_bapi_marmx<span style="color:#f92672">-</span>numerator <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gt_bapi_marmx<span style="color:#f92672">-</span>denominatr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gt_bapi_marmx<span style="color:#f92672">-</span>gross_wt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gt_bapi_marmx<span style="color:#f92672">-</span>unit_of_wt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.     <span style="color:#75715e">&#34; 此处填充 &#39;X&#39; &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> gt_bapi_marmx<span style="color:#f92672">-</span>alt_unit <span style="color:#f92672">IS NOT INITIAL</span> <span style="color:#f92672">AND</span> gt_bapi_marmx<span style="color:#f92672">-</span>numerator <span style="color:#f92672">IS NOT INITIAL</span>
+    <span style="color:#f92672">AND</span> gt_bapi_marmx<span style="color:#f92672">-</span>denominatr <span style="color:#f92672">IS NOT INITIAL</span>.
+      <span style="color:#66d9ef">APPEND</span> gt_bapi_marmx.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34; 物料描述 &#34;
+</span><span style="color:#75715e"></span>    gt_bapi_makt<span style="color:#f92672">-</span>langu_iso <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EN&#39;</span>.
+    gt_bapi_makt<span style="color:#f92672">-</span>matl_desc <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>t_makt_matl_desc.
+    <span style="color:#66d9ef">APPEND</span> gt_bapi_makt.
+    <span style="color:#75715e">&#34; 维护增强字段 &#34;
+</span><span style="color:#75715e"></span>    gs_bapi_te_mara<span style="color:#f92672">-</span>material   <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>head_material.
+    gs_bapi_te_mara<span style="color:#f92672">-</span>zz_model   <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>zz_model.
+    gs_bapi_te_mara<span style="color:#f92672">-</span>zz_drawing <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>zz_drawing.
+    gs_bapi_te_mara<span style="color:#f92672">-</span>zz_color   <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>zz_color.
+    l_valuepart <span style="color:#f92672">=</span> gs_bapi_te_mara.
+    gt_extensionin<span style="color:#f92672">-</span>structure <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BAPI_TE_MARA&#39;</span>.
+    gt_extensionin<span style="color:#f92672">-</span>valuepart1 <span style="color:#f92672">=</span> l_valuepart<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">240</span>).
+    gt_extensionin<span style="color:#f92672">-</span>valuepart2 <span style="color:#f92672">=</span> l_valuepart<span style="color:#f92672">+</span><span style="color:#ae81ff">240</span>(<span style="color:#ae81ff">240</span>).
+    gt_extensionin<span style="color:#f92672">-</span>valuepart3 <span style="color:#f92672">=</span> l_valuepart<span style="color:#f92672">+</span><span style="color:#ae81ff">480</span>(<span style="color:#ae81ff">240</span>).
+    <span style="color:#66d9ef">APPEND</span> gt_extensionin.
+    gs_bapi_te_marax<span style="color:#f92672">-</span>material  <span style="color:#f92672">=</span> itab<span style="color:#f92672">-</span>matnr.
+    gs_bapi_te_marax<span style="color:#f92672">-</span>zz_model  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_te_marax<span style="color:#f92672">-</span>zz_drawing_no <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    gs_bapi_te_marax<span style="color:#f92672">-</span>zz_color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    l_valuepartx <span style="color:#f92672">=</span> gs_bapi_te_marax.
+    gt_extensioninx<span style="color:#f92672">-</span>structure <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BAPI_TE_MARAX&#39;</span>.
+    gt_extensioninx<span style="color:#f92672">-</span>valuepart1 <span style="color:#f92672">=</span> l_valuepartx<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">240</span>).
+    gt_extensioninx<span style="color:#f92672">-</span>valuepart2 <span style="color:#f92672">=</span> l_valuepartx<span style="color:#f92672">+</span><span style="color:#ae81ff">240</span>(<span style="color:#ae81ff">240</span>).
+    gt_extensioninx<span style="color:#f92672">-</span>valuepart3 <span style="color:#f92672">=</span> l_valuepartx<span style="color:#f92672">+</span><span style="color:#ae81ff">480</span>(<span style="color:#ae81ff">240</span>).
+    <span style="color:#66d9ef">APPEND</span> gt_extensioninx.
+    <span style="color:#75715e">&#34; CALL BAPI &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_MATERIAL_SAVEDATA&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        headdata            <span style="color:#f92672">=</span> gs_bapimathead
+        clientdata          <span style="color:#f92672">=</span> gs_bapi_mara
+        clientdatax         <span style="color:#f92672">=</span> gs_bapi_marax
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">return</span>              <span style="color:#f92672">=</span> gs_return
+      <span style="color:#66d9ef">TABLES</span>
+        materialdescription <span style="color:#f92672">=</span> gt_bapi_makt[]
+        unitsofmeasure      <span style="color:#f92672">=</span> gt_bapi_marm[]
+        unitsofmeasurex     <span style="color:#f92672">=</span> gt_bapi_marmx[]
+        returnmessages      <span style="color:#f92672">=</span> gt_return1[].
+    <span style="color:#66d9ef">IF</span> gs_return<span style="color:#f92672">-</span>type <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+        <span style="color:#66d9ef">EXPORTING</span>
+          <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">WRITE</span> : gs_return<span style="color:#f92672">-</span>type,gs_return<span style="color:#f92672">-</span>message.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; EXCUTE_BAPI &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  frm_unit</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;UNIT1      text</span>
+<span style="color:#75715e">*      --&gt;UNIT2      text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_unit</span> <span style="color:#66d9ef">USING</span> unit1 <span style="color:#66d9ef">CHANGING</span> unit2.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_CUNIT_INPUT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      input          <span style="color:#f92672">=</span> unit1
+      <span style="color:#66d9ef">language</span>       <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu
+    <span style="color:#66d9ef">IMPORTING</span>
+      output         <span style="color:#f92672">=</span> unit2
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      unit_not_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#66d9ef">OTHERS</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">*   message id sy-msgid type sy-msgty number sy-msgno</span>
+<span style="color:#75715e">*           with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.</span>
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;FRM_UNIT&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2174</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/FI_DocumentPost/" class="prev" rel="prev" title=" FI 会计凭证过账 "><i class="iconfont icon-dajiantou"></i>&nbsp; FI 会计凭证过账 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_Enhance_MIGO_Exits/" class="next" rel="next" title=" User Exit for MIGO "> User Exit for MIGO &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-08-06 00:00:00 \x2b0000 UTC',
+        title: ' 批量创建\/修改物料主数据 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

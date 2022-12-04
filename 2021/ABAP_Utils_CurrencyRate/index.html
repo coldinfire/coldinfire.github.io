@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_RFC_Log-_Report/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_DynamicFM/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_CurrencyRate/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 外币金额汇率转换  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 外币金额汇率转换  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 外币金额汇率转换 "/>
+<meta name="twitter:description" content="SAP 金额/汇率处理逻辑 SAP 中对于金额和汇率字段的处理(一般是会计相关的：会计发票、销售发票、采购发票等)有点特殊，并不是说你在前台看到的数据是多"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 外币金额汇率转换 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_CurrencyRate\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI, abaputils",
+  "wordcount":  1065 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_CurrencyRate\/",
+  "datePublished": "2021-10-15T00:00:00\x2b00:00",
+  "dateModified": "2021-10-15T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 外币金额汇率转换 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-10-15 >15 October 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-金额汇率处理逻辑">SAP 金额/汇率处理逻辑</h3>
+<p>SAP 中对于金额和汇率字段的处理(一般是会计相关的：会计发票、销售发票、采购发票等)有点特殊，并不是说你在前台看到的数据是多少就在系统表中写多少。</p>
+<p><strong>金额</strong>：有些货币的金额因为有转换因子的存在，存入表之前 SAP 会先将金额除以转换因子再存入，这些金额在取出来的时候需要进行相应的转换。</p>
+<ul>
+<li><code>BAPI_CURRENCY_CONV_TO_INTERNAL</code>：转换成数据库中内部存储金额</li>
+<li><code>BAPI_CURRENCY_CONV_TO_EXTERNAL</code>：转换成外部实际金额</li>
+</ul>
+<p><strong>汇率</strong>：而有些汇率是会乘以一定的系数(一般也是100)，所以我们在通过汇率计算的时候需要除以一个数。系统提供了函数来读取金额和汇率的转换值。汇率分为：直接汇率(1外币=XX本位币)、间接汇率(XX外币=1本位币) 。</p>
+<ul>
+<li>汇率存放在表 TCURR 中，另外 TCUR* 有关于汇率的其他数据</li>
+<li>维护汇率的事物码：OB07、OB08</li>
+<li>汇率转换的函数都在 LSCUNUXX 程序中</li>
+</ul>
+<h4 id="处理场景">处理场景</h4>
+<p>处理金额的时候需要乘以转换值：这个值可以通过<code>CURRENCY_CONVERTING_FACTOR</code>函数获得</p>
+<p>处理汇率的时候需要除以转换值：这个值可以通过<code>READ_EXCHANGE_RATE</code> / <code>BAPI_EXCHANGERATE_GETDETAIL</code>获得</p>
+<h4 id="获取金额转换比率">获取金额转换比率</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lv_fact <span style="color:#66d9ef">TYPE </span>isoc_factor,
+      lv_amount <span style="color:#66d9ef">TYPE </span>bapicurr<span style="color:#f92672">-</span>bapicurr.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CURRENCY_CONVERTING_FACTOR&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">currency</span>          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JPY&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    factor            <span style="color:#f92672">=</span> lv_fact
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    too_many_decimals <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>            <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+lv_amount <span style="color:#f92672">=</span> lv_amount <span style="color:#f92672">*</span> lv_fact.
+</code></pre></div><p><img src="/images/ABAP/ABAP_Amount_1.png" alt="Factor"></p>
+<h4 id="获取不同币种之间汇率比率">获取不同币种之间汇率比率</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:p_waers <span style="color:#66d9ef">LIKE </span>t001<span style="color:#f92672">-</span>waers,
+     lv_amount <span style="color:#66d9ef">TYPE </span>bapicurr<span style="color:#f92672">-</span>bapicurr.
+<span style="color:#66d9ef">DATA</span>:l_fact <span style="color:#66d9ef">TYPE </span>i,
+     rate   <span style="color:#66d9ef">LIKE </span>vbrp<span style="color:#f92672">-</span>kursk.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;READ_EXCHANGE_RATE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">date</span>             <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum  <span style="color:#75715e">&#34;汇率日期&#34;
+</span><span style="color:#75715e"></span>    foreign_currency <span style="color:#f92672">=</span> p_waers   <span style="color:#75715e">&#34;外币&#34; 
+</span><span style="color:#75715e"></span>    local_currency   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CNY&#39;</span>     <span style="color:#75715e">&#34;本币&#34;
+</span><span style="color:#75715e"></span>    type_of_rate     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>       <span style="color:#75715e">&#34;类型&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IMPORTING</span>
+    exchange_rete    <span style="color:#f92672">=</span> rate      <span style="color:#75715e">&#34;汇率&#34;
+</span><span style="color:#75715e"></span>    foreign_factor   <span style="color:#f92672">=</span> l_fact    <span style="color:#75715e">&#34;比率&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">EXCEPTIONS</span>
+    no_rate_found    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    no_factors_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    no_spread_found  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    derived_2_times  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+    overflow         <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+    zero_rate        <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+    <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>. 
+lv_amount <span style="color:#f92672">=</span> lv_amount <span style="color:#f92672">*</span> rate / l_fact.
+</code></pre></div><h4 id="日元等特殊处理">日元等特殊处理</h4>
+<p>1、Exporting 各个参数一定不能用常量，要用变量</p>
+<p>2、碰到比较变态的货币，例如日元，它们是没有小数点的，系统内存储的和你看到的不同，这是因为有转换因子的存在，在存入表之前 SAP 会先将金额除以转换因子后再存入。可以使用以下 BAPI 进行相互转换：</p>
+<ul>
+<li><code>BAPI_CURRENCY_CONV_TO_INTERNAL</code> 将从系统取出的值转换为实际看到的值</li>
+<li><code>BAPI_CURRENCY_CONV_TO_EXTERNAL</code>：转换成外部实际金额</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZTEST_CURRENCY_CONV.
+PARAMETER: P_FC <span style="color:#66d9ef">TYPE </span>TCURC<span style="color:#f92672">-</span>WAERS <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;JPY&#39;</span>,
+           P_TC <span style="color:#66d9ef">TYPE </span>TCURC<span style="color:#f92672">-</span>WAERS <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;CNY&#39;</span>,
+           P_DATE <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>DATUM <span style="color:#66d9ef">DEFAULT</span> SY<span style="color:#f92672">-</span>DATUM,
+           P_CURR <span style="color:#66d9ef">TYPE </span>BAPICURR<span style="color:#f92672">-</span>BAPICURR,
+           P_KURST <span style="color:#66d9ef">TYPE </span>TCURR<span style="color:#f92672">-</span>KURST <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;M&#39;</span>.
+<span style="color:#66d9ef">DATA</span>: G_AMOUNT <span style="color:#66d9ef">TYPE </span>BSEG<span style="color:#f92672">-</span>WRBTR,
+      GV_INTER <span style="color:#66d9ef">LIKE </span>BSEG<span style="color:#f92672">-</span>WRBTR,
+      GV_FROM <span style="color:#66d9ef">TYPE </span>CHAR20,
+      GV_TO   <span style="color:#66d9ef">TYPE </span>CHAR20.
+<span style="color:#75715e">&#34;实际金额转换&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_CURRENCY_CONV_TO_INTERNAL&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">currency</span>             <span style="color:#f92672">=</span> P_FC
+    amount_external      <span style="color:#f92672">=</span> P_CURR
+    max_number_of_digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    amount_internal      <span style="color:#f92672">=</span> GV_INTER. 
+<span style="color:#75715e">&#34;外币金额转换成本地金额&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERT_TO_LOCAL_CURRENCY&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">date</span>             <span style="color:#f92672">=</span> P_DATE
+    foreign_amount   <span style="color:#f92672">=</span> GV_INTER
+    foreign_currency <span style="color:#f92672">=</span> P_FC
+    local_currency   <span style="color:#f92672">=</span> P_TC
+    type_of_rate     <span style="color:#f92672">=</span> P_KURST
+  <span style="color:#66d9ef">IMPORTING</span>
+    local_amount     <span style="color:#f92672">=</span> G_AMOUNT
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    no_rate_found    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">WRITE</span>: / P_FC,<span style="color:#e6db74">&#39;==》&#39;</span>,P_TC.
+<span style="color:#66d9ef">WRITE</span>: / P_CURR,<span style="color:#e6db74">&#39;==》&#39;</span>,G_AMOUNT.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1065</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_RFC_Log-_Report/" class="prev" rel="prev" title=" SAP RFC Function Log 报表 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP RFC Function Log 报表 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_DynamicFM/" class="next" rel="next" title=" ABAP 动态函数调用 "> ABAP 动态函数调用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-10-15 00:00:00 \x2b0000 UTC',
+        title: ' SAP 外币金额汇率转换 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

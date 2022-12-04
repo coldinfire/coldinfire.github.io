@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Animation/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Ajax/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Event/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            JQuery 事件  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" JQuery 事件  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" JQuery 事件 "/>
+<meta name="twitter:description" content="事件处理 事件绑定 标准绑定方式 $(selector).bind(event[,data],fn); 简写模式为：$(selector).event(function(eventObject)) 事件类型：类型包括"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " JQuery 事件 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_H5_JQuery_Event\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JQuery",
+  "wordcount":  595 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_H5_JQuery_Event\/",
+  "datePublished": "2017-12-06T00:00:00\x2b00:00",
+  "dateModified": "2017-12-06T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> JQuery 事件 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-12-06 >6 December 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="事件处理">事件处理</h2>
+<h3 id="事件绑定">事件绑定</h3>
+<h4 id="标准绑定方式">标准绑定方式</h4>
+<p><code>$(selector).bind(event[,data],fn);</code> 简写模式为：<code>$(selector).event(function(eventObject))</code></p>
+<ul>
+<li>
+<p>事件类型：类型包括 blur、focus、load、resize、scroll、unload、click、dblclick、mousedown/up/over/out/enter/leave、change、select、submit、keydown/up、keypress、error</p>
+</li>
+<li>
+<p>可选参数：作为 event.data 属性值传递给事件对象的额外数据对象</p>
+</li>
+<li>
+<p>处理函数：事件触发后的具体处理内容</p>
+</li>
+</ul>
+<h4 id="on--off-使用">on / off 使用</h4>
+<p><code>.on( events [, selector ] [, data ], handler(eventObject) )</code> ：在选定的元素上绑定一个或多个事件处理函数</p>
+<p><code>.off( events [, selector ] [, handler(eventObject) ] )</code>：移除一个或多个事件处理函数。不传递任何参数，则将组件上的所有事件全部解绑。</p>
+<p>on 属于绑定事件处理器 (event-handler-attachment)，可以绑定 BOM和 DOM 的既有事件，也可以绑定自定义事件。推荐使用该方式弹性的绑定更多的事件。</p>
+<h4 id="事件切换">事件切换</h4>
+<p>toggle()：用于模拟鼠标连续单击事件，实现事件切换。</p>
+<ul>
+<li>toggle(fn1,fn2,&hellip;fnN);</li>
+</ul>
+<h3 id="事件冒泡">事件冒泡</h3>
+<p>浏览器冒泡事件就是点击了一个子节点，如果该子节点绑定了事件，并且该子节点的上层节点也绑定了同样的事件，就会向上触发父节点，祖先节点的相同点击事件。</p>
+<p>冒泡的事件传递的最顶层是 document 文档对象。</p>
+<p>阻止事件冒泡的方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>return false;</td>
+<td>通过返回 false 来取消默认的行为并阻止事件起泡</td>
+</tr>
+<tr>
+<td>event.stopPropagation()</td>
+<td>阻止一个事件的冒泡行为</td>
+</tr>
+<tr>
+<td>event.preventDefault()</td>
+<td>阻止浏览器默认行为</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>595</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JQuery/">
+                    #JQuery</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Animation/" class="prev" rel="prev" title=" JQuery 动画 "><i class="iconfont icon-dajiantou"></i>&nbsp; JQuery 动画 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Ajax/" class="next" rel="next" title=" JQuery Ajax "> JQuery Ajax &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-12-06 00:00:00 \x2b0000 UTC',
+        title: ' JQuery 事件 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

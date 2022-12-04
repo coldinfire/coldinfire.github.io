@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_Build_Maven_Plugin/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/WEB_Frame_Mybatis_Config/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/WEB_Frame_Mybatis/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Mybatis 使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Mybatis 使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Mybatis 使用 "/>
+<meta name="twitter:description" content="Mybatis 官方文档：https://mybatis.org/mybatis-3/zh/configuration.html MyBatis 简介 MyBatis 是一款优秀的持久层"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Mybatis 使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/WEB_Frame_Mybatis\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Mybatis",
+  "wordcount":  1755 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/WEB_Frame_Mybatis\/",
+  "datePublished": "2018-01-05T00:00:00\u002b00:00",
+  "dateModified": "2018-01-05T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Mybatis 使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-01-05 >5 January 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>Mybatis 官方文档：<a href="https://mybatis.org/mybatis-3/zh/configuration.html">https://mybatis.org/mybatis-3/zh/configuration.html</a></p>
+<h3 id="mybatis-简介">MyBatis 简介</h3>
+<p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
+<p>采用 ORM (Object Relational Mapping) 思想解决了实体和数据库映射的问题，对 JDBC 进行了封装，屏蔽了 JDBC API 底层的访问细节。</p>
+<p>ORM 把对 SQL 的操作转换为对象的操作，这种转换时通过对象和表之间的元数据映射实现的。由于类和表之间以及属性和字段之间建立起了映射关系，所以，通过 sql 对表的操作就可以转换为对象的操作，程序员从此无需编写 sql 语句，由框架根据映射关系自动生成，这就是 ORM 思想。</p>
+<h4 id="使用-maven-构建">使用 Maven 构建</h4>
+<p>将 mybatis 依赖代码，SQL 驱动依赖代码等置于 pom.xml 文件中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>org.mybatis<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>mybatis<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>3.4.0<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>mysql<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>mysql-connector-java<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>5.1.36<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>junit<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>junit<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>4.12<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><h3 id="mybatis-的执行流程">MyBatis 的执行流程</h3>
+<p>Mybatis 配置文件，包括 Mybatis 全局配置文件和 Mybatis 映射文件，其中全局配置文件配置了数据源、事务等信息；映射文件配置了SQL执行相关的 
+信息。</p>
+<p>Mybatis 通过读取配置文件信息（全局配置文件和映射文件），构造出 SqlSessionFactory，即会话工厂。</p>
+<p>通过 SqlSessionFactory，可以创建 SqlSession 即会话。Mybatis 是通过 SqlSession 来操作数据库的。</p>
+<p>SqlSession 本身不能直接操作数据库，它是通过底层的Executor 执行器接口来操作数据库的。Executor 接口有两个实现类，一个是普通执行器，一个是缓存执行器（默认）。</p>
+<p>Executor 执行器要处理的 SQL 信息是封装到一个底层对象 MappedStatement 中。该对象包括：SQL 语句、输入参数映射信息、输出结果集映射信息。其中输入参数和输出结果的映射类型包括java的简单类型、HashMap 集合对象、POJO 对象类型。</p>
+<h3 id="mybatis-配置">MyBatis 配置</h3>
+<p>MyBatis 的配置文件(mybatisConfig.xml)包含了会深深影响 MyBatis 行为的设置和属性信息。</p>
+<h4 id="数据库连接属性dbproperties">数据库连接属性：db.properties</h4>
+<pre><code class="language-properties" data-lang="properties">#jdbc.driverClassName=com.mysql.jdbc.Driver
+#jdbc.url=jdbc:mysql://localhost:3306/web_learn?characterEncoding=utf-8
+jdbc.driverClassName=com.mysql.cj.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/web_learn?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
+jdbc.username=xxx
+jdbc.password=xxx
+</code></pre><h4 id="主配置文件sqlmapconfigxml">主配置文件：SqlMapConfig.xml</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE configuration
+</span><span style="color:#75715e">PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
+</span><span style="color:#75715e">&#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
+<span style="color:#f92672">&lt;configuration&gt;</span>
+  <span style="color:#75715e">&lt;!-- 加载数据库连接属性配置文件 --&gt;</span>
+  <span style="color:#f92672">&lt;properties</span> <span style="color:#a6e22e">resource=</span><span style="color:#e6db74">&#34;database.properties&#34;</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#75715e">&lt;!-- 配置环境 --&gt;</span>
+  <span style="color:#f92672">&lt;environments</span> <span style="color:#a6e22e">default=</span><span style="color:#e6db74">&#34;development&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#75715e">&lt;!-- 配置MySQL环境 --&gt;</span>
+    <span style="color:#f92672">&lt;environment</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;development&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#75715e">&lt;!-- 配置事务类型 --&gt;</span>
+      <span style="color:#f92672">&lt;transactionManager</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;JDBC&#34;</span> <span style="color:#f92672">/&gt;</span>
+      <span style="color:#75715e">&lt;!-- 配置数据源 --&gt;</span>
+      <span style="color:#f92672">&lt;dataSource</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;POOLED&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;driver&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.driverClassName}&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;url&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.url}&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;username&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.user}&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;password&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.password}&#34;</span> <span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;/dataSource&gt;</span>
+    <span style="color:#f92672">&lt;/environment&gt;</span>
+  <span style="color:#f92672">&lt;/environments&gt;</span>
+  <span style="color:#f92672">&lt;mappers&gt;</span>
+    <span style="color:#f92672">&lt;mapper</span> <span style="color:#a6e22e">resource=</span><span style="color:#e6db74">&#34;User.xml&#34;</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/mappers&gt;</span>
+<span style="color:#f92672">&lt;/configuration&gt;</span>
+</code></pre></div><h3 id="mybatis-映射器">MyBatis 映射器</h3>
+<p>MyBatis 的真正强大在于它的语句映射(xxxMapper.xml)，这是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。</p>
+<h4 id="mapper-代理开发模式">Mapper 代理开发模式</h4>
+<p>Mapper 代理的开发方式，只需要编写 mapper 接口（相当于 dao 接口）即可，而不同再写 dao 实现类啦。Mybatis会自动的为 mapper 接口生成动态代理实现类。不过要实现 mapper 代理的开发方式，需要遵循一些开发规范。</p>
+<p>接口的包名，类名，参数，返回值分别对应着映射文件的 namespace、id、parameterType、resultType：</p>
+<ul>
+<li>mapper 接口的全限定名要和 mapper 映射文件的 namespace 的值相同。</li>
+<li>mapper 接口的方法名称要和 mapper 映射文件中的 statement 的 id 相同。</li>
+<li>mapper 接口的方法参数只能有一个，且类型要和 mapper 映射文件中 statement 的 parameterType 的值保持一致。</li>
+<li>mapper 接口的返回值类型要和 mapper 映射文件中 statement 的 resultType 值或 resultMap 中的 type 值保持一致。</li>
+</ul>
+<p>Mapper 接口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.smallfire.dao<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.smallfire.domain.User<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UserMapper</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> User <span style="color:#a6e22e">findUserById</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> id<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findUserAll</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insertUser</span><span style="color:#f92672">(</span>User user<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteUserById</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> id<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateUserPassword</span><span style="color:#f92672">(</span>User user<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Mapper 配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE mapper
+</span><span style="color:#75715e">PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34;
+</span><span style="color:#75715e">&#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
+<span style="color:#75715e">&lt;!-- mapper标签要指定namespace属性，不然会报错，且mapper开发时设置为Mapper接口的全限定名--&gt;</span>
+<span style="color:#f92672">&lt;mapper</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;com.smallfire.dao.UserMapper&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#75715e">&lt;!--
+</span><span style="color:#75715e">    id:给标签体内的sql操作命名,方便调用。
+</span><span style="color:#75715e">    parameterType:传入参数的类型.传入java类型,转化为sql类型,添加到sql语句上.
+</span><span style="color:#75715e">    resultType:返回结果类型.sql结果集转化为java对象并返回.
+</span><span style="color:#75715e">  --&gt;</span>
+  <span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;findUserById&#34;</span> <span style="color:#a6e22e">parameterType=</span><span style="color:#e6db74">&#34;int&#34;</span> <span style="color:#a6e22e">resultType=</span><span style="color:#e6db74">&#34;com.smallfire.domain.User&#34;</span><span style="color:#f92672">&gt;</span>
+    select * from user4 where id = #{id}
+  <span style="color:#f92672">&lt;/select&gt;</span>
+  <span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;findUserAll&#34;</span> <span style="color:#a6e22e">resultType=</span><span style="color:#e6db74">&#34;com.smallfire.domain.User&#34;</span><span style="color:#f92672">&gt;</span>
+    select * from user4 
+  <span style="color:#f92672">&lt;/select&gt;</span>
+  <span style="color:#f92672">&lt;insert</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;insertUser&#34;</span> <span style="color:#a6e22e">parameterType=</span><span style="color:#e6db74">&#34;com.smallfire.domain.User&#34;</span><span style="color:#f92672">&gt;</span>
+    insert into user4(username,password,age) values(#{username},#{password},#{age})
+  <span style="color:#f92672">&lt;/insert&gt;</span>
+  <span style="color:#f92672">&lt;delete</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;deleteUserById&#34;</span> <span style="color:#a6e22e">parameterType=</span><span style="color:#e6db74">&#34;int&#34;</span><span style="color:#f92672">&gt;</span>
+    delete from user4 where id=#{id}
+  <span style="color:#f92672">&lt;/delete&gt;</span>
+  <span style="color:#f92672">&lt;update</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;updateUserPassword&#34;</span> <span style="color:#a6e22e">parameterType=</span><span style="color:#e6db74">&#34;com.smallfire.domain.User&#34;</span><span style="color:#f92672">&gt;</span>
+    update user4 set password=#{password} where id=#{id}
+  <span style="color:#f92672">&lt;/update&gt;</span>
+<span style="color:#f92672">&lt;/mapper&gt;</span>
+</code></pre></div><h3 id="mybatis-日志">MyBatis 日志</h3>
+<p>Mybatis 通过使用内置的日志工厂提供日志功能。内置日志工厂将会把日志工作委托给下面的实现之一：</p>
+<ul>
+<li>SLF4J</li>
+<li>Apache Commons Logging</li>
+<li>Log4j 2</li>
+<li>Log4j</li>
+<li>JDK logging</li>
+</ul>
+<p>MyBatis 内置日志工厂会基于运行时检测信息选择日志委托实现。它会（按上面罗列的顺序）使用第一个查找到的实现。当没有找到这些实现时，将会禁用日志功能。</p>
+<h4 id="log4jproperties">log4j.properties</h4>
+<pre><code class="language-properties" data-lang="properties"># 全局日志配置
+log4j.rootLogger=ERROR, debug, CONSOLE, LOGFILE
+# MyBatis 日志配置
+log4j.logger.org.mybatis.example.BlogMapper=TRACE
+log4j.logger.org.apache.axis.enterprise=FATAL, CONSOLE
+# 控制台输出
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern=%d{ISO8601} %-6r [%15.15t] %-5p %30.30c %c - %m\n
+# LOGFILE 设置文件输出
+log4j.appender.LOGFILE=org.apache.log4j.FileAppender
+log4j.appender.LOGFILE.File=d:\axis.log
+log4j.appender.LOGFILE.Append=true
+log4j.appender.LOGFILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.LOGFILE.layout.ConversionPattern=%d{ISO8601} %-6r [%15.15t] %-5p %30.30c %c - %m\n
+</code></pre><h4 id="日值配置">日值配置</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;configuration&gt;</span>
+  <span style="color:#f92672">&lt;settings&gt;</span>
+    ...
+    <span style="color:#f92672">&lt;setting</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;logImpl&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;LOG4J&#34;</span><span style="color:#f92672">/&gt;</span>
+    ...
+  <span style="color:#f92672">&lt;/settings&gt;</span>
+<span style="color:#f92672">&lt;/configuration&gt;</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1755</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Mybatis/">
+                    #Mybatis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Build_Maven_Plugin/" class="prev" rel="prev" title=" Maven Plugin Goal "><i class="iconfont icon-dajiantou"></i>&nbsp; Maven Plugin Goal </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/WEB_Frame_Mybatis_Config/" class="next" rel="next" title=" Mybatis 配置文件 "> Mybatis 配置文件 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-01-05 00:00:00 \u002b0000 UTC',
+        title: ' Mybatis 使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

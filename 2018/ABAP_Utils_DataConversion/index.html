@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ProgramCall/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Basis_EventTerminated/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Utils_DataConversion/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            数据输入输出转换  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 数据输入输出转换  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 数据输入输出转换 "/>
+<meta name="twitter:description" content="输入输出转换 如果某个变量参照的数据所对应的Domain具有转换规则，在(Write,ALV,文本框显示)，最后结果会自动转换。 通过转换规则输"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 数据输入输出转换 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_DataConversion\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  476 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_DataConversion\/",
+  "datePublished": "2018-06-08T00:00:00\x2b00:00",
+  "dateModified": "2018-06-08T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 数据输入输出转换 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-08 >8 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="输入输出转换">输入输出转换</h3>
+<p>如果某个变量参照的数据所对应的Domain具有转换规则，在(Write,ALV,文本框显示)，最后结果会自动转换。</p>
+<p>通过转换规则输入输出函数手动转换。</p>
+<h4 id="去除前导零">去除前导零</h4>
+<p>去除前导0：<code>SHIFT ITAB-FIELD LEFT DELETING LEADING '0'.</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">DEFINE</span> <span style="color:#a6e22e">conversion_output</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_OUTPUT&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">input</span>  <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1.</span>  
+<span style="color:#a6e22e">END</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DEFINITION</span>.
+</code></pre></div><h4 id="添加前导零">添加前导零</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DEFINE</span> <span style="color:#a6e22e">conversion_input</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_ALPHA_INPUT&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">input</span>  <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>  
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1.</span> 
+<span style="color:#a6e22e">END</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DEFINITION</span>.
+</code></pre></div><h4 id="货币汇率转换">货币汇率转换</h4>
+<ul>
+<li>OB07、OB08：维护各币种之间的汇率，保存之后存储在表 <strong>TCURR</strong> 中</li>
+</ul>
+<p>转换函数列表</p>
+<table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CURRENCY_CONVERTING_FACTOR</td>
+<td align="left">输入币种，可以得到相应的转换比率;SE16中看到数据的经过转换后存入，取出时应做转换</td>
+</tr>
+<tr>
+<td align="left">BAPI_CURRENCY_CONV_TO_INTERNAL</td>
+<td align="left">转换成数据库中内部存储金额</td>
+</tr>
+<tr>
+<td align="left">BAPI_CURRENCY_CONV_TO_EXTERNAL</td>
+<td align="left">转换成外部的实际金额</td>
+</tr>
+<tr>
+<td align="left">CONVERT_TO_LOCAL_CURRENCY</td>
+<td align="left">自动将最近时间段的汇率作为转换的汇率，也可指定汇率</td>
+</tr>
+<tr>
+<td align="left">CONVERT_TO_FOREIGN_CURRENCY</td>
+<td align="left">将外币转换为本位币</td>
+</tr>
+<tr>
+<td align="left">CONVERT_TO_LOCAL_CURRENCY</td>
+<td align="left">将本位币转换为其他外币</td>
+</tr>
+</tbody>
+</table>
+<p>CONVERT_TO_LOCAL_CURRENCY 实例</p>
+<ul>
+<li>注意：保持 FOREIGN_AMOUNT 和 LOCAL_AMOUNT 的参考类型一致</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: from_curr <span style="color:#66d9ef">TYPE </span>TCURC<span style="color:#f92672">-</span>WAERS <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;USD&#39;</span>,
+      to_curr <span style="color:#66d9ef">TYPE </span>TCURC<span style="color:#f92672">-</span>WAERS <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;HKD&#39;</span>, 
+      rate <span style="color:#66d9ef">TYPE </span>bapi1093_0.
+<span style="color:#66d9ef">DATA</span>: po_netpr <span style="color:#66d9ef">TYPE </span>p <span style="color:#66d9ef">DECIMALS</span> <span style="color:#ae81ff">7</span>,
+      po_netpr_local <span style="color:#66d9ef">TYPE </span>p <span style="color:#66d9ef">DECIMALS</span> <span style="color:#ae81ff">7</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_EXCHANGERATE_GETDETAIL&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      rate_type  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>
+      from_curr  <span style="color:#f92672">=</span> from_curr
+      to_currncy <span style="color:#f92672">=</span> to_curr
+      <span style="color:#66d9ef">date</span>       <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum
+    <span style="color:#66d9ef">IMPORTING</span>
+      exch_rate  <span style="color:#f92672">=</span> rate.
+      
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CONVERT_TO_LOCAL_CURRENCY&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">DATE</span>             <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum
+      FOREIGN_AMOUNT   <span style="color:#f92672">=</span> po_netpr
+      FOREIGN_CURRENCY <span style="color:#f92672">=</span> f_curr
+      LOCAL_CURRENCY   <span style="color:#f92672">=</span> l_curr
+      RATE             <span style="color:#f92672">=</span> rate<span style="color:#f92672">-</span>exch_rate
+<span style="color:#75715e">*      TYPE_OF_RATE            = &#39;M&#39;</span>
+<span style="color:#75715e">*      READ_TCURR              = &#39;X&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      LOCAL_AMOUNT     <span style="color:#f92672">=</span> po_netpr_local
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      NO_RATE_FOUND    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+</code></pre></div><h4 id="日期转换">日期转换</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DEFINE date_conversion.
+  call function &#39;CONVERT_DATE_TO_EXTERNAL&#39;
+    exporting
+      date_internal            = <span style="color:#960050;background-color:#1e0010">&amp;</span>1
+    importing
+      date_external            = <span style="color:#960050;background-color:#1e0010">&amp;</span>2
+    exceptions
+      date_internal_is_invalid = 1
+      others                   = 2.
+END-OF-DEFINITION.
+</code></pre></div><h4 id="单位换算">单位换算</h4>
+<p>基本单位的转换函数</p>
+<ul>
+<li><strong>UNIT_CONVERSION_SIMPLE</strong> ：1min = 60s</li>
+</ul>
+<p>物料单位的转换函数</p>
+<ul>
+<li><strong>MD_CONVERT_MATERIAL_UNIT</strong> - 计量单位之间转换</li>
+<li><strong>MATERIAL_UNIT_CONVERSION</strong> - 每基本单位等于多少计量单位</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>476</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ProgramCall/" class="prev" rel="prev" title=" ABAP 程序间调用 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 程序间调用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Basis_EventTerminated/" class="next" rel="next" title=" ABAP 事件终止 "> ABAP 事件终止 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-08 00:00:00 \x2b0000 UTC',
+        title: ' 数据输入输出转换 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

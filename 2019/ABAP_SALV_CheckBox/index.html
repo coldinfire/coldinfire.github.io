@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_Color/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_ColumnSpecificGroup/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_CheckBox/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV CheckBox 设置  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV CheckBox 设置  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV CheckBox 设置 "/>
+<meta name="twitter:description" content="添加复选框功能 要获得可编辑的复选框，首先我们需要从 column 对象中获取显示内表中定义的 checkbox 字段列。 此后，我们需要使用方法 SET_CELL_TYPE 将单元格类型设置为 IF_SALV_C_CELL_TYPE =&gt; CHE"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV CheckBox 设置 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_CheckBox\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  453 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_CheckBox\/",
+  "datePublished": "2019-06-08T00:00:00\x2b00:00",
+  "dateModified": "2019-06-08T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV CheckBox 设置 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-08 >8 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="添加复选框功能">添加复选框功能</h3>
+<p>要获得可编辑的复选框，首先我们需要从 column 对象中获取显示内表中定义的 checkbox 字段列。</p>
+<p>此后，我们需要使用方法 SET_CELL_TYPE 将单元格类型设置为 IF_SALV_C_CELL_TYPE =&gt; CHECKBOX_HOTSPOT。</p>
+<p>更新复选框中的值，需要处理事件 ON_LINK_CLICK。当单击启用热点的复选框时，将触发 LINK_CLICK 事件。在事件处理程序方法中，需要更改复选框字段的值并调用 REFRESH 方法以刷新 ALV 上的值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; SALV Table, editable checkbox</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  zsalv_editable_checkbox.
+
+<span style="color:#66d9ef">CLASS</span> lcl_event_handler <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:
+      on_link_click <span style="color:#66d9ef">FOR EVENT</span> link_click <span style="color:#66d9ef">OF</span> cl_salv_events_table
+        <span style="color:#66d9ef">IMPORTING</span> row column.
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_event_handler DEFINITION&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">CLASS</span> lcl_report <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_vbak,
+           vbeln <span style="color:#66d9ef">TYPE </span>vbak<span style="color:#f92672">-</span>vbeln,
+           erdat <span style="color:#66d9ef">TYPE </span>erdat,
+           auart <span style="color:#66d9ef">TYPE </span>auart,
+           kunnr <span style="color:#66d9ef">TYPE </span>kunnr,
+           <span style="color:#66d9ef">check</span> <span style="color:#66d9ef">TYPE </span>flag,  <span style="color:#75715e">&#34;Check box&#34;
+</span><span style="color:#75715e"></span>           <span style="color:#66d9ef">END OF</span> str_vbak.
+    <span style="color:#66d9ef">DATA</span>: gt_vbak <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> str_vbak.
+    <span style="color:#75715e">&#34;ALV reference&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: gr_table <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+    <span style="color:#66d9ef">METHODS</span>:
+      get_data,
+      generate_output.
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_report DEFINITION&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_report IMPLEMENTATION</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_report <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">get_data</span>.
+    <span style="color:#66d9ef">SELECT</span> vbeln erdat auart kunnr
+           <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> gt_vbak
+           <span style="color:#66d9ef">FROM</span> vbak
+           UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">20</span> ROWS.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;get_data&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">generate_output</span>.
+    <span style="color:#66d9ef">DATA</span>: lv_msg <span style="color:#66d9ef">TYPE REF TO</span> cx_salv_msg.
+    <span style="color:#66d9ef">TRY</span>.
+        cl_salv_table<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">factory</span>(
+          <span style="color:#66d9ef">IMPORTING</span>
+            r_salv_table <span style="color:#f92672">=</span> gr_table
+          <span style="color:#66d9ef">CHANGING</span>
+            t_table      <span style="color:#f92672">=</span> gt_vbak ).
+      <span style="color:#66d9ef">CATCH</span> cx_salv_msg <span style="color:#66d9ef">INTO</span> lv_msg.
+    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#66d9ef">DATA</span>: lr_columns <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_columns_table.
+    <span style="color:#66d9ef">DATA</span>: lr_column  <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_column_table.
+    lr_columns <span style="color:#f92672">?</span><span style="color:#f92672">=</span> gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_columns</span>( ).
+    lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_optimize</span>( <span style="color:#e6db74">&#39;X&#39;</span> ).
+    <span style="color:#75715e">&#34;Change the properties of the Columns KUNNR&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        lr_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;CHECK&#39;</span> ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_cell_type</span>( if_salv_c_cell_type<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>checkbox_hotspot ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_output_length</span>( <span style="color:#ae81ff">10</span> ).
+      <span style="color:#66d9ef">CATCH</span> cx_salv_not_found.   <span style="color:#75715e">&#34;EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#75715e">&#34;Get the event object&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: lr_events <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_events_table.
+    lr_events <span style="color:#f92672">=</span> gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_event</span>( ).
+    <span style="color:#75715e">&#34;Instantiate the event handler object&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: lr_event_handler <span style="color:#66d9ef">TYPE REF TO</span> lcl_event_handler.
+    <span style="color:#66d9ef">CREATE OBJECT</span> lr_event_handler.
+    <span style="color:#75715e">&#34;Event handler&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">SET HANDLER</span> lr_event_handler<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_link_click <span style="color:#66d9ef">FOR</span> lr_events.
+    <span style="color:#75715e">&#34;Displaying the ALV&#34;
+</span><span style="color:#75715e"></span>    gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ).
+  <span style="color:#66d9ef">ENDMETHOD</span>.               <span style="color:#75715e">&#34;generate_output&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                  <span style="color:#75715e">&#34;lcl_report IMPLEMENTATION&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">DATA</span>: lo_report <span style="color:#66d9ef">TYPE REF TO</span> lcl_report.
+  <span style="color:#66d9ef">CREATE OBJECT</span> lo_report.
+  lo_report<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_data</span>( ).
+  lo_report<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">generate_output</span>( ).
+
+<span style="color:#66d9ef">CLASS</span> lcl_event_handler <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_link_click</span>.
+    <span style="color:#75715e">&#34;Get the value of the checkbox and set the value accordingly refersh the table&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;lfa_data&gt; <span style="color:#66d9ef">LIKE LINE OF</span> lo_report<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>gt_vbak.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lo_report<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>gt_vbak <span style="color:#66d9ef">ASSIGNING</span> &lt;lfa_data&gt; <span style="color:#66d9ef">INDEX</span> row.
+    <span style="color:#66d9ef">CHECK</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">IF</span> &lt;lfa_data&gt;<span style="color:#f92672">-</span>check <span style="color:#f92672">IS INITIAL</span>.
+      &lt;lfa_data&gt;<span style="color:#f92672">-</span>check <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#66d9ef">CLEAR</span> &lt;lfa_data&gt;<span style="color:#f92672">-</span>check.
+    <span style="color:#66d9ef">ENDIF</span>.
+    lo_report<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">refresh</span>( ).
+  <span style="color:#66d9ef">ENDMETHOD</span>.                 <span style="color:#75715e">&#34;on_link_click&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_event_handler IMPLEMENTATION&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>453</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Color/" class="prev" rel="prev" title=" SALV Color 设置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV Color 设置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_ColumnSpecificGroup/" class="next" rel="next" title=" SALV 布局列分组 "> SALV 布局列分组 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-08 00:00:00 \x2b0000 UTC',
+        title: ' SALV CheckBox 设置 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Utils_NegativeSignFront/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Range/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Smartform_Barcode/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Smartforms Barcode  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Smartforms Barcode  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Smartforms Barcode "/>
+<meta name="twitter:description" content="Smartforms 打印条码 传统的：将数据发送到打印机上，由打印机将数据转换成 条码图案，然后进行打印。 在 SAP Smartforms 里实现条码打印。在客户机里安装 www.tec-it.com 里的插件 1.定义输"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Smartforms Barcode ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartform_Barcode\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "smartforms",
+  "wordcount":  888 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartform_Barcode\/",
+  "datePublished": "2018-08-14T00:00:00\x2b00:00",
+  "dateModified": "2018-08-14T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Smartforms Barcode </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-08-14 >14 August 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="smartforms-打印条码">Smartforms 打印条码</h3>
+<p><strong>传统的：将数据发送到打印机上，由打印机将数据转换成 条码图案，然后进行打印。</strong></p>
+<p>在 SAP Smartforms 里实现条码打印。在客户机里安装 <a href="http://www.tec-it.com/">www.tec-it.com</a> 里的插件</p>
+<ul>
+<li>1.定义输出设备，将输出设备分配到设备类型里，T-CODE:SPAD
+<ul>
+<li>sap 下安装打印机：用 SPAD 来安装打印机，在配置里点输出设备，在输出设备里点创建，输入输出设备名称，如 LP01
+在设备属性的设备类型里选择 CNSAPWIN： MS Windows driver via SAPLPD
+在主机假脱机接受方法里选择 F(计算机前台打印);在 HOST PRINTER 输入打印服务器的 IP 地址
+然后保存就可以了.</li>
+</ul>
+</li>
+<li>2.将条码类型添加到设备类型里。T-CODE:SE73 &ndash;&gt; 打印机条码
+<ul>
+<li>在此会显示所有设备类型。请选择中打印机（输出设备）所在的设备类型。双击后，会显示此设备类型所能打印的条码类型。按 F5 对设备类型创建新的条码类型。</li>
+</ul>
+</li>
+<li>3.在 Smartforms 的样式里添加 条码样式。T-CODE:Smartforms</li>
+<li>4.在 Smartforms 里，将样式应用到文本上。T-CODE:Smartforms</li>
+<li>5.要对调整条码的样式，到设备类型，修 改打印控制（Print Control）的 SBPnn 的值 T-CDOE:SPAD&ndash;&gt; 完全管理 &ndash;&gt; 设备类型 &ndash;&gt; 选择中使用的设备类型，双击。&ndash;&gt; 打印控制
+<ul>
+<li>CCS (Control CharacterSequence) 的十六进制值，请使用软件：TBarCode_Studio.EXE 生成</li>
+</ul>
+</li>
+</ul>
+<p><strong>新方法：数据在 SAP 系统中生成条码图案，然后直接发送到打印机进行打印。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#ae81ff">1.</span> <span style="color:#a6e22e">设置系统条码</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">SE73</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">进入SE73后选择系统条码</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">点击更改按钮</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">3</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">点击新建按钮</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">4</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">选择已New方式建立条码</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">5</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">输入Barcode</span> <span style="color:#a6e22e">Name和Short</span> <span style="color:#a6e22e">Text</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">6</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">选择条码类型</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">例Code39</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">7</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">设置Barcode</span> <span style="color:#a6e22e">Alignment</span><span style="color:#960050;background-color:#1e0010">：</span> <span style="color:#a6e22e">选Normal</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">8</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">设置Barcode</span> <span style="color:#a6e22e">parameters</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">在设置39码的Mod</span><span style="color:#f92672">-</span><span style="color:#ae81ff">43</span> <span style="color:#a6e22e">Check</span> <span style="color:#a6e22e">Digit时</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">如果勾选该项</span><span style="color:#960050;background-color:#1e0010">，</span>
+      <span style="color:#a6e22e">则打印出来的条码会自动在后面增加一位检查码</span><span style="color:#960050;background-color:#1e0010">。</span>
+ <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">9</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">Save</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><h3 id="设置smartfom样式style">设置SmartFom样式（Style）</h3>
+<h4 id="smartforms">SmartForms</h4>
+<ul>
+<li>
+<p>进入SmartForms后选择样式（Style）。</p>
+</li>
+<li>
+<p>在子元格式下建立一节点。</p>
+</li>
+<li>
+<p>在标准设定 View：选择刚才设定的条码。</p>
+</li>
+<li>
+<p>字型：选择TWSONG  12pt.</p>
+</li>
+<li>
+<p>保存并启用。</p>
+</li>
+</ul>
+<h4 id="在smartform设计时字体选择为所设置的条码样式即可">在SmartForm设计时，字体选择为所设置的条码样式即可。</h4>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>888</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/smartforms/">
+                    #smartforms</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_NegativeSignFront/" class="prev" rel="prev" title=" 负号前置 "><i class="iconfont icon-dajiantou"></i>&nbsp; 负号前置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Range/" class="next" rel="next" title=" ABAP Range 定义 "> ABAP Range 定义 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-08-14 00:00:00 \x2b0000 UTC',
+        title: ' Smartforms Barcode ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

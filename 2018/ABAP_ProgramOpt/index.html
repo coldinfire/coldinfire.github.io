@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_Screen_Util/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_OOALV_Basis/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ProgramOpt/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 性能优化(程序逻辑)  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 性能优化(程序逻辑)  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 性能优化(程序逻辑) "/>
+<meta name="twitter:description" content="性能分析工具 ​ SE30(旧)；SAT(新)：运行时间分析工具 ​ ST12：Single transaction analysis 程序优化 READ TABLE &hellip;WITH [TABLE] KEY&hellip;BINARY SEARCH读取标准内表使用二分查"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 性能优化(程序逻辑) ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ProgramOpt\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1751 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ProgramOpt\/",
+  "datePublished": "2018-06-30T00:00:00\x2b00:00",
+  "dateModified": "2018-06-30T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 性能优化(程序逻辑) </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-30 >30 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="性能分析工具">性能分析工具</h3>
+<p>​	<strong>SE30(旧)；SAT(新)：运行时间分析工具</strong></p>
+<p>​	<strong>ST12：Single transaction analysis</strong></p>
+<h3 id="程序优化">程序优化</h3>
+<ol>
+<li>
+<p>READ TABLE &hellip;WITH [TABLE] KEY&hellip;BINARY SEARCH读取标准内表使用二分查找</p>
+</li>
+<li>
+<p>在循环（LOOP AT &hellip;WHERE..）或查询（READ TABLE &hellip;）某内表时，如果未使用索引（排序表、哈希表）或二分查找，
+则在查询组合字段创建第二索引，查询时通过USE KEY或WITH [TABLE] KEY选项使用第二索引，这样在查询时会自动进行二分
+查找或哈希找查在没有用二分查找的情况下，可在查询组合字段上创建第二索引（哈希或排序索引），则在读取或循环内表时会
+自动使用二分查找或哈希查找算法</p>
+</li>
+<li>
+<p>查找时，优先考虑使用哈希表进行查找，再考虑使用排序表进行二分查找，因为哈希查找的时间复杂度为(O (1))，不会因数据的增加而受到影响;而二分查找虽然比顺序搜索快很多，但随着数据的增加会慢下来，其时间复杂度为(O (log2n))；标准内表的时间复杂度为O(n)。
+注：如果只使用到部分关键字为搜索条件，哈希表则会全表扫描，此时应该使用二分找查</p>
+</li>
+<li>
+<p>FOR ALL ENTRIES：需要判断内表是否为空，否则会查询出所有数据</p>
+</li>
+<li>
+<p>LOOP AT itab&hellip; ASSIGNING &hellip;、READTABLE &hellip;ASSIGNING &hellip; 在循环或读取内表时，使用字段符号来替换表工作区，将数据分配给字段符号Field Symbols，减少数据来回传递，赋值效率也会更快</p>
+</li>
+<li>
+<p>尽量避免嵌套循环，如必须时，将循环次数少的放在外层，次数多的放在内层，这样可以减少在不同循环层之间的频繁地切换及内部循环次数</p>
+</li>
+<li>
+<p>条件语句中多使用短路与或，“与”连接时将为假的机率大的条件在前，“或”连接时将为真的机率大的条件在前</p>
+</li>
+<li>
+<p>少使用递归算法，递归时会增加调用栈层次，降低了性能，可使用队列或栈来避免递归</p>
+</li>
+<li>
+<p>尽量不要使用通用类型（如FIELD-SYMBOLS、及形式参数），使用具体限定类型</p>
+</li>
+<li>
+<p>比较时尽量使用同一数据类型：IF c = c. 比 IF i = c. 快，同类型直接比较效率会高，原因是不用产生类型转换</p>
+</li>
+<li>
+<p>不要使用混合类型进行计算与比较，除非有必须</p>
+</li>
+<li>
+<p>尽量使用静态语句，少用动态编程，动态编辑虽然灵活，但性能有所下降</p>
+</li>
+<li>
+<p>在对字符进行操作进，尽量使用String代替C固定长度类型，如：concatenate语句对固定长度的C连接时
+会去扫描那些非空字符出来再进行连接，速度没有String快</p>
+</li>
+<li>
+<p>READ/MODIFY TABLE时使用TRANSPORTING只读取或修改必要的字段</p>
+</li>
+<li>
+<p>尽量避免使用MOVE-CORRESPONDING和 SELECT&hellip;INTO CORRESPONDING FIELDS OF [TABLE] (SELECT时，查询几个字
+段就定义具有这几个字段的内表，而不是直接使用基于数据库表类型创建的内表，否则如果直接使用INTO TABLE语法检查
+时会警告，但结果是没有问题的)。
+CORRESPONDING语句在系统内部存在隐式操作: 逐个字段的检查元素名称匹配; 检查元素类型匹配;元素类型转换；</p>
+</li>
+<li>
+<p>最好不要向排序内表中插入（INSERT &hellip; INTO TABLE &hellip;）数据，因为在插入时会进行排序，速度会随着数据量的增加
+而慢下来，所以最好只向标准内表或哈希表中插入数据</p>
+</li>
+<li>
+<p>将某个内表中的全部记录或部分记录追加到另一内表时，使用INSERT/APPEND LINES OF … 代替循环逐条追加；
+如果是全新赋值，直接对内表使用“=”进行赋值操作即可</p>
+</li>
+<li>
+<p>调用类方法要快于Function：</p>
+<p><code>Calling Methods of global Classes：</code></p>
+<p><code>call method CL_PERFORMANCE_TEST=&gt;M1.</code></p>
+<p><code>Calling Function Modules： </code></p>
+<p><code>call function 'FUNCTION1'.</code></p>
+</li>
+<li>
+<p>通过运行事务代码SLIN(或者直接通过SE38的菜单)，进行代码静态检查，根据SAP提供的反馈信息，优化代码</p>
+</li>
+<li>
+<p>通过老式方式定义内表时，使用<code>OCCURS 0 </code>而非<code>OCCURS n</code> ：重现lOCCURS n 代表初始化内表的空间大小为n（空间固定），当内表存储记录条数超出n时，系统将依靠页面文件存放超出部分的数据。 当系统内存资源十分紧缺的时候，我们可以使用OCCURS n的初始化方法，但是这样的效率稍微慢OCCURS 0 代表初始化内表的空间大小为无限，当内表存储记录条数不断增加时， 内表所使用的内存空间不断扩大，直到系统无法分配为止。使用内存比使用页面交换更快一些， 但是要考虑系统的资源状态</p>
+</li>
+<li>
+<p>使用完成后及时清空释放内表所占用的空间：<code>FREE &lt;itab&gt;.</code></p>
+</li>
+<li>
+<p>使用CASE…WHEN语句代替 IF…ELSEIF…；使用WHILE…ENDWHILE 代替 DO…ENDDO</p>
+</li>
+<li>
+<p>LOOP循环内表时加上Where条件减少CPU负荷，而不是在循环里通过IF语句来过滤数据</p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1751</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Screen_Util/" class="prev" rel="prev" title=" ALV 屏幕其它功能设置 "><i class="iconfont icon-dajiantou"></i>&nbsp; ALV 屏幕其它功能设置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_Basis/" class="next" rel="next" title=" OO ALV 使用 "> OO ALV 使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-30 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 性能优化(程序逻辑) ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

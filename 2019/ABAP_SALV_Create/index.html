@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_Basis/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_PageTopEnd/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_Create/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV 创建 ALV  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV 创建 ALV  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV 创建 ALV "/>
+<meta name="twitter:description" content="创建和显示 ALV *&amp;---------------------------------------------------------------------* *&amp; This code snippet will show how to use the CL_SALV_TABLE to *&amp; generate the ALV *&amp;---------------------------------------------------------------------* REPORT ztest_oo_alv_main. *----------------------------------------------------------------------* * CLASS lcl_report DEFINITION *----------------------------------------------------------------------* CLASS lcl_report DEFINITION. PUBLIC SECTION. TYPES: BEGIN OF str_vbak, vbeln TYPE vbak-vbeln, erdat TYPE erdat, auart TYPE auart, kunnr TYPE kunnr, netwr TYPE netwr, check TYPE flag, &#34;复选框&#3"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV 创建 ALV ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Create\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  699 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Create\/",
+  "datePublished": "2019-06-05T00:00:00\x2b00:00",
+  "dateModified": "2019-06-05T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV 创建 ALV </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-05 >5 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="创建和显示-alv">创建和显示 ALV</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; This code snippet will show how to use the CL_SALV_TABLE to</span>
+<span style="color:#75715e">*&amp;   generate the ALV</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  ztest_oo_alv_main.
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_report DEFINITION</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_report <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_vbak,
+           vbeln <span style="color:#66d9ef">TYPE </span>vbak<span style="color:#f92672">-</span>vbeln,
+           erdat <span style="color:#66d9ef">TYPE </span>erdat,
+           auart <span style="color:#66d9ef">TYPE </span>auart,
+           kunnr <span style="color:#66d9ef">TYPE </span>kunnr,
+           netwr <span style="color:#66d9ef">TYPE </span>netwr,
+           <span style="color:#66d9ef">check</span> <span style="color:#66d9ef">TYPE </span>flag,   <span style="color:#75715e">&#34;复选框&#34;
+</span><span style="color:#75715e"></span>           t_color <span style="color:#66d9ef">TYPE </span>lvc_t_scol,<span style="color:#75715e">&#34;单元格颜色设置&#34;
+</span><span style="color:#75715e"></span>           t_celltype <span style="color:#66d9ef">TYPE </span>salv_t_int4_column,  <span style="color:#75715e">&#34;设置单元格style使用&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">END OF</span> str_vbak.
+    <span style="color:#66d9ef">TYPES</span>: ty_t_vbak <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> str_vbak.
+    <span style="color:#66d9ef">DATA</span>: gt_vbak <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> str_vbak.
+    <span style="color:#75715e">&#34;ALV reference&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: gr_table <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+    <span style="color:#66d9ef">DATA</span>: gr_container <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_custom_container.
+    <span style="color:#75715e">&#34;Methods Define&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span>:
+      get_data,        <span style="color:#75715e">&#34;Data prepare&#34; 
+</span><span style="color:#75715e"></span>      generate_output. <span style="color:#75715e">&#34;Generating output&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+<span style="color:#75715e">*  In this section we will define the private methods which can be implemented</span>
+<span style="color:#75715e">*    to set the properties of the ALV and can be called in the generate_output</span>
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_report DEFINITION&#34;
+</span><span style="color:#75715e"></span> 
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_report IMPLEMENTATION</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_report <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">get_data</span>.
+    <span style="color:#66d9ef">SELECT</span> vbeln erdat auart kunnr
+           <span style="color:#66d9ef">INTO</span>  <span style="color:#66d9ef">TABLE</span> gt_vbak
+           <span style="color:#66d9ef">FROM</span>  vbak
+           UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">20</span> ROWS.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;get_data&#34;
+</span><span style="color:#75715e"></span>  
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">generate_output</span>.
+    <span style="color:#75715e">&#34;Calling the static Factory Method&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: lv_msg <span style="color:#66d9ef">TYPE REF TO</span> cx_salv_msg.
+    <span style="color:#66d9ef">TRY</span>.
+        cl_salv_table<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">factory</span>(
+          <span style="color:#66d9ef">EXPORTING</span>
+            list_display <span style="color:#f92672">=</span> abap_ture  <span style="color:#75715e">&#34;以列表还是GUI形式控制&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">IMPORTING</span>
+            r_salv_table <span style="color:#f92672">=</span> gr_table   <span style="color:#75715e">&#34;用来接收工厂产生的实例&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">CHANGING</span>
+            t_table      <span style="color:#f92672">=</span> gt_vbak ).
+      <span style="color:#66d9ef">CATCH</span> cx_salv_msg <span style="color:#66d9ef">INTO</span> lv_msg.
+    <span style="color:#66d9ef">ENDTRY</span>.
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+<span style="color:#75715e">*    In this area we will call the methods which will set the</span>
+<span style="color:#75715e">*      different properties to the ALV</span>
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+    <span style="color:#75715e">&#34;Displaying the ALV&#34;
+</span><span style="color:#75715e"></span>    gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ).
+    gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">refresh</span>( ).
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;generate_output&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">*$*$*.....CODE_ADD_2_1 - Begin..................................2_1..*$*$*</span>
+<span style="color:#75715e">*    In this area we will define the methods which will set the</span>
+<span style="color:#75715e">*      different properties to the ALV</span>
+<span style="color:#75715e">*$*$*.....CODE_ADD_2_1 - End....................................2_1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+<span style="color:#75715e">*    In this area we will implement the methods which are defined in</span>
+<span style="color:#75715e">*      the class definition</span>
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_report IMPLEMENTATION&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">DATA</span>: lo_report <span style="color:#66d9ef">TYPE REF TO</span> lcl_report.
+  <span style="color:#66d9ef">CREATE OBJECT</span> lo_report.
+  lo_report<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_data</span>( ).
+  lo_report<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">generate_output</span>( ).
+</code></pre></div><h3 id="container-模式创建-salv">CONTAINER 模式创建 SALV</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  ztest_oo_alv_main.
+  <span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_vbak,
+         vbeln <span style="color:#66d9ef">TYPE </span>vbak<span style="color:#f92672">-</span>vbeln,
+         erdat <span style="color:#66d9ef">TYPE </span>erdat,
+         auart <span style="color:#66d9ef">TYPE </span>auart,
+         kunnr <span style="color:#66d9ef">TYPE </span>kunnr,
+         netwr <span style="color:#66d9ef">TYPE </span>netwr,
+      <span style="color:#66d9ef">END OF</span> str_vbak.
+  <span style="color:#66d9ef">TYPES</span>: ty_t_vbak   <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> str_vbak.
+  <span style="color:#66d9ef">DATA</span>: gt_vbak      <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> str_vbak.
+  <span style="color:#66d9ef">DATA</span>: gr_table     <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: gr_functions <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_functions_list.
+  <span style="color:#66d9ef">DATA</span>: gr_container <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_custom_container.
+  <span style="color:#66d9ef">DATA</span>: ok_code <span style="color:#66d9ef">TYPE </span>syucomm.
+  
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">CALL SCREEN</span> <span style="color:#ae81ff">1000</span>. <span style="color:#75715e">&#34;Screen Number&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">1000_pbo</span> <span style="color:#66d9ef">OUTPUT</span>.
+    <span style="color:#66d9ef">SELECT</span> vbeln erdat auart kunnr
+      <span style="color:#66d9ef">INTO</span>  <span style="color:#66d9ef">TABLE</span> gt_vbak
+      <span style="color:#66d9ef">FROM</span>  vbak
+      UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">20</span> ROWS.
+  <span style="color:#75715e">&#34;判断是否已分配了一个有效引用&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> gr_container <span style="color:#f92672">IS NOT BOUND</span>.
+    <span style="color:#75715e">&#34;创建容器&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CREATE OBJECT</span> gr_container
+      <span style="color:#66d9ef">EXPORTING</span>
+        container_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CONTAINER_1&#39;</span>. <span style="color:#75715e">&#34; 屏幕上用户自定义控件名 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;创建ALV&#34;
+</span><span style="color:#75715e"></span>    cl_salv_table<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">factory</span>(
+      <span style="color:#66d9ef">EXPORTING</span>
+          r_container <span style="color:#f92672">=</span> gr_container
+          container_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CONTAINER_1&#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+          r_salv_table <span style="color:#f92672">=</span> gr_table
+      <span style="color:#66d9ef">CHANGING</span>
+          t_table <span style="color:#f92672">=</span> gt_data[] ).
+    <span style="color:#75715e">&#34;激活所有的ALV内置通用按钮&#34;
+</span><span style="color:#75715e"></span>    gr_functions <span style="color:#f92672">=</span> gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_functions</span>( ).
+    gr_functions<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_all</span>( abap_true ).  
+    <span style="color:#75715e">&#34;显示ALV&#34;
+</span><span style="color:#75715e"></span>    gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ).
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDMODULE</span>.
+</code></pre></div><h3 id="以弹出框显示-salv">以弹出框显示 SALV</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: gr_table <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+cl_salv_table<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">factory</span>(
+  <span style="color:#66d9ef">IMPORTING</span> 
+    r_salv_table <span style="color:#f92672">=</span> gr_table
+  <span style="color:#66d9ef">CHANGING</span> 
+    t_table <span style="color:#f92672">=</span> gt_data[] ).
+<span style="color:#75715e">&#34;设置弹出框属性&#34;
+</span><span style="color:#75715e"></span>gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_screen_popup</span>(
+  start_column <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  end_column <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+  start_line <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  end_line <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> ).
+<span style="color:#75715e">&#34;Display&#34;
+</span><span style="color:#75715e"></span>gr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ).
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>699</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Basis/" class="prev" rel="prev" title=" SALV 使用简介 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV 使用简介 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_PageTopEnd/" class="next" rel="next" title=" SALV 页头和页尾设置 "> SALV 页头和页尾设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-05 00:00:00 \x2b0000 UTC',
+        title: ' SALV 创建 ALV ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

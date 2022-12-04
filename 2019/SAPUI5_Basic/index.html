@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAPFiori_LaunchPad/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAPUI5_Layout/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAPUI5_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAPUI5 概述  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAPUI5 概述  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAPUI5 概述 "/>
+<meta name="twitter:description" content="SAPUI5 概述 SAPUI5：一套基于 HTML5、CSS3、JavaScript 的开发框架。 SAPUI5 内容 重构的 JavaScript 语法规范，帮助用户使用一致的、规范的语法使用"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAPUI5 概述 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "sapui5",
+  "wordcount":  6936 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Basic\/",
+  "datePublished": "2019-04-17T00:00:00\x2b00:00",
+  "dateModified": "2019-04-17T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAPUI5 概述 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-17 >17 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                14 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sapui5-概述">SAPUI5 概述</h3>
+<p>SAPUI5：一套基于 HTML5、CSS3、JavaScript 的开发框架。</p>
+<h4 id="sapui5-内容">SAPUI5 内容</h4>
+<ul>
+<li>重构的 JavaScript 语法规范，帮助用户使用一致的、规范的语法使用 JavaScript</li>
+<li>帮助用户构建大型应用的框架，包括 MVC、数据绑定、路由控制、缓存、组件化、模块化</li>
+<li>丰富的基于桌面和移动端的基础 UI 控件</li>
+<li>SAP 在开发 Fiori App 过程中积累的可复用的高度封装的 UI 控件</li>
+<li>便于页面排版的布局控件</li>
+<li>创建自定义控件和整合第三方控件的组件</li>
+<li>基于 LESS 框架和主题设计器的 CSS 架构</li>
+</ul>
+<h4 id="sap-核心优势">SAP 核心优势</h4>
+<ul>
+<li>基于 Web 端开发的一站式解决方案</li>
+<li>快速开发，相对高效运行</li>
+<li>作为 SAP 未来标准产品使用的 UI 技术，已经经过大量实践验证，稳定可靠</li>
+<li>具有大量的参考示例程序，可以快速的编写与 SAP 标准风格类似的应用程序</li>
+<li>具有编写大型应用程序所需要的框架和技术</li>
+<li>能够完美的整合第三方的 JavaScript 库</li>
+</ul>
+<h4 id="开发工具webide">开发工具：WebIDE</h4>
+<p>优势和功能</p>
+<ul>
+<li>
+<p>基于云端，注册就可以使用</p>
+</li>
+<li>
+<p>具有强大的代码生成</p>
+</li>
+<li>
+<p>具有所见即所得的视图编辑功能</p>
+</li>
+<li>
+<p>具有预先定义的样例程序</p>
+</li>
+</ul>
+<h4 id="sap-支持的控件">SAP 支持的控件</h4>
+<ul>
+<li>桌面控件库</li>
+<li>UX3 控件库</li>
+<li>表格控件库</li>
+<li>移动端控件库</li>
+</ul>
+<h3 id="mvc-模式">MVC 模式</h3>
+<p>MVC 是程序设计的思想实现，通过将界面展示，用户操作，程序数据进行分离，降低模块间的耦合性，有利于项目的开发和维护。</p>
+<ul>
+<li>
+<p>M : Model 代表应用程序的数据</p>
+</li>
+<li>
+<p>V : View 通过界面展示应用程序的数据和其它界面元素</p>
+</li>
+<li>
+<p>C : Controller 处理应用程序的数据，以及处理用户的交互</p>
+</li>
+</ul>
+<p><img src="/images/SAPUI5/MVC.png" alt="MVC"></p>
+<p>● Model &amp; View：SAPUI5 有单向绑定和双向绑定两种。通过绑定，当 model 变更时，UI 自动更新。</p>
+<p>● Controlle &amp;View：View 通知 Controller，或者 Controller 使用 API 来修改 View。</p>
+<p>● Controller &amp; Model：Model 通知 Controller 或者 Controller 修改 Model。</p>
+<p>SAPUI5提供了JSView、XMLView、JSONView 和 HTMLView。主要使用 XMLView 和 JSView。</p>
+<h3 id="核心类库">核心类库</h3>
+<p>查看<code>Resource</code>版本：Cttl+Shift+Alt+P 在对应的 App 界面或则 LunchPad.</p>
+<p><code> sap.m</code>：主要用于移动设备的响应式组件，并支持很多移动设备特性检测，比如检测touch等，此库下面List, Table等组件使用比较广泛，而且包含了下拉刷新的功能，非常完善，并自动适应不同尺寸平台。</p>
+<p><code> sap.ui</code>：UI库包含的组件是最为丰富的，主要用于适应桌面平台，同样可以支持响应式的设计，比如sap.ui.table等组件。</p>
+<p><code>sap.ui.core</code>：核心功能：加载和管理所有的附加资源，并包含模型和渲染管理器，一个负责处理渲染视图和控制的单例，写入DOM。</p>
+<p><code>sap.ui.layout</code>：构建视图中元素的特殊控件。</p>
+<p><code>sap.ui.vk</code>：包含 3D 模型的功能和控件。</p>
+<p><code>sap.ui.unified</code>：包含用于移动和桌面应用程序的附加控件。</p>
+<p><code>sap.ui.table</code>：不适用于手机屏幕，处理大量数据应用而构建的。</p>
+<p><code>sap.ui.comp</code>：包含 SmartField、SmartFilterBar、SmartTable、ValueHelpDialog 等智能控件。</p>
+<p><code>sap.uxap</code>：包含更多控件，包括页面标题。</p>
+<p><code>sap.ushell</code>：包含几个库包，含有所有统一的与 shell 服务相关的功能。</p>
+<p><code>sap.ca</code>：是官方标准 app 的常用类库，如果在实际开发过程当中想要拓展标准应用，必须要了解此类库的一些特性，否则拓展起来会有很大问题。</p>
+<h3 id="核心函数">核心函数</h3>
+<p><code>sap.ui.getCore()</code>：获取核心的实例</p>
+<p><code> sap.ui.getCore().byId(id)</code>：根据组件 id 获取其控制；可用于获取已经删除的组件</p>
+<p><code>sap.ui.getCore().applyChanges()</code>：在系统运行前修改 UI5 组件属性</p>
+<p><code> jQuery.sap.domById(id)</code>：根据 ID 获取 HTML 元素；如果 UI5 也存在该 ID 返回 HTML 最顶层的元素；和 document.getElementById() 类似</p>
+<p><code>jQuery.sap.byId(id)</code>：根据 ID 获取 JQuery 对象的 DOM 元素；$(,,#myId)</p>
+<p><code> sap.m.MessageBox</code>：SAPUI5 风格对话框显示</p>
+<p><code>sap.m.URLHelper.redirect(&quot;http://www.jd.com&quot;, true);</code>：重定向</p>
+<h3 id="常用组件">常用组件</h3>
+<h4 id="splitapp">SplitApp</h4>
+<p>SplitApp：这是一个 Master Detail 形式的结构，可以在移动，桌面不同尺寸的设备上自适应，也是大部分 app 需要采用的一种架构形式。</p>
+<h4 id="list">List</h4>
+<p>List : 列表在任何应用中是比较常见的，List 在 SAPUI5 定义功能比较完善，支持分批加载数据，提高运行效率，支持下拉等功能，并提供给我们丰富的标准 Item, 可以简单配置使用，更可以根据自身需求定义 item。</p>
+<p>对于移动设备来说，出于性能考虑，不要超过100行。使用 <strong>growing</strong> 特性可以加速内部的渲染。</p>
+<p>List控件继承自<code>sap.m.ListBase</code>，ListBase 的 items 聚合属性(类型：<code>sap.m.ListeItemBase[]</code>) 设置行项目的模板。</p>
+<ul>
+<li>
+<p>sap.m.List</p>
+<ul>
+<li>
+<p>new sap.m.List({items:{path:&quot;/path&rdquo;,template:oTemplate}});</p>
+</li>
+<li>
+<p>new sap.m.List().bindItems({path:&quot;/path&rdquo;,template:oTemplate});</p>
+</li>
+</ul>
+</li>
+<li>
+<p>sap.m.ObjectListItem</p>
+<ul>
+<li>ObjectListItem 适用于显示行项目的信息，主要使用 title 属性进行标识，text、icon、atrributes 和 statuses等属性可以用于提供对象更多信息。继承自sap.m.ObjectListItem，可定义 press 事件对用户的点击做出回应。</li>
+</ul>
+</li>
+</ul>
+<h4 id="table">Table</h4>
+<p>Table：这是一个表单性质的的组件，支持响应式，很多是够我们做一个表单展示需要此控件的支持。自身也携带了丰富的 property 供我们选择。</p>
+<h5 id="sapuitabletable">sap.ui.table.Table</h5>
+<ol>
+<li>
+<p>sap.ui.table.Table</p>
+<p><code>oTable.setModel(oModel);</code>实现Table与JSONModel的绑定，也就是View和Model的绑定。</p>
+<p><code>oTable.bindRows(&quot;/Suppliers&quot;);</code>语句实现Table与JSON数据的绑定。</p>
+<blockquote>
+<p>width : sap.ui.core.CSSSize (default: auto)。表格的宽度可以是百分百，或者基于像素px。</p>
+<p>titel : 设置Table的标题 。</p>
+<p>visibleRowCount : int (default: 10)。默认显示10行，可以自定义显示的行数。</p>
+<p>firstVisibleRow : int (default: 0) 。默认为0，从第一行开始展示数据。</p>
+<p>selectionMode : sap.ui.table.SelectionMode (default: MultiToggle)。包括单行(sap.ui.table.SelectionMode.Single)、多行	         								 (sap.ui.table.SelectionMode.MultiToggle)和不能选择行(sap.ui.table.SelectionMode.None)。</p>
+<p>editable : boolean (default: true)。默认可以编辑，如果只是显示，将此属性设置为false。</p>
+<p>columns : [ind1,ind2] 里面填充Table的列元素。</p>
+</blockquote>
+</li>
+<li>
+<p>sap.ui.table.Column</p>
+<blockquote>
+<p>width : 宽度(100px)。</p>
+<p>label : 设置标题栏。</p>
+<p>template : 设置单元格的显示模板。</p>
+<p>sortProperty : 设置排序针对的字段。</p>
+</blockquote>
+</li>
+</ol>
+<h5 id="sapmtable">sap.m.Table</h5>
+<ol>
+<li>
+<p>sap.m.Table</p>
+<p>继承自sap.m.ListBase，用于显示包含行和列的表格式数据。表格的列可以通过<code>columns</code>聚合属性来设置，也可以使用<code>addColumn()</code>方法来添加。每一列都是<code>sap.m.Column</code>对象。</p>
+<p>使用<code>columns</code>聚合属性和<code>items</code>聚合属性，items属性实现的就是聚合绑定.。</p>
+<p>sap.m.Table的重要属性：</p>
+<blockquote>
+<p><code>columns: </code>定义Table包含哪些列，类型是sap.m.Column数组。另外，sap.m.Table从sap.m.ListBase继承，所以可以直接使用sap.m.ListBase的属性。</p>
+<p><code>growing: </code>设置Table显示的数据可以依据向model的请求增加行noDataText: 当Table没有数据的时候显示的文本，类型是string。</p>
+<p><code>items: </code>sap.m.ListItemBase数组，sap.m.ListItemBase类定义了列表项(list item)的基本特征。</p>
+</blockquote>
+</li>
+<li>
+<p>sap.m.ColumnListItem:</p>
+<p><code>sap.m.ColumnListItem</code>用于创建<code>sap.m.Table</code>的行，行中包含的<code>cells</code>需要与<code>sap.m.Table</code>的Columns匹配，顺序一致。</p>
+<p><code>sap.m.Table().bindItems(&quot;/modelData&quot;,oCllumnListItem); </code>绑定行</p>
+<p><code>sap.m.Table().bindAggregation(&quot;items&quot;,&quot;/modelData&quot;,oCollumnListItem);</code>:聚合绑定。</p>
+<p><code>oColumnListItem.addCell();</code>为Items添加元素。</p>
+<p><code>sap.m.ColumnListItem</code>的press属性设置为一个数组，这种方法能够保证在Controller中，this表示Controller本身，而不是某个控件。</p>
+<blockquote>
+<p><code>vAlign: </code>行的垂直对齐：</p>
+<p>​	<code>sap.ui.core.VerticalAlign.Bottom:</code>底部对齐</p>
+<p>​	<code>sap.ui.core.VerticalAlign.Inherit:</code>从父控件继承</p>
+<p>​	<code>sap.ui.core.VerticalAlign.Middle: </code>居中对齐</p>
+<p><code>sap.ui.core.VerticalAlign.Top:</code>顶部对齐</p>
+</blockquote>
+<p><code>cells: </code>行包含的cells，每一个cell都是<code>sap.ui.core.Control</code>对象，从而开发人员可以根据需要选择合适的控件，灵活度很高。</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ObjectIdentifier</span> <span style="color:#a6e22e">text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{ID}&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">O</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">j</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">I</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">f</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">元</span><span style="color:#960050;background-color:#1e0010">素</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><h3 id="主题设置">主题设置</h3>
+<p>SAPUI5 默认提供了一些主题，并在组件添加新的主题。</p>
+<ul>
+<li>
+<p>Blue crystal (常用)</p>
+</li>
+<li>
+<p>Platium</p>
+</li>
+<li>
+<p>Gold Reflection (常用)</p>
+</li>
+<li>
+<p>High Contast Black</p>
+</li>
+<li>
+<p>Belize (常用)    - …</p>
+</li>
+</ul>
+<h4 id="设置主题">设置主题</h4>
+<p>在 Header 中设置</p>
+<ul>
+<li><code>data-sap-ui-theme=&quot;sap_bluecrystal&quot;   </code></li>
+</ul>
+<p>在程序中设定样式</p>
+<ul>
+<li><code> sap.ui.getCore().applyTheme(sThemeName, sThemeBaseUrl?)</code></li>
+</ul>
+<h3 id="文件模块介绍">文件模块介绍</h3>
+<h4 id="index">Index</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sap-ui-bootstrap&#34;</span>
+	<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://openui5.hana.ondemand.com/resources/sap-ui-core.js&#34;</span>
+	<span style="color:#a6e22e">data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span><span style="color:#f92672">-</span><span style="color:#a6e22e">theme</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sap_belize&#34;</span>
+	<span style="color:#a6e22e">data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span><span style="color:#f92672">-</span><span style="color:#a6e22e">libs</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sap.m&#34;</span>
+	<span style="color:#a6e22e">data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span><span style="color:#f92672">-</span><span style="color:#a6e22e">compatVersion</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;edge&#34;</span>
+	<span style="color:#a6e22e">data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span><span style="color:#f92672">-</span><span style="color:#a6e22e">preload</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;async&#34;</span>
+	<span style="color:#a6e22e">data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bindingSyntax</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;complex&#34;</span>
+	<span style="color:#a6e22e">data</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ui</span><span style="color:#f92672">-</span><span style="color:#a6e22e">resourceroots</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{&#34;sFileSourceName&#34;:&#34;oURL&#34;}&#39;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</code></pre></div><p>​	src : 核心资源的加载路径。</p>
+<p>​	data-sap-ui-theme : 设置主题</p>
+<p>​	data-sap-ui-libs : 选择文件默认加载的库文件</p>
+<p>​	data-sap-ui-compatVersion : edge兼容模式，为了方便使用新功能</p>
+<p>​	data-sap-ui-preload : async 设置文件加载形式为异步加载</p>
+<p>​	data-sap-ui-bindingSyntax : 数据绑定的设置 complex复杂绑定，对绑定数据进行计算。</p>
+<p>​	data-sap-ui-resourceroots : 命名文件的根目录，声明资源文件位置</p>
+<p>​	data-sap-ui-onInit=&quot;module:sNameSpace/index&rdquo; : 定义初始化时加载的初始页面文件</p>
+<pre><code class="language-JSP" data-lang="JSP">&lt;script&gt;
+    sap.ui.localResources(&quot;ui5mvc&quot;);
+    var app = new sap.m.App({initialPage:&quot;idmain1&quot;});
+    var view = sap.ui.view({
+        id:&quot;idmain1&quot;, 
+        viewName:&quot;ui5mvc.main&quot;, 
+        type:sap.ui.core.mvc.ViewType.JS});
+    app.addPage(view);
+    app.placeAt(&quot;content&quot;);
+&lt;/script&gt;
+</code></pre><ul>
+<li>
+<p><code>sap.ui.localResources(&quot;filename&quot;)</code> : 将当前目录下的FILE文件夹注册为当前文件夹，程序会在该文件夹下查找</p>
+<p>View和Controller代码。</p>
+</li>
+<li>
+<p><code>sap.m.App</code> : 是SAP移动APP的root element,提供导航功能，并将一些header标签加到HTML页。</p>
+</li>
+<li>
+<p><code>sap.ui.view</code> : 定义一个view,ID,name,type来指定显示的View。</p>
+<p>​									 <code>sap.ui.xmlview</code>可直接定义xml类型View。View type:</p>
+<ul>
+<li>sap.ui.core.mvc.ViewType.JS       &ldquo;JS&rdquo;</li>
+<li>sap.ui.core.mvc.ViewType.XML    &ldquo;XML&rdquo;</li>
+<li>sap.ui.core.mvc.ViewType.JSON    &ldquo;JSON&rdquo;</li>
+<li>sap.ui.core.mvc.ViewType.HTML   &ldquo;HTML&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><code>app.placeAt()</code> : 该方法将控件放到指定的div中。</p>
+</li>
+</ul>
+<h4 id="view">View</h4>
+<ol>
+<li>view.js</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">jsview</span>(<span style="color:#e6db74">&#34;ui5mvc.main&#34;</span>, {
+	<span style="color:#a6e22e">getControllerName</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ui5mvc.main&#34;</span>;
+	},
+	<span style="color:#a6e22e">createContent</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">oController</span>) {
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oShell</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">ux3</span>.<span style="color:#a6e22e">Shell</span>();<span style="color:#75715e">// Create Shell
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">oShell</span>.<span style="color:#a6e22e">addWorksetItem</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">ux3</span>.<span style="color:#a6e22e">NavigationItem</span>({
+			<span style="color:#a6e22e">key</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;btn&#34;</span>,
+			<span style="color:#a6e22e">text</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Button&#34;</span>
+		}));<span style="color:#75715e">// Add Navigation item
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">oShell</span>.<span style="color:#a6e22e">addWorksetItem</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">ux3</span>.<span style="color:#a6e22e">NavigationItem</span>({
+			<span style="color:#a6e22e">key</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;tf&#34;</span>,
+			<span style="color:#a6e22e">text</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Textfield&#34;</span>
+		}));
+		<span style="color:#a6e22e">oShell</span>.<span style="color:#a6e22e">addWorksetItem</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">ux3</span>.<span style="color:#a6e22e">NavigationItem</span>({
+			<span style="color:#a6e22e">key</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xml&#34;</span>,
+			<span style="color:#a6e22e">text</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;XMLView&#34;</span>
+		}));
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mContent</span> <span style="color:#f92672">=</span> {}; <span style="color:#75715e">// map holding shell content
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">mContent</span>.<span style="color:#a6e22e">btn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">commons</span>.<span style="color:#a6e22e">Button</span>({
+			<span style="color:#a6e22e">text</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello World&#34;</span>
+		});
+		<span style="color:#a6e22e">mContent</span>.<span style="color:#a6e22e">tf</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">commons</span>.<span style="color:#a6e22e">TextField</span>();
+		<span style="color:#a6e22e">oShell</span>.<span style="color:#a6e22e">attachWorksetItemSelected</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">evt</span>) {
+			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">evt</span>.<span style="color:#a6e22e">getParameter</span>(<span style="color:#e6db74">&#34;key&#34;</span>);
+			<span style="color:#a6e22e">oShell</span>.<span style="color:#a6e22e">setContent</span>(<span style="color:#a6e22e">mContent</span>[<span style="color:#a6e22e">key</span>]);
+		});<span style="color:#75715e">// Add WorksetItem Selected event
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">mContent</span>.<span style="color:#a6e22e">xml</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">view</span>({
+			<span style="color:#a6e22e">viewName</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ui5mvc.XML&#34;</span>,
+			<span style="color:#a6e22e">type</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">core</span>.<span style="color:#a6e22e">mvc</span>.<span style="color:#a6e22e">ViewType</span>.<span style="color:#a6e22e">XML</span>
+		});
+		<span style="color:#a6e22e">oShell</span>.<span style="color:#a6e22e">setContent</span>(<span style="color:#a6e22e">mContent</span>.<span style="color:#a6e22e">btn</span>);<span style="color:#75715e">//initial content
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">oShell</span>;
+	}
+ });
+</code></pre></div><p><code>getControllerName</code>: 函数用于返回 controller name</p>
+<p><code>createContent</code>: 函数用于返回页面上要显示的元素</p>
+<ol start="2">
+<li>view.xml</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#f92672">&lt;core:View</span> <span style="color:#a6e22e">xmlns:core=</span><span style="color:#e6db74">&#34;sap.ui.core&#34;</span>
+	<span style="color:#a6e22e">xmlns:mvc=</span><span style="color:#e6db74">&#34;sap.ui.core.mvc&#34;</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;sap.m&#34;</span> <span style="color:#a6e22e">controllerName=</span><span style="color:#e6db74">&#34;ui5mvc.XML&#34;</span>
+	<span style="color:#a6e22e">mlns:html=</span><span style="color:#e6db74">&#34;http://www.w3.org/1999/xhtml&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;html:h1</span><span style="color:#f92672">&gt;</span>My first XML-Header<span style="color:#f92672">&lt;/html:h1&gt;</span>
+	<span style="color:#f92672">&lt;Panel</span><span style="color:#f92672">&gt;</span>
+          <span style="color:#f92672">&lt;Button</span> <span style="color:#a6e22e">press=</span><span style="color:#e6db74">&#34;.sayHello&#34;</span> <span style="color:#a6e22e">text=</span><span style="color:#e6db74">&#34;Say Hello&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;/Button&gt;</span>
+	<span style="color:#f92672">&lt;/Panel&gt;</span>
+<span style="color:#f92672">&lt;/core:View&gt;</span>
+</code></pre></div><p>​		空的的namespace设定 : xmlns = &ldquo;sap.m&rdquo;.</p>
+<p>​		命名的namespace设定 : xmlns:mvc = &ldquo;sap.ui.core.mvc&rdquo;. mvc标签指代<code>sap.ui.core.mvc</code></p>
+<ul>
+<li>申明namespace: <code>xmlns:t=&quot;sap.ui.table&quot;</code>。xml中就可以表示为<code>&lt;t:Table&gt; ... &lt;/t:Table&gt;</code></li>
+<li>如果属性是简单类型，可以直接作为atrribute的方式来申明，如Table的width属性、title属性</li>
+<li>如果属性是Aggregation和Association，则使用子标签，如Column的Label，是<code>sap.m.Label</code>。</li>
+<li>绑定的语法稍有差异。</li>
+<li><strong><code>视图模型可以包含分配给控件的任何配置选项，以绑定属性。</code></strong></li>
+<li><strong><code>一个 ” . ”在格式化程序名称前面表示在当前视图的控制器中查找该函数</code></strong></li>
+</ul>
+<p>xmlView 聚合绑定</p>
+<p>​	1）xmlview中对需要动态显示的部分不作声明</p>
+<p>​	2）在controller中定义factory function，实现控件的绑定和动态加载。</p>
+<h4 id="controller">Controller</h4>
+<p>1、系统生成的文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">controller</span>(<span style="color:#e6db74">&#34;ui5mvc.XML&#34;</span>, {
+<span style="color:#75715e">// onInit: function() {
+</span><span style="color:#75715e"></span><span style="color:#75715e">//		
+</span><span style="color:#75715e"></span><span style="color:#75715e">// },
+</span><span style="color:#75715e"></span><span style="color:#75715e">// onBeforeRendering: function() {
+</span><span style="color:#75715e"></span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span><span style="color:#75715e">// },
+</span><span style="color:#75715e"></span><span style="color:#75715e">// onAfterRendering: function() {
+</span><span style="color:#75715e"></span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span><span style="color:#75715e">// },
+</span><span style="color:#75715e"></span><span style="color:#75715e">// onExit: function() {
+</span><span style="color:#75715e"></span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span><span style="color:#75715e">// }
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">sayHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">commons</span>.<span style="color:#a6e22e">MessageBox</span>.<span style="color:#a6e22e">show</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
+  }
+});
+</code></pre></div><p>2、通过模块定义</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">define</span>( 
+  [<span style="color:#e6db74">&#34;Dependencies1&#34;</span>,<span style="color:#e6db74">&#34;Dependencies2&#34;</span>,<span style="color:#e6db74">&#34;formatter&#34;</span>],
+  <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">Controller</span>,<span style="color:#a6e22e">formatter</span>){
+    <span style="color:#e6db74">&#34;use strict&#34;</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Controller</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#34;ControllerName&#34;</span>,{
+      <span style="color:#a6e22e">formatter</span><span style="color:#f92672">:</span><span style="color:#a6e22e">formatter</span>,
+      <span style="color:#a6e22e">onInit</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){},
+      <span style="color:#a6e22e">onBeforeRendering</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){},
+      <span style="color:#a6e22e">onAfterRendering</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){},
+      <span style="color:#a6e22e">onExit</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){}
+    });
+  }
+);
+</code></pre></div><p>3、生命周期：</p>
+<p>​			Start  &ndash;&gt;  视图和控制器被实例化  &ndash;&gt;  控制器被加载(存在控制器) &ndash;&gt;  onInit  &ndash;&gt;  onBeforeRendering  &ndash;&gt;</p>
+<p>​		视图被渲染  &ndash;&gt;  onAfterRendering  &ndash;&gt;  onExit  &ndash;&gt;  END(视图和控制器被销毁)</p>
+<ul>
+<li>
+<p>onInit : 当视图被实例化并且其控件已经创建时调用。用于在显示前修改视图，绑定事件处理程序并执行其他一次性初始化任务。</p>
+</li>
+<li>
+<p>onExit : 视图退出时调用。用于释放资源并完成任务。</p>
+</li>
+<li>
+<p>onAfterRendering : 当视图被渲染时调用;是HTML的一部分。用于执行HTML的后续操作，SAPUI5控制在渲染后访问此钩子。</p>
+</li>
+<li>
+<p>onBeforeRendering : 在控制器视图重新呈现之前调用，不在第一次呈现之前调用。用于在其中调用第一个渲染前的钩子。</p>
+</li>
+</ul>
+<p>4、控制器只是将加载的格式化程序函数存储在本地属性格式化程序中，以便能够在视图中访问它们。</p>
+<h4 id="model">Model</h4>
+<p>应用程序数据</p>
+<ul>
+<li>客户端 JSON model、XML model、Resource model</li>
+<li>服务端 oData model</li>
+</ul>
+<h4 id="resource">Resource</h4>
+<p>三种方法声明文件位置：</p>
+<ul>
+<li>
+<p><code>sap.ui.localResources()</code></p>
+<p>​	sap.ui.localResources(&ldquo;foldle.foldle&rdquo;);</p>
+</li>
+<li>
+<p><code>jQuery.sap.registerModulePath()</code></p>
+<p>​	jQuery.sap.registerModulePath(sModuleNamePrefix, sURL);</p>
+</li>
+<li>
+<p>bootstrap声明 : <code>data-sap-ui-resourceroots = '{&quot;sName&quot;:&quot;oURL&quot;}'</code></p>
+<p>变更位置后需要修改系统自动生成的文件名称。</p>
+</li>
+</ul>
+<h4 id="component">Component</h4>
+<p>Component.js通过调用manifest.json的配置信息，完成初始化调用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">define</span>(
+  [<span style="color:#e6db74">&#34;sap/ui/core/UIComponent&#34;</span>,<span style="color:#e6db74">&#34;sap/ui/model/resource/ResourceModel&#34;</span>,<span style="color:#e6db74">&#34;sap/ui/model/json/JSONModel&#34;</span>],
+  <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">UIComponent</span>, <span style="color:#a6e22e">ResourceModel</span>, <span style="color:#a6e22e">JSONModel</span>) {
+    <span style="color:#e6db74">&#34;use strict&#34;</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">UIComponent</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#34;webapp.Component&#34;</span>, {
+      <span style="color:#75715e">//metadata
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">metadata</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">manifest</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;json&#34;</span>
+      },
+      <span style="color:#a6e22e">init</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+        <span style="color:#75715e">// call the base component&#39;s init function
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">UIComponent</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+        <span style="color:#75715e">// create the views based on the url/hash
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getRouter</span>().<span style="color:#a6e22e">initialize</span>();
+      }
+    });
+  });
+</code></pre></div><h4 id="application-descriptor">Application Descriptor</h4>
+<p>​	manifest.json配置应用程序的相关信息。被称为Application Descriptor。</p>
+<ol>
+<li>
+<p>sap.app</p>
+<p>包含特定于应用程序的属性</p>
+<ul>
+<li>
+<p>ID(强制)：应用程序组件的命名空间，唯一的，必须与组件的空间名称对应</p>
+</li>
+<li>
+<p>type：定义我们想要配置的内容，例如：应用程序</p>
+</li>
+<li>
+<p>i18n：定义资源包文件的路径</p>
+</li>
+<li>
+<p>title：应用程序资源包中引用的句柄语法中的应用程序标题</p>
+</li>
+<li>
+<p>description：简短说明文本应用程序在应用程序资源包中引用的句柄语法中的作用</p>
+</li>
+<li>
+<p>applicationVersion：应用程序的版本，以便以后可以轻松更新应用程序</p>
+</li>
+</ul>
+</li>
+<li>
+<p>sap.ui</p>
+<p>提供以下UI属性</p>
+<ul>
+<li>technology：此值指定UI技术; 在我们的例子中，我们使用SAPUI5</li>
+<li>deviceTypes：告诉应用程序支持哪些设备：台式机，平板电脑，手机（默认情况下均为true）</li>
+</ul>
+</li>
+<li>
+<p>sap.ui5</p>
+<p>该 sap.ui5 namespace添加SAPUI5自动处理的SAPUI5特定配置参数。最重要的参数是：</p>
+<ul>
+<li>rootView：如果指定此参数，组件将自动实例化视图并将其用作此组件的根</li>
+<li>dependencies：这里我们声明应用程序中使用的UI库</li>
+<li>models：在描述符的这一部分中，我们可以定义在应用程序启动时由SAPUI5自动实例化的模型。在这里，我们现在可以定义本地资源包。我们将模型“i18n”的名称定义为键，并按名称空间指定包文件。</li>
+</ul>
+</li>
+</ol>
+<h5 id="资源包文件">资源包文件</h5>
+<ol>
+<li>
+<p>sap.app设置资源包文件的路径和文件名。使用的相对于 <code>manifest.json</code> 文件的相对路径。</p>
+<blockquote>
+<p>&ldquo;sap.app&rdquo;: {
+&ldquo;_version&rdquo;: &ldquo;1.1.0&rdquo;,
+&ldquo;id&rdquo;: &ldquo;resource&rdquo;,
+&ldquo;type&rdquo;: &ldquo;application&rdquo;,
+&ldquo;i18n&rdquo;: &ldquo;i18n/i18n.properties&rdquo;,
+&hellip;</p>
+<p>},</p>
+</blockquote>
+</li>
+<li>
+<p>sap.ui5中models设置名称为 i18n 的 <strong>resource model</strong></p>
+<blockquote>
+<p>&ldquo;sap.ui5&rdquo;: {     <br>
+&hellip;
+&ldquo;models&rdquo;: {
+&hellip;
+&ldquo;i18n&rdquo;: {
+&ldquo;type&rdquo;: &ldquo;sap.ui.model.resource.ResourceModel&rdquo;,
+&ldquo;settings&rdquo;: {
+&ldquo;bundleName&rdquo;: &ldquo;webapp.i18n.i18n&rdquo;
+}
+}</p>
+<p>}</p>
+</blockquote>
+<p><code>bundleName</code> 后面是根据 index.html文件的 <strong>resource roots</strong> 设置的相对路径。然后在代码中添加对 ResourceBundle 的依赖后，通过 <code>{i18n&gt;xxx}</code> 实现绑定。</p>
+</li>
+</ol>
+<h5 id="models">Models</h5>
+<ol>
+<li>
+<p>sap.app设置资源包文件的路径和文件名。使用的相对于 <code>manifest.json</code> 文件的相对路径。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#e6db74">&#34;sap.app&#34;</span><span style="color:#f92672">:</span> {
+  ...
+  <span style="color:#e6db74">&#34;dataSources&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;mainService&#34;</span><span style="color:#f92672">:</span> {
+      <span style="color:#e6db74">&#34;uri&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./service/data.json&#34;</span>,
+      <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;JSON&#34;</span>
+    }
+  }
+}
+</code></pre></div></li>
+<li>
+<p>sap.ui5的<code>models</code>没有指定名称的 model，当 view 中数据绑定时，没有给出前缀的时候，就参照到这个 model。使用sap.app中设置的dataSource.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#e6db74">&#34;sap.ui5&#34;</span><span style="color:#f92672">:</span> {
+  ...
+  <span style="color:#e6db74">&#34;models&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">:</span> {
+      <span style="color:#e6db74">&#34;dataSource&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;mainService&#34;</span>
+    },
+  ...
+  }
+}
+</code></pre></div></li>
+</ol>
+<h5 id="root-view">Root View</h5>
+<p>​	Root view (启动即显示的 view)：类型为 xml，名称为 App。OpenUI5 在相应文件夹下面查找名为 <code>App.view.xml</code> 文件并加载。通过这种方式，实现了 root view 的配置化.</p>
+<blockquote>
+<p>&ldquo;sap.ui5&rdquo;: {
+&ldquo;_version&rdquo;: &ldquo;1.1.0&rdquo;,
+&ldquo;rootView&rdquo;: {
+&ldquo;viewName&rdquo;: &ldquo;webapp.view.App&rdquo;,
+&ldquo;type&rdquo;: &ldquo;XML&rdquo;
+}</p>
+<p>}</p>
+</blockquote>
+<p>​	启动流程 :</p>
+<p>​	1) <code>index.html</code> 的 <code>ComponentContainer</code> 根据 <code>name</code> 或 <code>component</code> 属性实例化 Component。</p>
+<p>​	2) Component 的 <code>metadata</code> 指向设定的 <code>manifest.json</code> 文件。</p>
+<p>​	3) <code>manifest.json</code> 文件的 <code>sap.ui5&gt;rootView</code> 设定了启动时候加载并显示的 root view 为 <code>App.view.xml</code> 。</p>
+<p>​	4) App view 并不需要像之前文章介绍的内嵌 master view 和 detail view，而是由路由器根据路径在 pattern 中找匹配的模式，在 target 中找对应的 view 加载。</p>
+<h5 id="routing设置">Routing设置</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#e6db74">&#34;sap.ui5&#34;</span><span style="color:#f92672">:</span> {
+        ...
+        <span style="color:#e6db74">&#34;routing&#34;</span><span style="color:#f92672">:</span> {
+            <span style="color:#e6db74">&#34;config&#34;</span><span style="color:#f92672">:</span> {
+                <span style="color:#e6db74">&#34;routerClass&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sap.m.routing.Router&#34;</span>,
+                <span style="color:#e6db74">&#34;viewType&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;XML&#34;</span>,
+                <span style="color:#e6db74">&#34;viewPath&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;webapp.view&#34;</span>,
+                <span style="color:#e6db74">&#34;controlId&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;app&#34;</span>,
+                <span style="color:#e6db74">&#34;controlAggregation&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;pages&#34;</span>,
+                <span style="color:#e6db74">&#34;bypassed&#34;</span><span style="color:#f92672">:</span> {
+                    <span style="color:#e6db74">&#34;target&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;notFound&#34;</span>
+                }
+            },
+            <span style="color:#e6db74">&#34;routes&#34;</span><span style="color:#f92672">:</span> [{
+                <span style="color:#e6db74">&#34;pattern&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;master&#34;</span>,
+                <span style="color:#e6db74">&#34;target&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;master&#34;</span>
+            },
+            {
+                <span style="color:#e6db74">&#34;pattern&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;detail/{supplierPath}&#34;</span>,
+                <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;detail&#34;</span>,
+                <span style="color:#e6db74">&#34;target&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;detail&#34;</span>
+            }],
+            <span style="color:#e6db74">&#34;targets&#34;</span><span style="color:#f92672">:</span> {
+                <span style="color:#e6db74">&#34;master&#34;</span><span style="color:#f92672">:</span> {
+                    <span style="color:#e6db74">&#34;viewName&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Master&#34;</span>,
+                    <span style="color:#e6db74">&#34;viewLevel&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+                },
+                <span style="color:#e6db74">&#34;detail&#34;</span><span style="color:#f92672">:</span> {
+                    <span style="color:#e6db74">&#34;viewName&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Detail&#34;</span>,
+                    <span style="color:#e6db74">&#34;viewLevel&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+                },
+                <span style="color:#e6db74">&#34;notFound&#34;</span><span style="color:#f92672">:</span> {
+                    <span style="color:#e6db74">&#34;viewName&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;NotFound&#34;</span>,
+                    <span style="color:#e6db74">&#34;viewId&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;notFound&#34;</span>
+                }
+            }
+        }
+}
+</code></pre></div><h3 id="多语言">多语言</h3>
+<p>在 SAPUI5 中，通过两种方法来实现多语言.</p>
+<p>​	(1) SAPUI5 提供 Resource Model，Resource Model 读取资源包 (Resource Bundle) 并与 View 中的控件绑定。</p>
+<p>​	(2) 使用 jQuery.sap.resources 相关的 API 读取资源包。两种方法都需要资源包文件并且在配置中设置。</p>
+<h4 id="语言代码">语言代码</h4>
+<p>​	OpenUI5 对页面的显示，有一个 <strong>当前语言( Current Language )</strong> 的概念，按照当前语言，读取相应的资源包文件，按当前语言显示。OpenUI5 按照如下顺序顺序(从高到低)，如果都没有找到，最后读取通用设置（比如 i18n.properties)。</p>
+<p>​	<code>sap.ui.getCore().getConfiguration().getLanguage()</code> 获得当前语言。</p>
+<blockquote>
+<ol>
+<li>
+<p>URL中的 locale 参数（即在 url 后面加上 <code>?sap-ui-language=en</code> )</p>
+</li>
+<li>
+<p>应用程序代码的 locale 设置，sap.ui.getCore().getConfiguration().applySettings({ language: &lsquo;de&rsquo;});</p>
+</li>
+<li>
+<p>Android 平台的用户代理字符串设置</p>
+</li>
+<li>
+<p>浏览器的一般语言设置，可以用 window.navigator.language 查看</p>
+</li>
+<li>
+<p>浏览器中用户语言配置。这个与浏览器相关，比如 IE 通过 window.navigator.userLanguage 查看。</p>
+</li>
+<li>
+<p>浏览器语言配置。这个业余浏览器相关，比如 IE 通过 window.navigator.browserLanguage 查看</p>
+</li>
+<li>
+<p>OpenUI5中硬编码，默认为 en</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="资源包文件-1">资源包文件</h4>
+<ol>
+<li>Java的属性文件，文件的扩展名总是.properties。文件中包含于语言相关的文本。</li>
+<li>文件名包括固定部分和语言相关部分。那么 i18n.properties 是默认的文件，i18n_zh_CN.properties 是中文简体的资源文件。</li>
+<li>资源包文件为扁平结构，不能嵌套。每一行要么是 key-value键值对 ，要么是 # 开头的注释。也可以可以空行。</li>
+<li>如果 Properties 文件的文本为 Unicode 字符，文件使用16进制的编码来存储，而不是明文。</li>
+</ol>
+<h4 id="resource-model">Resource Model</h4>
+<p>​	使用 Resource Model 绑定数据需要三步：</p>
+<p>​	1) 添加资源包文件，将不同的语言放在不同的资源包文件中。<code>i18n.properties,i18n_zh_CN.properties</code></p>
+<p>​	2) 在 Component.js 文件中，创建 Resource model 的实例 。</p>
+<p>​	3) 在 View 中参照 Resource Model 中定义的 key。 <code> title=&quot;{i18n&gt;masterTitle}&quot;</code></p>
+<p>​	 url 后面添加<code>?sap-ui-language=XXX</code>，实现语言的切换。</p>
+<h4 id="jquerysapresources">jQuery.sap.resources</h4>
+<p>​	在代码中直接使用资源包的文本。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sLocale</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">getCore</span>().<span style="color:#a6e22e">getConfiguration</span>().<span style="color:#a6e22e">getLanguage</span>();<span style="color:#75715e">//获取当前语言
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oBd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jQuery</span>.<span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">resources</span>({
+	<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;i18n/i18n.properties&#34;</span>,
+	<span style="color:#a6e22e">locale</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sLocale</span>
+})               <span style="color:#75715e">//根据指定的 URL 和 Locale，创建一个新的资源包实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sMeg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oBd</span>.<span style="color:#a6e22e">getText</span>(<span style="color:#e6db74">&#34;key&#34;</span>,[<span style="color:#a6e22e">sLocale</span>]); <span style="color:#75715e">//根据资源包文件的 key，获取与语言相关的 value
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>6936</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/sapui5/">
+                    #sapui5</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAPFiori_LaunchPad/" class="prev" rel="prev" title=" Fiori Launch Pad "><i class="iconfont icon-dajiantou"></i>&nbsp; Fiori Launch Pad </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_Layout/" class="next" rel="next" title=" SAPUI5 Layout "> SAPUI5 Layout &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-17 00:00:00 \x2b0000 UTC',
+        title: ' SAPUI5 概述 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

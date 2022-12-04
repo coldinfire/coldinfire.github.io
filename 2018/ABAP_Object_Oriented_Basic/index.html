@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Object_Oriented_Overview/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_TableCopyFields/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Object_Oriented_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP Object Oriented 语法 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP Object Oriented 语法 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP Object Oriented 语法"/>
+<meta name="twitter:description" content="类声明和实现 类具有属性和方法；对象是类的实例；对象是通过指针变量来访问的；对象有独立的 interface。 &#34;Class Declarations&#34; CLASS application DEFINITION. PUBLIC SECTION. &#34;公有属性定"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP Object Oriented 语法",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Object_Oriented_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  3918 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Object_Oriented_Basic\/",
+  "datePublished": "2018-09-08T00:00:00\u002b00:00",
+  "dateModified": "2018-09-08T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP Object Oriented 语法</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-08 >8 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="类声明和实现">类声明和实现</h2>
+<p>类具有属性和方法；对象是类的实例；对象是通过指针变量来访问的；对象有独立的 <strong>interface</strong>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;Class Declarations&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLASS</span> application <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.       <span style="color:#75715e">&#34;公有属性定义&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: attr1.        <span style="color:#75715e">&#34;实例属性 obj_name-&gt;attr1&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span>: show_text. <span style="color:#75715e">&#34;实例方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">EVENTS</span>: event1.     <span style="color:#75715e">&#34;实例事件&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;静态属性定义 class_name=&gt;cla_attr1.&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLASS-DATA</span>: cla_attr1.    <span style="color:#75715e">&#34;静态属性&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLASS-METHODS</span>: cls_methd. <span style="color:#75715e">&#34;静态方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLASS-EVENTS</span>: cls_event.  <span style="color:#75715e">&#34;静态事件&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CONSTANTS</span>: con1.          <span style="color:#75715e">&#34;常量定义&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PROTECTED SECTION</span>.
+    <span style="color:#75715e">&#34;定义 Protected 内容&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PRIVATE SECTION</span>. <span style="color:#75715e">&#34;定义类私有属性&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span> text(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;This is my first ABAP Object.&#39;</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+<span style="color:#75715e">&#34;Class Implementation&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLASS</span> application <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">show_text</span>.
+    <span style="color:#66d9ef">WRITE</span> text.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+</code></pre></div><ul>
+<li>
+<p>PUBLIC SECTION：可被所有对象使用</p>
+</li>
+<li>
+<p>PROTECTED SECTION：只能被类本身及其派生类中的方法使用</p>
+</li>
+<li>
+<p>PRIVATE SECTION：只能被类本身的方法使用</p>
+</li>
+</ul>
+<h3 id="类组成结构">类组成结构</h3>
+<h4 id="属性">属性</h4>
+<p>类内表定义的数据对象。</p>
+<ul>
+<li>实例属性：使用 DATA 定义</li>
+<li>静态属性：使用 CLASS-DATA 定义，在类声明的时候定义</li>
+<li>CONSTANT 语句定义类常量，必须在类定义时指定其值</li>
+</ul>
+<h4 id="方法">方法</h4>
+<p>需要在类声明和实现两部分进行定义，声明部分说明方法的参数接口；实现部分通过代码完成od_1具体功能。有两中种方法类型 METHODS、CLASS-METHODS。</p>
+<p><em>方法定义</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">[<span style="color:#a6e22e">CLASS</span><span style="color:#f92672">-</span>]<span style="color:#a6e22e">METHODS</span> <span style="color:#a6e22e">method1</span>
+  <span style="color:#a6e22e">IMPORTING</span>  <span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">i1</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">i1</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">dobj</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#a6e22e">def1</span>
+  <span style="color:#a6e22e">EXPORTING</span>  <span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">e1</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">e1</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">dobj</span>
+  <span style="color:#a6e22e">CHANGING</span>   <span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">c1</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">c1</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">dobj</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#a6e22e">def2</span>
+  <span style="color:#a6e22e">EXCEPTIONS</span> ... <span style="color:#a6e22e">x1</span> <span style="color:#a6e22e">TYPE</span> ...
+</code></pre></div><p><em>方法调用</em>：调用方法传参时，除去指定为可选的参数之外，所有的参数都必须传递相应的实参值。a1 ~ an 为实际参数值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHODS</span> [<span style="color:#a6e22e">oref</span><span style="color:#f92672">-&gt;|</span><span style="color:#66d9ef">class</span>=&gt;]<span style="color:#a6e22e">method1</span>
+  [<span style="color:#a6e22e">EXPOTING</span> <span style="color:#a6e22e">i1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a1</span> ... <span style="color:#66d9ef">in</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">an</span>]
+  [<span style="color:#a6e22e">IMPOTING</span> <span style="color:#a6e22e">e1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a1</span> ... <span style="color:#66d9ef">in</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">an</span>]
+  [<span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">c1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a1</span> ... <span style="color:#66d9ef">in</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">an</span>]
+  [<span style="color:#a6e22e">EXCEPTION</span> <span style="color:#a6e22e">x1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">r1</span> ... <span style="color:#a6e22e">Other</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">rn</span>]
+</code></pre></div><h3 id="构造器">构造器</h3>
+<p>每个类只有一个构造器，程序运行时在 Create object 语句中自动调用构造器。</p>
+<ul>
+<li>必须在 public section 中定义和应用构造器</li>
+</ul>
+<h3 id="事件">事件</h3>
+<p>事件用于一个类对象发布其状态的改变，因而其他对象可以捕获该方法并作出响应。</p>
+<p>事件的工作机制：在 ABAP 中，我们使用发布和预定的机制(publish and subscribe)。类声明一个事件，通过实现一个方法来发布该事件，这样事件就和方法绑定在一起，当事件触发时就会调用该方法；另外一个类可以实现一个方法来预定这个事件。</p>
+<p>事件的触发和处理是通过特定的方法进行的，一个方法作为触发者触发事件， 而程序中的另一个方法则作为处理者捕获并处理该事件，处理方法在事件出现进被执行。</p>
+<p><em>事件的使用</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span> <span style="color:#a6e22e">声明事件</span>
+<span style="color:#75715e">//使用 EXPORTING 附加项指定需要向事件处理方法中传递的参数，该参数传递方法恒为值传递
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">EVENTS</span><span style="color:#f92672">|</span><span style="color:#a6e22e">CLASS</span><span style="color:#f92672">-</span><span style="color:#a6e22e">EVENTS</span> <span style="color:#a6e22e">event</span>
+  <span style="color:#a6e22e">EXPORTING</span> ... <span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">e1</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">type</span> [<span style="color:#a6e22e">OPTIONAL</span>] ...
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">触发事件</span>
+<span style="color:#75715e">//实例事件可以被类中的任意方法触发，静态事件则可以被静态方法触发
+</span><span style="color:#75715e">//参数除可选外必须传输。ME自身引用对象在被默认的传递到隐含参数 SENDER.
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">RAISE</span> <span style="color:#a6e22e">EVENT</span> <span style="color:#a6e22e">evt</span> <span style="color:#a6e22e">EXPORTING</span> ... <span style="color:#a6e22e">e1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">f1</span> ...
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">处理事件</span>
+<span style="color:#75715e">//事件需要通过方法捕获事件并处理，必须首先为该事件定义一个事件处理方法，然后在运行时为事件进行注册.
+</span><span style="color:#75715e">//事件处理方法不需要使用所有 RAISE EVENT 中定义的参数
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">METHODS</span><span style="color:#f92672">|</span><span style="color:#a6e22e">CLASS</span><span style="color:#f92672">-</span><span style="color:#a6e22e">METHODS</span> <span style="color:#a6e22e">meth</span> 
+  <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">EVENT</span> <span style="color:#a6e22e">event</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">cif</span> <span style="color:#a6e22e">IMPORTING</span> ... <span style="color:#a6e22e">ei</span> ...
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">注册事件处理方法</span>.
+<span style="color:#75715e">//要使事件处理方法能够对事件进行响应，必须在运行时为相关事件注册该方法，语法格式如下:
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">HANDLER</span> ... <span style="color:#a6e22e">hi</span> ... [<span style="color:#a6e22e">FOR</span>] ...<span style="color:#a6e22e">obj</span><span style="color:#f92672">|</span><span style="color:#a6e22e">ALL</span> <span style="color:#a6e22e">INSTANCES</span>...
+<span style="color:#ae81ff">1.</span><span style="color:#a6e22e">定义在类中的实例事件</span>.
+<span style="color:#ae81ff">2.</span><span style="color:#a6e22e">定义在接口中的实例事件</span>.
+<span style="color:#ae81ff">3.</span><span style="color:#a6e22e">定义在类中的静态事件</span>.
+<span style="color:#ae81ff">4.</span><span style="color:#a6e22e">定义在接口中的静态事件</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">事件处理时间</span>
+<span style="color:#a6e22e">在程序执行到</span> <span style="color:#a6e22e">RAISE</span> <span style="color:#a6e22e">EVENT</span> <span style="color:#a6e22e">语句之后</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">所有已注册的处理方法都将在下一个语句之前被处理</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">如果处理方法本身触发事件</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">则该处理方法在原方法继续执行之前被重新调用</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p><em>事件使用实例</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;事件触发器&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLASS</span> class1 <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">EVENTS</span> E1
+      <span style="color:#66d9ef">EXPORTING</span> <span style="color:#66d9ef">VALUE</span>(P1) <span style="color:#66d9ef">TYPE </span>I.
+    <span style="color:#66d9ef">METHODS</span> M1.
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+  	<span style="color:#66d9ef">DATA</span> atr1 <span style="color:#66d9ef">TYPE </span>I.
+<span style="color:#66d9ef">ENDCLASS</span>.
+
+<span style="color:#66d9ef">CLASS</span> class1 <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">M1</span>.
+    atr1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>.
+    <span style="color:#66d9ef">RAISE</span> EVENT E1 <span style="color:#66d9ef">EXPORTING</span> P1<span style="color:#f92672">=</span> atr1.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+<span style="color:#75715e">&#34;事件处理器&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLASS</span> class2 <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>: M2 <span style="color:#66d9ef">FOR EVENT</span> E1 <span style="color:#66d9ef">OF</span> class1 <span style="color:#66d9ef">IMPORTING</span> P1. 
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+  	<span style="color:#66d9ef">DATA</span> atr2 <span style="color:#66d9ef">TYPE </span>I.
+<span style="color:#66d9ef">ENDCLASS</span>.
+
+<span style="color:#66d9ef">CLASS</span> class2 <span style="color:#66d9ef">IMPLEMENTATION</span>.
+//M2进行事件处理
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">M2</span>.
+    atr2 <span style="color:#f92672">=</span> P1.
+    ...
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+</code></pre></div><h2 id="sap中定义并使用类">SAP中定义并使用类</h2>
+<h3 id="定义-class">定义 Class</h3>
+<p>通过事务代码：SE80 或 SE24 进入 Class Builder 进行创建类操作。</p>
+<p><img src="/images/ABAP/OO1.png" alt="Create"></p>
+<ul>
+<li>创建时选择限制范围</li>
+<li>Final 勾选代表该类不能被继承</li>
+</ul>
+<p><img src="/images/ABAP/OO2.png" alt="Attribute"></p>
+<ul>
+<li>设置属性时，和定义变量一样，可以设置其等级，类型，可见范围</li>
+<li>Read-Only：选中时该属性不能被类外部读取，可被类内方法修改</li>
+</ul>
+<p><img src="/images/ABAP/OO3.png" alt="Method"></p>
+<ul>
+<li>方法可以设置传入参数，传出参数以及异常消息</li>
+<li>方法内部可使用ABAP实现具体的业务逻辑</li>
+</ul>
+<h3 id="使用创建的-class">使用创建的 Class</h3>
+<h4 id="使用步骤">使用步骤</h4>
+<ol>
+<li>
+<p>程序开头部分定义类的声明和实现方法；</p>
+</li>
+<li>
+<p>使用 DATA 语句中的 TYPE REF TO 参照类类型声明引用变量；</p>
+</li>
+<li>
+<p>使用 CREATE OBJECT 语句创建对象；</p>
+</li>
+<li>
+<p>通过 -&gt; 或 =&gt; 运算符访问对象或类组件；</p>
+</li>
+</ol>
+<h4 id="使用实例">使用实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: ob_veh1 <span style="color:#66d9ef">TYPE REF TO</span> z_cl_test.
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+<span style="color:#66d9ef">CREATE OBJECT</span> ob_veh1.
+<span style="color:#66d9ef">CALL METHOD</span> ob_veh1<span style="color:#f92672">-&gt;</span>add.
+</code></pre></div><h2 id="面向对象的特点">面向对象的特点</h2>
+<h3 id="对象创建与引用">对象创建与引用</h3>
+<p>ABAP 对象的创建和访问需要通过对象引用进行，引用类型是 ABAP 基本类型之一，其中包括&quot;数据引用&quot;和&quot;对象引用&quot;。其中对象引用又包括类引用和接口引用，对于普通类应使用类引用。</p>
+<p>在程序中，需要先根据对象类型声明引用类型变量，然后对该变量引用 ABAP 对象，该引用变量中实际上存储的是 ABAP 对象的内在地址，因而该引用类型变量也就是普通意义上的指向对象的指针。一个引用类型变量可以不指向任何内存地址或指向一个数据对象，但一个 ABAP 对象则可以同时存在多个指向它的指针，可以通过所有这些指针对其进行操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> ob_test <span style="color:#66d9ef">TYPE REF TO</span> Z_CL_TEST.
+<span style="color:#66d9ef">CREATE OBJECT</span> ob_test1.
+<span style="color:#66d9ef">WRITE</span>: / ob_test1<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">method</span>().
+<span style="color:#66d9ef">CALL METHOD</span> ob_test1<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">method</span>().
+</code></pre></div><ul>
+<li>
+<p>其中 DATA 语句创建了一个引用数据对象，该数据对象的类型定义为&quot;指向一个类名为 Z_CL_TEST 的对象的指针&quot;</p>
+</li>
+<li>
+<p>定义指针之后，CREATE OBJECT 语句则创建了一个类 Z_CL_TEST 的实例，并同时将该对象的地址指针赋给引用类型 ob_test1</p>
+</li>
+</ul>
+<h4 id="访问对象组件">访问对象组件</h4>
+<p>对象创建之后，可以通过指向它的指针(引用变量)对其进行操作。可以使用的对象组件一般为当前可见的属性和方法，通过引用变量后接运算符 <em>-&gt;</em> 访问对象组件。</p>
+<p><code> -&gt;</code>： 即可以访问类中定义的实例组件又可以访问静态组件。但对于静态组件还有另一种访问方式：通过<code>类名称=&gt;</code>直接访问。自身访问通过 <code>me</code>；父类引用通过 <code>super</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">访问对象的实例或则静态属性</td>
+<td style="text-align:left">oref-&gt;obj_attr</td>
+</tr>
+<tr>
+<td style="text-align:left">访问类的静态属性</td>
+<td style="text-align:left">class_name=&gt;class_attr</td>
+</tr>
+<tr>
+<td style="text-align:left">在类内部访问自身实例或静态属性</td>
+<td style="text-align:left">me-&gt;static_attr / static_attr</td>
+</tr>
+<tr>
+<td style="text-align:left">对象的实例属性或静态方法</td>
+<td style="text-align:left">CALL METHOD oref-&gt;meth</td>
+</tr>
+<tr>
+<td style="text-align:left">类的静态方法</td>
+<td style="text-align:left">CALL METHOD class=&gt;meth</td>
+</tr>
+<tr>
+<td style="text-align:left">在类内部访问自身实例方法或静态方法</td>
+<td style="text-align:left">CALL METHOD me-&gt;attr / CALL METHOD attr</td>
+</tr>
+<tr>
+<td style="text-align:left">链式访问结构</td>
+<td style="text-align:left">oref1-&gt;oref2-&gt;comp / class=&gt;oref-&gt;comp</td>
+</tr>
+</tbody>
+</table>
+<h4 id="删除对象">删除对象</h4>
+<p>和其他语言类似，ABAP 拥有自动垃圾回收机制。但是可以通过 CLEAR 语句初始化，触发回收机制。</p>
+<h4 id="方法定义和使用">方法定义和使用</h4>
+<p>方法中的参数定义和传递：定义多种参数值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">METHODS</span> <span style="color:#a6e22e">meth</span>
+  <span style="color:#a6e22e">IMPORTING</span> ... [<span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">i1</span>)<span style="color:#f92672">|</span><span style="color:#a6e22e">i1</span>] <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">type</span> [<span style="color:#a6e22e">OPTIONAL</span><span style="color:#f92672">|</span><span style="color:#a6e22e">DEFAULT</span> <span style="color:#a6e22e">def1</span>] ...
+  <span style="color:#a6e22e">EXPORTING</span> ... [<span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">e1</span>)<span style="color:#f92672">|</span><span style="color:#a6e22e">e1</span>] <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">type</span> [<span style="color:#a6e22e">OPTIONAL</span>] ...
+  <span style="color:#a6e22e">CHANGE</span> ... [<span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">c1</span>)<span style="color:#f92672">|</span><span style="color:#a6e22e">c1</span>] <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">type</span> [<span style="color:#a6e22e">OPTIONAL</span><span style="color:#f92672">|</span><span style="color:#a6e22e">DEFAULT</span> <span style="color:#a6e22e">def1</span>] ...
+  <span style="color:#a6e22e">RETURNING</span> <span style="color:#a6e22e">VALUE</span>(<span style="color:#a6e22e">r</span>)
+  <span style="color:#a6e22e">EXCEPTIONS</span> ... <span style="color:#a6e22e">X1</span> ...
+</code></pre></div><h3 id="继承">继承</h3>
+<p>ABAP 所有的类都是默认继承了系统中的空类 OBJECT；ABAP 中的继承为单继承。具有一般性的类称为基类 (Superclass)，其各个子类称为派生类 (Subclass)。</p>
+<p>在类定义时，使用 <code>INHERTING FROM</code> 附加项可以指定派生类和基类之间的继承关系。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CLASS</span> <span style="color:#a6e22e">class_2</span> <span style="color:#a6e22e">DEFINITION</span> <span style="color:#a6e22e">INHERITING</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">class_1</span>.
+  ...
+<span style="color:#a6e22e">ENDCLASS</span>.
+<span style="color:#75715e">//class_2继承自class_1
+</span></code></pre></div><p>在继承过程中各成员的组件可见性如下:</p>
+<ul>
+<li>一个派生类中的公有成员包括其本身公有部分定义的成员以及所有基类公有成员，这些公有成员可以通过选择运算符 &ldquo;-&gt;&rdquo; 在类外部获得.</li>
+<li>一个派生类中的被保护成员包括其本身被保护部分定义的成员以及所有基类的被保护成员。这些成员不能通过组件选择运算符 &ldquo;-&gt;&rdquo; 在类外部获得， 但可以在派生类内部使用。在类外部看，其行为与类私有成员完全一致.</li>
+<li>一个派生类中的私有成员<em><strong>只包括其本身私有部分定义的成员</strong></em>。这些成员只能在派生类内部使用.</li>
+<li>因此，继承类和基类的公有成员和被保护成员享有共同的命名空间，而私有成员则在不同类之间可以出现重名情况.</li>
+</ul>
+<h3 id="多态">多态</h3>
+<p>派生类通过继承基类的方法，并可以重写基类的公有或保护方法以实现方法的重载，该种情况实现了多态性。</p>
+<h4 id="方法重载">方法重载</h4>
+<p>在派生类中声明：<code>METHOD meth REDEFINITION.</code>该方法和基类方法具有相同的接口，和参数，内部可以增加不同的代码实现。</p>
+<p>方法重载过程中，使用基类的方法可以通过<em><strong>SUPER</strong></em>关键字来指定基类中对应的方法。</p>
+<h3 id="抽象和-final">抽象和 Final</h3>
+<h4 id="抽象类">抽象类</h4>
+<p>一个基类可能包含多个派生类，但该基类只是作为模板出现的，并不需要有任何对象作为实例，则可以将该类声明为抽象类 (Abstract Class).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CLASS</span> <span style="color:#a6e22e">class_1</span> <span style="color:#a6e22e">DEFINITION</span> <span style="color:#a6e22e">ABSTRACT</span>.
+  ...
+<span style="color:#a6e22e">ENDCLASS</span>.
+</code></pre></div><p>抽象类不能通过 CREATE OBJECT 语句创建，可以通过派生类来实现其中的模板方法并定义功能。</p>
+<h4 id="抽象方法">抽象方法</h4>
+<p><code>METHODS: method1 ABSTRACT.</code></p>
+<p>抽象方法不能在该类中实现，必须通过其派生类实现。含有抽象方法的类必须定义为抽象类。</p>
+<h4 id="final-类">Final 类</h4>
+<p>Final 类，不能再被继承。该类型的类主要是制定规范，一经定义不允许进行任何修改。</p>
+<p>不需要在程序中对该类进行派生可以将其设置为最终类。</p>
+<p>一个 Final 类的所有方法也都被视为最终的，不需要再方法中再次声明 FINAL。</p>
+<p>Final 方法不能是抽象方法，Final 类可以是抽象类，但是这种情况下只能使用它的静态组件，不能实例化。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CLASS</span> <span style="color:#a6e22e">class1</span> <span style="color:#a6e22e">DEFINITION</span> <span style="color:#a6e22e">FINAL</span>.
+  ...
+<span style="color:#a6e22e">ENDCLASS</span>.
+</code></pre></div><h4 id="final方法">Final方法</h4>
+<p><code>METHODS: meth FINAL.</code></p>
+<p>不可重新定义的方法，不一定出现在最终类中，但最终类中的所有方法都是最终方法。</p>
+<h3 id="接口">接口</h3>
+<h4 id="定义与实现">定义与实现</h4>
+<p>Interfaces 即可以保证这些类外部看起来具有一致性，标准化的接口，又可以在不同的类内部使用不同的实现方法， 而这个具体实现过程是类外部的用户无需关心的.</p>
+<p>接口是一个独立结构，可以在其中定义一些成员并在具体类中实现，其作用是对类中已经定义的成员进行扩展。实现接口后，接口将成为类的公有成员， 但类可以自行对接口中的方法以其自身特定形式实现。这样，对于用户来说，不同的类对象包含相同的操作接口 (即接口中定义的成员名称), 但程序内部的具体实现则根据类的不同而有所区别。接口是 OOP 中除继承之外的另一个主要多态性的实现机制技术.</p>
+<p>一个接口可以被任意多个不同的类实现，该接口中定义的成员集在各个类中名称相同 (形成了一个标准接口), 然而各个类中成员的方法的实现方式则可以有差异， 也就形成了多态性。如果一个类中除接口之外没有定义任何类自身的公有成员方法，则接口就成了该类中的全部 &ldquo;外部接口&rdquo;.</p>
+<p>定义：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">INTERFACE</span> <span style="color:#a6e22e">intf1</span>.
+  <span style="color:#a6e22e">METHODS</span> <span style="color:#a6e22e">m1</span>.
+<span style="color:#a6e22e">ENDINTERFACE</span>.
+<span style="color:#a6e22e">INTERFACE</span> <span style="color:#a6e22e">intf2</span>.
+  <span style="color:#a6e22e">METHODS</span> <span style="color:#a6e22e">m2</span>.
+  <span style="color:#a6e22e">ALIASES</span> <span style="color:#a6e22e">meht1</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">i1</span><span style="color:#f92672">~</span><span style="color:#a6e22e">m1</span>.
+<span style="color:#a6e22e">ENDINTERFACE</span>.
+</code></pre></div><p>实现：</p>
+<ul>
+<li>接口中的成员通过<code>INTERFACE~METHOD</code>方式访问：intf~comp。</li>
+<li>在类的实现部分，必须包含所有的接口方法实现。</li>
+<li>别名是用来代替接口中组件名称，在类的实现部分，通过别名来代替组件名称；在类或类的对象调用的时候，必须使用接口组件全名称。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CLASS</span> <span style="color:#a6e22e">class1</span> <span style="color:#a6e22e">DEFINITION</span>.
+ <span style="color:#a6e22e">PUBLIC</span> <span style="color:#a6e22e">SECTION</span>.
+   ...
+   <span style="color:#a6e22e">INTERFACES</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">int1</span>, <span style="color:#a6e22e">int2</span>.
+   <span style="color:#a6e22e">ALIASES</span> <span style="color:#a6e22e">meth2</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">intf2</span><span style="color:#f92672">~</span><span style="color:#a6e22e">m2</span>.
+  ...
+<span style="color:#a6e22e">ENDCLASS</span>.
+<span style="color:#a6e22e">CLASS</span> <span style="color:#a6e22e">class1</span> <span style="color:#a6e22e">IMPLEMENTATION</span>.
+ ...
+ <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">intf1</span><span style="color:#f92672">~</span><span style="color:#a6e22e">m1</span>.
+  ...
+ <span style="color:#a6e22e">ENDMETHOD</span>.
+ ...
+ <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">intf2</span><span style="color:#f92672">~</span><span style="color:#a6e22e">m2</span>.
+  ...
+ <span style="color:#a6e22e">ENDMETHOD</span>.
+ ...
+<span style="color:#a6e22e">ENDCLASS</span>.
+<span style="color:#a6e22e">START</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELECTION</span>.
+   <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">oref</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">class1</span>.
+   <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">oref</span>.
+   <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">oref</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">intf</span><span style="color:#f92672">~</span><span style="color:#a6e22e">meth1</span>.
+   <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">oref</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">meth2</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3918</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Object_Oriented_Overview/" class="prev" rel="prev" title="ABAP Object Oriented 概述"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP Object Oriented 概述</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_TableCopyFields/" class="next" rel="next" title="复制其他的内表/结构到当前表/结构">复制其他的内表/结构到当前表/结构&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-08 00:00:00 \u002b0000 UTC',
+        title: 'ABAP Object Oriented 语法',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

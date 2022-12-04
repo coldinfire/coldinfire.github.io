@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_Display/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ALV_Event/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ALV_DisplayBugFixed/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Field Catalog 字段排坑  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Field Catalog 字段排坑  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Field Catalog 字段排坑 "/>
+<meta name="twitter:description" content="原文链接：https://blog.csdn.net/zhongguomao/article/details/77774206 对于初写 ALV 的 A"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Field Catalog 字段排坑 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_DisplayBugFixed\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  1100 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_DisplayBugFixed\/",
+  "datePublished": "2018-06-24T00:00:00\x2b00:00",
+  "dateModified": "2018-06-24T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Field Catalog 字段排坑 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-24 >24 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>原文链接：<a href="https://blog.csdn.net/zhongguomao/article/details/77774206">https://blog.csdn.net/zhongguomao/article/details/77774206</a></p>
+<p>对于初写 ALV 的 ABAPer，it_fieldcat 参数经常有一些隐藏的小坑，需要多加注意。</p>
+<h4 id="字段名大小写的问题">字段名大小写的问题</h4>
+<p>SAP 运行时是区分大小写的，也就是说，&lsquo;a&rsquo; 和 &lsquo;A&rsquo; 在 SAP 运行时是不同的字符，如果在 FIELDCAT 里面使用了小写或者大小写混合的字段名，SAP 就会报错。程序任何地方最好都要注意大小写。</p>
+<h4 id="导出到-excel-或者文本最后一位丢失">导出到 Excel 或者文本最后一位丢失</h4>
+<p>需要添加：参考表和参考字段</p>
+<ul>
+<li>字段对应的 domain： Convers. routine = ALPHA，也就是有前导零的字段，比如供应商号、商品号、客户号等。</li>
+<li>做 ALV Fieldcat 的时候，没有指定参考表和参考字段。</li>
+<li>列的表头文本 (seltext_s 等) 比实际显示的数据短。</li>
+</ul>
+<h4 id="默认变式导致改了-fieldcat-看不到效果">默认变式导致改了 FIELDCAT 看不到效果</h4>
+<p>FIELDCAT 添加了新的字段，ALV 却不显示！看看是不是有默认的 Layout 变式吧。</p>
+<h4 id="convertion-转换">CONVERTION 转换</h4>
+<p>显示的字段，物料的前导零没去掉、单位是内部单位、WBS 元素成了数字&hellip;&hellip;这一切的原因都是来自于 CONVERTION 转换，没有做内外部转换，加上参考表和参考字段吧。</p>
+<ul>
+<li>要么添加属性：<code>fieldcat-edit_mask = '==MATN1'</code>.</li>
+</ul>
+<h4 id="编辑数值数量金额字段总是给变成小数">编辑数值（数量、金额）字段总是给变成小数</h4>
+<p>在可编辑的 ALV 里面，数值型字段修改的时候，会把数据缩小 100（1000）倍，只要根据情况设置一下小数位就可以了：fldcat-decimals_out = 3.</p>
+<h4 id="汇总的时候-dump导出的时候-dump">汇总的时候 DUMP、导出的时候 DUMP</h4>
+<p>这个不仅仅是 FIELDCAT 的事儿，有时候 LAYOUT 设置不对也会导致 DUMP，比如设置 is_layout-coltab_fieldname = &lsquo;CELLC&rsquo;。但是内表根本就没有 CELLC 这个字段，就不行了。</p>
+<h4 id="筛选的时候长度不对">筛选的时候，长度不对</h4>
+<p>可编辑字段不指定输出长度，编辑的时候默认只能输入 10 位</p>
+<ul>
+<li>比如物料号，18 位，但是筛选弹出来的窗口只能输入 10 位。这个可以通过添加参考表参考字段解决；也可以使用 fldct-edit_mask = &lsquo;==MATN1&rsquo;；还可以通过设置 fldct-intlen = 18 解决</li>
+</ul>
+<h4 id="改变了数据元素或者-domain-之后alv-字段没反应">改变了数据元素或者 domain 之后，ALV 字段没反应</h4>
+<p>ALV 的字段参考了数据字段的内容，但是在修改了数据元素或者 domain 后，ALV 字段并没有立即变成修改后的样子，然后第二天莫名其妙好了。</p>
+<p>这个实际上是 SAP 上下文的问题，只需要运行一下程序 BALVBUFDEL，重置下 ALV 缓冲区就可以了。</p>
+<h4 id="金额和数值显示小数位的问题">金额和数值显示小数位的问题</h4>
+<p>SAP 开发有句行话：有数值必有单位；有金额必有货币。</p>
+<p>ALV 显示也是这样，如果不给指定单位或者货币字段，显示的可能就是不正确的。</p>
+<ul>
+<li>数值字段：fldct-qfieldname = &lsquo;MEINS&rsquo;.</li>
+<li>金额字段：fldct-cfieldname = &lsquo;WAERS&rsquo;.</li>
+</ul>
+<p>通用设置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CASE</span> ls_fldct<span style="color:#f92672">-</span>fieldname.
+  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;BSTMG&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;BDMNG&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;MENGE&#39;</span>.
+    ls_fldct<span style="color:#f92672">-</span>qfieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MEINS&#39;</span>.
+    ls_fldct<span style="color:#f92672">-</span>decimals_out <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+    ls_fldct<span style="color:#f92672">-</span>no_zero <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;WRBTR&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;KBERE&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;BFAAC&#39;</span>.
+    ls_fldct<span style="color:#f92672">-</span>cfieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WAERS&#39;</span>.
+    ls_fldct<span style="color:#f92672">-</span>decimals_out <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;LIFNR&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;AUFNR&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;KUNNR&#39;</span>.
+    ls_fldct<span style="color:#f92672">-</span>edit_mask <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;==ALPHA&#39;</span>.
+  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MATNR&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;IDNRK&#39;</span>.
+    ls_fldct<span style="color:#f92672">-</span>edit_mask <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;==MATN1&#39;</span>.
+  	ls_fldct<span style="color:#f92672">-</span>intlen <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>.
+  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;BSTME&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;MEINS&#39;</span>.
+    ls_fldct<span style="color:#f92672">-</span>edit_mask <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;==CUNIT&#39;</span>.
+  <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+<span style="color:#66d9ef">ENDCASE</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1100</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Display/" class="prev" rel="prev" title=" 报表开发&lt;ALV 显示设置&gt; "><i class="iconfont icon-dajiantou"></i>&nbsp; 报表开发&lt;ALV 显示设置&gt; </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Event/" class="next" rel="next" title=" Grid ALV 事件处理 "> Grid ALV 事件处理 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-24 00:00:00 \x2b0000 UTC',
+        title: ' Field Catalog 字段排坑 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

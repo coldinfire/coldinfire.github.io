@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_XML/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_JSON/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_XML_Parse/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            XML 文档解析  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" XML 文档解析  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" XML 文档解析 "/>
+<meta name="twitter:description" content="解析 XML 文档 将文档中的数据读取到内存中。 DOM 解析 DOM 解析原理：xml 解析器一次性把整个 xml 文档加载进内存，然后在内存中构建一颗 Document 的对象树，通过 Document 对象"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " XML 文档解析 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_XML_Parse\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "XML",
+  "wordcount":  921 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_XML_Parse\/",
+  "datePublished": "2017-10-27T00:00:00\x2b00:00",
+  "dateModified": "2017-10-27T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> XML 文档解析 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-10-27 >27 October 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="解析-xml-文档">解析 XML 文档</h3>
+<p>将文档中的数据读取到内存中。</p>
+<h4 id="dom-解析">DOM 解析</h4>
+<p>DOM 解析原理：xml 解析器一次性把整个 xml 文档加载进内存，然后在内存中构建一颗 Document 的对象树，通过 Document 对象，得到树上的节点对象，通过节点对象访问（操作）到 xml 文档的内容</p>
+<ul>
+<li>优点：操作方便，可以对文档进行 CRUD 的所有操作</li>
+<li>缺点：占用内存，如果XML文件比较大，容易影响解析性能且可能会造成内存溢出</li>
+</ul>
+<h4 id="sax-解析">SAX 解析</h4>
+<p>逐行读取，基于事件驱动。SAX 的工作原理简单地说就是对文档进行顺序扫描，当扫描到文档开始与结束、元素开始与结束、文档（document）结束等地方时通知事件处理函数，由事件处理函数做相应动作，然后继续同样的扫描，直至文档结束。</p>
+<ul>
+<li>优点：内存消耗小，解析速度快，SAX解析器是对文档的解析过程是一种边解析边执行的过程</li>
+<li>缺点：只能读取，不能增删改；不能随机访问；必须实现事件处理程序</li>
+</ul>
+<h4 id="dom4j-解析器">DOM4J 解析器</h4>
+<p>与利用 DOM、SAX 来解析 xml 相比，<a href="https://dom4j.github.io/">DOM4J</a> 表现更优秀，具有性能优异、功能强大和极端易用使用的特点，只要懂得 DOM 基本概念，就可以通过 dom4j 的  <a href="https://dom4j.github.io/javadoc/2.0.3/">api 文档</a>  来解析 xml。dom4j 是一套开源的 api。</p>
+<p>Step1 : 下载并导入 JAR 包</p>
+<ul>
+<li>Dom4j 需下载相应的 jar 文件：<a href="https://dom4j.github.io/">https://dom4j.github.io/</a>。</li>
+</ul>
+<p>Step2：获取 document 对象</p>
+<p>Document：文档对象，代表内存中的 DOM 树</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">读取XML文件,获得document对象</td>
+<td align="left">SAXReader reader = new SAXReader();</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Document document = reader.read(url);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">String encoding = document.getXMLEncoding();</td>
+</tr>
+<tr>
+<td align="left">解析XML形式的文本,得到document对象</td>
+<td align="left">String text = &ldquo;XML_String&rdquo;;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Document document = DocumentHelper.parseText(text);</td>
+</tr>
+<tr>
+<td align="left">主动创建document对象.</td>
+<td align="left">Document document = DocumentHelper.createDocument();</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Element root = document.addElement(&ldquo;members&rdquo;);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">root.addElement(&ldquo;author&rdquo;).addAttribute(&ldquo;name&rdquo;,&ldquo;value&rdquo;).addText(&ldquo;text&rdquo;);</td>
+</tr>
+</tbody>
+</table>
+<p>Step3：节点对象操作</p>
+<p>Element：节点元素对象</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">获取文档的根节点</td>
+<td align="left">Element root = document.getRootElement();</td>
+</tr>
+<tr>
+<td align="left">获取某个节点的子节点</td>
+<td align="left">Element element = root.element(&ldquo;student&rdquo;); element.element(&ldquo;name&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">获取节点的文字</td>
+<td align="left">String text = element.getText();</td>
+</tr>
+<tr>
+<td align="left">设置节点文字</td>
+<td align="left">element.setText(&ldquo;text&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">取得某节点下相同名称的子节点</td>
+<td align="left">List nodes = root.elements(&ldquo;member&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">在某节点下添加子节点</td>
+<td align="left">Element agetElement = element.addElement(&ldquo;age&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">删除某节点</td>
+<td align="left">parentElement.remove(childElement);</td>
+</tr>
+</tbody>
+</table>
+<p>Step4：节点对象属性操作</p>
+<p>Attribute：节点元素的属性值对象</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">取得某节点下的某属性</td>
+<td align="left">Attribute attribute = root.attribute(&ldquo;size&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">获取某节点的所有属性</td>
+<td align="left">List attributes = root.attributes();</td>
+</tr>
+<tr>
+<td align="left">取得属性的文字</td>
+<td align="left">String text = attribute.getValue();</td>
+</tr>
+<tr>
+<td align="left">设置属性的文字</td>
+<td align="left">attribute.setValue(&ldquo;text&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">设置节点属性和文字</td>
+<td align="left">element.addAttribute(&ldquo;name&rdquo;,&ldquo;value&rdquo;);</td>
+</tr>
+<tr>
+<td align="left">删除某属性</td>
+<td align="left">root.remove(attribute);</td>
+</tr>
+</tbody>
+</table>
+<h3 id="写入-xml-文档">写入 XML 文档</h3>
+<p>将内存中的数据保存到 xml 文档中。持久化存储。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> org.dom4j.Document<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.dom4j.io.OutputFormat<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.dom4j.io.XMLWriter<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>Document document<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// lets write to a file
+</span><span style="color:#75715e"></span>        FileWriter fileWriter <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileWriter<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;output.xml&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> 
+        XMLWriter writer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> XMLWriter<span style="color:#f92672">(</span>fileWriter<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        writer<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span> document <span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        writer<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">// Pretty print the document to System.out
+</span><span style="color:#75715e"></span>        OutputFormat format <span style="color:#f92672">=</span> OutputFormat<span style="color:#f92672">.</span><span style="color:#a6e22e">createPrettyPrint</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        format<span style="color:#f92672">.</span><span style="color:#a6e22e">setEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;GBK&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        writer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> XMLWriter<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">,</span> format<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        writer<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span> document <span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">// Compact format to System.out
+</span><span style="color:#75715e"></span>        format <span style="color:#f92672">=</span> OutputFormat<span style="color:#f92672">.</span><span style="color:#a6e22e">createCompactFormat</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        writer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> XMLWriter<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">,</span> format<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        writer<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>document<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        writer<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>921</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/XML/">
+                    #XML</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_XML/" class="prev" rel="prev" title=" XML 基础知识 "><i class="iconfont icon-dajiantou"></i>&nbsp; XML 基础知识 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_JSON/" class="next" rel="next" title=" JSON 详解 "> JSON 详解 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-10-27 00:00:00 \x2b0000 UTC',
+        title: ' XML 文档解析 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

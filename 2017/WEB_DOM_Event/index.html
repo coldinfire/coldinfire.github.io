@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_JavaScript_Object/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_DOM/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_DOM_Event/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           HTML DOM 事件 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="HTML DOM 事件 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTML DOM 事件"/>
+<meta name="twitter:description" content="HTML DOM 事件 当某些组件被执行了某些操作后，触发指定的执行程序。 事件：某些操作,如鼠标和键盘等操作 事件源：组件 监听器：程序代码 注册监听：将事件，事"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HTML DOM 事件",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_DOM_Event\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JS",
+  "wordcount":  607 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_DOM_Event\/",
+  "datePublished": "2017-09-25T00:00:00\u002b00:00",
+  "dateModified": "2017-09-25T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">HTML DOM 事件</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-09-25 >25 September 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="html-dom-事件">HTML DOM 事件</h3>
+<p>当某些组件被执行了某些操作后，触发指定的执行程序。</p>
+<ul>
+<li>事件：某些操作,如鼠标和键盘等操作</li>
+<li>事件源：组件</li>
+<li>监听器：程序代码</li>
+<li>注册监听：将事件，事件源，监听器结合在一起</li>
+</ul>
+<h4 id="dom-事件模型">DOM 事件模型</h4>
+<p>冒泡型事件：事件按照从最特定的事件目标到最不特定的事件目标的顺序触发</p>
+<p>捕获型事件：与冒泡事件相反的过程，事件从最不精确的对象开始触发，然后到最精确</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">body</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;handleClick()&#34;</span>&gt;  
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;handleClick()&#34;</span>&gt;Click Me&lt;/<span style="color:#f92672">div</span>&gt;  
+&lt;/<span style="color:#f92672">body</span>&gt; 
+冒泡触发的顺序是：div、body、html、document、window
+捕获型触发的顺序：document、div
+</code></pre></div><p>HTML DOM 事件允许 Javascript 在 HTML 文档元素中注册不同事件处理程序。</p>
+<p>事件通常与函数结合使用，函数不会在事件发生前被执行。</p>
+<h4 id="事件绑定">事件绑定</h4>
+<p>Method 1：在标签上事件中定义</p>
+<ul>
+<li><code>&lt;img id=&quot;&quot; src=&quot;&quot; onclick=&quot;fun1()&quot;&gt;</code></li>
+</ul>
+<p>Method 2：在JavaScript中绑定</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fun1</span>(){
+        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;function&#39;</span>);
+    }
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;id_value&#34;</span>);
+    <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fun1</span>;
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h3 id="事件类型">事件类型</h3>
+<h4 id="加载完成事件">加载完成事件</h4>
+<p><code>window.onload</code> 当所有的页面加载完成后，才触发 javascript 代码。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+  document.<span style="color:#a6e22e">getElementById</span>().<span style="color:#a6e22e">onblure</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;失去焦点&#34;</span>);
+  }
+}
+</code></pre></div><h4 id="鼠标事件">鼠标事件</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Event</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">onclick</td>
+<td style="text-align:left">当用户点击某个对象时调用的事件句柄</td>
+</tr>
+<tr>
+<td style="text-align:left">oncontextmenu</td>
+<td style="text-align:left">在用户点击鼠标右键打开上下文菜单时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">ondblclick</td>
+<td style="text-align:left">当用户双击某个对象时调用的事件句柄</td>
+</tr>
+<tr>
+<td style="text-align:left">onfocus</td>
+<td style="text-align:left">当获得焦点时</td>
+</tr>
+<tr>
+<td style="text-align:left">onblur</td>
+<td style="text-align:left">当对象失去焦点</td>
+</tr>
+<tr>
+<td style="text-align:left">onmousedown</td>
+<td style="text-align:left">鼠标按钮被按下</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseup</td>
+<td style="text-align:left">鼠标按键被松开</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseenter</td>
+<td style="text-align:left">当鼠标指针移动到元素上时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseleave</td>
+<td style="text-align:left">当鼠标指针移出元素时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">onmousemove</td>
+<td style="text-align:left">鼠标被移动</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseover</td>
+<td style="text-align:left">鼠标移到某元素之上</td>
+</tr>
+<tr>
+<td style="text-align:left">onmouseout</td>
+<td style="text-align:left">鼠标从某元素移开。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="键盘事件">键盘事件</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Event</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">onkeydown</td>
+<td style="text-align:left">某个键盘按键被按下</td>
+</tr>
+<tr>
+<td style="text-align:left">onkeyup</td>
+<td style="text-align:left">某个键盘按键被松开</td>
+</tr>
+<tr>
+<td style="text-align:left">onkeypress</td>
+<td style="text-align:left">某个键盘按键被按下并松开</td>
+</tr>
+</tbody>
+</table>
+<h4 id="表单事件">表单事件</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Event</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">onchange</td>
+<td style="text-align:left">文本的内容被改变</td>
+</tr>
+<tr>
+<td style="text-align:left">onselect</td>
+<td style="text-align:left">文本被选中</td>
+</tr>
+<tr>
+<td style="text-align:left">onsubmit</td>
+<td style="text-align:left">确认按钮被点击</td>
+</tr>
+<tr>
+<td style="text-align:left">onreset</td>
+<td style="text-align:left">重置按钮被点击</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>607</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JS/">
+                    #JS</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_JavaScript_Object/" class="prev" rel="prev" title="JavaScript对象"><i class="iconfont icon-dajiantou"></i>&nbsp;JavaScript对象</a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_DOM/" class="next" rel="next" title="DOM 知识汇总">DOM 知识汇总&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-09-25 00:00:00 \u002b0000 UTC',
+        title: 'HTML DOM 事件',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

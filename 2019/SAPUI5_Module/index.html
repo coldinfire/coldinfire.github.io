@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAPUI5_DataOption/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAPUI5_DataBinding/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAPUI5_Module/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAPUI5 模块化  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAPUI5 模块化  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAPUI5 模块化 "/>
+<meta name="twitter:description" content="模块化 如何加载模块 jQuery.sap.declare(sModuleName,bCreateNamespace)申明一个模块，以确保模块存"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAPUI5 模块化 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Module\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "sapui5",
+  "wordcount":  436 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Module\/",
+  "datePublished": "2019-04-22T00:00:00\x2b00:00",
+  "dateModified": "2019-04-22T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAPUI5 模块化 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-22 >22 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="模块化">模块化</h3>
+<h4 id="如何加载模块">如何加载模块</h4>
+<blockquote>
+<p><code>jQuery.sap.declare(sModuleName,bCreateNamespace)</code>申明一个模块，以确保模块存在。这个语句必须出现在	模块代码（也就是代码文件)的第一句。</p>
+<p><code>jQuery.sap.require(vModuleName)</code>确保当前代码继续之前，所指定的模块被加载和执行。如果所需要的模块没有被加载，将会被同步加载和执行，如果已经加载，就忽略。</p>
+<p><code>sap.ui.define(sModuleName,aDependencies,vFactory,bExport)</code>定义module，异步加载依赖模块,sap.ui.define()定义的模块具有全局命名空间。2:定义依赖 3:继承工厂函数。</p>
+<p><code>sap.ui.require()</code>异步加载依赖的模块，不具有全局命名空间。</p>
+</blockquote>
+<h4 id="使用模块方法实现controller">使用模块方法实现Controller</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">define</span>(
+	[<span style="color:#e6db74">&#34;Dependencies1&#34;</span>,<span style="color:#e6db74">&#34;Dependencies2&#34;</span>],
+	<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">Controller</span>){
+	<span style="color:#e6db74">&#34;use strict&#34;</span>;
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Controller</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#34;ControllerName&#34;</span>,{
+			<span style="color:#a6e22e">onInit</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){},
+               <span style="color:#a6e22e">onBeforeRendering</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){},
+               <span style="color:#a6e22e">onAfterRendering</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){},
+               <span style="color:#a6e22e">onExit</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){}
+		});
+	}
+);
+</code></pre></div><ul>
+<li>参数1 : 不定义，便于对模块进行访问</li>
+<li>参数2 : 指定依赖的模块，可指定多个</li>
+<li>参数3 : 定义工厂函数，实现Controller功能</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>436</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/sapui5/">
+                    #sapui5</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_DataOption/" class="prev" rel="prev" title=" SAPUI5 数据类型和操作 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAPUI5 数据类型和操作 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_DataBinding/" class="next" rel="next" title=" SAPUI5 数据绑定 "> SAPUI5 数据绑定 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-22 00:00:00 \x2b0000 UTC',
+        title: ' SAPUI5 模块化 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

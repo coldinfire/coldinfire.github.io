@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Date/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Submit/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_FileToFtp/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Field Symbols  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Field Symbols  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Field Symbols "/>
+<meta name="twitter:description" content="原文链接：https://sapabap-tutorial.blogspot.com/2016/11/send-pdf-file-to-ft"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Field Symbols ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_FileToFtp\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  688 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_FileToFtp\/",
+  "datePublished": "2018-12-15T00:00:00\u002b00:00",
+  "dateModified": "2018-12-15T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Field Symbols </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-12-15 >15 December 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>原文链接：<a href="https://sapabap-tutorial.blogspot.com/2016/11/send-pdf-file-to-ftp-server.html">https://sapabap-tutorial.blogspot.com/2016/11/send-pdf-file-to-ftp-server.html</a></p>
+<h3 id="send-pdf-file-to-ftp-server">Send pdf file to ftp server</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">REPORT  zpdfsendtoftp.
+DATA : BEGIN OF t_vbak OCCURS 0,
+         vbeln TYPE vbrk-vbeln,
+         vkorg TYPE vbak-vkorg,
+         vkbur TYPE vbak-vkbur,
+       END OF t_vbak.
+DATA: function_name TYPE rs38l_fnam,
+      form_name  TYPE tdsfname VALUE &#39;ZTEST1&#39;.
+DATA: carr_id TYPE sbook-carrid,
+      ctrlop  TYPE ssfctrlop,
+      compop   TYPE ssfcompop,
+      tab_otf_data  TYPE ssfcrescl.
+DATA: pdf_tab       LIKE tline OCCURS 0 WITH HEADER LINE,
+      tab_otf_final TYPE itcoo OCCURS 0 WITH HEADER LINE,
+      bin_filesize  TYPE i,
+      pdf_xstring TYPE xstring,
+      file_name     TYPE string,
+      file_path     TYPE string,
+      full_path     TYPE string.
+
+PARAMETERS : vbeln TYPE vbak-vbeln.   &#34; input parameter
+SELECT vbeln vkorg vkbur FROM vbak INTO TABLE t_vbak WHERE vbeln = vbeln.
+compop-tddest = &#39;LP01&#39;.
+ctrlop-no_dialog = &#39;X&#39;.
+ctrlop-preview = space.
+ctrlop-getotf = &#39;X&#39;.
+CALL FUNCTION &#39;SSF_FUNCTION_MODULE_NAME&#39;
+  EXPORTING
+    formname           = form_name
+  IMPORTING
+    fm_name            = function_name
+  EXCEPTIONS
+    no_form            = 1
+    no_function_module = 2
+    OTHERS             = 3.
+CALL FUNCTION function_name
+  EXPORTING
+    control_parameters = ctrlop
+    output_options     = compop
+    user_settings      = space
+    vbeln              = vbeln
+  IMPORTING
+    job_output_info    = tab_otf_data
+  TABLES
+    t_vbak             = t_vbak.
+&#34; Convert data to PDF &#34;
+tab_otf_final[] = tab_otf_data-otfdata[].
+CALL FUNCTION &#39;CONVERT_OTF&#39;
+  EXPORTING
+    format                = &#39;PDF&#39;
+    max_linewidth         = 132
+  IMPORTING
+    bin_filesize          = bin_filesize
+    bin_file              = pdf_xstring
+  TABLES
+    otf                   = tab_otf_final
+    lines                 = pdf_tab
+  EXCEPTIONS
+    err_max_linewidth     = 1
+    err_format            = 2
+    err_conv_not_possible = 3
+    err_bad_otf           = 4
+    OTHERS                = 5.
+IF sy-subrc <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; 0.
+  MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+    WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+ENDIF.
+&#34; send pdf file to server &#34;
+DATA: handle   TYPE i,
+      key      TYPE i VALUE 26101957,
+      pwd_len  TYPE i,
+      command_index TYPE i.
+DATA: user(30) TYPE c VALUE &#39;ftptest123&#39;, &#34;user name of ftp server&#34;
+      pwd(30)  TYPE c VALUE &#39;pass123&#39;,    &#34;password of ftp server&#34;
+      host(64) TYPE c VALUE &#39;enter host&#39;, &#34;ip address of FTP server&#34;
+      dest     LIKE rfcdes-rfcdest VALUE &#39;SAPFTPA&#39;. &#34;Background RFC destination&#34;
+DATA filename TYPE char200.
+DATA bindata  TYPE TABLE OF blob WITH HEADER LINE.
+DATA result   TYPE TABLE OF text WITH HEADER LINE.
+DATA commands TYPE TABLE OF text WITH HEADER LINE.
+
+DATA i_tab_converted_data TYPE STANDARD TABLE OF char200 WITH HEADER LINE.
+TYPES:BEGIN OF str_xml,
+  data(256) TYPE x,
+END OF str_xml.
+DATA: xml_table TYPE TABLE OF str_xml,
+      xml_line  TYPE str_xml, &#34;Adjust as per requirement/OS limits&#34;
+      filepath(128) TYPE c,
+      command(200) TYPE c.
+
+filepath = &#39;/home&#39;.
+OPEN DATASET filepath FOR OUTPUT IN BINARY MODE.
+IF sy-subrc = 0.
+  LOOP AT xml_table INTO xml_line.
+    TRANSFER xml_line TO filepath.
+  ENDLOOP.
+ENDIF.
+CLOSE DATASET filepath.
+&#34; Scramble the password provided in a format recognized by SAP.&#34;
+SET EXTENDED CHECK OFF.
+pwd_len = strlen( pwd ).
+CALL FUNCTION &#39;HTTP_SCRAMBLE&#39;
+  EXPORTING
+    source      = pwd
+    sourcelen   = pwd_len
+    key         = key
+  IMPORTING
+    destination = pwd.
+IF sy-subrc <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; 0.
+  MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+    WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+ENDIF.
+&#34; To Connect to the Server using FTP &#34;
+CALL FUNCTION &#39;FTP_CONNECT&#39;
+  EXPORTING
+    user            = user
+    password        = pwd
+    host            = host
+    rfc_destination = dest
+  IMPORTING
+    handle          = handle
+  EXCEPTIONS
+    OTHERS          = 1.
+IF sy-subrc <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; 0.
+  MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+    WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+ENDIF.
+&#34; Upload File &#34;
+CONCATENATE &#39;/&#39; &#39;test&#39; &#39;.pdf&#39; INTO filename.
+CALL FUNCTION &#39;SCMS_XSTRING_TO_BINARY&#39;
+  EXPORTING
+    buffer     = pdf_xstring
+  TABLES
+    binary_tab = bindata.
+CALL FUNCTION &#39;FTP_COMMAND&#39;
+  EXPORTING
+    handle        = handle
+    command       = &#39;set passive on&#39;
+  TABLES
+    data          = result
+  EXCEPTIONS
+    command_error = 1
+    tcpip_error   = 2.
+CALL FUNCTION &#39;FTP_R3_TO_SERVER&#39;
+  EXPORTING
+    handle        = handle
+    fname         = filename
+    blob_length   = bin_filesize
+  TABLES
+    blob          = pdf_tab
+  EXCEPTIONS
+    tcpip_error   = 1
+    command_error = 2
+    data_error    = 3
+    OTHERS        = 4.
+
+* To disconnect the FTP
+CALL FUNCTION &#39;FTP_DISCONNECT&#39;
+  EXPORTING
+    handle = handle
+  EXCEPTIONS
+    OTHERS = 1.
+* Disconnect the RFC connection between SAP and other system.
+CALL FUNCTION &#39;RFC_CONNECTION_CLOSE&#39;
+  EXPORTING
+    destination = dest
+  EXCEPTIONS
+    OTHERS      = 1.
+WRITE: &#39;pdf file send successfully&#39;.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>688</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Date/" class="prev" rel="prev" title="日期操作"><i class="iconfont icon-dajiantou"></i>&nbsp;日期操作</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Submit/" class="next" rel="next" title="ABAP Submit 实现程序间互相调用">ABAP Submit 实现程序间互相调用&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-12-15 00:00:00 \u002b0000 UTC',
+        title: ' Field Symbols ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2020</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

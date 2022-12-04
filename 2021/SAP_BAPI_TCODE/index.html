@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_DebugPopWindow/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_GlobalMacro/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/SAP_BAPI_TCODE/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI&amp;Tcode 执行之间的差异  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI&amp;Tcode 执行之间的差异  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI&amp;Tcode 执行之间的差异 "/>
+<meta name="twitter:description" content="BAPI 和前台 Tcode 操作大部分是相同的，但是仍然会有一些差异。当使用 BAPI 进行操作时，如果遇到问题，可能需要查找一些资料信息或者 Debug 进行参数排查。 Subsequent Debit/Credit 无法使"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI\x26Tcode 执行之间的差异 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/SAP_BAPI_TCODE\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI",
+  "wordcount":  1288 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/SAP_BAPI_TCODE\/",
+  "datePublished": "2021-08-12T00:00:00\x2b00:00",
+  "dateModified": "2021-08-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI&amp;Tcode 执行之间的差异 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-08-12 >12 August 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>BAPI 和前台 Tcode 操作大部分是相同的，但是仍然会有一些差异。当使用 BAPI 进行操作时，如果遇到问题，可能需要查找一些资料信息或者 Debug 进行参数排查。</p>
+<h3 id="subsequent-debitcredit">Subsequent Debit/Credit</h3>
+<p>无法使用 BAPI 创建后续借记或贷记凭证。</p>
+<h3 id="error-message-f5a252">Error message F5A252</h3>
+<p>BAPI_INCOMINGINVOICE_CREATE</p>
+<ul>
+<li>F5A252 - Caution: Cash discount 1 already expired for net posting or max.</li>
+</ul>
+<p>Discount - is in use(折扣 - 正在使用中)，仅适用于前台事物码。 现金折扣支票是一项财务功能，不用作 MM-IV 功能。 在 MIRO 系统中，通过财务程序进行检查并输出可定制的消息 F5A252（标准消息类型：警告）。 这意味着 EDI、ERS 和 BAPI 流程系统不会运行检查。</p>
+<p>可能的解决方案：</p>
+<ul>
+<li>您可以在 BADI 功能模块中开发此检查功能：MRMBADI_PAYMENT_TERMS。 Function Module 将在这些发票流程中执行。</li>
+</ul>
+<h3 id="withholding-tax-zero-value">Withholding tax zero value</h3>
+<p>BAPI_INCOMINGINVOICE_CREATE</p>
+<p>如果在预扣税基(Withholding tax base)字段中输入了具有预扣税证书（100% 免税）和零 (0.00) 的供应商。</p>
+<ul>
+<li>
+<p>MIRO 中，在字段税基中输入 0.00 时，没有错误消息并且发票已成功过帐。</p>
+</li>
+<li>
+<p>BAPI 显示错误消息 M8412，但它仍然成功过帐发票。</p>
+<ul>
+<li>M8412 - Withholding tax code requires you to enter a base amount</li>
+</ul>
+</li>
+</ul>
+<p>在 MIRO 中，您还可以手动更改数据，在 BAPI 过程中这是不可能的。</p>
+<p>可能的解决方案：</p>
+<ul>
+<li>
+<p>不使用预扣税码过帐：那么 FI 凭证中的基本金额将为零，但税码也将为空。</p>
+</li>
+<li>
+<p>使用 MIRO 而不是 BAPI 过账。 在 MIRO 中，您可以手动输入 0,00 的预扣税基数，这稍后也会出现在 FI 文档中。</p>
+</li>
+</ul>
+<h3 id="预扣税-withholding-tax">预扣税 (Withholding tax)</h3>
+<p>BAPI_INCOMINGINVOICE_PARK</p>
+<p>BAPI_INCOMINGINVOICE_CREATE</p>
+<p>尽管在供应商主数据中填写了信息，但如果供应商需要缴纳预扣税，则您必须填写 BAPI 中的 WITHTAXDATA 表。</p>
+<h3 id="典型预扣税-classic-withholding-tax">典型预扣税 (Classic Withholding tax)</h3>
+<p>如果你想使用 BAPI_INCOMINGINVOICE_CREATE 创建带有经典预扣税的发票，则必须实现 BADI -&gt; MRM_WT_SPLIT_UPDATE。 不可以将 BAPI 接口表 WITHTAXDATA 与经典预扣税一起使用。</p>
+<p>BAPI 不支持经典预扣税，因为 WITHTAXDATA 结构仅用于扩展预扣税。SAP Note 830717 说明：这是支持的，但只能通过 BADI 实现。</p>
+<h3 id="重复发票检查-duplicate-invoice-check">重复发票检查 (Duplicate invoice check)</h3>
+<p>BAPI_INCOMINGINVOICE_CREATE</p>
+<p>在前台 Tcode 执行时，重复发票检查可确保系统中没有输入重复发票。 此功能在 BAPI 中不可用。 重复发票检查被视为“纯在线功能”； 由于 BAPI 是一个自动过程，因此它们不执行此检查。</p>
+<p>可能的解决方案：</p>
+<p>考虑在客户自己的程序中添加 FM -&gt; MRM_DUPLICATE_INVOICE_CHECK，在调用 FM BAPI_INCOMINGINVOICE_CREATE 之前或在 BAPI 提交之前（调用 FM BAPI_TRANSACTION_COMMIT）。</p>
+<h3 id="带有采购订单参考的发票预制凭证-invoice-park-with-purchase-order-reference">带有采购订单参考的发票预制凭证 (Invoice park with Purchase order reference)</h3>
+<p>使用 BAPI，如果基于 GR 的 Invoice 处于 active 状态并且没有已过帐的 GR，则无法暂存发票，请参阅 include -&gt; LMRM_BAPIF23 的 FORM：itemdata_check 中完成的检查。</p>
+<p>在 BAPI 中，不可能像在前台 MIR7 中那样将参考采购订单保存在附加选择表中。</p>
+<h3 id="付款条件-terms-of-payment">付款条件 (Terms of payment)</h3>
+<p>BAPI_INCOMINGINVOICE_PARK</p>
+<p>如果发票在没有采购订单参考的情况下使用此 BAPI 创建预制凭证，则付款条件取自供应商主数据。 但如果稍后添加采购订单参考行项目，付款条款将不会从采购订单更新。</p>
+<p>如果发票在没有采购订单参考的情况下在 MIR7 中创建预制凭证，那么如果添加新的采购订单参考行，付款条款将从采购订单中更新。</p>
+<h3 id="一次性供应商银行数据-one-time-vendor-bank-data">一次性供应商银行数据 (One-time vendor bank data)</h3>
+<p>BAPI_INCOMINGINVOICE_POST</p>
+<p>对于一次性供应商 (CPD)，没有 PO 参考，预订到总账科目，系统不会给出填写银行详细信息的窗口和错误。 MIR4 为一次性供应商提供错误 F5 - 732。 在MM-invoice online 过程中，一次性供应商（CPD）数据检查，这些数据是否正确并在发票抬头中完成，已经通过财务端的财务程序完成。 这仅适用于前台 Tcode 操作。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1288</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_DebugPopWindow/" class="prev" rel="prev" title=" Debug 弹出框 "><i class="iconfont icon-dajiantou"></i>&nbsp; Debug 弹出框 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_GlobalMacro/" class="next" rel="next" title=" SAP 全局宏设置和使用 "> SAP 全局宏设置和使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-08-12 00:00:00 \x2b0000 UTC',
+        title: ' BAPI\x26Tcode 执行之间的差异 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

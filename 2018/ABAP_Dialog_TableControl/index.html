@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Dialog_ProgrammingTechniques/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Dialog_F1F4/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Dialog_TableControl/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Dialog 表格控件使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Dialog 表格控件使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Dialog 表格控件使用 "/>
+<meta name="twitter:description" content="创建表格控件 Step1：创建 Structure 创建自定义 Structure：ZTC_EKKO ，包含需要显示在 Table Control 中的字段。 Step2：创建程序 使用事物码 SE80 (Object"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Dialog 表格控件使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_TableControl\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Dialog",
+  "wordcount":  969 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_TableControl\/",
+  "datePublished": "2018-09-02T00:00:00\x2b00:00",
+  "dateModified": "2018-09-02T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Dialog 表格控件使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-02 >2 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="创建表格控件">创建表格控件</h3>
+<h4 id="step1创建-structure">Step1：创建 Structure</h4>
+<p>创建自定义 Structure：ZTC_EKKO ，包含需要显示在 Table Control 中的字段。</p>
+<h4 id="step2创建程序">Step2：创建程序</h4>
+<p>使用事物码 SE80 (Object Navigator) -&gt; Repository Browser -&gt; Program；输入以 <code>SAPMZ_</code> 开头的程序名（dialog program）创建 Module Pool：SAPMZ_TCONTROL。</p>
+<p><img src="/images/ABAP/ABAP_Dialog_4.png" alt="Dialog Program"></p>
+<p>勾选 With TOP INCL：</p>
+<p><img src="/images/ABAP/ABAP_Dialog_5.png" alt="Dialog Program"></p>
+<p>根据默认的 include name 创建 Top include：</p>
+<p><img src="/images/ABAP/ABAP_Dialog_6.png" alt="Top include"></p>
+<p>创建 Module Pool 成功后点击保存：</p>
+<p><img src="/images/ABAP/ABAP_Dialog_7.png" alt="Dialog"></p>
+<h4 id="step3top-include-内容定义">Step3：TOP include 内容定义</h4>
+<p>TOP include 中定义的内容是在整个 Dialog 中的全局变量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TABLES</span>: ztc_ekko.
+<span style="color:#66d9ef">DATA</span>: ok_code <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>ucomm.
+<span style="color:#66d9ef">DATA</span>: mark <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">DATA</span>: it_ekko <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> ztc_ekko INITIAL <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">0</span>,
+      wa_ekko <span style="color:#66d9ef">TYPE </span>ztc_ekko.
+<span style="color:#66d9ef">CONTROLS</span>: tc100 <span style="color:#66d9ef">TYPE </span>tableview <span style="color:#66d9ef">USING</span> SCREEN <span style="color:#ae81ff">100</span>.
+</code></pre></div><h4 id="step4创建-screen">Step4：创建 Screen</h4>
+<p>右键创建一个屏幕，屏幕编号为 0100。</p>
+<p><img src="/images/ABAP/ABAP_Dialog_8.png" alt="Screen"></p>
+<p><img src="/images/ABAP/ABAP_Dialog_9.png" alt="Screen"></p>
+<p>屏幕创建完成后在 Element List 页签中创建 OK_CODE：</p>
+<p><img src="/images/ABAP/ABAP_Dialog_10.png" alt="OK Code"></p>
+<h4 id="step5创建-table-control">Step5：创建 Table Control</h4>
+<p>点击 Layout，弹出 Screen Painter 来编辑屏幕布局内容。选中 Table Control 按钮然后拖到屏幕中，然后输入对应的名称 TC100：</p>
+<p><img src="/images/ABAP/ABAP_Dialog_11.png" alt="Table Control"></p>
+<p>点击黄色按钮 (Attribute Window) 设置表格控件的属性：</p>
+<p><img src="/images/ABAP/ABAP_Dialog_15.png" alt="Attribute Window"></p>
+<h4 id="step6populate-table-control">Step6：Populate Table Control</h4>
+<p>点击橙色按钮（Dictionary/Program Fields Window）。</p>
+<p><img src="/images/ABAP/ABAP_Dialog_12.png" alt="Fields"></p>
+<p>在弹出的 Dict./Program Fields 屏幕上输入 ZTC_EKKO 并按下 &ldquo;Get from Dict&rdquo; 按钮。 选择所需的字段（全选），然后按 Enter。</p>
+<p><img src="/images/ABAP/ABAP_Dialog_13.png" alt="Layout"></p>
+<p>最后将它们拖到前面创建的表格控件上：</p>
+<p><img src="/images/ABAP/ABAP_Dialog_14.png" alt="Layout"></p>
+<h4 id="step7创建逻辑流">Step7：创建逻辑流</h4>
+<p>在屏幕 100 的流程逻辑中创建两个模块，一个用于从数据库中选择数据，另一个用于将所选字段移动到表格控件中。 还要插入两个循环语句来填充和检索表格控件的行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">PROCESS BEFORE OUTPUT</span>.
+<span style="color:#75715e">* MODULE STATUS_0100.</span>
+  <span style="color:#66d9ef">MODULE</span> data_retrieval.
+  <span style="color:#66d9ef">LOOP AT </span>it_ekko <span style="color:#66d9ef">INTO</span> wa_ekko <span style="color:#66d9ef">WITH</span> control TC100.
+    <span style="color:#66d9ef">MODULE</span> populate_screen.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  
+<span style="color:#66d9ef">PROCESS AFTER INPUT</span>.
+<span style="color:#75715e">* MODULE USER_COMMAND_0100.</span>
+  <span style="color:#66d9ef">LOOP AT </span>it_ekko.
+    <span style="color:#66d9ef">MODULE</span> update_table.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><p>PBO：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">data_retrieval</span> <span style="color:#66d9ef">OUTPUT</span>.
+<span style="color:#75715e">* select data from ekko table</span>
+  <span style="color:#66d9ef">IF</span> it_ekko is initail.
+    <span style="color:#66d9ef">SELECT</span> ebeln bukrs bstyp bsart bsakz loekz statu aedat
+      UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">10</span> ROWS
+      <span style="color:#66d9ef">FROM</span> ekko
+      <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> it_ekko.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDMODULE</span>. <span style="color:#75715e">&#34; data_retrieval OUTPUT &#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">populate_screen</span> <span style="color:#66d9ef">OUTPUT</span>.
+  <span style="color:#66d9ef">DATA</span>: ld_line <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#75715e">* Set which line of table is a top of displayed table control</span>
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>stepl <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    tc100<span style="color:#f92672">-</span>lines <span style="color:#f92672">=</span> tc100<span style="color:#f92672">-</span>top_line <span style="color:#f92672">+</span> sy<span style="color:#f92672">-</span>loopc <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* Move fields from work area to scrren fields</span>
+  <span style="color:#66d9ef">MOVE-CORRESPONDING</span> wa_ekko <span style="color:#66d9ef">TO</span> ztc_ekko.
+<span style="color:#66d9ef">ENDMODULE</span>. <span style="color:#75715e">&#34; populate_screen OUTPUT &#34;
+</span></code></pre></div><p>PAI：获取选择的 SAP dynpro 表控件和存储的行选择</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Module  update_table  INPUT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">update_table</span> <span style="color:#66d9ef">input</span>.
+ <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> it_ekko <span style="color:#66d9ef">INTO</span> wa_ekko <span style="color:#66d9ef">INDEX</span> tc100<span style="color:#f92672">-</span>CURRENT_LINE.
+ <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> mark <span style="color:#f92672">IS INITIAL</span>.
+   wa_ekko<span style="color:#f92672">-</span>sel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+   <span style="color:#66d9ef">MODIFY</span> it_ekko <span style="color:#66d9ef">FROM</span> wa_ekko <span style="color:#66d9ef">INDEX</span> tc100<span style="color:#f92672">-</span>CURRENT_LINE.
+ <span style="color:#66d9ef">endif</span>.
+<span style="color:#66d9ef">ENDMODULE</span>.                 <span style="color:#75715e">&#34; update_table  INPUT &#34;
+</span></code></pre></div><h4 id="操作单个abap-dynpro-表控制字段属性">操作单个abap dynpro 表控制字段属性</h4>
+<p>如果将以下 ABAP 放入 &ldquo;populate_screen&rdquo; PBO 模块（流逻辑中的表控制循环中的 PBO 模块），它将设置第 2 行的 EBELN 字段仅显示。 代码的第一位根据当前顶部可查看的表格控制行计算当前正在处理的行。 一旦到达所需的行，它就会执行 &ldquo;LOOP AT SCREEN&rdquo; 以找到正确的字段并设置其属性。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">populate_screen</span> <span style="color:#66d9ef">OUTPUT</span>.
+    <span style="color:#66d9ef">DATA</span>: ld_line <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#75715e">*   Set which line of itab is at the top of the table control</span>
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>stepl <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+      tc100<span style="color:#f92672">-</span>lines <span style="color:#f92672">=</span> tc100<span style="color:#f92672">-</span>top_line <span style="color:#f92672">+</span> sy<span style="color:#f92672">-</span>loopc <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*   move fields from work area to scrren fields</span>
+    <span style="color:#66d9ef">MOVE-CORRESPONDING</span> wa_ekko <span style="color:#66d9ef">TO</span> ztc_ekko.
+    ld_line <span style="color:#f92672">=</span>  sy<span style="color:#f92672">-</span>stepl <span style="color:#f92672">+</span> tc100<span style="color:#f92672">-</span>top_line <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#75715e">*   Changes individual field attributes of table control,</span>
+<span style="color:#75715e">*   Sets EBELN field on 3rd row of TC to not be an input field!</span>
+    <span style="color:#66d9ef">LOOP AT SCREEN</span>.
+      <span style="color:#66d9ef">IF</span> ld_line <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">3</span>.
+        <span style="color:#66d9ef">IF</span> screen<span style="color:#f92672">-</span>name <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;ZTC_EKKO-EBELN&#39;</span>.
+          screen<span style="color:#f92672">-</span>input <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+          <span style="color:#66d9ef">MODIFY SCREEN</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">ENDMODULE</span>.                 <span style="color:#75715e">&#34; populate_screen  OUTPUT &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>969</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Dialog/">
+                    #Dialog</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_ProgrammingTechniques/" class="prev" rel="prev" title=" Dialog 编程技术 "><i class="iconfont icon-dajiantou"></i>&nbsp; Dialog 编程技术 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_F1F4/" class="next" rel="next" title=" Dialog POH&amp;POV "> Dialog POH&amp;POV &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-02 00:00:00 \x2b0000 UTC',
+        title: ' Dialog 表格控件使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

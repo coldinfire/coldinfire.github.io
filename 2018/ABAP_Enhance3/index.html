@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_EXCEL_BAPI/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_EXCEL_CLASS/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Enhance3/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            查找增强程序(3)  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 查找增强程序(3)  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 查找增强程序(3) "/>
+<meta name="twitter:description" content="一个功能非常全面的增强出口查找工具 *&amp;--------------------------------------------------------------------&amp;* *&amp; Report: zdamon_004 (V9) &amp;* *&amp; PJA Consultancy Services (www.pjas.com) &amp;* *&amp;--------------------------------------------------------------------&amp;* *&amp; This report attmpts to find Enhancements, Program-Exits, BADIs &amp;* *&amp; and Business Transaction Events in a particular program/tcode. &amp;* *&amp; Last updated: 09 May 2007 &amp;* *&amp;--------------------------------------------------------------------&amp;* *&amp; Selection Texts: *&amp; P_ALV ALV format *&amp; P_AUTH Include authority-check search"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 查找增强程序(3) ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Enhance3\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Enhance",
+  "wordcount":  4128 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Enhance3\/",
+  "datePublished": "2018-11-30T00:00:00\u002b00:00",
+  "dateModified": "2018-11-30T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 查找增强程序(3) </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-11-30 >30 November 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                9 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="一个功能非常全面的增强出口查找工具">一个功能非常全面的增强出口查找工具</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Report</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">zdamon_004</span> (<span style="color:#a6e22e">V9</span>) <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">PJA</span> <span style="color:#a6e22e">Consultancy</span> <span style="color:#a6e22e">Services</span> (<span style="color:#a6e22e">www</span>.<span style="color:#a6e22e">pjas</span>.<span style="color:#a6e22e">com</span>) <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">report</span> <span style="color:#a6e22e">attmpts</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">find</span> <span style="color:#a6e22e">Enhancements</span>, <span style="color:#a6e22e">Program</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Exits</span>, <span style="color:#a6e22e">BADIs</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">Business</span> <span style="color:#a6e22e">Transaction</span> <span style="color:#a6e22e">Events</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">particular</span> <span style="color:#a6e22e">program</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcode</span>. <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Last</span> <span style="color:#a6e22e">updated</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">09</span> <span style="color:#a6e22e">May</span> <span style="color:#ae81ff">2007</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Selection</span> <span style="color:#a6e22e">Texts</span><span style="color:#f92672">:</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_ALV</span> <span style="color:#a6e22e">ALV</span> <span style="color:#a6e22e">format</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_AUTH</span> <span style="color:#a6e22e">Include</span> <span style="color:#a6e22e">authority</span><span style="color:#f92672">-</span><span style="color:#a6e22e">check</span> <span style="color:#a6e22e">search</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_BADI</span> <span style="color:#a6e22e">Display</span> <span style="color:#a6e22e">BADIs</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_BTE</span> <span style="color:#a6e22e">Display</span> <span style="color:#a6e22e">business</span> <span style="color:#a6e22e">trans</span> <span style="color:#a6e22e">events</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_DEVC</span> <span style="color:#a6e22e">Show</span> <span style="color:#a6e22e">development</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">exits</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_EXIT</span> <span style="color:#a6e22e">Display</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">exits</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_FUNC</span> <span style="color:#a6e22e">Show</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">modules</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_LIMIT</span> <span style="color:#a6e22e">Limit</span> <span style="color:#a6e22e">no</span>. <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">submits</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">search</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_LST</span> <span style="color:#a6e22e">Standard</span> <span style="color:#a6e22e">list</span> <span style="color:#a6e22e">format</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_PNAME</span> <span style="color:#a6e22e">Program</span> <span style="color:#a6e22e">name</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_PROG</span> <span style="color:#a6e22e">Display</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">exits</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_SUBM</span> <span style="color:#a6e22e">Show</span> <span style="color:#a6e22e">submits</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_TCODE</span> <span style="color:#a6e22e">Transaction</span> <span style="color:#a6e22e">code</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_TEXT</span> <span style="color:#a6e22e">Search</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">P_WFLOW</span> <span style="color:#a6e22e">Display</span> <span style="color:#a6e22e">workflow</span> <span style="color:#a6e22e">links</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Text</span> <span style="color:#a6e22e">symbols</span><span style="color:#f92672">:</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">M01</span> <span style="color:#a6e22e">Enter</span> <span style="color:#a6e22e">TCode</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">program</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">M02</span> <span style="color:#a6e22e">Enter</span> <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">least</span> <span style="color:#a6e22e">one</span> <span style="color:#a6e22e">scope</span> <span style="color:#a6e22e">criteria</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">S01</span> <span style="color:#a6e22e">Selection</span> <span style="color:#a6e22e">data</span> (<span style="color:#a6e22e">TCode</span> <span style="color:#a6e22e">takes</span> <span style="color:#a6e22e">precedence</span> <span style="color:#a6e22e">over</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">name</span>)
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">S02</span> <span style="color:#a6e22e">Scope</span> <span style="color:#a6e22e">criteria</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">S03</span> <span style="color:#a6e22e">Display</span> <span style="color:#a6e22e">criteria</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#a6e22e">report</span> <span style="color:#a6e22e">zdamon_004</span>
+<span style="color:#a6e22e">no</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">page</span> <span style="color:#a6e22e">heading</span>
+<span style="color:#a6e22e">line</span><span style="color:#f92672">-</span><span style="color:#a6e22e">size</span> <span style="color:#ae81ff">201.</span>
+
+<span style="color:#a6e22e">tables</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sxs_attr</span>,
+  <span style="color:#a6e22e">tobjt</span>,
+  <span style="color:#a6e22e">tstct</span>, <span style="color:#e6db74">&#34;TCode texts
+</span><span style="color:#e6db74">  trdirt, &#34;</span><span style="color:#a6e22e">Program</span> <span style="color:#a6e22e">texts</span>
+  <span style="color:#a6e22e">sxc_exit</span>. <span style="color:#e6db74">&#34;BADI exits
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">type-pools: slis. &#34;</span><span style="color:#a6e22e">Globale</span> <span style="color:#a6e22e">Typen</span> <span style="color:#a6e22e">fьr</span> <span style="color:#a6e22e">generische</span> <span style="color:#a6e22e">Listbausteine</span>
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tabix</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span>,
+      <span style="color:#a6e22e">w_linnum</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">i</span>,
+      <span style="color:#a6e22e">w_off</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">i</span>,
+      <span style="color:#a6e22e">w_index</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span>,
+      <span style="color:#a6e22e">w_include</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+      <span style="color:#a6e22e">w_prog</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+      <span style="color:#a6e22e">w_incl</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+      <span style="color:#a6e22e">w_area</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">rs38l</span><span style="color:#f92672">-</span><span style="color:#a6e22e">area</span>,
+      <span style="color:#a6e22e">w_level</span>,
+      <span style="color:#a6e22e">w_str</span>(<span style="color:#ae81ff">50</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+      <span style="color:#a6e22e">w_cnt</span>(<span style="color:#ae81ff">2</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+      <span style="color:#a6e22e">w_funcname</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">tfdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">funcname</span>,
+      <span style="color:#a6e22e">w_fsel</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ucomm</span>, <span style="color:#e6db74">&#34; Determination of screen field
+</span><span style="color:#e6db74">      w_gridtxt(70) type c. &#34;</span><span style="color:#a6e22e">ALV</span> <span style="color:#a6e22e">grid</span> <span style="color:#a6e22e">title</span>
+
+<span style="color:#a6e22e">constants</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">c_fmod</span>(<span style="color:#ae81ff">40</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Function modules searched: &#39;</span>,
+<span style="color:#a6e22e">c_subm</span>(<span style="color:#ae81ff">40</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Submit programs searched: &#39;</span>,
+<span style="color:#a6e22e">c_devc</span>(<span style="color:#ae81ff">60</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;User-exits from development classes in function modules&#39;</span>,
+<span style="color:#a6e22e">c_col1</span>(<span style="color:#ae81ff">12</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Enhanmt Type&#39;</span>,
+<span style="color:#a6e22e">c_col2</span>(<span style="color:#ae81ff">40</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Enhancement&#39;</span>,
+<span style="color:#a6e22e">c_col3</span>(<span style="color:#ae81ff">30</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Program/Include&#39;</span>,
+<span style="color:#a6e22e">c_col4</span>(<span style="color:#ae81ff">20</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Enhancement Name&#39;</span>,
+<span style="color:#a6e22e">c_col5</span>(<span style="color:#ae81ff">40</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Enhancement Description&#39;</span>,
+<span style="color:#a6e22e">c_col6</span>(<span style="color:#ae81ff">8</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;Project&#39;</span>,
+<span style="color:#a6e22e">c_col7</span>(<span style="color:#ae81ff">1</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;S&#39;</span>,
+<span style="color:#a6e22e">c_col8</span>(<span style="color:#ae81ff">12</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;ChangeName&#39;</span>,
+<span style="color:#a6e22e">c_col9</span>(<span style="color:#ae81ff">10</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;ChangeDate&#39;</span>,
+<span style="color:#a6e22e">c_x</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">value</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Work</span> <span style="color:#a6e22e">Areas</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ABAP</span> <span style="color:#a6e22e">Workbench</span>
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_d010inc</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">master</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">d010inc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">master</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_d010inc</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tfdir</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">funcname</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tfdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">funcname</span>,
+      <span style="color:#a6e22e">pname</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tfdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span>,
+      <span style="color:#a6e22e">include</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tfdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">include</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tfdir</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tadir</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">devclass</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tadir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">devclass</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tadir</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tstc</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pgmna</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tstc</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tstcp</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">param</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tstcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">param</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tstcp</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_enlfdir</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">area</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">enlfdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">area</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_enlfdir</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Work</span> <span style="color:#a6e22e">Areas</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BADIs</span>
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_sxs_attr</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">exit_name</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">sxs_attr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">exit_name</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_sxs_attr</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_sxs_attrt</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">text</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">sxs_attrt</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_sxs_attrt</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Work</span> <span style="color:#a6e22e">Areas</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Enhancements</span>
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_modsap</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">member</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">modsap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">member</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_modsap</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_modsapa</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">modsapa</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_modsapa</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_modsapt</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">modtext</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">modsapt</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modtext</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_modsapt</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Work</span> <span style="color:#a6e22e">Areas</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Business</span> <span style="color:#a6e22e">Transaction</span> <span style="color:#a6e22e">Events</span>
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tbe01t</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">text1</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tbe01t</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text1</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tbe01t</span>.
+
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tps01t</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">text1</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">tps01t</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text1</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_tps01t</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">user</span><span style="color:#f92672">-</span><span style="color:#a6e22e">exits</span>
+<span style="color:#a6e22e">types</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">ty_mod</span>,
+<span style="color:#a6e22e">member</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">modact</span><span style="color:#f92672">-</span><span style="color:#a6e22e">member</span>,
+<span style="color:#a6e22e">name</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">modact</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+<span style="color:#a6e22e">status</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">modattr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">status</span>,
+<span style="color:#a6e22e">anam</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">modattr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">anam</span>,
+<span style="color:#a6e22e">adat</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">modattr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">adat</span>,
+<span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">ty_mod</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">w_mod</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ty_mod</span>.
+
+<span style="color:#a6e22e">types</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_userexit</span>,
+<span style="color:#a6e22e">type</span>(<span style="color:#ae81ff">12</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+<span style="color:#a6e22e">pname</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+<span style="color:#a6e22e">txt</span>(<span style="color:#ae81ff">300</span>),
+<span style="color:#a6e22e">level</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+<span style="color:#a6e22e">modname</span>(<span style="color:#ae81ff">30</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+<span style="color:#a6e22e">modtext</span>(<span style="color:#ae81ff">60</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+<span style="color:#a6e22e">modattr</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ty_mod</span>,
+<span style="color:#a6e22e">colour</span>(<span style="color:#ae81ff">4</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>,
+<span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_userexit</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i_userexit</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_userexit</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+
+<span style="color:#f92672">*</span> Function <span style="color:#a6e22e">module</span> <span style="color:#a6e22e">developmnet</span> <span style="color:#a6e22e">classes</span>
+<span style="color:#a6e22e">types</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_devclass</span>,
+<span style="color:#a6e22e">clas</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">clas</span>,
+<span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_devclass</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i_devclass</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_devclass</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Submit</span> <span style="color:#a6e22e">programs</span>
+<span style="color:#a6e22e">types</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_submit</span>,
+<span style="color:#a6e22e">pname</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+<span style="color:#a6e22e">level</span>,
+<span style="color:#a6e22e">done</span>,
+<span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_submit</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i_submit</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_submit</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Source</span> <span style="color:#a6e22e">code</span>
+<span style="color:#a6e22e">types</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_sourcetab</span>, <span style="color:#e6db74">&#34;#EC * (SLIN lьgt!)
+</span><span style="color:#e6db74">line(200), &#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span> <span style="color:#f92672">*</span> (<span style="color:#a6e22e">SLIN</span> <span style="color:#a6e22e">lьgt</span><span style="color:#f92672">!</span>)
+<span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_sourcetab</span>. <span style="color:#e6db74">&#34;#EC * (SLIN lьgt!)
+</span><span style="color:#e6db74">data: sourcetab type standard table of t_sourcetab with header line.
+</span><span style="color:#e6db74">data c_overflow(30000) type c.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Description of an ABAP/4 source analysis token
+</span><span style="color:#e6db74">data: i_stoken type standard table of stokex with header line.
+</span><span style="color:#e6db74">data wa_stoken like i_stoken.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Description of an ABAP/4 source analysis statement
+</span><span style="color:#e6db74">data: i_sstmnt type standard table of sstmnt with header line.&#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span> <span style="color:#a6e22e">NEEDED</span>
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">keywords</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">searching</span> <span style="color:#a6e22e">ABAP</span> <span style="color:#a6e22e">code</span>
+<span style="color:#a6e22e">types</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_keywords</span>,
+<span style="color:#a6e22e">word</span>(<span style="color:#ae81ff">30</span>),
+<span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_keywords</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keywords</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_keywords</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">modules</span> <span style="color:#a6e22e">within</span> <span style="color:#a6e22e">program</span>
+<span style="color:#a6e22e">types</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_fmodule</span>,
+<span style="color:#a6e22e">name</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">rs38l</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+<span style="color:#a6e22e">pname</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+<span style="color:#a6e22e">pname2</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+<span style="color:#a6e22e">level</span>,
+<span style="color:#a6e22e">bapi</span>,
+<span style="color:#a6e22e">done</span>,
+<span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_fmodule</span>.
+<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i_fmodule</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">standard</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">t_fmodule</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">ALV</span> <span style="color:#a6e22e">definitions</span>
+<span style="color:#a6e22e">data</span> <span style="color:#a6e22e">i_fieldcat</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">slis_t_fieldcat_alv</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+<span style="color:#a6e22e">data</span> <span style="color:#a6e22e">i_layout</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">slis_layout_alv</span>.
+<span style="color:#a6e22e">data</span> <span style="color:#a6e22e">i_sort</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">slis_t_sortinfo_alv</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">line</span>.
+
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Selection</span> <span style="color:#a6e22e">Options</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">block</span> <span style="color:#a6e22e">selscr1</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">frame</span> <span style="color:#a6e22e">title</span> <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">s01</span>.
+<span style="color:#a6e22e">parameter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">trdir</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span>,
+<span style="color:#a6e22e">p_tcode</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">syst</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tcode</span>,
+<span style="color:#a6e22e">p_limit</span>(<span style="color:#ae81ff">4</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">n</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">500.</span>
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">skip</span>.
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">block</span> <span style="color:#a6e22e">selscr1</span>.
+
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">block</span> <span style="color:#a6e22e">selscr2</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">frame</span> <span style="color:#a6e22e">title</span> <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">s02</span>.
+<span style="color:#a6e22e">parameter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">p_badi</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">checkbox</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">c_x</span>,
+<span style="color:#a6e22e">p_bte</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">checkbox</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">c_x</span>,
+<span style="color:#a6e22e">p_exit</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">checkbox</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">c_x</span>,
+<span style="color:#a6e22e">p_prog</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">checkbox</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">c_x</span>,
+<span style="color:#a6e22e">p_wflow</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">checkbox</span>,
+<span style="color:#a6e22e">p_auth</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">checkbox</span>.
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">skip</span>.
+<span style="color:#a6e22e">parameter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">p_text</span>(<span style="color:#ae81ff">40</span>) <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">c</span>.
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">block</span> <span style="color:#a6e22e">selscr2</span>.
+
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">begin</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">block</span> <span style="color:#a6e22e">selscr3</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">frame</span> <span style="color:#a6e22e">title</span> <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">s03</span>.
+<span style="color:#a6e22e">parameter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">p_alv</span> <span style="color:#a6e22e">radiobutton</span> <span style="color:#a6e22e">group</span> <span style="color:#a6e22e">rad1</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;X&#39;</span>,
+<span style="color:#a6e22e">p_lst</span> <span style="color:#a6e22e">radiobutton</span> <span style="color:#a6e22e">group</span> <span style="color:#a6e22e">rad1</span>.
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">skip</span>.
+<span style="color:#a6e22e">parameter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">p_devc</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">rihea</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dy_ofn</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#a6e22e">modif</span> <span style="color:#a6e22e">id</span> <span style="color:#a6e22e">a01</span>,
+<span style="color:#a6e22e">p_func</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">rihea</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dy_ofn</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#a6e22e">modif</span> <span style="color:#a6e22e">id</span> <span style="color:#a6e22e">a01</span>,
+<span style="color:#a6e22e">p_subm</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">rihea</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dy_ofn</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#a6e22e">modif</span> <span style="color:#a6e22e">id</span> <span style="color:#a6e22e">a01</span>.
+<span style="color:#a6e22e">selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">end</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">block</span> <span style="color:#a6e22e">selscr3</span>.
+
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">START</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELECTION</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#a6e22e">start</span><span style="color:#f92672">-</span><span style="color:#66d9ef">of</span><span style="color:#f92672">-</span><span style="color:#a6e22e">selection</span>.
+
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">p_tcode</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">message</span> <span style="color:#a6e22e">i000</span>(<span style="color:#a6e22e">g01</span>) <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">m01</span>.
+<span style="color:#a6e22e">stop</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_badi</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">and</span>
+<span style="color:#a6e22e">p_exit</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">and</span>
+<span style="color:#a6e22e">p_bte</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">and</span>
+<span style="color:#a6e22e">p_wflow</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">and</span>
+<span style="color:#a6e22e">p_auth</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">and</span>
+<span style="color:#a6e22e">p_prog</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">message</span> <span style="color:#a6e22e">i000</span>(<span style="color:#a6e22e">g01</span>) <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">m02</span>.
+<span style="color:#a6e22e">stop</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">ensure</span> <span style="color:#a6e22e">P_LIMIT</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">zero</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_limit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">p_limit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">data_select</span>.
+<span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">get_submit_data</span>.
+<span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">get_fm_data</span>.
+<span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">get_additional_data</span>.
+<span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">data_display</span>.
+
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Form</span> <span style="color:#a6e22e">DATA_SELECT</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#a6e22e">form</span> <span style="color:#a6e22e">data_select</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">selection</span> <span style="color:#a6e22e">message</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">sap</span> <span style="color:#a6e22e">gui</span>
+<span style="color:#a6e22e">call</span> <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;SAPGUI_PROGRESS_INDICATOR&#39;</span>
+<span style="color:#a6e22e">destination</span> <span style="color:#e6db74">&#39;SAPGUI&#39;</span>
+<span style="color:#a6e22e">keeping</span> <span style="color:#a6e22e">logical</span> <span style="color:#a6e22e">unit</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">work</span>
+<span style="color:#a6e22e">EXPORTING</span>
+  <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Get programs/includes&#39;</span> <span style="color:#e6db74">&#34;#EC NOTEXT
+</span><span style="color:#e6db74">EXCEPTIONS
+</span><span style="color:#e6db74">  system_failure
+</span><span style="color:#e6db74">  communication_failure
+</span><span style="color:#e6db74">  . &#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span> <span style="color:#f92672">*</span>
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">TCode</span> <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">ALV</span> <span style="color:#a6e22e">grid</span> <span style="color:#a6e22e">title</span>
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">w_gridtxt</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">p_tcode</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">tstct</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">tcode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_tcode</span>
+<span style="color:#a6e22e">and</span> <span style="color:#a6e22e">sprsl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">langu</span>.
+<span style="color:#a6e22e">concatenate</span> <span style="color:#e6db74">&#39;TCode:&#39;</span> <span style="color:#a6e22e">p_tcode</span> <span style="color:#a6e22e">tstct</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ttext</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">w_gridtxt</span>
+<span style="color:#a6e22e">separated</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">space</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">ALV</span> <span style="color:#a6e22e">grid</span> <span style="color:#a6e22e">title</span>
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">trdirt</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_pname</span>
+<span style="color:#a6e22e">and</span> <span style="color:#a6e22e">sprsl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">langu</span>.
+<span style="color:#a6e22e">concatenate</span> <span style="color:#e6db74">&#39;Program:&#39;</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#a6e22e">tstct</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ttext</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">w_gridtxt</span>
+<span style="color:#a6e22e">separated</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">space</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">determine</span> <span style="color:#a6e22e">search</span> <span style="color:#a6e22e">words</span>
+<span style="color:#a6e22e">keywords</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CALL&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">keywords</span>.
+<span style="color:#a6e22e">keywords</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FORM&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">keywords</span>.
+<span style="color:#a6e22e">keywords</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PERFORM&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">keywords</span>.
+<span style="color:#a6e22e">keywords</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SUBMIT&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">keywords</span>.
+<span style="color:#a6e22e">keywords</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INCLUDE&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">keywords</span>.
+<span style="color:#a6e22e">keywords</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AUTHORITY-CHECK&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">keywords</span>.
+
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">p_tcode</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">TCode</span>
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#a6e22e">pgmna</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">tstc</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span>
+<span style="color:#a6e22e">where</span> <span style="color:#a6e22e">tcode</span> <span style="color:#a6e22e">eq</span> <span style="color:#a6e22e">p_tcode</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">wa_tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">p_pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">TCode</span> <span style="color:#a6e22e">does</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">include</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">does</span> <span style="color:#a6e22e">have</span> <span style="color:#a6e22e">reference</span> <span style="color:#a6e22e">TCode</span>
+<span style="color:#66d9ef">else</span>.
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#a6e22e">param</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">tstcp</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_tstcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">param</span>
+<span style="color:#a6e22e">where</span> <span style="color:#a6e22e">tcode</span> <span style="color:#a6e22e">eq</span> <span style="color:#a6e22e">p_tcode</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">wa_tstcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">param</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span>.
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">wa_tstcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">param</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;*&#39;</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">wa_tstcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">param</span> <span style="color:#a6e22e">ca</span> <span style="color:#e6db74">&#39; &#39;</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">w_off</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fdpos</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">subtract</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fdpos</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fdpos</span> <span style="color:#a6e22e">gt</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">p_tcode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_tstcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">param</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>(<span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fdpos</span>).
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#a6e22e">pgmna</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">tstc</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span>
+<span style="color:#a6e22e">where</span> <span style="color:#a6e22e">tcode</span> <span style="color:#a6e22e">eq</span> <span style="color:#a6e22e">p_tcode</span>.
+<span style="color:#a6e22e">p_pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_tstc</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pgmna</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">message</span> <span style="color:#a6e22e">s110</span>(<span style="color:#960050;background-color:#1e0010">/saptrx/asc) with &#39;No program found for: &#39; p_tcode.&#34;#EC NOTEXT</span>
+<span style="color:#a6e22e">stop</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#66d9ef">else</span>.
+<span style="color:#a6e22e">message</span> <span style="color:#a6e22e">s110</span>(<span style="color:#960050;background-color:#1e0010">/saptrx/asc) with &#39;No program found for: &#39; p_tcode.&#34;#EC NOTEXT</span>
+<span style="color:#a6e22e">stop</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Call</span> <span style="color:#a6e22e">customer</span><span style="color:#f92672">-</span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">aus</span> <span style="color:#a6e22e">Program</span> <span style="color:#a6e22e">coding</span>
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">report</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">sourcetab</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">message</span> <span style="color:#a6e22e">e017</span>(<span style="color:#a6e22e">enhancement</span>) <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#a6e22e">raising</span> <span style="color:#a6e22e">no_program</span>.<span style="color:#e6db74">&#34;#EC *
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">scan abap-source sourcetab tokens into i_stoken statements into i_sstmnt keywords from keywords overflow into c_overflow with includes WITH ANALYSIS. &#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span>
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.</span> <span style="color:#e6db74">&#34;keine/syntakt. falsche Ablauflog./Fehler im Skanner
+</span><span style="color:#e6db74">message e130(enhancement) raising syntax_error. &#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span>
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">I_STOKEN</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">entries</span>
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">w_linnum</span>.
+<span style="color:#a6e22e">describe</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">i_stoken</span> <span style="color:#a6e22e">lines</span> <span style="color:#a6e22e">w_linnum</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">w_linnum</span> <span style="color:#a6e22e">gt</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">w_level</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+<span style="color:#a6e22e">w_prog</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#a6e22e">w_incl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">data_search</span> <span style="color:#a6e22e">tables</span> <span style="color:#a6e22e">i_stoken</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">w_level</span> <span style="color:#a6e22e">w_prog</span> <span style="color:#a6e22e">w_incl</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#a6e22e">endform</span>. <span style="color:#e6db74">&#34;DATA_SELECT
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; Form GET_FM_DATA ? &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">form get_fm_data.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* data selection message to sap gui
+</span><span style="color:#e6db74">call function &#39;SAPGUI_PROGRESS_INDICATOR&#39;
+</span><span style="color:#e6db74">destination &#39;SAPGUI&#39;
+</span><span style="color:#e6db74">keeping logical unit of work
+</span><span style="color:#e6db74">EXPORTING
+</span><span style="color:#e6db74">  text = &#39;Get function module data&#39; &#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span> <span style="color:#a6e22e">NOTEXT</span>
+<span style="color:#a6e22e">EXCEPTIONS</span>
+  <span style="color:#a6e22e">system_failure</span>
+  <span style="color:#a6e22e">communication_failure</span>
+  . <span style="color:#e6db74">&#34;#EC *
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Function module data
+</span><span style="color:#e6db74">sort i_fmodule by name.
+</span><span style="color:#e6db74">delete adjacent duplicates from i_fmodule comparing name.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">loop at i_fmodule where done ne c_x.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">clear: i_stoken, i_sstmnt, sourcetab, wa_tfdir, w_include .
+</span><span style="color:#e6db74">refresh: i_stoken, i_sstmnt, sourcetab.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">clear wa_tfdir.
+</span><span style="color:#e6db74">select single funcname pname include from tfdir into wa_tfdir
+</span><span style="color:#e6db74">where funcname = i_fmodule-name.
+</span><span style="color:#e6db74">check sy-subrc = 0.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">call function &#39;FUNCTION_INCLUDE_SPLIT&#39;
+</span><span style="color:#e6db74">EXPORTING
+</span><span style="color:#e6db74">  program = wa_tfdir-pname
+</span><span style="color:#e6db74">IMPORTING
+</span><span style="color:#e6db74">  group = w_area.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">concatenate &#39;L&#39; w_area &#39;U&#39; wa_tfdir-include into w_include.
+</span><span style="color:#e6db74">i_fmodule-pname = w_include.
+</span><span style="color:#e6db74">i_fmodule-pname2 = wa_tfdir-pname.
+</span><span style="color:#e6db74">modify i_fmodule.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">read report i_fmodule-pname into sourcetab.
+</span><span style="color:#e6db74">if sy-subrc = 0.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">scan abap-source sourcetab tokens into i_stoken
+</span><span style="color:#e6db74">statements into i_sstmnt
+</span><span style="color:#e6db74">keywords from keywords
+</span><span style="color:#e6db74">with includes WITH ANALYSIS.
+</span><span style="color:#e6db74">if sy-subrc &gt; 0.
+</span><span style="color:#e6db74">message e130(enhancement) raising syntax_error.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* check i_stoken for entries
+</span><span style="color:#e6db74">clear w_linnum.
+</span><span style="color:#e6db74">describe table i_stoken lines w_linnum.
+</span><span style="color:#e6db74">if w_linnum gt 0.
+</span><span style="color:#e6db74">w_level = &#39;1&#39;.
+</span><span style="color:#e6db74">w_prog = i_fmodule-pname2.
+</span><span style="color:#e6db74">w_incl = i_fmodule-pname.
+</span><span style="color:#e6db74">perform data_search tables i_stoken using w_level w_prog w_incl.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* store development classes
+</span><span style="color:#e6db74">if p_devc = c_x.
+</span><span style="color:#e6db74">loop at i_fmodule.
+</span><span style="color:#e6db74">clear: wa_tadir, wa_enlfdir.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">select single area from enlfdir into wa_enlfdir-area
+</span><span style="color:#e6db74">where funcname = i_fmodule-name.
+</span><span style="color:#e6db74">check not wa_enlfdir-area is initial.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">select single devclass into wa_tadir-devclass
+</span><span style="color:#e6db74">from tadir where pgmid = &#39;R3TR&#39;
+</span><span style="color:#e6db74">and object = &#39;FUGR&#39;
+</span><span style="color:#e6db74">and obj_name = wa_enlfdir-area.
+</span><span style="color:#e6db74">check not wa_tadir-devclass is initial.
+</span><span style="color:#e6db74">move wa_tadir-devclass to i_devclass-clas.
+</span><span style="color:#e6db74">append i_devclass.
+</span><span style="color:#e6db74">i_fmodule-done = c_x.
+</span><span style="color:#e6db74">modify i_fmodule.
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">sort i_devclass.
+</span><span style="color:#e6db74">delete adjacent duplicates from i_devclass.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">endform. &#34;</span><span style="color:#a6e22e">GET_FM_DATA</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Form</span> <span style="color:#a6e22e">GET_SUBMIT_DATA</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#f92672">&amp;*</span>
+<span style="color:#f92672">*&amp;--------------------------------------------------------------------&amp;*</span>
+<span style="color:#a6e22e">form</span> <span style="color:#a6e22e">get_submit_data</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">selection</span> <span style="color:#a6e22e">message</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">sap</span> <span style="color:#a6e22e">gui</span>
+<span style="color:#a6e22e">call</span> <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;SAPGUI_PROGRESS_INDICATOR&#39;</span>
+<span style="color:#a6e22e">destination</span> <span style="color:#e6db74">&#39;SAPGUI&#39;</span>
+<span style="color:#a6e22e">keeping</span> <span style="color:#a6e22e">logical</span> <span style="color:#a6e22e">unit</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">work</span>
+<span style="color:#a6e22e">EXPORTING</span>
+  <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Get submit data&#39;</span> <span style="color:#e6db74">&#34;#EC NOTEXT
+</span><span style="color:#e6db74">EXCEPTIONS
+</span><span style="color:#e6db74">  system_failure
+</span><span style="color:#e6db74">  communication_failure
+</span><span style="color:#e6db74">  . &#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span> <span style="color:#f92672">*</span>
+
+<span style="color:#a6e22e">sort</span> <span style="color:#a6e22e">i_submit</span>.
+<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">adjacent</span> <span style="color:#a6e22e">duplicates</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">i_submit</span> <span style="color:#a6e22e">comparing</span> <span style="color:#a6e22e">pname</span>.
+<span style="color:#a6e22e">w_level</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+
+<span style="color:#a6e22e">loop</span> <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">i_submit</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">done</span> <span style="color:#a6e22e">ne</span> <span style="color:#a6e22e">c_x</span>.
+
+<span style="color:#a6e22e">clear</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i_stoken</span>, <span style="color:#a6e22e">i_sstmnt</span>, <span style="color:#a6e22e">sourcetab</span>.
+<span style="color:#a6e22e">refresh</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i_stoken</span>, <span style="color:#a6e22e">i_sstmnt</span>, <span style="color:#a6e22e">sourcetab</span>.
+
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">report</span> <span style="color:#a6e22e">i_submit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">sourcetab</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+
+<span style="color:#a6e22e">scan</span> <span style="color:#a6e22e">abap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">source</span> <span style="color:#a6e22e">sourcetab</span> <span style="color:#a6e22e">tokens</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">i_stoken</span>
+<span style="color:#a6e22e">statements</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">i_sstmnt</span>
+<span style="color:#a6e22e">keywords</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">keywords</span>
+<span style="color:#66d9ef">with</span> <span style="color:#a6e22e">includes</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">ANALYSIS</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">message</span> <span style="color:#a6e22e">e130</span>(<span style="color:#a6e22e">enhancement</span>) <span style="color:#a6e22e">raising</span> <span style="color:#a6e22e">syntax_error</span>.
+<span style="color:#66d9ef">continue</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">i_stoken</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">entries</span>
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">w_linnum</span>.
+<span style="color:#a6e22e">describe</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">i_stoken</span> <span style="color:#a6e22e">lines</span> <span style="color:#a6e22e">w_linnum</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">w_linnum</span> <span style="color:#a6e22e">gt</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">w_prog</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i_submit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span>.
+<span style="color:#a6e22e">w_incl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">data_search</span> <span style="color:#a6e22e">tables</span> <span style="color:#a6e22e">i_stoken</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">w_level</span> <span style="color:#a6e22e">w_prog</span> <span style="color:#a6e22e">w_incl</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">restrict</span> <span style="color:#a6e22e">number</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">submit</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">selected</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">processing</span>
+<span style="color:#a6e22e">describe</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">i_submit</span> <span style="color:#a6e22e">lines</span> <span style="color:#a6e22e">w_linnum</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">w_linnum</span> <span style="color:#a6e22e">ge</span> <span style="color:#a6e22e">p_limit</span>.
+<span style="color:#a6e22e">w_level</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">i_submit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">done</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_x</span>.
+<span style="color:#a6e22e">modify</span> <span style="color:#a6e22e">i_submit</span>.
+<span style="color:#a6e22e">endloop</span>.
+
+<span style="color:#a6e22e">endform</span>. <span style="color:#e6db74">&#34;GET_SUBMIT_DATA
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; Form DATA_SEARCH &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">form data_search tables p_stoken structure stoken
+</span><span style="color:#e6db74">using p_level l_prog l_incl.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">loop at p_stoken.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">clear i_userexit.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Workflow
+</span><span style="color:#e6db74">if p_wflow = c_x.
+</span><span style="color:#e6db74">if p_level eq &#39;1&#39;. &#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">perform</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">modules</span> (<span style="color:#ae81ff">2</span><span style="color:#a6e22e">nd</span> <span style="color:#a6e22e">pass</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">16</span>) <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;SWE_EVENT_CREATE&#39;</span>.
+<span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">all</span> <span style="color:#a6e22e">occurrences</span> <span style="color:#66d9ef">of</span> <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#66d9ef">with</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WorkFlow&#39;</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#a6e22e">concatenate</span> <span style="color:#a6e22e">l_prog</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#a6e22e">l_incl</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">i_userexit</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#a6e22e">tabix</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">level</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_level</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">level</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">l_incl</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_pname</span>.
+<span style="color:#66d9ef">else</span>.
+<span style="color:#a6e22e">concatenate</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#a6e22e">l_incl</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#66d9ef">else</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">l_incl</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_prog</span>.
+<span style="color:#66d9ef">else</span>.
+<span style="color:#a6e22e">concatenate</span> <span style="color:#a6e22e">l_prog</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#a6e22e">l_incl</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">AUTHORITY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CHECKS</span>
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_auth</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_x</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;AUTHORITY-CHECK&#39;</span>.
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">p_level</span> <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;0&#39;</span>. <span style="color:#e6db74">&#34; do not perform for function modules (2nd pass)
+</span><span style="color:#e6db74">w_index = sy-tabix + 2.
+</span><span style="color:#e6db74">read table p_stoken index w_index into wa_stoken.
+</span><span style="color:#e6db74">check not wa_stoken-str cs &#39;STRUCTURE&#39;.
+</span><span style="color:#e6db74">check not wa_stoken-str cs &#39;SYMBOL&#39;.
+</span><span style="color:#e6db74">read table i_submit with key pname = wa_stoken-str.
+</span><span style="color:#e6db74">if sy-subrc &lt;&gt; 0.
+</span><span style="color:#e6db74">i_userexit-pname = i_submit-pname.
+</span><span style="color:#e6db74">i_userexit-type = &#39;AuthCheck&#39;.
+</span><span style="color:#e6db74">i_userexit-txt = wa_stoken-str.
+</span><span style="color:#e6db74">replace all occurrences of &#39;&#39;&#39;&#39; in i_userexit-txt with space.
+</span><span style="color:#e6db74">clear tobjt.
+</span><span style="color:#e6db74">select single * from tobjt where object = i_userexit-txt
+</span><span style="color:#e6db74">and langu = sy-langu.
+</span><span style="color:#e6db74">i_userexit-modname = &#39;AUTHORITY-CHECK&#39;.
+</span><span style="color:#e6db74">i_userexit-modtext = tobjt-ttext.
+</span><span style="color:#e6db74">append i_userexit.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Text searches
+</span><span style="color:#e6db74">if not p_text is initial.
+</span><span style="color:#e6db74">if p_stoken-str cs p_text.
+</span><span style="color:#e6db74">i_userexit-pname = i_submit-pname.
+</span><span style="color:#e6db74">i_userexit-type = &#39;TextSearch&#39;.
+</span><span style="color:#e6db74">i_userexit-txt = wa_stoken-str.
+</span><span style="color:#e6db74">i_userexit-modname = &#39;Text Search&#39;.
+</span><span style="color:#e6db74">i_userexit-modtext = p_stoken-str.
+</span><span style="color:#e6db74">append i_userexit.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Include (SE38)
+</span><span style="color:#e6db74">if p_stoken-str eq &#39;INCLUDE&#39;.
+</span><span style="color:#e6db74">check p_level eq &#39;0&#39;. &#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">perform</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">modules</span> (<span style="color:#ae81ff">2</span><span style="color:#a6e22e">nd</span> <span style="color:#a6e22e">pass</span>)
+<span style="color:#a6e22e">w_index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">p_stoken</span> <span style="color:#a6e22e">index</span> <span style="color:#a6e22e">w_index</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_stoken</span>.
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;STRUCTURE&#39;</span>.
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;SYMBOL&#39;</span>.
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">i_submit</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">key</span> <span style="color:#a6e22e">pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">i_submit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#a6e22e">i_submit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">level</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_level</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">i_submit</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Enhancements</span> (<span style="color:#a6e22e">SMOD</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_exit</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_x</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;CUSTOMER-FUNCTION&#39;</span>.
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">w_funcname</span>.
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">p_stoken</span> <span style="color:#a6e22e">index</span> <span style="color:#a6e22e">tabix</span>.
+<span style="color:#a6e22e">translate</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">using</span> <span style="color:#e6db74">&#39;&#39;&#39; &#39;</span>.
+<span style="color:#a6e22e">condense</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">l_prog</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">concatenate</span> <span style="color:#e6db74">&#39;EXIT&#39;</span> <span style="color:#a6e22e">p_pname</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">w_funcname</span>
+<span style="color:#a6e22e">separated</span> <span style="color:#a6e22e">by</span> <span style="color:#e6db74">&#39;_&#39;</span>.
+<span style="color:#66d9ef">else</span>.
+<span style="color:#a6e22e">concatenate</span> <span style="color:#e6db74">&#39;EXIT&#39;</span> <span style="color:#a6e22e">l_prog</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">w_funcname</span>
+<span style="color:#a6e22e">separated</span> <span style="color:#a6e22e">by</span> <span style="color:#e6db74">&#39;_&#39;</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#a6e22e">member</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">modsap</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_modsap</span><span style="color:#f92672">-</span><span style="color:#a6e22e">member</span>
+<span style="color:#a6e22e">where</span> <span style="color:#a6e22e">member</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">w_funcname</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span> <span style="color:#e6db74">&#34; check for valid enhancement
+</span><span style="color:#e6db74">i_userexit-type = &#39;Enhancement&#39;.
+</span><span style="color:#e6db74">i_userexit-txt = w_funcname.
+</span><span style="color:#e6db74">append i_userexit.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">clear wa_d010inc.
+</span><span style="color:#e6db74">select single master into wa_d010inc-master
+</span><span style="color:#e6db74">from d010inc
+</span><span style="color:#e6db74">where include = l_prog.
+</span><span style="color:#e6db74">concatenate &#39;EXIT&#39; wa_d010inc-master p_stoken-str into w_funcname
+</span><span style="color:#e6db74">separated by &#39;_&#39;.
+</span><span style="color:#e6db74">i_userexit-type = &#39;Enhancement&#39;.
+</span><span style="color:#e6db74">i_userexit-txt = w_funcname.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* BADIs (SE18)
+</span><span style="color:#e6db74">if p_badi = c_x.
+</span><span style="color:#e6db74">if p_stoken-str cs &#39;cl_exithandler=&#39;.
+</span><span style="color:#e6db74">w_index = sy-tabix + 4.
+</span><span style="color:#e6db74">read table p_stoken index w_index into wa_stoken.
+</span><span style="color:#e6db74">i_userexit-txt = wa_stoken-str.
+</span><span style="color:#e6db74">replace all occurrences of &#39;&#39;&#39;&#39; in i_userexit-txt with space.
+</span><span style="color:#e6db74">i_userexit-type = &#39;BADI&#39;.
+</span><span style="color:#e6db74">clear sxs_attr. &#34;</span> <span style="color:#a6e22e">ensure</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">real</span> <span style="color:#a6e22e">BADI</span>
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">sxs_attr</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">exit_name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">i_userexit</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Business</span> <span style="color:#a6e22e">transaction</span> <span style="color:#a6e22e">events</span> (<span style="color:#a6e22e">FIBF</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_bte</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_x</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;OPEN_FI_PERFORM&#39;</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BusTrEvent&#39;</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">all</span> <span style="color:#a6e22e">occurrences</span> <span style="color:#66d9ef">of</span> <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">space</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span><span style="color:#f92672">+</span><span style="color:#ae81ff">16</span>(<span style="color:#ae81ff">8</span>).
+<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span><span style="color:#f92672">+</span><span style="color:#ae81ff">25</span>(<span style="color:#ae81ff">1</span>).
+<span style="color:#a6e22e">when</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">wa_tbe01t</span>.
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#a6e22e">text1</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_tbe01t</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text1</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">tbe01t</span>
+<span style="color:#a6e22e">where</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span><span style="color:#f92672">+</span><span style="color:#ae81ff">16</span>(<span style="color:#ae81ff">8</span>)
+<span style="color:#a6e22e">and</span> <span style="color:#a6e22e">spras</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">langu</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">wa_tbe01t</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text1</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modtext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;Not active&gt;&#39;</span>. <span style="color:#e6db74">&#34;#EC NOTEXT
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">i_userexit-modtext = wa_tbe01t-text1.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">i_userexit-modname+8 = &#39;/P&amp;S&#39;. &#34;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">EC</span> <span style="color:#a6e22e">NOTEXT</span>
+<span style="color:#a6e22e">when</span> <span style="color:#e6db74">&#39;P&#39;</span>.
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">wa_tps01t</span>.
+<span style="color:#a6e22e">select</span> <span style="color:#a6e22e">single</span> <span style="color:#a6e22e">text1</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_tps01t</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text1</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">tps01t</span>
+<span style="color:#a6e22e">where</span> <span style="color:#a6e22e">procs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span><span style="color:#f92672">+</span><span style="color:#ae81ff">16</span>(<span style="color:#ae81ff">8</span>)
+<span style="color:#a6e22e">and</span> <span style="color:#a6e22e">spras</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">langu</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modtext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_tps01t</span><span style="color:#f92672">-</span><span style="color:#a6e22e">text1</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">modname</span><span style="color:#f92672">+</span><span style="color:#ae81ff">8</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/Process&#39;</span>.
+<span style="color:#a6e22e">endcase</span>.
+
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">i_userexit</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Program</span> <span style="color:#a6e22e">exits</span> (<span style="color:#a6e22e">SE38</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_prog</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_x</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;USEREXIT_&#39;</span>.
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;-&#39;</span>. <span style="color:#e6db74">&#34; ensure not USEREXIT_XX-XXX
+</span><span style="color:#e6db74">check not p_stoken-str cs &#39;(&#39;. &#34;</span> <span style="color:#a6e22e">ensure</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">SUBMIT_XX</span>(<span style="color:#a6e22e">X</span>)
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Program Exit&#39;</span>.
+<span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">all</span> <span style="color:#a6e22e">occurrences</span> <span style="color:#66d9ef">of</span> <span style="color:#e6db74">&#39;&#39;&#39;&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">i_userexit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">txt</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">space</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">i_userexit</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Submit</span> <span style="color:#a6e22e">programs</span> (<span style="color:#a6e22e">SE38</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;SUBMIT&#39;</span>.
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">p_level</span> <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;0&#39;</span>. <span style="color:#e6db74">&#34; do not perform for function modules (2nd pass)
+</span><span style="color:#e6db74">check not p_stoken-str cs &#39;_&#39;. &#34;</span> <span style="color:#a6e22e">ensure</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">SUBMIT_XXX</span>
+<span style="color:#a6e22e">w_index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">p_stoken</span> <span style="color:#a6e22e">index</span> <span style="color:#a6e22e">w_index</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_stoken</span>.
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;_&#39;</span>. <span style="color:#e6db74">&#34; ensure not SUBMIT_XXX
+</span><span style="color:#e6db74">replace all occurrences of &#39;&#39;&#39;&#39; in wa_stoken-str with space.
+</span><span style="color:#e6db74">read table i_submit with key pname = wa_stoken-str.
+</span><span style="color:#e6db74">if sy-subrc &lt;&gt; 0.
+</span><span style="color:#e6db74">i_submit-pname = wa_stoken-str.
+</span><span style="color:#e6db74">i_submit-level = p_level.
+</span><span style="color:#e6db74">append i_submit.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Perform routines (which reference external programs)
+</span><span style="color:#e6db74">if p_stoken-str cs &#39;PERFORM&#39;.
+</span><span style="color:#e6db74">check p_level eq &#39;0&#39;. &#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">perform</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">modules</span> (<span style="color:#ae81ff">2</span><span style="color:#a6e22e">nd</span> <span style="color:#a6e22e">pass</span>)
+<span style="color:#a6e22e">w_index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">p_stoken</span> <span style="color:#a6e22e">index</span> <span style="color:#a6e22e">w_index</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">wa_stoken</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ovfl</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+<span style="color:#a6e22e">w_off</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">off1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10.</span>
+<span style="color:#a6e22e">w_str</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_overflow</span><span style="color:#f92672">+</span><span style="color:#a6e22e">w_off</span>(<span style="color:#ae81ff">30</span>).
+<span style="color:#a6e22e">find</span> <span style="color:#e6db74">&#39;)&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">w_str</span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">offset</span> <span style="color:#a6e22e">w_off</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">w_off</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">w_off</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">w_str</span>(<span style="color:#a6e22e">w_off</span>).
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#a6e22e">check</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;(&#39;</span>.
+<span style="color:#a6e22e">w_off</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#66d9ef">while</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span><span style="color:#f92672">+</span><span style="color:#a6e22e">w_off</span>(<span style="color:#ae81ff">1</span>) <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;(&#39;</span>.
+<span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">section</span> <span style="color:#a6e22e">offset</span> <span style="color:#a6e22e">w_off</span> <span style="color:#a6e22e">length</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#66d9ef">with</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">all</span> <span style="color:#a6e22e">occurrences</span> <span style="color:#66d9ef">of</span> <span style="color:#e6db74">&#39;)&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">space</span>.
+<span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">i_submit</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">key</span> <span style="color:#a6e22e">pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+<span style="color:#a6e22e">i_submit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">i_submit</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">exit</span>.
+<span style="color:#66d9ef">else</span>.
+<span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">section</span> <span style="color:#a6e22e">offset</span> <span style="color:#a6e22e">w_off</span> <span style="color:#a6e22e">length</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#66d9ef">with</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#a6e22e">shift</span> <span style="color:#a6e22e">wa_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">left</span> <span style="color:#a6e22e">deleting</span> <span style="color:#a6e22e">leading</span> <span style="color:#a6e22e">space</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endwhile</span>.
+<span style="color:#a6e22e">endif</span>.
+
+<span style="color:#f92672">*</span> Function <span style="color:#a6e22e">modules</span> (<span style="color:#a6e22e">SE37</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_stoken</span><span style="color:#f92672">-</span><span style="color:#a6e22e">str</span> <span style="color:#a6e22e">cs</span> <span style="color:#e6db74">&#39;FUNCTION&#39;</span>.
+
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">i_fmodule</span>.
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p_level</span> <span style="color:#a6e22e">eq</span> <span style="color:#e6db74">&#39;0&#39;</span>. <span style="color:#e6db74">&#34; do not perform for function modules (2nd pass)
+</span><span style="color:#e6db74">w_index = sy-tabix + 1.
+</span><span style="color:#e6db74">read table p_stoken index w_index into wa_stoken.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">if wa_stoken-str cs &#39;BAPI&#39;.
+</span><span style="color:#e6db74">i_fmodule-bapi = c_x.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">replace first occurrence of &#39;&#39;&#39;&#39; in wa_stoken-str with space.
+</span><span style="color:#e6db74">replace first occurrence of &#39;&#39;&#39;&#39; in wa_stoken-str with space.
+</span><span style="color:#e6db74">if sy-subrc = 4. &#34;</span> <span style="color:#a6e22e">didn</span><span style="color:#e6db74">&#39;t find 2nd quote (ie name truncated)
+</span><span style="color:#e6db74">clear wa_tfdir.
+</span><span style="color:#e6db74">concatenate wa_stoken-str &#39;</span><span style="color:#f92672">%</span><span style="color:#e6db74">&#39; into wa_stoken-str.
+</span><span style="color:#e6db74">select single funcname into wa_tfdir-funcname from tfdir
+</span><span style="color:#e6db74">where funcname like wa_stoken-str.
+</span><span style="color:#e6db74">if sy-subrc = 0.
+</span><span style="color:#e6db74">i_fmodule-name = wa_tfdir-funcname.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">continue.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">i_fmodule-name = wa_stoken-str.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">i_fmodule-level = p_level.
+</span><span style="color:#e6db74">append i_fmodule.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">endform. &#34;DATA_SEARCH
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; Form GET_ADDITIONAL_DATA &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">form get_additional_data.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* data selection message to sap gui
+</span><span style="color:#e6db74">call function &#39;</span><span style="color:#a6e22e">SAPGUI_PROGRESS_INDICATOR</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">destination &#39;</span><span style="color:#a6e22e">SAPGUI</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">keeping logical unit of work
+</span><span style="color:#e6db74">EXPORTING
+</span><span style="color:#e6db74">  text = &#39;</span><span style="color:#a6e22e">Get</span> <span style="color:#a6e22e">additional</span> <span style="color:#a6e22e">data</span><span style="color:#e6db74">&#39; &#34;#EC NOTEXT
+</span><span style="color:#e6db74">EXCEPTIONS
+</span><span style="color:#e6db74">  system_failure
+</span><span style="color:#e6db74">  communication_failure
+</span><span style="color:#e6db74">  . &#34;#EC *
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">loop at i_userexit.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Workflow
+</span><span style="color:#e6db74">if i_userexit-type eq &#39;</span><span style="color:#a6e22e">WorkFlow</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">continue.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* Enhancement data
+</span><span style="color:#e6db74">if i_userexit-type cs &#39;</span><span style="color:#a6e22e">Enh</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">clear: wa_modsapa.
+</span><span style="color:#e6db74">select single name into wa_modsapa-name from modsap
+</span><span style="color:#e6db74">where member = i_userexit-txt.
+</span><span style="color:#e6db74">check sy-subrc = 0.
+</span><span style="color:#e6db74">i_userexit-modname = wa_modsapa-name.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">clear wa_modsapt.
+</span><span style="color:#e6db74">select single modtext into wa_modsapt-modtext from modsapt
+</span><span style="color:#e6db74">where name = wa_modsapa-name
+</span><span style="color:#e6db74">and sprsl = sy-langu.
+</span><span style="color:#e6db74">i_userexit-modtext = wa_modsapt-modtext.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">* Get the CMOD project name
+</span><span style="color:#e6db74">clear w_mod.
+</span><span style="color:#e6db74">select single modact~member modact~name modattr~status
+</span><span style="color:#e6db74">modattr~anam modattr~adat
+</span><span style="color:#e6db74">into w_mod
+</span><span style="color:#e6db74">from modact
+</span><span style="color:#e6db74">inner join modattr
+</span><span style="color:#e6db74">on modattr~name = modact~name
+</span><span style="color:#e6db74">where modact~member = wa_modsapa-name
+</span><span style="color:#e6db74">and modact~typ = space.
+</span><span style="color:#e6db74">if sy-subrc = 0.
+</span><span style="color:#e6db74">i_userexit-modattr = w_mod.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* BADI data
+</span><span style="color:#e6db74">if i_userexit-type eq &#39;</span><span style="color:#a6e22e">BADI</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">clear wa_sxs_attr.
+</span><span style="color:#e6db74">select single exit_name into wa_sxs_attr-exit_name from sxs_attr
+</span><span style="color:#e6db74">where exit_name = i_userexit-txt.
+</span><span style="color:#e6db74">if sy-subrc = 0.
+</span><span style="color:#e6db74">i_userexit-modname = i_userexit-txt.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">i_userexit-modname = &#39;</span><span style="color:#a6e22e">Dynamic</span> <span style="color:#a6e22e">call</span><span style="color:#e6db74">&#39;. &#34;#EC NOTEXT
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">clear wa_sxs_attrt.
+</span><span style="color:#e6db74">select single text into wa_sxs_attrt-text from sxs_attrt
+</span><span style="color:#e6db74">where exit_name = wa_sxs_attr-exit_name
+</span><span style="color:#e6db74">and sprsl = sy-langu.
+</span><span style="color:#e6db74">i_userexit-modtext = wa_sxs_attrt-text.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* BADI Implementation
+</span><span style="color:#e6db74">if i_userexit-type eq &#39;</span><span style="color:#a6e22e">BADI</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">clear sxc_exit.
+</span><span style="color:#e6db74">select COUNT( * ) from sxc_exit where exit_name = i_userexit-txt.
+</span><span style="color:#e6db74">w_cnt = sy-dbcnt.
+</span><span style="color:#e6db74">* determine id BADI is for interal or external use
+</span><span style="color:#e6db74">clear sxs_attr.
+</span><span style="color:#e6db74">select single * from sxs_attr where exit_name = i_userexit-txt.
+</span><span style="color:#e6db74">if sxs_attr-internal = &#39;</span><span style="color:#a6e22e">X</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">wa_sxs_attrt-text = &#39;</span><span style="color:#a6e22e">SAP</span> <span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">wa_sxs_attrt-text = &#39;</span><span style="color:#a6e22e">CUST</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* concatenate wa_sxs_attrt-text w_cnt into i_userexit-modattr-name
+</span><span style="color:#e6db74">* separated by space.
+</span><span style="color:#e6db74">write wa_sxs_attrt-text to i_userexit-modattr-name.
+</span><span style="color:#e6db74">write w_cnt to i_userexit-modattr-name+5.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">modify i_userexit.
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">* get enhancements via program package
+</span><span style="color:#e6db74">clear wa_tadir.
+</span><span style="color:#e6db74">select single devclass into wa_tadir-devclass from tadir
+</span><span style="color:#e6db74">where pgmid = &#39;</span><span style="color:#a6e22e">R3TR</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">and object = &#39;</span><span style="color:#a6e22e">PROG</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">and obj_name = p_pname.
+</span><span style="color:#e6db74">if sy-subrc = 0.
+</span><span style="color:#e6db74">clear: wa_modsapa, wa_modsapt.
+</span><span style="color:#e6db74">select name from modsapa into wa_modsapa-name
+</span><span style="color:#e6db74">where devclass = wa_tadir-devclass.
+</span><span style="color:#e6db74">select single modtext from modsapt into wa_modsapt-modtext
+</span><span style="color:#e6db74">where name = wa_modsapa-name
+</span><span style="color:#e6db74">and sprsl = sy-langu.
+</span><span style="color:#e6db74">clear i_userexit.
+</span><span style="color:#e6db74">read table i_userexit with key modname = wa_modsapa-name.
+</span><span style="color:#e6db74">if sy-subrc &lt;&gt; 0.
+</span><span style="color:#e6db74">i_userexit-modtext = wa_modsapt-modtext.
+</span><span style="color:#e6db74">i_userexit-type = &#39;</span><span style="color:#a6e22e">Enhancement</span><span style="color:#e6db74">&#39;. &#34;#EC NOTEXT
+</span><span style="color:#e6db74">i_userexit-modname = wa_modsapa-name.
+</span><span style="color:#e6db74">i_userexit-txt = &#39;</span><span style="color:#a6e22e">Determined</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">program</span> <span style="color:#a6e22e">DevClass</span><span style="color:#e6db74">&#39;.&#34;#EC NOTEXT
+</span><span style="color:#e6db74">i_userexit-pname = &#39;</span><span style="color:#a6e22e">Unknown</span><span style="color:#e6db74">&#39;. &#34;#EC NOTEXT
+</span><span style="color:#e6db74">append i_userexit.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">endselect.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* set row colour.
+</span><span style="color:#e6db74">loop at i_userexit.
+</span><span style="color:#e6db74">case i_userexit-type.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BADI</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">i_userexit-colour = &#39;</span><span style="color:#a6e22e">C601</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">Enhancement</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">i_userexit-colour = &#39;</span><span style="color:#a6e22e">C501</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">Program</span> <span style="color:#a6e22e">Exit</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">i_userexit-colour = &#39;</span><span style="color:#a6e22e">C401</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">WorkFlow</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">i_userexit-colour = &#39;</span><span style="color:#a6e22e">C301</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BusTrEvent</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">i_userexit-colour = &#39;</span><span style="color:#a6e22e">C201</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">endcase.
+</span><span style="color:#e6db74">modify i_userexit.
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">endform. &#34;GET_ADDITIONAL_DATA
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; Form DATA_DISPLAY &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">form data_display.
+</span><span style="color:#e6db74">* data selection message to sap gui
+</span><span style="color:#e6db74">call function &#39;</span><span style="color:#a6e22e">SAPGUI_PROGRESS_INDICATOR</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">destination &#39;</span><span style="color:#a6e22e">SAPGUI</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">keeping logical unit of work
+</span><span style="color:#e6db74">EXPORTING
+</span><span style="color:#e6db74">  text = &#39;</span><span style="color:#a6e22e">Prepare</span> <span style="color:#a6e22e">screen</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">display</span><span style="color:#e6db74">&#39; &#34;#EC NOTEXT
+</span><span style="color:#e6db74">EXCEPTIONS
+</span><span style="color:#e6db74">  system_failure
+</span><span style="color:#e6db74">  communication_failure
+</span><span style="color:#e6db74">  . &#34;#EC *
+</span><span style="color:#e6db74">sort i_userexit by type txt modname.
+</span><span style="color:#e6db74">delete adjacent duplicates from i_userexit comparing txt pname modname.
+</span><span style="color:#e6db74">* ensure records selected.
+</span><span style="color:#e6db74">describe table i_userexit lines w_linnum.
+</span><span style="color:#e6db74">if w_linnum = 0.
+</span><span style="color:#e6db74">message s003(g00). &#34;No data records were selected
+</span><span style="color:#e6db74">exit.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">if p_alv = &#39;</span> <span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">* format headings
+</span><span style="color:#e6db74">write: &#39;</span><span style="color:#a6e22e">Enhancements</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">main</span> <span style="color:#a6e22e">program</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;, p_pname.
+</span><span style="color:#e6db74">write: &#39;</span><span style="color:#a6e22e">Enhancements</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">TCode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;, p_tcode.
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">uline.
+</span><span style="color:#e6db74">format color col_heading.
+</span><span style="color:#e6db74">write: / sy-vline,
+</span><span style="color:#e6db74">(12) c_col1, &#34;Enhanmt Type
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(40) c_col2, &#34;Enhancement
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(30) c_col3, &#34;Program/Include
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(20) c_col4, &#34;Enhancement name
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(40) c_col5, &#34;Enhancement description
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(8) c_col6, &#34;Project
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(1) c_col7, &#34;S
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(12) c_col8, &#34;ChangeName
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">(10) c_col9, &#34;ChangeDate
+</span><span style="color:#e6db74">sy-vline.
+</span><span style="color:#e6db74">format reset.
+</span><span style="color:#e6db74">uline.
+</span><span style="color:#e6db74">* format lines
+</span><span style="color:#e6db74">loop at i_userexit.
+</span><span style="color:#e6db74">* set line colour
+</span><span style="color:#e6db74">case i_userexit-type.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">Enhancement</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">format color 3 intensified off.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BADI</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">format color 4 intensified off.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BusTrEvent</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">format color 5 intensified off.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">Program</span> <span style="color:#a6e22e">Exit</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">format color 6 intensified off.
+</span><span style="color:#e6db74">when others.
+</span><span style="color:#e6db74">format reset.
+</span><span style="color:#e6db74">endcase.
+</span><span style="color:#e6db74">write: / sy-vline,
+</span><span style="color:#e6db74">i_userexit-type,
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_userexit-txt(40),
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_userexit-pname(30),
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_userexit-modname(20),
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_userexit-modtext(40),
+</span><span style="color:#e6db74">sy-vline.
+</span><span style="color:#e6db74">write: i_userexit-modattr-name,
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_userexit-modattr-status,
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_userexit-modattr-anam,
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_userexit-modattr-adat no-zero,
+</span><span style="color:#e6db74">sy-vline.
+</span><span style="color:#e6db74">hide: i_userexit-modname, i_userexit-type, i_userexit-modattr-name.
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">format reset.
+</span><span style="color:#e6db74">uline.
+</span><span style="color:#e6db74">* user-exits from development class of function modules
+</span><span style="color:#e6db74">if p_devc = c_x.
+</span><span style="color:#e6db74">write: /.
+</span><span style="color:#e6db74">write: / c_devc.
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">uline (90).
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">loop at i_devclass.
+</span><span style="color:#e6db74">clear wa_modsapa.
+</span><span style="color:#e6db74">select name from modsapa into wa_modsapa
+</span><span style="color:#e6db74">where devclass = i_devclass-clas.
+</span><span style="color:#e6db74">select single name modtext into corresponding fields of wa_modsapt
+</span><span style="color:#e6db74">from modsapt
+</span><span style="color:#e6db74">where name = wa_modsapa-name
+</span><span style="color:#e6db74">and sprsl = sy-langu.
+</span><span style="color:#e6db74">format color 3 intensified off.
+</span><span style="color:#e6db74">write: / sy-vline,
+</span><span style="color:#e6db74">(12) &#39;</span><span style="color:#a6e22e">Enhancement</span><span style="color:#e6db74">&#39;,
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">wa_modsapa-name,
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">wa_modsapt-modtext,
+</span><span style="color:#e6db74">sy-vline.
+</span><span style="color:#e6db74">endselect.
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">uline (90).
+</span><span style="color:#e6db74">format reset.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* display fuction modules used in program
+</span><span style="color:#e6db74">write /.
+</span><span style="color:#e6db74">describe table i_fmodule lines w_linnum.
+</span><span style="color:#e6db74">write: / c_fmod , at 35 w_linnum. &#34;#EC NOTEXT
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">if p_func = c_x.
+</span><span style="color:#e6db74">uline (38).
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">loop at i_fmodule.
+</span><span style="color:#e6db74">write: sy-vline,
+</span><span style="color:#e6db74">i_fmodule-name,
+</span><span style="color:#e6db74">sy-vline,
+</span><span style="color:#e6db74">i_fmodule-bapi,
+</span><span style="color:#e6db74">sy-vline.
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">uline (38).
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* display submit programs used in program
+</span><span style="color:#e6db74">write /.
+</span><span style="color:#e6db74">describe table i_submit lines w_linnum.
+</span><span style="color:#e6db74">write: / c_subm , at 35 w_linnum. &#34;#EC NOTEXT
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">if p_subm = c_x.
+</span><span style="color:#e6db74">uline (44).
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">loop at i_submit.
+</span><span style="color:#e6db74">write: sy-vline,
+</span><span style="color:#e6db74">i_submit-pname,
+</span><span style="color:#e6db74">sy-vline.
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">endloop.
+</span><span style="color:#e6db74">write: 201&#39;&#39;.
+</span><span style="color:#e6db74">uline (44).
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* issue message with number of user-exits displayed
+</span><span style="color:#e6db74">describe table i_userexit lines w_linnum.
+</span><span style="color:#e6db74">message s697(56) with w_linnum.
+</span><span style="color:#e6db74">else. &#34; Show in alv format
+</span><span style="color:#e6db74">* issue message with number of user-exits displayed
+</span><span style="color:#e6db74">describe table i_userexit lines w_linnum.
+</span><span style="color:#e6db74">message s697(56) with w_linnum.
+</span><span style="color:#e6db74">* Create field catalog
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">TYPE</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Type</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">PNAME</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Prog</span><span style="color:#f92672">?</span><span style="color:#a6e22e">am</span> <span style="color:#a6e22e">name</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">TXT</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Enhancement</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">LEVEL</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; c_x &#39;</span><span style="color:#a6e22e">Level</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">MODNAME</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Enhancement</span> <span style="color:#a6e22e">name</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">MODTEXT</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Enhancement</span> <span style="color:#a6e22e">text</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">MODATTR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MEMBER</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; c_x &#39;</span><span style="color:#a6e22e">Member</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">MODATTR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Project</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">MODATTR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">STATUS</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Status</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">MODATTR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ANAM</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Changed</span> <span style="color:#a6e22e">by</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">perform create_field_catalog using &#39;</span><span style="color:#a6e22e">MODATTR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ADAT</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#a6e22e">Change</span> <span style="color:#a6e22e">date</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">* Layout
+</span><span style="color:#e6db74">clear i_layout.
+</span><span style="color:#e6db74">i_layout-colwidth_optimize = c_x.
+</span><span style="color:#e6db74">i_layout-info_fieldname = &#39;</span><span style="color:#a6e22e">COLOUR</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">* Sort
+</span><span style="color:#e6db74">clear i_sort.
+</span><span style="color:#e6db74">i_sort-fieldname = &#39;</span><span style="color:#a6e22e">TYPE</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">i_sort-tabname = &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">i_sort-up = c_x.
+</span><span style="color:#e6db74">append i_sort.
+</span><span style="color:#e6db74">call function &#39;</span><span style="color:#a6e22e">REUSE_ALV_GRID_DISPLAY</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">EXPORTING
+</span><span style="color:#e6db74">  i_callback_program = sy-cprog
+</span><span style="color:#e6db74">  i_callback_user_command = &#39;</span><span style="color:#a6e22e">USER_COMMAND</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">  is_layout = i_layout
+</span><span style="color:#e6db74">  it_fieldcat = i_fieldcat[]
+</span><span style="color:#e6db74">  it_sort = i_sort[]
+</span><span style="color:#e6db74">  i_default = c_x
+</span><span style="color:#e6db74">  i_save = &#39;</span><span style="color:#a6e22e">A</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">  i_grid_title = w_gridtxt
+</span><span style="color:#e6db74">TABLES
+</span><span style="color:#e6db74">  t_outtab = i_userexit.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">* issue message with number of user-exits displayed
+</span><span style="color:#e6db74">describe table i_userexit lines w_linnum.
+</span><span style="color:#e6db74">message s697(56) with w_linnum.
+</span><span style="color:#e6db74">endform. &#34;DATA_DISPLAY
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; Form CREATE_FIELD_CATALOG &amp;*
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">form create_field_catalog using p_fieldname
+</span><span style="color:#e6db74">      p_tabname
+</span><span style="color:#e6db74">      p_hide
+</span><span style="color:#e6db74">      p_text.
+</span><span style="color:#e6db74">i_fieldcat-fieldname = p_fieldname.
+</span><span style="color:#e6db74">i_fieldcat-tabname = p_tabname.
+</span><span style="color:#e6db74">i_fieldcat-no_out = p_hide.
+</span><span style="color:#e6db74">i_fieldcat-seltext_l = p_text.
+</span><span style="color:#e6db74">append i_fieldcat.
+</span><span style="color:#e6db74">endform. &#34; CREATE_FIELD_CATALOG
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; Form CREATE_FIELD_CATALOG &amp;*
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">form user_command using r_ucomm like sy-ucomm
+</span><span style="color:#e6db74">      rs_selfield type slis_selfield.
+</span><span style="color:#e6db74">read table i_userexit index rs_selfield-tabindex.
+</span><span style="color:#e6db74">check sy-subrc = 0.
+</span><span style="color:#e6db74">case r_ucomm.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">IC1</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">case rs_selfield-sel_tab_field.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MODNAME</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">read table i_userexit index rs_selfield-tabindex.
+</span><span style="color:#e6db74">case i_userexit-type.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">Enhancement</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">set parameter id &#39;</span><span style="color:#a6e22e">MON</span><span style="color:#e6db74">&#39; field i_userexit-modname.
+</span><span style="color:#e6db74">call transaction &#39;</span><span style="color:#a6e22e">SMOD</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BADI</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">set parameter id &#39;</span><span style="color:#a6e22e">EXN</span><span style="color:#e6db74">&#39; field i_userexit-modname.
+</span><span style="color:#e6db74">call transaction &#39;</span><span style="color:#a6e22e">SE18</span><span style="color:#e6db74">&#39; and skip first screen.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BusTrEvent</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">submit rfopfi00 with event = i_userexit-modname(8) and return.
+</span><span style="color:#e6db74">when others.
+</span><span style="color:#e6db74">message s030(cj). &#34;Navigation not possible
+</span><span style="color:#e6db74">endcase.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">T_USEREXIT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MODATTR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">if not i_userexit-modattr-name is initial.
+</span><span style="color:#e6db74">set parameter id &#39;</span><span style="color:#a6e22e">MON_KUN</span><span style="color:#e6db74">&#39; field i_userexit-modattr-name.
+</span><span style="color:#e6db74">call transaction &#39;</span><span style="color:#a6e22e">CMOD</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">message s030(cj).&#34;Navigation not possible
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">when others.
+</span><span style="color:#e6db74">message s030(cj).&#34;Navigation not possible
+</span><span style="color:#e6db74">endcase.
+</span><span style="color:#e6db74">endcase.
+</span><span style="color:#e6db74">endform. &#34;user_command
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; AT LINE-SELECTION ?*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">at line-selection.
+</span><span style="color:#e6db74">get cursor field w_fsel.
+</span><span style="color:#e6db74">case w_fsel.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">I_USEREXIT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MODNAME</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">case i_userexit-type.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">Enhancement</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">set parameter id &#39;</span><span style="color:#a6e22e">MON</span><span style="color:#e6db74">&#39; field i_userexit-modname.
+</span><span style="color:#e6db74">call transaction &#39;</span><span style="color:#a6e22e">SMOD</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BADI</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">set parameter id &#39;</span><span style="color:#a6e22e">EXN</span><span style="color:#e6db74">&#39; field i_userexit-modname.
+</span><span style="color:#e6db74">call transaction &#39;</span><span style="color:#a6e22e">SE18</span><span style="color:#e6db74">&#39; and skip first screen.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">BusTrEvent</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">submit rfopfi00 with event = i_userexit-modname(8) and return.
+</span><span style="color:#e6db74">when others.
+</span><span style="color:#e6db74">message s030(cj).&#34;Navigation not possible
+</span><span style="color:#e6db74">endcase.
+</span><span style="color:#e6db74">when &#39;</span><span style="color:#a6e22e">I_USEREXIT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MODATTR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">if not i_userexit-modattr-name is initial.
+</span><span style="color:#e6db74">set parameter id &#39;</span><span style="color:#a6e22e">MON_KUN</span><span style="color:#e6db74">&#39; field i_userexit-modattr-name.
+</span><span style="color:#e6db74">call transaction &#39;</span><span style="color:#a6e22e">CMOD</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">message s030(cj).&#34;Navigation not possible
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">when others.
+</span><span style="color:#e6db74">message s030(cj).&#34;Navigation not possible
+</span><span style="color:#e6db74">endcase.
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">*&amp; AT SELECTION-SCREEN &amp;*
+</span><span style="color:#e6db74">*&amp;--------------------------------------------------------------------&amp;*
+</span><span style="color:#e6db74">at selection-screen on radiobutton group rad1.
+</span><span style="color:#e6db74">* grey-out checkboxes if ALV selected
+</span><span style="color:#e6db74">at selection-screen output.
+</span><span style="color:#e6db74">loop at screen.
+</span><span style="color:#e6db74">if p_alv = c_x.
+</span><span style="color:#e6db74">if screen-group1 = &#39;</span><span style="color:#a6e22e">A01</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">screen-input = &#39;</span><span style="color:#ae81ff">0</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">modify screen.
+</span><span style="color:#e6db74">endif.
+</span><span style="color:#e6db74">else.
+</span><span style="color:#e6db74">if screen-group1 = &#39;</span><span style="color:#a6e22e">A01</span><span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">screen-input = &#39;</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">&#39;</span>.
+<span style="color:#a6e22e">modify</span> <span style="color:#a6e22e">screen</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endloop</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>4128</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Enhance/">
+                    #Enhance</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_EXCEL_BAPI/" class="prev" rel="prev" title=" SAP Excel 操作实例(BAPI) "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Excel 操作实例(BAPI) </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_EXCEL_CLASS/" class="next" rel="next" title=" SAP Excel 操作实例(CLASS) "> SAP Excel 操作实例(CLASS) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-11-30 00:00:00 \u002b0000 UTC',
+        title: ' 查找增强程序(3) ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

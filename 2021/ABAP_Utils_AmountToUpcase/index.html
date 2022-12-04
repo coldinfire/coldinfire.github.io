@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_GridALV_FieldcatCreate/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_RoundDecimals/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_AmountToUpcase/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 数字金额转为大写  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 数字金额转为大写  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 数字金额转为大写 "/>
+<meta name="twitter:description" content="SAP 实际业务中可能会有将金额、重量等数字格式转换为中文大写或则英文大写的银行金额内容。可以使用标准的函数 SPELL_AMOUNT 来进行处理，但是要注意该函数可能出现"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 数字金额转为大写 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_AmountToUpcase\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  509 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_AmountToUpcase\/",
+  "datePublished": "2021-06-07T00:00:00\x2b00:00",
+  "dateModified": "2021-06-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 数字金额转为大写 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-06-07 >7 June 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SAP 实际业务中可能会有将金额、重量等数字格式转换为中文大写或则英文大写的银行金额内容。可以使用标准的函数 <code>SPELL_AMOUNT</code> 来进行处理，但是要注意该函数可能出现的问题。</p>
+<h3 id="金额转换为大写">金额转换为大写</h3>
+<p><strong>CURRENCY</strong>：该参数在金额转换时必须输入对应的货币类型 ，否则函数会将 AMOUNT 字段当作非金额数据处理。</p>
+<p><img src="/images/ABAP/ABAP_AmountToString_1.png" alt="SPELL_AMOUNT"></p>
+<p><img src="/images/ABAP/ABAP_AmountToString_2.png" alt="SPELL_AMOUNT"></p>
+<p>转换金额字段时，AMOUNT 参数必须要有两位小数。如果不是两位小数的话，函数会自动处理转换成两位小数的类型。这将导致函数返回结果值发生变化。</p>
+<p><img src="/images/ABAP/ABAP_AmountToString_3.png" alt="SPELL_AMOUNT"></p>
+<p><img src="/images/ABAP/ABAP_AmountToString_4.png" alt="SPELL_AMOUNT"></p>
+<h3 id="数字转换为大写">数字转换为大写</h3>
+<p><strong>CURRENCY</strong>：该参数值在数字转换时为空。</p>
+<p><img src="/images/ABAP/ABAP_AmountToString_5.png" alt="SPELL_AMOUNT"></p>
+<p>转换数字时，AMOUNT 参数如果为小数时，函数会自动将该参数的小数点右移，转换成整数来处理。这将导致函数返回结果值变大。</p>
+<p><img src="/images/ABAP/ABAP_AmountToString_6.png" alt="SPELL_AMOUNT"></p>
+<h3 id="解决小数问题方法">解决小数问题方法</h3>
+<p>将金额字段进行拆分处理。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lv_amount <span style="color:#66d9ef">TYPE </span>string <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;1235.346&#39;</span>,
+      lv_result <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">DATA</span>: lv_integer <span style="color:#66d9ef">TYPE </span>string,
+      lv_decimal <span style="color:#66d9ef">TYPE </span>string,
+      lv_len     <span style="color:#66d9ef">TYPE </span>i,
+      lv_words   <span style="color:#66d9ef">TYPE </span>spell.
+<span style="color:#75715e">&#34;Split String Field By .&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span>: lv_integer, lv_deciaml.
+<span style="color:#66d9ef">SPLIT</span> lv_amount <span style="color:#66d9ef">AT</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#66d9ef">INTO</span> lv_integer lv_deciaml.
+<span style="color:#66d9ef">CONDENSE</span> lv_integer NO<span style="color:#f92672">-</span>GAPS.
+<span style="color:#66d9ef">CONDENSE</span> lv_decimal NO<span style="color:#f92672">-</span>GAPS.
+<span style="color:#75715e">&#34;For Integer&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span> lv_words.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SPELL_AMOUNT&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    AMOUNT          <span style="color:#f92672">=</span> lv_integer
+<span style="color:#75715e">*   CURRENCY        = &#39;RMB&#39;</span>
+<span style="color:#75715e">*   FILLER          = &#39; &#39;</span>
+    <span style="color:#66d9ef">LANGUAGE</span>        <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu
+  <span style="color:#66d9ef">IMPORTING</span>
+    IN_WORDS        <span style="color:#f92672">=</span> lv_words
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    NOT_FOUND       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    TOO_LARGE       <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">OTHERS</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+<span style="color:#66d9ef">CLEAR</span> lv_integer.
+<span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;RMB &#39;</span> lv_words<span style="color:#f92672">-</span>word <span style="color:#66d9ef">INTO</span> lv_integer.
+<span style="color:#75715e">&#34;For Decimal&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span>: lv_words,lv_len.
+<span style="color:#66d9ef">SHIFT</span> lv_decimal <span style="color:#66d9ef">RIGHT</span> DELETING TRAILING space.
+<span style="color:#66d9ef">SHIFT</span> lv_decimal <span style="color:#66d9ef">RIGHT</span> DELETING TRAILING <span style="color:#e6db74">&#39;0&#39;</span>.
+<span style="color:#66d9ef">CONDENSE</span> lv_decimal NO<span style="color:#f92672">-</span>GAPS.
+lv_len <span style="color:#f92672">=</span> strlen( lv_decimal ).
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SPELL_AMOUNT&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    AMOUNT          <span style="color:#f92672">=</span> lv_deciaml
+<span style="color:#75715e">*   CURRENCY        = &#39; &#39;</span>
+<span style="color:#75715e">*   FILLER          =</span>
+    <span style="color:#66d9ef">LANGUAGE</span>        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    IN_WORDS        <span style="color:#f92672">=</span> lv_words
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    NOT_FOUND       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    TOO_LARGE       <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">OTHERS</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+<span style="color:#66d9ef">CLEAR</span> lv_deciaml.
+<span style="color:#66d9ef">IF</span> lv_words<span style="color:#f92672">-</span>word <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;ZERO&#39;</span>.
+  <span style="color:#66d9ef">CASE</span> lv_len.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#ae81ff">3</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;POINT&#39;</span> g_titl<span style="color:#f92672">-</span>dig03 g_titl<span style="color:#f92672">-</span>dig02 g_titl<span style="color:#f92672">-</span>dig01 <span style="color:#e6db74">&#39;ONLY.&#39;</span>
+        <span style="color:#66d9ef">INTO</span> lv_deciaml <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39; &#39;</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#ae81ff">2</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;POINT&#39;</span> g_titl<span style="color:#f92672">-</span>dig02 g_titl<span style="color:#f92672">-</span>dig01 <span style="color:#e6db74">&#39;ONLY.&#39;</span>
+        <span style="color:#66d9ef">INTO</span> lv_deciaml <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39; &#39;</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#ae81ff">1</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;POINT&#39;</span> g_titl<span style="color:#f92672">-</span>dig01 <span style="color:#e6db74">&#39;ONLY.&#39;</span>
+        <span style="color:#66d9ef">INTO</span> lv_deciaml <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39; &#39;</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">CONCATENATE</span> lv_integer lv_deciaml <span style="color:#66d9ef">INTO</span> lv_result.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>509</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_GridALV_FieldcatCreate/" class="prev" rel="prev" title=" Grid ALV:Fieldcat 自动填充工具 "><i class="iconfont icon-dajiantou"></i>&nbsp; Grid ALV:Fieldcat 自动填充工具 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_RoundDecimals/" class="next" rel="next" title=" ABAP 数值四舍五入函数 "> ABAP 数值四舍五入函数 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-06-07 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 数字金额转为大写 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/Linux_Ln/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/Linux_Yum/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/Linux_Auth/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Linux 权限管理  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Linux 权限管理  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Linux 权限管理 "/>
+<meta name="twitter:description" content="增删改查用户 增 useradd username：创建用户 passwd username：设置用户密码 -u：指定用户的UID -g：修改用户GID -d：修改用户的家目录 -"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Linux 权限管理 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/Linux_Auth\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "linux",
+  "wordcount":  1235 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/Linux_Auth\/",
+  "datePublished": "2019-01-12T00:00:00\x2b00:00",
+  "dateModified": "2019-01-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Linux 权限管理 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-01-12 >12 January 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/Linux/"> Linux </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="增删改查用户">增删改查用户</h3>
+<h4 id="增">增</h4>
+<p>useradd username：创建用户      <br>
+passwd username：设置用户密码</p>
+<ul>
+<li>-u：指定用户的UID</li>
+<li>-g：修改用户GID</li>
+<li>-d：修改用户的家目录</li>
+<li>-c：修改用户的备注</li>
+<li>-s：修改用户所用的shell</li>
+</ul>
+<p>生成文件：</p>
+<ul>
+<li>/etc/passwd :  用户名：密码：UID：GID：Desc：用户目录：是否是可执行文件</li>
+<li>/etc/shadow :  密码信息</li>
+<li>/etc/group : 组文件【组名：组密码标识：GID：组成员】</li>
+<li>/etc/gshadow : 组密码</li>
+<li>/home/username：家目录</li>
+<li>/var/spool/mail : 邮件信息</li>
+</ul>
+<h4 id="查">查</h4>
+<p>id username : 查看用户的UID，GID，所属组信息。</p>
+<h4 id="改-">改</h4>
+<p>usrmod：修改用户信息</p>
+<ul>
+<li>-u：修改用户的UID</li>
+<li>-g：修改用户GID</li>
+<li>-G(覆盖)：将用户加到指定组  a:追加</li>
+<li>-d：修改用户的家目录</li>
+<li>-c：修改用户的备注信息</li>
+<li>-s：修改所用shell</li>
+</ul>
+<h4 id="删-">删</h4>
+<p>userdel -r username:删除用户</p>
+<h4 id="other-">Other：</h4>
+<p>切换用户：  su：切换到root用户      su - username：切换用户</p>
+<p>锁定用户：usrmod -L username</p>
+<p>解锁：usermod -U username</p>
+<p>新建组：groupadd group_name</p>
+<ul>
+<li>用户修改所属组：usermod  -aG  group_new  aim_group</li>
+</ul>
+<h3 id="文件权限--ll--">文件权限  ll </h3>
+<p>文件详细信息：  drwxrwxr-x. 2 fogweek fogweek 4096  7月  10 20:08  test1</p>
+<ul>
+<li>1：文件类型    (-:普通文件),(d:目录),(l:软连接),(b:设备),(p:管道文件)</li>
+<li>2-4：属主(U)权限(r:read，w:write，x:excuse)</li>
+<li>5-7：属组(G)权限(r:read，w:write，x:excuse)</li>
+<li>8-10：其他(O)用户权限(r:read，w:write，x:excuse)</li>
+<li>硬链接数</li>
+<li>属主</li>
+<li>属组</li>
+<li>文件大小</li>
+<li>文件创建日期</li>
+<li>文件名称</li>
+</ul>
+<h4 id="修改权限-">修改权限</h4>
+<ul>
+<li>修改文件权限：chmod
+<ul>
+<li>chmod u=rws filename</li>
+</ul>
+</li>
+<li>修改所属组：
+<ul>
+<li>chown  UID.GID  filename</li>
+<li>chown UID filename</li>
+<li>chown  .GID  filename</li>
+</ul>
+</li>
+<li>执行文件：./filename
+<ul>
+<li>. filename</li>
+<li>sh filename</li>
+<li>bash filename</li>
+</ul>
+</li>
+<li>数字表示：R:4，W:2，X:1</li>
+</ul>
+<h3 id="目录权限--查看ll--d-director_path-">目录权限  查看（ll -d director_path）</h3>
+<ul>
+<li>
+<p>r：可以ls该目录下的子文件名，子目录名</p>
+</li>
+<li>
+<p>w：可以在该目录下创建，删除，重命名</p>
+</li>
+<li>
+<p>x：可以cd到该目录下</p>
+</li>
+</ul>
+<h4 id="修改文件夹权限-">修改文件夹权限</h4>
+<ul>
+<li>修改文件夹权限：chomd    [chomd  777  direct_name]</li>
+<li>修改所属组：
+<ul>
+<li>chown  UID.GID  filename</li>
+<li>chown UID filename</li>
+<li>chown  .GID  filename</li>
+<li>chown -R  UID.GID  dir_name：d</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户信息-">用户信息</h3>
+<p>user：cat /home/&hellip;</p>
+<ul>
+<li>who：查看用户</li>
+<li>whoami：查看当前用户</li>
+<li>ssh username@ip：远程登录电脑</li>
+<li>useradd name [-mg]：添加用户并自动添加home目录 [-g]：用户组 [-m]：主目录</li>
+<li>passwd name：修改密码</li>
+<li>su - user ：切换到指定用户(muiot)</li>
+<li>su  user：to the user</li>
+<li>sudo -s：切换到root</li>
+<li>su：to root</li>
+<li>userdel：del user [-r]：删除用户主目录</li>
+<li>usermod [-aG] group user ：change user info
+<ul>
+<li>[-a]：添加组</li>
+<li>[-g]：group修改默认组</li>
+<li>[-aG]：添加其它组</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户组信息-">用户组信息</h3>
+<p>user group：cat /etc/group</p>
+<ul>
+<li>查看组：cat /etc/group   groupmod [tab][tab]</li>
+<li>groupmod tabtabtab：check group</li>
+<li>groupadd g_name：add group</li>
+<li>groupdel g_name：del group</li>
+<li>groups username：user in which group</li>
+<li>newgrp root：用户在用户组之间进行切换</li>
+</ul>
+<h3 id="重要文件-">重要文件</h3>
+<ul>
+<li>/etc/passwd:用户管理涉及到的最重要的一个文件(用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell)</li>
+<li>/etc/group:用户组所有信息(组名:口令:组标识号:组内用户列表)</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1235</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/linux/">
+                    #linux</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/Linux_Ln/" class="prev" rel="prev" title=" Linux 链接和网络管理 "><i class="iconfont icon-dajiantou"></i>&nbsp; Linux 链接和网络管理 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/Linux_Yum/" class="next" rel="next" title=" Linux 软件包管理 "> Linux 软件包管理 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-01-12 00:00:00 \x2b0000 UTC',
+        title: ' Linux 权限管理 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

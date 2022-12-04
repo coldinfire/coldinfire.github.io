@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/PP_Enhance_COOIS_AddFiled/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionFM/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_Reflection/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 反射  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 反射  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 反射 "/>
+<meta name="twitter:description" content="RTTS(Runtime Type Services) 使用 在 ABAP 中，反射是通过运行时类型服务 (RTTS) 提供的。该服务提供了两个主要功能：在运行时识别类型和描述，以及动态创建类型。更具体地说，RTTS"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 反射 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_Reflection\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1694 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_Reflection\/",
+  "datePublished": "2021-04-13T00:00:00\x2b00:00",
+  "dateModified": "2021-04-13T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 反射 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-04-13 >13 April 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="rttsruntime-type-services-使用">RTTS(Runtime Type Services) 使用</h3>
+<p>在 ABAP 中，反射是通过运行时类型服务 (RTTS) 提供的。该服务提供了两个主要功能：在运行时识别类型和描述，以及动态创建类型。更具体地说，RTTS 是以下各项的组合：</p>
+<ul>
+<li><em>Run Time Type Identification (RTTI)</em> ：运行时类型识别，类型识别和描述（类型自省）</li>
+<li><em>RunTime Type Creation (RTTC)</em> ：运行时类型创建，动态类型创建</li>
+</ul>
+<p>所有与 RTTS 相关的类都命名为 CL_ABAP_*DESCR，具体取决于该类所代表的类型种类。CL_ABAP_ELEMDESCR 是基本数据类型的描述类，CL_ABAP_TABLEDESCR 是表类型等等。所有这些动态是利用 CL_ABAP_TYPEDESCR 类及其子类实现的。</p>
+<p>对于不同的类型都有不同的描述类，为了得到一个类型的 description object 你必须使用 CL_ABAP_TYPEDESCR 的静态方法来得到相应的 description class。在 runtime 中，每一个类型只有一个 description object。</p>
+<ul>
+<li>
+<p>describe_by_name：从结构定义获取的方法</p>
+</li>
+<li>
+<p>describe_by_data：从内表变量中获取的方法</p>
+<p><img src="/images/ABAP/ABAP_Reflection.png" alt="ABAP Reflection"></p>
+</li>
+</ul>
+<h3 id="rtti-使用">RTTI 使用</h3>
+<h4 id="动态获取-structure-结构">动态获取 Structure 结构</h4>
+<p>使用 CL_ABAP_TYPEDESCR 类的 describe_by_name 静态方法，使用这个方法获取结构的描述信息，从描述信息里可以得到结构的字段列表等信息。</p>
+<p>COMPONENTS 属性提供了一个内部表，该表按名称列出结构上的所有单个字段，包括每个字段的名称、数据类型（按其相对名称）、长度、小数位。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;根据结构名获取结构描述信息 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: struct_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_structdescr,
+      gt_detail <span style="color:#66d9ef">TYPE </span>abap_compdescr_tab,
+      gs_detail <span style="color:#66d9ef">TYPE </span>abap_compdescr.
+<span style="color:#66d9ef">DATA</span>: field_name <span style="color:#66d9ef">TYPE </span>string,
+      lv_type <span style="color:#66d9ef">TYPE </span>string.
+struct_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_name</span>( <span style="color:#e6db74">&#39;SPFLI&#39;</span> ).
+lv_type <span style="color:#f92672">=</span> struct_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_relative_name</span>( ).
+<span style="color:#66d9ef">WRITE</span>: / lv_type.
+<span style="color:#75715e">&#34;从结构描述信息中获取字段列表&#34;
+</span><span style="color:#75715e"></span>gt_detail[] <span style="color:#f92672">=</span> struct_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>components[].
+<span style="color:#66d9ef">LOOP AT </span>gt_detail <span style="color:#66d9ef">INTO</span> gs_detail.
+  <span style="color:#66d9ef">WRITE</span> :/ gs_detail<span style="color:#f92672">-</span>name,  
+           gs_detail<span style="color:#f92672">-</span>type_kind,  
+           gs_detail<span style="color:#f92672">-</span>length,  
+           gs_detail<span style="color:#f92672">-</span>decimals. 
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h4 id="动态获取内表的结构">动态获取内表的结构</h4>
+<p>通过 cl_abap_typedescr 类的 describe_by_data / describe_by_data_ref 静态方法获取了内表变量的描述信息，然后再调用描述信息的 get_table_line_type 方法获取单行的类型变量。</p>
+<p>可通过单行变量动态获取结构中的各个字段名称、类型、长度及精度信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: gt_itab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> spfli.  
+<span style="color:#66d9ef">DATA</span>: table_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_tabledescr,  
+      table_line_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_structdescr,  
+      wa_table <span style="color:#66d9ef">TYPE </span>abap_compdescr,
+      lv_type  <span style="color:#66d9ef">TYPE </span>string.  
+table_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( gt_itab ).
+<span style="color:#66d9ef">WRITE</span>: / lv_type.
+table_line_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> table_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_table_line_type</span>( ).  
+<span style="color:#66d9ef">LOOP AT </span>table_line_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>components <span style="color:#66d9ef">INTO</span> wa_table .  
+  <span style="color:#66d9ef">WRITE</span> :/ wa_table<span style="color:#f92672">-</span>name,  
+           wa_table<span style="color:#f92672">-</span>type_kind,  
+           wa_table<span style="color:#f92672">-</span>length,  
+           wa_table<span style="color:#f92672">-</span>decimals.  
+<span style="color:#66d9ef">ENDLOOP</span>.  
+</code></pre></div><p>也可以通过 describe_by_data 直接获取字段信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: data_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_datadescr,
+      <span style="color:#66d9ef">field</span>(<span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">TYPE </span>c,
+      kind(<span style="color:#ae81ff">1</span>)  <span style="color:#66d9ef">TYPE </span>c.
+data_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( <span style="color:#66d9ef">field</span> ).
+kind <span style="color:#f92672">=</span> data_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>kind. <span style="color:#75715e">&#34;获取数据元素类型&#34;
+</span></code></pre></div><h4 id="动态获取数据元素信息">动态获取数据元素信息</h4>
+<p>CL_ABAP_DATADESCR 的实现类，可以获取 Element 信息。</p>
+<p><img src="/images/ABAP/ABAP_Reflection1.png" alt="CL_ABAP_DLEMDESCR"></p>
+<p><img src="/images/ABAP/ABAP_Reflection2.png" alt="CL_ABAP_DLEMDESCR"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: elem_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_elemdescr.
+      matnr <span style="color:#66d9ef">TYPE </span>matnr,
+      kind(<span style="color:#ae81ff">1</span>)  <span style="color:#66d9ef">TYPE </span>c,
+      edit_mask <span style="color:#66d9ef">TYPE </span>string,
+      help_id <span style="color:#66d9ef">TYPE </span>string,
+      output_length <span style="color:#66d9ef">TYPE </span>string.
+elem_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( matnr ).
+kind <span style="color:#f92672">=</span> elem_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>kind. <span style="color:#75715e">&#34;获取数据元素类型&#34;
+</span><span style="color:#75715e"></span>edit_mask <span style="color:#f92672">=</span> elem_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>edit_mask.
+help_id   <span style="color:#f92672">=</span> elem_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>help_id.
+output_length <span style="color:#f92672">=</span> elem_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>output_length.
+<span style="color:#66d9ef">WRITE</span>: / kind,
+         edit_mask,
+         help_id,
+         output_length.
+</code></pre></div><h4 id="动态获取类对象信息">动态获取类对象信息</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CLASS</span> c1 <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">DATA</span>: c <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;C&#39;</span>.
+    <span style="color:#66d9ef">METHODS</span>: test.
+<span style="color:#66d9ef">ENDCLASS</span>.
+<span style="color:#66d9ef">CLASS</span> c1 <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span>:test.
+    <span style="color:#66d9ef">WRITE</span>:/ <span style="color:#e6db74">&#39;test&#39;</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+<span style="color:#66d9ef">DATA</span>: oref <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">object</span> .
+<span style="color:#66d9ef">DATA</span>: oref_classdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_classdescr
+<span style="color:#66d9ef">DATA</span>: gt_attrdescr_tab <span style="color:#66d9ef">TYPE </span>abap_attrdescr_tab <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,<span style="color:#75715e">&#34;类中的属性列表&#34;
+</span><span style="color:#75715e"></span>      gt_methdescr_tab <span style="color:#66d9ef">TYPE </span>abap_methdescr_tab <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.<span style="color:#75715e">&#34;类中的方法列表&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;fs_attr&gt; <span style="color:#66d9ef">TYPE </span>any.
+<span style="color:#66d9ef">CREATE OBJECT</span> oref TYPE (<span style="color:#e6db74">&#39;C1&#39;</span>). <span style="color:#75715e">&#34;C1为类名&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;类似JAVA中的Class类对象&#34;
+</span><span style="color:#75715e"></span>oref_classdescr <span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_object_ref</span>( oref ).
+gt_attrdescr_tab[] <span style="color:#f92672">=</span> oref_classdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>attributes.
+gt_methdescr_tab[] <span style="color:#f92672">=</span> oref_classdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>methods.
+<span style="color:#66d9ef">LOOP AT </span>gt_attrdescr_tab.<span style="color:#75715e">&#34;动态访问类中的属性
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ASSIGN</span> oref<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>(gt_attrdescr_tab<span style="color:#f92672">-</span>name) <span style="color:#66d9ef">TO</span> &lt;fs_attr&gt;.
+  <span style="color:#66d9ef">WRITE</span>: / &lt;fs_attr&gt;.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">LOOP AT </span>gt_methdescr_tab.<span style="color:#75715e">&#34;动态访问类中的方法
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> oref<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>(gt_methdescr_tab<span style="color:#f92672">-</span>name).
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h3 id="rttc-使用">RTTC 使用</h3>
+<h4 id="动态创建数据data-或对象-object">动态创建数据Data 或对象 Object</h4>
+<p>根据基本类型名动态创建数据，handle 只能是 <strong>CL_ABAP_DATADESCR</strong> 或其子类的引用变量。</p>
+<ul>
+<li>
+<p>CREATE DATA dref TYPE HANDLE type_xxx.</p>
+</li>
+<li>
+<p>CREATE DATA dref TYPE (&lsquo;I&rsquo;).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">  <span style="color:#66d9ef">TYPES</span>: ty_i <span style="color:#66d9ef">TYPE </span>i.
+  <span style="color:#66d9ef">DATA</span>: dref <span style="color:#66d9ef">TYPE REF TO</span> ty_i .
+  <span style="color:#66d9ef">CREATE DATA</span> dref TYPE (<span style="color:#e6db74">&#39;I&#39;</span>). 
+  dref-&gt;* <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">WRITE</span>: / dref-&gt;*.
+</code></pre></div></li>
+</ul>
+<p>根据类名动态创建实例对象</p>
+<ul>
+<li>CREATE OBJECT oref TYPE (&lsquo;C1&rsquo;).</li>
+</ul>
+<h4 id="动态创建结构内表">动态创建结构、内表</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: dref_i <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+      dref_c <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+      dref_str <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+      dref_tab <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>.
+<span style="color:#66d9ef">DATA</span>: elem_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_elemdescr,
+      struct_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_structdescr,
+      table_type <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_tabledescr,
+      comp_tab <span style="color:#66d9ef">TYPE </span>abap_component_tab <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span> :&lt;fs_itab&gt; <span style="color:#66d9ef">TYPE </span>ANY <span style="color:#66d9ef">TABLE</span>.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span> :&lt;fs_line&gt; <span style="color:#66d9ef">TYPE </span>ANY.
+<span style="color:#75715e">&#34;=====动态的创建基本类型数据=====&#34;
+</span><span style="color:#75715e"></span>elem_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_i</span>( <span style="color:#ae81ff">10</span> ).
+<span style="color:#75715e">&#34;动态的创建基本类型数据对象&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE DATA</span> dref_i <span style="color:#66d9ef">TYPE </span>HANDLE elem_type.
+<span style="color:#75715e">&#34;=====动态创建结构类型=====&#34;
+</span><span style="color:#75715e"></span>struct_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_name</span>( <span style="color:#e6db74">&#39;SFLIGHT&#39;</span> ).
+comp_tab[] <span style="color:#f92672">=</span> struct_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_components</span>( ). <span style="color:#75715e">&#34;组成结构体的各个字段组件&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;向结构中动态的新增一个成员&#34;
+</span><span style="color:#75715e"></span>comp_tab<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;L_COUNT&#39;</span>. <span style="color:#75715e">&#34;为结构新增一个成员&#34;
+</span><span style="color:#75715e"></span>comp_tab<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> elem_type. <span style="color:#75715e">&#34;新增成员的类型对象&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> comp_tab <span style="color:#66d9ef">INTO</span> comp_tab <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#75715e">&#34;使用结构类型对象来创建结构对象&#34;
+</span><span style="color:#75715e"></span>struct_type <span style="color:#f92672">=</span> cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>( comp_tab[] ).
+<span style="color:#66d9ef">CREATE DATA</span> dref_str <span style="color:#66d9ef">TYPE </span>HANDLE struct_type.
+<span style="color:#75715e">&#34;=====动态创建内表=====&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;基于结构类型对象创建内表类型对象&#34;
+</span><span style="color:#75715e"></span>itab_type <span style="color:#f92672">=</span> cl_abap_tabledescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>( struct_type ).
+<span style="color:#75715e">&#34;使用内表类型对象来创建内表类型对象&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE DATA</span> dref_tab <span style="color:#66d9ef">TYPE </span>HANDLE itab_type.
+<span style="color:#66d9ef">ASSIGN</span> dref_tab-&gt;* <span style="color:#66d9ef">TO</span> &lt;fs_itab&gt;.<span style="color:#75715e">&#34;将字段符号指向新创建出来的内表对象&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;=====给现有的内表动态的加一列=====&#34;
+</span><span style="color:#75715e"></span>table_type  <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_tabledescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( itab ).
+struct_type <span style="color:#f92672">?</span><span style="color:#f92672">=</span> table_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_table_line_type</span>( ).
+comp_tab[] <span style="color:#f92672">=</span> struct_type<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_components</span>( ).
+comp_tab<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FIDESC&#39;</span>.
+comp_tab<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> cl_abap_elemdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_c</span>( <span style="color:#ae81ff">120</span> ).
+<span style="color:#66d9ef">INSERT</span> comp_tab <span style="color:#66d9ef">INTO</span> comp_tab <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">2</span>.
+struct_type <span style="color:#f92672">=</span> cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>( comp_tab[] ).
+itab_type <span style="color:#f92672">=</span> cl_abap_tabledescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create</span>( struct_type ).
+<span style="color:#66d9ef">CREATE DATA</span> dref_tab <span style="color:#66d9ef">TYPE </span>HANDLE itab_type.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1694</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/PP_Enhance_COOIS_AddFiled/" class="prev" rel="prev" title=" COOIS 添加字段 "><i class="iconfont icon-dajiantou"></i>&nbsp; COOIS 添加字段 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionFM/" class="next" rel="next" title=" ABAP 获取FM参数结果 "> ABAP 获取FM参数结果 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-04-13 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 反射 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

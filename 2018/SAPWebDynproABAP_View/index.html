@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_Structure/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_Demo/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_View/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Web Dynpro ABAP:View Details  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Web Dynpro ABAP:View Details  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Web Dynpro ABAP:View Details "/>
+<meta name="twitter:description" content="视图的整体介绍 Properties ：VIEW的属性，一般引入一些系统控件如alv，select-option等 Layout ：视图布局，显示的样式，选择字段的排版 Inbound Plugs ：转"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Web Dynpro ABAP:View Details ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_View\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  2343 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_View\/",
+  "datePublished": "2018-10-19T00:00:00\x2b00:00",
+  "dateModified": "2018-10-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Web Dynpro ABAP:View Details </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-19 >19 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="视图的整体介绍">视图的整体介绍</h3>
+<p><img src="/images/webdynpro/webdynproABAP/14.png" alt="View Layout"></p>
+<p><strong>Properties</strong> ：VIEW的属性，一般引入一些系统控件如alv，select-option等</p>
+<p><strong>Layout</strong> ：视图布局，显示的样式，选择字段的排版</p>
+<p><strong>Inbound Plugs</strong> ：转入的连接(内向链接)，一般视图跳转需要带些参数什么的，需要在这里定义plugs和参数相关信息</p>
+<p><strong>Outbound Plugs</strong> ：转出的连接(外向链接)，与Inbound对应，传出的连接和参数</p>
+<p><strong>Context</strong> ：上下文节点。视图使用的表，结构，全部放在这里。一般0-1/1-1/0-n三种。前两种相当于工作区，结构，后一种是内表。1-1时需要勾选Initialization Lead Selection</p>
+<p><strong>Attributes</strong> ：视图属性，可在本视图的各方法中使用</p>
+<p><strong>Action</strong> ：一般是对应ELEMENT对应的EVENT产生的</p>
+<p><strong>Methods</strong> ：定义该View使用到的所有方法，如按钮的执行和退出功能</p>
+<h3 id="properties-常用对象">Properties 常用对象</h3>
+<h4 id="select-option使用">Select-option使用</h4>
+<p>Step1：Select options 组件引入WDA程序。</p>
+<p>双击Web Dynpro Component，在Used Components中添加组件，维护组件名称和对应的Component。</p>
+<ul>
+<li>SELECT_OPTIONS  &lt;&mdash;&ndash;&gt;  WDR_SELECT_OPTIONS</li>
+</ul>
+<p><img src="/images/webdynpro/webdynproABAP/Portal25.png" alt="Web Dynpro Used Components"></p>
+<p>Step2：将组件加入使用的视图中。</p>
+<p>双击视图，选择Properties页签，在使用组件表格中点击创建，将组件对应的两个列表加进来。</p>
+<p><img src="/images/webdynpro/webdynproABAP/Portal26.png" alt="Web Dynpro View Properties"></p>
+<p>Step3：在视图的WDDOINIT方法中，初始化SELECT OPTIONS。</p>
+<p>在视图的Attributes页签中，添加组件对象</p>
+<ul>
+<li>HANDLE  Ref To IF_WD_SELECT_OPTIONS</li>
+</ul>
+<p>使用初始化代码</p>
+<ul>
+<li><a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P3/">INPUT_VIEW : WDDOINIT 初始化代码</a></li>
+</ul>
+<p>Step4：在视图的Layout中添加ViewContainerUIElement容器，该容器用来盛放Select-options的内容；在Window中将SELECT-OPTION组件嵌套视图中。</p>
+<p>选中视图的ViewContainerUIElement容器，右键 &mdash;-&gt; Embed View，弹出下图：</p>
+<p><img src="/images/webdynpro/webdynproABAP/Portal27.png" alt="Web Dynpro View Properties"></p>
+<p>选择SELECT_OPTIONS组件绑定：</p>
+<p><img src="/images/webdynpro/webdynproABAP/Portal28.png" alt="Web Dynpro Window"></p>
+<p><img src="/images/webdynpro/webdynproABAP/Portal29.png" alt="Web Dynpro Window"></p>
+<h4 id="alv-使用">ALV 使用</h4>
+<p>ALV是WDA的组件，封装好的，和SELECT OPTION一样。所以使用的方法一般就是：</p>
+<ul>
+<li>引入组件、初始化组件、数据绑定、数据显示</li>
+</ul>
+<p>Step1：程序组件引入ALV组件。</p>
+<p>双击Web Dynpro Component，在Used Components中添加组件，维护组件名称和对应的Component。</p>
+<ul>
+<li>ALV  &lt;&mdash;&ndash;&gt;  SALV_WD_TABLE</li>
+</ul>
+<p>Step2：将组件加入使用的视图中。</p>
+<p>双击视图，选择Properties页签，在使用组件表格中点击创建，将组件对应的两个列表加进来。</p>
+<p>Step3：初始化ALV。</p>
+<p>在视图的Attributes页签中，添加组件对象</p>
+<ul>
+<li>R_TABLE  Ref To CL_SALV_WD_CONFIG_TABLE</li>
+</ul>
+<p>使用初始化代码</p>
+<ul>
+<li><a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P1/">ALV_VIEW : WDDOINIT</a></li>
+</ul>
+<p>Step4：数据绑定。</p>
+<p>Step5：ALV控制器创建，并在窗口中添加，在视图的Layout中添加ViewContainerUIElement容器，该容器用来盛放ALV的结果。</p>
+<p>选中视图的ViewContainerUIElement容器，右键 &mdash;-&gt; Embed View，选择ALV Table绑定。</p>
+<h3 id="layout-界面元素">Layout 界面元素</h3>
+<p>下面列表是一些常用的UI ELEMENT,在普通的WDA开发中会经常用到。</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Desc</th>
+<th>Element</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BUTTON</td>
+<td>按钮</td>
+<td>CAPTION</td>
+<td>标题</td>
+</tr>
+<tr>
+<td>DROPDOWN_BY_IDX</td>
+<td>带序号的下拉</td>
+<td>INPUT_FIELD</td>
+<td>文本输入框</td>
+</tr>
+<tr>
+<td>DROPDOWN_BY_KEY</td>
+<td>带键值的下拉</td>
+<td>LABEL</td>
+<td>说明文本</td>
+</tr>
+<tr>
+<td>FILE_UPLOAD</td>
+<td>上载文件工具，选择文件路径</td>
+<td>LINK_TO_ACTION</td>
+<td>突出显示，下划线</td>
+</tr>
+<tr>
+<td>TEXT_EDIT</td>
+<td>文本编辑，大文本框</td>
+<td>TABLE</td>
+<td>表控制</td>
+</tr>
+<tr>
+<td>TEXT_VIEW</td>
+<td>文本显示，不可编辑</td>
+<td>TABSTRIP</td>
+<td>页签</td>
+</tr>
+<tr>
+<td>TRAY</td>
+<td>可折叠块</td>
+<td>PAGE_HEADER</td>
+<td>页抬头标题</td>
+</tr>
+<tr>
+<td>TREE</td>
+<td>树</td>
+<td>TOOLBAR</td>
+<td>工具条</td>
+</tr>
+<tr>
+<td>VIEW_CONTAINER_UIELEMENT</td>
+<td>视图组建控制器（一般用来放Select-Option、ALV或其他组建）</td>
+<td>HORIZONTAL _GUTTER</td>
+<td>水平分割线</td>
+</tr>
+<tr>
+<td>GROUP</td>
+<td>分组工具，无工具功能</td>
+<td>IMAGE</td>
+<td>上传图片</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout属性">Layout属性</h3>
+<p>区域的Layout属性有：FlowLayout、GridLayout、MatrixLayout、RowLayout。</p>
+<p>区域的Layout一般选择MatrixLayout</p>
+<ul>
+<li>MatrixHeadData 行开头</li>
+<li>MatrixData 紧接着 HEAD，没有新的MatrixHeadData，会一直往后排</li>
+<li>新的MatrixHeadData，另起一行</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>Desc</th>
+<th>属性值</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>功能性，控制字段等是否灰色显示</td>
+<td>width</td>
+<td>占的宽度，或者比例 一般200，250，150，TRAY 一般95%之类</td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>控制字段是否可编辑</td>
+<td>EVENTS</td>
+<td>事件，每种ELEMENT对应事件不同，有field的输入，按钮的事件</td>
+</tr>
+<tr>
+<td>suggestValues</td>
+<td>值建议</td>
+<td>cellDesign</td>
+<td>单元格格式</td>
+</tr>
+<tr>
+<td>value</td>
+<td>绑定的VALUE</td>
+<td>colSpan</td>
+<td>字段占列数，比如文本框，我们可以设置占5格等（前提是容器TRAY,CONTAINER的COL设置的够）</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>可见性，控制字段，组件等是否可见</td>
+<td>hAlign</td>
+<td>格式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="view-controller-中的-hook-方法">View Controller 中的 HOOK 方法</h3>
+<p>HOOK 方法是 Web dynpro 编程中的标准 SAP 方法，由 SAP 自动创建，以控制 Web dynpro 应用程序的执行流程。</p>
+<p><img src="/images/webdynpro/webdynproABAP/Portal31.png" alt="Web Dynpro Hook Method"></p>
+<h4 id="wddoinit">WDDOINIT：</h4>
+<p>用于初始化逻辑的方法，这是在显示视图之前显示的第一个方法。此方法用于初始化变量，默认数据等。</p>
+<h4 id="wdmodifyview">WDMODIFYVIEW：</h4>
+<p>此方法用于根据用户操作动态修改视图，该方法用于动态编程。</p>
+<h4 id="wddobeforeaction">WDDOBEFOREACTION：</h4>
+<p>此方法用于验证用户输入。</p>
+<h4 id="wddoafteraction">WDDOAFTERACTION：</h4>
+<p>方法用于所有方法或事件处理程序方法中的所有通用逻辑。</p>
+<h4 id="wdexit">WDEXIT：</h4>
+<p>此方法用于清除 / 刷新节点，属性等。</p>
+<h3 id="view-plugs">View Plugs</h3>
+<p>作为实时业务应用程序的一部分，我们需要从一个屏幕导航到另一个屏幕，为此，有一个 Web dynpro ABAP Plugs的概念。Plugs是用于从一个视图导航到另一个视图的概念。Web dynpro ABAP 中提供两种Plugs。</p>
+<table>
+<thead>
+<tr>
+<th>Outbound Plugs</th>
+<th>Inbound Plugs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>该plug用于退出视图</td>
+<td>该plug用于进入视图</td>
+</tr>
+<tr>
+<td>每个Outbound plug都必须链接到Inbound plug</td>
+<td>每个Inbound plug都必须链接到Outbound plug</td>
+</tr>
+<tr>
+<td>对于每个Outbound plug，将创建一个名为FIRE_XX_plg的方法</td>
+<td>对于每个Inbound plug，将使用名称HANDLE_创建事件处理程序方法</td>
+</tr>
+<tr>
+<td>只需触发出界插件方法即可导航。例如：wd_this-&gt; FIRE_XX_plg( ).</td>
+<td>每当我们进入视图时，此Plug事件处理程序方法将自动触发</td>
+</tr>
+</tbody>
+</table>
+<p>每个Outbound Plug都可以将参数发送到Inbound Plug，Outbound Plug只能发送参数而不能接收参数，要添加或查看参数，请在视图中转到 “Outbound Plug” 选项卡，然后双击任何Outbound Plug，可以在屏幕底部看到参数。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2343</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_Structure/" class="prev" rel="prev" title=" Web Dynpro ABAP:Structure "><i class="iconfont icon-dajiantou"></i>&nbsp; Web Dynpro ABAP:Structure </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_Demo/" class="next" rel="next" title=" Web Dynpro ABAP 程序实例 "> Web Dynpro ABAP 程序实例 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-10-19 00:00:00 \x2b0000 UTC',
+        title: ' Web Dynpro ABAP:View Details ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

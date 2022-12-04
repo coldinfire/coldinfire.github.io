@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPAuthorization/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Utils_BDC/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAPAuthorization_details/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 自定义权限对象并使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 自定义权限对象并使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 自定义权限对象并使用 "/>
+<meta name="twitter:description" content="自定义权限对象流程 SAP 扩展中用户往往都需要使用自己的权限对象，为了达到目的，请按下列流程建立和维护权限对象。一旦有账号需要赋予权限，直接用 SAP 系"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 自定义权限对象并使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAPAuthorization_details\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "saputils",
+  "wordcount":  2401 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAPAuthorization_details\/",
+  "datePublished": "2018-09-23T00:00:00\x2b00:00",
+  "dateModified": "2018-09-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 自定义权限对象并使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-23 >23 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="自定义权限对象流程">自定义权限对象流程</h3>
+<p>SAP 扩展中用户往往都需要使用自己的权限对象，为了达到目的，请按下列流程建立和维护权限对象。一旦有账号需要赋予权限，直接用 SAP 系统标准的角色权限配置就可以了。</p>
+<p>SAP权限对象创建和分配流程</p>
+<ul>
+<li>SE11：创建数据类型</li>
+<li>SU20：创建权限对象字段（存储在 AUTHX 表中）</li>
+<li>SU21：创建权限对象，权限对象类别（存储在 TOBCT 表中）权限对象（存储在 TOBJ 表中），生成 SAP_ALL</li>
+<li>SE38/SE93：创建程序，引用权限对象；给程序分配事务代码,维护权限对象</li>
+<li>SU24：TCode分配权限对象</li>
+<li>SU01 或 PFCG： 将授权对象分配给对象类</li>
+</ul>
+<h4 id="se11创建domain和data-element">SE11创建Domain和Data Element</h4>
+<p>创建权限字段时需要参考Data Element(可以使用系统已有的字段)，在Element中维护权限值让维护者知道怎么维护</p>
+<h4 id="su20创建权限字段">SU20创建权限字段</h4>
+<p>后点击Create图标，创建新的权限字段并保存。</p>
+<p><img src="/images/ABAP/AUTHORITY_SU201.png" alt="SU20"></p>
+<p><img src="/images/ABAP/AUTHORITY_SU202.png" alt="SU20"></p>
+<h4 id="su21创建权限类权限对象">SU21创建权限类、权限对象</h4>
+<p>首先创建权限类(Object class)，如果存在适用的则不用创建；</p>
+<p>然后创建权限对象(Auth Object)，放到指定的Class并分配对应的权限字段。</p>
+<p><img src="/images/ABAP/AUTHORITY_SU21.png" alt="SU21"></p>
+<p><img src="/images/ABAP/AUTHORITY_SU211.png" alt="SU21 创建权限类"></p>
+<p><img src="/images/ABAP/AUTHORITY_SU212.png" alt="SU21 创建权限对象"></p>
+<p>权限字段中维护需要权限字段，可以在对象文档中维护一下该权限的一些描述：</p>
+<p><img src="/images/ABAP/AUTHORITY_SU213.png" alt="SU21 维护权限对象文档"></p>
+<p>ACTVT是常用的字段，用来控制创建，修改，显示，等常用权限的控制：</p>
+<p><img src="/images/ABAP/AUTHORITY_SU214.png" alt="SU21 ACTVT字段控制设置"></p>
+<p>一旦新增了用户的自定义权限对象后，需要单击工具栏中的<code>Regenerate SAP_ALL</code>按钮，将把新增的权限对象赋值给 SAP_ALL 这个权限参数文件。</p>
+<h4 id="se38创建程序并使用">SE38创建程序并使用</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">AUTHORITY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CHECK</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#e6db74">&#39;Z_KL_CLOT&#39;</span>
+  <span style="color:#a6e22e">ID</span> <span style="color:#e6db74">&#39;Z_KL_CLO&#39;</span> <span style="color:#a6e22e">FIELD</span> <span style="color:#a6e22e">field</span>
+  <span style="color:#a6e22e">ID</span> <span style="color:#e6db74">&#39;ACTVT&#39;</span> <span style="color:#a6e22e">FIELD</span> <span style="color:#e6db74">&#39;02&#39;</span>.
+<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBRC</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.</span>
+  <span style="color:#a6e22e">MESSAGE</span> <span style="color:#e6db74">&#39;You have no authority xxxx&#39;</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#a6e22e">OBJECT</span><span style="color:#f92672">:</span><span style="color:#a6e22e">表示具体的权限对象</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">ID</span><span style="color:#f92672">:</span><span style="color:#a6e22e">表示权限字段</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">可以同时检查权限对象中的一个或多个权限字段</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">FIELD</span><span style="color:#f92672">:</span><span style="color:#a6e22e">权限字段所检查的权限值</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">将该字段改为屏幕元素</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">可检查该字段所输入的值是否符合要求</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">ACTVT</span><span style="color:#f92672">:</span><span style="color:#a6e22e">Create</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">01</span>; <span style="color:#a6e22e">Change</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">02</span>; <span style="color:#a6e22e">Display</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">03</span>
+<span style="color:#f92672">*</span><span style="color:#a6e22e">类似一个大致的权限矩阵</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">纵向是操作人</span>(<span style="color:#ae81ff">01</span>)<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">横向是某些权限对象</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">权限对象再细分成若干事务代码</span><span style="color:#960050;background-color:#1e0010">、</span>
+<span style="color:#a6e22e">允许动作</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">权限字段及其允许的值等</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><h4 id="su24-为-tcode-添加权限对象">SU24 为 Tcode 添加权限对象</h4>
+<p>若是事务码有多个权限控制对象，需要自己手动添加另外的权限对象。</p>
+<p>保证每个事务代码所用到的的权限对象都能够完整被带出来。</p>
+<p><img src="/images/ABAP/AUTHORITY_SU241.png" alt="SU24"></p>
+<p><img src="/images/ABAP/AUTHORITY_SU242.png" alt="SU24 添加权限对象"></p>
+<p>Proposal</p>
+<ul>
+<li>YSE 运行相应事务码时，程序检查此权限对象</li>
+<li>NO 运行相应事务码时，程序不检查此权限字段</li>
+</ul>
+<p>权限对象中有四个标识：？ U  C  CM</p>
+<p>当权限对象对应的是 C 或 CM 时，控制有效。他们之间的区别在于，CM 在 PFCG 分配权限时会自动带出来，C 标记的需要手工分配。</p>
+<h3 id="pfcg为角色分配权限">PFCG为角色分配权限</h3>
+<p>在实际应用中，往往会开发很多的工具和报表，并且需要对这些特定的程序进行权限分配，开发人员需要了解权限分配。</p>
+<ul>
+<li>
+<p>用户的权限菜单是通过权限角色分配来实现的</p>
+</li>
+<li>
+<p>角色维护又分为单一角色和复合角色，单一角色是一个独立的权限对象，而复合角色可以由多个单一角色组合而成，能够同时继承不同单一角色的权限。</p>
+</li>
+</ul>
+<p><img src="/images/ABAP/AUTHORITY_PFCG1.png" alt="PFCG"></p>
+<h4 id="为角色分配菜单权限">为角色分配菜单权限</h4>
+<p>PFCG进入维护角色，维护 “菜单” 选项页，用于定义并分配该角色所能操作的事务代码。创建TCode节点将需要控制的Tcode维护进去。由于添加了TCode，TCode应用的权限对象会自动带到角色中。</p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG2.png" alt="PFCG Menu"></p>
+<h4 id="为角色分配权限数据">为角色分配权限数据</h4>
+<p>上面分配完菜单后，就实现了在用户菜单中能看到的相关事务码菜单项，但是能否操作菜单中所对应事务的业务数据还得设置具体的权限数据：</p>
+<p>​	<img src="/images/ABAP/AUTHORITY_PFCG3.png" alt="PFCG Authorizations"></p>
+<p>为某个角色分配具体的权限数据后，会自动产生一个 <strong>参数文件</strong>，SAP 在执行中会通过读取该参数文件的数据来进行用户权限的检查及管控。</p>
+<p>在进行更改 “权限数据” 前，先简单了解一下 <strong>SAP 的权限对象</strong>（权限对象设置好后，需要绑定到事务码上，然后在 ABAP 程序中是通过 AUTHORITY-CHECK OBJECT 语句来做权限检查的，这样权限对象就起作用了）：</p>
+<p>在 SAP 实际应用中，用户所直接操作的是屏幕及屏幕所对应的字段，而这些具体字段都是由权限对象进行控制，包括该字段所允许的操作及允许的值（数据）。</p>
+<p>此时参数文件生成，但还不具有内容，“权限” 选项页的标志是红色尚未变绿。在 “权限” 页签中单击 “更改权限数据” 按钮，<strong>系统将自动抓取该角色菜单中所分配的所有事务码所对应的权限对象</strong>，会弹出一个定义组织级别对话框，要求用户输入具体的业务数据控制范围。可以在此页面需维护参数文件及具体的权限对象参数。维护权限对象参数也就限定了在事物码执行中的操作范围。点击生成参数文件按钮执行生成参数文件操作。</p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG4.png" alt="PFCG 参数文件"></p>
+<p>SAP 角色的权限分配是从权限对象直接派生过来的，可以在不同的权限角色中同时调用同一权限对象，并为所生成对象分配定义不同的权限值。</p>
+<p>点击 “保存” 后，SAP 会将权限对象以及所维护的权限值以树状结构分层列出，最顶级为对象类，对象类是同类属性的权限对象的集合，一个对象类可以包含多个权限对象。在权限角色维护页面的主菜单中执行 “实用程序 | 技术名称打开” 命令，将在每个字段的右边显示所有的对象类名称及权限对象名称：</p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG5.png" alt="PFCG 权限对象结构"></p>
+<p>该界面通过状态灯来表示各权限对象维护状态，绿灯代表激活，黄色表示未激活，红色代表未给权限字段分配值，单击权限字段前的铅笔可以定义该字段的授权值。权限对象维护完成后，节点的状态灯会变为绿色，单击 “保存” 按钮后会弹出一个 “为生成权限参数文件分配参数文件名称” 对话框：这是系统自动生成的，名称及描述可以更改，并且可以删除。</p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG6.png" alt="PFCG 参数文件"></p>
+<p>点击“激活”：激活权限数据，返回到角色维护界面，可以看到生成的权限参数文件</p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG7.png" alt="PFCG 参数文件"></p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG8.png" alt="PFCG 参数文件"></p>
+<h4 id="将角色分配给用户">将角色分配给用户</h4>
+<p>切换到 “用户” 选项页，将权限分配到具体的用户账号，在此可将角色分配至多个用户；SU01 也可以做此操作，但那是为一个用户分配多个角色。在用户分配栏中输入用户帐号，右侧自动显示角色的有效期。</p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG9.png" alt="PFCG User"></p>
+<p>操作后角色并不能立即生效，“用户” 选项页的标签是黄色，<strong>“用户比较”</strong>:[User Comparsion] 按钮状态是红色，点击 “用户比较” 按钮，完成比较保存后才生效。</p>
+<h4 id="使用su01分配角色给用户">使用SU01分配角色给用户</h4>
+<p>当分配好角色时，该角色所带的参数文件也会自动带过来放在&quot;参数文件&quot;Tab 中，但你也可以在参数文件中还可以直接将其他的参数文件加进来，如 SAP_ALL、SAP_NEW (参数文件)</p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG10.png" alt="SU01 Roles"></p>
+<p><img src="/images/ABAP/AUTHORITY_PFCG11.png" alt="PFCG Profiles"></p>
+<p>参考链接：</p>
+<ul>
+<li>​	<a href="https://blog.csdn.net/hubaichun/article/details/73718437">参考链接 https://blog.csdn.net/hubaichun/article/details/73718437</a></li>
+<li>​	<a href="https://blog.csdn.net/candy_mmyy/article/details/54906571">SAP用户权限控制设置及开发</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2401</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/saputils/">
+                    #saputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPAuthorization/" class="prev" rel="prev" title=" SAP Authorization "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Authorization </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_BDC/" class="next" rel="next" title=" BDC 屏幕录制 "> BDC 屏幕录制 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-23 00:00:00 \x2b0000 UTC',
+        title: ' SAP 自定义权限对象并使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

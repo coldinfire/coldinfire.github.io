@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Basis_MRP/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAP_JOB/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_STO/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            STO 详解  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" STO 详解  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" STO 详解 "/>
+<meta name="twitter:description" content="工厂间转储 MB1B 移动类型 301 工厂到工厂（一步）转账：简单明了一步转储；过账后会产生 GR，MITA 增加，MIZH 减少。 MB03 查看物料凭证：会产生 GR，如"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " STO 详解 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_STO\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  802 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_STO\/",
+  "datePublished": "2019-04-01T00:00:00\x2b00:00",
+  "dateModified": "2019-04-01T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> STO 详解 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-01 >1 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="工厂间转储">工厂间转储</h3>
+<p>MB1B 移动类型 301 工厂到工厂（一步）转账：简单明了一步转储；过账后会产生 GR，MITA 增加，MIZH 减少。</p>
+<ul>
+<li>MB03 查看物料凭证：会产生 GR，如果两工厂标准价或者移动平均价不同，差异会调整到库存调拨损益科目。</li>
+</ul>
+<p>MB1B （两步转储）：移动类型 303 转出；移动类型 305 转入 。两步转储操作，过账后会产生物料凭证和会计凭证。</p>
+<ul>
+<li>和一步收货的区别：MMBE 仔细看一下接收库存，会发现和一步的 区别。在库存传送那出现了 - 转储的数量，接下来就是接收库存，MB1B 过账后也会产生 GR，却不会产生 FR 财务凭证。</li>
+</ul>
+<p>移动类型的工厂 1 步，2 步的转储，后台配置主要配置好存货科目，及转储中的损益科目便可。</p>
+<h3 id="跨工厂转储公司间调拨">跨工厂转储（公司间调拨）</h3>
+<h4 id="mm-转储操作-mb1b">MM 转储操作 MB1B</h4>
+<p>过账抬头</p>
+<ul>
+<li>
+<p>移动类型：表示库存地点一步转储</p>
+</li>
+<li>
+<p>工厂：指定公司代码</p>
+</li>
+<li>
+<p>库存地点：物料储存的仓库代码</p>
+</li>
+</ul>
+<p>过账项目</p>
+<ul>
+<li>
+<p>接收库存地点：物料转储后存放的库位代码</p>
+</li>
+<li>
+<p>物料：原料等级代码</p>
+</li>
+<li>
+<p>数量：转储物料的量,和后面单位要对应</p>
+</li>
+</ul>
+<h4 id="wm-层面转储操作-lt06">WM 层面转储操作 LT06</h4>
+<p>此界面正常情况下自动进入，若出现断线等异常情况，则用事物码 LT05 进入本界面，并输入相应的物料凭证号。</p>
+<p>抬头</p>
+<ul>
+<li>
+<p>物料凭证：物料转储后产生的凭证号</p>
+</li>
+<li>
+<p>物料凭证年份： 指定的年份</p>
+</li>
+<li>
+<p>仓库号：指定的仓库好</p>
+</li>
+<li>
+<p>在将转出的仓位号前填写转移数量</p>
+</li>
+<li>
+<p>去掉 “记帐到同一仓位” 下的√</p>
+</li>
+</ul>
+<h3 id="原料厂内转储单">原料厂内转储单</h3>
+<p>查询各物料库存信息： MMBE/MB52/LS24</p>
+<p>检查单据内容，无误后点菜单栏 “文本”→“打印”	打印原料厂内转储单。</p>
+<p>SAP 系统内进行转储操作 MB1B</p>
+<ul>
+<li>移动类型 311；工厂 &lsquo;XXXX&rsquo;；发货库存地点 &lsquo;XXXX&rsquo;；转储物料编码 &lsquo;XXXX&rsquo;；数量 &lsquo;XXXX&rsquo;；接收库存地点 &lsquo;XXXX&rsquo;</li>
+</ul>
+<p>在 SAP 系统的 WM 模块中确定</p>
+<ul>
+<li>确定转出、转入仓位 &lsquo;XXXX&rsquo;；物料凭证'XXXX&rsquo;；物料凭证的年份'XXXX&rsquo;；仓库号'XXXX&rsquo;；源仓位 &lsquo;01-01-08&rsquo;；目的仓位 &lsquo;01-01-05&rsquo;</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>802</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Basis_MRP/" class="prev" rel="prev" title=" MRP:物料需求计划 "><i class="iconfont icon-dajiantou"></i>&nbsp; MRP:物料需求计划 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAP_JOB/" class="next" rel="next" title=" SAP Background Job "> SAP Background Job &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-01 00:00:00 \x2b0000 UTC',
+        title: ' STO 详解 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP3/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP5/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP4/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP 语法详解(SQL) | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP 语法详解(SQL) | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP 语法详解(SQL)"/>
+<meta name="twitter:description" content="Open SQL ABAP可以通过两种方式与数据库交互 Native SQL:数据库自身的SQL，可以直接访问数据库，不够安全。 Open SQL:集成到ABAP中的标准SQL子"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP 语法详解(SQL)",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP4\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abap",
+  "wordcount":  1272 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP4\/",
+  "datePublished": "2018-05-24T00:00:00\x2b00:00",
+  "dateModified": "2018-05-24T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP 语法详解(SQL)</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-24 >24 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h3 id="open-sql">Open SQL</h3>
+
+<ul>
+<li><p>ABAP可以通过两种方式与数据库交互</p>
+
+<ul>
+<li><p>Native SQL:数据库自身的SQL，可以直接访问数据库，不够安全。</p></li>
+
+<li><p>Open SQL:集成到ABAP中的标准SQL子集，通过SAP数据库接口识别不同的数据库，然后将语句进行转换成底层数据库对应的语言。</p></li>
+</ul></li>
+
+<li><p>基本语法：与其他SQL语句类似，主要包括增删改查：Select、Update、Insert、Delete、Modify</p></li>
+</ul>
+
+<p>​ <1> SELECT 语法</p>
+
+<pre><code class="language-JS">  SELECT [SINGLE] &lt;result&gt; FROM &lt;dbtab&gt; ：SINGLE表示查询单行数据
+         INTO &lt;target&gt;                ：内表或则结构
+         [INTO &lt;f1&gt;...&lt;fn&gt;]           :将查询结果赋值到具体字段
+         [INTO CORRESPONDING FILES OF &lt;itab&gt;]
+                                      : 将查询结果按字段匹配赋值给具体的表或者结构体。
+         WHERE &lt;condition&gt;            ：查询条件
+         Group BY &lt;fields&gt;            ：分组查询条件
+         ORDER BY &lt;fields&gt;.           ：排序条件 
+</code></pre>
+
+<p><strong>表连接：</strong></p>
+
+<pre><code class="language-JS">  INNER JOIN：查询结果包含两个连接表中彼此相对应的数据记录。
+  LEFT OUTER JOIN：查询结果集中包含左表中的所有数据记录，右表中仅查询出包含相匹配的数据。
+  连接语句：
+    使用ON 和 AND 语句将左右两个表关联起来，一般使用主键；
+      INNER JOIN不能使用NOT、LIKE、IN;
+    LEFT OUTER JOIN只能使用 EQ;
+  WHERE语句：
+    至少有一个表达式的两个操作数分别来自于左右两个表，建立连接关系；
+    LEFT OUTER JOIN的右表字段不能在WHERE中使用；
+      
+</code></pre>
+
+<p>以内表为查询条件：</p>
+
+<p>​         <code>SELECT &lt;f1...fn&gt; FROM &lt;dbtab&gt; FOR ALL ENTRIED IN &lt;itab&gt; WHERE &lt;cond&gt;.</code></p>
+
+<p>​         使用 <code>FOR ALL ENTRIED IN itab</code> 前，一定要检查itab表是否为空，否则会造成SQL的执行效率极低。</p>
+
+<p>​       获取限制读取数据的条数：前n条</p>
+
+<p>​            <code>SELECT * FROM &lt;dbtab&gt; INTO &lt;itab&gt; UP TO &lt;n&gt; ROWS.</code></p>
+
+<p>标准函数：</p>
+
+<pre><code class="language-JS">  COUNT()：统计查询总数。
+  SUM()：统计表中某个数值字段的总和。
+  AVG()：统计表中某个数值字段的平均值。
+  MAX()：统计表中某个字段的最大值。
+  MIN() ：统计表中某个字段的最小值。
+</code></pre>
+
+<p>​     <2> UPDATE（修改更新操作）</p>
+
+<pre><code class="language-JS">  UPDATE &lt;dbtab&gt; SET f1 = v1...fn = vn (WHERE &lt;condition&gt;).
+  UPDATE &lt;dbtab&gt; FROM &lt;wa&gt;.
+  UPDATE &lt;dbtab&gt; FROM TABLE &lt;itab&gt; (WHERE &lt;condition&gt;).
+</code></pre>
+
+<p>​     <3> INSERT(插入数据)</p>
+
+<pre><code class="language-JS">  INSERT INTO &lt;dbtab&gt; VALUES &lt;conditin&gt;.
+  INSERT &lt;dbtab&gt; FROM &lt;wa&gt;.
+  INSERT &lt;dbtab&gt; FROM TABLE &lt;itab&gt;.
+</code></pre>
+
+<p>​     <4> DELETE(删除操作)</p>
+
+<pre><code class="language-JS">  DELETE FROM &lt;dbtab&gt; WHERE &lt;condition&gt;.
+  DELETE &lt;dbtab&gt; FROM TABLE &lt;itab&gt;.
+</code></pre>
+
+<p>​     <5> MODIFY(修改操作，相当于Update &amp; Insert)</p>
+
+<pre><code class="language-JS">MODIFY &lt;dbtab&gt; FROM &lt;wa&gt;.  
+MODIFY &lt;dbtab&gt; FROM TABLE &lt;itab&gt;.
+</code></pre>
+
+<h3 id="native-sql">Native SQL</h3>
+
+<p>​   EXEC SQL 和 ADBC 是所谓的 Native SQL，这种方式直接进入指定数据库，不涉及到 DBI，这样就没有 Table buffer。相对 EXEC SQL 来说，更推荐 ADBC 的方式执行 native sql，这种方式的好处是更加容易追踪错误。</p>
+
+<p><strong>连接其他的数据库</strong>：TCode:DBCO</p>
+
+<p>​   添加新的连接：<code>MSSQL_SERVER=IP adress MSSQL_DBNAME=dbname OBJECT_SOURCE=dbname</code></p>
+
+<p>注意事项：</p>
+
+<p>​   Native SQL 语句不能有结尾符号;</p>
+
+<p>​   EXEC SQL &hellip;&hellip; ENDEXEC间不能有注释;</p>
+
+<p>​   参数占位符是冒号：;</p>
+
+<p><strong>程序调用</strong>：</p>
+
+<pre><code class="language-json">DATA: p_dbname(10) VALUE 'DBNAME',
+DATA: l_sql_error TYPE REF TO cx_sy_native_sql_error, 
+      error_text TYPE string.
+...
+ 内表数据准备
+...
+&quot;连接数据库
+TRY. 
+ EXEC SQL. 
+  CONNECT TO 'DBNAME'/ CONNECT TO :p_dbname
+ ENDEXEC.
+ EXEC SQL.
+  SET CONNECTION 'DBNAME'
+ ENDEXEC.
+CATCH cx_sy_native_sql_error INTO l_sql_error. 
+ CALL METHOD l_sql_error-&gt;get_text 
+  RECEIVING 
+   result = l_error_text. 
+ENDTRY. 
+IF sy-subrc &lt;&gt; 0.
+ WRITE: /1 ‘连接到数据库失败:’, l_error_text.
+ STOP. 
+ENDIF.
+&quot;执行SQL
+TRY. 
+ LOOP AT gt_room INTO gs_room. 
+  EXEC SQL. 
+   insert into ljc_room ( room_id, room_name, room_people, room_desc ) 
+   values(:gs_room-room_id, :gs_room-room_name, :gs_room-room_people, :gs_room-room_desc)
+  ENDEXEC.
+ ENDLOOP.
+CATCH cx_sy_native_sql_error INTO l_sql_error. 
+ error_text = l_sql_error-&gt;get_text( ). 
+ENDTRY. 
+&quot;异常处理
+IF l_error_text IS INITIAL.
+ EXEC SQL.
+  commit.
+ ENDEXEC.
+ELSE.
+ CLEAR l_error_text. 
+ EXEC SQL. 
+  rollback 
+ ENDEXEC.  
+ENDIF.
+&quot;断开连接
+EXEC SQL. 
+ DISCONNECT :p_dbname 
+ENDEXEC.
+</code></pre>
+
+<p>游标使用：</p>
+
+<pre><code class="language-JS">DATA : arg1 TYPE string VALUE '800' .
+TABLES : t001 .
+EXEC SQL .
+  OPEN c1 FOR  &quot; 打开游标
+  SELECT MANDT , BUKRS 
+    FROM T001  &quot; 远程数据库表 
+    WHERE MANDT = :arg1 AND BUKRS &gt;= 'ZA01'
+ENDEXEC .
+DO .
+  EXEC SQL .
+    FETCH NEXT c1 INTO :t001-mandt, :t001-bukrs &quot;读取游标
+  ENDEXEC .
+  IF sy - subrc &lt;&gt; 0 .
+    EXIT .
+  ELSE .
+    WRITE : / t001-mandt, t001-bukrs .
+  ENDIF .
+ENDDO .
+EXEC SQL .
+  CLOSE c1 &quot;关闭游标
+ENDEXEC .
+</code></pre>
+
+<hr />
+
+<p>未完待续&hellip;&hellip;<a href="https://coldinfire.github.io/2018/ABAP5/" rel="nofollow noreferrer" target="_blank">ABAP 语法详解(优化)</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1272</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abap/">
+                    #abap</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP3/" class="prev" rel="prev" title="ABAP 语法详解(Form&amp;Func)"><i class="iconfont icon-dajiantou"></i>&nbsp;ABAP 语法详解(Form&amp;Func)</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP5/" class="next" rel="next" title="ABAP 语法详解(优化)">ABAP 语法详解(优化)&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-24 00:00:00 \x2b0000 UTC',
+        title: 'ABAP 语法详解(SQL)',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2019</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Utils_TryCatch/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_NumberRangeType1/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_NumberRange/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Number Range Object  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Number Range Object  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Number Range Object "/>
+<meta name="twitter:description" content="操作说明 在 SAP 系统中，各类主数据及单据都需要使用编号进行唯一性标识，以此形成后台有着大量编号范围维护的配置操作，种类繁多。 编号范围维护分为两部"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Number Range Object ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_NumberRange\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1757 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_NumberRange\/",
+  "datePublished": "2019-07-13T00:00:00\x2b00:00",
+  "dateModified": "2019-07-13T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Number Range Object </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-07-13 >13 July 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="操作说明">操作说明</h3>
+<p>在 SAP 系统中，各类主数据及单据都需要使用编号进行唯一性标识，以此形成后台有着大量编号范围维护的配置操作，种类繁多。</p>
+<p>编号范围维护分为两部分：</p>
+<ul>
+<li>
+<p>号码段的定义</p>
+</li>
+<li>
+<p>给数据对象分配号码段</p>
+</li>
+</ul>
+<p>两步操作根据不同数据类型可能是在一个操作中完成，也可能分步完成。这两步操作都属于配置，但前者（号码段定义）为避免传输的目的系统（如测试系统、生产系统）发生冲突，不会自动打进传输请求包，一般手工在目的系统加以配置。</p>
+<h3 id="创建number-range">创建Number Range</h3>
+<p>SNRO/SNUM : (<strong>S</strong>AP <strong>N</strong>umber <strong>R</strong>ange <strong>O</strong>bject)</p>
+<p>1.输入Tcode:SNRO 点击Create</p>
+<p><img src="/images/ABAP/ABAP_NumberRange1.png" alt="Create"></p>
+<p>2.输入描述，数字长队对应的Domain和Warning 百分比，保存</p>
+<p><img src="/images/ABAP/ABAP_NumberRange2.png" alt="Create and save"></p>
+<p>3.点击Number ranges，弹出显示，修改，创建intervals界面</p>
+<p><img src="/images/ABAP/ABAP_NumberRange3.png" alt="Maintain Number Range Intevals"></p>
+<p>4.点击Insert Interval 维护值并保存，完成创建和激活</p>
+<p><img src="/images/ABAP/ABAP_NumberRange4.png" alt="Maintain Number Range Intevals"></p>
+<p>5.为避免造成传输目的系统的编号混乱，在配置系统无论 Client 参数如何设置，编号范围定义配置都不会自动放入传输请求中，如真有需求则可以手动加入。</p>
+<p><img src="/images/ABAP/ABAP_NumberRange5.png" alt="Transport"></p>
+<p>如有跳号现象，可以禁用对象的 Buffer 试试.</p>
+<h3 id="维护分类">维护分类</h3>
+<h4 id="类型1">类型1</h4>
+<p>每个数据对象只拥有一组号码段，内部、外部号码段选择其一或都选，定义与分配是分离的，如供应商、客户号码范围。</p>
+<p>此类型的号码定义是相同的，但分配的操作并不一样，有些是在数据对象的属性定义处分配，例如销售订单。</p>
+<p>此类的编号范围对象隶属于 Client，在 client 下号码段不可重复，可供一个或多个类型下的多个对象使用。例如销售凭证、外向交货单、内向交货单等共用一个编号范围对象。</p>
+<p>具体操作参见《<a href="https://fenginfo.com/414.html">维护客户号码范围</a>》。</p>
+<h4 id="类型2">类型2</h4>
+<p>每个对象只拥有一组号码段，内部、外部号码段选择其一或都选，定义与分配是集成的，典型如物料主数据。</p>
+<h4 id="类型3">类型3</h4>
+<p>数据对象下没有子类，但需要有多个号码段，如会计凭证号码范围，每个公司代码下有多个号码段。此类编号范围对象定义只归属于指定数据对象。</p>
+<h4 id="类型4">类型4</h4>
+<p>数据对象下有多个子类，在数据对象下需定义一套完整的号码段，每个子类分配一组号码段，每组包可含 1 个内部段和 1 个外部段（两者可选其一或都含有），典型如成本控制范围。</p>
+<h3 id="维护明细表">维护明细表</h3>
+<p>下表中列出了常用的编号范围对象的维护信息，包括前台 TCODE、后台路径、SNRO/SNUM 维护值，以及分类。每种分类的操作可参考不同的链接。</p>
+<table>
+<thead>
+<tr>
+<th><strong>模块</strong></th>
+<th><strong>IMG</strong> <strong>路径</strong></th>
+<th><strong>对象</strong></th>
+<th><strong>TCOCE</strong></th>
+<th><strong>SNRO/SNUM</strong> <strong>维护值</strong></th>
+<th><strong>类型</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FI</td>
+<td>财务会计 (新)→财务会计全局设置 (新)→凭证→凭证号范围→条目视图中的凭证→定义条目视图的凭证编号范围</td>
+<td>会计凭证</td>
+<td>FBN1</td>
+<td>RF_BELEG</td>
+<td>3</td>
+</tr>
+<tr>
+<td>CO</td>
+<td>控制→一般控制→组织结构→维护成本控制凭证的编号范围</td>
+<td>成本控制</td>
+<td>KANK</td>
+<td>RK_BELEG</td>
+<td>4</td>
+</tr>
+<tr>
+<td>MM</td>
+<td>后勤 - 常规→物料主数据→基本设置→物料类型→定义每个物料类型的号码范围</td>
+<td>物料主数据</td>
+<td>MMNR</td>
+<td>MATERIALNR</td>
+<td>2</td>
+</tr>
+<tr>
+<td>MM</td>
+<td>后勤 - 常规→业务合作伙伴→供应商→控制→定义供应商主记录的编号范围 &lt;间隔&gt;</td>
+<td>供应商主数据</td>
+<td>OMSJ</td>
+<td>KREDITOR</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SD</td>
+<td>后勤 - 常规→业务合作伙伴→客户→控制→定义和分配客户号码范围 &lt;定义客户主数据的编号范围&gt;</td>
+<td>客户主数据</td>
+<td>OVZC</td>
+<td>DEBITOR</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SD</td>
+<td>销售和分销→销售→销售凭证→销售凭证抬头→定义销售凭证的号码范围</td>
+<td>销售订单</td>
+<td>VN01</td>
+<td>RV_BELEG</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="读取函数number_get_next">读取函数:NUMBER_GET_NEXT</h3>
+<p>程序实例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">REPORT</span> <span style="color:#a6e22e">zsnro_test</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">NUMBER</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">I</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;NUMBER_GET_NEXT&#39;</span>
+<span style="color:#a6e22e">EXPORTING</span>
+   <span style="color:#a6e22e">nr_range_nr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>
+   <span style="color:#a6e22e">object</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZTEST_SNRO&#39;</span>
+<span style="color:#a6e22e">IMPORTING</span>  
+  <span style="color:#a6e22e">NUMBER</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">NUMBER</span>
+<span style="color:#a6e22e">EXCEPTIONS</span>
+  <span style="color:#a6e22e">INTERVAL_NOT_FOUND</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">NUMBER_RANGE_NOT_INTERN</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+  <span style="color:#a6e22e">OBJECT_NOT_FOUND</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+  <span style="color:#a6e22e">QUANTITY_IS_0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+  <span style="color:#a6e22e">QUANTITY_IS_NOT_1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+  <span style="color:#a6e22e">INTERVAL_OVERFLOW</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+  <span style="color:#a6e22e">BUFFER_OVERFLOW</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+  <span style="color:#a6e22e">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8.</span>
+<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.</span>
+  <span style="color:#a6e22e">MESSAGE</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGID</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGTY</span> <span style="color:#a6e22e">NUMBER</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGNO</span>
+     <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV1</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV2</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV3</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV4</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#a6e22e">Write</span> <span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">N</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">x</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">v</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">,</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">N</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010"> </span>
+</code></pre></div><h3 id="其他信息">其他信息</h3>
+<h4 id="相关表">相关表</h4>
+<ul>
+<li>NRIV、TNRO</li>
+</ul>
+<h4 id="函数组">函数组</h4>
+<ul>
+<li>
+<p>SNR0:  Online maint. of number ranges &amp; groups</p>
+</li>
+<li>
+<p>SNR1:  Interface for number ranges and groups</p>
+</li>
+<li>
+<p>SNR2:  Maintenance of number range objects</p>
+</li>
+<li>
+<p>SNR3:  Number range checks, assignment &amp; info</p>
+</li>
+<li>
+<p>SNR4:  Number ranges utility</p>
+</li>
+</ul>
+<h4 id="tcode">TCode</h4>
+<table>
+<thead>
+<tr>
+<th>TCODE</th>
+<th>Desc</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5NZI</td>
+<td>Number range maintenance: RP_IRCERT</td>
+<td>编号范围维护: RP_IRCERT</td>
+</tr>
+<tr>
+<td>ABNV</td>
+<td>Number range maintenance: FIAA-BELNR</td>
+<td>编号范围维护: FIAA-BELNR</td>
+</tr>
+<tr>
+<td>AO11</td>
+<td>Assign number range</td>
+<td>分配编号范围</td>
+</tr>
+<tr>
+<td>AS08</td>
+<td>Number Ranges:Asset Number</td>
+<td>号码范围：资产号码</td>
+</tr>
+<tr>
+<td>BDCP</td>
+<td>Number range maintenance: ALE_CP</td>
+<td>编号范围维护: ALE_CP</td>
+</tr>
+<tr>
+<td>BG00</td>
+<td>Number Range Maintenance: BGMK_NR</td>
+<td>编码范围维护：BGMK_NR</td>
+</tr>
+<tr>
+<td>BMVN</td>
+<td>Number Range Maintenance: DI_JOBID</td>
+<td>编号范围维护： DI_JOBID</td>
+</tr>
+<tr>
+<td>BUCF</td>
+<td>BP Cust: Number Ranges</td>
+<td>BP 消费者：编号范围</td>
+</tr>
+<tr>
+<td>CFNA</td>
+<td>Maintain PRT number range: FHM_CRFH</td>
+<td>维护 PRT 编号范围： FHM_CRFH</td>
+</tr>
+<tr>
+<td>CMTCUS22</td>
+<td>Maintain number range for CM product</td>
+<td>维护 CM 产品的号码范围</td>
+</tr>
+<tr>
+<td>CMTCUS32</td>
+<td>Maintain number range for CM folder</td>
+<td>维护 CM 文件夹的号码范围</td>
+</tr>
+<tr>
+<td>CMTCUS42</td>
+<td>Maintain number ranges for Baseline</td>
+<td>维护起点的号码范围</td>
+</tr>
+<tr>
+<td>FBN1</td>
+<td>Accounting Document Number Ranges</td>
+<td>科目凭证号码范围</td>
+</tr>
+<tr>
+<td>FNS1</td>
+<td>Collateral number range</td>
+<td>附属编号区间</td>
+</tr>
+<tr>
+<td>FOV0</td>
+<td>Rental agreement number range</td>
+<td>租用协议编号范围</td>
+</tr>
+<tr>
+<td>FOW0</td>
+<td>Real Estate application number range</td>
+<td>不动产应用的数据范围</td>
+</tr>
+<tr>
+<td>IN20</td>
+<td>Object link number ranges</td>
+<td>对象连接号码范围</td>
+</tr>
+<tr>
+<td>IP22</td>
+<td>Maintain number range: OBJK_NR</td>
+<td>维护编号范围：OBJK_NR</td>
+</tr>
+<tr>
+<td>KEN2</td>
+<td>Maint. number ranges: CO-PA planning</td>
+<td>维护号吗范围: CO-PA 计划</td>
+</tr>
+<tr>
+<td>OGS9</td>
+<td>Generate ADP number ranges</td>
+<td>生成 ADP 编号范围</td>
+</tr>
+<tr>
+<td>OHX3</td>
+<td>Maintain number ranges for 3PR</td>
+<td>维护 3PR 的编号范围</td>
+</tr>
+<tr>
+<td>OIL5</td>
+<td>Equipment number ranges</td>
+<td>设备编号范围</td>
+</tr>
+<tr>
+<td>OION</td>
+<td>Order number ranges</td>
+<td>订单编号范围</td>
+</tr>
+<tr>
+<td>OMH6</td>
+<td>Number Ranges for Purch. Documents</td>
+<td>采购凭证的号码范围</td>
+</tr>
+<tr>
+<td>QCCN</td>
+<td>QM standard number ranges</td>
+<td>质量管理标准码范围</td>
+</tr>
+<tr>
+<td>QS29</td>
+<td>Maintain characteristic number range</td>
+<td>维护特性编号范围</td>
+</tr>
+<tr>
+<td>QS39</td>
+<td>Maintain method number range</td>
+<td>编号范围维护方式</td>
+</tr>
+<tr>
+<td>VB(1</td>
+<td>Rebate number ranges</td>
+<td>回扣号范围</td>
+</tr>
+<tr>
+<td>VN07</td>
+<td>Maintain number range for shipments</td>
+<td>维护装运的编号范围</td>
+</tr>
+<tr>
+<td>WC64</td>
+<td>Catalog code number ranges</td>
+<td>类别代码编号范围</td>
+</tr>
+<tr>
+<td>WTNR</td>
+<td>w/tax certificate number range</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1757</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Utils_TryCatch/" class="prev" rel="prev" title=" SAP 异常处理 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 异常处理 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_NumberRangeType1/" class="next" rel="next" title=" 维护客户号码范围 "> 维护客户号码范围 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-07-13 00:00:00 \x2b0000 UTC',
+        title: ' SAP Number Range Object ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

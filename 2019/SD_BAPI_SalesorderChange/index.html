@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SD_BAPI_CustomerCreate/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAP_Business_Workflow/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SD_BAPI_SalesorderChange/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI 销售订单修改  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI 销售订单修改  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI 销售订单修改 "/>
+<meta name="twitter:description" content="VA02：销售订单修改 UPDATEFLAGS：flag 值的三种不同意义 U = change D = delete I = add *&amp;---------------------------------------------------------------------* *&amp; Form FRM_CHANGE_SALESORDER *&amp;---------------------------------------------------------------------* * text *----------------------------------------------------------------------* * --&gt;P_LT_ITEM text * --&gt;P_LT_COND text * --&gt;P_LT_MSG text * --&gt;P_LS_HEAD text * &lt;--P_LV_EIND text *----------------------------------------------------------------------* FORM frm_change_salesorder"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI 销售订单修改 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SD_BAPI_SalesorderChange\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI",
+  "wordcount":  1731 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SD_BAPI_SalesorderChange\/",
+  "datePublished": "2019-10-29T00:00:00\x2b00:00",
+  "dateModified": "2019-10-29T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI 销售订单修改 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-10-29 >29 October 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="va02销售订单修改">VA02：销售订单修改</h3>
+<p>UPDATEFLAGS：flag 值的三种不同意义</p>
+<ul>
+<li>U = change</li>
+<li>D = delete</li>
+<li>I = add</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_CHANGE_SALESORDER</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;P_LT_ITEM  text</span>
+<span style="color:#75715e">*      --&gt;P_LT_COND  text</span>
+<span style="color:#75715e">*      --&gt;P_LT_MSG  text</span>
+<span style="color:#75715e">*      --&gt;P_LS_HEAD  text</span>
+<span style="color:#75715e">*      &lt;--P_LV_EIND  text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_change_salesorder</span>  <span style="color:#66d9ef">TABLES</span>   tp_item    STRUCTURE zrmxsds004
+                                     tp_cond    STRUCTURE zrmxsds005
+                                     tp_message STRUCTURE zifsret01
+                            <span style="color:#66d9ef">USING</span>    up_head <span style="color:#66d9ef">LIKE </span>zrmxsds003
+                            <span style="color:#66d9ef">CHANGING</span> cp_eind <span style="color:#66d9ef">TYPE </span>c. 
+  <span style="color:#66d9ef">DATA</span>: ls_item <span style="color:#66d9ef">LIKE </span>zrmxsds004,
+        ls_cond <span style="color:#66d9ef">LIKE </span>zrmxsds005,
+        ls_msg  <span style="color:#66d9ef">LIKE </span>zifsret01,
+        ls_vbep <span style="color:#66d9ef">LIKE </span>vbep.
+  <span style="color:#66d9ef">DATA</span>: wa_header  <span style="color:#66d9ef">TYPE </span>bapisdh1,    <span style="color:#75715e">&#34;表头&#34;
+</span><span style="color:#75715e"></span>        wa_headerx <span style="color:#66d9ef">TYPE </span>bapisdh1x,   <span style="color:#75715e">&#34;表头标志&#34;
+</span><span style="color:#75715e"></span>        wa_partner  <span style="color:#66d9ef">TYPE </span>bapiparnr,  <span style="color:#75715e">&#34;业务伙伴&#34;
+</span><span style="color:#75715e"></span>        wa_partnerc <span style="color:#66d9ef">TYPE </span>bapiparnrc,
+        wa_item    <span style="color:#66d9ef">TYPE </span>bapisditm,   <span style="color:#75715e">&#34;行项目&#34;
+</span><span style="color:#75715e"></span>        wa_itemx   <span style="color:#66d9ef">TYPE </span>bapisditmx,
+        wa_cond    <span style="color:#66d9ef">TYPE </span>bapicond,    <span style="color:#75715e">&#34;价格条件&#34;
+</span><span style="color:#75715e"></span>        wa_condx   <span style="color:#66d9ef">TYPE </span>bapicondx,
+        wa_schdl   <span style="color:#66d9ef">TYPE </span>bapischdl,   <span style="color:#75715e">&#34;交付计划&#34;
+</span><span style="color:#75715e"></span>        wa_schdlx  <span style="color:#66d9ef">TYPE </span>bapischdlx,
+        wa_return  <span style="color:#66d9ef">TYPE </span>bapiret2,
+        wa_sdls    <span style="color:#66d9ef">TYPE </span>bapisdls,
+        wa_text    <span style="color:#66d9ef">TYPE </span>bapisdtext.  <span style="color:#75715e">&#34;文本&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: lt_partner  <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapiparnr,
+        lt_partnerc <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapiparnrc,
+        lt_item    <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapisditm,
+        lt_itemx   <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapisditmx,
+        lt_schdl    <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapischdl,
+        lt_schdlx   <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapischdlx,
+        lt_cond    <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapicond,
+        lt_condx   <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapicondx,
+        lt_return  <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> bapiret2,
+        lt_text    <span style="color:#66d9ef">LIKE STANDARD TABLE OF</span> bapisdtext.
+  <span style="color:#66d9ef">DATA</span>: lt_sokey <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> zrmxsds015,
+        ls_sokey <span style="color:#66d9ef">TYPE </span>zrmxsds015.
+<span style="color:#75715e">* Header</span>
+  <span style="color:#66d9ef">CLEAR</span>: wa_header,wa_headerx.
+  <span style="color:#66d9ef">IF</span> up_head<span style="color:#f92672">-</span>updateflag   <span style="color:#f92672">=</span> cns_update.
+    wa_header<span style="color:#f92672">-</span>pmnttrms    <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>zterm.  <span style="color:#75715e">&#34;付款条件&#34;
+</span><span style="color:#75715e"></span>    wa_headerx<span style="color:#f92672">-</span>pmnttrms   <span style="color:#f92672">=</span> cns_yes.
+    wa_headerx<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.     <span style="color:#75715e">&#34;Update&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34; Header texts：表头文本,若传输空值，则清空该字段 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span>: wa_text,lt_text[].
+    wa_text<span style="color:#f92672">-</span>itm_number    <span style="color:#f92672">=</span> space.
+    wa_text<span style="color:#f92672">-</span>text_id       <span style="color:#f92672">=</span> cns_textid.
+    wa_text<span style="color:#f92672">-</span>langu         <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu.
+    wa_text<span style="color:#f92672">-</span>format_col    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;*&#39;</span>.
+    wa_text<span style="color:#f92672">-</span>text_line     <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>tknum.  <span style="color:#75715e">&#34;运输合同号&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> wa_text <span style="color:#66d9ef">TO</span> lt_text.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* Partners</span>
+  <span style="color:#66d9ef">IF</span> up_head<span style="color:#f92672">-</span>kunnr_re <span style="color:#f92672">IS NOT INITIAL</span>.  <span style="color:#75715e">&#34;收票方&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span>: wa_partnerc.
+    wa_partnerc<span style="color:#f92672">-</span>document <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>vbeln.
+    wa_partnerc<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;000000&#39;</span>.
+    wa_partnerc<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.
+    wa_partnerc<span style="color:#f92672">-</span>partn_role <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RE&#39;</span>.
+    wa_partnerc<span style="color:#f92672">-</span>p_numb_new <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>kunnr_re.
+    <span style="color:#66d9ef">APPEND</span> wa_partnerc <span style="color:#66d9ef">TO</span> lt_partnerc.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">IF</span> up_head<span style="color:#f92672">-</span>kunnr_rg <span style="color:#f92672">IS NOT INITIAL</span>.  <span style="color:#75715e">&#34;付款方&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span>: wa_partnerc.
+    wa_partnerc<span style="color:#f92672">-</span>document <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>vbeln.
+    wa_partnerc<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;000000&#39;</span>.
+    wa_partnerc<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.
+    wa_partnerc<span style="color:#f92672">-</span>partn_role <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RG&#39;</span>.
+    wa_partnerc<span style="color:#f92672">-</span>p_numb_new <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>kunnr_rg.
+    <span style="color:#66d9ef">APPEND</span> wa_partnerc <span style="color:#66d9ef">TO</span> lt_partnerc.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">IF</span> up_head<span style="color:#f92672">-</span>kunnr_we <span style="color:#f92672">IS NOT INITIAL</span>.  <span style="color:#75715e">&#34;送达方&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span>: wa_partnerc.
+    wa_partnerc<span style="color:#f92672">-</span>document <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>vbeln.
+    wa_partnerc<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;000000&#39;</span>.
+    wa_partnerc<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.
+    wa_partnerc<span style="color:#f92672">-</span>partn_role <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WE&#39;</span>.
+    wa_partnerc<span style="color:#f92672">-</span>p_numb_new <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>kunnr_we.
+    <span style="color:#66d9ef">APPEND</span> wa_partnerc <span style="color:#66d9ef">TO</span> lt_partnerc.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* Items</span>
+  <span style="color:#66d9ef">REFRESH</span>: lt_item,  lt_cond, lt_schdl,
+           lt_itemx, lt_condx,lt_schdl.
+  <span style="color:#66d9ef">LOOP AT </span>tp_item <span style="color:#66d9ef">INTO</span> ls_item.
+    <span style="color:#66d9ef">IF</span> ls_item<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_new.    <span style="color:#75715e">&#34;新增行项目&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span> wa_item.
+      wa_item<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>posnr.
+      wa_item<span style="color:#f92672">-</span>material   <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>mabnr.   <span style="color:#75715e">&#34;物料&#34;
+</span><span style="color:#75715e"></span>      wa_item<span style="color:#f92672">-</span>sales_unit <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>vrkme.   <span style="color:#75715e">&#34;计量单位&#34;
+</span><span style="color:#75715e"></span>      wa_item<span style="color:#f92672">-</span>plant      <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>werks.   <span style="color:#75715e">&#34;工厂&#34;
+</span><span style="color:#75715e"></span>      wa_item<span style="color:#f92672">-</span>store_loc  <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>lgort.   <span style="color:#75715e">&#34;库存地&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">APPEND</span> wa_item <span style="color:#66d9ef">TO</span> lt_item.
+      <span style="color:#75715e">&#34;行状态&#34;
+</span><span style="color:#75715e"></span>      wa_itemx<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>posnr.
+      wa_itemx<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_new.
+      wa_itemx<span style="color:#f92672">-</span>material   <span style="color:#f92672">=</span> cns_yes.
+      wa_itemx<span style="color:#f92672">-</span>sales_unit <span style="color:#f92672">=</span> cns_yes.
+      wa_itemx<span style="color:#f92672">-</span>plant      <span style="color:#f92672">=</span> cns_yes.
+      wa_itemx<span style="color:#f92672">-</span>store_loc  <span style="color:#f92672">=</span> cns_yes.
+      <span style="color:#66d9ef">APPEND</span> wa_itemx <span style="color:#66d9ef">TO</span> lt_itemx.
+      <span style="color:#75715e">&#34;Schedule lines&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span>: wa_schdl,wa_schdlx.
+      wa_schdl<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>posnr.
+      wa_schdl<span style="color:#f92672">-</span>req_qty    <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>kwmeng.  <span style="color:#75715e">&#34;数量&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">APPEND</span> wa_schdl <span style="color:#66d9ef">TO</span> lt_schdl.
+      wa_schdlx<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>posnr.
+      wa_schdlx<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_new.
+      wa_schdlx<span style="color:#f92672">-</span>req_qty    <span style="color:#f92672">=</span> cns_yes.
+      <span style="color:#66d9ef">APPEND</span> wa_schdlx <span style="color:#66d9ef">TO</span> lt_schdlx.
+      <span style="color:#75715e">&#34;新增行，需要对自动生成的生产订单进行下达&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span> ls_sokey.
+      ls_sokey<span style="color:#f92672">-</span>vbeln <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>vbeln.
+      ls_sokey<span style="color:#f92672">-</span>posnr <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>posnr.
+      <span style="color:#66d9ef">APPEND</span> ls_sokey <span style="color:#66d9ef">TO</span> lt_sokey.
+    <span style="color:#66d9ef">ELSEIF</span> ls_item<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.  <span style="color:#75715e">&#34;更新行项目信息&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">&#34;Schedule line 仅行数量&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span>: wa_schdl,wa_schdlx.
+      wa_schdl<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>posnr.
+      wa_schdl<span style="color:#f92672">-</span>sched_line <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0001&#39;</span>.          <span style="color:#75715e">&#34;默认都是第一行&#34;
+</span><span style="color:#75715e"></span>      wa_schdl<span style="color:#f92672">-</span>req_qty    <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>kwmeng.  <span style="color:#75715e">&#34;数量&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">APPEND</span> wa_schdl <span style="color:#66d9ef">TO</span> lt_schdl.
+      wa_schdlx<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_item<span style="color:#f92672">-</span>posnr.
+      wa_schdlx<span style="color:#f92672">-</span>sched_line <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0001&#39;</span>.
+      wa_schdlx<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.
+      wa_schdlx<span style="color:#f92672">-</span>req_qty    <span style="color:#f92672">=</span> cns_yes.
+      <span style="color:#66d9ef">APPEND</span> wa_schdlx <span style="color:#66d9ef">TO</span> lt_schdlx.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">* Item Conditions</span>
+  wa_sdls<span style="color:#f92672">-</span>cond_handl <span style="color:#f92672">=</span> cns_yes.   <span style="color:#75715e">&#34;价格条件，需要设置该参数，才能够修改价格条件&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">LOOP AT </span>tp_cond <span style="color:#66d9ef">INTO</span> ls_cond.
+    <span style="color:#66d9ef">IF</span> ls_cond<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_new.    <span style="color:#75715e">&#34;新增价格条件记录&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span>: wa_cond,wa_condx.
+      wa_cond<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>posnr.
+      wa_cond<span style="color:#f92672">-</span>cond_type  <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kschl.  <span style="color:#75715e">&#34;定价条件&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>cond_value <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kbetr.  <span style="color:#75715e">&#34;价格&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>currency   <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>koein.  <span style="color:#75715e">&#34;货币或%&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>cond_unit  <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kmein.  <span style="color:#75715e">&#34;条件单位&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>cond_p_unt <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kpein.  <span style="color:#75715e">&#34;条件定价单位&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">APPEND</span> wa_cond <span style="color:#66d9ef">TO</span> lt_cond.
+      wa_condx<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>posnr.
+      wa_condx<span style="color:#f92672">-</span>cond_type  <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kschl.  <span style="color:#75715e">&#34;定价条件&#34;
+</span><span style="color:#75715e"></span>      wa_condx<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_new.
+      wa_condx<span style="color:#f92672">-</span>cond_value <span style="color:#f92672">=</span> cns_yes.  <span style="color:#75715e">&#34;价格&#34;
+</span><span style="color:#75715e"></span>      wa_condx<span style="color:#f92672">-</span>currency   <span style="color:#f92672">=</span> cns_yes.  <span style="color:#75715e">&#34;货币或%&#34;
+</span><span style="color:#75715e"></span>      wa_condx<span style="color:#f92672">-</span>cond_unit  <span style="color:#f92672">=</span> cns_yes.  <span style="color:#75715e">&#34;条件单位&#34;
+</span><span style="color:#75715e"></span>      wa_condx<span style="color:#f92672">-</span>cond_p_unt <span style="color:#f92672">=</span> cns_yes.  <span style="color:#75715e">&#34;条件定价单位&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">APPEND</span> wa_condx <span style="color:#66d9ef">TO</span> lt_condx.
+    <span style="color:#66d9ef">ELSEIF</span> ls_cond<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.   <span style="color:#75715e">&#34;更新价格条件记录&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span>: wa_cond,wa_condx.
+      <span style="color:#75715e">&#34;需要读取已经存在行的Key&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_get_cond_key</span> <span style="color:#66d9ef">USING</span> up_head<span style="color:#f92672">-</span>vbeln
+                                     ls_cond<span style="color:#f92672">-</span>posnr
+                                     ls_cond<span style="color:#f92672">-</span>kschl
+                            <span style="color:#66d9ef">CHANGING</span> wa_cond<span style="color:#f92672">-</span>cond_st_no
+                                     wa_cond<span style="color:#f92672">-</span>cond_count.
+      wa_cond<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>posnr.
+<span style="color:#75715e">*      wa_cond-cond_st_no = 040.</span>
+<span style="color:#75715e">*      wa_cond-cond_count = 01.</span>
+      wa_cond<span style="color:#f92672">-</span>cond_type  <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kschl.  <span style="color:#75715e">&#34;定价条件&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>cond_value <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kbetr.  <span style="color:#75715e">&#34;价格&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>currency   <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>koein.  <span style="color:#75715e">&#34;货币或%&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>cond_unit  <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kmein.  <span style="color:#75715e">&#34;条件单位&#34;
+</span><span style="color:#75715e"></span>      wa_cond<span style="color:#f92672">-</span>cond_p_unt <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kpein.  <span style="color:#75715e">&#34;条件定价单位&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">APPEND</span> wa_cond <span style="color:#66d9ef">TO</span> lt_cond.
+      wa_condx<span style="color:#f92672">-</span>itm_number <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>posnr.
+      wa_condx<span style="color:#f92672">-</span>cond_st_no <span style="color:#f92672">=</span> wa_cond<span style="color:#f92672">-</span>cond_st_no.
+      wa_condx<span style="color:#f92672">-</span>cond_count <span style="color:#f92672">=</span> wa_cond<span style="color:#f92672">-</span>cond_count.
+      wa_condx<span style="color:#f92672">-</span>cond_type  <span style="color:#f92672">=</span> ls_cond<span style="color:#f92672">-</span>kschl.
+      wa_condx<span style="color:#f92672">-</span>updateflag <span style="color:#f92672">=</span> cns_update.
+      wa_condx<span style="color:#f92672">-</span>cond_value <span style="color:#f92672">=</span> cns_yes.
+      wa_condx<span style="color:#f92672">-</span>currency   <span style="color:#f92672">=</span> cns_yes.
+      wa_condx<span style="color:#f92672">-</span>cond_unit  <span style="color:#f92672">=</span> cns_yes.
+      wa_condx<span style="color:#f92672">-</span>cond_p_unt <span style="color:#f92672">=</span> cns_yes.
+      <span style="color:#66d9ef">APPEND</span> wa_condx <span style="color:#66d9ef">TO</span> lt_condx.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#75715e">&#34;报错&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">* Call BAPI</span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_SALESORDER_CHANGE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      salesdocument               <span style="color:#f92672">=</span> up_head<span style="color:#f92672">-</span>vbeln
+      order_header_in             <span style="color:#f92672">=</span> wa_header
+      order_header_inx            <span style="color:#f92672">=</span> wa_headerx
+<span style="color:#75715e">*     SIMULATION                  =</span>
+<span style="color:#75715e">*     BEHAVE_WHEN_ERROR           = &#39; &#39;</span>
+<span style="color:#75715e">*     INT_NUMBER_ASSIGNMENT       = &#39; &#39;</span>
+      logic_switch                <span style="color:#f92672">=</span> wa_sdls
+<span style="color:#75715e">*     NO_STATUS_BUF_INIT          = &#39; &#39;</span>
+    <span style="color:#66d9ef">TABLES</span>
+      <span style="color:#66d9ef">return</span>                      <span style="color:#f92672">=</span> lt_return
+      order_item_in               <span style="color:#f92672">=</span> lt_item
+      order_item_inx              <span style="color:#f92672">=</span> lt_itemx
+<span style="color:#75715e">*      partners                    = lt_partner</span>
+      partnerchanges              <span style="color:#f92672">=</span> lt_partnerc
+<span style="color:#75715e">*     PARTNERADDRESSES            =</span>
+<span style="color:#75715e">*     ORDER_CFGS_REF              =</span>
+<span style="color:#75715e">*     ORDER_CFGS_INST             =</span>
+<span style="color:#75715e">*     ORDER_CFGS_PART_OF          =</span>
+<span style="color:#75715e">*     ORDER_CFGS_VALUE            =</span>
+<span style="color:#75715e">*     ORDER_CFGS_BLOB             =</span>
+<span style="color:#75715e">*     ORDER_CFGS_VK               =</span>
+<span style="color:#75715e">*     ORDER_CFGS_REFINST          =</span>
+      schedule_lines              <span style="color:#f92672">=</span> lt_schdl
+      schedule_linesx             <span style="color:#f92672">=</span> lt_schdlx
+      order_text                  <span style="color:#f92672">=</span> lt_text
+<span style="color:#75715e">*     ORDER_KEYS                  =</span>
+      conditions_in               <span style="color:#f92672">=</span> lt_cond
+      conditions_inx              <span style="color:#f92672">=</span> lt_condx
+<span style="color:#75715e">*   EXTENSIONIN                 =</span>
+       .
+<span style="color:#75715e">* 处理错误消息:通过判断消息的类型，来判断BAPI是否成功</span>
+  <span style="color:#66d9ef">LOOP AT </span>lt_return <span style="color:#66d9ef">INTO</span> wa_return.
+    <span style="color:#66d9ef">CLEAR</span> ls_msg.
+    ls_msg<span style="color:#f92672">-</span>class   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BUS&#39;</span>.
+    ls_msg<span style="color:#f92672">-</span>msgtyp  <span style="color:#f92672">=</span> wa_return<span style="color:#f92672">-</span>type.
+    ls_msg<span style="color:#f92672">-</span>msgno   <span style="color:#f92672">=</span> wa_return<span style="color:#f92672">-</span>number.
+    ls_msg<span style="color:#f92672">-</span>msgtxt  <span style="color:#f92672">=</span> wa_return<span style="color:#f92672">-</span>message.
+    <span style="color:#66d9ef">APPEND</span> ls_msg <span style="color:#66d9ef">TO</span> tp_message.
+    <span style="color:#66d9ef">IF</span> wa_return<span style="color:#f92672">-</span>type <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#f92672">OR</span> wa_return<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">OR</span> wa_return <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      cp_eind <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.  <span style="color:#75715e">&#34;失败&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">IF</span> cp_eind <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        <span style="color:#66d9ef">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span> .
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CHECK</span> cp_eind <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;X&#39;</span> <span style="color:#f92672">AND</span> lt_sokey[] <span style="color:#f92672">IS NOT INITIAL</span>.
+<span style="color:#75715e">* 销售订单自动产生生产订单，对生产订单进行下达</span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;Z_RMXPP_PRDORD_RELEASE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      I_WAIT                           <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">TABLES</span>
+      t_sokey                          <span style="color:#f92672">=</span> lt_sokey
+     <span style="color:#66d9ef">EXCEPTIONS</span>
+       no_saleorders                    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+       no_valid_saleorders              <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+       cannot_find_product_orders       <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+       <span style="color:#66d9ef">OTHERS</span>                           <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+       <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; frm_create_salesorder &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_GET_COND_KEY</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       读取价格条件记录的Key</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;P_UP_HEAD_VBELN  text</span>
+<span style="color:#75715e">*      --&gt;P_LS_COND_POSNR  text</span>
+<span style="color:#75715e">*      --&gt;P_LS_COND_KSCHL  text</span>
+<span style="color:#75715e">*      &lt;--P_WA_COND_COND_ST_NO  text</span>
+<span style="color:#75715e">*      &lt;--P_WA_COND_COND_COUNT  text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_cond_key</span>  <span style="color:#66d9ef">USING</span>    up_vbeln <span style="color:#66d9ef">LIKE </span>vbap<span style="color:#f92672">-</span>vbeln
+                                up_posnr <span style="color:#66d9ef">LIKE </span>vbap<span style="color:#f92672">-</span>posnr
+                                up_kschl <span style="color:#66d9ef">LIKE </span>konv<span style="color:#f92672">-</span>kschl
+                       <span style="color:#66d9ef">CHANGING</span> cp_st_no <span style="color:#66d9ef">LIKE </span>konv<span style="color:#f92672">-</span>stunr
+                                cp_count <span style="color:#66d9ef">LIKE </span>konv<span style="color:#f92672">-</span>zaehk.
+  <span style="color:#66d9ef">DATA</span>: lv_knumv <span style="color:#66d9ef">LIKE </span>vbak<span style="color:#f92672">-</span>knumv.S
+  <span style="color:#75715e">&#34; 由于需要多次判断，预先读取聚集表,将订单的所有行读取出来 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> gt_konv[] <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> knumv <span style="color:#66d9ef">INTO</span> lv_knumv
+      <span style="color:#66d9ef">FROM</span> vbak
+     <span style="color:#66d9ef">WHERE</span> vbeln <span style="color:#f92672">=</span> up_vbeln.
+    <span style="color:#66d9ef">SELECT</span> knumv kposn kschl stunr zaehk
+      <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> gt_konv
+      <span style="color:#66d9ef">FROM</span> konv
+     <span style="color:#66d9ef">WHERE</span> knumv <span style="color:#f92672">=</span> lv_knumv.
+<span style="color:#75715e">*        AND kposn = up_posnr.</span>
+    <span style="color:#66d9ef">SORT</span> gt_konv BY kposn kschl.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CLEAR</span> gwa_konv.
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> gt_konv <span style="color:#66d9ef">INTO</span> gwa_konv <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> kposn <span style="color:#f92672">=</span> up_posnr
+                                            kschl <span style="color:#f92672">=</span> up_kschl
+                                            BINARY <span style="color:#66d9ef">SEARCH</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+    cp_st_no <span style="color:#f92672">=</span> gwa_konv<span style="color:#f92672">-</span>stunr.
+    cp_count <span style="color:#f92672">=</span> gwa_konv<span style="color:#f92672">-</span>zaehk.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_GET_COND_KEY &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1731</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SD_BAPI_CustomerCreate/" class="prev" rel="prev" title=" BAPI 创建 Customer "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI 创建 Customer </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAP_Business_Workflow/" class="next" rel="next" title=" SAP 业务流程 "> SAP 业务流程 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-29 00:00:00 \x2b0000 UTC',
+        title: ' BAPI 销售订单修改 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

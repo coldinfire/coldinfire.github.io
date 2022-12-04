@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_Reflection/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionClass/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionFM/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 获取FM参数结果  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 获取FM参数结果  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 获取FM参数结果 "/>
+<meta name="twitter:description" content="获取FM的参数 REPORT zz_get_fm_detail. DATA: ls_trans_callstack TYPE sys_calls, lt_trans_callstack TYPE sys_callst. DATA: lv_trans_funtion_name TYPE string. DATA: ls_trans_fupararef TYPE fupararef, lt_trans_fupararef TYPE TABLE OF fupararef. FIELD-SYMBOLS: &lt;fs_zz_trans_field&gt; TYPE ANY. FIELD-SYMBOLS: &lt;fs_zz_trans_workarea&gt; TYPE ANY. FIELD-SYMBOLS: &lt;fs_zz_trans_tab&gt; TYPE ANY TABLE. CLEAR lt_trans_callstack[]. CALL FUNCTION &#39;SYSTEM_CALLSTACK&#39; IMPORTING * callstack = callstack et_callstack = lt_trans_callstack. CLEAR: ls_trans_callstack. READ TABLE lt_trans_callstack INTO ls_trans_callstack WITH KEY eventtype = &#39;FUNC&#39;. IF ls_trans_callstack IS"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 获取FM参数结果 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_ReflectionFM\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  862 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_ReflectionFM\/",
+  "datePublished": "2021-04-21T00:00:00\x2b00:00",
+  "dateModified": "2021-04-21T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 获取FM参数结果 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-04-21 >21 April 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="获取fm的参数">获取FM的参数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> zz_get_fm_detail.
+  <span style="color:#66d9ef">DATA</span>: ls_trans_callstack <span style="color:#66d9ef">TYPE </span>sys_calls,
+        lt_trans_callstack <span style="color:#66d9ef">TYPE </span>sys_callst.
+  <span style="color:#66d9ef">DATA</span>: lv_trans_funtion_name <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: ls_trans_fupararef <span style="color:#66d9ef">TYPE </span>fupararef,
+        lt_trans_fupararef <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> fupararef.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fs_zz_trans_field&gt; <span style="color:#66d9ef">TYPE </span>ANY.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fs_zz_trans_workarea&gt; <span style="color:#66d9ef">TYPE </span>ANY.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fs_zz_trans_tab&gt; <span style="color:#66d9ef">TYPE </span>ANY <span style="color:#66d9ef">TABLE</span>.
+
+<span style="color:#66d9ef">CLEAR</span> lt_trans_callstack[].
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SYSTEM_CALLSTACK&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+<span style="color:#75715e">*   callstack    = callstack</span>
+    et_callstack <span style="color:#f92672">=</span> lt_trans_callstack.
+<span style="color:#66d9ef">CLEAR</span>: ls_trans_callstack.
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_trans_callstack <span style="color:#66d9ef">INTO</span> ls_trans_callstack <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> eventtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FUNC&#39;</span>.
+<span style="color:#66d9ef">IF</span> ls_trans_callstack <span style="color:#f92672">IS INITIAL</span>.
+  <span style="color:#66d9ef">EXIT</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34;获取FM的参数集合&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span> lt_trans_fupararef[].
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> lt_trans_fupararef
+  <span style="color:#66d9ef">FROM</span> fupararef
+ <span style="color:#66d9ef">WHERE</span> funcname <span style="color:#f92672">=</span> ls_trans_callstack<span style="color:#f92672">-</span>eventname <span style="color:#75715e">&#34;Function Name&#34;
+</span><span style="color:#75715e"></span>   <span style="color:#f92672">AND</span> paramtype <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">&#34;通过反射获取参数的详细信息&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_get_detail</span>.
+</code></pre></div><h3 id="通过反射的方式获取结构详细数据">通过反射的方式获取结构详细数据</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_detail</span>.
+  <span style="color:#66d9ef">DATA</span>: lo_cl_abap_typedescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_typedescr.
+  <span style="color:#66d9ef">DATA</span>: lo_cl_abap_elemdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_elemdescr.
+  <span style="color:#66d9ef">DATA</span>: lo_cl_abap_refdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_refdescr.
+  <span style="color:#66d9ef">DATA</span>: lo_cl_abap_structdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_structdescr.
+  <span style="color:#66d9ef">DATA</span>: lo_cl_abap_tabledescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_tabledescr.
+  <span style="color:#66d9ef">DATA</span>: lo_cl_abap_classdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_classdescr.
+  <span style="color:#66d9ef">DATA</span>: lo_cl_abap_intfdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_intfdescr.
+  <span style="color:#66d9ef">DATA</span>: ls_zz_trans_comp_descr  <span style="color:#66d9ef">TYPE </span>abap_componentdescr.
+  <span style="color:#66d9ef">DATA</span>: lt_zz_trans_comp_tab    <span style="color:#66d9ef">TYPE </span>cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>component_table.
+  <span style="color:#66d9ef">DATA</span>: lv_zz_trans_table_name <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: ls_zz_trans_fupararef <span style="color:#66d9ef">TYPE </span>fupararef,
+        lt_zz_trans_fupararef <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> fupararef.
+  <span style="color:#66d9ef">DATA</span>: lo_zz_trans_root_error <span style="color:#66d9ef">TYPE REF TO</span> cx_root.
+  <span style="color:#66d9ef">DATA</span>: e_components_result <span style="color:#66d9ef">TYPE </span>abap_component_tab.
+  <span style="color:#66d9ef">LOOP AT </span>lt_zz_trans_fupararef <span style="color:#66d9ef">INTO</span> ls_zz_trans_fupararef <span style="color:#66d9ef">WHERE</span> paramtype <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#75715e">&#34;非值传递的传入值，不修改例程&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> ls_zz_trans_fupararef<span style="color:#f92672">-</span>paramtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I&#39;</span> <span style="color:#f92672">AND</span> ls_zz_trans_fupararef<span style="color:#f92672">-</span>reference <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">CONTINUE</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> ls_zz_trans_fupararef<span style="color:#f92672">-</span>paramtype <span style="color:#f92672">NE</span> <span style="color:#e6db74">&#39;T&#39;</span>.
+      <span style="color:#66d9ef">ASSIGN</span> (ls_zz_trans_fupararef<span style="color:#f92672">-</span>parameter) <span style="color:#66d9ef">TO</span> &lt;fs_zz_trans_workarea&gt;.
+      <span style="color:#66d9ef">IF</span> &lt;fs_zz_trans_workarea&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+        <span style="color:#66d9ef">IF</span> &lt;fs_zz_trans_workarea&gt; <span style="color:#f92672">IS NOT INITIAL</span>.
+          <span style="color:#75715e">&#34;反射&#34;
+</span><span style="color:#75715e"></span>          lo_cl_abap_typedescr <span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( &lt;fs_zz_trans_workarea&gt; ).
+          <span style="color:#66d9ef">CASE</span> lo_cl_abap_typedescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>kind.
+            <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;E&#39;</span>. <span style="color:#75715e">&#34;元素&#34;
+</span><span style="color:#75715e"></span>              lo_cl_abap_elemdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lo_cl_abap_typedescr.
+              <span style="color:#66d9ef">IF</span> lo_cl_abap_elemdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>edit_mask <span style="color:#f92672">IS NOT INITIAL</span>. <span style="color:#75715e">&#34;存在转换例程&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_&#39;</span> lo_cl_abap_elemdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>edit_mask<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;_INPUT&#39;</span> 
+                <span style="color:#66d9ef">INTO</span> lv_zz_trans_funtion_name.
+                <span style="color:#66d9ef">TRY</span> .
+                    <span style="color:#66d9ef">CALL FUNCTION</span> lv_zz_trans_funtion_name
+                      <span style="color:#66d9ef">EXPORTING</span>
+                        input         <span style="color:#f92672">=</span> &lt;fs_zz_trans_workarea&gt;
+                      <span style="color:#66d9ef">IMPORTING</span>
+                        output        <span style="color:#f92672">=</span> &lt;fs_zz_trans_workarea&gt;
+                      <span style="color:#66d9ef">EXCEPTIONS</span>
+                        error_message <span style="color:#f92672">=</span> <span style="color:#ae81ff">99</span>.
+                    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+                    <span style="color:#66d9ef">ENDIF</span>.
+                  <span style="color:#66d9ef">CATCH</span> cx_root <span style="color:#66d9ef">INTO</span> lo_zz_trans_root_error.
+                <span style="color:#66d9ef">ENDTRY</span>.
+              <span style="color:#66d9ef">ENDIF</span>.
+            <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;S&#39;</span>.<span style="color:#75715e">&#34;结构&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#75715e">&#34;反射&#34;
+</span><span style="color:#75715e"></span>              lo_cl_abap_structdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( 
+                &lt;fs_zz_trans_workarea&gt; ).
+              <span style="color:#75715e">&#34;组成结构体的各个字段组件&#34;
+</span><span style="color:#75715e"></span>              lt_zz_trans_comp_tab[] <span style="color:#f92672">=</span> lo_cl_abap_structdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_components</span>( ).
+              <span style="color:#75715e">&#34;递归INCLUDE结构&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">LOOP AT </span>lt_zz_trans_comp_tab <span style="color:#66d9ef">INTO</span> ls_zz_trans_comp_descr <span style="color:#66d9ef">WHERE</span> as_include <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>. 
+                <span style="color:#66d9ef">REFRESH</span> e_components_result.
+                <span style="color:#66d9ef">CLEAR</span>: e_components_result.
+                lo_cl_abap_structdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>type.
+                e_components_result <span style="color:#f92672">=</span> lo_cl_abap_structdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_components</span>( ).
+                <span style="color:#66d9ef">APPEND LINES OF</span> e_components_result[] <span style="color:#66d9ef">TO</span> lt_zz_trans_comp_tab[].
+              <span style="color:#66d9ef">ENDLOOP</span>.
+              <span style="color:#66d9ef">LOOP AT </span>lt_zz_trans_comp_tab <span style="color:#66d9ef">INTO</span> ls_zz_trans_comp_descr.
+                <span style="color:#66d9ef">IF</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>as_include <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+                  <span style="color:#66d9ef">DELETE</span> lt_zz_trans_comp_tab.
+                  <span style="color:#66d9ef">CONTINUE</span>.
+                <span style="color:#66d9ef">ENDIF</span>.
+                lo_cl_abap_elemdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>type.
+                <span style="color:#66d9ef">IF</span> lo_cl_abap_elemdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>edit_mask <span style="color:#f92672">IS INITIAL</span>. <span style="color:#75715e">&#34;不存在转换例程&#34;
+</span><span style="color:#75715e"></span>                  <span style="color:#66d9ef">DELETE</span> lt_zz_trans_comp_tab.
+                  <span style="color:#66d9ef">CONTINUE</span>.
+                <span style="color:#66d9ef">ENDIF</span>.
+                <span style="color:#75715e">&#34;存在例程&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>name <span style="color:#66d9ef">OF STRUCTURE</span> 
+                  &lt;fs_zz_trans_workarea&gt; <span style="color:#66d9ef">TO</span> &lt;fs_zz_trans_field&gt;.
+                <span style="color:#66d9ef">IF</span> &lt;fs_zz_trans_field&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+                  <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_&#39;</span> lo_cl_abap_elemdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>edit_mask<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;_INPUT&#39;</span> 
+                  <span style="color:#66d9ef">INTO</span> lv_zz_trans_funtion_name.
+                  <span style="color:#66d9ef">TRY</span> .
+                      <span style="color:#66d9ef">CALL FUNCTION</span> lv_zz_trans_funtion_name
+                        <span style="color:#66d9ef">EXPORTING</span>
+                          input         <span style="color:#f92672">=</span> &lt;fs_zz_trans_field&gt;
+                        <span style="color:#66d9ef">IMPORTING</span>
+                          output        <span style="color:#f92672">=</span> &lt;fs_zz_trans_field&gt;
+                        <span style="color:#66d9ef">EXCEPTIONS</span>
+                          error_message <span style="color:#f92672">=</span> <span style="color:#ae81ff">99</span>.
+                      <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+                      <span style="color:#66d9ef">ENDIF</span>.
+                    <span style="color:#66d9ef">CATCH</span> cx_root <span style="color:#66d9ef">INTO</span> lo_zz_trans_root_error.
+                  <span style="color:#66d9ef">ENDTRY</span>.
+                <span style="color:#66d9ef">ENDIF</span>.
+              <span style="color:#66d9ef">ENDLOOP</span>.
+            <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+          <span style="color:#66d9ef">ENDCASE</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> ls_zz_trans_fupararef<span style="color:#f92672">-</span>parameter <span style="color:#e6db74">&#39;[]&#39;</span> <span style="color:#66d9ef">INTO</span> lv_zz_trans_table_name.
+      <span style="color:#66d9ef">ASSIGN</span> (lv_zz_trans_table_name) <span style="color:#66d9ef">TO</span> &lt;fs_zz_trans_tab&gt;.
+      <span style="color:#66d9ef">IF</span> &lt;fs_zz_trans_tab&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+        <span style="color:#66d9ef">IF</span> &lt;fs_zz_trans_tab&gt; <span style="color:#f92672">IS NOT INITIAL</span>.
+          <span style="color:#75715e">&#34;获取字段转换例程&#34;
+</span><span style="color:#75715e"></span>          LOOP <span style="color:#66d9ef">AT</span> &lt;fs_zz_trans_tab&gt; <span style="color:#66d9ef">ASSIGNING</span> &lt;fs_zz_trans_workarea&gt;.
+            <span style="color:#66d9ef">EXIT</span>.
+          <span style="color:#66d9ef">ENDLOOP</span>.
+          <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+            <span style="color:#75715e">&#34;反射&#34;
+</span><span style="color:#75715e"></span>            lo_cl_abap_structdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( &lt;fs_zz_trans_workarea&gt; ).
+            <span style="color:#75715e">&#34;组成结构体的各个字段组件&#34;
+</span><span style="color:#75715e"></span>            lt_zz_trans_comp_tab[] <span style="color:#f92672">=</span> lo_cl_abap_structdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_components</span>( ).
+            <span style="color:#75715e">&#34;递归INCLUDE结构&#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">LOOP AT </span>lt_zz_trans_comp_tab <span style="color:#66d9ef">INTO</span> ls_zz_trans_comp_descr <span style="color:#66d9ef">WHERE</span> as_include <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>. 
+              <span style="color:#66d9ef">CLEAR</span>: e_components_result.
+              lo_cl_abap_structdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>type.
+              e_components_result <span style="color:#f92672">=</span> lo_cl_abap_structdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_components</span>( ).
+              <span style="color:#66d9ef">APPEND LINES OF</span> e_components_result <span style="color:#66d9ef">TO</span> lt_zz_trans_comp_tab[].
+            <span style="color:#66d9ef">ENDLOOP</span>.
+            <span style="color:#66d9ef">LOOP AT </span>lt_zz_trans_comp_tab <span style="color:#66d9ef">INTO</span> ls_zz_trans_comp_descr.
+              <span style="color:#66d9ef">IF</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>as_include <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+                <span style="color:#66d9ef">DELETE</span> lt_zz_trans_comp_tab.
+                <span style="color:#66d9ef">CONTINUE</span>.
+              <span style="color:#66d9ef">ENDIF</span>.
+              lo_cl_abap_elemdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>type.
+              <span style="color:#66d9ef">IF</span> lo_cl_abap_elemdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>edit_mask <span style="color:#f92672">IS INITIAL</span>. <span style="color:#75715e">&#34;不存在转换例程&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">DELETE</span> lt_zz_trans_comp_tab.
+                <span style="color:#66d9ef">CONTINUE</span>.
+              <span style="color:#66d9ef">ENDIF</span>.
+            <span style="color:#66d9ef">ENDLOOP</span>.
+          <span style="color:#66d9ef">ENDIF</span>.
+          <span style="color:#75715e">&#34;转换处理&#34;
+</span><span style="color:#75715e"></span>          LOOP <span style="color:#66d9ef">AT</span> &lt;fs_zz_trans_tab&gt; <span style="color:#66d9ef">ASSIGNING</span> &lt;fs_zz_trans_workarea&gt;.
+            <span style="color:#66d9ef">LOOP AT </span>lt_zz_trans_comp_tab <span style="color:#66d9ef">INTO</span> ls_zz_trans_comp_descr.
+              lo_cl_abap_elemdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>type.
+              <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> ls_zz_trans_comp_descr<span style="color:#f92672">-</span>name <span style="color:#66d9ef">OF STRUCTURE</span> &lt;fs_zz_trans_workarea&gt; <span style="color:#66d9ef">TO</span> &lt;fs_zz_trans_field&gt;.
+              <span style="color:#66d9ef">IF</span> &lt;fs_zz_trans_field&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+                <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;CONVERSION_EXIT_&#39;</span> lo_cl_abap_elemdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>edit_mask<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;_INPUT&#39;</span> 
+                <span style="color:#66d9ef">INTO</span>  lv_zz_trans_funtion_name.
+                <span style="color:#66d9ef">TRY</span>.
+                    <span style="color:#66d9ef">CALL FUNCTION</span> lv_zz_trans_funtion_name
+                      <span style="color:#66d9ef">EXPORTING</span>
+                        input         <span style="color:#f92672">=</span> &lt;fs_zz_trans_field&gt;
+                      <span style="color:#66d9ef">IMPORTING</span>
+                        output        <span style="color:#f92672">=</span> &lt;fs_zz_trans_field&gt;
+                      <span style="color:#66d9ef">EXCEPTIONS</span>
+                        error_message <span style="color:#f92672">=</span> <span style="color:#ae81ff">99</span>.
+                    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+                    <span style="color:#66d9ef">ENDIF</span>.
+                  <span style="color:#66d9ef">CATCH</span> cx_root <span style="color:#66d9ef">INTO</span> lo_zz_trans_root_error.
+                <span style="color:#66d9ef">ENDTRY</span>.
+              <span style="color:#66d9ef">ENDIF</span>.
+            <span style="color:#66d9ef">ENDLOOP</span>.
+          <span style="color:#66d9ef">ENDLOOP</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>862</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_Reflection/" class="prev" rel="prev" title=" ABAP 反射 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 反射 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionClass/" class="next" rel="next" title=" ABAP 获取CLASS参数结果 "> ABAP 获取CLASS参数结果 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-04-21 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 获取FM参数结果 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

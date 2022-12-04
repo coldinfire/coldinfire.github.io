@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Webservice/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_Memory/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_DOI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP DOI使用 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP DOI使用 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP DOI使用"/>
+<meta name="twitter:description" content="概述 DOI（Desktop office Integration）采用 OO 的思想实现与 Office 的结合使用。SAP 标准DEMO： SAPRDEMOEXCEL_EXPO"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP DOI使用",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_DOI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV, DOI",
+  "wordcount":  3940 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_DOI\/",
+  "datePublished": "2019-02-22T00:00:00\u002b00:00",
+  "dateModified": "2019-02-22T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP DOI使用</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-02-22 >22 February 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="概述">概述</h2>
+<p>DOI（Desktop office Integration）采用 OO 的思想实现与 Office 的结合使用。SAP 标准DEMO： SAPRDEMOEXCEL_EXPORT、SAPRDEMO_DOI_BDS。</p>
+<p>文档使用方式：</p>
+<ul>
+<li>先上传模板到服务器(OAOR)，然后对模板进行填充
+<ul>
+<li>OAOR：class name、class type、object key</li>
+</ul>
+</li>
+<li>通过代码直接创建 ExceL / Word 文档</li>
+</ul>
+<h4 id="核心对象">核心对象</h4>
+<ul>
+<li>container：类型是 <code>cl_gui_custom_container</code>；存放 Excel 电子表格(spreadsheet)的容器，spreadsheet 需要一个容器来存放，标准的 container 接口的类型是 <code>cl_gui_container</code></li>
+<li>container control：类型是 <code>i_oi_container_control</code>；容器中用于创建和管理其他 Office 集成所需要的对象</li>
+<li>document proxy：类型是 <code>i_oi_document_proxy</code>；每一个 document proxy 的实例代表用 office application 打开的文档。如果想打开多个文档，需要定义多个实例</li>
+<li>spreadsheet: 类型是<code>i_oi_spreadsheet</code>；spreadsheet 接口代表最终要操作的 excel 文档。</li>
+<li>errors：类型是 <code>i_oi_error</code>；异常的处理，保存操作时产生的异常信息</li>
+<li>retcode ：类型是 <code>soi_ret_string</code>；执行方法时返回的消息字符串</li>
+<li>splitter container：类型是<code>cl_gui_splitter_container</code>；动态的可以拆分的容器，可存放多个标准的(cl_gui_container)电子表格</li>
+</ul>
+<p>如果读取服务器上的文档模板，需要 <code>cl_bds_document_set</code> 类：</p>
+<ul>
+<li>business document set：类型<code>cl_bds_document_set</code>，用于管理后续要操作的文档，可以包含一个或多个文档。</li>
+<li>link server：类型<code>i_oi_link_server</code>，连接服务器对象</li>
+</ul>
+<h4 id="操作-excel-步骤-oaor上传文档后">操作 Excel 步骤 (OAOR上传文档后)</h4>
+<ol>
+<li>获取 container 容器</li>
+<li>创建 container control 对象实例并初始化</li>
+<li>创建 document proxy 对象的实例</li>
+<li>打开一个服务器上的模板文档或新建一个 excel 文档</li>
+<li>操作 excel 文档，设置 excel 的属性</li>
+<li>退出时关闭 excel 文档，释放资源</li>
+<li>异常管理</li>
+</ol>
+<h2 id="doi-定义和使用">DOI 定义和使用</h2>
+<h3 id="字段定义">字段定义</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPE-POOLS</span>: slis,soi,sbdst,vrm.
+<span style="color:#66d9ef">CLASS</span> c_oi_errors <span style="color:#66d9ef">DEFINITION</span> <span style="color:#66d9ef">LOAD</span>.
+<span style="color:#66d9ef">TYPES</span>:t_url <span style="color:#66d9ef">LIKE </span>bapiuri<span style="color:#f92672">-</span>uri.
+<span style="color:#66d9ef">DATA</span>: fcode <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>ucomm.
+<span style="color:#75715e">* SAP Desktop Office Integration Interfaces</span>
+<span style="color:#66d9ef">DATA</span>: container <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_container,
+      custom_container <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_custom_container,
+      control   <span style="color:#66d9ef">TYPE REF TO</span> i_oi_container_control,
+<span style="color:#75715e">*      document  TYPE REF TO i_oi_document_proxy,</span>
+      spreadsheet_interface <span style="color:#66d9ef">TYPE REF TO</span> i_oi_spreadsheet,
+      error     <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error,
+      retcode   <span style="color:#66d9ef">TYPE </span>soi_ret_string,
+      splitter  <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_splitter_container.
+<span style="color:#75715e">* Spreadsheet Option Paramter</span>
+<span style="color:#66d9ef">DATA</span>: document_type <span style="color:#66d9ef">TYPE </span>soi_document_type,
+      document_format <span style="color:#66d9ef">TYPE </span>soi_document_type,
+      doc_url <span style="color:#66d9ef">TYPE </span>t_url.
+
+<span style="color:#66d9ef">DATA</span>: is_open_inplace  <span style="color:#66d9ef">TYPE </span>i <span style="color:#66d9ef">VALUE</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#66d9ef">DATA</span>: is_open_for_edit <span style="color:#66d9ef">TYPE </span>i <span style="color:#66d9ef">VALUE</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#66d9ef">DATA</span>: is_available     <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#75715e">* Spreadsheet interface structures for Excel data input</span>
+<span style="color:#66d9ef">DATA</span>: wa_cellitem    <span style="color:#66d9ef">TYPE </span>soi_generic_item,
+      wa_rangeitem   <span style="color:#66d9ef">TYPE </span>soi_range_item,
+      gt_ranges      <span style="color:#66d9ef">TYPE </span>soi_range_list,
+      gt_excel_input <span style="color:#66d9ef">TYPE </span>soi_generic_table,
+      wa_excel_input <span style="color:#66d9ef">TYPE </span>soi_generic_item,
+      g_initialized  <span style="color:#66d9ef">TYPE </span>c,
+      gt_excel_format <span style="color:#66d9ef">TYPE </span>soi_format_table,
+      wa_format      <span style="color:#66d9ef">LIKE LINE OF</span> gt_excel_format.
+</code></pre></div><p>OAOR  模板方法参数定义</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* OAOR Template parameter</span>
+<span style="color:#66d9ef">DATA</span>: g_classname  <span style="color:#66d9ef">TYPE </span>sbdst_classname <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;HRFPM_EXCEL_STANDARD&#39;</span>,
+      g_classtype  <span style="color:#66d9ef">TYPE </span>sbdst_classtype <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;OT&#39;</span>,
+      g_object_key <span style="color:#66d9ef">TYPE </span>sbdst_object_key <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;ZTEST&#39;</span>.
+<span style="color:#75715e">&#34;BDS Method Parameter&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: bds_instance   <span style="color:#66d9ef">TYPE REF TO</span> cl_bds_document_set,
+      link_server    <span style="color:#66d9ef">TYPE REF TO</span> i_oi_link_server,
+      gt_doc_signature  <span style="color:#66d9ef">TYPE </span>sbdst_signature,
+      wa_doc_signature  <span style="color:#66d9ef">LIKE LINE OF</span> gt_doc_signature,
+      gt_doc_components <span style="color:#66d9ef">TYPE </span>sbdst_components,
+      gt_doc_uris       <span style="color:#66d9ef">TYPE </span>sbdst_uri,
+      wa_doc_uris       <span style="color:#66d9ef">LIKE LINE OF</span> gt_doc_uris.
+</code></pre></div><h3 id="创建-doi">创建 DOI</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL SCREEN</span> <span style="color:#ae81ff">100</span>.
+<span style="color:#75715e">&#34;Screen 100 PBO &amp; PAI&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">status_0100</span> <span style="color:#66d9ef">OUTPUT</span>.
+  <span style="color:#66d9ef">SET PF-STATUS</span> <span style="color:#e6db74">&#39;MAIN0100&#39;</span>.
+  <span style="color:#66d9ef">SET TITLEBAR</span> <span style="color:#e6db74">&#39;001&#39;</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">get_dynamic_container</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">get_control</span>.
+<span style="color:#66d9ef">ENDMODULE</span>.                 <span style="color:#75715e">&#34; STATUS_0100  OUTPUT &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">user_command_0100</span> <span style="color:#66d9ef">INPUT</span>.
+  ...
+<span style="color:#66d9ef">ENDMODULE</span>.                 <span style="color:#75715e">&#34; USER_COMMAND_0100  INPUT &#34;
+</span><span style="color:#75715e">&#34;DOI Define&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">get_dynamic_container</span>.
+  <span style="color:#66d9ef">CREATE OBJECT</span> splitter
+    <span style="color:#66d9ef">EXPORTING</span>
+      parent  <span style="color:#f92672">=</span> cl_gui_container<span style="color:#f92672">=&gt;</span>screen0
+      rows    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      columns <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">CALL METHOD</span> splitter<span style="color:#f92672">-&gt;</span>set_border
+    <span style="color:#66d9ef">EXPORTING</span>
+      border <span style="color:#f92672">=</span> cl_gui_cfw<span style="color:#f92672">=&gt;</span>false.
+  container <span style="color:#f92672">=</span> splitter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_container</span>( row <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> column <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; GET_DYNAMIC_CONTAINER &#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">get_control</span> .
+  <span style="color:#66d9ef">IF</span> control <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">DATA</span>:l_has_activex.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;GUI_HAS_ACTIVEX&#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">=</span> l_has_activex.
+    <span style="color:#66d9ef">IF</span> l_has_activex <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;Use a Windows GUI for this program&#39;</span> TYPE <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*===== Get container (静态Container) =====*</span>
+    <span style="color:#66d9ef">CREATE OBJECT</span> custom_container
+      <span style="color:#66d9ef">EXPORTING</span>
+        container_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DOI_PARENT&#39;</span>. <span style="color:#75715e">&#34;100屏幕上的控件名.&#34;
+</span><span style="color:#75715e">*===== Get the SAP DOI container control interface =====*</span>
+    <span style="color:#66d9ef">CALL METHOD</span> c_oi_container_control_creator<span style="color:#f92672">=&gt;</span>get_container_control
+      <span style="color:#66d9ef">IMPORTING</span>
+        control <span style="color:#f92672">=</span> control
+        error   <span style="color:#f92672">=</span> error.
+   <span style="color:#75715e">&#34;check no errors occured&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CALL METHOD</span> error<span style="color:#f92672">-&gt;</span>raise_message
+      <span style="color:#66d9ef">EXPORTING</span>
+        type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#75715e">*===== Initialize the SAP DOI Container, tell it to run in the container =====*</span>
+    <span style="color:#66d9ef">CALL METHOD</span> control<span style="color:#f92672">-&gt;</span>init_control
+      <span style="color:#66d9ef">EXPORTING</span>
+        inplace_enabled          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+        inplace_scroll_documents <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+        register_on_close_event  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+        register_on_custom_event <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+        r3_application_name      <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid
+        parent                   <span style="color:#f92672">=</span> custom_container
+        no_flush                 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+        error                    <span style="color:#f92672">=</span> error.
+    <span style="color:#66d9ef">CALL METHOD</span> error<span style="color:#f92672">-&gt;</span>raise_message
+      <span style="color:#66d9ef">EXPORTING</span>
+        type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; GET_CONTROL &#34;
+</span></code></pre></div><h3 id="对-document-进行操作">对 Document 进行操作</h3>
+<h4 id="自定义类并封装标准的方法">自定义类并封装标准的方法</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS c_office_document DEFINITION</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> c_office_document <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">DATA</span>: proxy <span style="color:#66d9ef">TYPE REF TO</span> i_oi_document_proxy.
+    <span style="color:#66d9ef">DATA</span>: document_type <span style="color:#66d9ef">TYPE </span>soi_document_type.
+    <span style="color:#66d9ef">DATA</span>: document_format <span style="color:#66d9ef">TYPE </span>soi_document_type.
+    <span style="color:#66d9ef">DATA</span>: has_changed_at_reopen <span style="color:#66d9ef">TYPE </span>i.
+    <span style="color:#66d9ef">DATA</span>: data_table <span style="color:#66d9ef">TYPE </span>sbdst_content,
+          data_size <span style="color:#66d9ef">TYPE </span>i,
+          doc_url <span style="color:#66d9ef">TYPE </span>t_url.
+<span style="color:#75715e">*   Constructor</span>
+    <span style="color:#66d9ef">METHODS</span>: constructor
+              <span style="color:#66d9ef">IMPORTING</span> control <span style="color:#66d9ef">TYPE REF TO</span> i_oi_container_control
+                        document_type <span style="color:#66d9ef">TYPE </span>c
+                        document_format <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#75715e">*   Close Event Processor</span>
+    <span style="color:#66d9ef">METHODS</span>: on_close_document
+              <span style="color:#66d9ef">FOR EVENT</span> on_close_document <span style="color:#66d9ef">OF</span> i_oi_document_proxy
+              <span style="color:#66d9ef">IMPORTING</span> document_proxy has_changed.
+<span style="color:#75715e">*   Create Docuent</span>
+    <span style="color:#66d9ef">METHODS</span>: create_document
+                  <span style="color:#66d9ef">IMPORTING</span> open_inplace  <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39; &#39;</span>
+                  <span style="color:#66d9ef">EXPORTING</span> retcode <span style="color:#66d9ef">TYPE </span>soi_ret_string.
+<span style="color:#75715e">*   Open Docuent</span>
+    <span style="color:#66d9ef">METHODS</span>: open_document
+                  <span style="color:#66d9ef">IMPORTING</span> open_inplace  <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39; &#39;</span>
+                            open_readonly <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39; &#39;</span>
+                  <span style="color:#66d9ef">EXPORTING</span> retcode <span style="color:#66d9ef">TYPE </span>soi_ret_string.
+<span style="color:#75715e">*   Re-Open Docuent</span>
+    <span style="color:#66d9ef">METHODS</span>: reopen_document
+                  <span style="color:#66d9ef">IMPORTING</span> open_inplace  <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39; &#39;</span>
+                  <span style="color:#66d9ef">EXPORTING</span> retcode <span style="color:#66d9ef">TYPE </span>soi_ret_string.
+    <span style="color:#66d9ef">METHODS</span>: view_document
+                  <span style="color:#66d9ef">EXPORTING</span> retcode <span style="color:#66d9ef">TYPE </span>soi_ret_string.
+<span style="color:#75715e">*   Close Docuent</span>
+    <span style="color:#66d9ef">METHODS</span>: close_document
+                  <span style="color:#66d9ef">IMPORTING</span> do_save     <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39; &#39;</span>
+                  <span style="color:#66d9ef">EXPORTING</span> retcode     <span style="color:#66d9ef">TYPE </span>soi_ret_string
+                            error       <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error.
+<span style="color:#75715e">*   Check for availability of Spreadsheet interface</span>
+    <span style="color:#66d9ef">METHODS</span>: has_spreadsheet_interface
+                  <span style="color:#66d9ef">EXPORTING</span> is_available <span style="color:#66d9ef">TYPE </span>i
+                            retcode      <span style="color:#66d9ef">TYPE </span>soi_ret_string
+                            error        <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error.
+<span style="color:#75715e">*   Get the Spreadsheet interface</span>
+    <span style="color:#66d9ef">METHODS</span>: get_spreadsheet_interface
+                  <span style="color:#66d9ef">EXPORTING</span> retcode         <span style="color:#66d9ef">TYPE </span>soi_ret_string
+                            error           <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error.
+<span style="color:#75715e">*   Method in Spreadsheet interface to set the data for ranges in Excel</span>
+    <span style="color:#66d9ef">METHODS</span>: set_ranges_data
+                 <span style="color:#66d9ef">IMPORTING</span> <span style="color:#66d9ef">ranges</span>    <span style="color:#66d9ef">TYPE </span>soi_range_list
+                           contents  <span style="color:#66d9ef">TYPE </span>soi_generic_table
+                 <span style="color:#66d9ef">EXPORTING</span> error     <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error
+                           retcode   <span style="color:#66d9ef">TYPE </span>soi_ret_string.
+<span style="color:#75715e">*   Method in Spreadsheet interface to set the ranges in Excel</span>
+    <span style="color:#66d9ef">METHODS</span>: insert_range
+                <span style="color:#66d9ef">IMPORTING</span> rows    <span style="color:#66d9ef">TYPE </span>i
+                          columns <span style="color:#66d9ef">TYPE </span>i
+                          name    <span style="color:#66d9ef">TYPE </span>c
+                <span style="color:#66d9ef">EXPORTING</span> error   <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error
+                          retcode <span style="color:#66d9ef">TYPE </span>soi_ret_string.
+<span style="color:#75715e">*   Save the document at given URL.</span>
+    <span style="color:#66d9ef">METHODS</span>: save_document_to_url
+                 <span style="color:#66d9ef">IMPORTING</span> url         <span style="color:#66d9ef">TYPE </span>t_url
+                 <span style="color:#66d9ef">EXPORTING</span> error       <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error
+                           retcode     <span style="color:#66d9ef">TYPE </span>soi_ret_string
+                 <span style="color:#66d9ef">CHANGING</span>  document_size <span style="color:#66d9ef">TYPE </span>i.
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">DATA</span>: control  <span style="color:#66d9ef">TYPE REF TO</span> i_oi_container_control.
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;c_office_document DEFINITION&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">DATA</span>: document <span style="color:#66d9ef">TYPE REF TO</span> c_office_document.
+
+<span style="color:#75715e">************************************************************************</span>
+<span style="color:#75715e">*  CLASS c_office_document IMPLEMENTATION.</span>
+<span style="color:#75715e">************************************************************************</span>
+<span style="color:#66d9ef">CLASS</span> c_office_document <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span>: constructor.
+<span style="color:#75715e">*              IMPORTING control TYPE REF TO i_oi_container_control</span>
+<span style="color:#75715e">*                        document_type TYPE soi_document_type</span>
+<span style="color:#75715e">*                        document_format TYPE soi_document_type</span>
+    me<span style="color:#f92672">-&gt;</span>control <span style="color:#f92672">=</span> control.
+    me<span style="color:#f92672">-&gt;</span>document_type <span style="color:#f92672">=</span> document_type.
+    me<span style="color:#f92672">-&gt;</span>document_format <span style="color:#f92672">=</span> document_format.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;constructor&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">create_document</span>.
+<span style="color:#75715e">*                 IMPORTING open_inplace  TYPE c DEFAULT &#39; &#39;</span>
+<span style="color:#75715e">*                 RETURNING value(retcode) TYPE t_oi_ret_string.</span>
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> proxy <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> me<span style="color:#f92672">-&gt;</span>close_document.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> control<span style="color:#f92672">-&gt;</span>get_document_proxy
+      <span style="color:#66d9ef">EXPORTING</span>
+        document_type   <span style="color:#f92672">=</span> document_type
+        document_format <span style="color:#f92672">=</span> document_format
+      <span style="color:#66d9ef">IMPORTING</span>
+        document_proxy  <span style="color:#f92672">=</span> proxy
+        retcode         <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>create_document
+      <span style="color:#66d9ef">EXPORTING</span>
+        create_view_data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+        open_inplace     <span style="color:#f92672">=</span> open_inplace
+      <span style="color:#66d9ef">IMPORTING</span>
+        retcode          <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">SET HANDLER</span> me<span style="color:#f92672">-&gt;</span>on_close_document <span style="color:#66d9ef">FOR</span> proxy.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;create_document&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">open_document</span>.
+<span style="color:#75715e">*                 IMPORTING open_inplace  TYPE c DEFAULT &#39; &#39;</span>
+<span style="color:#75715e">*                           open_readonly TYPE c DEFAULT &#39; &#39;</span>
+<span style="color:#75715e">*                 RETURNING value(retcode) TYPE t_oi_ret_string.</span>
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> proxy <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> me<span style="color:#f92672">-&gt;</span>close_document.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> control<span style="color:#f92672">-&gt;</span>get_document_proxy
+      <span style="color:#66d9ef">EXPORTING</span>
+        document_type   <span style="color:#f92672">=</span> document_type
+        document_format <span style="color:#f92672">=</span> document_format
+      <span style="color:#66d9ef">IMPORTING</span>
+        document_proxy  <span style="color:#f92672">=</span> proxy
+        retcode         <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>open_document_from_table
+      <span style="color:#66d9ef">EXPORTING</span>
+        document_table <span style="color:#f92672">=</span> data_table
+        document_size  <span style="color:#f92672">=</span> data_size
+        open_inplace   <span style="color:#f92672">=</span> open_inplace
+        open_readonly  <span style="color:#f92672">=</span> open_readonly
+      <span style="color:#66d9ef">IMPORTING</span>
+        retcode        <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">SET HANDLER</span> me<span style="color:#f92672">-&gt;</span>on_close_document <span style="color:#66d9ef">FOR</span> proxy.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;open_document&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">reopen_document</span>.
+<span style="color:#75715e">*                 IMPORTING open_inplace  TYPE c DEFAULT &#39; &#39;</span>
+<span style="color:#75715e">*                 RETURNING value(retcode) TYPE t_oi_ret_string.</span>
+    <span style="color:#66d9ef">DATA</span>: l_has_changed <span style="color:#66d9ef">TYPE </span>i.
+    <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>reopen_document
+      <span style="color:#66d9ef">EXPORTING</span>
+        open_inplace <span style="color:#f92672">=</span> open_inplace
+      <span style="color:#66d9ef">IMPORTING</span>
+        has_changed  <span style="color:#f92672">=</span> l_has_changed
+        retcode      <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> l_has_changed <span style="color:#f92672">IS INITIAL</span>.
+      has_changed_at_reopen <span style="color:#f92672">=</span> l_has_changed.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">SET HANDLER</span> me<span style="color:#f92672">-&gt;</span>on_close_document <span style="color:#66d9ef">FOR</span> proxy.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;reopen_document&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">view_document</span>.
+<span style="color:#75715e">*                 RETURNING value(retcode) TYPE t_oi_ret_string.</span>
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> proxy <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> me<span style="color:#f92672">-&gt;</span>close_document.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> control<span style="color:#f92672">-&gt;</span>get_document_proxy
+      <span style="color:#66d9ef">EXPORTING</span>
+        document_type   <span style="color:#f92672">=</span> document_type
+        document_format <span style="color:#f92672">=</span> document_format
+      <span style="color:#66d9ef">IMPORTING</span>
+        document_proxy  <span style="color:#f92672">=</span> proxy
+        retcode         <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>view_document_from_table
+      <span style="color:#66d9ef">EXPORTING</span>
+        document_table <span style="color:#f92672">=</span> data_table
+        document_size  <span style="color:#f92672">=</span> data_size
+        open_inplace   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+        retcode        <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">SET HANDLER</span> me<span style="color:#f92672">-&gt;</span>on_close_document <span style="color:#66d9ef">FOR</span> proxy.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;view_document&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">close_document</span>.
+<span style="color:#75715e">*                 IMPORTING do_save TYPE c DEFAULT &#39; &#39;</span>
+<span style="color:#75715e">*                 RETURNING value(retcode) TYPE t_oi_ret_string.</span>
+    <span style="color:#66d9ef">DATA</span>: has_changed <span style="color:#66d9ef">TYPE </span>i, is_closed <span style="color:#66d9ef">TYPE </span>i.
+    <span style="color:#66d9ef">DATA</span>: save_error <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error.
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> proxy <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>is_destroyed
+        <span style="color:#66d9ef">IMPORTING</span>
+          ret_value <span style="color:#f92672">=</span> is_closed.
+      <span style="color:#66d9ef">IF</span> is_closed <span style="color:#f92672">IS INITIAL</span>.
+        <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>close_document
+          <span style="color:#66d9ef">EXPORTING</span>
+            do_save     <span style="color:#f92672">=</span> do_save
+          <span style="color:#66d9ef">IMPORTING</span>
+            has_changed <span style="color:#f92672">=</span> has_changed
+            retcode     <span style="color:#f92672">=</span> retcode
+            error       <span style="color:#f92672">=</span> error.
+        <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+          <span style="color:#66d9ef">EXIT</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> has_changed <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span>
+                       ( <span style="color:#f92672">NOT</span> has_changed_at_reopen <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">AND</span>
+                         <span style="color:#f92672">NOT</span> do_save <span style="color:#f92672">IS INITIAL</span> ).
+        <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>save_document_to_table
+          <span style="color:#66d9ef">EXPORTING</span>
+            no_flush       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+          <span style="color:#66d9ef">IMPORTING</span>
+            error          <span style="color:#f92672">=</span> save_error
+          <span style="color:#66d9ef">CHANGING</span>
+            document_table <span style="color:#f92672">=</span> data_table
+            document_size  <span style="color:#f92672">=</span> data_size.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>release_document
+        <span style="color:#66d9ef">IMPORTING</span>
+          retcode <span style="color:#f92672">=</span> retcode
+          error   <span style="color:#f92672">=</span> error.
+      <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> save_error <span style="color:#f92672">IS INITIAL</span>.
+        <span style="color:#66d9ef">IF</span> save_error<span style="color:#f92672">-&gt;</span>error_code <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+          <span style="color:#66d9ef">CALL METHOD</span> save_error<span style="color:#f92672">-&gt;</span>flush_error.
+          retcode <span style="color:#f92672">=</span> save_error<span style="color:#f92672">-&gt;</span>error_code.
+          error <span style="color:#f92672">=</span> save_error.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">CLEAR</span>: has_changed_at_reopen.
+      <span style="color:#66d9ef">SET HANDLER</span> me<span style="color:#f92672">-&gt;</span>on_close_document <span style="color:#66d9ef">FOR</span> proxy ACTIVATION <span style="color:#e6db74">&#39; &#39;</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      retcode <span style="color:#f92672">=</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_document_not_open.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;close_document&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_close_document</span>.
+<span style="color:#75715e">*              FOR EVENT on_close_document OF c_oi_container_control</span>
+<span style="color:#75715e">*              IMPORTING document_proxy has_changed.</span>
+    <span style="color:#66d9ef">DATA</span>: answer, do_save.
+    <span style="color:#66d9ef">DATA</span>: save_error <span style="color:#66d9ef">TYPE REF TO</span> i_oi_error.
+    is_open_inplace <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>. is_open_for_edit <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> has_changed <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> <span style="color:#f92672">NOT</span> has_changed_at_reopen <span style="color:#f92672">IS INITIAL</span>.
+      do_save <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> me<span style="color:#f92672">-&gt;</span>close_document
+        <span style="color:#66d9ef">EXPORTING</span>
+          do_save <span style="color:#f92672">=</span> do_save
+        <span style="color:#66d9ef">IMPORTING</span>
+          error   <span style="color:#f92672">=</span> save_error.
+      <span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> save_error <span style="color:#f92672">IS INITIAL</span>.
+        <span style="color:#66d9ef">CALL METHOD</span> save_error<span style="color:#f92672">-&gt;</span>raise_message
+          <span style="color:#66d9ef">EXPORTING</span>
+            type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_close_document&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">has_spreadsheet_interface</span>.
+<span style="color:#75715e">*                  EXPORTING is_available TYPE i</span>
+<span style="color:#75715e">*                            retcode      TYPE soi_ret_string</span>
+<span style="color:#75715e">*                            error        TYPE REF TO i_oi_error.</span>
+    <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>has_spreadsheet_interface
+      <span style="color:#66d9ef">IMPORTING</span>
+        is_available <span style="color:#f92672">=</span> is_available
+        error        <span style="color:#f92672">=</span> error
+        retcode      <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;has_spreadsheet_interface&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">get_spreadsheet_interface</span>.
+<span style="color:#75715e">*                 EXPORTING sheet_interface TYPE REF to i_oi_spreadsheet</span>
+<span style="color:#75715e">*                           retcode         TYPE soi_ret_string</span>
+<span style="color:#75715e">*                           error           TYPE REF TO i_oi_error.</span>
+    <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>get_spreadsheet_interface
+      <span style="color:#66d9ef">IMPORTING</span>
+        sheet_interface <span style="color:#f92672">=</span> spreadsheet_interface
+        error           <span style="color:#f92672">=</span> error
+        retcode         <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;get_spreadsheet_interface&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_ranges_data</span>.
+<span style="color:#75715e">*                 IMPORTING ranges    TYPE soi_range_list</span>
+<span style="color:#75715e">*                           contents  TYPE soi_generic_table</span>
+<span style="color:#75715e">*                 EXPORTING error     TYPE REF TO i_oi_error</span>
+<span style="color:#75715e">*                           retcode   TYPE soi_ret_string.</span>
+    <span style="color:#66d9ef">CALL METHOD</span> spreadsheet_interface<span style="color:#f92672">-&gt;</span>set_ranges_data
+      <span style="color:#66d9ef">EXPORTING</span>
+        <span style="color:#66d9ef">ranges</span>   <span style="color:#f92672">=</span> <span style="color:#66d9ef">ranges</span>
+        contents <span style="color:#f92672">=</span> contents
+      <span style="color:#66d9ef">IMPORTING</span>
+        error    <span style="color:#f92672">=</span> error
+        retcode  <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_ranges_data&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">insert_range</span>.
+<span style="color:#75715e">*                IMPORTING rows    TYPE i</span>
+<span style="color:#75715e">*                          columns TYPE i</span>
+<span style="color:#75715e">*                          name    TYPE c</span>
+<span style="color:#75715e">*                EXPORTING error   TYPE REF TO i_oi_error</span>
+<span style="color:#75715e">*                          retcode TYPE soi_ret_string.</span>
+    <span style="color:#66d9ef">CALL METHOD</span> spreadsheet_interface<span style="color:#f92672">-&gt;</span>insert_range
+      <span style="color:#66d9ef">EXPORTING</span>
+        name    <span style="color:#f92672">=</span> name
+        rows    <span style="color:#f92672">=</span> rows
+        columns <span style="color:#f92672">=</span> columns
+      <span style="color:#66d9ef">IMPORTING</span>
+        error   <span style="color:#f92672">=</span> error
+        retcode <span style="color:#f92672">=</span> retcode.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;insert_range&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">save_document_to_url</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> proxy<span style="color:#f92672">-&gt;</span>save_document_to_url
+      <span style="color:#66d9ef">EXPORTING</span>
+        url           <span style="color:#f92672">=</span> url
+      <span style="color:#66d9ef">IMPORTING</span>
+        retcode       <span style="color:#f92672">=</span> retcode
+      <span style="color:#66d9ef">CHANGING</span>
+        document_size <span style="color:#f92672">=</span> document_size.
+    <span style="color:#66d9ef">IF</span> retcode <span style="color:#f92672">NE</span> c_oi_errors<span style="color:#f92672">=&gt;</span>ret_ok.
+      <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;save_document_to_url&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;c_office_document IMPLEMENTATION&#34;
+</span></code></pre></div><h4 id="使用自定义类操作-document">使用自定义类操作 Document</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">MODULE</span> <span style="color:#a6e22e">user_command_0100</span> <span style="color:#a6e22e">INPUT</span>.
+  ...
+<span style="color:#a6e22e">ENDMODULE</span>.                 <span style="color:#e6db74">&#34; USER_COMMAND_0100  INPUT &#34;</span>
+
+<span style="color:#f92672">*=====</span> <span style="color:#a6e22e">Create_excel_document</span>
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">control</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_document_proxy</span>
+  <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">document_type</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Excel.Sheet&#39;</span>
+    <span style="color:#a6e22e">no_flush</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#a6e22e">importing</span>
+    <span style="color:#a6e22e">document_proxy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gr_document</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> document<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">create_document</span>
+  <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">document_title</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DOI test by Stone Wang &#39;</span>
+    <span style="color:#a6e22e">no_flush</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X &#39;</span>
+    <span style="color:#a6e22e">open_inplace</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+</code></pre></div><h4 id="操作模板文档">操作模板文档：</h4>
+<p>操作 excel 模板文档，使用 cl_bds_document_set 类，这个类的 get_with_url 方法获取文档的 url。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span> <span style="color:#a6e22e">Business</span> document <span style="color:#a6e22e">system</span>
+<span style="color:#f92672">*=====</span> <span style="color:#a6e22e">Server</span> <span style="color:#a6e22e">Link</span> <span style="color:#a6e22e">Check</span> <span style="color:#f92672">=====*</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">control</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_link_server</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">no_flush</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#a6e22e">IMPORTING</span>
+    <span style="color:#a6e22e">link_server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">link_server</span>
+    <span style="color:#a6e22e">error</span>       <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">control</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">init_control</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">r3_application_name</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">repid</span>      
+    <span style="color:#a6e22e">parent</span>                <span style="color:#f92672">=</span> <span style="color:#a6e22e">customer_container</span>
+    <span style="color:#a6e22e">inplace_show_toolbars</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">go_link_server</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">start_link_server</span>
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#a6e22e">IMPORTING</span>
+    <span style="color:#a6e22e">error</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span>.
+<span style="color:#f92672">*=====</span> <span style="color:#a6e22e">Create</span> <span style="color:#a6e22e">Document</span> <span style="color:#f92672">=====*</span>
+<span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> document
+  <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#a6e22e">control</span>        <span style="color:#f92672">=</span> <span style="color:#a6e22e">control</span>
+    <span style="color:#a6e22e">document_type</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">document_type</span>
+    <span style="color:#a6e22e">document_format</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">document_format</span>.
+<span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">bds_instance</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+  <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">bds_instance</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#f92672">*=====</span> <span style="color:#f92672">=====*</span>
+<span style="color:#a6e22e">wa_doc_signature</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prop_name</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DESCRIPTION&#39;</span>.
+<span style="color:#a6e22e">wa_doc_signature</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prop_value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZFBL5NP&#39;</span>.
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">wa_doc_signature</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">gt_doc_signature</span>.
+<span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">g_wa_doc_signature</span>.
+<span style="color:#a6e22e">CLEAR</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gt_doc_uris</span>[],<span style="color:#a6e22e">wa_doc_uris</span>.
+<span style="color:#f92672">*=====</span> <span style="color:#a6e22e">Get</span> <span style="color:#a6e22e">template</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=====*</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">cl_bds_document_set</span>=&gt;<span style="color:#a6e22e">get_info</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">classname</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classname</span>
+      <span style="color:#a6e22e">classtype</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classtype</span>
+      <span style="color:#a6e22e">object_key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_objectkey</span>
+    <span style="color:#a6e22e">changing</span>
+      <span style="color:#a6e22e">components</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_doc_components</span>
+      <span style="color:#a6e22e">signature</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_doc_signature</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">cl_bds_document_set</span>=&gt;<span style="color:#a6e22e">get_with_url</span>
+  <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">classname</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classname</span>
+    <span style="color:#a6e22e">classtype</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_classtype</span>
+    <span style="color:#a6e22e">object_key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_objectkey</span>
+  <span style="color:#a6e22e">changing</span>
+    <span style="color:#a6e22e">uris</span>       <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_bds_uris</span>
+    <span style="color:#a6e22e">signature</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_doc_signature</span>.
+ <span style="color:#a6e22e">free</span> <span style="color:#a6e22e">gr_bds_documents</span>.
+ <span style="color:#a6e22e">read</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">gt_bds_uris</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">gs_bds_url</span> <span style="color:#a6e22e">index</span> <span style="color:#ae81ff">1.</span>
+ <span style="color:#a6e22e">g_url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gs_bds_url</span><span style="color:#f92672">-</span><span style="color:#a6e22e">uri</span>.
+<span style="color:#e6db74">&#34;&lt;cl_bds_document_set&gt; 的静态方法get_with_url获取excel template的url。&#34;</span>
+<span style="color:#e6db74">&#34;数据存放在内表中，读取后放在global变量g_template_url里面。&#34;</span>
+
+<span style="color:#e6db74">&#34;Open the excel&#34;</span>
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_control</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_document_proxy</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">document_type</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Excel.Sheet&#39;</span>
+     <span style="color:#a6e22e">no_flush</span>          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+     <span style="color:#a6e22e">register_container</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">document_proxy</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">gr_document</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">open_document</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">open_inplace</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+     <span style="color:#a6e22e">document_url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">g_template_url</span>.
+ <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">available</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">i</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">has_spreadsheet_interface</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">no_flush</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">is_available</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">available</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_document</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_spreadsheet_interface</span>
+   <span style="color:#a6e22e">exporting</span>
+     <span style="color:#a6e22e">no_flush</span>        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+   <span style="color:#a6e22e">importing</span>
+     <span style="color:#a6e22e">sheet_interface</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gr_spreadsheet</span>.
+</code></pre></div><p>原文：<a href="https://blog.csdn.net/SAPmatinal/article/details/52776862">https://blog.csdn.net/SAPmatinal/article/details/52776862</a></p>
+<h3 id="excel-操作">Excel 操作</h3>
+<h4 id="操作excel文件">操作Excel文件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL method</span> spreadsheet<span style="color:#f92672">-&gt;</span>select_sheet
+   <span style="color:#66d9ef">exporting</span>
+     name    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Sheet1&#39;</span>
+     no_flush <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+   <span style="color:#66d9ef">importing</span>
+     error    <span style="color:#f92672">=</span> error
+     retcode  <span style="color:#f92672">=</span> retcode.
+<span style="color:#66d9ef">CALL method</span> spreadsheet<span style="color:#f92672">-&gt;</span>get_active_sheet
+    <span style="color:#66d9ef">exporting</span>
+      no_flush  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">importing</span>
+      sheetname <span style="color:#f92672">=</span> sheetname
+      error    <span style="color:#f92672">=</span> error
+      retcode  <span style="color:#f92672">=</span> retcode.
+<span style="color:#66d9ef">CALL method</span> spreadsheet<span style="color:#f92672">-&gt;</span>add_sheet
+   <span style="color:#66d9ef">exporting</span>
+     name    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;年度报表&#39;</span>
+     no_flush <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+   <span style="color:#66d9ef">importing</span>
+     error    <span style="color:#f92672">=</span> error
+     retcode  <span style="color:#f92672">=</span> retcode.
+<span style="color:#66d9ef">CALL method</span> spreadsheet<span style="color:#f92672">-&gt;</span>delete_sheet
+   <span style="color:#66d9ef">exporting</span>
+     name    <span style="color:#f92672">=</span> sheetname
+     no_flush <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+   <span style="color:#66d9ef">importing</span>
+     error    <span style="color:#f92672">=</span> error
+     retcode  <span style="color:#f92672">=</span> retcode.
+</code></pre></div><h4 id="数据写入excel">数据写入Excel</h4>
+<p>数据写入Excel，可以使用批量的方式或者逐个单元格写入的方式。批量写入的方式效率高，逐个单元格写入的方式比较灵活。将数据写入 excel 需要使用 <code>i_oi_spreadsheet</code> 接口实例的两个方法：</p>
+<ul>
+<li>insert_range_dim：定义一个范围(range)，设定range的名称、位置和大小。</li>
+<li>set_range_data：写入数据到range，写入的时候，ranges参数设定range的名称和大小，contents参数设定写入的内容</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* insert_range_dim</span>
+<span style="color:#66d9ef">CALL METHOD</span> spreadsheet<span style="color:#f92672">-&gt;</span>insert_range_dim
+ <span style="color:#66d9ef">exporting</span>
+    name     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span>
+    no_flush <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    top      <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    left     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    rows     <span style="color:#f92672">=</span> line_count
+    columns  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+<span style="color:#75715e">* set_range_data</span>
+<span style="color:#66d9ef">CALL METHOD</span> spreadsheet<span style="color:#f92672">-&gt;</span>set_ranges_data
+ <span style="color:#66d9ef">exporting</span>
+    <span style="color:#66d9ef">ranges</span>   <span style="color:#f92672">=</span> gt_ranges
+    contents <span style="color:#f92672">=</span> gt_contents
+    no_flush <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">* 界定ranges范围</span>
+<span style="color:#66d9ef">CALL METHOD</span> R_HANDLE_EXCEL<span style="color:#f92672">-&gt;</span>INSERT_RANGE_DIM
+  <span style="color:#66d9ef">EXPORTING</span>
+      NAME     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;title&#39;</span>
+      NO_FLUSH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      TOP      <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      LEFT     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      ROWS     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      COLUMNS<span style="color:#f92672">=</span> LV_TOTAL_COLUMNS.
+  WA_RANGES<span style="color:#f92672">-</span>NAME<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;title&#39;</span>.
+  WA_RANGES<span style="color:#f92672">-</span>ROWS <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  WA_RANGES<span style="color:#f92672">-</span>COLUMNS<span style="color:#f92672">=</span> LV_TOTAL_COLUMNS.
+  <span style="color:#66d9ef">APPEND</span> WA_RANGESTO IT_RANGES.
+<span style="color:#66d9ef">DATA</span> LV_ROW <span style="color:#66d9ef">TYPE </span>I.
+<span style="color:#66d9ef">DATA</span> LV_COLUMN <span style="color:#66d9ef">TYPE </span>I.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span> .
+<span style="color:#66d9ef">DATA</span> LWA_FIELDCAT <span style="color:#66d9ef">TYPE </span>SLIS_FIELDCAT_ALV.
+<span style="color:#66d9ef">CLEAR</span> LV_COLUMN.
+<span style="color:#66d9ef">LOOP AT </span>IT_FIELDCAT <span style="color:#66d9ef">INTO</span> LWA_FIELDCAT.
+  LV_COLUMN <span style="color:#f92672">=</span> LV_COLUMN <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>.
+  WA_CONTENTS<span style="color:#f92672">-</span>ROW <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  WA_CONTENTS<span style="color:#f92672">-</span>COLUMN <span style="color:#f92672">=</span> LV_COLUMN.
+  WA_CONTENTS<span style="color:#f92672">-</span>VALUE  <span style="color:#f92672">=</span> LWA_FIELDCAT<span style="color:#f92672">-</span>SELTEXT_L.
+  <span style="color:#66d9ef">APPEND</span> WA_CONTENTSTO IT_CONTENTS.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">* Set data</span>
+<span style="color:#66d9ef">CALL METHOD</span> R_HANDLE_EXCEL<span style="color:#f92672">-&gt;</span>SET_RANGES_DATA
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">RANGES</span>   <span style="color:#f92672">=</span> IT_RANGE
+    CONTENTS <span style="color:#f92672">=</span> IT_CONTENTS
+    NO_FLUSH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">CALL METHOD</span> R_HANDLE_EXCEL<span style="color:#f92672">-&gt;</span>FIT_WIDEST
+  <span style="color:#66d9ef">EXPORTING</span>
+    NAME     <span style="color:#f92672">=</span> SPACE
+    NO_FLUSH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+</code></pre></div><h3 id="对象销毁">对象销毁：</h3>
+<p>PAI 的 exit-command 事件中对 spreadsheet、control 和 container 等对象进行销毁操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">exit_program</span> <span style="color:#a6e22e">input</span>.
+  <span style="color:#a6e22e">save_ok</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ok_code</span>.
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">ok_code</span>.
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">save_ok</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EXIT&#39;</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> document <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> document<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">close_document</span>.
+      <span style="color:#a6e22e">free</span> document.
+    <span style="color:#a6e22e">endif</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">control</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">initial</span>.
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">control</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">destroy_control</span>.
+      <span style="color:#a6e22e">free</span> <span style="color:#a6e22e">control</span>.
+    <span style="color:#a6e22e">endif</span>.
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">container</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">initial</span>.
+      <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">container</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">free</span>.
+    <span style="color:#a6e22e">endif</span>.
+    <span style="color:#a6e22e">leave</span> <span style="color:#a6e22e">program</span>.
+  <span style="color:#a6e22e">endif</span>.
+<span style="color:#a6e22e">endmodule</span>.
+</code></pre></div><h2 id="其他实现">其他实现</h2>
+<h3 id="1-如何根据屏幕大小让-excel-自适应">1. 如何根据屏幕大小让 Excel 自适应</h3>
+<p>使用：splitter</p>
+<p>在 container control 初始化的时候，设定 parent 为 splitter 生成的 container。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: container <span style="color:#66d9ef">type ref to</span> cl_gui_container,
+      splitter  <span style="color:#66d9ef">type ref to</span> cl_gui_splitter_container,
+    ......
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">get_dynamic_container</span>.
+  <span style="color:#66d9ef">CREATE OBJECT</span> splitter
+    <span style="color:#66d9ef">EXPORTING</span>
+      parent  <span style="color:#f92672">=</span> cl_gui_container<span style="color:#f92672">=&gt;</span>screen0
+      rows    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      columns <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">CALL METHOD</span> splitter<span style="color:#f92672">-&gt;</span>set_border
+    <span style="color:#66d9ef">EXPORTING</span>
+      border <span style="color:#f92672">=</span> cl_gui_cfw<span style="color:#f92672">=&gt;</span>false.
+  container <span style="color:#f92672">=</span> splitter<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_container</span>( row <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> column <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; GET_DYNAMIC_CONTAINER &#34;
+</span></code></pre></div><h3 id="2-excel-单个单元格写入">2. Excel 单个单元格写入</h3>
+<p>单个单元格写入的方法，同批量写入一样，使用 i_oi_spreadsheet 接口的set_range_dim 方法和 set_range_data方法。区别在于 range 只包含一行一列：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">form</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">p_row</span> <span style="color:#a6e22e">p_col</span> <span style="color:#a6e22e">p_value</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">define</span> <span style="color:#a6e22e">internal</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">ranges</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">contents</span> <span style="color:#a6e22e">parameters</span>
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lt_ranges</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_range_list</span>,
+        <span style="color:#a6e22e">ls_rangeitem</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_range_item</span>,
+        <span style="color:#a6e22e">lt_contents</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_generic_table</span>,
+        <span style="color:#a6e22e">ls_content</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">soi_generic_item</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">populate</span> <span style="color:#a6e22e">ranges</span>
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">ls_rangeitem</span>.
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">lt_ranges</span>[].
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span> .
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">columns</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">rows</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_rangeitem</span><span style="color:#f92672">-</span><span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4.</span>
+  <span style="color:#a6e22e">append</span> <span style="color:#a6e22e">ls_rangeitem</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">lt_ranges</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">populate</span> <span style="color:#a6e22e">contents</span>
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">ls_content</span>.
+  <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">lt_contents</span>[].
+  <span style="color:#a6e22e">ls_content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">column</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">row</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_value</span>.
+  <span style="color:#a6e22e">append</span> <span style="color:#a6e22e">ls_content</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">lt_contents</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">每次只写一行一列</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">insert_range_dim</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span>
+      <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      <span style="color:#a6e22e">top</span>      <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_row</span>
+      <span style="color:#a6e22e">left</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_col</span>
+      <span style="color:#a6e22e">rows</span>    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">columns</span>  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_ranges_data</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">ranges</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_ranges</span>
+      <span style="color:#a6e22e">contents</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_contents</span>
+      <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">endform</span>.   
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">循环写入</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">loop</span> <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">gt_spfli</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">gs_spfli</span>.
+   <span style="color:#a6e22e">row_index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tabix</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">carrid</span>.
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">connid</span>.
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">3</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cityfrom</span>.
+   <span style="color:#a6e22e">perform</span> <span style="color:#a6e22e">write_single_cell</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">row_index</span> <span style="color:#ae81ff">4</span> <span style="color:#a6e22e">gs_spfli</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cityto</span>.
+   <span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">gs_spfli</span>.
+<span style="color:#a6e22e">endloop</span>.
+</code></pre></div><h3 id="3-设置-excel-属性">3. 设置 Excel 属性</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">form</span> <span style="color:#a6e22e">set_excel_attributes</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">修改WORK</span> <span style="color:#a6e22e">SHEET</span> <span style="color:#a6e22e">的名字</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">cl_spreadsheet</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_sheet_name</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">newname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;物料主数据清单&#39;</span>
+      <span style="color:#a6e22e">oldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Sheet1&#39;</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">error</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_errors</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">border</span> <span style="color:#a6e22e">line</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">range</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_frame</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">rangename</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cell&#39;</span>
+      <span style="color:#a6e22e">typ</span>      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;127&#39;</span>
+      <span style="color:#a6e22e">color</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+      <span style="color:#a6e22e">no_flush</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">auto</span> <span style="color:#a6e22e">fit</span>
+  <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">method</span> <span style="color:#a6e22e">gr_spreadsheet</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fit_widest</span>
+    <span style="color:#a6e22e">exporting</span>
+      <span style="color:#a6e22e">name</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">space</span>
+      <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">endform</span>.   
+</code></pre></div><h3 id="4-错误处理">4. 错误处理</h3>
+<p>通常有两种方法来处理错误：</p>
+<p>第一种方法：使用 c_oi_errors 的静态方法 raise_message 简单地显示相关的错误：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHODC_OI_ERRORS</span>=&gt;<span style="color:#a6e22e">RAISE_MESSAGE</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+       <span style="color:#a6e22e">TYPE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">type</span>
+ <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">可以是</span> <span style="color:#a6e22e">A</span>, <span style="color:#a6e22e">E</span>, <span style="color:#a6e22e">W</span>, <span style="color:#a6e22e">I</span>, <span style="color:#a6e22e">S</span> <span style="color:#a6e22e">其中之一</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p>第二种方法是区分不同的错误，给用户一个更明确的提示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">ret_code</span> <span style="color:#a6e22e">EQ</span> <span style="color:#a6e22e">c_oi_errors</span>=&gt;<span style="color:#a6e22e">ret_ok</span>.
+  <span style="color:#e6db74">&#34; Document opened successfully&#34;</span>
+<span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">ret_code</span> <span style="color:#a6e22e">EQ</span> <span style="color:#a6e22e">c_oi_errors</span>=&gt; <span style="color:#a6e22e">ret_document_already_open</span>.
+  <span style="color:#e6db74">&#34; Special error handling, e.g. dialog box.&#34;</span>
+<span style="color:#a6e22e">ELSE</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">c_oi_errors</span>=&gt;<span style="color:#a6e22e">raise_message</span>
+     <span style="color:#a6e22e">EXPORTING</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+</code></pre></div><p>也可以把 ret_code 返回的错误码先储存在内表中，集中处理：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">errors</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">i_oi_error</span> <span style="color:#a6e22e">OCCURS</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">DOI</span> <span style="color:#a6e22e">processing</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">control</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_link_server</span>
+  <span style="color:#a6e22e">EXPORTING</span> <span style="color:#a6e22e">server_type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">server_type</span>
+    <span style="color:#a6e22e">no_flush</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#a6e22e">IMPORTING</span> <span style="color:#a6e22e">link_server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">link_server</span>
+    <span style="color:#a6e22e">retcode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">retcode</span>
+    <span style="color:#a6e22e">error</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">errors</span>.
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">errors</span>.
+<span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">errors</span>. 
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">errors</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">raise_message</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+	  <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>
+    <span style="color:#a6e22e">EXCEPTIONS</span> 
+      <span style="color:#a6e22e">message_raised</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">flush_failed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span>
+<span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">errors</span>.
+</code></pre></div><p>原文：https://blog.csdn.net/stone0823/article/details/53819960</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3940</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/DOI/">
+                    #DOI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Webservice/" class="prev" rel="prev" title="SAP Webservice 使用"><i class="iconfont icon-dajiantou"></i>&nbsp;SAP Webservice 使用</a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Memory/" class="next" rel="next" title="SAP memory使用">SAP memory使用&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-02-22 00:00:00 \u002b0000 UTC',
+        title: 'ABAP DOI使用',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

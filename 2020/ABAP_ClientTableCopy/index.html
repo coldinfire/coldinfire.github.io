@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/SAP_Report_config/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_DomainEnhancement/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_ClientTableCopy/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP系统间数据表的Copy  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP系统间数据表的Copy  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP系统间数据表的Copy "/>
+<meta name="twitter:description" content="需求场景 在功能开发完成后，需要使用一些测试数据来进行测试，有时可能需要将一些比较新的生产数据复制到测试系统，为了完成数据表的复制，需要使用一"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP系统间数据表的Copy ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_ClientTableCopy\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  508 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_ClientTableCopy\/",
+  "datePublished": "2020-10-14T00:00:00\u002b00:00",
+  "dateModified": "2020-10-14T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP系统间数据表的Copy </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-10-14 >14 October 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="需求场景">需求场景</h3>
+<p>在功能开发完成后，需要使用一些测试数据来进行测试，有时可能需要将一些比较新的生产数据复制到测试系统，为了完成数据表的复制，需要使用一些SAP标准的BAPI来完成。</p>
+<h3 id="功能实现">功能实现</h3>
+<h4 id="bapirfc_read_table">BAPI:RFC_READ_TABLE</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA: SO_OPTION TYPE TABLE OF rfc_db_opt WITH HEADER LINE,
+      SO_FIELDS TYPE TABLE OF rfc_db_fld,
+      WA_FIELDS TYPE rfc_db_fld,
+      SO_DATA TYPE TABLE OF tab512,
+      WA_SO_DATA TYPE tab512.
+DATA: T_FIELDS TYPE TABLE OF DDSHSELOPT WITH HEADER LINE.
+DATA: LV_WHERE TYPE STRING.
+
+PARAMETERS: p_table TYPE dd02l-tabname DEFAULT &#39;RSEG&#39;.
+PARAMETERS: p_dest TYPE rfcdes-rfcdest.
+
+START-OF-SELECTION.
+REFRESH:T_RSEG1,I_WHERE,I_FIELDS.
+
+CLEAR T_FIELDS.
+T_FIELDS-SHLPFIELD = &#39;BELNR&#39;.
+T_FIELDS-SIGN      = &#39;I&#39;.
+T_FIELDS-OPTION    = &#39;BT&#39;.
+T_FIELDS-LOW       = &#39;5100000009&#39;.
+T_FIELDS-HIGH      = &#39;5100000019&#39;.
+APPEND T_FIELDS.
+
+* Convert selopt into string               *
+CALL FUNCTION &#39;F4_CONV_SELOPT_TO_WHERECLAUSE&#39;
+*   EXPORTING
+*     GEN_ALIAS_NAMES       = &#39; &#39;
+*     ESCAPE_ALLOWED        = &#39; &#39;
+  IMPORTING
+    WHERE_CLAUSE          = LV_WHERE
+  TABLES
+    SELOPT_TAB            = T_FIELDS.
+
+SO_OPTIONS-TEXT = LV_WHERE.
+APPEND SO_OPTIONS.
+
+REFRESH T_FIELDS.
+CLEAR T_FIELDS.
+T_FIELDS-SHLPFIELD = &#39;GJAHR&#39;.
+T_FIELDS-SIGN      = &#39;I&#39;.
+T_FIELDS-OPTION    = &#39;EQ&#39;.
+T_FIELDS-LOW       = &#39;2020&#39;.
+APPEND T_FIELDS.
+
+CLEAR LV_WHERE.
+* Convert selopt into string               *
+CALL FUNCTION &#39;F4_CONV_SELOPT_TO_WHERECLAUSE&#39;
+*   EXPORTING
+*     GEN_ALIAS_NAMES       = &#39; &#39;
+*     ESCAPE_ALLOWED        = &#39; &#39;
+  IMPORTING
+    WHERE_CLAUSE          = LV_WHERE
+  TABLES
+    SELOPT_TAB            = T_FIELDS.
+
+CLEAR T_WHERE.
+SO_OPTIONS-TEXT(3) = &#39;AND&#39;.
+SO_OPTIONS-TEXT+4  = LV_WHERE.
+APPEND SO_OPTIONS.
+
+CALL FUNCTION &#39;RFC_READ_TABLE&#39; DESTINATION p_dest
+  EXPORTING
+    query_table                = p_table
+*   DELIMITER                  = &#39; &#39;
+*   NO_DATA                    = &#39; &#39;
+*   ROWSKIPS                   = 0
+*   ROWCOUNT                   = 0
+  TABLES
+    OPTIONS                    = SO_OPTIONS
+    fields                     = SO_FIELDS
+    data                       = SO_DATA
+* EXCEPTIONS
+*   TABLE_NOT_AVAILABLE        = 1
+*   TABLE_WITHOUT_DATA         = 2
+*   OPTION_NOT_VALID           = 3
+*   FIELD_NOT_VALID            = 4
+*   NOT_AUTHORIZED             = 5
+*   DATA_BUFFER_EXCEEDED       = 6
+*   OTHERS                     = 7
+            .
+IF sy-subrc <span style="color:#960050;background-color:#1e0010">&lt;</span>&gt; 0.
+  MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+ELSE.
+  MODIFY (p_table) FROM TABLE SO_DATA.
+  IF sy-subrc = 0.
+    COMMIT WORK AND WAIT.
+  ENDIF.
+ENDIF.
+</code></pre></div><h4 id="bapirfc_read_table使用限制">BAPI:RFC_READ_TABLE使用限制</h4>
+<ul>
+<li>行数限制：RFC_READ_TABLE的行数限制为512个字符；也就是说，每行数据不能超过 512 个字符</li>
+<li>OPTION 保留查询条件： 查询的长度限制为 75 个字符</li>
+<li>Float：RFC_READ_TABLE 不返回任何包含 Float 数据类型的字段</li>
+<li>数据量太大：600,000 多个条目将导致 SYSTEM FAILURE 或 PAGE ALLOC FAILED 错误。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>508</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/SAP_Report_config/" class="prev" rel="prev" title=" SAP Report 选择和显示栏位配置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Report 选择和显示栏位配置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_DomainEnhancement/" class="next" rel="next" title=" SAP Domain增强 "> SAP Domain增强 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-10-14 00:00:00 \u002b0000 UTC',
+        title: ' SAP系统间数据表的Copy ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Basis_Variable/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Basis_InnerTable/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Basis_Table/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 数据字典  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 数据字典  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 数据字典 "/>
+<meta name="twitter:description" content="数据字典(Data Dictionary )是信息管理系统中数据的中央信息源。 它的主要功能是支持数据定义（或“元数据”）的创建和管理。 数据表的组成元素 ABAP 数据字典中"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 数据字典 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_Table\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1399 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_Table\/",
+  "datePublished": "2018-05-19T00:00:00\x2b00:00",
+  "dateModified": "2018-05-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 数据字典 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-19 >19 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>数据字典(Data Dictionary )是信息管理系统中数据的中央信息源。 它的主要功能是支持数据定义（或“元数据”）的创建和管理。</p>
+<h3 id="数据表的组成元素">数据表的组成元素</h3>
+<p>ABAP 数据字典中对象可以分为三个级别。</p>
+<p><img src="/images/ABAP/DataElement.jpg" alt="Table"></p>
+<h4 id="domain">Domain</h4>
+<p>定义数据元素的技术属性，数据类型，长度，小数位，转换规则，大小写等。在创建新的 domain 之前，请检查任何现有域是否具有表字段中所需的相同技术规范，如果存在时应该使用已有的 domain。</p>
+<p>对 domain 进行更改时，引用同一 domain 的字段（通过分配给它们的数据元素）也会发生更改。</p>
+<ul>
+<li>
+<p>Format、Output Characteristics</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">描述</th>
+<th align="left">Type</th>
+<th align="left">描述</th>
+<th align="left">Type</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">DEC</td>
+<td align="left">double</td>
+<td align="left">INT1</td>
+<td align="left">0~255</td>
+<td align="left">CLNT</td>
+<td align="left">Client(3)</td>
+</tr>
+<tr>
+<td align="left">FLTP</td>
+<td align="left">Float(8 bytes)</td>
+<td align="left">INT2</td>
+<td align="left">-32768~32767</td>
+<td align="left">CUKY</td>
+<td align="left">Currency key,referenced by CURR (5)</td>
+</tr>
+<tr>
+<td align="left">NUMC</td>
+<td align="left">数字字符(1-255)</td>
+<td align="left">INT4</td>
+<td align="left">四个字节</td>
+<td align="left">CURR</td>
+<td align="left">货币字段，以 DEC 格式存储(1-17)</td>
+</tr>
+<tr>
+<td align="left">CHAR</td>
+<td align="left">字符(1-255)</td>
+<td align="left">DATS</td>
+<td align="left">Date(8)</td>
+<td align="left">UNIT</td>
+<td align="left">Unit Key for QUAN fields (2-3)</td>
+</tr>
+<tr>
+<td align="left">STRING</td>
+<td align="left">字符串</td>
+<td align="left">TIMS</td>
+<td align="left">Time(6)</td>
+<td align="left">QUAN</td>
+<td align="left">金额字段，参照 UNIT 单位(1-17)</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Converse Routine：转换规则设置，注意前导0的补充问题，将该字段设置为 ALPHA。</p>
+</li>
+<li>
+<p>Lower Case：不勾选，默认会全部转换为大写字母。</p>
+</li>
+<li>
+<p>Value Range：设置该 Domain 的固定取值列表和其含义；数值为C、Y、F 类型中的一种。</p>
+</li>
+</ul>
+<h4 id="data-elements">Data Elements</h4>
+<p>构成结构、表的基本组件，包含 <a href="https://coldinfire.github.io/2019/ABAP_SearchHelp/">Search Help</a>、Parameter ID、Field Label 等信息。</p>
+<ul>
+<li>Goto &gt; Documentation &gt; Change ：修改提示文档信息</li>
+</ul>
+<h4 id="tables">Tables</h4>
+<p>表示数据实际保存的数据库表。表的字段是用 SAP ABAP 数据类型和长度定义的。</p>
+<p><em>Table Field</em>：透明表字段最长 16 位，可以作为透明表的主 / 外键，继承了 Data Element 的所有属性。</p>
+<h4 id="technical-setting">Technical Setting</h4>
+<p>设置表的类型和存储数据量大小，是每个表创建时必须指定的。</p>
+<ul>
+<li>透明表中的 Technical Setting 设置 Log data changes 后可以使用 SCU3，STAD 查看日志。非特殊情况不设置，会占用很大的内存</li>
+</ul>
+<h3 id="数据表类型">数据表类型</h3>
+<p><strong>透明表 (Transparent table)：</strong> 和数据库具有相同结构的表存储结构且是一对一的关系，数据库中有一个相应的物理表。</p>
+<p><strong>结构 (Structure)：</strong> 结构和表定义方式一样；结构在数据库不存在数据记录。结构仅包含程序运行期间的数据。</p>
+<p><strong>附加结构 (Append Structure)：</strong> 附加结构定义字段的子集，该字段属于其他表格或结构，但是在修正管理中作为单独的对象。</p>
+<p><strong>簇表 (Cluster table)：</strong> 该表是 SAP Dict 展现在我们眼前的结构，由透明表转化 &lt;Extras—Change table category&gt; 从单个表去理解与透明表没有差异，是由多个表组成的簇表。它们在物理上对主键只存储一遍，故对簇表的关联查询可以极大提高访问速度。</p>
+<p><strong>池表 (Pool table)：</strong> 由透明表转换，可用来存储控制数据，与数据库中的表是多对一关系。</p>
+<ul>
+<li>
+<p>INSERT 透明表 INTO 簇表：只要透明的簇表的主键都在透明表里面就行。就是透明表主键多了也无所谓。</p>
+</li>
+<li>
+<p>INSERT 透明表 INTO 池表：透明表和池表的主键必须相同的。</p>
+</li>
+</ul>
+<p><strong>表簇：</strong> 几个簇表可以组合成一个表簇，几个簇表存贮在数据库中一个相应的表里，DB层的物理表。</p>
+<p><strong>视图(Generated View Structure)：</strong> 视图用于汇总分布在多个表中的数据。其行为就像数据库表，但它不会占用物理存储。 视图的行为类似于虚拟表，一个没有任何物理存在的表。</p>
+<h3 id="数据分类">数据分类</h3>
+<h4 id="master-data">Master Data</h4>
+<p>业务主数据：即 SAP 各模块中的主数据。总账科目、供应商主数据、物料主数据等。该类型的表数据很少变化。</p>
+<h4 id="transaction-data">Transaction Data</h4>
+<p>业务处理数据：在业务处理操作中，生成的凭证号等数据。如：销售订单凭证号、采购订单凭证号、收货凭证号等。</p>
+<h4 id="configuration-data">Configuration Data</h4>
+<p>配置数据：该类型数据为自定义数据，存放企业项目实施时在系统配置时初始化并保存到系统中。如：货币汇率、订单类型、变式等。</p>
+<h4 id="system-data">System Data</h4>
+<p>系统数据：包括 ABAP 程序的源码、元数据、文档等数据。该类数据由 R/3 系统本身使用。</p>
+<h3 id="维护-sap-数据字典">维护 SAP 数据字典</h3>
+<ul>
+<li>SE11 – ABAP Dictionary</li>
+<li>SE13 – Dictionary technical settings</li>
+<li>SE14 – Database Utility</li>
+<li>SE15 – Repository Information System</li>
+<li>SE16 / SE16N – Data Browser</li>
+<li>SM30 – Maintain Table Views</li>
+<li>SM31 – Table Maintenance</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1399</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Basis_Variable/" class="prev" rel="prev" title=" ABAP 数据类型和变量 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 数据类型和变量 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Basis_InnerTable/" class="next" rel="next" title=" ABAP 内表使用 "> ABAP 内表使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-19 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 数据字典 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

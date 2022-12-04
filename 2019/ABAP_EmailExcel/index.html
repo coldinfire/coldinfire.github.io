@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Enhance_MasterData1/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_EmailText/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_EmailExcel/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            发送带附件(Excel)的 Email  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 发送带附件(Excel)的 Email  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 发送带附件(Excel)的 Email "/>
+<meta name="twitter:description" content="转自 http://blog.chinaunix.net/uid-20591812-id-1918813.html 程序实例 *&amp;---------------------------------------------------------------------* *&amp; Report ZTEST_EMAIL_EXCEL *&amp;---------------------------------------------------------------------* REPORT ztest_email_excel. TABLES: ekko. PARAMETERS: p_email TYPE somlreci1-receiver DEFAULT &#39;coldfire@163.com&#39;. TYPES: BEGIN OF t_ekpo, ebeln TYPE ekpo-ebeln, ebelp TYPE ekpo-ebelp, aedat TYPE ekpo-aedat, matnr TYPE ekpo-matnr, END OF t_ekpo. DATA: it_ekpo TYPE STANDARD TABLE OF t_ekpo INITIAL SIZE 0, wa_ekpo TYPE t_ekpo. TYPES: BEGIN OF t_charekpo, ebeln(10) TYPE c, ebelp(5) TYPE c, aedat(8) TYPE c, matnr(18) TYPE c,"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 发送带附件(Excel)的 Email ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_EmailExcel\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  790 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_EmailExcel\/",
+  "datePublished": "2019-05-19T00:00:00\x2b00:00",
+  "dateModified": "2019-05-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 发送带附件(Excel)的 Email </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-05-19 >19 May 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>转自 <a href="http://blog.chinaunix.net/uid-20591812-id-1918813.html">http://blog.chinaunix.net/uid-20591812-id-1918813.html</a></p>
+<h3 id="程序实例">程序实例</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  ZTEST_EMAIL_EXCEL</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+
+<span style="color:#66d9ef">REPORT</span>  ztest_email_excel.
+<span style="color:#66d9ef">TABLES</span>: ekko.
+<span style="color:#66d9ef">PARAMETERS</span>: p_email <span style="color:#66d9ef">TYPE </span>somlreci1<span style="color:#f92672">-</span>receiver <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;coldfire@163.com&#39;</span>.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> t_ekpo,
+    ebeln <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>ebeln,
+    ebelp <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>ebelp,
+    aedat <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>aedat,
+    matnr <span style="color:#66d9ef">TYPE </span>ekpo<span style="color:#f92672">-</span>matnr,
+  <span style="color:#66d9ef">END OF</span> t_ekpo.
+<span style="color:#66d9ef">DATA</span>: it_ekpo <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> t_ekpo INITIAL <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">0</span>,
+      wa_ekpo <span style="color:#66d9ef">TYPE </span>t_ekpo.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> t_charekpo,
+    ebeln(<span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">TYPE </span>c,
+    ebelp(<span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">TYPE </span>c,
+    aedat(<span style="color:#ae81ff">8</span>) <span style="color:#66d9ef">TYPE </span>c,
+    matnr(<span style="color:#ae81ff">18</span>) <span style="color:#66d9ef">TYPE </span>c,
+  <span style="color:#66d9ef">END OF</span> t_charekpo.
+<span style="color:#66d9ef">DATA</span>: wa_charekpo <span style="color:#66d9ef">TYPE </span>t_charekpo.
+<span style="color:#66d9ef">DATA</span>: it_message <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> solisti1 INITIAL <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: it_attach <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> solisti1 INITIAL <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">DATA</span>: t_packing_list <span style="color:#66d9ef">LIKE </span>sopcklsti1 OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      t_contents <span style="color:#66d9ef">LIKE </span>solisti1 OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      t_receivers <span style="color:#66d9ef">LIKE </span>somlreci1 OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      t_attachment <span style="color:#66d9ef">LIKE </span>solisti1 OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      t_object_header <span style="color:#66d9ef">LIKE </span>solisti1 OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      w_cnt <span style="color:#66d9ef">TYPE </span>i,
+      w_sent_all(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">TYPE </span>c,
+      w_doc_data <span style="color:#66d9ef">LIKE </span>sodocchgi1,
+      gd_error <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>subrc,
+      gd_reciever <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>subrc.
+      
+<span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">title</span> <span style="color:#66d9ef">TYPE </span>sodocchgi1<span style="color:#f92672">-</span>obj_descr <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;Example Excel attachment&#39;</span>.
+<span style="color:#66d9ef">DATA</span>: file_format <span style="color:#66d9ef">TYPE </span>so_obj_tp <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;XLSX&#39;</span>.
+<span style="color:#66d9ef">DATA</span>: file_name <span style="color:#66d9ef">TYPE </span>so_obj_des <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;testdemo&#39;</span>.
+<span style="color:#66d9ef">DATA</span>: attdescription <span style="color:#66d9ef">TYPE </span>so_obj_nam <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+<span style="color:#66d9ef">DATA</span>: sender_address <span style="color:#66d9ef">TYPE </span>soextreci1<span style="color:#f92672">-</span>receiver.
+<span style="color:#66d9ef">DATA</span>: sender_address_type <span style="color:#66d9ef">TYPE </span>soextreci1<span style="color:#f92672">-</span>adr_typ.
+<span style="color:#75715e">**************************** Event *******************************</span>
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+<span style="color:#75715e">* Retrieve sample data from table ekpo</span>
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">data_retrieval</span>.
+<span style="color:#75715e">* Populate table with detaisl to be entered into .xls file</span>
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">build_xls_data_table</span>.
+
+<span style="color:#66d9ef">END-OF-SELECTION</span>.
+<span style="color:#75715e">**************************** Event *******************************</span>
+<span style="color:#75715e">* Populate message body text</span>
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">populate_email_message_body</span>.
+<span style="color:#75715e">* Send file by email as .xls speadsheet</span>
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">send_file_as_email_attachment</span> <span style="color:#66d9ef">TABLES</span> it_message it_attach
+      <span style="color:#66d9ef">USING</span> p_email <span style="color:#66d9ef">title</span> file_format filename attdescription sender_address sender_address_type
+      <span style="color:#66d9ef">CHANGING</span> gd_error gd_reciever.
+<span style="color:#75715e">* Instructs mail send program for SAPCONNECT to send email(rsconn01)</span>
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">initiate_mail_execute_program</span>.
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Form DATA_RETRIEVAL</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">* Retrieve data form EKPO table and populate itab it_ekko</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">data_retrieval</span>.
+  <span style="color:#66d9ef">SELECT</span> ebeln ebelp aedat matnr UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">10</span> ROWS 
+      <span style="color:#66d9ef">FROM</span> ekpo <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> it_ekpo.
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34; DATA_RETRIEVAL&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Form BUILD_XLS_DATA_TABLE</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">* Build data table for .xls document</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">build_xls_data_table</span>.
+<span style="color:#75715e">* CONSTANTS: con_cret TYPE x VALUE &#39;0D&#39;, &#34;OK for non Unicode&#34;</span>
+<span style="color:#75715e">* con_tab TYPE x VALUE &#39;09&#39;.             &#34;OK for non Unicode&#34;</span>
+<span style="color:#75715e">*If you have Unicode check active in program attributes thnen you will</span>
+<span style="color:#75715e">*need to declare constants as follows</span>
+<span style="color:#75715e">*class cl_abap_char_utilities definition load.</span>
+  <span style="color:#66d9ef">CONSTANTS</span>: con_tab <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">VALUE</span> cl_abap_char_utilities<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>horizontal_tab,
+             con_cret <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">VALUE</span> cl_abap_char_utilities<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>cr_lf.
+  <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;EBELN&#39;</span> <span style="color:#e6db74">&#39;EBELP&#39;</span> <span style="color:#e6db74">&#39;AEDAT&#39;</span> <span style="color:#e6db74">&#39;MATNR&#39;</span> <span style="color:#66d9ef">INTO</span> it_attach <span style="color:#66d9ef">SEPARATED BY</span> con_tab.
+  <span style="color:#66d9ef">CONCATENATE</span> con_cret it_attach <span style="color:#66d9ef">INTO</span> it_attach.
+  <span style="color:#66d9ef">APPEND</span> it_attach.
+  <span style="color:#66d9ef">LOOP AT </span>it_ekpo <span style="color:#66d9ef">INTO</span> wa_charekpo.
+    <span style="color:#66d9ef">CONCATENATE</span> wa_charekpo<span style="color:#f92672">-</span>ebeln wa_charekpo<span style="color:#f92672">-</span>ebelp wa_charekpo<span style="color:#f92672">-</span>aedat wa_charekpo<span style="color:#f92672">-</span>matnr
+      <span style="color:#66d9ef">INTO</span> it_attach <span style="color:#66d9ef">SEPARATED BY</span> con_tab.
+    <span style="color:#66d9ef">CONCATENATE</span> con_cret it_attach <span style="color:#66d9ef">INTO</span> it_attach.
+    <span style="color:#66d9ef">APPEND</span> it_attach.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34; BUILD_XLS_DATA_TABLE &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Form POPULATE_EMAIL_MESSAGE_BODY</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">* Populate message body text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">populate_email_message_body</span>.
+  <span style="color:#66d9ef">REFRESH</span> it_message.
+  it_message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Please find attached excel file&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> it_message.
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34;populate_email_message_body&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Form SEND_FILE_AS_EMAIL_ATTACHMENT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">* Send email</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">send_file_as_email_attachment</span> <span style="color:#66d9ef">TABLES</span> pit_message pit_attach
+            <span style="color:#66d9ef">USING</span> p_email p_mtitle p_format p_filename p_attdescription
+                  p_sender_address p_sender_addres_type
+            <span style="color:#66d9ef">CHANGING</span> p_error p_reciever.
+  <span style="color:#66d9ef">DATA</span>: ld_error <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>subrc,
+        ld_reciever <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>subrc,
+        ld_mtitle <span style="color:#66d9ef">LIKE </span>sodocchgi1<span style="color:#f92672">-</span>obj_descr,
+        ld_email <span style="color:#66d9ef">LIKE </span>somlreci1<span style="color:#f92672">-</span>receiver,
+        ld_format <span style="color:#66d9ef">TYPE </span>so_obj_tp ,
+        ld_attdescription <span style="color:#66d9ef">TYPE </span>so_obj_nam ,
+        ld_attfilename <span style="color:#66d9ef">TYPE </span>so_obj_des ,
+        ld_sender_address <span style="color:#66d9ef">LIKE </span>soextreci1<span style="color:#f92672">-</span>receiver,
+        ld_sender_address_type <span style="color:#66d9ef">LIKE </span>soextreci1<span style="color:#f92672">-</span>adr_typ,
+        ld_receiver <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>subrc.
+  ld_email <span style="color:#f92672">=</span> p_email.
+  ld_mtitle <span style="color:#f92672">=</span> p_mtitle.
+  ld_format <span style="color:#f92672">=</span> p_format.
+  ld_attdescription <span style="color:#f92672">=</span> p_attdescription.
+  ld_attfilename <span style="color:#f92672">=</span> p_filename.
+  ld_sender_address <span style="color:#f92672">=</span> p_sender_address.
+  ld_sender_address_type <span style="color:#f92672">=</span> p_sender_addres_type.
+<span style="color:#75715e">* Fill the document data and get size of attachment</span>
+  <span style="color:#66d9ef">CLEAR</span> w_doc_data.
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> it_attach <span style="color:#66d9ef">INDEX</span> w_cnt.
+  w_doc_data<span style="color:#f92672">-</span>doc_size <span style="color:#f92672">=</span> ( w_cnt <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> ) <span style="color:#f92672">*</span> <span style="color:#ae81ff">255</span> <span style="color:#f92672">+</span> STRLEN( it_attach ).
+  w_doc_data<span style="color:#f92672">-</span>obj_langu <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu.
+  w_doc_data<span style="color:#f92672">-</span>obj_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SAPRPT&#39;</span>.
+  w_doc_data<span style="color:#f92672">-</span>obj_descr <span style="color:#f92672">=</span> ld_mtitle.
+  w_doc_data<span style="color:#f92672">-</span>sensitivty <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;F&#39;</span>.
+  <span style="color:#66d9ef">CLEAR</span> t_attachment.
+  <span style="color:#66d9ef">REFRESH</span> t_attachment.
+  t_attachment[] <span style="color:#f92672">=</span> pit_attach[].
+<span style="color:#75715e">* Describe the body of the message</span>
+  <span style="color:#66d9ef">CLEAR</span> t_packing_list.
+  <span style="color:#66d9ef">REFRESH</span> t_packing_list.
+  t_packing_list<span style="color:#f92672">-</span>transf_bin <span style="color:#f92672">=</span> space.
+  t_packing_list<span style="color:#f92672">-</span>head_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  t_packing_list<span style="color:#f92672">-</span>head_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  t_packing_list<span style="color:#f92672">-</span>body_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">DESCRIBE TABLE</span> it_message <span style="color:#66d9ef">LINES</span> t_packing_list<span style="color:#f92672">-</span>body_num.
+  t_packing_list<span style="color:#f92672">-</span>doc_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;RAW&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> t_packing_list.
+<span style="color:#75715e">* Create attachment notification</span>
+  t_packing_list<span style="color:#f92672">-</span>transf_bin <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  t_packing_list<span style="color:#f92672">-</span>head_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  t_packing_list<span style="color:#f92672">-</span>head_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  t_packing_list<span style="color:#f92672">-</span>body_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">DESCRIBE TABLE</span> t_attachment <span style="color:#66d9ef">LINES</span> t_packing_list<span style="color:#f92672">-</span>body_num.
+  t_packing_list<span style="color:#f92672">-</span>doc_type <span style="color:#f92672">=</span> ld_format.
+  t_packing_list<span style="color:#f92672">-</span>obj_descr <span style="color:#f92672">=</span> ld_attdescription.
+  t_packing_list<span style="color:#f92672">-</span>obj_name <span style="color:#f92672">=</span> ld_attfilename.
+  t_packing_list<span style="color:#f92672">-</span>doc_size <span style="color:#f92672">=</span> t_packing_list<span style="color:#f92672">-</span>body_num <span style="color:#f92672">*</span> <span style="color:#ae81ff">255</span>.
+  <span style="color:#66d9ef">APPEND</span> t_packing_list.
+<span style="color:#75715e">* Add the recipients email address</span>
+  <span style="color:#66d9ef">CLEAR</span> t_receivers.
+  <span style="color:#66d9ef">REFRESH</span> t_receivers.
+  t_receivers<span style="color:#f92672">-</span>receiver <span style="color:#f92672">=</span> ld_email.
+  t_receivers<span style="color:#f92672">-</span>rec_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;U&#39;</span>.
+  t_receivers<span style="color:#f92672">-</span>com_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INT&#39;</span>.
+  t_receivers<span style="color:#f92672">-</span>notif_del <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  t_receivers<span style="color:#f92672">-</span>notif_ndel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> t_receivers.
+  
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SO_DOCUMENT_SEND_API1&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      document_data              <span style="color:#f92672">=</span> w_doc_data
+      put_in_outbox              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+<span style="color:#75715e">*     sender_address             = ld_sender_address</span>
+<span style="color:#75715e">*     sender_address_type        = ld_sender_address_type</span>
+      commit_work                <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      sent_to_all                <span style="color:#f92672">=</span> w_sent_all
+    <span style="color:#66d9ef">TABLES</span>
+      packing_list               <span style="color:#f92672">=</span> t_packing_list
+      contents_bin               <span style="color:#f92672">=</span> t_attachment
+      contents_txt               <span style="color:#f92672">=</span> it_message
+      receivers                  <span style="color:#f92672">=</span> t_receivers
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      too_many_receivers         <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      document_not_sent          <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      document_type_not_exist    <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      operation_no_authorization <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      parameter_error            <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+      x_error                    <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+      enqueue_error              <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+      <span style="color:#66d9ef">OTHERS</span>                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>.
+<span style="color:#75715e">* Populate zerror return code</span>
+  ld_error <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>subrc.
+<span style="color:#75715e">* Populate zreceiver return code</span>
+  <span style="color:#66d9ef">LOOP AT </span>t_receivers.
+    ld_receiver <span style="color:#f92672">=</span> t_receivers<span style="color:#f92672">-</span>retrn_code.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34;send_file_as_email_attachment&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Form INITIATE_MAIL_EXECUTE_PROGRAM</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">* Instructs mail send program for SAPCONNECT to send email.</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">initiate_mail_execute_program</span>.
+  <span style="color:#66d9ef">WAIT</span> UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">2</span> SECONDS.
+  <span style="color:#66d9ef">SUBMIT</span> rsconn01 <span style="color:#66d9ef">WITH</span> mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INT&#39;</span> <span style="color:#66d9ef">WITH</span> output <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> <span style="color:#66d9ef">AND RETURN</span>.
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34; INITIATE_MAIL_EXECUTE_PROGRAM &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>790</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Enhance_MasterData1/" class="prev" rel="prev" title=" MM01 屏幕增强 "><i class="iconfont icon-dajiantou"></i>&nbsp; MM01 屏幕增强 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_EmailText/" class="next" rel="next" title=" 发送带文本的 Email "> 发送带文本的 Email &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-05-19 00:00:00 \x2b0000 UTC',
+        title: ' 发送带附件(Excel)的 Email ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

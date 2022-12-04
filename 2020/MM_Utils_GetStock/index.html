@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_Enhance_Domain/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/WM_CycleCount/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_Utils_GetStock/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 获取库存函数  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 获取库存函数  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 获取库存函数 "/>
+<meta name="twitter:description" content="SAP 的库存种类有很多中取数逻辑，这里整理下，汇总成的一个接口函数。 库存类型和对应表 库存类型 当前库存 历史库存 库存金额 库存历史金额 工厂级别库存 MARC &amp;"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 获取库存函数 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_Utils_GetStock\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  658 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_Utils_GetStock\/",
+  "datePublished": "2020-12-20T00:00:00\x2b00:00",
+  "dateModified": "2020-12-20T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 获取库存函数 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-12-20 >20 December 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SAP 的库存种类有很多中取数逻辑，这里整理下，汇总成的一个接口函数。</p>
+<h3 id="库存类型和对应表">库存类型和对应表</h3>
+<table>
+<thead>
+<tr>
+<th align="left">库存类型</th>
+<th align="left">当前库存</th>
+<th align="left">历史库存</th>
+<th align="left">库存金额</th>
+<th align="left">库存历史金额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">工厂级别库存</td>
+<td align="left">MARC &amp; MBEW</td>
+<td align="left">MARCH</td>
+<td align="left">MBEW</td>
+<td align="left">MBEWH</td>
+</tr>
+<tr>
+<td align="left">库存地点库存</td>
+<td align="left">MARD</td>
+<td align="left">MARDH</td>
+<td align="left">MBEW</td>
+<td align="left">MBEWH</td>
+</tr>
+<tr>
+<td align="left">批次库存</td>
+<td align="left">MCHB</td>
+<td align="left">MCHBH</td>
+<td align="left">MBEW</td>
+<td align="left">MBEWH</td>
+</tr>
+<tr>
+<td align="left">销售订单库存</td>
+<td align="left">MSKA</td>
+<td align="left">MSKAH</td>
+<td align="left">EBEW</td>
+<td align="left">EBEWH</td>
+</tr>
+<tr>
+<td align="left">项目库存</td>
+<td align="left">MSPR</td>
+<td align="left">MSPRH</td>
+<td align="left">QBEW</td>
+<td align="left">QBEWH</td>
+</tr>
+<tr>
+<td align="left">供应商寄售库存</td>
+<td align="left">MKOL</td>
+<td align="left">MKOLH</td>
+<td align="left">MBEW</td>
+<td align="left">MBEWH</td>
+</tr>
+<tr>
+<td align="left">供应商外包库存</td>
+<td align="left">MSLB</td>
+<td align="left">MSLBH</td>
+<td align="left">MBEW</td>
+<td align="left">MBEWH</td>
+</tr>
+<tr>
+<td align="left">客户寄售库存</td>
+<td align="left">MSKU</td>
+<td align="left">MSKUH</td>
+<td align="left">MBEW</td>
+<td align="left">MBEWH</td>
+</tr>
+</tbody>
+</table>
+<p>MBEW：按照物料+工厂记录物料在工厂下的数量和金额。</p>
+<p>MBWEH：记录历史库存，按照物料+工厂+月份记录物料特定月份在工厂下的数量和金额。</p>
+<h4 id="相关的特殊库存标识">相关的特殊库存标识</h4>
+<p>K：寄售库存</p>
+<p>O：委外加工库存（分包）</p>
+<p>E：销售订单库存</p>
+<p>Q：项目库存</p>
+<h3 id="获取库存函数">获取库存函数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> zwi_get_stock.
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+<span style="color:#75715e">*&#34;*&#34;Local Interface:</span>
+<span style="color:#75715e">*&#34;  IMPORTING</span>
+<span style="color:#75715e">*&#34;     VALUE(PLANT) TYPE  WERKS_D</span>
+<span style="color:#75715e">*&#34;     VALUE(MATERIAL) TYPE  MATNR</span>
+<span style="color:#75715e">*&#34;     VALUE(UNIT) TYPE  MEINH</span>
+<span style="color:#75715e">*&#34;     VALUE(STGE_LOC) TYPE  LGORT_D</span>
+<span style="color:#75715e">*&#34;     VALUE(BATCH) TYPE  CHARG_D OPTIONAL</span>
+<span style="color:#75715e">*&#34;     VALUE(VBELN) TYPE  VBELN OPTIONAL</span>
+<span style="color:#75715e">*&#34;     VALUE(POSNR) TYPE  POSNR_BI OPTIONAL</span>
+<span style="color:#75715e">*&#34;     VALUE(STOCK_TYPE) TYPE CHAR2 OPTIONAL</span>
+<span style="color:#75715e">*&#34;  EXPORTING</span>
+<span style="color:#75715e">*&#34;     VALUE(AV_QTY_PLT) TYPE  MNG01</span>
+<span style="color:#75715e">*&#34;  TABLES</span>
+<span style="color:#75715e">*&#34;      E_RETURN STRUCTURE  BAPIRET2</span>
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+  <span style="color:#66d9ef">DATA</span>: ls_mara <span style="color:#66d9ef">TYPE </span>mara,
+        ls_mchb <span style="color:#66d9ef">TYPE </span>mchb,
+        ls_mard <span style="color:#66d9ef">TYPE </span>mard,
+        ls_mska <span style="color:#66d9ef">TYPE </span>mska,
+        ls_mspr <span style="color:#66d9ef">TYPE </span>mspr.
+  <span style="color:#66d9ef">DATA</span>: menge_ur <span style="color:#66d9ef">TYPE </span>mng01.     <span style="color:#75715e">&#34;Valuated Unrestricted-Use Stock&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: menge_qi <span style="color:#66d9ef">TYPE </span>mng01.     <span style="color:#75715e">&#34;Stock in Quality Inspection&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: menge_blocked <span style="color:#66d9ef">TYPE </span>mng01. <span style="color:#75715e">&#34;Blocked Stock&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: menge_return <span style="color:#66d9ef">TYPE </span>mng01. <span style="color:#75715e">&#34;Stock Result&#34;
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">CLEAR</span>: ls_mara.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> matnr meins xchpf
+    <span style="color:#66d9ef">INTO</span> (ls_mara<span style="color:#f92672">-</span>matnr, ls_mara<span style="color:#f92672">-</span>meins, ls_mara<span style="color:#f92672">-</span>xchpf)
+    <span style="color:#66d9ef">FROM</span> mara
+   <span style="color:#66d9ef">WHERE</span> matnr <span style="color:#f92672">=</span> material.
+  <span style="color:#66d9ef">IF</span> ls_mara<span style="color:#f92672">-</span>xchpf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>. <span style="color:#75715e">&#34;Get batch management stock&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span>: ls_mchb.
+    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> clabs cinsm cspem
+      <span style="color:#66d9ef">INTO</span>  (ls_mchb<span style="color:#f92672">-</span>clabs,ls_mchb<span style="color:#f92672">-</span>cinsm,ls_mchb<span style="color:#f92672">-</span>cspem)
+      <span style="color:#66d9ef">FROM</span> mchb
+      <span style="color:#66d9ef">WHERE</span> werks <span style="color:#f92672">=</span> plant
+      <span style="color:#f92672">AND</span> matnr <span style="color:#f92672">=</span> material
+      <span style="color:#f92672">AND</span> lgort <span style="color:#f92672">=</span> stge_loc
+      <span style="color:#f92672">AND</span> charg <span style="color:#f92672">=</span> batch.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      menge_ur <span style="color:#f92672">=</span> ls_mchb<span style="color:#f92672">-</span>clabs.
+      menge_qi <span style="color:#f92672">=</span> ls_mchb<span style="color:#f92672">-</span>cinsm.
+      menge_blocked <span style="color:#f92672">=</span> ls_mchb<span style="color:#f92672">-</span>cspem.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34;Get project stock&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> prlab prins prspe
+      <span style="color:#66d9ef">INTO</span> (ls_mspr<span style="color:#f92672">-</span>prlab,ls_mspr<span style="color:#f92672">-</span>prins,ls_mspr<span style="color:#f92672">-</span>prspe)
+      <span style="color:#66d9ef">FROM</span> mspr
+      <span style="color:#66d9ef">WHERE</span> werks <span style="color:#f92672">=</span> plant
+      <span style="color:#f92672">AND</span> matnr <span style="color:#f92672">=</span> material
+      <span style="color:#f92672">AND</span> lgort <span style="color:#f92672">=</span> stge_loc
+      <span style="color:#f92672">AND</span> charg <span style="color:#f92672">=</span> batch.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span> .
+      menge_ur <span style="color:#f92672">=</span> ls_mspr<span style="color:#f92672">-</span>prlab.
+      menge_qi <span style="color:#f92672">=</span> ls_mspr<span style="color:#f92672">-</span>prins.
+      menge_blocked <span style="color:#f92672">=</span> ls_mspr<span style="color:#f92672">-</span>prspe.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+  <span style="color:#75715e">&#34;Get non-batch management stock&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span>: ls_mard.
+    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> labst insme speme
+      <span style="color:#66d9ef">INTO</span> (ls_mard<span style="color:#f92672">-</span>labst,ls_mard<span style="color:#f92672">-</span>insme,ls_mard<span style="color:#f92672">-</span>speme)
+      <span style="color:#66d9ef">FROM</span> mard
+      <span style="color:#66d9ef">WHERE</span> werks <span style="color:#f92672">=</span> plant
+      <span style="color:#f92672">AND</span> matnr <span style="color:#f92672">=</span> material
+      <span style="color:#f92672">AND</span> lgort <span style="color:#f92672">=</span> stge_loc.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      menge_ur <span style="color:#f92672">=</span> ls_mard<span style="color:#f92672">-</span>labst.
+      menge_qi <span style="color:#f92672">=</span> ls_mard<span style="color:#f92672">-</span>insme.
+      menge_blocked <span style="color:#f92672">=</span> ls_mard<span style="color:#f92672">-</span>speme.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#75715e">&#34;Sales order stock&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> vbeln <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> kalab kains kaspe
+        <span style="color:#66d9ef">INTO</span> (ls_mska<span style="color:#f92672">-</span>kalab,ls_mska<span style="color:#f92672">-</span>kains,ls_mska<span style="color:#f92672">-</span>kaspe)
+        <span style="color:#66d9ef">FROM</span> mska
+        <span style="color:#66d9ef">WHERE</span> matnr <span style="color:#f92672">=</span> material
+        <span style="color:#f92672">AND</span> werks <span style="color:#f92672">=</span> plant
+        <span style="color:#f92672">AND</span> lgort <span style="color:#f92672">=</span> stge_loc
+        <span style="color:#f92672">AND</span> charg <span style="color:#f92672">=</span> batch
+        <span style="color:#f92672">AND</span> vbeln <span style="color:#f92672">=</span> vbeln
+        <span style="color:#f92672">AND</span> posnr <span style="color:#f92672">=</span> posnr.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      menge_ur <span style="color:#f92672">=</span> ls_mska<span style="color:#f92672">-</span>kalab.
+      menge_qi <span style="color:#f92672">=</span> ls_mska<span style="color:#f92672">-</span>kains.
+      menge_blocked <span style="color:#f92672">=</span> ls_mska<span style="color:#f92672">-</span>kaspe.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+
+  <span style="color:#66d9ef">IF</span> STOCK_TYPE <span style="color:#f92672">IS INITIAL</span>.  
+    menge_return <span style="color:#f92672">=</span> menge_ur. <span style="color:#75715e">&#34;UR Stock&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ELSEIF</span> STOCK_TYPE <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;QI&#39;</span>. 
+    menge_return <span style="color:#f92672">=</span> menge_qi. <span style="color:#75715e">&#34;QI Stock&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ELSEIF</span> STOCK_TYPE <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;BK&#39;</span>. 
+    megne_return <span style="color:#f92672">=</span> menge_blocked. <span style="color:#75715e">&#34;Blocked Stock&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDIF</span>.
+
+  <span style="color:#66d9ef">CLEAR</span>: menge_return.
+  <span style="color:#66d9ef">IF</span> ls_mara<span style="color:#f92672">-</span>meins <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> unit.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MD_CONVERT_MATERIAL_UNIT&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        i_matnr              <span style="color:#f92672">=</span> material
+        i_in_me              <span style="color:#f92672">=</span> ls_mara<span style="color:#f92672">-</span>meins
+        i_out_me             <span style="color:#f92672">=</span> unit
+        i_menge              <span style="color:#f92672">=</span> menge_return
+      <span style="color:#66d9ef">IMPORTING</span>
+        e_menge              <span style="color:#f92672">=</span> av_qty_plt
+      <span style="color:#66d9ef">EXCEPTIONS</span>
+        error_in_application <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        error                <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+              <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4 <span style="color:#66d9ef">INTO</span> e_return<span style="color:#f92672">-</span>message.
+      e_return<span style="color:#f92672">-</span>type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+      <span style="color:#66d9ef">RETURN</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    av_qty_plt <span style="color:#f92672">=</span> menge_return.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>658</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Enhance_Domain/" class="prev" rel="prev" title=" SAP Domain 增强 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Domain 增强 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/WM_CycleCount/" class="next" rel="next" title=" WM 盘点 "> WM 盘点 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-12-20 00:00:00 \x2b0000 UTC',
+        title: ' SAP 获取库存函数 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

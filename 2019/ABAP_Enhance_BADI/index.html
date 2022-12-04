@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_ObjectOriented_Template/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_BAPI_GoodMovementCreate/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_Enhance_BADI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BADI 维护  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BADI 维护  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BADI 维护 "/>
+<meta name="twitter:description" content="BADI 基于类的增强 BADI 是基于面向对象的 SAP 增强技术：SAP 预定义了 Interface，由客户来实例化相应的接口并重写其方法，应用程序通过调用客户所定"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BADI 维护 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_Enhance_BADI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Enhance",
+  "wordcount":  2456 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_Enhance_BADI\/",
+  "datePublished": "2019-07-01T00:00:00\x2b00:00",
+  "dateModified": "2019-07-01T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BADI 维护 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-07-01 >1 July 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="badi-基于类的增强">BADI 基于类的增强</h3>
+<p><strong>BADI 是基于面向对象的 SAP 增强技术</strong>：SAP 预定义了 Interface，由客户来实例化相应的接口并重写其方法，应用程序通过调用客户所定义 class 的 instance 来实现增强效果。</p>
+<p>BADI 通过事务码 SE18、SE19、SE24 来维护。</p>
+<ul>
+<li>SE18：用于创建及维护 BADI 对象。创建增强点、维护接口/类（Interface）、维护方法，维护方法的参数、维护实施 Implementation。</li>
+<li>SE19：用于维护 BADI 对象的实例，BADI 功能的实现。</li>
+<li>SE24：查看 CLASS Interface、查找相关事务代码的BADI增强出口。</li>
+</ul>
+<h4 id="badi-分类">BADI 分类</h4>
+<ul>
+<li>Classic BADI ：在运行时进行实例化，old BADI。</li>
+<li>Kernel BADI ：在编译时进行实例化，new BADI。</li>
+</ul>
+<p>Classic BADI 和 new BADI 的不同：</p>
+<ul>
+<li>BADI Object
+<ul>
+<li>对于 Classic BADI，BADI 对象是通过调用工厂方法创建的，并通过 BADI 接口类型的引用变量进行引用。</li>
+<li>对于 New BADI，通过 ABAP 语句 <code>GET BADI</code> 创建一个 BADI 对象作为 BADI 方法调用的句柄，并通过 BADI 类型的引用变量进行引用。 BADI 对象是内部 BADI 类的实例，否则对外部是不可见的。</li>
+</ul>
+</li>
+<li>为过滤器传递比较值
+<ul>
+<li>对于 Classic BADI，过滤器值存储在一个结构中，并通过 BADI 方法的调用传递。</li>
+<li>对于 New BADI，过滤器的比较值在使用 GET BADI 创建 BADI 对象时传递。</li>
+</ul>
+</li>
+<li>调用 BADI 方法
+<ul>
+<li>Classic BADI 只能调用一次，调用位置集中注册。</li>
+<li>New BADI 可以进行多次调用，调用位置不会集中注册。</li>
+</ul>
+</li>
+</ul>
+<h4 id="命名规则">命名规则</h4>
+<ul>
+<li>
+<p>Enhancement Spot：<code>Z_ES_&lt;Spot_name&gt;</code></p>
+</li>
+<li>
+<p>BADI definition: <code>ZBADI_&lt;BADI_name&gt;</code></p>
+</li>
+<li>
+<p>Interface: <code>ZIF_EX_&lt;BADI_name&gt;</code></p>
+</li>
+<li>
+<p>BADI implementation：<code>Z&lt;impl&gt;</code></p>
+</li>
+<li>
+<p>Implementing class：<code>ZCL_IM_&lt;impl&gt;</code></p>
+</li>
+</ul>
+<h4 id="信息存储表">信息存储表</h4>
+<ul>
+<li>SXS_INTER：Exit, Definition side (Interfaces)</li>
+<li>SXC_EXIT：Exit, Implementation side (Assignment: Exit - Implementation)</li>
+<li>SXC_CLASS：Exit, Implementation side (Class assignment (multiple))</li>
+<li>SXC_ATTR：Exit, Implementation side (Attributes)</li>
+</ul>
+<h3 id="classic-badi">Classic BADI</h3>
+<h4 id="badi-create">BADI Create</h4>
+<p>对于 Classic BADI，如果直接通过 SE18 创建会报错， 定义方法：</p>
+<ul>
+<li><strong>SE18 &ndash;&gt; Utilities &ndash;&gt; Create Classic BADI</strong></li>
+</ul>
+<p><img src="/images/ABAP/BADI_01.png" alt="Create Classic BADI"></p>
+<p><img src="/images/ABAP/BADI_02.png" alt="Definition name"></p>
+<p>选项控制：</p>
+<p><img src="/images/ABAP/BADI_03.png" alt="Definition Attributes"></p>
+<ul>
+<li>Program 增强：通过 interface methods 来实现的，SAP 程序来调取生成的 BADI class 的 interface methods。</li>
+<li>Menu 增强：同 customer exit 一样，可以在 BADI 中维护 function code。这些 menu entry 在 GUI definition 中定义后就可以在 implemented BADI 看见。</li>
+<li>Screen 增强：同 customer exit 一样，可以在 BADI 中维护 Screen enhancements。</li>
+</ul>
+<p>SAP BADI 的使用分类：</p>
+<ul>
+<li>非 Multiple use 的 BADI 同时只能有一个 Active Implementation，要 Active 新生成的需要先 Inactive 旧的。</li>
+<li>Multiple use 的 BADI 则可同时有多个 Active Implementation，且所有的 Implementation 在没有  Filter 的情况下都会被遍历执行。</li>
+</ul>
+<h4 id="definition-interface">Definition Interface</h4>
+<p>双击 Interface Name 创建接口，创建完成后可以定义接口相关属性和方法。</p>
+<p><img src="/images/ABAP/BADI_04.png" alt="Definition Interface"></p>
+<h4 id="create-implementation">Create Implementation</h4>
+<p>BADI 是使用面向对象语言的接口技术，增强其实就是实现 BADI 接口的方法，然后在实现的方法内写业务代码。</p>
+<ul>
+<li><strong>SE19</strong> 选择 Create Implementation 中的 Classic BADI  输入 Implementation name：<code>Z_&lt;impl&gt;</code></li>
+</ul>
+<p><img src="/images/ABAP/BADI_05.png" alt="Create Impl"></p>
+<p>创建实现后，自动生成实现类：<code>ZCL_IM_&lt;impl&gt;</code>。在实现类中根据业务需求，实现接口中的方法。</p>
+<p><img src="/images/ABAP/BADI_08.png" alt="Class Method"></p>
+<p>查看 BADI 的 Implementing Class：</p>
+<p><img src="/images/ABAP/BADI_07.png" alt="BADI Overview"></p>
+<p><img src="/images/ABAP/BADI_06.png" alt="BADI Overview"></p>
+<h4 id="badi-调用">BADI 调用</h4>
+<p>Classic BADI 通过 <strong>CL_EXITHANDLER=&gt;GET_INSTANCE</strong> 来获取实例，然后通过实例来调用 Interface 中的方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZBADI_TEST1.
+<span style="color:#66d9ef">DATA</span>: l_badi_instance <span style="color:#66d9ef">TYPE REF TO</span> zif_ex_badi_test. <span style="color:#75715e">&#34;REF TO Interface接口&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: lv_imp_exist <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">DATA</span>: out <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">CALL METHOD</span> cl_exithandler<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>get_instance
+    <span style="color:#66d9ef">EXPORTING</span>
+      exit_name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZBADI_TEST&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      act_imp_existing <span style="color:#f92672">=</span> lv_imp_exist
+    <span style="color:#66d9ef">CHANGING</span>
+      instance         <span style="color:#f92672">=</span> l_badi_instance.
+  <span style="color:#66d9ef">IF</span> lv_imp_exist <span style="color:#f92672">IS NOT INITIAL</span>.
+    l_badi_instance<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">test</span>(
+      <span style="color:#66d9ef">EXPORTING</span>
+       <span style="color:#66d9ef">in</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hello&#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+        out <span style="color:#f92672">=</span> out ).
+    <span style="color:#66d9ef">WRITE</span>: / out.
+  <span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="menu-增强">Menu 增强</h4>
+<p>同 customer exit 一样 BADI 中也有 Menu enhancements，如果相应的 enhancement 的 badi implementation 被激活，那么 menu 就会显示出来。但是必须满足以下两个条件：</p>
+<ul>
+<li>必须预留了menu enhancement</li>
+<li>必须在 BADI 的 implementation 中实现</li>
+</ul>
+<p>Menu enhancements 的 function codes 必须以<code>+</code>开始。如果用户在程序中选择了相应的以 + 开始的 function code，那么系统就会调用相应的 method。</p>
+<p>只能为 single use badi 创建 function code，而且 BADI 不能是 filter dependent。这样就保证了一个或多个 BADI 不出现矛盾。</p>
+<p>Method call 和 Menu enhancement 是不可分离的，它们只能属于同一个 BADI。</p>
+<h3 id="kernel-badi">Kernel BADI</h3>
+<p>对于 Kernel BAdI，通过 Enhancement Spot 进行创建，也即：先创建 Enhancement Spot，然后在 Enhancement Spot 内部创建 BADI。</p>
+<p>Enhancement Spot 是作为一个 BADI 的容器，一个 Enhancement Spot 下可以创建多个 BADI  Definition，每个 BADI  Definition 由一个 Interface 与多个 Enhancement Implementation 组成，每个 Enhancement Implementation 里又可以创建多个 BADI Implementation，每个 BADI Implementation 里可以创建一个 Implementing Class。</p>
+<h4 id="创建-enhancement-spot">创建 Enhancement Spot</h4>
+<p><img src="/images/ABAP/BADI_11.png" alt="Create Enhancement Spot"></p>
+<p>在新建立的 Enhancement spot 中创建 BADI  Definition。</p>
+<p><img src="/images/ABAP/BADI_12.png" alt="Create BADI Definition"></p>
+<p>定义 BADI 时，默认采用的是 Multiple Use，取消后只能单一使用(single-use：只能有一个实现) 。</p>
+<p><img src="/images/ABAP/BADI_13.png" alt="Enhancement Spot Detail"></p>
+<p>双击 Interface，可以直接创建：</p>
+<p><img src="/images/ABAP/BADI_14.png" alt="Interface"></p>
+<p>定义 Interface 的 Attributes、Methods 等内容：</p>
+<p><img src="/images/ABAP/BADI_15.png" alt="Interface"></p>
+<p>激活 interface 和 Enhancement spot，BADI - <strong>ZBADI_DEMO1</strong> 创建完成。</p>
+<h4 id="badi-的实现">BADI 的实现</h4>
+<p>由于一个 BADI 的实现可以有多个类，这些实现类需要组织在一起（与多个 BADI 放在一个 Enhancement Spot 容器中是相同的概念），所以需要先创建一个 BADI 增强实现容器：(Enhancement Implementation)</p>
+<p>右键 Create BADI Implementation：</p>
+<p><img src="/images/ABAP/BADI_16.png" alt="Create BADI Implementation"></p>
+<p>创建 Enhancement Implementation：ZBADI_DEMO_IMP</p>
+<p><img src="/images/ABAP/BADI_17.png" alt="Enhancement Implementation"></p>
+<p>然后弹出创建 BADI Implementation 对话框：</p>
+<p><img src="/images/ABAP/BADI_18.png" alt="BADI Implementation"></p>
+<p>一个增强实现（Enhancement Implementation）可以有多个 BADI Implementation（相当于多个版本），但起作用的 BADI Implementation 同时只能有一个，有多个版本时需要进行设置：</p>
+<p><img src="/images/ABAP/BADI_19.png" alt="Enhancement Implementation Detail"></p>
+<p>每个 BADI Implementation 只与一个且仅一个 Implementing Class 对应：</p>
+<p><img src="/images/ABAP/BADI_20.png" alt="Implementing Class"></p>
+<p>双击 Implementing Class 实现接口方法：</p>
+<p><img src="/images/ABAP/BADI_21.png" alt="Implementing Class"></p>
+<p>在实现方法中实现具体的业务并激活：</p>
+<p><img src="/images/ABAP/BADI_22.png" alt="Implementing Class Method"></p>
+<p>如果想要达到像 Java 中多态的话，需要创建多个不同的 Enhancement Implementation 增强实现，BADI 中的多态就是通过不同的 Enhancement Implementation 增强实现来实现的。</p>
+<p><img src="/images/ABAP/BADI_26.png" alt="Polymorphism"></p>
+<h4 id="se19-操作-new-badi">SE19 操作 New BADI</h4>
+<p>Create Implementation</p>
+<ul>
+<li>
+<p>输入 Enhancement Spot，点击 Create Impl 并输入 Enhancement Implementation 名称</p>
+<p><img src="/images/ABAP/BADI_23.png" alt="Create Implementation"></p>
+</li>
+<li>
+<p>定义 BADI Implementation、Implementation Class 选择 BADI Definition，点击确定：</p>
+<p><img src="/images/ABAP/BADI_24.png" alt="Choose Detail"></p>
+</li>
+<li>
+<p>在实现方法中实现具体的业务并激活：</p>
+<p><img src="/images/ABAP/BADI_25.png" alt="Implementing Class"></p>
+</li>
+</ul>
+<p>Edit Implementation</p>
+<ul>
+<li>
+<p>输入 Enhancement Implementation 即可查找包含的 BADI Implementations</p>
+<p><img src="/images/ABAP/BADI_09.png" alt="Edit Implementation"></p>
+</li>
+<li>
+<p>显示结果</p>
+<p><img src="/images/ABAP/BADI_10.png" alt="Edit Implementation"></p>
+</li>
+</ul>
+<h4 id="调用">调用</h4>
+<p>Kernel BADI 通过 <strong>GET BADI</strong> 来获取实例，并调用 <strong>CALL BADI</strong> 来调用 interface 中的方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZBADI_TEST2.
+<span style="color:#66d9ef">PARAMETERS</span>: filter(<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">DATA</span>: lo_badi_demo <span style="color:#66d9ef">TYPE REF TO</span> ZBADI_DEMO, <span style="color:#75715e">&#34;ZBADI_DEMO为BADI定义名,不是接口也不是类&#34;
+</span><span style="color:#75715e"></span>      out <span style="color:#66d9ef">TYPE </span>string.
+filter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C01&#39;</span>.
+<span style="color:#66d9ef">GET BADI</span> lo_badi_demo
+  FILTERS
+    filter1 <span style="color:#f92672">=</span> filter.
+<span style="color:#66d9ef">IF</span> lo_badi_demo <span style="color:#f92672">IS BOUND</span>.
+  <span style="color:#66d9ef">CALL BADI</span> lo_badi_demo<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>test
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">in</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hello&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+       out <span style="color:#f92672">=</span> out.
+  <span style="color:#66d9ef">WRITE</span>: / out.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><p><strong>多个BADI / Enhancement 实现时究竟调谁</strong></p>
+<p>相同的 Enhancement Implementation 中</p>
+<ul>
+<li>不同的 BADI Implementations 之间究竟选谁的问题，是由 Default Implementation、Implementation is active 选项共同来决定的，且在同一时间内只能有一个BADI Implementations 能被激活调用，所以要通过这两个选项来控制究竟谁被用来当作当前实现被使用，是否被使用也可通过 Runtime Behavior 的说明文字来查看。</li>
+</ul>
+<p>不同的 Enhancement Implementation 之间的调用由过滤器来决定。</p>
+<h3 id="参考文档">参考文档</h3>
+<ul>
+<li>
+<p><a href="https://blog.csdn.net/duanyu9879/article/details/7334164?spm=1001.2014.3001.5502">BADI 的工作原理</a></p>
+</li>
+<li>
+<p><a href="https://www.cnblogs.com/jiangzhengjun/p/4265513.html#_Toc410467160">https://www.cnblogs.com/jiangzhengjun/p/4265513.html#_Toc410467160</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2456</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Enhance/">
+                    #Enhance</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_ObjectOriented_Template/" class="prev" rel="prev" title=" ABAP Object Oriented 模板 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP Object Oriented 模板 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_BAPI_GoodMovementCreate/" class="next" rel="next" title=" SAP 物料移动BAPI介绍 "> SAP 物料移动BAPI介绍 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-07-01 00:00:00 \x2b0000 UTC',
+        title: ' BADI 维护 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_OOALV1/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAP_Lock/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OOALV2/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           OO ALV 实例程序 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="OO ALV 实例程序 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OO ALV 实例程序"/>
+<meta name="twitter:description" content="OO ALV 简单实例：其中屏幕的创建， 和对应PAI,PBO以及 Status title 等可以自定调整。 REPORT zoo_alv. TYPE-POOLS: slis. *-- Global data Decleration. TYPES:BEGIN OF ty_output, ebeln TYPE ebeln, aedat TYPE erdat, ernam TYPE ernam, ebelp TYPE ebelp, matnr TYPE matnr, werks TYPE werks_d, menge TYPE bstmg, meins"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OO ALV 实例程序",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV2\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  862 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV2\/",
+  "datePublished": "2018-07-08T00:00:00\u002b00:00",
+  "dateModified": "2018-07-08T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">OO ALV 实例程序</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-08 >8 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>OO ALV 简单实例：其中屏幕的创建， 和对应PAI,PBO以及 Status title 等可以自定调整。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">REPORT</span>  <span style="color:#a6e22e">zoo_alv</span>.
+<span style="color:#a6e22e">TYPE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">POOLS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">slis</span>.
+<span style="color:#f92672">*--</span> <span style="color:#a6e22e">Global</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">Decleration</span>.
+<span style="color:#a6e22e">TYPES</span><span style="color:#f92672">:</span><span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">ty_output</span>,
+      <span style="color:#a6e22e">ebeln</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ebeln</span>,
+      <span style="color:#a6e22e">aedat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">erdat</span>,
+      <span style="color:#a6e22e">ernam</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ernam</span>,
+      <span style="color:#a6e22e">ebelp</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ebelp</span>,
+      <span style="color:#a6e22e">matnr</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">matnr</span>,
+      <span style="color:#a6e22e">werks</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">werks_d</span>,
+      <span style="color:#a6e22e">menge</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">bstmg</span>,
+      <span style="color:#a6e22e">meins</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">bstme</span>,
+      <span style="color:#a6e22e">netwr</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">bwert</span>,
+      <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">ty_output</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lt_ekko</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">ekko</span>,
+      <span style="color:#a6e22e">ls_ekko</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ekko</span>,
+      <span style="color:#a6e22e">lt_ekpo</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">ekpo</span>,
+      <span style="color:#a6e22e">ls_ekpo</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ekpo</span>,
+      <span style="color:#a6e22e">lt_output</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">ty_output</span>,
+      <span style="color:#a6e22e">ls_output</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ty_output</span>.
+<span style="color:#e6db74">&#34;Global Data Definitions for ALV&#34;</span>
+<span style="color:#e6db74">&#34;$. Region ALV_Data&#34;</span>
+<span style="color:#f92672">*</span><span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">g_CONTAINER</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">CL_GUI_CONTAINER</span>.
+<span style="color:#f92672">*</span><span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">g_splitter</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cl_gui_splitter_container</span>.
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">container</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cl_gui_custom_container</span> .  <span style="color:#e6db74">&#34;-- Custom container instance reference&#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">grid</span>        <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cl_gui_alv_grid</span> .        <span style="color:#e6db74">&#34;-- ALV Grid instance reference&#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lt_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_t_fcat</span>.  <span style="color:#e6db74">&#34;-- Field catalog table&#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lw_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_s_fcat</span>.
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lw_layout</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_s_layo</span> .  <span style="color:#e6db74">&#34;-- Layout structure&#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lt_exclude</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ui_functions</span>. <span style="color:#e6db74">&#34;-- Button Exclude&#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lt_variant</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">disvariant</span>.   <span style="color:#e6db74">&#34;-- Variant&#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lt_sort</span>     <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_t_sort</span>.   <span style="color:#e6db74">&#34;-- Sotrt table&#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">lt_filt</span>     <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_t_filt</span>.   <span style="color:#e6db74">&#34;-- Filter table&#34;</span>
+<span style="color:#e6db74">&#34;$. Endregion ALV_Data&#34;</span>
+<span style="color:#a6e22e">START</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELECTION</span>.
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">get_data</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">lt_output</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">INITIAL</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">SCREEN</span> <span style="color:#ae81ff">100.</span>
+  <span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">GET_DATA</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>       <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>  <span style="color:#f92672">--&gt;</span>  <span style="color:#a6e22e">p1</span>        <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*</span>  <span style="color:#f92672">&lt;--</span>  <span style="color:#a6e22e">p2</span>        <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">get_data</span> .
+  <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">ekko</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">lt_ekko</span> <span style="color:#a6e22e">UP</span> <span style="color:#a6e22e">TO</span> <span style="color:#ae81ff">20</span> <span style="color:#a6e22e">ROWS</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">lt_ekko</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">INITIAL</span>.
+    <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span>
+       <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">ekpo</span>
+       <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">lt_ekpo</span>
+       <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">ALL</span> <span style="color:#a6e22e">ENTRIES</span> <span style="color:#a6e22e">IN</span> <span style="color:#a6e22e">lt_ekko</span>
+       <span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">ebeln</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_ekko</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ebeln</span>.
+  <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">lt_ekpo</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">ls_ekpo</span>.
+    <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ebeln</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ebeln</span>.
+    <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ebelp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ebelp</span>.
+    <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">matnr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">matnr</span>.
+    <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">werks</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">werks</span>.
+    <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">menge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">menge</span>.
+    <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">meins</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">meins</span>.
+    <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">netwr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">netwr</span>.
+    <span style="color:#a6e22e">READ</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">lt_ekko</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">ls_ekko</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">KEY</span> <span style="color:#a6e22e">ebeln</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekpo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ebeln</span>.
+    <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+      <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">aedat</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekko</span><span style="color:#f92672">-</span><span style="color:#a6e22e">aedat</span>.
+      <span style="color:#a6e22e">ls_output</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ernam</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_ekko</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ernam</span>.
+    <span style="color:#a6e22e">ENDIF</span>.
+    <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_output</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">lt_output</span>.
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_output</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; GET_DATA &#34;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span>      <span style="color:#a6e22e">Module</span>  <span style="color:#a6e22e">STATUS_0100</span>  <span style="color:#a6e22e">OUTPUT</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>       <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">MODULE</span> <span style="color:#a6e22e">status_0100</span> <span style="color:#a6e22e">OUTPUT</span>.
+  <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">STATUS</span> <span style="color:#e6db74">&#39;PF_1000&#39;</span>.
+  <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">TITLEBAR</span> <span style="color:#e6db74">&#39;TIT_100&#39;</span>.
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">prepare_field_catalog</span> <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">lt_fieldcat</span>.
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">prepare_layout</span> <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">lw_layout</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">grid</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span> .
+<span style="color:#f92672">*----</span><span style="color:#a6e22e">Creating</span> <span style="color:#a6e22e">custom</span> <span style="color:#a6e22e">container</span> <span style="color:#a6e22e">instance</span>
+    <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">container</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">container_name</span>              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CONTAINER&#39;</span>
+      <span style="color:#a6e22e">EXCEPTIONS</span>
+        <span style="color:#a6e22e">cntl_error</span>                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#a6e22e">cntl_system_error</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        <span style="color:#a6e22e">create_error</span>                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+        <span style="color:#a6e22e">lifetime_error</span>              <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+        <span style="color:#a6e22e">lifetime_dynpro_dynpro_link</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+        <span style="color:#a6e22e">OTHERS</span>                      <span style="color:#f92672">=</span> <span style="color:#ae81ff">6.</span>
+    <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+      <span style="color:#a6e22e">MESSAGE</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgid</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgty</span> <span style="color:#a6e22e">NUMBER</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgno</span>
+            <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv1</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv2</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv3</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv4</span>.
+    <span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#f92672">*----</span><span style="color:#a6e22e">creating</span> <span style="color:#a6e22e">alv</span> <span style="color:#a6e22e">grid</span> <span style="color:#a6e22e">instance</span>
+    <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">grid</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">i_parent</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">container</span>
+      <span style="color:#a6e22e">EXCEPTIONS</span>
+        <span style="color:#a6e22e">error_cntl_create</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#a6e22e">error_cntl_init</span>   <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        <span style="color:#a6e22e">error_cntl_link</span>   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+        <span style="color:#a6e22e">error_dp_create</span>   <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+        <span style="color:#a6e22e">OTHERS</span>            <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.</span>
+    <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+      <span style="color:#a6e22e">MESSAGE</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgid</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgty</span> <span style="color:#a6e22e">NUMBER</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgno</span>
+     <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv1</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv2</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv3</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv4</span>.
+    <span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#f92672">*----</span><span style="color:#a6e22e">Here</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">additional</span> <span style="color:#a6e22e">preparations</span>
+<span style="color:#f92672">*--</span><span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">g</span>. <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">sorting</span> <span style="color:#a6e22e">criteria</span>, <span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">filtering</span> <span style="color:#a6e22e">criteria</span>, <span style="color:#a6e22e">excluding</span>
+<span style="color:#f92672">*--</span><span style="color:#a6e22e">functions</span>
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">grid</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_table_for_first_display</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">i_buffer_active</span>               <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">i_bypassing_buffer</span>            <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">i_consistency_check</span>           <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">i_structure_name</span>              <span style="color:#f92672">=</span>      
+          <span style="color:#e6db74">&#34;Name of the DDIC structure, the catalog is generated automatically (Have priority)&#34;</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">is_variant</span>                    <span style="color:#f92672">=</span>
+        <span style="color:#a6e22e">i_save</span>                        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+        <span style="color:#a6e22e">i_default</span>                     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+        <span style="color:#a6e22e">is_layout</span>                     <span style="color:#f92672">=</span> <span style="color:#a6e22e">lw_layout</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">is_print</span>                      <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">it_special_groups</span>             <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">it_toolbar_excluding</span>          <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">it_hyperlink</span>                  <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">it_alv_graphics</span>               <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">it_except_qinfo</span>               <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">ir_salv_adapter</span>               <span style="color:#f92672">=</span>
+      <span style="color:#a6e22e">CHANGING</span>
+        <span style="color:#a6e22e">it_outtab</span>                     <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_output</span>
+        <span style="color:#a6e22e">it_fieldcatalog</span>               <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_fieldcat</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">it_sort</span>                       <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>      <span style="color:#a6e22e">it_filter</span>                     <span style="color:#f92672">=</span>
+      <span style="color:#a6e22e">EXCEPTIONS</span>
+        <span style="color:#a6e22e">invalid_parameter_combination</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#a6e22e">program_error</span>                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+        <span style="color:#a6e22e">too_many_lines</span>                <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+        <span style="color:#a6e22e">OTHERS</span>                        <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+              .
+    <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+      <span style="color:#a6e22e">MESSAGE</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgid</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgty</span> <span style="color:#a6e22e">NUMBER</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgno</span>
+      <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv1</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv2</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv3</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">msgv4</span>.
+    <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#a6e22e">ELSE</span> .
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">grid</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">refresh_table_display</span>
+<span style="color:#f92672">*</span>     <span style="color:#a6e22e">EXPORTING</span>
+<span style="color:#f92672">*</span>     <span style="color:#a6e22e">IS_STABLE</span> <span style="color:#f92672">=</span>
+<span style="color:#f92672">*</span>     <span style="color:#a6e22e">I_SOFT_REFRESH</span> <span style="color:#f92672">=</span>
+     <span style="color:#a6e22e">EXCEPTIONS</span>
+      <span style="color:#a6e22e">finished</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> .
+    <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">subrc</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+    <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#a6e22e">ENDMODULE</span>.                 <span style="color:#e6db74">&#34; STATUS_0100  OUTPUT &#34;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span>      <span style="color:#a6e22e">Module</span>  <span style="color:#a6e22e">USER_COMMAND_0100</span>  <span style="color:#a6e22e">INPUT</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>       <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">MODULE</span> <span style="color:#a6e22e">user_command_0100</span> <span style="color:#a6e22e">INPUT</span>.
+  <span style="color:#a6e22e">CASE</span> <span style="color:#a6e22e">sy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ucomm</span>.
+    <span style="color:#a6e22e">WHEN</span> <span style="color:#e6db74">&#39;BACK&#39;</span> <span style="color:#a6e22e">OR</span> <span style="color:#e6db74">&#39;UP&#39;</span> <span style="color:#a6e22e">OR</span> <span style="color:#e6db74">&#39;CANCEL&#39;</span>.
+      <span style="color:#a6e22e">LEAVE</span> <span style="color:#a6e22e">PROGRAM</span>.
+  <span style="color:#a6e22e">ENDCASE</span>.
+<span style="color:#a6e22e">ENDMODULE</span>.                 <span style="color:#e6db74">&#34; USER_COMMAND_0100  INPUT &#34;</span>
+
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">prepare_field_catalog</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>       <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>      <span style="color:#f92672">--&gt;</span><span style="color:#a6e22e">PT_FIELDCAT</span>  <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">prepare_field_catalog</span>  <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">pt_fieldcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_t_fcat</span>.
+  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_s_fcat</span> .
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span> .
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EBELN&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Purchase Order&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EBELP&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Purchase Order Item&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MATNR&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Material Number&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WERKS&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Plant&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MENGE&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Quantity&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MEINS&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Unit&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">6.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NETWR&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Value&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">7.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AEDAT&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Create Date&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ERNAM&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Create By&#39;</span>.
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">9.</span>
+  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">outputlen</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.</span>
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_fcat</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">pt_fieldcat</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_fcat</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; PREPARE_FIELD_CATALOG &#34;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">PREPARE_LAYOUT</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>       <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#f92672">*</span>      <span style="color:#f92672">&lt;--</span><span style="color:#a6e22e">P_GS_LAYOUT</span>  <span style="color:#a6e22e">text</span>
+<span style="color:#f92672">*----------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">prepare_layout</span>  <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">ps_layout</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_s_layo</span>.
+  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zebra</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> .
+  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cwidth_opt</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">grid_title</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Material Document List&#39;</span> .
+  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">smalltitle</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> .
+<span style="color:#f92672">*</span>  <span style="color:#a6e22e">ps_layout</span><span style="color:#f92672">-</span><span style="color:#a6e22e">info_fname</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ROWCOLOR&#39;</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; PREPARE_LAYOUT &#34;</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>862</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV1/" class="prev" rel="prev" title="报表开发&lt;OO ALV&gt;"><i class="iconfont icon-dajiantou"></i>&nbsp;报表开发&lt;OO ALV&gt;</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAP_Lock/" class="next" rel="next" title="SAP 锁机制">SAP 锁机制&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-08 00:00:00 \u002b0000 UTC',
+        title: 'OO ALV 实例程序',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

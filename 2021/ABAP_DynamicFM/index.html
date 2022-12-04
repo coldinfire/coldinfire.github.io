@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_CurrencyRate/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/SAPHANA_Basic/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_DynamicFM/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 动态函数调用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 动态函数调用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 动态函数调用 "/>
+<meta name="twitter:description" content="调用语法 CALL FUNCTION [PARAMETER-TABLE ptab] [EXCEPTION-TABLE etab]. ：通过特殊的内部表 ptab 和 etab 将实际参数分配给功能模块的形式参数，并将值返回给非基于类的异常。 使用参数 PARAMETER-TA"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 动态函数调用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_DynamicFM\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  2633 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_DynamicFM\/",
+  "datePublished": "2021-10-28T00:00:00\x2b00:00",
+  "dateModified": "2021-10-28T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 动态函数调用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-10-28 >28 October 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="调用语法">调用语法</h3>
+<p><code>CALL FUNCTION [PARAMETER-TABLE ptab] [EXCEPTION-TABLE etab].</code> ：通过特殊的内部表 ptab 和 etab 将实际参数分配给功能模块的形式参数，并将值返回给非基于类的异常。</p>
+<h4 id="使用参数">使用参数</h4>
+<p>PARAMETER-TABLE：用于为被调用函数模块的所有形参分配实参。 ptab 表的数据类型需要参照类型池 ABAP 的表类型 <code>abap_func_parmbind_tab</code> 或行类型 <code>abap_func_parmbind</code> 创建，类型为排序表。 列名称和种类构成了表 ptab 的唯一键。当语句 CALL FUNCTION 被执行时，对于每个非可选的形式参数，表格必须只包含一行。 对于每个可选的形式参数，这一行都是可选的。 表参数列表：</p>
+<ul>
+<li>NAME：函数模块的参数名称，类型 char30</li>
+<li>KIND：类型为 i，形式参数的类型。 kind 必须包含类型池 ABAP 的以下常量之一的值，如果从调用者角度指定的类型与形参的实际类型不匹配，则会引发可捕获异常
+<ul>
+<li><code>abap_func_exporting</code>：for input parameters value 10</li>
+<li><code>abap_func_importing</code>：for output parameters value 20</li>
+<li><code>abap_func_tables</code>：for table parameters value 30</li>
+<li><code>abap_func_changing</code>：for input/output parameters value 40</li>
+</ul>
+</li>
+<li>VALUE：定义类型为<code>REF TO data</code>，作为指向实际参数的指针。 value 中的引用变量所指向的数据对象被分配给 name 中指定的形参。如果该引用变量类型与 FM 实际参数变量类型不一致，则引发异常  <code>CX_SY_DYN_CALL_ILLEGAL_TYPE</code></li>
+</ul>
+<p>EXCEPTION-TABLE：用于将返回值分配给未标记为异常类的被调用功能模块的异常。 etab 参照类型池 ABAP 的表类型 abap_func_excpbind_tab 或行类型 abap_func_excpbind 创建散列表。 当执行语句 CALL FUNCTION 时，该表可以为功能模块的每个非基于类的异常只包含一行。 表参数列表：</p>
+<ul>
+<li>NAME： 对于相应异常的名称，或 error_message，或以大写字母指定 OTHERS。类型 char30</li>
+<li>VALUE：类型为 i ，处理 name 中指定的异常后在 sy-subrc 中可用的数值</li>
+<li>MESSAGE：定义类型为 <code>REF TO data</code></li>
+</ul>
+<h4 id="简单实例">简单实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> zdyn_call_fm.
+<span style="color:#66d9ef">TYPE-POOLS</span>:abap,slis.
+<span style="color:#66d9ef">DATA</span>: lv_func_name <span style="color:#66d9ef">TYPE </span>rs38l_fnam.
+<span style="color:#66d9ef">DATA</span>: lv_msg <span style="color:#66d9ef">TYPE </span>string,
+      lt_flight <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> sflight.
+<span style="color:#66d9ef">DATA</span>: lt_param <span style="color:#66d9ef">TYPE </span>abap_func_parmbind_tab,
+      ls_param <span style="color:#66d9ef">TYPE </span>abap_func_parmbind,
+      lt_excep <span style="color:#66d9ef">TYPE </span>abap_func_excpbind_tab,
+      ls_excep <span style="color:#66d9ef">TYPE </span>abap_func_excpbind.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fs_msg&gt; <span style="color:#66d9ef">TYPE </span>string.
+               &lt;fs_details&gt; <span style="color:#66d9ef">TYPE </span>ANY <span style="color:#66d9ef">TABLE</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_carr <span style="color:#66d9ef">TYPE </span>sflight<span style="color:#960050;background-color:#1e0010">–</span>carrid,
+            p_conn <span style="color:#66d9ef">TYPE </span>sflight<span style="color:#960050;background-color:#1e0010">–</span>connid,
+            p_date <span style="color:#66d9ef">TYPE </span>sflight<span style="color:#960050;background-color:#1e0010">–</span>fldate.
+<span style="color:#75715e">* Build parameters</span>
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CARRID&#39;</span>.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>kind <span style="color:#f92672">=</span> abap_func_exporting.
+<span style="color:#66d9ef">GET REFERENCE OF</span> p_carr <span style="color:#66d9ef">INTO</span> ls_param<span style="color:#960050;background-color:#1e0010">–</span>value.
+<span style="color:#66d9ef">APPEND</span> ls_param <span style="color:#66d9ef">TO</span> lt_param.
+<span style="color:#66d9ef">CLEAR</span> ls_param.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CONNID&#39;</span>.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>kind <span style="color:#f92672">=</span> abap_func_exporting.
+<span style="color:#66d9ef">GET REFERENCE OF</span> p_conn <span style="color:#66d9ef">INTO</span> ls_param<span style="color:#960050;background-color:#1e0010">–</span>value.
+<span style="color:#66d9ef">APPEND</span> ls_param <span style="color:#66d9ef">TO</span> lt_param.
+<span style="color:#66d9ef">CLEAR</span> ls_param.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FLDATE&#39;</span>.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>kind <span style="color:#f92672">=</span> abap_func_exporting.
+<span style="color:#66d9ef">GET REFERENCE OF</span> p_date <span style="color:#66d9ef">INTO</span> ls_param<span style="color:#960050;background-color:#1e0010">–</span>value.
+<span style="color:#66d9ef">APPEND</span> ls_param <span style="color:#66d9ef">TO</span> lt_param.
+<span style="color:#66d9ef">CLEAR</span> ls_param.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MSG&#39;</span>.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>kind <span style="color:#f92672">=</span> abap_func_importing.
+<span style="color:#66d9ef">GET REFERENCE OF</span> lv_msg <span style="color:#66d9ef">INTO</span> ls_param<span style="color:#960050;background-color:#1e0010">–</span>value.
+<span style="color:#66d9ef">APPEND</span> ls_param <span style="color:#66d9ef">TO</span> lt_param.
+<span style="color:#66d9ef">CLEAR</span> ls_param.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DETAILS&#39;</span>.
+ls_param<span style="color:#960050;background-color:#1e0010">–</span>kind <span style="color:#f92672">=</span> abap_func_tables.
+<span style="color:#66d9ef">GET REFERENCE OF</span> lt_flight <span style="color:#66d9ef">INTO</span> ls_param<span style="color:#960050;background-color:#1e0010">–</span>value.
+<span style="color:#66d9ef">APPEND</span> ls_param <span style="color:#66d9ef">TO</span> lt_param.
+<span style="color:#66d9ef">CLEAR</span> ls_param.
+<span style="color:#75715e">&#34;Exception Parameter&#34;
+</span><span style="color:#75715e"></span>ls_excep<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PROGRAM_ERROR&#39;</span>.
+ls_excep<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>.
+<span style="color:#66d9ef">INSERT</span> ls_excep <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> lt_excep.
+<span style="color:#75715e">* Dynamic FM call with all import,export,table parameters in the Parameter-table</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> lv_func_name
+  PARAMETER<span style="color:#960050;background-color:#1e0010">–</span>TABLE 
+    lt_param
+  <span style="color:#66d9ef">EXCEPTION</span><span style="color:#f92672">-</span>TABLE 
+    lt_excep.
+<span style="color:#75715e">* FM Result</span>
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_param <span style="color:#66d9ef">INTO</span> ls_param <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MSG&#39;</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#960050;background-color:#1e0010">–</span>subrc <span style="color:#f92672">IS INITIAL</span>.
+  <span style="color:#66d9ef">ASSIGN</span> ls_param<span style="color:#960050;background-color:#1e0010">–</span>value-&gt;* <span style="color:#66d9ef">TO</span> &lt;fs_msg&gt;.
+  <span style="color:#66d9ef">IF</span> &lt;fs_msg&gt; <span style="color:#f92672">IS ASSIGNED</span> <span style="color:#f92672">AND</span> &lt;fs_msg&gt; <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#66d9ef">WRITE</span>:/ &lt;fs_msg&gt;.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> lt_param <span style="color:#66d9ef">INTO</span> ls_param <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DETAILS&#39;</span>.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#960050;background-color:#1e0010">–</span>subrc <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">ASSIGN</span> ls_param<span style="color:#960050;background-color:#1e0010">–</span>value-&gt;* <span style="color:#66d9ef">TO</span> &lt;fs_details&gt;.
+      <span style="color:#66d9ef">IF</span> &lt;fs_details&gt; <span style="color:#f92672">IS ASSIGNED</span> <span style="color:#f92672">AND</span> &lt;fs_details&gt; <span style="color:#f92672">IS NOT INITIAL</span> .
+        lt_flight <span style="color:#f92672">=</span>   &lt;fs_details&gt;.
+        <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;REUSE_ALV_GRID_DISPLAY&#39;</span>
+          <span style="color:#66d9ef">EXPORTING</span>
+            i_callback_program <span style="color:#f92672">=</span> sy<span style="color:#960050;background-color:#1e0010">–</span>repid
+            i_structure_name   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SFLIGHT&#39;</span>
+          <span style="color:#66d9ef">TABLES</span>
+            t_outtab           <span style="color:#f92672">=</span> lt_flight.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h3 id="获取-function-module-参数信息">获取 Function Module 参数信息</h3>
+<h4 id="函数rpy_functionmodule_read_new">函数：RPY_FUNCTIONMODULE_READ_NEW</h4>
+<p><img src="/images/ABAP/FM_Detail0.png" alt="FUNCTION MODULE"></p>
+<p>参数详情</p>
+<ul>
+<li>
+<p>IMPORT_PARAMETER</p>
+<p><img src="/images/ABAP/FM_Detail1.png" alt="FUNCTION MODULE"></p>
+</li>
+<li>
+<p>EXPORT_PARAMETER</p>
+<p><img src="/images/ABAP/FM_Detail2.png" alt="FUNCTION MODULE"></p>
+</li>
+<li>
+<p>TABLES_PARAMETER</p>
+<p><img src="/images/ABAP/FM_Detail3.png" alt="FUNCTION MODULE"></p>
+</li>
+</ul>
+<p>参数判断：通过反射方法判断类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lo_tabledescr  <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_tabledescr,
+      lo_structdescr <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_structdescr,
+      lo_elemdescr   <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_elemdescr,
+      lv_linetypename <span style="color:#66d9ef">TYPE </span>string,
+      t_tabdescr      <span style="color:#66d9ef">TYPE </span>abap_compdescr_tab.
+<span style="color:#66d9ef">LOOP AT </span>lt_chg_para.
+  <span style="color:#66d9ef">TRY</span>. <span style="color:#75715e">&#34;如果当前try成功则为Table type，失败则执行下一个try语句判断Structure type&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*Note: To create a table in Changing Parameter, the type should be a dictionary table type.</span>
+      lo_tabledescr   <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_name</span>( lt_chg_para<span style="color:#f92672">-</span>dbfield ).
+      lo_structdescr  <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lo_tabledescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_table_line_type</span>( ).
+      lv_linetypename <span style="color:#f92672">=</span> lo_structdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_relative_name</span>( ).
+      lo_structdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_name</span>( lv_linetypename ).
+      t_tabdescr[]  <span style="color:#f92672">=</span>  lo_structdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>components[].
+    <span style="color:#66d9ef">CATCH</span> cx_root.
+      <span style="color:#66d9ef">TRY</span>.<span style="color:#75715e">&#34;如果当前try成功则为structure type.&#34;
+</span><span style="color:#75715e"></span>          lo_structdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( lt_chg_para<span style="color:#f92672">-</span>dbfield ).
+          t_tabdescr[] <span style="color:#f92672">=</span> lo_structdescr<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>components[].
+        <span style="color:#66d9ef">CATCH</span> cx_root. 
+          <span style="color:#75715e">&#34;如果上面两个都发生异常，则为variable type&#34;
+</span><span style="color:#75715e"></span>          lo_elemdescr <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_typedescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_name</span>( lt_chg_para<span style="color:#f92672">-</span>dbfield ).
+      <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#66d9ef">ENDTRY</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><p>调用函数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: lv_func_name <span style="color:#66d9ef">TYPE </span>RS38L_FNAM.
+<span style="color:#66d9ef">DATA</span>: lt_imp_para <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> rsimp <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      lt_chg_para <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> rscha <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      lt_exp_para <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> rsexp <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      lt_tab_para <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> rstbl <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      lt_exc_list <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> rsexc <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      lt_document <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> rsfdo <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+      lt_source <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> rssource <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+<span style="color:#66d9ef">CLEAR</span>:lt_rsimp,lt_rscha,lt_rsexp,lt_rstbl,lt_rsexc,lt_rsfdo,lt_source.
+<span style="color:#66d9ef">REFRESH</span>:lt_rsimp,lt_rscha,lt_rsexp,lt_rstbl,lt_rsexc,lt_rsfdo,lt_source.
+lv_func_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BAPI_PO_CREATE&#39;</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;RPY_FUNCTIONMODULE_READ_NEW&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    functionname       <span style="color:#f92672">=</span> lv_func_name
+  <span style="color:#66d9ef">TABLES</span>
+    import_parameter   <span style="color:#f92672">=</span> lt_imp_para
+    changing_parameter <span style="color:#f92672">=</span> lt_chg_para
+    export_parameter   <span style="color:#f92672">=</span> lt_exp_para
+    tables_parameter   <span style="color:#f92672">=</span> lt_tab_para
+    exception_list     <span style="color:#f92672">=</span> lt_exc_list
+    documentation      <span style="color:#f92672">=</span> lt_document
+    source             <span style="color:#f92672">=</span> lt_source.
+</code></pre></div><h4 id="函数rfc_get_function_interface_us">函数：RFC_GET_FUNCTION_INTERFACE_US</h4>
+<p><img src="/images/ABAP/FM_Detail4.png" alt="RFC_GET_FUNCTION_INTERFACE_US"></p>
+<p><img src="/images/ABAP/FM_Detail5.png" alt="RFC_GET_FUNCTION_INTERFACE_US"></p>
+<p>参数详情</p>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th>Description</th>
+<th align="left">Parameter</th>
+<th align="left">Parameter</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">PARAMCLASS</td>
+<td>i (import)、e (export)、T (table)</td>
+<td align="left">PARAMETER</td>
+<td align="left">TABNAME</td>
+<td align="left">FIELDNAME</td>
+</tr>
+</tbody>
+</table>
+<p>PARAMCLASS  参数判断</p>
+<ul>
+<li>
+<p>I 或则 E：去 DD02L 表中根据 TABNAME 查找(TRANSP 透明表、INTTAB 结构) ，如果类型不是 TRANSP</p>
+<ul>
+<li>如果类型是 INTTAB，那么 PARAMETER 就是一个 structure</li>
+<li>如果 DD02L 表中不存在或则 FIELDNAME 不为空，那么 PARAMETER 是一个 variable；</li>
+</ul>
+</li>
+<li>
+<p>I 或则 E 并且 TABNAME 的类型是 table 那么 PARAMETER 就是一个 table</p>
+<ul>
+<li>DD40VV / DD40L 判断 table 实际类型，是否参照 ROWTYPE</li>
+</ul>
+</li>
+<li>
+<p>T 代表 PARAMETER 是一个 table</p>
+</li>
+</ul>
+<h4 id="动态实例">动态实例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> zdyn_call_fm.
+<span style="color:#66d9ef">TYPE-POOLS</span>:abap,slis.
+<span style="color:#66d9ef">DATA</span>: lv_func_name <span style="color:#66d9ef">TYPE </span>rs38l_fnam.
+<span style="color:#66d9ef">DATA</span>: lv_msg <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">DATA</span>: lt_param <span style="color:#66d9ef">TYPE </span>abap_func_parmbind_tab,
+      ls_param <span style="color:#66d9ef">TYPE </span>abap_func_parmbind,
+      lt_excep <span style="color:#66d9ef">TYPE </span>abap_func_excpbind_tab,
+      ls_excep <span style="color:#66d9ef">TYPE </span>abap_func_excpbind.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fs_msg&gt; <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">DATA</span>:<span style="color:#66d9ef">BEGIN OF</span> gs_data,
+  canum          <span style="color:#66d9ef">TYPE </span>HRFPM_NO_DOC_LINES,
+  func_parameter <span style="color:#66d9ef">TYPE </span>RS38L_PAR_,
+  func_paramtype <span style="color:#66d9ef">TYPE </span>RS38L_KIND,
+  func_structure <span style="color:#66d9ef">TYPE </span>RS38L_TYP,
+  json_data      <span style="color:#66d9ef">TYPE </span>STRING,
+  param_type     <span style="color:#66d9ef">TYPE </span>PARAMTEXT,
+<span style="color:#66d9ef">END OF</span> gs_data.
+<span style="color:#66d9ef">DATA</span>: gt_data <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> gs_data.
+<span style="color:#75715e">&#34;Prepare Data&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34; PERFORM get_data.
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;Get FM Parameter&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;RPY_FUNCTIONMODULE_READ_NEW&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    functionname       <span style="color:#f92672">=</span> lv_func_name
+  <span style="color:#66d9ef">TABLES</span>
+    import_parameter   <span style="color:#f92672">=</span> lt_imp_para
+    changing_parameter <span style="color:#f92672">=</span> lt_chg_para
+    export_parameter   <span style="color:#f92672">=</span> lt_exp_para
+    tables_parameter   <span style="color:#f92672">=</span> lt_tab_para
+    exception_list     <span style="color:#f92672">=</span> lt_exc_list
+    documentation      <span style="color:#f92672">=</span> lt_document
+    source             <span style="color:#f92672">=</span> lt_source.
+<span style="color:#66d9ef">CLEAR</span> lt_param .
+<span style="color:#75715e">&#34;Function Input Parameter&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">LOOP AT </span>lt_imp_para.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">prepare_parameter_table</span> <span style="color:#66d9ef">USING</span> lt_imp_para<span style="color:#f92672">-</span>parameter lt_imp_para<span style="color:#f92672">-</span>optional 
+                                        lt_imp_para<span style="color:#f92672">-</span>typ <span style="color:#e6db74">&#39;I&#39;</span>
+                               <span style="color:#66d9ef">CHANGING</span> lt_param .
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">&#34;Function Table Parameter&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">LOOP AT </span>lt_tab_para.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">prepare_parameter_table</span> <span style="color:#66d9ef">USING</span> lt_tab_para<span style="color:#f92672">-</span>parameter lt_tab_para<span style="color:#f92672">-</span>optional 
+                                        lt_tab_para<span style="color:#f92672">-</span>dbstruct <span style="color:#e6db74">&#39;T&#39;</span>
+                               <span style="color:#66d9ef">CHANGING</span> lt_param .
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">&#34;Call Function with parameter
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> lv_func_name
+  PARAMETER<span style="color:#f92672">-</span>TABLE
+    it_par.
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  PREPARE_PARAMETER_TABLE</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;P_LT_RSIMP_PARAMETER  text</span>
+<span style="color:#75715e">*      --&gt;P_LT_RSIMP_OPTIONAL  text</span>
+<span style="color:#75715e">*      --&gt;P_LT_RSIMP_TYP  text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">prepare_parameter_table</span>  <span style="color:#66d9ef">USING</span> parameter optional ref typ
+                           <span style="color:#66d9ef">CHANGING</span> it_par <span style="color:#66d9ef">TYPE </span>abap_func_parmbind_tab.
+
+  <span style="color:#66d9ef">DATA</span> wa_par <span style="color:#66d9ef">TYPE </span>abap_func_parmbind.
+  <span style="color:#66d9ef">DATA</span>: lv_string <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">DATA</span>: lv_data_type <span style="color:#66d9ef">TYPE </span>string.
+
+  <span style="color:#66d9ef">DATA</span>: l_tabname <span style="color:#66d9ef">TYPE </span>tabname,
+        ls_dd40vv <span style="color:#66d9ef">TYPE </span>dd40vv.
+
+  <span style="color:#66d9ef">DATA</span>: dyn_table <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+        dyn_wa <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+        dyn_value <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;dyn_table&gt; <span style="color:#66d9ef">TYPE </span>ANY <span style="color:#66d9ef">TABLE</span>,
+                 &lt;dyn_wa&gt;    <span style="color:#66d9ef">TYPE </span>ANY,
+                 &lt;dyn_value&gt; <span style="color:#66d9ef">TYPE </span>ANY,
+                 &lt;fval&gt;      <span style="color:#66d9ef">TYPE </span>ANY.
+
+  <span style="color:#75715e">&#34;Log记录的Function Module请求参数处理&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> gt_data <span style="color:#66d9ef">INTO</span> gs_data <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> func_parameter <span style="color:#f92672">=</span> parameter.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">CLEAR</span> wa_par.
+    wa_par<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> parameter.              <span style="color:#75715e">&#34; Prarter Name &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> typ <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;T&#39;</span>.                        <span style="color:#75715e">&#34; Prarter Type &#34;
+</span><span style="color:#75715e"></span>      wa_par<span style="color:#f92672">-</span>kind <span style="color:#f92672">=</span> abap_func_tables.
+    <span style="color:#66d9ef">ELSEIF</span> typ <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;I&#39;</span>.
+      wa_par<span style="color:#f92672">-</span>kind <span style="color:#f92672">=</span> abap_func_exporting.
+    <span style="color:#66d9ef">ELSEIF</span> typ <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+      wa_par<span style="color:#f92672">-</span>kind <span style="color:#f92672">=</span> abap_func_importing.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34; Parameter Value &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34; Paremeter:Structure OR Table &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> gs_data<span style="color:#f92672">-</span>json_data<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[&#39;</span> <span style="color:#f92672">OR</span> gs_data<span style="color:#f92672">-</span>json_data<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{&#39;</span>.
+      <span style="color:#66d9ef">CLEAR</span> ls_dd40vv.
+      <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> dd40vv <span style="color:#66d9ef">INTO</span> ls_dd40vv
+       <span style="color:#66d9ef">WHERE</span> typename <span style="color:#f92672">=</span> ref
+         <span style="color:#f92672">AND</span> ddlanguage <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu.
+      <span style="color:#75715e">&#34;判断表类型，如果是 Table Type 则使用 row type 为表结构&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">IF</span> ls_dd40vv <span style="color:#f92672">IS NOT INITIAL</span>.
+        l_tabname <span style="color:#f92672">=</span> ls_dd40vv<span style="color:#f92672">-</span>rowtype.
+      <span style="color:#66d9ef">ELSE</span>.
+        l_tabname <span style="color:#f92672">=</span> ref.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#75715e">&#34;创建动态表结构&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CREATE DATA</span> dyn_table <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> (l_tabname).
+      <span style="color:#75715e">&#34;创建动态内表&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">ASSIGN</span> dyn_table-&gt;* <span style="color:#66d9ef">TO</span> &lt;dyn_table&gt;.
+      <span style="color:#75715e">&#34;创建动态工作区结构&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CREATE DATA</span> dyn_wa <span style="color:#66d9ef">LIKE LINE OF</span> &lt;dyn_table&gt;.
+      <span style="color:#75715e">&#34;创建动态工作区&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">ASSIGN</span> dyn_wa-&gt;* <span style="color:#66d9ef">TO</span> &lt;dyn_wa&gt;.
+      &lt;dyn_table&gt; <span style="color:#f92672">=</span> gs_data<span style="color:#f92672">-</span>json_data.
+      <span style="color:#66d9ef">IF</span> typ <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;T&#39;</span>.       <span style="color:#75715e">&#34;参数类型为表：整表数据传输&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">GET REFERENCE OF</span> &lt;dyn_table&gt; <span style="color:#66d9ef">INTO</span> wa_par<span style="color:#f92672">-</span>value.
+      <span style="color:#66d9ef">ELSEIF</span> typ <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;I&#39;</span>.   <span style="color:#75715e">&#34;参数类型为结构:传入单条数据&#34;
+</span><span style="color:#75715e"></span>        LOOP <span style="color:#66d9ef">AT</span> &lt;dyn_table&gt; <span style="color:#66d9ef">INTO</span> &lt;dyn_wa&gt;.
+          <span style="color:#66d9ef">GET REFERENCE OF</span> &lt;dyn_wa&gt; <span style="color:#66d9ef">INTO</span> wa_par<span style="color:#f92672">-</span>value.
+        <span style="color:#66d9ef">ENDLOOP</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ELSE</span>. <span style="color:#75715e">&#34;Paremeter:单值传入&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span> lv_string .
+      lv_string <span style="color:#f92672">=</span> gs_data<span style="color:#f92672">-</span>json_data.
+      <span style="color:#66d9ef">CONDENSE</span> lv_string NO<span style="color:#f92672">-</span>GAPS.
+      <span style="color:#66d9ef">CREATE DATA</span> dyn_value TYPE (ref).   <span style="color:#75715e">&#34;参照传入参数类型创建动态字段&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">ASSIGN</span> dyn_value-&gt;* <span style="color:#66d9ef">TO</span> &lt;dyn_value&gt;.
+      &lt;dyn_value&gt; <span style="color:#f92672">=</span> lv_string.
+      <span style="color:#66d9ef">GET REFERENCE OF</span> &lt;dref&gt; <span style="color:#66d9ef">INTO</span> wa_par<span style="color:#f92672">-</span>value.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">INSERT</span> wa_par <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> it_par.
+    <span style="color:#66d9ef">CLEAR</span> wa_par.
+  <span style="color:#66d9ef">ELSE</span>. <span style="color:#75715e">&#34;必输字段一定要处理，否则会报错&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> optional <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">CLEAR</span> wa_par.
+      wa_par<span style="color:#f92672">-</span>name <span style="color:#f92672">=</span> parameter.
+      <span style="color:#66d9ef">IF</span> typ <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;I&#39;</span>.
+        wa_par<span style="color:#f92672">-</span>kind <span style="color:#f92672">=</span> abap_func_exporting.
+        <span style="color:#66d9ef">CREATE DATA</span> dyn_value TYPE (ref).
+        <span style="color:#66d9ef">ASSIGN</span> dyn_value-&gt;* <span style="color:#66d9ef">TO</span> &lt;dyn_value&gt;.
+        <span style="color:#66d9ef">CLEAR</span> &lt;dyn_value&gt;.
+        <span style="color:#66d9ef">GET REFERENCE OF</span> &lt;dyn_value&gt; <span style="color:#66d9ef">INTO</span> wa_par<span style="color:#f92672">-</span>value.
+        <span style="color:#66d9ef">INSERT</span> wa_par <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> it_par.
+        <span style="color:#66d9ef">CLEAR</span> wa_par.
+      <span style="color:#66d9ef">ELSEIF</span> typ <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;T&#39;</span>.
+        wa_par<span style="color:#f92672">-</span>kind <span style="color:#f92672">=</span> abap_func_tables.
+        <span style="color:#66d9ef">CLEAR</span> ls_dd40vv.
+        <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> dd40vv <span style="color:#66d9ef">INTO</span> ls_dd40vv
+         <span style="color:#66d9ef">WHERE</span> typename <span style="color:#f92672">=</span> ref
+           <span style="color:#f92672">AND</span> ddlanguage <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu.
+        <span style="color:#75715e">&#34;判断表类型，如果是 Table Type 则使用 row type 为表结构&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">IF</span> ls_dd40vv <span style="color:#f92672">IS NOT INITIAL</span>.
+          l_tabname <span style="color:#f92672">=</span> ls_dd40vv<span style="color:#f92672">-</span>rowtype.
+        <span style="color:#66d9ef">ELSE</span>.
+          l_tabname <span style="color:#f92672">=</span> ref.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#75715e">&#34;创建动态表结构
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CREATE DATA</span> dyn_table <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> (l_tabname).
+        <span style="color:#75715e">&#34;创建动态内表
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">ASSIGN</span> dyn_table-&gt;* <span style="color:#66d9ef">TO</span> &lt;dyn_table&gt;.
+        <span style="color:#66d9ef">REFRESH</span> &lt;dyn_table&gt;.
+        <span style="color:#66d9ef">GET REFERENCE OF</span> &lt;dyn_table&gt; <span style="color:#66d9ef">INTO</span> wa_par<span style="color:#f92672">-</span>value.
+        <span style="color:#66d9ef">INSERT</span> wa_par <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> it_par.
+        <span style="color:#66d9ef">CLEAR</span> wa_par.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; PREPARE_PARAMETER_TABLE &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2633</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_CurrencyRate/" class="prev" rel="prev" title=" SAP 外币金额汇率转换 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 外币金额汇率转换 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/SAPHANA_Basic/" class="next" rel="next" title=" SAP HANA 知识链接 "> SAP HANA 知识链接 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-10-28 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 动态函数调用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

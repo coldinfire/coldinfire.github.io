@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Basis_InnerTable/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_SQL_OpenSQL/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Basis_Modularization/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 模块化使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 模块化使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 模块化使用 "/>
+<meta name="twitter:description" content="代码模块化 当模块化源代码时，可以将一个完整功能的 ABAP 语句放置在一个模块中。 然后在后续编写程序时，不必将所有语句都放在主程序中，而只需调用模块。"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 模块化使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_Modularization\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1686 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_Modularization\/",
+  "datePublished": "2018-05-22T00:00:00\x2b00:00",
+  "dateModified": "2018-05-22T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 模块化使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-22 >22 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="代码模块化">代码模块化</h3>
+<p>当模块化源代码时，可以将一个完整功能的 ABAP 语句放置在一个模块中。 然后在后续编写程序时，不必将所有语句都放在主程序中，而只需调用模块。生成程序时，模块化单元中的源代码被视为实际存在于主程序中。</p>
+<h4 id="模块化的优点">模块化的优点</h4>
+<ul>
+<li>改进程序的结构</li>
+<li>易于阅读的代码</li>
+<li>易于维护和更新代码</li>
+<li>避免冗余并促进代码重用</li>
+</ul>
+<h4 id="各种模块化技术">各种模块化技术</h4>
+<ul>
+<li>Macros：宏的使用</li>
+<li>Include：包含文件的使用</li>
+<li>Subroutine ：Form 子程序的使用</li>
+<li>Function Modules：功能模块的使用</li>
+</ul>
+<h3 id="全局变量局部变量">全局变量，局部变量</h3>
+<h4 id="全局变量">全局变量</h4>
+<p>其他功能块里声明的变量属于全局变量（报表事件块、列表事件块、对话 module），效果与在程序开头定义的变量一样。</p>
+<h4 id="局部变量">局部变量</h4>
+<p>报表程序中选择屏幕事件块(AT SELECTION-SCREEN)、逻辑数据库事件块，以及 macro、methods、subroutines (FORM子过程)、Function Modules 中声明的变量为局部变量。</p>
+<h3 id="abap-macro">ABAP Macro</h3>
+<p>如果要在程序中多次重复使用同一组语句，可以将它们包含在宏中。</p>
+<p><em><strong>只能在定义它的程序中使用宏，并且只能在其定义之后的程序行中调用它。</strong></em></p>
+<p>通过宏来设置 FIELDCATALOG 字段属性，可以很好的提示代码编写效率：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DEFINE</span> fieldcat.  
+  <span style="color:#66d9ef">clear</span> gs_fieldcat.  
+  gs_fieldcat<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> &amp;1.  
+  gs_fieldcat<span style="color:#f92672">-</span>seltext_l <span style="color:#f92672">=</span> &amp;2.  
+  gs_fieldcat<span style="color:#f92672">-</span>seltext_m <span style="color:#f92672">=</span> &amp;2.  
+  gs_fieldcat<span style="color:#f92672">-</span>seltext_s <span style="color:#f92672">=</span> &amp;2.
+  <span style="color:#66d9ef">APPEND</span> gs_fieldcat <span style="color:#66d9ef">TO</span> gt_fieldcat.
+<span style="color:#66d9ef">END-OF-DEFINITION</span>.
+fieldcat <span style="color:#e6db74">&#39;CARRID&#39;</span> <span style="color:#e6db74">&#39;航线承运人&#39;</span>.
+</code></pre></div><h3 id="include-programs">Include Programs</h3>
+<p>语法：<code>INCLUDE &lt;include program name&gt;.</code></p>
+<ul>
+<li>包含程序不能调用自己本身</li>
+<li>包含程序必须包含完整的可执行语句</li>
+</ul>
+<p>Include Programs 仅用于模块化源代码，没有参数接口。</p>
+<p>包含程序允许在不同的程序中使用相同的源代码。 如果想在不同的程序中使用冗长的数据声明，它们会很有用。</p>
+<h3 id="subroutine">Subroutine</h3>
+<p>子程序是可以在任何 ABAP 程序中定义并且也可以从任何程序调用的过程。 子程序通常在内部调用，也就是说，它们包含在本地经常使用的代码或算法部分。</p>
+<p>如果你希望某个功能在整个系统中可重用，请使用 Function Modules。</p>
+<ul>
+<li>子程序中允许嵌套调用（即 PERFORM 在 FORM &hellip; ENDFORM 中），递归调用也是可能的。</li>
+</ul>
+<h4 id="定义子程序">定义子程序</h4>
+<p><code>FORM &lt;Subroutine&gt; [&lt;pass&gt;].  &lt;Statement block&gt;. ENDFORM.</code></p>
+<p>将数据从调用部分传递到被调用部分的方式有以下三种：</p>
+<ul>
+<li>传值：VALUE()</li>
+<li>通过引用传递</li>
+<li>按值传递并返回</li>
+</ul>
+<p>Form 中的参数解析：</p>
+<ul>
+<li>
+<p>形式参数：在定义子程序时用 FORM 语句定义。</p>
+</li>
+<li>
+<p>实际参数：在使用 PERFORM 语句调用子程序期间指定。</p>
+</li>
+</ul>
+<h4 id="参数使用">参数使用</h4>
+<p>TABLES：Type 和 Like 只能参照标准内表类型或标准内表对象</p>
+<ul>
+<li><code>FORM &lt;name&gt; TABLES itab1...itabn. </code>：以表的方式传输数据</li>
+</ul>
+<p>USING：值传递，对形参的修改不会改变实参</p>
+<ul>
+<li><code>PERFORM frm_name USING p1.</code></li>
+<li><code> FORM frm_name USING [ VALUE(P_PER1) TYPE &lt;type&gt; .... pn].</code></li>
+</ul>
+<p>CHANGING：使用排序表或则哈希表，如果 CHANGE 值传递（VALUE(P_PER1)），对形参的修改还是会改变实参，在 Form 或则 Function 执行完后才去修改</p>
+<ul>
+<li><code>FORM &lt;name&gt; CHANGING [p1....pn].</code></li>
+</ul>
+<h4 id="调用方式">调用方式</h4>
+<p>调用指定程序中的子程序：不同的ABAP程序中的子程序是可以共用的。</p>
+<ul>
+<li>
+<p><code>PERFORM &lt;subroutine&gt;(&lt;Program&gt;) [&lt;pass&gt;] [IF FOUND].</code></p>
+</li>
+<li>
+<p><code>PERFORM (&lt;subroutine&gt;) IN PROFRAM (&lt;prog_name&gt;) [&lt;pass&gt;]  [IF FOUND].</code></p>
+</li>
+<li>
+<p><code>PERFORM &lt;index&gt; OF &lt;subroutine1&gt; &lt;subroutine2&gt; &lt;subroutine3&gt; [&lt;pass&gt;].</code></p>
+</li>
+</ul>
+<p>通过TCode调用指定程序中的子程序</p>
+<ul>
+<li><code>CALL TRANSACTION &lt;TCode&gt;.  </code></li>
+</ul>
+<p>使用SUBMIT调用另一个程序：</p>
+<ul>
+<li>
+<p><code>SUBMIT &lt;program_name&gt;.</code></p>
+</li>
+<li>
+<p>&hellip;<code>USING SELECTION-SCREEN &lt;SCR&gt;</code>. 调用子屏幕</p>
+</li>
+<li>
+<p>&hellip;<code>VIA  SELECTION-SCREEN.</code>  显示所调用程序的初始屏幕</p>
+</li>
+<li>
+<p>&hellip;<code>AND RETURN.</code> 调用指定程序执行后可返回上一屏幕</p>
+</li>
+</ul>
+<h3 id="function-modules-se37">Function Modules （SE37）</h3>
+<p>功能模块是任何人都可以使用的通用 ABAP/4 例程。 事实上，有大量的标准功能模块可用。</p>
+<p>功能模块被组织成功能组：逻辑相关功能的集合。 一个功能模块总是属于一个功能组。</p>
+<h4 id="定义">定义</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> <span style="color:#f92672">&lt;</span>function <span style="color:#66d9ef">module</span><span style="color:#f92672">&gt;</span>.
+  &lt;Statements&gt;
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div><h4 id="使用">使用</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> &lt;module&gt;
+  [EXPORTING  f1 <span style="color:#f92672">=</span> a1 ... fn <span style="color:#f92672">=</span> an]
+  [IMPORTING  f1 <span style="color:#f92672">=</span> a1 ... fn <span style="color:#f92672">=</span> an]
+  [CHANGING   f1 <span style="color:#f92672">=</span> a1 ... fn <span style="color:#f92672">=</span> an]
+  [TABLES     f1 <span style="color:#f92672">=</span> a1 ... fn <span style="color:#f92672">=</span> an]
+  [EXCEPTIONS e1 <span style="color:#f92672">=</span> e1 ... en <span style="color:#f92672">=</span> en 
+    [ERROR_MESSAGE <span style="color:#f92672">=</span> r E]   
+    [OTHERS <span style="color:#f92672">=</span> ro]].
+</code></pre></div><h4 id="function-groups">Function Groups</h4>
+<p>功能组是功能模块的容器。SAP 系统中有大量的标准功能组。一个功能组中的所有功能模块都可以访问该组的全局数据。</p>
+<ul>
+<li>无法执 Function Groups</li>
+<li>Function Groups 的名称最长可达 26 个字符</li>
+</ul>
+<p>创建 Function Group 时，系统会自动创建 Main program 与相应的 include 程序。</p>
+<ul>
+<li>
+<p><code>SAPL&lt;fgrp&gt;</code>：主程序名，将Function Group里的所有的Include文件包括进来，只有Include语句</p>
+</li>
+<li>
+<p><code>L&lt;fgrp&gt;TOP</code>：有FUNCTION-POOL语句，以及所有Function model都可以使用的全局数据定义</p>
+</li>
+<li>
+<p><code>L&lt;fgrp&gt;UXX</code>：只有 include 语句，为相应具体 Function Model 所对应的 Include 文件名：<code>L&lt;fgrp&gt;U01...</code>包含了对应的 FM 代码。</p>
+</li>
+<li>
+<p><code>L&lt;fgrp&gt;U01</code>：01,02编号对应 UXX，代表其创建先后的序号。</p>
+</li>
+<li>
+<p><code>L&lt;fgrp&gt;FXX</code>：用来存放一些 Form 子程序，可以被所有 Function Modules 所使用。</p>
+</li>
+<li>
+<p><code>L&lt;fgrp&gt;PAI L&lt;fgrp&gt;PBO</code>：PAI,PBO事件。</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1686</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Basis_InnerTable/" class="prev" rel="prev" title=" ABAP 内表使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 内表使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SQL_OpenSQL/" class="next" rel="next" title=" ABAP Open SQL "> ABAP Open SQL &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-22 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 模块化使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

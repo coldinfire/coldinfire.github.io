@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_BOM_Enhance/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/FI_MIRO_Matnr/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_BTE/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP BTE增强使用 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP BTE增强使用 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP BTE增强使用"/>
+<meta name="twitter:description" content="BTE概念 BTE(Business Transaction Events)：BTE是SAP中可用的增强技术之一，通常使用在财务会计模块,可由 SAP，第三方供应商（合作伙伴）和客户使用。S"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP BTE增强使用",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_BTE\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  764 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_BTE\/",
+  "datePublished": "2019-12-21T00:00:00\u002b00:00",
+  "dateModified": "2019-12-21T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP BTE增强使用</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-12-21 >21 December 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="bte概念">BTE概念</h3>
+<p>BTE(<strong>Business Transaction Events</strong>)：BTE是SAP中可用的增强技术之一，通常使用在财务会计模块,可由 SAP，第三方供应商（合作伙伴）和客户使用。SAP程序通过调用<code>OPEN_FI_PERFORM_&lt;Number&gt;</code>或<code>OUTBOUNT_CALL_&lt;Number&gt;</code>函数来调用BTE。</p>
+<p>以下是两种可用于实现BTE的类型：P/S 为检查用的 BTE，Processes 是修改用的。</p>
+<p><img src="/images/ABAP/BTE5.png" alt="BTE Type"></p>
+<p>这些接口通知外部软件某些事件已在 SAP 标准应用程序中发生，并向其提供产生的数据。外部软件不会向 SAP Standard System 返回任何数据。它们不会以任何方式影响标准 R / 3 程序。</p>
+<p><img src="/images/ABAP/BTE6.png" alt="BTE事件"></p>
+<p><img src="/images/ABAP/BTE7.png" alt="BTE提供的FM Template"></p>
+<p><img src="/images/ABAP/BTE8.png" alt="FM Tempate"></p>
+<h3 id="bte查找技巧">BTE查找技巧</h3>
+<p>调用 BTE 的相关函数</p>
+<ul>
+<li>BF_FUNCTIONS_FIND</li>
+<li>PC_FUNCTION_FIND</li>
+</ul>
+<p>1）在 FM：<code>BF_FUNCTIONS_FIND</code>，设断点，然后查看 <code>CALL FUNCTION 'BF_FUNCTIONS_READ'</code> 里面的变量，可以
+查看这个流程，会触发哪些 event，以及哪些customer FM，这样就可以在相应的 EVENT 开发对应的 ZFM。</p>
+<p>2）查找对应合适的 BTE：运行事务码 <code>XD02</code>，查找到对应的程序为 <code>SAPMF02D</code>，在此程序中搜索字符串
+<code>OPEN_FI_PERFORM</code>，可以找到此程序中的所有用到的 BTE。</p>
+<h3 id="配置bte">配置BTE</h3>
+<p>Tcode：FIBF</p>
+<p><img src="/images/ABAP/BTE1.png" alt="BTE"></p>
+<p><img src="/images/ABAP/BTE3.png" alt="Add entries"></p>
+<p><img src="/images/ABAP/BTE2.png" alt="创建P/S BTE"></p>
+<p>根据系统提供的事件模板，创建自定义的FM，并实现相应的业务逻辑。</p>
+<p><img src="/images/ABAP/BTE4.png" alt="选择对应的事件和处理的函数"></p>
+<h3 id="bte程序创建">BTE程序创建</h3>
+<p>将光标放在已识别的 BTE 进程号上，单击示例功能模块，然后将其复制到 ZFM* 中并编写自己的功能。</p>
+<p><img src="/images/ABAP/BTE9.png" alt="FM Tempate"></p>
+<p><img src="/images/ABAP/BTE10.png" alt="FM Tempate Implement"></p>
+<h3 id="bte系统间传输">BTE系统间传输</h3>
+<p>通过FIBF创建和配置完成的内容需要传输到其他系统，需要选中对应的Item，并执行下图步骤。可以将配置内容包含在TR中进行传输。</p>
+<p><img src="/images/ABAP/BTE11.png" alt="Transfer"></p>
+<h3 id="bte-相关的tcode-和-table">BTE 相关的Tcode 和 Table</h3>
+<p>SAP Reference IMG -&gt; Financial Accounting -&gt; Financial Accounting Global Settings -&gt; Business Transaction Events</p>
+<h4 id="bte事件与相关触发tcode">BTE事件与相关触发Tcode</h4>
+<ul>
+<li>F-02</li>
+<li>VF01</li>
+<li>FB70</li>
+<li>FB01</li>
+</ul>
+<h4 id="bte存储的表">BTE存储的表</h4>
+<p>TBE01 ：Library of the Publish&amp;Subscribe Business Transaction Events</p>
+<p>TBE01T ：P&amp;S BTE: Language-Specific Descriptions</p>
+<h4 id="bte相关的tcode">BTE相关的TCode</h4>
+<table>
+<thead>
+<tr>
+<th>TCode</th>
+<th>Description</th>
+<th>TCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIBF</td>
+<td>Maintenance transaction BTE</td>
+<td>BF34</td>
+<td>Customer Modules per Event</td>
+</tr>
+<tr>
+<td>BERE</td>
+<td>Business Event Repository</td>
+<td>BF41</td>
+<td>Application Modules per Process</td>
+</tr>
+<tr>
+<td>BERP</td>
+<td>Business Processes</td>
+<td>BF42</td>
+<td>Partner Modules per Process</td>
+</tr>
+<tr>
+<td>BF31</td>
+<td>Application modules per Event</td>
+<td>BF44</td>
+<td>Customer Modules per Process</td>
+</tr>
+<tr>
+<td>BF32</td>
+<td>Partner Modules per Event</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>764</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_BOM_Enhance/" class="prev" rel="prev" title=" CS12 ALV的增强 "><i class="iconfont icon-dajiantou"></i>&nbsp; CS12 ALV的增强 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/FI_MIRO_Matnr/" class="next" rel="next" title="MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE">MIRO根据物料创建贷项凭证:BAPI_INCOMINGINVOICE_CREATE&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-12-21 00:00:00 \u002b0000 UTC',
+        title: 'ABAP BTE增强使用',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

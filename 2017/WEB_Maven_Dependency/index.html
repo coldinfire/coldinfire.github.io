@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_Maven_POM/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_Maven_LifeCycle/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_Maven_Dependency/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Maven依赖管理 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Maven依赖管理 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Maven依赖管理"/>
+<meta name="twitter:description" content="依赖管理 添加依赖 右键点击工程 Maven &ndash; &gt; Add Dependency 添加 hibernate 包，spring-webmvc 等包都可以直接搜索添加到 pom.xml 文件中。 添加后打开pom.xml，发现多"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Maven依赖管理",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_Maven_Dependency\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Maven",
+  "wordcount":  2071 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_Maven_Dependency\/",
+  "datePublished": "2017-12-26T00:00:00\u002b00:00",
+  "dateModified": "2017-12-26T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Maven依赖管理</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-12-26 >26 December 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="依赖管理">依赖管理</h2>
+<h3 id="添加依赖">添加依赖</h3>
+<p>右键点击工程  Maven &ndash; &gt;  Add Dependency 添加 hibernate 包，spring-webmvc 等包都可以直接搜索添加到 pom.xml 文件中。</p>
+<p><img src="/images/WEB/Maven10.png" alt="Add Dependency"></p>
+<p>添加后打开pom.xml，发现多了以下信息</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependencies&gt;</span>
+  <span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.hibernate<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>hibernate-core<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>5.0.7.Final<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;/dependency&gt;</span>
+  <span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-webmvc<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>4.3.4.RELEASE<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div><p>我们再看工程目录下的Maven Dependecies 下又多了很多jar包；</p>
+<p><img src="/images/WEB/Maven11.png" alt="Add Dependency"></p>
+<p>我只是加了一个hibernate的核心包和一个spring-webmvc包，为什么会多出这么多jar包呢？这是因为hibernate的核心包本身又会依赖其它的jar包，所以导入hibernate包自动会添加hibernate所依赖的包；spring-webmvc 一样的道理。</p>
+<h3 id="maven-依赖搜索顺序">Maven 依赖搜索顺序</h3>
+<p>当我们执行 Maven 构建命令时，Maven 开始按照以下顺序查找依赖的库：</p>
+<ul>
+<li><strong>步骤 1</strong> － 在本地仓库中搜索，如果找不到，执行步骤 2，如果找到了则执行其他操作。</li>
+<li><strong>步骤 2</strong> － 在中央仓库中搜索，如果找不到，并且有一个或多个远程仓库已经设置，则执行步骤 4，如果找到了则下载到本地仓库中以备将来引用。</li>
+<li><strong>步骤 3</strong> － 如果远程仓库没有被设置，Maven 将简单的停滞处理并抛出错误（无法找到依赖的文件）。</li>
+<li><strong>步骤 4</strong> － 在一个或多个远程仓库中搜索依赖的文件，如果找到则下载到本地仓库以备将来引用，否则 Maven 将停止处理并抛出错误（无法找到依赖的文件）。</li>
+</ul>
+<h3 id="依赖范围">依赖范围</h3>
+<p>Maven 在编译主代码的时候需要使用一套 classpath；在编译和执行测试的时候会使用另一套 classpath；实际运行项目的时候，又会使用一套 classpath。</p>
+<p>依赖范围的作用就是用来控制依赖与这 3 种 classpath（编译classpath，测试classpath，运行classpath）的关系。</p>
+<p>依赖范围由强到弱的顺序是：<code>compile &gt; provided &gt; runtime &gt; test</code>。</p>
+<p>maven有以下几种依赖范围:</p>
+<p><strong>compile</strong> ：编译、测试、运行有效；此范围为默认依赖范围；A在编译时依赖B，并且在测试和运行时也依赖。</p>
+<ul>
+<li>strus-core、spring-beans 打到 war 包或 jar 包</li>
+</ul>
+<p><strong>provided</strong> ：编译、测试有效，在运行时无效；A在编译和测试时需要B。</p>
+<ul>
+<li>servlet-api 就是编译和测试有用，在运行时不用（tomcat容器已提供），不会打到war</li>
+</ul>
+<p><strong>runtime</strong>：测试、运行有效，编译主代码时无效。</p>
+<ul>
+<li>jdbc驱动包 ，在开发代码中针对java的jdbc接口开发，编译不用。在运行和测试时需要通过jdbc驱动包（mysql驱动）连接数据库，需要打到war</li>
+</ul>
+<p><strong>test</strong>：只是测试有效，在编译主代码或者运行项目的使用时将无法使用此类依赖。</p>
+<ul>
+<li>junit 不会打到 war 包里面</li>
+</ul>
+<p><strong>system</strong>：system 范围依赖与 provided 类似；但是你必须显式的提供一个对于本地系统中 JAR 文件的路径，需要指定 systemPath 磁盘路径，system 依赖不推荐使用。</p>
+<h4 id="设置依赖范围">设置依赖范围</h4>
+<p>比如我们要将 mysql 驱动的依赖设置为 runtime 范围，配置如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>mysql<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>mysql-connector-java<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>5.1.6<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;scope&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>将 servlet 依赖设置为 provided</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>javax.servlet<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>servlet-api<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>2.5<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;scope&gt;</span>provided<span style="color:#f92672">&lt;/scope&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>如果是 compile 就不需要设置了，因为 compile 是 scope 的默认值。重新执行打包为war , 会发现servlet-api.jar已经不存在。</p>
+<h3 id="依赖传递">依赖传递</h3>
+<h4 id="什么是依赖传递">什么是依赖传递？</h4>
+<p>依赖传递(Transitive Dependencies)是 Maven 2.0 开始的提供的特性，依赖传递可以让我们不需要去寻找和发现所必须依赖的库，而是将会自动将需要依赖的库帮我们加进来。</p>
+<p>A -&gt; B(compile)  第一关系: a依赖b - compile</p>
+<p>B -&gt; C(compile)  第二关系: b依赖c - compile</p>
+<p>1、直接依赖：A依赖B，B是A的直接依赖。在A的pom.xml中添加B的坐标。</p>
+<p>2、传递依赖：B依赖C，C是A的传递依赖。</p>
+<p>3、中间部分：传递依赖的范围，A依赖C的范围。</p>
+<p>第一直接依赖的范围和第二直接依赖的范围决定了传递性依赖的范围。如下图所示，最左边代表第一直接依赖范围，最上面一行表示第二直接依赖范围，中间的交叉单元格则表示传递性依赖范围。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>compile</th>
+<th>test</th>
+<th>provided</th>
+<th>runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compile</td>
+<td>compile</td>
+<td>&mdash;&mdash;</td>
+<td>&mdash;&mdash;</td>
+<td>runtime</td>
+</tr>
+<tr>
+<td>test</td>
+<td>test</td>
+<td>&mdash;&mdash;</td>
+<td>&mdash;&mdash;</td>
+<td>test</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>provided</td>
+<td>&mdash;&mdash;</td>
+<td>provided</td>
+<td>provided</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>runtime</td>
+<td>&mdash;&mdash;</td>
+<td>&mdash;&mdash;</td>
+<td>runtime</td>
+</tr>
+</tbody>
+</table>
+<h4 id="依赖传递问题">依赖传递问题</h4>
+<p>当依赖层级很深的时候，可能造成循环依赖(cyclic dependency)</p>
+<p>当依赖的数量很多的时候，依赖树会非常大</p>
+<h3 id="依赖调节功能">依赖调节功能</h3>
+<p><code>A---&gt;B---&gt;C(V1)</code> ：项目A依赖于项目B，项目B依赖于项目C</p>
+<p><code>A---&gt;D---&gt;E---&gt;C(V2)</code> ：项目A依赖于项目D，项目D依赖于项目E,项目E依赖于C</p>
+<p>项目A隐形依赖了两个版本的C，那到底采用哪个版本呢？</p>
+<p>分析：</p>
+<ul>
+<li>
+<p>依赖调解第一原则：<strong>路径优先</strong>，很明显，第一种路径深度是3，第二种路径深度是4，所以，maven会采用C（V1）</p>
+</li>
+<li>
+<p>依赖调解第二原则：<strong>最先声明优先</strong>，假设路径深度相等，那么声明在前的会被引用。</p>
+</li>
+</ul>
+<h3 id="版本锁定">版本锁定</h3>
+<p>在 Maven 中 dependencyManagement 的作用其实相当于一个对所依赖 jar 包进行版本管理的管理器。</p>
+<p>pom.xml 文件中，jar 包的版本判断的两种途径：</p>
+<ul>
+<li>
+<p>如果 dependencies 里的 dependency 自己没有声明 version 元素，那么 maven 就会到 dependencyManagement 里面去找有没有对该 artifactId 和 groupId 进行过版本声明，如果有就继承它，如果没有就会报错，告诉你必须为 dependency 声明一个 version 。</p>
+</li>
+<li>
+<p>如果 dependencies 中的 dependency 声明了 version，那么无论 dependencyManagement 中有无对该 jar 包的version 声明，都以 dependency 里的 version 为准。</p>
+</li>
+</ul>
+<h3 id="排除依赖">排除依赖</h3>
+<p>我们仔细观察 Maven Dependencies 下的 jar 包，会发现存在了两个 javassist 包，一个是 javassist-3.18.1-GA ，另一个是 javassist-3.11.0-GA  。这是因为我们引入三大框架的jar包，hibernate 依赖 javassist-3.18.1-GA  ，而 struts 依赖 javassist-3.11.0-GA 。这就是我们通常所说的 jar 包版本冲突，如果这两个 jar 包同时存在，会导致后续某些操作会存在问题（比如 openSessionInView 失效），所以需要排除低版本的jar包。</p>
+<p>如何来排除依赖呢？添加 exclusions 排除 struts 中依赖的 javassist jar 包。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.struts<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>struts2-core<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>2.3.24<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;exclusions&gt;</span>
+    <span style="color:#f92672">&lt;exclusion&gt;</span>
+      <span style="color:#f92672">&lt;groupId&gt;</span>javassist<span style="color:#f92672">&lt;/groupId&gt;</span>
+      <span style="color:#f92672">&lt;artifactId&gt;</span>javassist<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/exclusion&gt;</span>
+  <span style="color:#f92672">&lt;/exclusions&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2071</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Maven/">
+                    #Maven</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Maven_POM/" class="prev" rel="prev" title="Maven-POM标签大全详解"><i class="iconfont icon-dajiantou"></i>&nbsp;Maven-POM标签大全详解</a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Maven_LifeCycle/" class="next" rel="next" title="Maven构建生命周期">Maven构建生命周期&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-12-26 00:00:00 \u002b0000 UTC',
+        title: 'Maven依赖管理',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

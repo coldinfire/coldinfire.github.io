@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_Display/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ALV_Display_util/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ALV_LVCGridDemo/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            List ALV Demo  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" List ALV Demo  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" List ALV Demo "/>
+<meta name="twitter:description" content="List ALV 程序实例 *&amp;--------------------------------------- *&amp; Report ZWR_PI_LOG *&amp;--------------------------------------- REPORT zwr_pi_log. TABLES: lqua ,zpidoc. TYPE-POOLS: slis. DATA: lt_pidoc TYPE STANDARD TABLE OF zpidoc, ls_pidoc TYPE zpidoc . &#34;ALV Data&#34; DATA: gt_fieldcat TYPE lvc_t_fcat, gs_fieldcat TYPE lvc_s_fcat, gs_layout TYPE lvc_s_layo. &#34;Select screen&#34; SELECTION-SCREEN BEGIN OF LINE. SELECTION-SCREEN POSITION 1. PARAMETERS: p_chk1 RADIOBUTTON GROUP zr01 DEFAULT &#39;X&#39; USER-COMMAND zchg. SELECTION-SCREEN COMMENT 3(8) text-002 FOR FIELD p_chk1. SELECTION-SCREEN POSITION 12. PARAMETERS:"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " List ALV Demo ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_LVCGridDemo\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  587 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_LVCGridDemo\/",
+  "datePublished": "2018-06-26T00:00:00\u002b00:00",
+  "dateModified": "2018-06-26T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> List ALV Demo </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-26 >26 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="list-alv-程序实例">List ALV 程序实例</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------</span>
+<span style="color:#75715e">*&amp; Report  ZWR_PI_LOG</span>
+<span style="color:#75715e">*&amp;---------------------------------------</span>
+<span style="color:#66d9ef">REPORT</span>  zwr_pi_log.
+<span style="color:#66d9ef">TABLES</span>: lqua ,zpidoc.
+<span style="color:#66d9ef">TYPE-POOLS</span>: slis.
+<span style="color:#66d9ef">DATA</span>: lt_pidoc <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> zpidoc,
+      ls_pidoc <span style="color:#66d9ef">TYPE </span>zpidoc .
+<span style="color:#75715e">&#34;ALV Data&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: gt_fieldcat <span style="color:#66d9ef">TYPE </span>lvc_t_fcat,
+      gs_fieldcat <span style="color:#66d9ef">TYPE </span>lvc_s_fcat,
+      gs_layout   <span style="color:#66d9ef">TYPE </span>lvc_s_layo.
+<span style="color:#75715e">&#34;Select screen&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF LINE</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN POSITION</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_chk1 <span style="color:#66d9ef">RADIOBUTTON GROUP</span> zr01 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span> USER<span style="color:#f92672">-</span>COMMAND zchg.
+<span style="color:#66d9ef">SELECTION-SCREEN COMMENT</span> <span style="color:#ae81ff">3</span>(<span style="color:#ae81ff">8</span>) <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">002</span> <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">FIELD</span> p_chk1.
+<span style="color:#66d9ef">SELECTION-SCREEN POSITION</span> <span style="color:#ae81ff">12</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_chk2 <span style="color:#66d9ef">RADIOBUTTON GROUP</span> zr01. <span style="color:#75715e">&#34; USER-COMMAND zchg.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECTION-SCREEN COMMENT</span> <span style="color:#ae81ff">14</span>(<span style="color:#ae81ff">12</span>) <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">003</span> <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">FIELD</span> p_chk2.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF LINE</span>.
+
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> blk1 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">001</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_lgnum <span style="color:#66d9ef">TYPE </span>lqua<span style="color:#f92672">-</span>lgnum <span style="color:#66d9ef">OBLIGATORY</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_status <span style="color:#66d9ef">TYPE </span>zpidoc<span style="color:#f92672">-</span>STATUS.
+<span style="color:#66d9ef">PARAMETERS</span>: p_file <span style="color:#66d9ef">LIKE </span>rlgrap<span style="color:#f92672">-</span>filename <span style="color:#66d9ef">MODIF ID</span> z01.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> blk1.
+
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> blk2 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">004</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_werks <span style="color:#66d9ef">TYPE </span>aufk<span style="color:#f92672">-</span>werks <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;1040&#39;</span> <span style="color:#66d9ef">MODIF ID</span> z02.
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: s_matnr <span style="color:#66d9ef">FOR</span> matnr <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_seqnr <span style="color:#66d9ef">FOR</span> aufk<span style="color:#f92672">-</span>seqnr <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_ablad <span style="color:#66d9ef">FOR</span> afpo<span style="color:#f92672">-</span>ablad <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_plnbez <span style="color:#66d9ef">FOR</span> afko<span style="color:#f92672">-</span>plnbez <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_fevor <span style="color:#66d9ef">FOR</span> afko<span style="color:#f92672">-</span>fevor <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_dispo <span style="color:#66d9ef">FOR</span> afko<span style="color:#f92672">-</span>dispo <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_arbpl <span style="color:#66d9ef">FOR</span> /sapcem/kla_arb<span style="color:#f92672">-</span>arbpl <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_gstrp <span style="color:#66d9ef">FOR</span> afko<span style="color:#f92672">-</span>gstrp <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_gltrp <span style="color:#66d9ef">FOR</span> afko<span style="color:#f92672">-</span>gltrp <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_auart <span style="color:#66d9ef">FOR</span> aufk<span style="color:#f92672">-</span>auart <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_kdauf <span style="color:#66d9ef">FOR</span> afpo<span style="color:#f92672">-</span>kdauf <span style="color:#66d9ef">MODIF ID</span> z02,
+                s_kdpos <span style="color:#66d9ef">FOR</span> afpo<span style="color:#f92672">-</span>kdpos <span style="color:#66d9ef">MODIF ID</span> z02.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> blk2.
+<span style="color:#75715e">&#34; Screen Group control &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">AT SELECTION-SCREEN OUTPUT</span>.
+  <span style="color:#66d9ef">LOOP AT SCREEN</span>.
+    <span style="color:#66d9ef">IF</span> p_chk1 <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">IF</span> screen<span style="color:#f92672">-</span>group1 <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;Z02&#39;</span>.
+        screen<span style="color:#f92672">-</span>input <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+        screen<span style="color:#f92672">-</span>invisible <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+        <span style="color:#66d9ef">MODIFY SCREEN</span>.
+      <span style="color:#66d9ef">ELSEIF</span> screen<span style="color:#f92672">-</span>group1 <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;Z01&#39;</span>.
+        screen<span style="color:#f92672">-</span>input <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+        screen<span style="color:#f92672">-</span>invisible <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+        <span style="color:#66d9ef">MODIFY SCREEN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#66d9ef">IF</span> screen<span style="color:#f92672">-</span>group1 <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;Z01&#39;</span>.
+        screen<span style="color:#f92672">-</span>input <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+        screen<span style="color:#f92672">-</span>invisible <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+        <span style="color:#66d9ef">MODIFY SCREEN</span>.
+      <span style="color:#66d9ef">ELSEIF</span> screen<span style="color:#f92672">-</span>group1 <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;Z02&#39;</span>.
+        screen<span style="color:#f92672">-</span>input <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+        screen<span style="color:#f92672">-</span>invisible <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+        <span style="color:#66d9ef">MODIFY SCREEN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+
+<span style="color:#75715e">&#34;Screen Event&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">START-OF-SELECTION</span> .
+  <span style="color:#75715e">&#34;Pre-check&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_pre_check</span>.
+  <span style="color:#75715e">&#34;Extract data&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_extract_data</span>.
+  <span style="color:#75715e">&#34;Display alv&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_display</span>.
+<span style="color:#66d9ef">END-OF-SELECTION</span>.
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_PRE_CHECK</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_pre_check</span> .
+  <span style="color:#66d9ef">DATA</span>:e_message <span style="color:#66d9ef">TYPE </span>char100.
+  <span style="color:#66d9ef">AUTHORITY-CHECK</span> <span style="color:#66d9ef">OBJECT</span> <span style="color:#e6db74">&#39;XXXX&#39;</span>
+           <span style="color:#75715e">&#34;ID &#39;ACTVT&#39; FIELD &#39;03&#39;&#34;
+</span><span style="color:#75715e"></span>           <span style="color:#66d9ef">ID</span> <span style="color:#e6db74">&#39;LGNUM&#39;</span> <span style="color:#66d9ef">FIELD</span> p_lgnum.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;You have no authorization &#39;</span> p_lgnum <span style="color:#66d9ef">INTO</span> e_message RESPECTING BLANKS.
+    <span style="color:#66d9ef">MESSAGE</span> e_message TYPE <span style="color:#e6db74">&#39;S&#39;</span> DISPLAY LIKE <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">LEAVE</span> LIST<span style="color:#f92672">-</span>PROCESSING.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_PRE_CHECK&#34;
+</span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_EXTRACT_DATA</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_extract_data</span> .
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+    <span style="color:#66d9ef">FROM</span> zpidoc
+    <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> lt_pidoc
+   <span style="color:#66d9ef">WHERE</span> lgnum <span style="color:#f92672">EQ</span> p_lgnum
+     <span style="color:#f92672">AND</span> PIDOC  <span style="color:#66d9ef">IN</span> s_PIDOC.
+  <span style="color:#66d9ef">IF</span> lt_pidoc <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;No data.&#39;</span> TYPE <span style="color:#e6db74">&#39;S&#39;</span> DISPLAY LIKE <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">LEAVE</span> LIST<span style="color:#f92672">-</span>PROCESSING.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_EXTRACT_DATA&#34;
+</span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_DISPLAY</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_display</span> .
+  <span style="color:#66d9ef">CLEAR</span> gs_layout.
+  gs_layout<span style="color:#f92672">-</span>zebra <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  gs_layout<span style="color:#f92672">-</span>col_opt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  gs_layout<span style="color:#f92672">-</span>cwidth_opt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">CLEAR</span> gt_fieldcat.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;LVC_FIELDCATALOG_MERGE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_structure_name       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZPIDOC_STRUCTURE&#39;</span>
+    <span style="color:#66d9ef">CHANGING</span>
+      ct_fieldcat            <span style="color:#f92672">=</span> gt_fieldcat
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      inconsistent_interface <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      program_error          <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+            <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">DELETE</span> gt_fieldcat <span style="color:#66d9ef">WHERE</span> fieldname <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;STATUS&#39;</span>.
+  <span style="color:#75715e">&#34;显示 ALV&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;REUSE_ALV_GRID_DISPLAY_LVC&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_callback_program       <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid
+      i_callback_pf_status_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FRM_SET_STATUS&#39;</span>
+      i_callback_user_command  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FRM_USER_COMMAND&#39;</span>
+      is_layout_lvc            <span style="color:#f92672">=</span> gs_layout
+      it_fieldcat_lvc          <span style="color:#f92672">=</span> gt_fieldcat
+      i_default                <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+      i_save                   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    <span style="color:#66d9ef">TABLES</span>
+      t_outtab                 <span style="color:#f92672">=</span> lt_pidoc
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      program_error            <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+            <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_DISPLAY&#34;
+</span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  frm_set_status</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_set_status</span> <span style="color:#66d9ef">USING</span> extab <span style="color:#66d9ef">TYPE </span>slis_t_extab.
+  <span style="color:#66d9ef">DATA</span>: lt_fcode <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> sy<span style="color:#f92672">-</span>ucomm.
+  <span style="color:#66d9ef">CLEAR</span> lt_fcode.
+    <span style="color:#66d9ef">APPEND</span> <span style="color:#e6db74">&#39;&amp;CHNG&#39;</span> <span style="color:#66d9ef">TO</span> lt_fcode.
+    <span style="color:#66d9ef">APPEND</span> <span style="color:#e6db74">&#39;&amp;MODI&#39;</span> <span style="color:#66d9ef">TO</span> lt_fcode.
+    <span style="color:#66d9ef">APPEND</span> <span style="color:#e6db74">&#39;&amp;XDPL&#39;</span> <span style="color:#66d9ef">TO</span> lt_fcode.
+  <span style="color:#66d9ef">SET PF-STATUS</span> <span style="color:#e6db74">&#39;STANDARD_COPY&#39;</span> EXCLUDING LT_FCODE.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;frm_set_status&#34;
+</span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  frm_user_command</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_user_command</span> <span style="color:#66d9ef">USING</span> r_ucomm <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>ucomm
+                        rs_selfield <span style="color:#66d9ef">TYPE </span>slis_selfield.
+  <span style="color:#66d9ef">CASE</span> r_ucomm.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;&amp;F03&#39;</span>.
+      <span style="color:#66d9ef">RETURN</span>.
+    <span style="color:#66d9ef">WHEN</span>  <span style="color:#e6db74">&#39;&amp;F15&#39;</span>.
+      <span style="color:#66d9ef">RETURN</span>.
+    <span style="color:#66d9ef">WHEN</span>  <span style="color:#e6db74">&#39;&amp;F15&#39;</span>.
+      <span style="color:#66d9ef">RETURN</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+  <span style="color:#66d9ef">ENDCASE</span>.
+  rs_selfield<span style="color:#f92672">-</span>refresh <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;frm_user_command&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>587</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Display/" class="prev" rel="prev" title="报表开发&lt;ALV 显示设置&gt;"><i class="iconfont icon-dajiantou"></i>&nbsp;报表开发&lt;ALV 显示设置&gt;</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Display_util/" class="next" rel="next" title="Field Catalog 字段排坑">Field Catalog 字段排坑&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-26 00:00:00 \u002b0000 UTC',
+        title: ' List ALV Demo ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

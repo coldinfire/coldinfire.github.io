@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Table/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/FI_Configure/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_Basic_Confirg/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            MM 配置流程  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" MM 配置流程  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" MM 配置流程 "/>
+<meta name="twitter:description" content="MM 模块主要配置流程 创建公司代码、工厂 创建库存地点 创建采购组织 创建采购组 创建 MRP Controller 分配工厂到公司代码 分配采购组织到公司代码 分配工厂到采购组织 定义"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " MM 配置流程 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_Basic_Confirg\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  336 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_Basic_Confirg\/",
+  "datePublished": "2019-03-04T00:00:00\u002b00:00",
+  "dateModified": "2019-03-04T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> MM 配置流程 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-03-04 >4 March 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="mm-模块主要配置流程">MM 模块主要配置流程</h3>
+<ol>
+<li>
+<p>创建公司代码、工厂</p>
+</li>
+<li>
+<p>创建库存地点</p>
+</li>
+<li>
+<p>创建采购组织</p>
+</li>
+<li>
+<p>创建采购组</p>
+</li>
+<li>
+<p>创建 MRP Controller</p>
+</li>
+<li>
+<p>分配工厂到公司代码</p>
+</li>
+<li>
+<p>分配采购组织到公司代码</p>
+</li>
+<li>
+<p>分配工厂到采购组织</p>
+</li>
+<li>
+<p>定义物料主数据</p>
+</li>
+<li>
+<p>定义计划边界码</p>
+</li>
+<li>
+<p>物料管理设置-库存预留</p>
+</li>
+<li>
+<p>自动创建库存地点</p>
+</li>
+<li>
+<p>税务代码缺省值</p>
+</li>
+<li>
+<p>物料管理的初始期间</p>
+</li>
+<li>
+<p>物料需求计划相关的参数维护</p>
+</li>
+<li>
+<p>激活物料需求计划</p>
+</li>
+<li>
+<p>检查 MRP 相关参数维护 (主要看 01 范围)</p>
+</li>
+<li>
+<p>定义物料类型的属性</p>
+</li>
+<li>
+<p>定义评估控制方式</p>
+</li>
+<li>
+<p>定义评估分组</p>
+</li>
+<li>
+<p>定义评估类</p>
+</li>
+<li>
+<p>批量导入物料主数据（BAPI）</p>
+</li>
+<li>
+<p>创建供应商</p>
+</li>
+<li>
+<p>创建采购信息记录（Purchase Info Recode）</p>
+</li>
+<li>
+<p>维护物料管理的自动记账</p>
+</li>
+<li>
+<p>将存货科目设置为只能自动记账</p>
+</li>
+<li>
+<p>设置采购价格差异容差限制</p>
+</li>
+<li>
+<p>设置收货的容差限制</p>
+</li>
+<li>
+<p>设置发票冻结的容差限制</p>
+</li>
+<li>
+<p>激活项目金额检查</p>
+</li>
+<li>
+<p>运行 MRP</p>
+</li>
+<li>
+<p>创建采购申请</p>
+</li>
+<li>
+<p>创建采购订单</p>
+</li>
+<li>
+<p>采购订单收货</p>
+</li>
+<li>
+<p>采购发票输入</p>
+</li>
+<li>
+<p>发票冻结</p>
+</li>
+<li>
+<p>在 MIR4 中显示发票和会计凭证</p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>336</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Table/" class="prev" rel="prev" title=" MM 常用表 "><i class="iconfont icon-dajiantou"></i>&nbsp; MM 常用表 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/FI_Configure/" class="next" rel="next" title=" FI 配置流程 "> FI 配置流程 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-03-04 00:00:00 \u002b0000 UTC',
+        title: ' MM 配置流程 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

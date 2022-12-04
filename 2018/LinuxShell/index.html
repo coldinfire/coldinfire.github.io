@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/LinuxYum/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/LinuxShellFlow/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/LinuxShell/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Shell 脚本 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Shell 脚本 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Shell 脚本"/>
+<meta name="twitter:description" content="什么是Shell脚本 简单来说，shell 脚本是包含一系列命令的文件。shell 读取此文件并执行命令，就像它们已直接在命令行上输入一样。she"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Shell 脚本",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/LinuxShell\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "linux, shell",
+  "wordcount":  912 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/LinuxShell\/",
+  "datePublished": "2018-01-27T00:00:00\u002b00:00",
+  "dateModified": "2018-01-27T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Shell 脚本</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-01-27 >27 January 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/Linux/"> Linux </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="什么是shell脚本">什么是Shell脚本</h2>
+<p>简单来说，shell 脚本是包含一系列命令的文件。shell 读取此文件并执行命令，就像它们已直接在命令行上输入一样。shell 有点独特，因为它既是系统的强大命令行界面，也是脚本语言解释器。</p>
+<p>将Shell脚本放置在当前用户的<code>bin</code>目录下，使用Shell脚本文件名称可直接执行该Shell脚本。</p>
+<h3 id="环境建立">环境建立</h3>
+<p>登录系统时，bash 程序启动，并读取一系列称为启动文件的配置脚本。这些定义了所有用户共享的默认环境。接下来是主目录中的更多启动文件，用于定义您的个人环境。</p>
+<h4 id="登录shell">登录Shell</h4>
+<ul>
+<li><code>/etc/profile</code>：适用于所有用户的全局配置脚本。</li>
+<li><code>~/.bash_profile</code>：用户的个人启动文件。可用于扩展或覆盖全局配置脚本中的设置。</li>
+<li><code>~/.bash_login</code>：如果找不到〜/ .bash_profile，bash 会尝试读取此脚本。</li>
+<li><code>~/.profile</code>：如果找不到〜/ .bash_profile，~/.bash_login，bash 会尝试读取此脚本。</li>
+</ul>
+<h4 id="非登录shell">非登录Shell</h4>
+<ul>
+<li>/etc/bash.bashrc：适用于所有用户的全局配置脚本。</li>
+<li>~/.bashrc： 用户的个人启动文件。可用于扩展或覆盖全局配置脚本中的设置。</li>
+</ul>
+<h3 id="shell编写">Shell编写</h3>
+<p>变量：</p>
+<ul>
+<li>定义：var_name=&ldquo;自定义内容&rdquo;，’=‘两边不允许有空格</li>
+<li>使用：$var_name即可使用该变量</li>
+<li>变量可以嵌套使用：time_stamp=&ldquo;由 $USER 更新 $（date +“％x％r％Z&rdquo;)&quot;</li>
+</ul>
+<p>环境变量：</p>
+<ul>
+<li>printenv：查看当前系统的环境变量</li>
+</ul>
+<p>常量：一旦设置就永远不应该改变的值，大写字符</p>
+<h3 id="shell函数">Shell函数</h3>
+<p>在Shell中定义函数，通过函数将各个功能封装起来，在整个shell脚本可以多处调用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#960050;background-color:#1e0010">##</span> <span style="color:#a6e22e">Constants常量</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">RIGHT_NOW</span><span style="color:#f92672">=</span><span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">date</span> <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;%x %r %Z&#34;</span>)
+<span style="color:#a6e22e">TIME_STAMP</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Updated on $RIGHT_NOW by $USER&#34;</span>
+<span style="color:#960050;background-color:#1e0010">##</span> <span style="color:#a6e22e">Funcitons定义</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">drive_space</span>()
+{
+    <span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;&lt;h2&gt;Filesystem space&lt;/h2&gt;&#34;</span>
+    <span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;&lt;pre&gt;&#34;</span>
+    <span style="color:#a6e22e">df</span>
+    <span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;&lt;/pre&gt;&#34;</span>
+}
+<span style="color:#960050;background-color:#1e0010">##</span> <span style="color:#a6e22e">Main调用</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">body</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">$TITLE</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">$TIME_STAMP</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/p&gt;</span>
+      <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">drive_space</span>)
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/body&gt;</span>
+
+</code></pre></div><h3 id="read">Read</h3>
+<p>获取键盘输入值。</p>
+<ul>
+<li><code>read -t text.</code>：指定秒数后放弃</li>
+<li><code>read -n text.</code>：不显示用户输入值</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">echo</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">n</span> <span style="color:#e6db74">&#34;Enter some text &gt; &#34;</span>    <span style="color:#75715e">//-n：光标保持在一行
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">read</span> <span style="color:#a6e22e">text</span>
+<span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;You entered: $text&#34;</span>
+</code></pre></div><h3 id="位置参数">位置参数</h3>
+<p>位置参数是一系列包含命令行内容的特殊变量（$0到$9）</p>
+<p>$＃的变量，该变量 除了命令名（$0）外还包含命令行中的项数</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>912</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/linux/">
+                    #linux</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/shell/">
+                    #shell</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/LinuxYum/" class="prev" rel="prev" title=" Linux软件包管理 "><i class="iconfont icon-dajiantou"></i>&nbsp; Linux软件包管理 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/LinuxShellFlow/" class="next" rel="next" title=" Shell 脚本-流程控制"> Shell 脚本-流程控制&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-01-27 00:00:00 \u002b0000 UTC',
+        title: ' Shell 脚本',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

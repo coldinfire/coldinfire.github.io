@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2022/MM_MaterialMastData/" />
+  <link rel="next" href="https://coldinfire.github.io/2022/ABAP_Utils_SplitFilePath/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2022/ABAP_Utils_XLSXWorkbench/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            XLSXWorkbench 安装和使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" XLSXWorkbench 安装和使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" XLSXWorkbench 安装和使用 "/>
+<meta name="twitter:description" content="XLSX Workbench 是一款开源的 SAP 插件工具，用于在 SAP 环境中设计基于 Excel 的表单。 由于开发表单的完全可视化方法（类似 SMARTFORMS），它非常易于学习和使用。"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " XLSXWorkbench 安装和使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2022\/ABAP_Utils_XLSXWorkbench\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "saputils",
+  "wordcount":  2270 ,
+  "url": "https:\/\/coldinfire.github.io\/2022\/ABAP_Utils_XLSXWorkbench\/",
+  "datePublished": "2022-03-23T00:00:00\x2b00:00",
+  "dateModified": "2022-03-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> XLSXWorkbench 安装和使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2022-03-23 >23 March 2022</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p><a href="https://sites.google.com/site/sapxlwb/home/eng">XLSX Workbench</a> 是一款开源的 SAP 插件工具，用于在 SAP 环境中设计基于 Excel 的表单。 由于开发表单的完全可视化方法（类似 SMARTFORMS），它非常易于学习和使用。</p>
+<p>XLSX Workbench 的安装可以参考标准文档一步步实现即可。这里着重介绍如何使用该工具。</p>
+<h3 id="step1创建-context">Step1：创建 Context</h3>
+<p>在 XLSX Worbkench 中，上下文是一个变量可以是结构、内表、类实例。上下文为生成的 XLSX 文件提供所需的数据，在打印程序中作为参数传递给 FM：<code>ZXLWB_CALLFORM</code>。 因此，可以使用类实例的任何结构或内部表（在打印程序中声明）作为上下文。</p>
+<ul>
+<li>注意：上下文必须引用 ABAP 数据字典类型（事务 SE11）或对象类型（事务 SE24）。</li>
+</ul>
+<p>嵌入在上下文中的每一行都可以包含提供值的简单字段，也可以包含嵌套结构/表/类实例，嵌套层数不受限制。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench0.gif" alt="Context"></p>
+<h3 id="step2设计-xlsx-模板">Step2：设计 XLSX 模板</h3>
+<p>使用事务码 <code>ZXLWB_WORKBENCH</code> 来创建输出模板。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2.png" alt="ZXLWB_WORKBENCH"></p>
+<p>执行结果：</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_1.png" alt="XLSX Workbench"></p>
+<p>Workbench 分为三个大的功能区域：</p>
+<ol>
+<li>
+<p>表格结构树</p>
+</li>
+<li>
+<p>属性选项卡（用于树中当前选择的组件）</p>
+</li>
+<li>
+<p>Excel 模板</p>
+</li>
+</ol>
+<h4 id="表格结构树">表格结构树</h4>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_2.png" alt="Form Structure"></p>
+<p><em>Sheet</em>：在运行时与生成的 XLSX 文件的工作表有直接关系，应该在表单中创建与打印表单中所需的工作表（一个或多个）一样多的工作表。如果事先不知道张数，可以将其动态插入到生成的 XLSX 文件中。 可以通过组件 Loop 在上下文的嵌套表的行中循环，然后在其中包含 Sheet。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_3.png" alt="Sheet"></p>
+<p><em>Folder</em>：是一个具有多种用途的表单组件。首先，它必须用于通过将其他组件（具有相同类别或用途等）包含到文件夹中来组织和排列表单结构；其次，文件夹传播包含在其中的所有后续组件的公共属性。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_4.png" alt="Folder"></p>
+<p><em>Loop</em>：该表单组件可以处理嵌套在上下文中的内部表行（循环表的行）。它可以用于运行时组件的嵌套子树的多次复制。Loop 是表单中动态结构的基础。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_5.png" alt="Loop"></p>
+<p><em>Pattern</em>：该表单组件是在生成的 XLSX 文件的工作表上（按用户定义的顺序）布置的片段。 必须在运行时（在生成的 XLSX 文件创建时）复制（在工作表上）。注意：在运行时将模式插入到打印表单的工作表中的序列，仅由表单结构树中的组件序列定义（而不由 Excel 模板中的当前位置定义）。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_6.png" alt="Pattern"></p>
+<p><em>Pattern (resizable)</em>：是 Pattern 的一种，继承了 Pattern 的大部分属性和原理，但有自己的特点。它的主要特点是能够通过合并附近的单元格来调整宽度或高度。Resizable pattern 的运行时大小取决于子区域。 子区域是下层所有 Pattern 占用的区域。 子区域在表单结构的树中表示为 Resizable pattern 下的子组件。Resizable pattern 也可以有另一个 Resizable patterns 作为子组件来提供多级格式。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_7.png" alt="Pattern Resizable"></p>
+<p><em>Grid</em>：是一个用于简化从打印程序到表单的导出表格的组件。该组件支持将“平面”表处理为“多级”表（即分配给上下文表的 Grid，其行中包含嵌套的子表，描述子级）。 如果处理了多级表，则会对分配给高级别的列执行自动单元格合并（rowspan）。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_8.png" alt="Grid"></p>
+<p><em>Tree</em>：是用于将 ALV 树从打印程序导出到表单的组件。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_9.png" alt="Tree"></p>
+<p><em>Value</em>：该组件始终作为子节点直接位于 Form 结构树中的 Patterm 节点下。 Value 组件将来自 Context 的源字段的数据提供给 Form 的目标单元格。注意：Value 的目标单元格应仅位于 Excel 模板中父 Pattern 的单元格范围内。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_10.png" alt="Value"></p>
+<p><em>Drawing</em>：该组件可以在生成的 XLSX 文件的工作表上放置图像（像素或矢量）。 在表格结构树中，Drawing 位于 Pattern 的正下方。</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_11.png" alt="Drawing"></p>
+<p><em>Chart</em>：该组件基于两个特殊组件，可以将图表插入到打印表单中。</p>
+<ul>
+<li>Chart model：它是 Excel 模板工作表上的任何图表，将用作示例格式：即图表类型（饼图、列、组合等）、系列数、样式、颜色、阴影、透明度、边框、 线宽、图表元素的相对定位和其他选项。 创建时使用 Excel 应用程序菜单：插入 &ndash;&gt; 图表。</li>
+<li>Dataset(Grid)：它是 Form 结构中的任何 Grid 组件，它为 Chart 提供数据。 反过来，Grid 的列与图表 Seres 相关联。</li>
+</ul>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench2_12.png" alt="Drawing"></p>
+<h4 id="excel-模板">Excel 模板</h4>
+<p>Excel 模板是我们最终导出的文件模板，通过属性选项卡将表格结构树和模板进行关系映射。</p>
+<h3 id="开发打印程序">开发打印程序</h3>
+<p>打印程序也可以分为三个部分：</p>
+<ul>
+<li>
+<p>使用 ABAP 字典类型声明变量（上下文）</p>
+</li>
+<li>
+<p>实现填充变量（上下文）的逻辑</p>
+</li>
+<li>
+<p>调用 FM:ZXLWB_CALLFORM，将变量（上下文）和表单名称作为输入参数传递</p>
+</li>
+</ul>
+<h4 id="zxlwb_callform-参数解析">ZXLWB_CALLFORM 参数解析</h4>
+<p>输入参数：</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench3.png" alt="ZXLWB_CALLFORM"></p>
+<ul>
+<li>
+<p>IV_FORMNAME：表格名称（必填）。</p>
+</li>
+<li>
+<p>IV_CONTEXT_REF：上下文（必填）。</p>
+</li>
+<li>
+<p>IV_VIEWER_TITLE：查看器屏幕标题栏中显示的文本。</p>
+</li>
+<li>
+<p>IV_VIEWER_INPLACE：是一个标志；如果 ='X&rsquo;，查看器将位于模态 SAP 屏幕上；如果 = 空格，它将是 Excel 应用程序的一个单独窗口。</p>
+</li>
+<li>
+<p>IV_VIEWER_CALLBACK_PROG 和 IV_VIEWER_CALLBACK_FORM：回调程序和表单。仅当 IV_VIEWER_SUPPRESS = SPACE 时适用。</p>
+</li>
+<li>
+<p>IV_VIEWER_SUPPRESS：如果不是空白则标记，则查看器不会出现。</p>
+<ul>
+<li>
+<p>无论此选项如何，生成的 XLS 文件的原始数据将在导出参数 EV_DOCUMENT_RAWDATA 中可用。</p>
+</li>
+<li>
+<p>无论此选项如何，都可以将生成的 XLSX 文件保存在桌面上 IV_SAVE_AS 参数指定的路径中。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>IV_PROTECT：如果标志不为空，保护数据不被用户更改。</p>
+</li>
+<li>
+<p>IV_SAVE_AS：前端计算机上的完整路径（包括文件名和扩展名），您要将生成的 XLSX 文件保存到该路径。如果此参数为空，则不保存。</p>
+</li>
+<li>
+<p>IV_SAVE_AS_APPSERVER：应用程序服务器计算机上的完整路径（包括文件名和扩展名），您要将生成的 XLSX 文件保存到该路径。如果此参数为空，则不保存。</p>
+</li>
+<li>
+<p>IT_DOCPROPERTIES：包含文档属性的名称及其值。</p>
+</li>
+</ul>
+<p>输出参数：</p>
+<p><img src="/images/ABAP/ABAP_XLSXWorkbench3_1.png" alt="ZXLWB_CALLFORM"></p>
+<ul>
+<li>EV_DOCUMENT_RAWDATA：生成的 XLS 文件的原始数据，数据类型为字节序列。</li>
+</ul>
+<h4 id="demo">DEMO</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> z_shipping_labels.
+<span style="color:#75715e">* declare the context</span>
+<span style="color:#66d9ef">DATA</span>:
+  gs_line         <span style="color:#66d9ef">TYPE </span>zcontext_shipping_label  ,
+  gt_context      <span style="color:#66d9ef">TYPE </span>zcontext_shipping_labels .
+<span style="color:#75715e">* fill the context</span>
+gs_line<span style="color:#f92672">-</span>to_name    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Shane Hamby&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_street  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;852 Ocean View Rd.&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_town    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Bayshore&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_state   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CA&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_zip     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;94123&#39;</span> .
+<span style="color:#66d9ef">APPEND</span> gs_line <span style="color:#66d9ef">TO</span> gt_context .
+gs_line<span style="color:#f92672">-</span>to_name    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Dr.Henry Albrecht&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_street  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;522 Ravenswood&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_town    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;East Bayshore&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_state   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CA&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_zip     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;93327&#39;</span> .
+<span style="color:#66d9ef">APPEND</span> gs_line <span style="color:#66d9ef">TO</span> gt_context .
+gs_line<span style="color:#f92672">-</span>to_name    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Hugh Molotsi&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_street  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1980 N.Stonecrest Rd.&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_town    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;West Middlefield&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_state   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CA&#39;</span> .
+gs_line<span style="color:#f92672">-</span>to_zip     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12384&#39;</span> .
+<span style="color:#66d9ef">APPEND</span> gs_line <span style="color:#66d9ef">TO</span> gt_context .
+<span style="color:#75715e">* call the form</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ZXLWB_CALLFORM&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    iv_formname    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SHIPPING_LABELS&#39;</span>
+    iv_context_ref <span style="color:#f92672">=</span> gt_context[]
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    <span style="color:#66d9ef">OTHERS</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> .
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span> .
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+          <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4 .
+<span style="color:#66d9ef">ENDIF</span> .
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2270</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/saputils/">
+                    #saputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2022/MM_MaterialMastData/" class="prev" rel="prev" title=" SAP 常用主数据及描述获取 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 常用主数据及描述获取 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2022/ABAP_Utils_SplitFilePath/" class="next" rel="next" title=" 分割文件路径和文件名 "> 分割文件路径和文件名 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2022-03-23 00:00:00 \x2b0000 UTC',
+        title: ' XLSXWorkbench 安装和使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

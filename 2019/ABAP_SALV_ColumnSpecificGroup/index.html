@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_CheckBox/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_ResultRead/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_ColumnSpecificGroup/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV 布局列分组  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV 布局列分组  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV 布局列分组 "/>
+<meta name="twitter:description" content="布局列分组 (Columns Specific Grouping) 通常情况下 ALV 的布局(Layout)下是没有列分组的(可以把列分组理解成过滤器)，列分组就是为了方便大家在布局中选择字段轻而易"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV 布局列分组 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_ColumnSpecificGroup\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  436 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_ColumnSpecificGroup\/",
+  "datePublished": "2019-06-09T00:00:00\x2b00:00",
+  "dateModified": "2019-06-09T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV 布局列分组 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-09 >9 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="布局列分组-columns-specific-grouping">布局列分组 (Columns Specific Grouping)</h3>
+<p>通常情况下 ALV 的布局(Layout)下是没有列分组的(可以把列分组理解成过滤器)，列分组就是为了方便大家在布局中选择字段轻而易举的找到所想要的字段。</p>
+<p>布局列分组用到了类 CL_SALV_SPECIFIC_GROUPS。</p>
+<ul>
+<li>调用 cl_salv_specific_groups-&gt;add_specific_group() 添加列分组名</li>
+<li>调用 cl_salv_column_list-&gt;set_specific_group() 将 ALV 中的字段加入到列分组下</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:set_column_specific_group
+        <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table..
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+  <span style="color:#75715e">&#34;Set the colors to ALV display&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> set_column_specific_group
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#f92672">=</span> gr_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_column_specific_group</span>.
+    <span style="color:#75715e">&#34;Create the Groups&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: lr_functional_settings <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_functional_settings,
+          lr_specific_groups     <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_specific_groups,
+          lv_text                <span style="color:#66d9ef">TYPE </span>cl_salv_specific_groups<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>y_text.
+    lr_functional_settings <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_functional_settings</span>( ).
+    lr_specific_groups <span style="color:#f92672">=</span> lr_functional_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_specific_groups</span>( ).
+    <span style="color:#75715e">&#34;Add group GRP1&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        lv_text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;External supplier&#39;</span>.
+        lr_specific_groups<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">add_specific_group</span>( <span style="color:#66d9ef">id</span>   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GRP1&#39;</span>
+                                                text <span style="color:#f92672">=</span> lv_text ).
+      <span style="color:#66d9ef">CATCH</span> cx_salv_existing.                           
+    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#75715e">&#34;Add group GRP2&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        lv_text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Internal supplier&#39;</span>.
+        lr_specific_groups<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">add_specific_group</span>( <span style="color:#66d9ef">id</span>   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GRP2&#39;</span>
+                                                text <span style="color:#f92672">=</span> lv_text ).
+      <span style="color:#66d9ef">CATCH</span> cx_salv_existing.
+    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#75715e">&#34;Assign the group to columns&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: lr_columns <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_columns_table,
+          lr_column  <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_column_list,
+          lt_cols    <span style="color:#66d9ef">TYPE </span>salv_t_column_ref,
+          ls_cols    <span style="color:#66d9ef">LIKE LINE OF</span> lt_cols.
+    lr_columns <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_columns</span>( ).
+    lt_cols <span style="color:#f92672">=</span> lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get</span>( ).
+    <span style="color:#66d9ef">TRY</span>.
+        <span style="color:#75715e">&#34;隐藏KUNNR字段，Customer&#34;
+</span><span style="color:#75715e"></span>        lr_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lr_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;KUNNR&#39;</span> ).
+        lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_technical</span>( if_salv_c_bool_sap<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>true ).
+      <span style="color:#66d9ef">CATCH</span> cx_salv_not_found.
+    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#66d9ef">LOOP AT </span>lt_cols <span style="color:#66d9ef">INTO</span> ls_cols.
+      lr_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> ls_cols<span style="color:#f92672">-</span>r_column.    <span style="color:#75715e">&#34;Narrow casting&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CASE</span> ls_cols<span style="color:#f92672">-</span>columnname<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">2</span>).
+        <span style="color:#75715e">&#34;将以ET开始的表字段分配给group GRP1,然后设置为不显示&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;ET&#39;</span>.
+          lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_specific_group</span>( <span style="color:#66d9ef">id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GRP1&#39;</span> ).
+          lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_visible</span>( <span style="color:#e6db74">&#39;&#39;</span> ).
+        <span style="color:#75715e">&#34;将以IT开始的表字段分配给group GRP2,然后设置为不显示&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;IT&#39;</span>.
+          lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_specific_group</span>( <span style="color:#66d9ef">id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GRP2&#39;</span> ).
+          lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_visible</span>( <span style="color:#e6db74">&#39;&#39;</span> ).
+      <span style="color:#66d9ef">ENDCASE</span>.
+      <span style="color:#66d9ef">CLEAR</span> ls_cols.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_column_specific_group&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>436</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_CheckBox/" class="prev" rel="prev" title=" SALV CheckBox 设置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV CheckBox 设置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_ResultRead/" class="next" rel="next" title=" ALV 结果读取 "> ALV 结果读取 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-09 00:00:00 \x2b0000 UTC',
+        title: ' SALV 布局列分组 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

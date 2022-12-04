@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_Event/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_Layout/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_Selection/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV Selections 设置  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV Selections 设置  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV Selections 设置 "/>
+<meta name="twitter:description" content="选择数据 CL_SALV_SELECTIONS 可以处理 ALV 中的选择数据方式和获取选择的具体内容。 GET_SELECTED_ROWS：获取 ALV 中选中的行 SALV_T_ROW GET_SELECTED_C"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV Selections 设置 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Selection\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  352 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Selection\/",
+  "datePublished": "2019-06-06T00:00:00\x2b00:00",
+  "dateModified": "2019-06-06T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV Selections 设置 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-06 >6 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="选择数据">选择数据</h3>
+<p>CL_SALV_SELECTIONS 可以处理 ALV 中的选择数据方式和获取选择的具体内容。</p>
+<p><img src="/images/ABAP/SALV15.png" alt="CL_SALV_SELECTIONS"></p>
+<p>GET_SELECTED_ROWS：获取 ALV 中选中的行</p>
+<ul>
+<li>SALV_T_ROW</li>
+</ul>
+<p>GET_SELECTED_COLUMNS：获取 ALV 中选中的列</p>
+<ul>
+<li>SALV_T_COLUMN</li>
+</ul>
+<p>GET_CURRENT_CELL：获取 ALV 中当前选中的单元格</p>
+<ul>
+<li>SALV_S_CELL</li>
+</ul>
+<p>GET_SELECTED_CELLS：获取 ALV 中选中的单元格</p>
+<ul>
+<li>SALV_T_CELL</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: select_rows <span style="color:#66d9ef">TYPE </span>salv_t_row.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>: get_select_rows
+        <span style="color:#66d9ef">EXPORTING</span> rows <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE</span> salv_t_row
+        <span style="color:#66d9ef">CHANGING</span>  co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2_1 - Begin..............................2_1..*$*$*</span>
+  <span style="color:#66d9ef">CALL METHOD</span> get_select_rows
+    <span style="color:#66d9ef">IMPORTING</span> rows   <span style="color:#f92672">=</span> select_rows
+    <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#f92672">=</span> gr_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2_1 - End................................2_1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">get_select_rows</span>.
+    <span style="color:#66d9ef">DATA</span>: lr_selections <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_selections.
+    lr_selections <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_selections</span>( ).
+    <span style="color:#75715e">&#34;set selection mode&#34;
+</span><span style="color:#75715e"></span>    rows <span style="color:#f92672">=</span> lr_selections<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_selected_rows</span>().
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_selection&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div><h4 id="选择模式">选择模式</h4>
+<p>CL_SALV_SELECTIONS 中的 set_selection_mode 可以设置ALV的选择模式：</p>
+<ul>
+<li><code>if_salv_c_selection_mode=&gt;row_column </code></li>
+</ul>
+<p><img src="/images/ABAP/SALV14.png" alt="if_salv_c_selection_mode"></p>
+<ul>
+<li>SINGLE：单行选择</li>
+<li>MULTIPLE：多行选择</li>
+<li>CELL：单元格选择</li>
+<li>ROW_COLUMN：行，列选择</li>
+<li>NONE：无，不能选择</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>: set_selection
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+  <span style="color:#66d9ef">CALL METHOD</span> set_selection
+    <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#f92672">=</span> gr_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_selection</span>.
+    <span style="color:#66d9ef">DATA</span>: lr_selections <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_selections.
+    lr_selections <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_selections</span>( ).
+    <span style="color:#75715e">&#34;set selection mode&#34;
+</span><span style="color:#75715e"></span>    lr_selections<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_selection_mode</span>( if_salv_c_selection_mode<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>row_column ).
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_selection&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>352</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Event/" class="prev" rel="prev" title=" SALV 事件处理 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV 事件处理 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Layout/" class="next" rel="next" title=" SALV Layout 设置 "> SALV Layout 设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-06 00:00:00 \x2b0000 UTC',
+        title: ' SALV Selections 设置 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

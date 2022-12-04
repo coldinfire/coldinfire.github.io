@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_IM_Print/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_2/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_1/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 7.40 Quick Reference Part1  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 7.40 Quick Reference Part1  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 7.40 Quick Reference Part1 "/>
+<meta name="twitter:description" content="Inline Declarations - 内联声明 DATA(...) 内联声明方便了我们的使用，有了它我们在访问数据库的时候，直接写 SELECT 就可以了，不需要再去构建各式各样的內表和表类型了。在内表中它"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 7.40 Quick Reference Part1 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_7.40_QuickReference_1\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  3032 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_7.40_QuickReference_1\/",
+  "datePublished": "2020-07-14T00:00:00\x2b00:00",
+  "dateModified": "2020-07-14T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 7.40 Quick Reference Part1 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-07-14 >14 July 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                7 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="inline-declarations---内联声明">Inline Declarations - 内联声明</h2>
+<p><code> DATA(...)</code> 内联声明方便了我们的使用，有了它我们在访问数据库的时候，直接写 SELECT 就可以了，不需要再去构建各式各样的內表和表类型了。在内表中它会自动根据读取的内表类型定义相应的工作区类型。但是使用这种方法注意作用域问题，它与普通定义的变量范围一致。</p>
+<ul>
+<li>
+<p>注意在使用 FOR ALL ENTRIES 语句的时候，管理的内表前面要加上 @ <code>@inner_table</code> 。</p>
+</li>
+<li>
+<p>指针声明符：<code>FIELD-SYMBOL(...)</code></p>
+</li>
+</ul>
+<h3 id="data-statement">Data statement</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span> text <span style="color:#66d9ef">TYPE </span>string.
+text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ABC&#39;</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(text) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ABC&#39;</span>. / <span style="color:#66d9ef">DATA</span>(lv_int) <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>.
+</code></pre></div><h3 id="select-into-table">Select into table</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span> itab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> mara.
+<span style="color:#66d9ef">DATA</span> lv_matnr <span style="color:#66d9ef">TYPE </span>matnr.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> mara <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">WHERE</span> matnr <span style="color:#f92672">=</span> lv_matnr.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> mara <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#960050;background-color:#1e0010">@</span>DATA(gt_data)
+<span style="color:#66d9ef">SELECT</span> mara~matnr,marc~werks
+  <span style="color:#66d9ef">FROM</span> mara INNER <span style="color:#66d9ef">JOIN</span> marc <span style="color:#66d9ef">ON</span> mara~matnr <span style="color:#f92672">=</span> marc~matnr
+  <span style="color:#66d9ef">FOR</span> ALL ENTRIES <span style="color:#66d9ef">IN</span> <span style="color:#960050;background-color:#1e0010">@</span>itab
+  <span style="color:#66d9ef">WHERE</span> mara~matnr <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">@</span>itab<span style="color:#f92672">-</span>matnr
+  <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#960050;background-color:#1e0010">@</span>DATA(gt_data).
+</code></pre></div><h3 id="select-single">Select single</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> f1 f2 <span style="color:#66d9ef">FROM</span> scarr <span style="color:#66d9ef">INTO</span> (lv_f1, lv_f2) <span style="color:#66d9ef">WHERE</span> carrid <span style="color:#f92672">=</span> p_id.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> f1 <span style="color:#66d9ef">AS</span> lv_f1, f2 <span style="color:#66d9ef">AS</span> lv_f2 
+  <span style="color:#66d9ef">FROM</span> scarr <span style="color:#66d9ef">INTO</span> <span style="color:#960050;background-color:#1e0010">@</span>DATA(wa) 
+ <span style="color:#66d9ef">WHERE</span> carrid <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">@</span>p_id.
+<span style="color:#66d9ef">WRITE</span>: / wa<span style="color:#f92672">-</span>lv_f1, wa<span style="color:#f92672">-</span>lv_f2.
+</code></pre></div><h3 id="loop-at-into-work-area">Loop at into work area</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span> wa <span style="color:#66d9ef">like LINE OF</span> itab. 
+<span style="color:#66d9ef">LOOP AT </span>itab <span style="color:#66d9ef">INTO</span> wa. ... <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">LOOP AT </span>itab <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">DATA</span>(wa). ... <span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h3 id="call-method-with-parameter">Call method with parameter</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span> a1 <span style="color:#66d9ef">TYPE </span>char10.
+<span style="color:#66d9ef">DATA</span> a2 <span style="color:#66d9ef">TYPE </span>char10.
+oref<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">method</span>( <span style="color:#66d9ef">IMPORTING</span> p1 <span style="color:#f92672">=</span> a1
+              <span style="color:#66d9ef">IMPORTING</span> p2 <span style="color:#f92672">=</span> a2 ).
+<span style="color:#75715e">*With 7.40</span>
+oref<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">method</span>( <span style="color:#66d9ef">IMPORTING</span> p1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">DATA</span>(a1)
+              <span style="color:#66d9ef">IMPORTING</span> p2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">DATA</span>(a2) ). 
+</code></pre></div><h3 id="string-operation">String Operation</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;TEXT&#39;</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#e6db74">&#39;XXX&#39;</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">DATA</span>(str1).
+<span style="color:#66d9ef">SPLIT</span> str1 <span style="color:#66d9ef">AT</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">DATA</span>(part1) <span style="color:#66d9ef">DATA</span>(part2).
+<span style="color:#66d9ef">SPLIT</span> str1 <span style="color:#66d9ef">AT</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">DATA</span>(lt_parts).
+</code></pre></div><h3 id="loop-at-assigning">Loop at assigning</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;line&gt; <span style="color:#66d9ef">type </span>any.
+<span style="color:#66d9ef">LOOP AT </span>itab <span style="color:#66d9ef">ASSIGNING</span> &lt;line&gt;. ... <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">LOOP AT </span>itab <span style="color:#66d9ef">ASSIGNING</span> <span style="color:#66d9ef">FIELD</span><span style="color:#f92672">-</span>SYMBOL(&lt;line&gt;). ... <span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h3 id="read-assigning">Read assigning</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;line&gt; <span style="color:#66d9ef">type </span>any.
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">ASSIGNING</span> &lt;line&gt;.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">ASSIGNING</span> <span style="color:#66d9ef">FIELD</span><span style="color:#f92672">-</span>SYMBOL(&lt;line&gt;).
+</code></pre></div><h2 id="内表操作">内表操作</h2>
+<h3 id="table-expressions">Table Expressions</h3>
+<p><code>itab [ ... ]</code>相当于<code>READ TABLE itab ...</code>。</p>
+<p>如果对应条件没找到数据，会抛出 CX_SY_ITAB_LINE_NOT_FOUND 异常，系统变量 SY-SUBRC 不会记录成功与否。可使用 <code>line_exists(itab[...])</code> 判断内表是否存在满足条件的数据 。</p>
+<h4 id="read-table-index">Read table index</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">INDEX</span> idx <span style="color:#66d9ef">INTO</span> wa.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(wa) <span style="color:#f92672">=</span> itab[ idx ].
+</code></pre></div><h4 id="read-table-using-key">Read table using key</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">INTO</span> wa <span style="color:#66d9ef">INDEX</span> idx <span style="color:#66d9ef">USING</span> <span style="color:#66d9ef">KEY</span> <span style="color:#66d9ef">key</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(wa) <span style="color:#f92672">=</span> itab[ <span style="color:#66d9ef">KEY</span> <span style="color:#66d9ef">key</span> <span style="color:#66d9ef">INDEX</span> idx ].
+</code></pre></div><h4 id="read-table-with-key">Read table with key</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">INTO</span> wa <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> col1 <span style="color:#f92672">=</span> lv_col1 col2 <span style="color:#f92672">=</span> lv_col2.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(wa) <span style="color:#f92672">=</span> itab[ col1 <span style="color:#f92672">=</span> lv_col1 col2 <span style="color:#f92672">=</span> lv_col2 ].
+</code></pre></div><h4 id="read-table-with-key-components">Read table with key components</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">INTO</span> wa <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">KEY</span> <span style="color:#66d9ef">key</span> <span style="color:#66d9ef">COMPONENTS</span> col1 <span style="color:#f92672">=</span> lv_col1 
+                                                      col2 <span style="color:#f92672">=</span> lv_col2 .
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(wa) <span style="color:#f92672">=</span> itab[ <span style="color:#66d9ef">KEY</span> <span style="color:#66d9ef">key</span> col1 <span style="color:#f92672">=</span> lv_col1 col2 <span style="color:#f92672">=</span> lv_col2 ].
+</code></pre></div><h4 id="does-record-exist">Does record exist</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab ... <span style="color:#66d9ef">TRANSPORTING NO FIELDS</span>. 
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>. ...  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">IF</span> line_exists( itab[ <span style="color:#960050;background-color:#1e0010">…</span> ] ). ... <span style="color:#66d9ef">ENDIF</span>. 
+</code></pre></div><h4 id="get-table-index">Get table index</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span> idx <span style="color:#66d9ef">type </span>sy<span style="color:#f92672">-</span>tabix. 
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab ... <span style="color:#66d9ef">TRANSPORTING NO FIELDS</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  idx <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>tabix. 
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(idx) <span style="color:#f92672">=</span> line_index( itab[ ... ] ).
+</code></pre></div><h3 id="value-operator-value---value-作为赋值语句">Value Operator Value - Value 作为赋值语句</h3>
+<p>新语法中，可以使用 VALUE 作为赋值语句，主要用来为内表、结构、变量等对象赋值。</p>
+<p>在 VALUE 子句中，字段可以分开赋值，也可以使用结构整体赋值；为内表赋值时，需要用小括号将一行的数据包在一起。</p>
+<h4 id="definition">Definition</h4>
+<p>Variables：<code>VALUE dtype|# (  ).</code>  构造一个任意类型的初始值。</p>
+<p>Structures：<code>VALUE dtype|# ( [BASE dobj] compl = a1 comp2 = a2 ... ).</code>构造一个任意类型的结构体的初始值。</p>
+<p>Tables：<code>VALUE dtype|# ( [BASE itab] ( line1-com1 = dobj1 ) ( line2... ) ... )</code> 构造一个任意类型的内表的初始值。</p>
+<ul>
+<li>
+<p><code>dtype</code> ：想要转换成的类型（显式）</p>
+</li>
+<li>
+<p><code>#</code> ：编译器必须使用上下文来决定要转换为的类型（隐式）</p>
+</li>
+<li>
+<p>如果 dtype 是个表，则必须指定 key 值，或者声明为 empty key</p>
+</li>
+</ul>
+<h4 id="example-for-structures">Example for structures</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>:<span style="color:#66d9ef">BEGIN OF</span> ty_columns1,   <span style="color:#75715e">&#34;Simple structure&#34;
+</span><span style="color:#75715e"></span>  cols1 <span style="color:#66d9ef">TYPE </span>i,
+  cols2 <span style="color:#66d9ef">TYPE </span>i,
+<span style="color:#66d9ef">END OF</span> ty_columns1.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> ty_columns2, <span style="color:#75715e">&#34;Nested structure&#34;
+</span><span style="color:#75715e"></span>  coln1 <span style="color:#66d9ef">TYPE </span>i,
+  coln2 <span style="color:#66d9ef">TYPE </span>ty_columns1,
+<span style="color:#66d9ef">END OF</span> ty_columns2.
+<span style="color:#66d9ef">DATA</span>:struc_nest <span style="color:#66d9ef">TYPE </span>ty_columns2.
+struc_nest <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_columns2( coln1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> coln2<span style="color:#f92672">-</span>cols1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> coln2<span style="color:#f92672">-</span>cols2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> ).
+<span style="color:#75715e">&#34;或则使用&#34;
+</span><span style="color:#75715e"></span>struc_nest <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_columns2( coln1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> coln2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#960050;background-color:#1e0010">#</span>( cols1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> cols2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> ) ).
+</code></pre></div><h4 id="example-for-internal-tables">Example for internal tables</h4>
+<ul>
+<li>内表不能带表头</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> itab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> i <span style="color:#66d9ef">WITH</span> EMPTY <span style="color:#66d9ef">KEY</span>.
+<span style="color:#75715e">*赋值</span>
+itab <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#960050;background-color:#1e0010">#</span>( ( <span style="color:#ae81ff">1</span> ) ( <span style="color:#ae81ff">2</span> ) ( <span style="color:#ae81ff">3</span> ) ).
+<span style="color:#75715e">*覆盖</span>
+itab <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#960050;background-color:#1e0010">#</span>( ( <span style="color:#ae81ff">4</span> ) ( <span style="color:#ae81ff">5</span> ) ( <span style="color:#ae81ff">6</span> ) ).
+<span style="color:#75715e">*追加</span>
+itab <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#960050;background-color:#1e0010">#</span>( BASE itab ( <span style="color:#ae81ff">1</span> ) ( <span style="color:#ae81ff">2</span> ) ( <span style="color:#ae81ff">3</span> ) ).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( itab ).
+<span style="color:#75715e">* Structured line type (RANGES table)</span>
+<span style="color:#66d9ef">DATA</span> rang_itab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">RANGE OF</span> i.
+rang_itab <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#960050;background-color:#1e0010">#</span>( 
+              <span style="color:#66d9ef">sign</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I&#39;</span>  
+              option <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BT&#39;</span> ( low <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  high <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> )
+                            ( low <span style="color:#f92672">=</span> <span style="color:#ae81ff">21</span> high <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span> )
+                            ( low <span style="color:#f92672">=</span> <span style="color:#ae81ff">41</span> high <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span> )
+              option <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GE&#39;</span> ( low <span style="color:#f92672">=</span> <span style="color:#ae81ff">61</span> )  ).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( rang_itab ).
+</code></pre></div><h3 id="ref--定义引用变量">REF  定义引用变量</h3>
+<p>使用 REF 定义引用变量，用来代替 CREATE DATA。在使用 REF 时，不需要提前声明变量，也不用指定类型，类型默认会与被指向的变量保持一致。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_mara,
+    matnr <span style="color:#66d9ef">TYPE </span>mara<span style="color:#f92672">-</span>matnr,
+    matar <span style="color:#66d9ef">TYPE </span>mara<span style="color:#f92672">-</span>matar,
+    text1 <span style="color:#66d9ef">TYPE </span>char50,
+  <span style="color:#66d9ef">END OF</span> str_mara.
+<span style="color:#66d9ef">DATA</span>(ls_mara) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> str_mara(
+	matnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;material-001&#39;</span>
+	matar <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TYPE&#39;</span>
+	text1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test1&#39;</span> ).
+<span style="color:#66d9ef">CALL METHOD</span> CL_DEMO_OUTPUT<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DISPLAY</span>( ls_mara ).
+
+<span style="color:#66d9ef">DATA</span>(lv_ref) <span style="color:#f92672">=</span> REF <span style="color:#960050;background-color:#1e0010">#</span>( ls_mara ).
+lv_ref-&gt;* <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#960050;background-color:#1e0010">#</span>(
+      matnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;material-002&#39;</span>
+      mtart <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;WATR&#39;</span> ).
+lv_ref<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>text1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test2&#39;</span>.
+<span style="color:#66d9ef">CALL METHOD</span> CL_DEMO_OUTPUT<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DISPLAY</span>( ls_mara ).
+</code></pre></div><h3 id="for-operator">For operator</h3>
+<p>在内表赋值语句中，可以使用 FOR 语句从其他内表中批量引入数据并处理；可以认为是加强版的 LOOP AT 语句，与 REDUCE、VALUE 关键字配合使用。</p>
+<ul>
+<li>使用 FOR 语句时，需要为内表定义临时工作区，如 wa / <code>&lt;fs&gt;</code>，仅允许在当前语句中使用，赋值过程中会使用到该工作区。</li>
+<li>但在 WHERE 条件里，只能直接使用内表的字段名，需要注意的是，WHERE 后面接的条件语句必须使用小括号包起来。</li>
+<li>INDEX INTO 定义的临时变量可用来记录当前操作行的序列，作用与 LOOP 语句中的系统变量 SY-TABIX 类似。</li>
+</ul>
+<h4 id="definition-1">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">...<span style="color:#66d9ef">FOR</span> wa|<span style="color:#e6db74">&lt;fs&gt; IN itab [INDEX INTO idx] [COND].
+</span><span style="color:#e6db74">...VALUE itab( FOR i = ... [THEN expr] UNTIL</span>|WHERE log_ext ... )
+...REDUCE dtype( INIT xxx <span style="color:#66d9ef">FOR</span> ... <span style="color:#66d9ef">NEXT</span> ... )
+</code></pre></div><h4 id="examples">Examples</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> ty_ship,
+  tknum <span style="color:#66d9ef">TYPE </span>tknum,     <span style="color:#75715e">&#34;Shipment Number&#34;
+</span><span style="color:#75715e"></span>  name  <span style="color:#66d9ef">TYPE </span>ernam,     <span style="color:#75715e">&#34;Name of Person who Created the Object&#34;
+</span><span style="color:#75715e"></span>  city  <span style="color:#66d9ef">TYPE </span>ort01,     <span style="color:#75715e">&#34;Starting city&#34;
+</span><span style="color:#75715e"></span>  route <span style="color:#66d9ef">TYPE </span>route,     <span style="color:#75715e">&#34;Shipment route&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">END OF</span> ty_ship.
+<span style="color:#66d9ef">TYPES</span>: ty_ships <span style="color:#66d9ef">TYPE SORTED TABLE OF</span> ty_ship <span style="color:#66d9ef">WITH UNIQUE KEY</span> tknum.
+<span style="color:#66d9ef">TYPES</span>: ty_citys <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> ort01. 
+</code></pre></div><p>Example 1：用来自 GT_SHIPS 的 city 填充内部表 GT_CITYS。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span>: gt_ships <span style="color:#66d9ef">type </span>ty_ships,
+      gs_ship  <span style="color:#66d9ef">TYPE </span>ty_ship,
+      gt_citys <span style="color:#66d9ef">TYPE </span>ty_citys,
+      gs_city  <span style="color:#66d9ef">TYPE </span>ort01.
+<span style="color:#66d9ef">LOOP AT </span>gt_ships <span style="color:#66d9ef">INTO</span> gs_ship.
+  gs_city <span style="color:#f92672">=</span>  gs_ship<span style="color:#960050;background-color:#1e0010">–</span>city.
+  <span style="color:#66d9ef">APPEND</span> gs_city <span style="color:#66d9ef">TO</span> gt_citys.
+  <span style="color:#66d9ef">CLEAR</span>:gs_city, gs_ship.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(gt_citys) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_citys( <span style="color:#66d9ef">FOR</span> ls_ship <span style="color:#66d9ef">IN</span> gt_ships ( ls_ship<span style="color:#f92672">-</span>city ) ).
+</code></pre></div><ul>
+<li>注意：ls_ship 似乎尚未声明，但已隐式声明，作用范围在 VALUE ( ) 里面。</li>
+</ul>
+<p>Example 2：使用来自 GT_SHIPS 且路线为 R0001 的 city 填充内部表 GT_CITYS。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span>: gt_citys <span style="color:#66d9ef">TYPE </span>ty_citys,
+      gs_ship  <span style="color:#66d9ef">TYPE </span>ty_ship,
+      gs_city  <span style="color:#66d9ef">TYPE </span>ort01.
+<span style="color:#66d9ef">LOOP AT </span>gt_ships <span style="color:#66d9ef">INTO</span> gs_ship <span style="color:#66d9ef">WHERE</span> route <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>R0001<span style="color:#960050;background-color:#1e0010">’</span>.
+  gs_city <span style="color:#f92672">=</span>  gs_ship<span style="color:#960050;background-color:#1e0010">–</span>city.
+  <span style="color:#66d9ef">APPEND</span> gs_city <span style="color:#66d9ef">TO</span> gt_citys.
+  <span style="color:#66d9ef">CLEAR</span>:gs_city, gs_ship.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(gt_citys) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_citys( <span style="color:#66d9ef">FOR</span> ls_ship <span style="color:#66d9ef">IN</span> gt_ships 
+                   <span style="color:#66d9ef">WHERE</span> ( route <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;R0001&#39;</span> ) ( ls_ship<span style="color:#f92672">-</span>city ) ).
+</code></pre></div><h4 id="for-with-then-and-untilwhile">FOR with THEN and UNTIL|WHILE</h4>
+<p><code>FOR i = … [THEN expr] UNTIL|WHILE log_exp</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> ty_line,
+    col1 <span style="color:#66d9ef">TYPE </span>i,
+    col2 <span style="color:#66d9ef">TYPE </span>i,
+    col3 <span style="color:#66d9ef">TYPE </span>i,
+  <span style="color:#66d9ef">END OF</span> ty_line,
+  ty_tab <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> ty_line <span style="color:#66d9ef">WITH</span> EMPTY <span style="color:#66d9ef">KEY</span>.
+<span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span>: gt_itab <span style="color:#66d9ef">TYPE </span>ty_tab, 
+      j <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;ls_tab&gt; <span style="color:#66d9ef">TYPE </span>ty_line.
+j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#66d9ef">DO</span>.
+  j <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>.
+  <span style="color:#66d9ef">IF</span> j <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">40</span>. <span style="color:#66d9ef">EXIT</span>. <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">APPEND INITIAL LINE TO</span> gt_itab <span style="color:#66d9ef">ASSIGNING</span> &lt;ls_tab&gt;.
+  &lt;ls_tab&gt;<span style="color:#960050;background-color:#1e0010">–</span>col1 <span style="color:#f92672">=</span> j.
+  &lt;ls_tab&gt;<span style="color:#960050;background-color:#1e0010">–</span>col2 <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>.
+  &lt;ls_tab&gt;<span style="color:#960050;background-color:#1e0010">–</span>col3 <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">ENDDO</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(gt_itab) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_tab( 
+   <span style="color:#66d9ef">FOR</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span> THEN j <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> UNTIL j <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">40</span>
+     ( col1 <span style="color:#f92672">=</span> j col2 <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> col3 <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> ) 
+).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( gt_itab ).
+</code></pre></div><h4 id="reduce-结合-for-使用">REDUCE 结合 FOR 使用</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> ty_result,
+    <span style="color:#66d9ef">sum</span>   <span style="color:#66d9ef">TYPE </span>i,
+    max   <span style="color:#66d9ef">TYPE </span>i,
+    min   <span style="color:#66d9ef">TYPE </span>i,
+    count <span style="color:#66d9ef">TYPE </span>i,
+    avg   <span style="color:#66d9ef">TYPE </span>p <span style="color:#66d9ef">DECIMALS</span> <span style="color:#ae81ff">2</span>,
+  <span style="color:#66d9ef">END OF</span> ty_result.
+<span style="color:#66d9ef">DATA</span>(result) <span style="color:#f92672">=</span> REDUCE ty_result( 
+      INIT res <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_result( max <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> min <span style="color:#f92672">=</span> <span style="color:#ae81ff">99999</span> )
+      <span style="color:#66d9ef">FOR</span> &lt;fs&gt; <span style="color:#66d9ef">IN</span> flights
+      <span style="color:#66d9ef">NEXT</span> res<span style="color:#f92672">-</span>sum <span style="color:#f92672">=</span> res<span style="color:#f92672">-</span>sum <span style="color:#f92672">+</span> &lt;fs&gt;<span style="color:#f92672">-</span>distance
+           res<span style="color:#f92672">-</span>count <span style="color:#f92672">=</span> res<span style="color:#f92672">-</span>count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+           res<span style="color:#f92672">-</span>max <span style="color:#f92672">=</span> nmax( val1 <span style="color:#f92672">=</span> res<span style="color:#f92672">-</span>max val2 <span style="color:#f92672">=</span> &lt;fs&gt;<span style="color:#f92672">-</span>distance )
+           res<span style="color:#f92672">-</span>min <span style="color:#f92672">=</span> nmin( val1 <span style="color:#f92672">=</span> res<span style="color:#f92672">-</span>min val2 <span style="color:#f92672">=</span> &lt;fs&gt;<span style="color:#f92672">-</span>distance )
+   ).
+result<span style="color:#f92672">-</span>avg <span style="color:#f92672">=</span> result<span style="color:#f92672">-</span>sum / result<span style="color:#f92672">-</span>count.
+</code></pre></div><h3 id="reduction-operator---reduce">Reduction operator - REDUCE</h3>
+<h4 id="definition-2">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">...REDUCE dtype(
+  INIT result <span style="color:#f92672">=</span> start_value
+  <span style="color:#66d9ef">FOR</span> for_exp1
+  <span style="color:#66d9ef">FOR</span> for_exp2
+  ...
+  <span style="color:#66d9ef">NEXT</span> ...
+       result <span style="color:#f92672">=</span> iterated_value
+       ...
+).
+</code></pre></div><p>虽然 VALUE 和 NEW 表达式可以包含 FOR 表达式，但 REDUCE 必须包含至少一个 FOR 表达式。可以在 REDUCE 中使用各种 FOR 表达式</p>
+<ul>
+<li>使用 IN 迭代内部表</li>
+<li>使用 UNTIL 或 WHILE 进行条件迭代</li>
+</ul>
+<h4 id="example">Example</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> gt_itab <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> i <span style="color:#66d9ef">WITH</span> EMPTY <span style="color:#66d9ef">KEY</span>.
+gt_itab <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#960050;background-color:#1e0010">#</span>( <span style="color:#66d9ef">FOR</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">WHILE</span> j <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> ( j ) ).
+<span style="color:#75715e">* 7.40</span>
+<span style="color:#66d9ef">DATA</span>: lv_lines <span style="color:#66d9ef">TYPE </span>i,
+      ls_itab <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#66d9ef">LOOP AT </span>gt_itab <span style="color:#66d9ef">INTO</span> ls_itab.
+  lv_lines <span style="color:#f92672">=</span> lv_lines <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#75715e">&#34;统计行数&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>(lv_line) <span style="color:#f92672">=</span> REDUCE i( INIT x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">FOR</span> wa <span style="color:#66d9ef">IN</span> gt_itab <span style="color:#66d9ef">NEXT</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> ).
+<span style="color:#75715e">&#34;求和&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>(lv_sum) <span style="color:#f92672">=</span> REDUCE i( INIT x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">FOR</span> wa <span style="color:#66d9ef">IN</span> gt_itab <span style="color:#66d9ef">NEXT</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> wa ).
+</code></pre></div><h4 id="使用类引用">使用类引用</h4>
+<p>write 方法返回对实例对象的引用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span> outref <span style="color:#66d9ef">TYPE REF TO</span> if_demo_output.
+<span style="color:#66d9ef">DATA</span>(output) <span style="color:#f92672">=</span> REDUCE outref( INIT out  <span style="color:#f92672">=</span> cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">new</span>( )
+                                   text <span style="color:#f92672">=</span> <span style="color:#e6db74">`Count up:`</span>
+                              <span style="color:#66d9ef">FOR</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> UNTIL n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">11</span>
+                              <span style="color:#66d9ef">NEXT</span> out <span style="color:#f92672">=</span> out<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">write</span>( text )
+                                   text <span style="color:#f92672">=</span> |<span style="color:#e6db74"></span>{ n }<span style="color:#e6db74"></span>| ).
+output<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ).
+</code></pre></div><h3 id="move-corresponding-operator">Move Corresponding Operator</h3>
+<h4 id="move-corresponding">MOVE-CORRESPONDING</h4>
+<p>Structures：<code>MOVE-CORRESPONDING [EXACT] struc1 TO struc2 [EXPANDING NESTED TABLE].</code></p>
+<p>Internal tables：<code>MOVE-CORRESPONDING [EXACT] itab1 TO itab2 [EXPANDING NESTED TABLE] [KEPPING TARGET LINES].</code></p>
+<h4 id="corresponding">Corresponding</h4>
+<p>语法：<code>CORRESPONDING dtype|#( [BASE ( base )] struct|itab [mapping t1 = s1|except {t1 t2}] ).</code></p>
+<ul>
+<li>MAPPING：允许使用名称不同的组件映射字段以符合数据传输的条件</li>
+<li>EXCEPT：允许列出必须从数据传输中排除的字段</li>
+</ul>
+<h4 id="example-code">Example Code</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> line1,
+  col1 <span style="color:#66d9ef">TYPE </span>i,
+  col2 <span style="color:#66d9ef">TYPE </span>i,
+<span style="color:#66d9ef">END OF</span> line1.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> line2,
+  col1 <span style="color:#66d9ef">TYPE </span>i,
+  col2 <span style="color:#66d9ef">TYPE </span>i,
+  col3 <span style="color:#66d9ef">TYPE </span>i,
+<span style="color:#66d9ef">END OF</span> line2.
+<span style="color:#66d9ef">DATA</span>(ls_line1) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> line1( col1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> col2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> ).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ls_line1 ).
+<span style="color:#66d9ef">DATA</span>(ls_line2) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> line2( col1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> col2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> col3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span> ).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ls_line2 ).
+<span style="color:#75715e">&#34;CORRESPONDING&#34;
+</span><span style="color:#75715e"></span>ls_line2 <span style="color:#f92672">=</span> CORRESPONDING <span style="color:#960050;background-color:#1e0010">#</span>( ls_line1 ).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ls_line2 ).
+<span style="color:#75715e">&#34;CORRESPONDING BASE&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;使用ls_line2的现有内容作为基础并被ls_line1中的匹配列覆盖&#34;
+</span><span style="color:#75715e"></span>ls_line2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> line2( col1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> col2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> col3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span> ).
+ls_line2 <span style="color:#f92672">=</span> CORRESPONDING <span style="color:#960050;background-color:#1e0010">#</span>( BASE ( ls_line2 ) ls_line1 ).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ls_line2 ).
+ls_line2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> line2( col1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> col2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> col3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span> ).
+<span style="color:#66d9ef">DATA</span>(ls_line3) <span style="color:#f92672">=</span> CORRESPONDING line2( BASE ( ls_line2 ) ls_line1 ).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ls_line3 ).
+<span style="color:#75715e">&#34;MOVE-CORRESPONDING&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">MOVE-CORRESPONDING</span> ls_line2 <span style="color:#66d9ef">TO</span> ls_line3.
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ls_line3 ).
+</code></pre></div><h3 id="filter">Filter</h3>
+<p>基于一个表中的记录过滤另一个表中的记录。</p>
+<h4 id="definition-3">Definition</h4>
+<p><code>FILTER ptype|#( itab [EXCEPT] [IN ftab] [USING KEY keyname] WHERE c1 op f1 [AND c2 op f2 […]] )</code></p>
+<ul>
+<li>EXCEPT：将返回完全相反的记录。</li>
+</ul>
+<h4 id="template">Template</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> ty_filter,
+    cityfrom <span style="color:#66d9ef">TYPE </span>spfli<span style="color:#960050;background-color:#1e0010">–</span>cityfrom,
+    cityto   <span style="color:#66d9ef">TYPE </span>spfli<span style="color:#960050;background-color:#1e0010">–</span>cityto,
+    f3       <span style="color:#66d9ef">TYPE </span>i,
+<span style="color:#66d9ef">END OF</span> ty_filter,
+ty_filter_tab <span style="color:#66d9ef">TYPE HASHED TABLE OF</span> ty_filter <span style="color:#66d9ef">WITH UNIQUE KEY</span> cityfrom cityto.
+<span style="color:#66d9ef">DATA</span>: lt_splfi <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> spfli.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> spfli APPENDING <span style="color:#66d9ef">TABLE</span> lt_splfi.
+<span style="color:#66d9ef">DATA</span>(lt_filter) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_filter_tab( f3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    ( cityfrom <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>NEW YORK<span style="color:#960050;background-color:#1e0010">’</span>  cityto  <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>SAN FRANCISCO<span style="color:#960050;background-color:#1e0010">’</span> )
+    ( cityfrom <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>FRANKFURT<span style="color:#960050;background-color:#1e0010">’</span> cityto  <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>NEW YORK<span style="color:#960050;background-color:#1e0010">’</span> )  ).
+<span style="color:#66d9ef">DATA</span>(lt_myrecs) <span style="color:#f92672">=</span> FILTER <span style="color:#960050;background-color:#1e0010">#</span>( lt_splfi <span style="color:#66d9ef">IN</span> lt_filter
+                  <span style="color:#66d9ef">WHERE</span> cityfrom <span style="color:#f92672">=</span> cityfrom 
+                  <span style="color:#f92672">AND</span> cityto <span style="color:#f92672">=</span> cityto ).
+<span style="color:#960050;background-color:#1e0010">“</span>Output filtered records
+<span style="color:#66d9ef">LOOP AT </span>lt_myrecs <span style="color:#66d9ef">ASSIGNING</span> <span style="color:#66d9ef">FIELD</span><span style="color:#960050;background-color:#1e0010">–</span>SYMBOL(&lt;ls_rec&gt;).
+  <span style="color:#66d9ef">WRITE</span>: / &lt;ls_rec&gt;<span style="color:#960050;background-color:#1e0010">–</span>carrid,<span style="color:#ae81ff">8</span> &lt;ls_rec&gt;<span style="color:#960050;background-color:#1e0010">–</span>cityfrom,<span style="color:#ae81ff">30</span>
+           &lt;ls_rec&gt;<span style="color:#960050;background-color:#1e0010">–</span>cityto,<span style="color:#ae81ff">45</span> &lt;ls_rec&gt;<span style="color:#960050;background-color:#1e0010">–</span>deptime.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3032</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_IM_Print/" class="prev" rel="prev" title=" Output Determination in Inventory Management (IM) "><i class="iconfont icon-dajiantou"></i>&nbsp; Output Determination in Inventory Management (IM) </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_2/" class="next" rel="next" title=" ABAP 7.40 Quick Reference Part2 "> ABAP 7.40 Quick Reference Part2 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-07-14 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 7.40 Quick Reference Part1 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2022/ABAP_Utils_SplitFilePath/" />
+  <link rel="next" href="https://coldinfire.github.io/2022/MM_GetActivateMaterial/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2022/PP_GetProductOrderRelationInfo/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Product Order相关信息的获取  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Product Order相关信息的获取  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Product Order相关信息的获取 "/>
+<meta name="twitter:description" content="工序获取（TABLE：AFVC） 根据 Production Order 到表 AFKO 中获取 Routing 信息： AFKO-AUFPL；根据 Routing 到表 AFVC 中获取 Operation（工序）详细信息：AF"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Product Order相关信息的获取 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2022\/PP_GetProductOrderRelationInfo\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "PP",
+  "wordcount":  597 ,
+  "url": "https:\/\/coldinfire.github.io\/2022\/PP_GetProductOrderRelationInfo\/",
+  "datePublished": "2022-04-17T00:00:00\x2b00:00",
+  "dateModified": "2022-04-17T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Product Order相关信息的获取 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2022-04-17 >17 April 2022</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="工序获取tableafvc">工序获取（TABLE：AFVC）</h3>
+<p>根据 Production Order 到表 AFKO 中获取 Routing 信息： AFKO-AUFPL；根据 Routing 到表 AFVC 中获取 Operation（工序）详细信息：AFVC-VORNR（Operation）、AFVC-LTXA1（Operation Text）、AFVC-ARBID（Object ID）、AFVC-LAR01（Activity Type）。</p>
+<h3 id="work-centertablecrhd">Work Center（TABLE：CRHD）</h3>
+<p>通过 AFVC-ARBID 到表 CRHD 中获取有关 Work Center 信息。AFVC-ARBID = CRHD-OBJID 获取 CRHD-ARBPL（Work Center）、CRHD-WERKS（Plant）、CRHD-VERWE（Work Center Category），CRHD-VERAN（Person responsible）。</p>
+<p>通过表 CRTX 可以获得 Work Center 描述，CRTX-OBJID = CRHD-OBJID 获得 CRTX-KTEXT（Work Center Description）。</p>
+<h3 id="工作中心负责人tabletc24">工作中心负责人（TABLE：TC24）</h3>
+<p>通过 CRHD-VERAN 到表 TC24 获取 Work Center 负责人。CRHD-VERAN = TC24-VERAN and CRHD-WERKS = TC24-WERKS 获取 TC24-KTEXT（Work Center 负责人）。</p>
+<h3 id="成本中心tablecrco">成本中心（TABLE：CRCO）</h3>
+<p>通过 CRHD-OBJID 到表 CRCO 中获取成本中心。CRHD-OBJID = CRCO-OBJID 获取 CRCO-KOKRS（Controlling Area）、CRCO-KOSTL（Cost Center）、CRCO-LSTAR（Activity Type）。</p>
+<h3 id="工种tablecslt">工种（TABLE：CSLT）</h3>
+<p>通过 CRCO-KOKRS &amp; CRCO-LSTAR 到表 CSLT 获取 CSLT-KTEXT（工种信息）。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>597</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/PP/">
+                    #PP</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2022/ABAP_Utils_SplitFilePath/" class="prev" rel="prev" title=" 分割文件路径和文件名 "><i class="iconfont icon-dajiantou"></i>&nbsp; 分割文件路径和文件名 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2022/MM_GetActivateMaterial/" class="next" rel="next" title=" SAP 获取Activate物料 "> SAP 获取Activate物料 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2022-04-17 00:00:00 \x2b0000 UTC',
+        title: ' Product Order相关信息的获取 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

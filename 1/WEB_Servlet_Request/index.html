@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_HTMLBasic/" />
+  <link rel="canonical" href="https://coldinfire.github.io/1/WEB_Servlet_Request/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Servlet Request对象 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Servlet Request对象 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Servlet Request对象"/>
+<meta name="twitter:description" content="Servlet Request 对象 Servlet 容器对于接受到的每一个 Http 请求，都会创建一个ServletRequest 对象，并把这个对象传递给 Servlet 的 Sevice( )方法。其中，ServletR"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Servlet Request对象",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/1\/WEB_Servlet_Request\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  
+  "wordcount":  1107 ,
+  "url": "https:\/\/coldinfire.github.io\/1\/WEB_Servlet_Request\/",
+  
+  
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "SmallFire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Servlet Request对象</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=0001-01-01 >1 January 0001</time>
+                </span>
+                in
+                
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="servlet-request-对象">Servlet Request 对象</h3>
+<p>Servlet 容器对于接受到的每一个 Http 请求，都会创建一个ServletRequest 对象，并把这个对象传递给 Servlet 的 Sevice( )方法。其中，ServletRequest 对象内封装了关于这个请求的许多详细信息。</p>
+<h4 id="http-请求信息">HTTP 请求信息</h4>
+<p><img src="/images/Tomcat/HTTPRequest.png" alt=""></p>
+<h4 id="httpservletrequest-接口常用方法">HttpServletRequest 接口常用方法</h4>
+<p>获取常用信息</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public String getMethod();</td>
+<td style="text-align:left">得到HTTP请求方式</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>public String getContextPath();</code></td>
+<td style="text-align:left">获取项目的根目录名。返回指定上下文(web应用)的URL的前缀</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getServletPath();</td>
+<td style="text-align:left">URL中调用Servlet的那一部分，不包含附加路径信息</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getQueryString();</td>
+<td style="text-align:left">获取URL后面全部的查询字符串参数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>public String getRequestURI();</code></td>
+<td style="text-align:left">获取请求URI，不包含请求内容，不包含域名</td>
+</tr>
+<tr>
+<td style="text-align:left">public StringBuffer getRequestURL();</td>
+<td style="text-align:left">获取URL，包含域名，不包含请求内容。未被Servlet服务器Decode过</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getProtocol();</td>
+<td style="text-align:left">获取协议信息的版本号，如HTTP/1.1</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getScheme();</td>
+<td style="text-align:left">获取协议名称，如HTTP、FTP、HTTPS</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getRequestedSessionId();</td>
+<td style="text-align:left">返回这个请求相应的Session Id</td>
+</tr>
+<tr>
+<td style="text-align:left">public HttpSession getSession();</td>
+<td style="text-align:left">获取Session对话，用于与网页通信</td>
+</tr>
+<tr>
+<td style="text-align:left">public Cookie[] getCookies();</td>
+<td style="text-align:left">返回使用数组存储的Cookie对象</td>
+</tr>
+</tbody>
+</table>
+<p>获取请求头信息</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public String getHeader(String name);</td>
+<td style="text-align:left">得到字符串类型单值的请求头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public int getIntHeader(String name);</td>
+<td style="text-align:left">得到整形单值的请求头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public long getDateHeader(String name);</td>
+<td style="text-align:left">得到毫秒类型单值的请求头</td>
+</tr>
+<tr>
+<td style="text-align:left">public Enumeration<code>&lt;String&gt;</code>  getHeaders(String name);</td>
+<td style="text-align:left">返回枚举得到多值的请求头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">public Enumeration<code>&lt;String&gt;</code> getHeaderNames();</td>
+<td style="text-align:left">返回枚举得到所有请求头的名称</td>
+</tr>
+</tbody>
+</table>
+<p>获取请求体信息</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public String getCharacterEncoding();</td>
+<td style="text-align:left">获取请求体中Servlet的编码方式</td>
+</tr>
+<tr>
+<td style="text-align:left">public void setCharacterEncoding(String env);</td>
+<td style="text-align:left">设置请求体中Servlet的编码方式</td>
+</tr>
+<tr>
+<td style="text-align:left">public int getContentLength();</td>
+<td style="text-align:left">获取请求体的长度</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getContentType();</td>
+<td style="text-align:left">获取请求体的MIME类型，包括编码</td>
+</tr>
+<tr>
+<td style="text-align:left">public ServletInputStream getInputStream() throws IOException;</td>
+<td style="text-align:left">将请求体封装为二进制的流文件</td>
+</tr>
+<tr>
+<td style="text-align:left">public BufferedReader getReader() throws IOException;</td>
+<td style="text-align:left">将请求体封装为字符类型的流文件</td>
+</tr>
+<tr>
+<td style="text-align:left">public boolean isSecure();</td>
+<td style="text-align:left">是否使用的安全协议，如HTTPS</td>
+</tr>
+</tbody>
+</table>
+<p>获取服务器和客户端信息</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public int getServerPort();</td>
+<td style="text-align:left">获取服务器的端口号</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getServerName();</td>
+<td style="text-align:left">获取服务器的主机名</td>
+</tr>
+<tr>
+<td style="text-align:left">public Locale getLocale();</td>
+<td style="text-align:left">获取本地位置信息，若ZHCN等等</td>
+</tr>
+<tr>
+<td style="text-align:left">public Enumeration<!-- raw HTML omitted --> getLocales();</td>
+<td style="text-align:left">使用枚举获取服务器的多个位置信息</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getLocalAddr();</td>
+<td style="text-align:left">获取本地地址，根据访问方法不同而不同，为127.0.0.1或者公网ip</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getLocalName();</td>
+<td style="text-align:left">获取本地IP的名称，如127.0.0.1就是localhost</td>
+</tr>
+<tr>
+<td style="text-align:left">public int getLocalPort();</td>
+<td style="text-align:left">获取端口号，如：8090</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getRemoteAddr();</td>
+<td style="text-align:left">获取客户端的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:left">public String getRemoteHost();</td>
+<td style="text-align:left">获取客户端的主机名</td>
+</tr>
+<tr>
+<td style="text-align:left">public int getRemotePort();</td>
+<td style="text-align:left">获取客户端的端口号</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+<span style="color:#75715e">//获取转发器
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> RequestDispatcher <span style="color:#a6e22e">getRequestDispatcher</span><span style="color:#f92672">(</span>String path<span style="color:#f92672">);</span><span style="color:#75715e">// 获取指定地址的转发器。
+</span><span style="color:#75715e">//操作属性
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">,</span> Object object<span style="color:#f92672">);</span><span style="color:#75715e">// 设置属性名和属性对象。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">getAttribute</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">);</span><span style="color:#75715e">// 通过属性名获取属性对象。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> Enumeration<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getAttributeNames</span><span style="color:#f92672">();</span><span style="color:#75715e">// 得到全部的属性名。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">removeAttribute</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">);</span><span style="color:#75715e">// 通过属性名删除属性对象。
+</span><span style="color:#75715e">//获取参数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">);</span><span style="color:#75715e">// 通过参数名获取参数值。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">[]&gt;</span> <span style="color:#a6e22e">getParameterMap</span><span style="color:#f92672">();</span><span style="color:#75715e">// 将所有参数名和参数值以Map的形式返回。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> Enumeration<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getParameterNames</span><span style="color:#f92672">();</span><span style="color:#75715e">// 获取全部参数名。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">getParameterValues</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">);</span><span style="color:#75715e">// 通过参数名获取数组类型的参数值。
+</span></code></pre></div><h4 id="request-乱码问题解决">Request 乱码问题解决</h4>
+<p>在 service 中使用的编码解码方式默认为：ISO-8859-1编码，但此编码并不支持中文，因此会出现乱码问题，所以我们需要手动修改编码方式为 UTF-8 编码，才能解决中文乱码问题。</p>
+<p>解决post提交方式的乱码：</p>
+<ul>
+<li>request.setCharacterEncoding(&ldquo;UTF-8&rdquo;);</li>
+</ul>
+<p>解决get提交的方式的乱码：</p>
+<ul>
+<li>parameter = newString(parameter.getbytes(&ldquo;iso8859-1&rdquo;),&ldquo;utf-8&rdquo;);</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1107</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_HTMLBasic/" class="next" rel="next" title="HTML 基础知识汇总">HTML 基础知识汇总&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '0001-01-01 00:00:00 \u002b0000 UTC',
+        title: 'Servlet Request对象',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

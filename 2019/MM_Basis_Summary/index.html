@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Utils_Stvarv/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_TableTcode/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_Basis_Summary/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            MM 概要  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" MM 概要  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" MM 概要 "/>
+<meta name="twitter:description" content="包含业务 (采购询价 ME41 / 报价 ME47 录入、ME49 报价比较)&mdash;-&gt; 采购申请 (PR)&mdash;-&gt; 采购订单 (PO)&mdash;-&gt; 发送采购单给供应商 &lt; ME9F&gt;&mdash;-&gt; 采购收货 (产生物料凭证"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " MM 概要 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_Basis_Summary\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  2276 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_Basis_Summary\/",
+  "datePublished": "2019-03-01T00:00:00\x2b00:00",
+  "dateModified": "2019-03-01T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> MM 概要 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-03-01 >1 March 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="包含业务">包含业务</h3>
+<ul>
+<li>(采购询价 ME41 / 报价 ME47 录入、ME49 报价比较)&mdash;-&gt; 采购申请 (PR)&mdash;-&gt; 采购订单 (PO)&mdash;-&gt; 发送采购单给供应商 &lt; ME9F&gt;&mdash;-&gt; 采购收货 (产生物料凭证)&mdash;-&gt; 发票校验 (产生会计凭证)&mdash;-&gt; 应付</li>
+</ul>
+<p>买物料（Purchasing、Invoicing）</p>
+<ul>
+<li>基本数据管理：物料主数据、供应商、采购信息记录、货源、配额、批次数据</li>
+<li>采购管理：采购申请、货源确定、采购批准、采购订单处理、订单跟踪、采购货物接收</li>
+<li>采购发票校验：订单、收货单、发票数量、金额匹配</li>
+<li>库存管理：库存事务处理、库存状态控制、库存分析与评估</li>
+<li>仓库管理：数量整理、库位管理、货架管理</li>
+</ul>
+<h3 id="mm-模块主要配置流程">MM 模块主要配置流程</h3>
+<ol>
+<li>SAP 物流相关模块中，工厂是最重要的组织结构，隶属于公司代码，并且包括了和物流管理相关的最多的控制参数。这里首先创建一个工厂。</li>
+<li>然后创建工厂下面的 库存地点。</li>
+<li>创建采购组织，再创建两个采购组：原材料和运营供应、贸易商品。
+<ul>
+<li>注意：此时采购组织以及采购组和公司代码没有任何联系，采购组织和采购组也并没有联系，实际上，采购组在 client 层次，client 下的任何公司，任何工厂都可以使用这个采购组</li>
+</ul>
+</li>
+<li>定义与工厂相关的两个 MRP 控制者，分别控制自制品计划和贸易商品的计划。</li>
+<li>将创建的工厂分配给公司代码。</li>
+<li>分配采购组织到公司代码。</li>
+<li>分配工厂到采购组织。SAP 系统中的一个采购组织可以同时负责几个工厂的采购。</li>
+<li>定义物料组：在维护主数据的时候，需要分配物料组。</li>
+<li>定义计划边际码。这个操作满足这样一种情况：公司除了正常的采购和生产时间，还规定在操作、产前、产后和订单下达各阶段预留一天的缓冲时间。这样的规则被定义在 “计划边际码” 中。</li>
+<li>工厂中有很多控制参数。如在库存管理中，对库存物料可以通过预留号进行预留，比如预留给生产订单或者销售订单。设定该工厂对于库存的预留允许比计划日期提前一个月使用，同时过期一个月以内的预留仍然可以使用。</li>
+<li>维护和库存相关的工厂参数 - 自动创建物料的库存地点视图。只有某个视图被定义了，才可以对这个物料进行某项操作。</li>
+<li>由于公司收到的发票大多是 17% 的增值税发票，因此这里我们可以把它设为缺省值，方便发票校验。因此我们可以在此处维护税务代码的缺省值。</li>
+<li>物料管理在 SAP 中只能开当月的账，或者至多当月或者上个月的账，而且开账只允许一个月一个月往后开，因此一开始我们要设定一个初始期间。一般初始期间设为上线前的那个月，如 12 月上线，就设定初始日期为 11 月，在 11 月中导入期末库存余额。</li>
+<li>维护和物料需求计划相关的工厂参数。这部分涉及的参数很多，首先可以采用先复制之前的，再更改不适用的参数。</li>
+<li>此处激活物料需求计划 MRP 这项功能，通过后台的配置实现。</li>
+<li>此处定义计划运行的号码范围 (Number Range)。运行物料需求计划会产生很多凭证，比如计划订单、非独立需求等，这些凭证都有它们的编号范围。在 13 步复制 0001 的时候，这些编号范围都已经复制了，这里只需要进行检查。</li>
+<li>物料类型是定义物料主数据的最重要的一个参数。它决定了各类物料主数据需要维护哪些信息和参数，物料主数据的编号范围等。</li>
+<li>定义评估控制，激活按 “评估分组代码” 来定义科目，这样可以当集团公司有很多工厂时候，而它们的记账规则又是一样，不用一个一个的进行维护，而是将工厂集合成组统一来定义记账规则。</li>
+<li>将之前定义的工厂归入我们的 CN01 评估分组代码，这样以后该集团增加工厂时候，只需要把它分配给 CN01 就可以了，而不必再定义一套记账规则。</li>
+<li>除了工厂，另一个决定不同的会计科目的因素是物料本身，此处我们在物料主数据中定义一个 “评估类” 参数，通过 “评估类” 来决定会计科目。标准评估类：3000 原材料、3100 贸易商品、7920 成品。</li>
+<li>这时可以进行物料主数据的录入了。填入相应的采购组、物料组、 MRP 控制者、计划边际码等。</li>
+<li>创建完各种物料后，可以在 MM60 中显示物料主记录清单。</li>
+<li>创建供应商的采购数据 MK01。创建的时候要填采购组织，账户组，账户组是在 FI 的时候创建的。供应商的采购数据是和具体的采购组织相关的，也就是说不同的采购组织向同一个供应商采购，可以有不同的规定。</li>
+<li>新建采购信息记录 ME11。采购信息记录包括信息如标准订单数量，净价，几天内交货，由哪个采购组负责等。保存这样的数据，可以方便实际采购时候参照使用。</li>
+<li>设置 SAP 中最为重要的集成配置之一，即物料移动在 SAP 中如何自动找到会计科目完成自动记账。</li>
+<li>将存货科目设置为只能自动记账，在 FS00 中实现。</li>
+<li>SAP 在处理采购订单时，会检查采购订单中的价格和物料主数据的成本价格差异有多大，同时也会检查采购订单中的现金折扣是否可接受。如果差异超过一定的容差，系统会发出警告消息或者错误信息。
+<ul>
+<li>不同的容差检查存放在 “容差码” 中，容差码 “PE” 是检查价格的，“SE” 是检查现金折扣的。</li>
+</ul>
+</li>
+<li>SAP 允许采购订单定价数量单位和采购订单数量单位有所不同，收货容差限制。比如采购订单数量是按件，但定价是按斤。这种情况下，收货的时候，两种单位的数量都要输入。在收货的时候，系统会检查定价数量和采购订单中的差异。</li>
+<li>SAP 系统在发票校验的时候会做大量检查，如果校验不通过发票就会被冻结。容差检查。</li>
+<li>维护公司的项目全额检查。</li>
+<li>在 MD03 中运行物料需求计划(MRP)，MD04 可以显示库存 / 需求清单。（MD05 显示 MRP 清单）。</li>
+<li>这里计划部门手动创建采购申请 ME51N。根据采购申请，采购部门需要向供应商下采购订单 ME21N。</li>
+<li>进行采购收货 MIGO。（MB03 显示凭证；显示库存 MMBE）</li>
+<li>供应商采购发票随后到达，在 MIRO 中输入发票。
+<ul>
+<li>如果发票比采购订单原定的日期提前到达，并超过了容差，发票将会被冻结。</li>
+</ul>
+</li>
+<li>被冻结的发票可以经过相关管理人员检查后手工处理，使用 MRBR 来 Release 35 步被冻结的发票。</li>
+<li>在 MIR4 中显示发票和会计凭证。</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2276</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Utils_Stvarv/" class="prev" rel="prev" title=" STVARV 使用详情 "><i class="iconfont icon-dajiantou"></i>&nbsp; STVARV 使用详情 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_TableTcode/" class="next" rel="next" title=" MM 常用表&amp;事务码 "> MM 常用表&amp;事务码 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-03-01 00:00:00 \x2b0000 UTC',
+        title: ' MM 概要 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

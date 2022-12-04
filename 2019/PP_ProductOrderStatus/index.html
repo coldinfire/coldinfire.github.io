@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_EXCEL_Export/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_ALV_SQVI/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/PP_ProductOrderStatus/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 生产订单状态  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 生产订单状态  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 生产订单状态 "/>
+<meta name="twitter:description" content="SAP 系统的常见订单状态如下 CRTD (创建)： 标识生产订单刚刚创建，此时禁止做后续发料和报工确认等操作； PREL (部分下达)： 当生产订单部分下达时，如仅下达"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 生产订单状态 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/PP_ProductOrderStatus\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "PP",
+  "wordcount":  1470 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/PP_ProductOrderStatus\/",
+  "datePublished": "2019-08-25T00:00:00\x2b00:00",
+  "dateModified": "2019-08-25T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 生产订单状态 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-08-25 >25 August 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-系统的常见订单状态如下">SAP 系统的常见订单状态如下</h3>
+<ul>
+<li><strong>CRTD (创建)：</strong> 标识生产订单刚刚创建，此时禁止做后续发料和报工确认等操作；</li>
+<li><strong>PREL (部分下达)：</strong> 当生产订单部分下达时，如仅下达部分工序时出现此状态；</li>
+<li><strong>REL    (已下达)：</strong> 当生产任务已经明确可下发生产时，将生产订单转换为已下达状态，这个状态后可以继续后续业务操作，如打印订单、发料、报完工等操作；</li>
+<li><strong>MANC (未检查物料可用性)：</strong> 生产订单未进行零部件物料的可用性检查；</li>
+<li><strong>SETC (结算规则维护)：</strong> 生产订单已维护结算规则；</li>
+<li><strong>NTUP(日期未更新)：</strong> 生产订单日期人工更改后未重新进行日期计划；</li>
+<li><strong>MSPT (物料短缺)：</strong> 生产订单的零部件物料在进行可用性检查后发现存在短缺；</li>
+<li><strong>MACM (已承诺的物料)：</strong> 生产订单的零部件物料在进行可用性检查后确认完全可用；</li>
+<li><strong>GMPS (已过帐的货物移动)：</strong> 生产订单已经进行过发料；</li>
+<li><strong>PCNF (部分确认)：</strong> 生产订单只进行了部分完工确认，比如说订单需求 10 个，只进行了 5 个生产，或者订单有 2 道工序，只完成了第一道工序；</li>
+<li><strong>CNF (已确认) ：</strong> 生产订单已全部完工确认；</li>
+<li><strong>PDLV (部分交货)：</strong> 生产订单只有部分产品入库；</li>
+<li><strong>DLV (交货) ：</strong> 生产订单已经完全交货入库，这意味着生产订单业务全部完成。CO 看到 DLV 状态或 TECO 状态时将对订单进行完工结算。</li>
+<li><strong>VCAL (差异计算) ：</strong> 生产订单进行过差异运算；</li>
+<li><strong>TECO (技术完成) ：</strong> 在生产过程中，会出现订单未完成但是不再继续生产的情况，这时就可以打上技术完结标识，此时订单对零部件的需求同时删除。在很多项目中，为了简便处理，会对所有完成的订单进行技术完结处理 (注：不再继续生产也是一种完成)。CO 看到 DLV 状态或 TECO 状态时将对订单进行完工结算；</li>
+<li><strong>RESA (进行结果分析)：</strong> 生产订单进行过结算；</li>
+<li><strong>CLSD (关闭)：</strong> 生产订单做账务关闭，不允许对订单发生任何过账，通常情况下，财务月末对订单进行结算后，如果确认不会再有追加发料等业务发生，则应该将订单进行关闭；</li>
+<li><strong>DLID (删除) ：</strong> 对生产订单做删除标识，数据仍然存在数据库中，状态可恢复。如果想彻底删除，需对订单进行归档处理。</li>
+</ul>
+<h4 id="随着业务的变化生产订单的状态也随之变化">随着业务的变化生产订单的状态也随之变化</h4>
+<table>
+<thead>
+<tr>
+<th>业务进展</th>
+<th>对应状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建生产订单</td>
+<td>CTRD</td>
+<td>建立</td>
+</tr>
+<tr>
+<td>下达生产订单</td>
+<td>REL</td>
+<td>已释放</td>
+</tr>
+<tr>
+<td>对生产订单投料</td>
+<td>REL、GMPS</td>
+<td>已释放、已过账的货物移动</td>
+</tr>
+<tr>
+<td>完全报工</td>
+<td>REL、GMPS、CNF</td>
+<td>已释放、已过账的货物移动、已确认</td>
+</tr>
+<tr>
+<td>完全入库</td>
+<td>REL、GMPS、CNF、DLV</td>
+<td>已释放、已过账的货物移动、已确认、交货</td>
+</tr>
+<tr>
+<td>技术关闭</td>
+<td>TECO、GMPS、CNF、DLV</td>
+<td>技术关闭、已过账的货物移动、已确认、交货</td>
+</tr>
+</tbody>
+</table>
+<h3 id="函数使用">函数使用</h3>
+<p><strong>STATUS_READ</strong>：获取输入工单的状态</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:l_aufnr <span style="color:#66d9ef">type </span>aufnr.
+<span style="color:#66d9ef">DATA</span>:it_jest <span style="color:#66d9ef">type </span>standard <span style="color:#66d9ef">table</span> jest.
+<span style="color:#66d9ef">DATA</span>:it_tj02t <span style="color:#66d9ef">type </span>standard <span style="color:#66d9ef">table</span> tj02t.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;STATUS_READ&#39;</span>     
+  <span style="color:#66d9ef">EXPORTING</span>
+    OBJNR            <span style="color:#f92672">=</span> l_aufnr
+    ONLY_ACTIVE      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+  <span style="color:#66d9ef">TABLES</span>
+    STATUS           <span style="color:#f92672">=</span> it_jest
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    OBJECT_NOT_FOUND <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">others</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34; To get the texts of statuses &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">IF</span> <span style="color:#f92672">NOT</span> it_jest <span style="color:#f92672">IS INITIAL</span>.
+  <span style="color:#66d9ef">SELECT</span> istat txt04 <span style="color:#66d9ef">FROM</span> TJ02T
+    <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> it_tj02t
+    <span style="color:#66d9ef">FOR</span> ALL ENTRIES <span style="color:#66d9ef">IN</span> it_jest
+   <span style="color:#66d9ef">WHERE</span> istat <span style="color:#f92672">=</span> it_jest<span style="color:#f92672">-</span>stat
+     <span style="color:#f92672">AND</span> spras <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><p><strong>STATUS_TEXT_EDIT</strong>：获取和 CO03 显示的状态一样的数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;STATUS_TEXT_EDIT&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    flg_user_stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    objnr <span style="color:#f92672">=</span> caufvd<span style="color:#f92672">-</span>objnr
+    only_active <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    spras <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu
+  <span style="color:#66d9ef">IMPORTING</span>
+    anw_stat_existing <span style="color:#f92672">=</span> caufvd<span style="color:#f92672">-</span>astex
+    line <span style="color:#f92672">=</span> t_hresb<span style="color:#f92672">-</span>sttxt <span style="color:#75715e">&#34;Status Result&#34;
+</span><span style="color:#75715e"></span>    user_line <span style="color:#f92672">=</span> t_hresb<span style="color:#f92672">-</span>asttx
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    object_not_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">01</span>.
+</code></pre></div><p><strong>STATUS_CHECK</strong>：检查生产订单状态，看是否有某种状态</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;STATUS_CHECK&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    OBJNR <span style="color:#f92672">=</span> CAUFVD<span style="color:#f92672">-</span>OBJNR
+    STATUS <span style="color:#f92672">=</span> STATUS_PRINT
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    OBJECT_NOT_FOUND <span style="color:#f92672">=</span> <span style="color:#ae81ff">01</span>
+    STATUS_NOT_ACTIVE <span style="color:#f92672">=</span> <span style="color:#ae81ff">02</span>.
+</code></pre></div><h3 id="直接从表获取生产订单状态">直接从表获取生产订单状态</h3>
+<p>1、根据生产订单从 AUFK 获取 Object Number（AUFK-OBJNR）</p>
+<p>2、根据 AUFK-OBJNR = JEST-OBJNR 获取对象状态（JEST-STAT，JEST-INACT）</p>
+<p>3、根据 JEST-STAT 在 TJ02T 中获取对应的对象状态描述（TJ02T-TXT04）</p>
+<p>4、根据 JEST-STAT 在 TJ02 中获取对象状态的是否显示状态（TJ02-NODIS）</p>
+<p><img src="/images/PP/OrderStatus.jpg" alt="Order Status"></p>
+<h4 id="demo">DEMO</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:jest <span style="color:#66d9ef">type </span>standard <span style="color:#66d9ef">table</span> jest.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> aufk <span style="color:#66d9ef">WHERE</span> aufnr <span style="color:#f92672">=</span> it_table<span style="color:#f92672">-</span>aufnr. 
+<span style="color:#75715e">&#34; 判定工单状态 &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34; 判定工单是否 RELASE &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span>: jest.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> jest
+  <span style="color:#66d9ef">WHERE</span> objnr <span style="color:#f92672">=</span> aufk<span style="color:#f92672">-</span>objnr
+  <span style="color:#f92672">AND</span> ( stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I0002&#39;</span> <span style="color:#f92672">OR</span>  <span style="color:#75715e">&#34; RELEASE &#34;
+</span><span style="color:#75715e"></span>	    stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I0042&#39;</span>)    <span style="color:#75715e">&#34; Partial RELEASE &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">AND</span> inact <span style="color:#f92672">=</span> space.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">CONTINUE</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34; 判定工单状态 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span>: jest.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> jest
+  <span style="color:#66d9ef">WHERE</span> objnr <span style="color:#f92672">=</span> aufk<span style="color:#f92672">-</span>objnr
+  <span style="color:#f92672">AND</span> ( stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I0045&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#75715e">&#34; TECO &#34;
+</span><span style="color:#75715e"></span>        stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I0013&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#75715e">&#34; DELETE &#34;
+</span><span style="color:#75715e"></span>        stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I0076&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#75715e">&#34; DELETE FLAG &#34;
+</span><span style="color:#75715e"></span>        stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I0046&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#75715e">&#34; CLSD &#34;
+</span><span style="color:#75715e"></span>        stat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I0012 &#39;</span>)  <span style="color:#75715e">&#34; DLV &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">AND</span> inact <span style="color:#f92672">=</span> space.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">CONTINUE</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1470</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/PP/">
+                    #PP</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_EXCEL_Export/" class="prev" rel="prev" title=" 内表导出到 Excel "><i class="iconfont icon-dajiantou"></i>&nbsp; 内表导出到 Excel </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_ALV_SQVI/" class="next" rel="next" title=" SQVI 创建一张简易的报表 "> SQVI 创建一张简易的报表 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-08-25 00:00:00 \x2b0000 UTC',
+        title: ' SAP 生产订单状态 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

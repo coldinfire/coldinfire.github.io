@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Enhance_LIST/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_Utils_MixedCalculate/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_BADI_MaterialDocument/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            收货或者货物移动(MIGO,MB11,MB1A)增强  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 收货或者货物移动(MIGO,MB11,MB1A)增强  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 收货或者货物移动(MIGO,MB11,MB1A)增强 "/>
+<meta name="twitter:description" content="BADI：MB_DOCUMENT_BADI 使用 该 BADI 有两个方法：MB_DOCUMENT_BEFORE_UPDATE、MB_DOCUMENT_U"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 收货或者货物移动(MIGO,MB11,MB1A)增强 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_BADI_MaterialDocument\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM, BADI",
+  "wordcount":  1426 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_BADI_MaterialDocument\/",
+  "datePublished": "2019-08-08T00:00:00\x2b00:00",
+  "dateModified": "2019-08-08T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 收货或者货物移动(MIGO,MB11,MB1A)增强 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-08-08 >8 August 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="badimb_document_badi-使用">BADI：MB_DOCUMENT_BADI 使用</h3>
+<p><img src="/images/MM/BADI-MB_DOCUMENT_BADI_0.png" alt="MB_DOCUMENT_BADI"></p>
+<p>该 BADI 有两个方法：MB_DOCUMENT_BEFORE_UPDATE、MB_DOCUMENT_UPDATE。</p>
+<ul>
+<li>假如想在点击保存按钮的时候根据生成的凭证号（即表示这个增强点处凭证号已经生成），把某些数据更新到你的自建表的话，要用第二个方法 MB_DOCUMENT_UPDATE。</li>
+<li>调试可以在第一个方法 MB_DOCUMENT_BEFORE_UPDATE 里面调试。第二个方法打断点是无法进入的，但是这个方法确实有执行，所以说只能在第一个方法那边调试。</li>
+<li>注意不能在方法 MB_DOCUMENT_BEFORE_UPDATE 里面写 COMMIT WORK。</li>
+</ul>
+<h3 id="实现该-badi-接口并重写其方法">实现该 BADI 接口，并重写其方法</h3>
+<p><img src="/images/MM/BADI-MB_DOCUMENT_BADI_1.png" alt="MB_DOCUMENT_BADI"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"> <span style="color:#66d9ef">method</span> <span style="color:#a6e22e">if_ex_mb_document_badi~mb_document_update</span>. 
+ <span style="color:#66d9ef">data</span>: gs_mseg <span style="color:#66d9ef">type  </span>mseg. 
+ datal: gt_gdfh <span style="color:#66d9ef">type </span><span style="color:#66d9ef">table of</span> ztmm_gdfh. 
+ <span style="color:#66d9ef">data</span>: gs_gdfh <span style="color:#66d9ef">type </span>ztmm_gdfh. 
+ <span style="color:#66d9ef">data</span>: gt_gdth <span style="color:#66d9ef">type </span><span style="color:#66d9ef">table of</span> ztmm_gdth. 
+ <span style="color:#66d9ef">data</span>: gs_gdth <span style="color:#66d9ef">type </span>ztmm_gdth. 
+ <span style="color:#66d9ef">data</span>: gt_lxjj <span style="color:#66d9ef">type </span><span style="color:#66d9ef">table of</span> ztmm_lxjjgl. 
+ <span style="color:#66d9ef">data</span>: gs_lxjj <span style="color:#66d9ef">type </span>ztmm_lxjjgl. 
+ <span style="color:#66d9ef">data</span>: gs_mkpf <span style="color:#66d9ef">type </span>mkpf. 
+ <span style="color:#66d9ef">if</span> sy<span style="color:#f92672">-</span>tcode <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>MIGO<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#f92672">or</span> sy<span style="color:#f92672">-</span>tcode  <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>MB11<span style="color:#960050;background-color:#1e0010">′</span>. 
+  <span style="color:#66d9ef">read</span> <span style="color:#66d9ef">table</span> xmkpf <span style="color:#66d9ef">into</span> gs_mkpf <span style="color:#66d9ef">index</span> <span style="color:#ae81ff">1</span>. 
+  <span style="color:#66d9ef">loop at </span>xmseg <span style="color:#66d9ef">into</span> gs_mseg. 
+   <span style="color:#66d9ef">if</span>  gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">201</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">”</span> . 
+    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">single</span> zgngo <span style="color:#66d9ef">into</span> gs_lxjj<span style="color:#f92672">-</span>zlxjjbm <span style="color:#66d9ef">from</span> marc <span style="color:#66d9ef">where</span> matnr <span style="color:#f92672">eq</span> gs_mseg<span style="color:#f92672">-</span>matnr <span style="color:#f92672">and</span> werks <span style="color:#f92672">eq</span> gs_mseg<span style="color:#f92672">-</span>werks. 
+    <span style="color:#66d9ef">if</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">eq</span> <span style="color:#ae81ff">0</span>. 
+     gs_lxjj<span style="color:#f92672">-</span>mblnr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>mblnr. 
+     gs_lxjj<span style="color:#f92672">-</span>matnr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>matnr. 
+     gs_lxjj<span style="color:#f92672">-</span>werks <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>werks. 
+     gs_lxjj<span style="color:#f92672">-</span>bldat <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>bldat. 
+     <span style="color:#66d9ef">append</span> gs_lxjj <span style="color:#66d9ef">to</span> gt_lxjj. 
+    <span style="color:#66d9ef">endif</span>. 
+   <span style="color:#66d9ef">endif</span>. 
+   <span style="color:#66d9ef">if</span> gs_mseg<span style="color:#f92672">-</span>werks <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>SD00<span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> ( ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">201</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">”</span> )  <span style="color:#f92672">or</span>  ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">201</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>K<span style="color:#960050;background-color:#1e0010">’</span> ) 
+   <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">221</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>Q<span style="color:#960050;background-color:#1e0010">’</span> ) <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">251</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">”</span> ) 
+   <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">251</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>K<span style="color:#960050;background-color:#1e0010">’</span> ) <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">221</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>K<span style="color:#960050;background-color:#1e0010">’</span> ) ). 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>    BREAK ZZWANGLP. 
+    gs_gdfh<span style="color:#f92672">-</span>mblnr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>mblnr. 
+    gs_gdfh<span style="color:#f92672">-</span>mjahr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>mjahr. 
+    gs_gdfh<span style="color:#f92672">-</span>bldat <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>bldat. 
+    gs_gdfh<span style="color:#f92672">-</span>budat <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>budat. 
+    gs_gdfh<span style="color:#f92672">-</span>cpudt <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>cpudt. 
+    gs_gdfh<span style="color:#f92672">-</span>cputm <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>cputm. 
+    gs_gdfh<span style="color:#f92672">-</span>mblpo <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>zeile. 
+    gs_gdfh<span style="color:#f92672">-</span>matnr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>matnr. 
+    gs_gdfh<span style="color:#f92672">-</span>menge <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>menge. 
+    gs_gdfh<span style="color:#f92672">-</span>charg <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>charg. 
+    gs_gdfh<span style="color:#f92672">-</span>lgort <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>lgort. 
+    gs_gdfh<span style="color:#f92672">-</span>lgpla <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>lgpla. 
+    gs_gdfh<span style="color:#f92672">-</span>dmbtr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>dmbtr. 
+    gs_gdfh<span style="color:#f92672">-</span>pspel  <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>ps_psp_pnr. 
+    gs_gdfh<span style="color:#f92672">-</span>zdj  <span style="color:#f92672">=</span> gs_gdfh<span style="color:#f92672">-</span>dmbtr / gs_gdfh<span style="color:#f92672">-</span>menge.<span style="color:#960050;background-color:#1e0010">“</span>单价<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">（</span>本位币金额/发放数量<span style="color:#960050;background-color:#1e0010">）</span> 
+<span style="color:#75715e">**序列号：通过MBLNR&amp;MJAHR&amp; MBLPO在表SER03中找到OBKNR，再通过OBKNR在表OBJK找到SERNR作为序列号更新到表ZTMM_GDFH </span>
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>     <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> SERNR <span style="color:#66d9ef">INTO</span> GS_GDFH<span style="color:#f92672">-</span>SERNR <span style="color:#66d9ef">FROM</span> OBJK 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>      <span style="color:#66d9ef">JOIN</span> SER03 <span style="color:#66d9ef">ON</span> SER03~OBKNR <span style="color:#f92672">=</span> OBJK~OBKNR 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>     <span style="color:#66d9ef">WHERE</span> MBLNR <span style="color:#f92672">EQ</span> GS_MSEG<span style="color:#f92672">-</span>MBLNR <span style="color:#f92672">AND</span> MJAHR <span style="color:#f92672">EQ</span> GS_MSEG<span style="color:#f92672">-</span>MJAHR <span style="color:#f92672">AND</span> ZEILE <span style="color:#f92672">EQ</span> GS_MSEG<span style="color:#f92672">-</span>ZEILE. 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>    供应商<span style="color:#960050;background-color:#1e0010">：</span>通过CHARG在表MCHA找到LIFNR 
+    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">single</span> lifnr <span style="color:#66d9ef">into</span> gs_gdfh<span style="color:#f92672">-</span>lifnr <span style="color:#66d9ef">from</span> mcha <span style="color:#66d9ef">where</span> charg <span style="color:#f92672">eq</span> gs_gdfh<span style="color:#f92672">-</span>charg <span style="color:#f92672">and</span> matnr <span style="color:#f92672">eq</span> gs_gdfh<span style="color:#f92672">-</span>matnr <span style="color:#f92672">and</span> werks <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>SD00<span style="color:#960050;background-color:#1e0010">′</span>. 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>    合同号<span style="color:#960050;background-color:#1e0010">：</span>通过CHARG在表EKBE中找到EBELN<span style="color:#960050;background-color:#1e0010">，</span>再通过EBELN在表EKKO找到SUBMI<span style="color:#960050;background-color:#1e0010">。</span> 
+    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">single</span> submi <span style="color:#66d9ef">into</span> gs_gdfh<span style="color:#f92672">-</span>submi <span style="color:#66d9ef">from</span> ekko 
+     <span style="color:#66d9ef">join</span> ekbe <span style="color:#66d9ef">on</span> ekbe~ebeln <span style="color:#f92672">=</span> ekko~ebeln 
+    <span style="color:#66d9ef">where</span> charg <span style="color:#f92672">eq</span> gs_gdfh<span style="color:#f92672">-</span>charg <span style="color:#f92672">and</span> matnr <span style="color:#f92672">eq</span> gs_gdfh<span style="color:#f92672">-</span>matnr <span style="color:#f92672">and</span> werks <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>SD00<span style="color:#960050;background-color:#1e0010">′</span>. 
+
+
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>    采购订单及行号<span style="color:#960050;background-color:#1e0010">：</span>通过CHARG在表EKBE中找到EBELN<span style="color:#960050;background-color:#1e0010">，</span>再通过EBELN在表EKPO找到EKPO<span style="color:#f92672">-</span>EBELP<span style="color:#960050;background-color:#1e0010">。</span> 
+    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">single</span> ekbe~ebeln ebelp <span style="color:#66d9ef">into</span> (gs_gdfh<span style="color:#f92672">-</span>ebeln,gs_gdfh<span style="color:#f92672">-</span>ebelp) 
+     <span style="color:#66d9ef">from</span> ekko 
+     <span style="color:#66d9ef">join</span> ekbe <span style="color:#66d9ef">on</span> ekbe~ebeln <span style="color:#f92672">=</span> ekko~ebeln 
+     <span style="color:#66d9ef">where</span> charg <span style="color:#f92672">eq</span> gs_gdfh<span style="color:#f92672">-</span>charg <span style="color:#f92672">and</span> matnr <span style="color:#f92672">eq</span> gs_gdfh<span style="color:#f92672">-</span>matnr <span style="color:#f92672">and</span> werks <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>SD00<span style="color:#960050;background-color:#1e0010">′</span>.<span style="color:#960050;background-color:#1e0010">“</span>EBELP <span style="color:#f92672">EQ</span> GS_MSEG<span style="color:#f92672">-</span>ZEILE. 
+
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>   依据预留编号及预留项目编号作为关键字段<span style="color:#960050;background-color:#1e0010">，</span>在表ZTMM_GDXX找到工单<span style="color:#960050;background-color:#1e0010">、</span>作业工种<span style="color:#960050;background-color:#1e0010">（</span>工序<span style="color:#960050;background-color:#1e0010">）</span><span style="color:#960050;background-color:#1e0010">、</span>工单行号字段 
+    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">single</span> zgd zgx zhxmbh <span style="color:#66d9ef">into</span> (gs_gdfh<span style="color:#f92672">-</span>zgd,gs_gdfh<span style="color:#f92672">-</span>zgx,gs_gdfh<span style="color:#f92672">-</span>zgdhh) <span style="color:#66d9ef">from</span> ztmm_gdxx <span style="color:#66d9ef">where</span> rsnum <span style="color:#f92672">eq</span> gs_mseg<span style="color:#f92672">-</span>rsnum <span style="color:#f92672">and</span> rspos <span style="color:#f92672">eq</span> gs_mseg<span style="color:#f92672">-</span>rspos. 
+    <span style="color:#66d9ef">if</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">ne</span> <span style="color:#ae81ff">0</span>. 
+     <span style="color:#66d9ef">clear</span> gs_gdfh. 
+    <span style="color:#66d9ef">else</span>. 
+     gs_gdfh<span style="color:#f92672">-</span>zyfh <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>X<span style="color:#960050;background-color:#1e0010">’</span>. 
+     <span style="color:#66d9ef">append</span> gs_gdfh <span style="color:#66d9ef">to</span> gt_gdfh. 
+    <span style="color:#66d9ef">endif</span>. 
+   <span style="color:#66d9ef">endif</span>. 
+   <span style="color:#66d9ef">if</span> gs_mseg<span style="color:#f92672">-</span>werks <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>SD00<span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> ( ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">202</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">”</span> ) <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">202</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>K<span style="color:#960050;background-color:#1e0010">’</span> )  <span style="color:#f92672">or</span>  ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">222</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>Q<span style="color:#960050;background-color:#1e0010">’</span> ) 
+     <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">252</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">”</span> ) <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">222</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>K<span style="color:#960050;background-color:#1e0010">’</span> ) 
+     <span style="color:#f92672">or</span> ( gs_mseg<span style="color:#f92672">-</span>bwart <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">252</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">and</span> gs_mseg<span style="color:#f92672">-</span>sobkz <span style="color:#f92672">eq</span> <span style="color:#960050;background-color:#1e0010">‘</span>K<span style="color:#960050;background-color:#1e0010">’</span> ) ).<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#f92672">OR</span> ( GS_MSEG<span style="color:#f92672">-</span>BWART <span style="color:#f92672">EQ</span> <span style="color:#960050;background-color:#1e0010">’</span><span style="color:#ae81ff">242</span><span style="color:#960050;background-color:#1e0010">′</span> <span style="color:#f92672">AND</span> GS_MSEG<span style="color:#f92672">-</span>SOBKZ <span style="color:#f92672">EQ</span> <span style="color:#960050;background-color:#1e0010">”</span> )dete by libin <span style="color:#ae81ff">20120516</span> bc songwenbin 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>    BREAK ZZWANGLP. 
+    gs_gdth<span style="color:#f92672">-</span>mblnr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>mblnr. 
+    gs_gdth<span style="color:#f92672">-</span>mjahr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>mjahr. 
+    gs_gdth<span style="color:#f92672">-</span>bldat <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>bldat. 
+    gs_gdth<span style="color:#f92672">-</span>budat <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>budat. 
+    gs_gdth<span style="color:#f92672">-</span>cpudt <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>cpudt. 
+    gs_gdth<span style="color:#f92672">-</span>cputm <span style="color:#f92672">=</span> gs_mkpf<span style="color:#f92672">-</span>cputm. 
+    gs_gdth<span style="color:#f92672">-</span>mblpo <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>zeile. 
+    gs_gdth<span style="color:#f92672">-</span>matnr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>matnr. 
+    gs_gdth<span style="color:#f92672">-</span>menge <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>menge. 
+    gs_gdth<span style="color:#f92672">-</span>charg <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>charg. 
+    gs_gdth<span style="color:#f92672">-</span>lgort <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>lgort. 
+    gs_gdth<span style="color:#f92672">-</span>lgpla <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>lgpla. 
+    gs_gdth<span style="color:#f92672">-</span>dmbtr <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>dmbtr. 
+    gs_gdth<span style="color:#f92672">-</span>pspel  <span style="color:#f92672">=</span> gs_mseg<span style="color:#f92672">-</span>ps_psp_pnr. 
+    gs_gdth<span style="color:#f92672">-</span>zdj  <span style="color:#f92672">=</span> gs_gdth<span style="color:#f92672">-</span>dmbtr / gs_gdth<span style="color:#f92672">-</span>menge.<span style="color:#960050;background-color:#1e0010">“</span>单价<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">（</span>本位币金额/发放数量<span style="color:#960050;background-color:#1e0010">）</span> 
+<span style="color:#75715e">**序列号：通过MBLNR&amp;MJAHR&amp; MBLPO在表SER03中找到OBKNR，再通过OBKNR在表OBJK找到SERNR作为序列号更新到表ZTMM_GDFH </span>
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>     <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> SERNR <span style="color:#66d9ef">INTO</span> GS_GDFH<span style="color:#f92672">-</span>SERNR <span style="color:#66d9ef">FROM</span> OBJK 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>      <span style="color:#66d9ef">JOIN</span> SER03 <span style="color:#66d9ef">ON</span> SER03~OBKNR <span style="color:#f92672">=</span> OBJK~OBKNR 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>     <span style="color:#66d9ef">WHERE</span> MBLNR <span style="color:#f92672">EQ</span> GS_MSEG<span style="color:#f92672">-</span>MBLNR <span style="color:#f92672">AND</span> MJAHR <span style="color:#f92672">EQ</span> GS_MSEG<span style="color:#f92672">-</span>MJAHR <span style="color:#f92672">AND</span> ZEILE <span style="color:#f92672">EQ</span> GS_MSEG<span style="color:#f92672">-</span>ZEILE. 
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span>   依据预留编号及预留项目编号作为关键字段<span style="color:#960050;background-color:#1e0010">，</span>在表ZTMM_GDXX找到工单<span style="color:#960050;background-color:#1e0010">、</span>作业工种<span style="color:#960050;background-color:#1e0010">（</span>工序<span style="color:#960050;background-color:#1e0010">）</span><span style="color:#960050;background-color:#1e0010">、</span>工单行号字段 
+    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">single</span> zgd zgx zhxmbh <span style="color:#66d9ef">into</span> (gs_gdth<span style="color:#f92672">-</span>zgd,gs_gdth<span style="color:#f92672">-</span>zgx,gs_gdth<span style="color:#f92672">-</span>zgdhh) <span style="color:#66d9ef">from</span> ztmm_gdxx <span style="color:#66d9ef">where</span> rsnum <span style="color:#f92672">eq</span> gs_mseg<span style="color:#f92672">-</span>rsnum <span style="color:#f92672">and</span> rspos <span style="color:#f92672">eq</span> gs_mseg<span style="color:#f92672">-</span>rspos. 
+    <span style="color:#66d9ef">if</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">ne</span> <span style="color:#ae81ff">0</span>. 
+     <span style="color:#66d9ef">clear</span> gs_gdfh. 
+    <span style="color:#66d9ef">else</span>. 
+     gs_gdth<span style="color:#f92672">-</span>zyfh <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>X<span style="color:#960050;background-color:#1e0010">’</span>. 
+     <span style="color:#66d9ef">append</span> gs_gdth <span style="color:#66d9ef">to</span> gt_gdth. 
+    <span style="color:#66d9ef">endif</span>. 
+   <span style="color:#66d9ef">endif</span>. 
+  <span style="color:#66d9ef">endloop</span>. 
+  <span style="color:#66d9ef">if</span> gt_gdfh <span style="color:#f92672">is not initial</span>. 
+   <span style="color:#66d9ef">modify</span> ztmm_gdfh <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span> gt_gdfh. 
+  <span style="color:#66d9ef">endif</span>. 
+  <span style="color:#66d9ef">if</span> gt_gdth <span style="color:#f92672">is not initial</span>. 
+   <span style="color:#66d9ef">modify</span> ztmm_gdth <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span> gt_gdth. 
+  <span style="color:#66d9ef">endif</span>. 
+  <span style="color:#66d9ef">if</span> gt_lxjj <span style="color:#f92672">is not initial</span>. 
+   <span style="color:#66d9ef">modify</span> ztmm_lxjjgl <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">table</span> gt_lxjj. 
+  <span style="color:#66d9ef">endif</span>. 
+ <span style="color:#66d9ef">endif</span>. 
+<span style="color:#66d9ef">endmethod</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1426</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BADI/">
+                    #BADI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Enhance_LIST/" class="prev" rel="prev" title=" MM Enhance List "><i class="iconfont icon-dajiantou"></i>&nbsp; MM Enhance List </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Utils_MixedCalculate/" class="next" rel="next" title=" ABAP 混合算术运算 "> ABAP 混合算术运算 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-08-08 00:00:00 \x2b0000 UTC',
+        title: ' 收货或者货物移动(MIGO,MB11,MB1A)增强 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

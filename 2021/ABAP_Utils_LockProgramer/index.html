@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/SAP_Note/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_Utils_RFC_Log-_Report/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_LockProgramer/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 程序锁定  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 程序锁定  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 程序锁定 "/>
+<meta name="twitter:description" content="在 SAP 中对于一些重要的程序，可能会要求处理并发的情况，在有用户操作的情况下不允许其他用户进行操作，以此来保证数据及程序的安全。 使用锁对象 程序锁"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 程序锁定 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_LockProgramer\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1209 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_LockProgramer\/",
+  "datePublished": "2021-09-07T00:00:00\x2b00:00",
+  "dateModified": "2021-09-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 程序锁定 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-09-07 >7 September 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>在 SAP 中对于一些重要的程序，可能会要求处理并发的情况，在有用户操作的情况下不允许其他用户进行操作，以此来保证数据及程序的安全。</p>
+<h3 id="使用锁对象">使用锁对象</h3>
+<p>程序锁于字段锁都是有相同的地方，都需要在程序中先锁，之后要解锁。</p>
+<p><code>ENQUEUE_ES_PROG</code> 和 <code>DEQUEUE_ES_PROG</code>，这两个 Function 是 SAP 系统存在的用来锁定和解锁程序执行。</p>
+<h4 id="加锁">加锁</h4>
+<p>ENQUEUE_ES_PROG：该锁会保持直到 DEQUEUE_ES_PROG 函数调用，或者事务（程序）执行完毕（执行完毕后会隐式调用DEQUEUE_ALL）才会释放。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZPROGLOCK_TEST
+<span style="color:#66d9ef">DATA</span>: lv_name <span style="color:#66d9ef">TYPE </span>progname.
+lv_name <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>cprog.
+<span style="color:#66d9ef">AT SELECTION-SCREEN</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">PROGRAM_LOCK</span>.
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">PROGRAM_LOCK</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ENQUEUE_ES_PROG&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      MODE_TRDIR     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>      <span style="color:#75715e">&#34;锁条目模式：默认是E锁(独占锁)，可选‘S’锁(共享锁)，‘X’锁(专用锁)&#34;
+</span><span style="color:#75715e"></span>      NAME           <span style="color:#f92672">=</span> lv_name  <span style="color:#75715e">&#34;需要锁定的程序名&#34;
+</span><span style="color:#75715e"></span>      X_NAME         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>      <span style="color:#75715e">&#34;默认为空,可选&#34;
+</span><span style="color:#75715e"></span>      _SCOPE         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;</span>      <span style="color:#75715e">&#34;表示锁定范围值，默认为‘2’(在update module内有效);‘1‘(程序内有效);‘3’(全部有效)&#34;
+</span><span style="color:#75715e"></span>      _WAIT          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>      <span style="color:#75715e">&#34;表示如果对象已经被锁定,是否等待后再尝试加锁.&#34;
+</span><span style="color:#75715e"></span>                                <span style="color:#75715e">&#34;最大的等待时间有系统参数 ENQUE/DELAY_MAX控制&#34;
+</span><span style="color:#75715e"></span>      _COLLECT       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>      
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      FOREIGN_LOCK   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      SYSTEM_FAILURE <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+       <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>. 
+</code></pre></div><p><code>_COLLECT</code> 参数：表示是否收集后进行统一提交，COLLECT 是一种缓存与批处理方法，即如果指定了 Collect，加锁信息会放到 Lock Container 中，Lock Container 实际上是一个 Function Group 控制的内存区域。如果程序中加了很多锁，锁信息会先放到内存中，这样可以减少对 SAP 锁管理系统访问。若使 Lock Container 中的锁生效，需执行 FLUSH_ENQUEUE 这个 Function，将锁信息更新到锁管理系统中，此时加锁操作生效。使用函数 RESET_ENQUEUE 可以清除 Lock Container 中的锁信息 。</p>
+<h4 id="解锁">解锁</h4>
+<p>解除锁 DEQUEUE_ES_PROG 的参数与上面的加锁的参数类似。该函数释放由 ENQUEUE_ES_PROG.设置的程序锁。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;DEQUEUE_ES_PROG&#39;</span>
+<span style="color:#75715e">* EXPORTING</span>
+<span style="color:#75715e">*   MODE_TRDIR       = &#39;E&#39;</span>
+<span style="color:#75715e">*   NAME             =</span>
+<span style="color:#75715e">*   X_NAME           = &#39; &#39;</span>
+<span style="color:#75715e">*   _SCOPE           = &#39;3&#39;</span>
+<span style="color:#75715e">*   _SYNCHRON        = &#39; &#39;</span>
+<span style="color:#75715e">*   _COLLECT         = &#39; &#39;.</span>
+</code></pre></div><h3 id="使用注意问题">使用注意问题</h3>
+<p>1、 ENQUEUE_ES_PROG 函数只是尝试去锁定，如果锁已经被其他程序获取，并不会阻塞，要在调用后通过 sy-subrc 来判断是否获取成功。可以在循环里通过 WAIT UP TO xx SECONDS. 语句来等待锁被获取到。</p>
+<p>2、 ABAP工作台开发程序时，不能同时编辑同一个程序，第一个打开程序的用户会上程序锁，程序锁可以使用<strong>SM12</strong>来查看当前的程序锁。该程序在处于编辑状态下，再运行时，也会报错：这是因为程序处于编辑状态获取的锁与在程序里使用代码获取的锁是同一个锁，所以上面代码在获取锁时出错，如果处于只读状态时，则可以正常运行，但也只能一个窗口运行，不能有两个或多个只读状态下的该程序运行。</p>
+<p>3、 程序在锁定后，解锁的动作不是必须的，程序退出或者完成后会自动解锁。</p>
+<p>4、 程序的锁定只对前台程序有用，如果运行的是后台服务，则需要其他的解决方案。可以考虑使用如下方法：一种方式是将应用服务器配置为同一程序只允许同时运行一个JOB；第二种方式是通过判断表 TBTCO 的 JOB 状态字段来解决。</p>
+<p>5、 锁定的功能函数在不同的事件中运行效果不同，请根据具体的需求来确定该在何种事件后锁定。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1209</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/SAP_Note/" class="prev" rel="prev" title=" SAP Note 使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Note 使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_RFC_Log-_Report/" class="next" rel="next" title=" SAP RFC Function Log 报表 "> SAP RFC Function Log 报表 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-09-07 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 程序锁定 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

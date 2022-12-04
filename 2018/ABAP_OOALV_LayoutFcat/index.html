@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_OOALV_SortFilter/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_OOALV_EventUtils/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OOALV_LayoutFcat/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            OO ALV 修改Layou和FieldCatalog  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" OO ALV 修改Layou和FieldCatalog  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" OO ALV 修改Layou和FieldCatalog "/>
+<meta name="twitter:description" content="显示后，修改字段目录和布局 在运行期间，可以在首次显示列表后设置新的布局或新字段目录。 这些组件具有 get/set 方法来完成此操作。 Field Catalog GET_FRONTEND_FIELDCATALOG SET_FRONTEND_FIELDCATALOG Layout GET_FRONTEND_LAYOUT SET_FRONTEND_LAYOUT 代码示例 DATA"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " OO ALV 修改Layou和FieldCatalog ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_LayoutFcat\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "OOALV",
+  "wordcount":  565 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_LayoutFcat\/",
+  "datePublished": "2018-07-15T00:00:00\x2b00:00",
+  "dateModified": "2018-07-15T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> OO ALV 修改Layou和FieldCatalog </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-15 >15 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="显示后修改字段目录和布局">显示后，修改字段目录和布局</h3>
+<p>在运行期间，可以在首次显示列表后设置新的布局或新字段目录。 这些组件具有 get/set 方法来完成此操作。</p>
+<ul>
+<li>Field Catalog
+<ul>
+<li>GET_FRONTEND_FIELDCATALOG</li>
+<li>SET_FRONTEND_FIELDCATALOG</li>
+</ul>
+</li>
+<li>Layout
+<ul>
+<li>GET_FRONTEND_LAYOUT</li>
+<li>SET_FRONTEND_LAYOUT</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码示例">代码示例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> ls_fcat <span style="color:#66d9ef">TYPE </span>lvc_s_fcat .
+<span style="color:#66d9ef">DATA</span> lt_fcat <span style="color:#66d9ef">TYPE </span>lvc_t_fcat .
+<span style="color:#66d9ef">DATA</span> ls_layout <span style="color:#66d9ef">TYPE </span>lvc_s_layo .
+<span style="color:#75715e">&#34;Field Cattalog&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL METHOD</span> go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_frontend_fieldcatalog
+  <span style="color:#66d9ef">IMPORTING</span>
+    et_fieldcatalog <span style="color:#f92672">=</span> lt_fcat[] .
+<span style="color:#66d9ef">LOOP AT </span>lt_fcat <span style="color:#66d9ef">INTO</span> ls_fcat .
+  <span style="color:#66d9ef">IF</span> ls_fcat<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Field_name&#39;</span> .
+    ls_fcat<span style="color:#f92672">-</span>no_out <span style="color:#f92672">=</span> space .
+    <span style="color:#66d9ef">MODIFY</span> lt_fcat <span style="color:#66d9ef">FROM</span> ls_fcat .
+  <span style="color:#66d9ef">ENDIF</span> .
+  <span style="color:#66d9ef">CLEAR</span> ls_fcat .
+<span style="color:#66d9ef">ENDLOOP</span> .
+<span style="color:#66d9ef">CALL METHOD</span> go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_frontend_fieldcatalog
+  <span style="color:#66d9ef">EXPORTING</span>
+    it_fieldcatalog <span style="color:#f92672">=</span> lt_fcat[] .
+<span style="color:#75715e">&#34;Layout&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL METHOD</span> obj_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_frontend_layout
+  <span style="color:#66d9ef">IMPORTING</span>
+    es_layout <span style="color:#f92672">=</span> ls_layout .
+    ls_layout<span style="color:#f92672">-</span>grid_title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Title name&#39;</span> .
+<span style="color:#66d9ef">CALL METHOD</span> obj_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_frontend_layout
+  <span style="color:#66d9ef">EXPORTING</span>
+    is_layout <span style="color:#f92672">=</span> ls_layout .
+</code></pre></div><h3 id="将字段作为下拉菜单">将字段作为下拉菜单</h3>
+<p>有时候我们可以把一些字段设置为下拉，比如一些类型，一些字段的值是比较固定的一些值；也可以通过搜索帮助来做。</p>
+<p>使用一个内表存放了句柄和对应的值，该表类型为 <code>LVC_T_DROP</code>；下拉的内表传递需要使用方法 <code>SET_DROP_DOWN_TABLE</code>。</p>
+<h4 id="设置整列为下拉">设置整列为下拉</h4>
+<p>在字段目录中，把控制字段 <code>DRDN_HNDL</code> 指向对应的下拉内表的句柄就可以了。</p>
+<ul>
+<li><code>gs_fieldcat-drdn_hndl = 1.</code></li>
+</ul>
+<h4 id="设置单元格下拉">设置单元格下拉</h4>
+<p>需要在数据显示的内表中增加一个句柄字段(如果是有多个不同的字段需要设置下拉，可以增加多个字段)，同时需要在字段目录里设置 <code>DRDN_FIELD</code>。</p>
+<ul>
+<li><code>gs_fieldcat-drdn_field = 'DROP_HNDL'.</code></li>
+</ul>
+<h4 id="示例代码">示例代码</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: gt_fieldcat  <span style="color:#66d9ef">TYPE </span>lvc_t_fcat,   
+      gs_fieldcat  <span style="color:#66d9ef">TYPE </span>lvc_s_fcat.
+<span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">BEGIN OF</span> gt_list OCCURS <span style="color:#ae81ff">0</span> .
+  <span style="color:#66d9ef">INCLUDE</span> STRUCTURE SFLIGHT .
+  <span style="color:#66d9ef">DATA</span> drop_hndl <span style="color:#66d9ef">TYPE </span>int4 .
+<span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">END OF</span> gt_list .
+gs_fieldcat<span style="color:#f92672">-</span>drdn_hndl <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.<span style="color:#960050;background-color:#1e0010">`</span>
+gs_fieldcat<span style="color:#f92672">-</span>drdn_field <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DROP_HNDL&#39;</span>.
+<span style="color:#75715e">&#34;定义下拉的句柄内表&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">prepare_drop_down_values</span>.
+  <span style="color:#66d9ef">DATA</span> lt_ddval <span style="color:#66d9ef">TYPE </span>lvc_t_drop .
+  <span style="color:#66d9ef">DATA</span> ls_ddval <span style="color:#66d9ef">TYPE </span>lvc_s_drop .
+  <span style="color:#66d9ef">CLEAR</span> lt_ddval.
+    ls_ddval<span style="color:#f92672">-</span>handle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> .
+    ls_ddval<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JFK-12&#39;</span> .
+    <span style="color:#66d9ef">APPEND</span> ls_ddval <span style="color:#66d9ef">TO</span> lt_ddval .
+    ls_ddval<span style="color:#f92672">-</span>handle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> .
+    ls_ddval<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JSF-44&#39;</span> .
+    <span style="color:#66d9ef">APPEND</span> ls_ddval <span style="color:#66d9ef">TO</span> lt_ddval .
+    ls_ddval<span style="color:#f92672">-</span>handle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> .
+    ls_ddval<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;KMDA-53&#39;</span> .
+    <span style="color:#66d9ef">APPEND</span> ls_ddval <span style="color:#66d9ef">TO</span> lt_ddval .
+    ls_ddval<span style="color:#f92672">-</span>handle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> .
+    ls_ddval<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SS3O-N&#39;</span> .
+    <span style="color:#66d9ef">APPEND</span> ls_ddval <span style="color:#66d9ef">TO</span> lt_ddval .
+  <span style="color:#75715e">&#34;准备好内表以后,使用方法 set_drop_down_table 来传递给ALV&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> go_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_drop_down_table
+    <span style="color:#66d9ef">EXPORTING</span>
+      it_drop_down <span style="color:#f92672">=</span> lt_ddval .
+<span style="color:#66d9ef">ENDFORM</span>. <span style="color:#75715e">&#34; prepare_drilldown_values &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>565</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/OOALV/">
+                    #OOALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_SortFilter/" class="prev" rel="prev" title=" OO ALV 排序和过滤 "><i class="iconfont icon-dajiantou"></i>&nbsp; OO ALV 排序和过滤 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_EventUtils/" class="next" rel="next" title=" OO ALV 事件类工具 "> OO ALV 事件类工具 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-15 00:00:00 \x2b0000 UTC',
+        title: ' OO ALV 修改Layou和FieldCatalog ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

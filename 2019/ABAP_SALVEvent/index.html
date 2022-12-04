@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALVColumnSet/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALVDisplaySet/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALVEvent/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV Event处理  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV Event处理  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV Event处理 "/>
+<meta name="twitter:description" content="Event 处理 CLASS lcl_event_handler DEFINITION. PUBLIC SECTION. METHODS: on_link_click FOR EVENT link_click OF cl_salv_events_table IMPORTING row column. ENDCLASS. &#34;lcl_event_handler DEFINITION&#34; *$*$*.....CODE_ADD_3 - Begin..................................3..*$*$* METHOD generate_output. DATA: lx_msg TYPE REF TO cx_salv_msg. TRY. cl_salv_table=&gt;factory( IMPORTING r_salv_table = o_alv CHANGING t_table = t_vbak ). CATCH cx_salv_msg INTO lx_msg. ENDTRY. *Get the event object DATA: lo_events TYPE REF TO cl_salv_events_table. lo_events = o_alv-&gt;get_event( ). *Instantiate the event handler object DATA: lo_event_handler TYPE"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV Event处理 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALVEvent\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  144 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALVEvent\/",
+  "datePublished": "2019-06-06T00:00:00\u002b00:00",
+  "dateModified": "2019-06-06T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV Event处理 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-06 >6 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="event-处理">Event 处理</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CLASS</span> <span style="color:#a6e22e">lcl_event_handler</span> <span style="color:#a6e22e">DEFINITION</span>.
+  <span style="color:#a6e22e">PUBLIC</span> <span style="color:#a6e22e">SECTION</span>.
+    <span style="color:#a6e22e">METHODS</span><span style="color:#f92672">:</span>
+      <span style="color:#a6e22e">on_link_click</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">EVENT</span> <span style="color:#a6e22e">link_click</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">cl_salv_events_table</span>
+        <span style="color:#a6e22e">IMPORTING</span> <span style="color:#a6e22e">row</span> <span style="color:#a6e22e">column</span>.
+<span style="color:#a6e22e">ENDCLASS</span>.                    <span style="color:#e6db74">&#34;lcl_event_handler DEFINITION&#34;</span>
+
+<span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span>.....<span style="color:#a6e22e">CODE_ADD_3</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">Begin</span>.................................<span style="color:#ae81ff">.3</span>..<span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span>
+ <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">generate_output</span>.
+    <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lx_msg</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cx_salv_msg</span>.
+    <span style="color:#a6e22e">TRY</span>.
+        <span style="color:#a6e22e">cl_salv_table</span>=&gt;<span style="color:#a6e22e">factory</span>(
+          <span style="color:#a6e22e">IMPORTING</span>
+            <span style="color:#a6e22e">r_salv_table</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">o_alv</span>
+          <span style="color:#a6e22e">CHANGING</span>
+            <span style="color:#a6e22e">t_table</span>      <span style="color:#f92672">=</span> <span style="color:#a6e22e">t_vbak</span> ).
+      <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_salv_msg</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">lx_msg</span>.
+    <span style="color:#a6e22e">ENDTRY</span>.
+    
+<span style="color:#f92672">*</span><span style="color:#a6e22e">Get</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">event</span> <span style="color:#a6e22e">object</span>
+    <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lo_events</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">cl_salv_events_table</span>.
+    <span style="color:#a6e22e">lo_events</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">o_alv</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_event</span>( ).
+<span style="color:#f92672">*</span><span style="color:#a6e22e">Instantiate</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">event</span> <span style="color:#a6e22e">handler</span> <span style="color:#a6e22e">object</span>
+    <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lo_event_handler</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">lcl_event_handler</span>.
+    <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">lo_event_handler</span>.
+<span style="color:#f92672">*</span><span style="color:#a6e22e">Event</span> <span style="color:#a6e22e">handler</span>
+    <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">HANDLER</span> <span style="color:#a6e22e">lo_event_handler</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">on_link_click</span> <span style="color:#a6e22e">FOR</span> <span style="color:#a6e22e">lo_events</span>.
+<span style="color:#f92672">*</span><span style="color:#a6e22e">Displaying</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">ALV</span>
+    <span style="color:#a6e22e">o_alv</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">display</span>( ).
+  <span style="color:#a6e22e">ENDMETHOD</span>.                    <span style="color:#e6db74">&#34;generate_output&#34;</span>
+<span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span>.....<span style="color:#a6e22e">CODE_ADD_3</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">End</span>....................................<span style="color:#ae81ff">3.</span>.<span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span><span style="color:#a6e22e">$</span><span style="color:#f92672">*</span>
+    
+<span style="color:#a6e22e">CLASS</span> <span style="color:#a6e22e">l_cl_handle_events</span> <span style="color:#a6e22e">IMPLEMENTATION</span>.
+  <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">on_double_click</span>.
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">show_cell_info</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">row</span> <span style="color:#a6e22e">column</span> <span style="color:#e6db74">&#39;is selected&#39;</span>.
+  <span style="color:#a6e22e">ENDMETHOD</span>.
+<span style="color:#a6e22e">ENDCLASS</span>.
+
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">show_cell_info</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">p_row</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">i</span>
+                          <span style="color:#a6e22e">p_column</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">lvc_fname</span>
+                          <span style="color:#a6e22e">p_text</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>.
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">l_row</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">char10</span>.
+  <span style="color:#a6e22e">WRITE</span> <span style="color:#a6e22e">p_row</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">l_row</span> <span style="color:#a6e22e">LEFT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">JUSTIFIED</span>.
+  <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">l_row</span> <span style="color:#e6db74">&#39;Line,&#39;</span> <span style="color:#a6e22e">p_column</span> <span style="color:#e6db74">&#39;Column&#39;</span> <span style="color:#a6e22e">p_text</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">p_text</span> <span style="color:#a6e22e">SEPARATED</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">space</span>.
+  <span style="color:#a6e22e">MESSAGE</span> <span style="color:#a6e22e">i001</span>(<span style="color:#ae81ff">00</span>) <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">p_text</span>.
+<span style="color:#a6e22e">ENDFORM</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>144</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALVColumnSet/" class="prev" rel="prev" title=" SALV Fieldcat设置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV Fieldcat设置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALVDisplaySet/" class="next" rel="next" title=" SALV Display设置 "> SALV Display设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-06 00:00:00 \u002b0000 UTC',
+        title: ' SALV Event处理 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

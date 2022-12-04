@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/SAPHANA_SQLScript/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/SD_Enhance_VA02/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/SAPHANA_CDS/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP CDS-Views  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP CDS-Views  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP CDS-Views "/>
+<meta name="twitter:description" content="Create CDS-Views CDS-Views Menu -&gt; File -&gt; New -&gt; Other -&gt; Core Data Services -&gt; Data Definition * CDS-View als DDIC Objekt erstellen @AbapCatalog.sqlViewName: &#39;ZCDS_MATNR_VIEW&#39; @AbapCatalog.compiler.CompareFilter: true @AccessControl.authorizationCheck: #NOT_REQUIRED @EndUserText.label: &#39;MATNR lesen&#39; @Metadata.allowExtensions: true define view ZCDS_MATNR as select from mara as a inner join makt as b on a.matnr = b.matnr { key a.matnr as matnr, a.ernam as creator, a.vpsta as mainte_status, b.maktx as desc, case a.lvorm when &#39;X&#39;"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP CDS-Views ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/SAPHANA_CDS\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "HANA",
+  "wordcount":  255 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/SAPHANA_CDS\/",
+  "datePublished": "2021-11-22T00:00:00\x2b00:00",
+  "dateModified": "2021-11-22T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP CDS-Views </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-11-22 >22 November 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="create-cds-views">Create CDS-Views</h3>
+<h4 id="cds-views">CDS-Views</h4>
+<p><code>Menu -&gt; File -&gt; New -&gt; Other -&gt; Core Data Services -&gt; Data Definition</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* CDS-View als DDIC Objekt erstellen</span>
+<span style="color:#960050;background-color:#1e0010">@</span>AbapCatalog.sqlViewName: <span style="color:#e6db74">&#39;ZCDS_MATNR_VIEW&#39;</span>
+<span style="color:#960050;background-color:#1e0010">@</span>AbapCatalog.compiler.CompareFilter: true
+<span style="color:#960050;background-color:#1e0010">@</span>AccessControl.authorizationCheck: <span style="color:#960050;background-color:#1e0010">#</span>NOT_REQUIRED
+<span style="color:#960050;background-color:#1e0010">@</span>EndUserText.label: <span style="color:#e6db74">&#39;MATNR lesen&#39;</span>
+<span style="color:#960050;background-color:#1e0010">@</span>Metadata.allowExtensions: true
+
+<span style="color:#66d9ef">define</span> view ZCDS_MATNR 
+  <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">from</span> mara <span style="color:#66d9ef">as</span> a 
+  inner <span style="color:#66d9ef">join</span> makt <span style="color:#66d9ef">as</span> b <span style="color:#66d9ef">on</span> a.matnr <span style="color:#f92672">=</span> b.matnr
+<span style="color:#960050;background-color:#1e0010">{</span>
+ <span style="color:#66d9ef">key</span> a.matnr <span style="color:#66d9ef">as</span> matnr,
+     a.ernam <span style="color:#66d9ef">as</span> creator,
+     a.vpsta <span style="color:#66d9ef">as</span> mainte_status,
+     b.maktx <span style="color:#66d9ef">as</span> desc,
+ <span style="color:#66d9ef">case</span> a.lvorm
+  <span style="color:#66d9ef">when</span> <span style="color:#e6db74">&#39;X&#39;</span> then <span style="color:#e6db74">&#39;delete&#39;</span>
+  <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;active&#39;</span>
+  end <span style="color:#66d9ef">as</span> client_del
+<span style="color:#960050;background-color:#1e0010">}</span>;
+</code></pre></div><p>使用 CDS-Views</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* Variante 1 (SELECT)</span>
+<span style="color:#66d9ef">DATA</span>: it_matnr <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> zcds_matnr.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> zcds_matnr <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#960050;background-color:#1e0010">@</span>it_matnr.
+<span style="color:#66d9ef">LOOP AT </span>it_matnr <span style="color:#66d9ef">ASSIGNING</span> <span style="color:#66d9ef">FIELD</span><span style="color:#f92672">-</span>SYMBOL(&lt;mat&gt;). 
+  <span style="color:#66d9ef">WRITE</span>: / &lt;mat&gt;<span style="color:#f92672">-</span>matnr, &lt;mat&gt;<span style="color:#f92672">-</span>creator, &lt;mat&gt;<span style="color:#f92672">-</span>mainte_status, &lt;mat&gt;<span style="color:#f92672">-</span>desc, &lt;mat&gt;<span style="color:#f92672">-</span>client_del.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">* Variante 2 (SALV TABLE IDA)</span>
+<span style="color:#66d9ef">TRY</span>.
+  cl_salv_gui_table_ida<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create_for_cds_view</span>( 
+        CONV <span style="color:#960050;background-color:#1e0010">#</span>( <span style="color:#e6db74">&#39;ZCDS_MATNR&#39;</span> ) )<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">fullscreen</span>( )<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ).
+  <span style="color:#66d9ef">CATCH</span> cx_root <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">DATA</span>(e_txt).  
+  <span style="color:#66d9ef">WRITE</span>: / e_txt<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_text</span>( ).
+<span style="color:#66d9ef">ENDTRY</span>.
+</code></pre></div><h4 id="cds-views-with-parameter">CDS-Views With Parameter</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* CDS-View als DDIC Objekt erstellen</span>
+<span style="color:#960050;background-color:#1e0010">@</span>AbapCatalog.sqlViewName: <span style="color:#e6db74">&#39;ZCDS_MATNR_VIEW&#39;</span>
+<span style="color:#960050;background-color:#1e0010">@</span>AbapCatalog.compiler.CompareFilter: true
+<span style="color:#960050;background-color:#1e0010">@</span>AccessControl.authorizationCheck: <span style="color:#960050;background-color:#1e0010">#</span>NOT_REQUIRED
+<span style="color:#960050;background-color:#1e0010">@</span>EndUserText.label: <span style="color:#e6db74">&#39;MATNR lesen&#39;</span>
+<span style="color:#960050;background-color:#1e0010">@</span>Metadata.allowExtensions: true
+ 
+<span style="color:#66d9ef">define</span> view ZCDS_MATNR
+  <span style="color:#66d9ef">with</span> <span style="color:#66d9ef">parameters</span> p_min_date : dats,
+                  p_max_date : dats
+  <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">from</span> mara <span style="color:#66d9ef">as</span> a
+  inner <span style="color:#66d9ef">join</span> makt <span style="color:#66d9ef">as</span> b <span style="color:#66d9ef">on</span> a.matnr <span style="color:#f92672">=</span> b.matnr
+<span style="color:#960050;background-color:#1e0010">{</span>
+ <span style="color:#66d9ef">key</span> a.matnr <span style="color:#66d9ef">as</span> matnr,
+     a.ernam <span style="color:#66d9ef">as</span> creator,
+     a.vpsta <span style="color:#66d9ef">as</span> mainte_status,
+     b.maktx <span style="color:#66d9ef">as</span> desc,
+  <span style="color:#66d9ef">case</span> a.lvorm
+    <span style="color:#66d9ef">when</span> <span style="color:#e6db74">&#39;X&#39;</span> then <span style="color:#e6db74">&#39;delete&#39;</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;active&#39;</span>
+  end <span style="color:#66d9ef">as</span> client_del
+<span style="color:#960050;background-color:#1e0010">}</span> <span style="color:#66d9ef">where</span> a.ernam like <span style="color:#e6db74">&#39;A%&#39;</span> <span style="color:#f92672">and</span> a.ersda between :p_min_date <span style="color:#f92672">and</span> :p_max_date;
+
+<span style="color:#75715e">* ABAP-Selection CDS-Views</span>
+<span style="color:#66d9ef">DATA</span>: it_matnr <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> zcds_matnr.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> zcds_matnr( p_min_date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20210101&#39;</span>, p_max_date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20211231&#39;</span> ) 
+  <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#960050;background-color:#1e0010">@</span>it_matnr.
+<span style="color:#66d9ef">LOOP AT </span>it_matnr <span style="color:#66d9ef">ASSIGNING</span> <span style="color:#66d9ef">FIELD</span><span style="color:#f92672">-</span>SYMBOL(&lt;mat&gt;).
+  <span style="color:#66d9ef">WRITE</span>: / &lt;mat&gt;<span style="color:#f92672">-</span>matnr, &lt;mat&gt;<span style="color:#f92672">-</span>creator, &lt;mat&gt;<span style="color:#f92672">-</span>mainte_status, &lt;mat&gt;<span style="color:#f92672">-</span>desc, &lt;mat&gt;<span style="color:#f92672">-</span>client_del.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>255</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/HANA/">
+                    #HANA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/SAPHANA_SQLScript/" class="prev" rel="prev" title=" SAP HANA SQLScript 使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP HANA SQLScript 使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/SD_Enhance_VA02/" class="next" rel="next" title=" VA02 字段增强控制 "> VA02 字段增强控制 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-11-22 00:00:00 \x2b0000 UTC',
+        title: ' SAP CDS-Views ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

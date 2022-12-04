@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_Utils_GetDomainValueRange/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_Smartforms_PaperFormat/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/SAP_Query/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Query 使用介绍  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Query 使用介绍  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Query 使用介绍 "/>
+<meta name="twitter:description" content="SAP Query 简介 ABAP Query 用于创建 SAP 系统中尚不存在的 Report。它是为不了解 ABAP 编程的用户而设计的。 ABAP Query 为用户提供了广泛的方式来定义报告和创建不同类型的报"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Query 使用介绍 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/SAP_Query\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SAPbusiness",
+  "wordcount":  3208 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/SAP_Query\/",
+  "datePublished": "2020-06-23T00:00:00\x2b00:00",
+  "dateModified": "2020-06-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Query 使用介绍 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-06-23 >23 June 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                7 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="sap-query-简介">SAP Query 简介</h2>
+<p>ABAP Query 用于创建 SAP 系统中尚不存在的 Report。它是为不了解 ABAP 编程的用户而设计的。 ABAP Query 为用户提供了广泛的方式来定义报告和创建不同类型的报告，例如基本报表，统计信息等。</p>
+<p>SQ03、SQ02、SQ01，这三个事务码是按从大到小的顺序依次操作的：</p>
+<ul>
+<li>SQ03：创建 User Group，为特定 Query 限制用户组以及用户权限控制</li>
+<li>SQ02：创建 Infoset，可以关联表、确认字段，可以在 SQ02 的附加中直接定义附加字段或写代码</li>
+<li>SQ01：创建 Query，可以确认字段分类勾选（选择屏幕条件与 Report 字段列表），完成后可以分配 T-code</li>
+</ul>
+<h3 id="abap-query由四部分组成">ABAP Query由四部分组成</h3>
+<ul>
+<li>Queries</li>
+<li>InfoSets</li>
+<li>User Groups</li>
+<li>Translation Of Query</li>
+</ul>
+<h2 id="创建-query">创建 Query</h2>
+<h3 id="user-groups---sq03">User Groups - SQ03</h3>
+<p>创建一个逻辑组的用户组，将向其分配 InfoSet 查询。</p>
+<p><img src="/images/SAPUtils/SAP_Query_0.png" alt="SQ03"></p>
+<p>在同一应用程序中工作的用户被分配到相同的用户组。实际上，谁在用户组中定义了 Query 都没有关系。分配给用户组的每个用户都可以执行已定义的 Query。</p>
+<p>用户组中的用户必须具有必要的权限，才能更改或重新定义 Query。系统中的每个用户都可以分配给多个用户组。</p>
+<h3 id="infosets---sq02">InfoSets - SQ02</h3>
+<p>InfoSets 是数据源的特殊视图。InfoSets 描述了可以在查询中显示数据源的哪些字段。可以将一个 InfoSet 分配给多个角色或用户组。</p>
+<ul>
+<li>通过创建 Infoset 并将其分配给角色或用户组，系统管理员可以确定各个应用程序部门或最终用户能够使用 SAP Query 生成的报表范围。</li>
+<li>最终用户只能使用与其特定区域相关的那些 InfoSet（由分配给他们的角色或用户组指定）。</li>
+</ul>
+<p>SAP 数据库具有多个表，用于存储事务和主数据，在创建 Query 时要选择所有此类字段实际上是不可行的。因此，在开始创建 Query 之前，需要创建 InfoSet。</p>
+<h4 id="step-1添加-infoset-table">Step 1：添加 InfoSet Table</h4>
+<p>SQ02 创建 InfoSet。</p>
+<p><img src="/images/SAPUtils/SAP_Query_1.png" alt="SQ02"></p>
+<p>可以选择使用多表联接、从单个表直接读取、借助逻辑数据库三种方法来创建 InfoSet；注意添加表不能添加类似 BSEG 一样的簇表。</p>
+<p><img src="/images/SAPUtils/SAP_Query_2.png" alt="SQ02"></p>
+<p>在 InfoSet 初始界面可以添加和删除表，维护表之间的联接关系。</p>
+<p><img src="/images/SAPUtils/SAP_Query_3.png" alt="SQ02"></p>
+<p>添加两个表 LFB1、LFBK。还可以使用表别名，当一个查询重复用到同一个表时，可使用表别名 (Alias)。</p>
+<p><img src="/images/SAPUtils/SAP_Query_4.png" alt="SQ02"></p>
+<h4 id="step-2建立并激活-infoset">Step 2：建立并激活 InfoSet</h4>
+<p>Query 需要使用的表添加完成后，点击上图中的 Infoset 按钮，生成 InfoSet。</p>
+<p><img src="/images/SAPUtils/SAP_Query_5.png" alt="Filed Group"></p>
+<p>Data Fields 包含选择的表的所有字段信息，Field Group 包含了报表输出或选择屏幕所需的字段；点击 “Join” 可以跳转到初始设置界面。</p>
+<p><img src="/images/SAPUtils/SAP_Query_6.png" alt="Filed Group"></p>
+<p>将 Data Fields 的字段拖到相关的 Field Group 中以在后续 Report 设计中使用。</p>
+<p><img src="/images/SAPUtils/SAP_Query_7.png" alt="Filed Group"></p>
+<p>在 Field Group 中选择 Field，可以更改在 &ldquo;输出&rdquo; 上显示的字段的文本。</p>
+<p><img src="/images/SAPUtils/SAP_Query_8.png" alt="Filed Group"></p>
+<p>创建 InfoSet 后，需要通过单击 &ldquo;Generation&rsquo;&rsquo; 图标来生成它。对 InfoSet 所做的任何更改，都需要每次重新生成。</p>
+<p><img src="/images/SAPUtils/SAP_Query_9.png" alt="Filed Group"></p>
+<h4 id="step-3extras-添加附加内容">Step 3：Extras 添加附加内容</h4>
+<p>Extras 按钮可增加附加表和附加字段。</p>
+<p><img src="/images/SAPUtils/SAP_Query_25.png" alt="Extras"></p>
+<p>在此附加 Table 和上一步的添加 InfoSet Table 有什么不同？</p>
+<ul>
+<li>在添加 InfoSet Table 时实际上各表是存在关联关系的，如果需要从某个不大能相互关联的表中取得一个字段，可直接使用附加字段，然后通过代码获附加字段需要的值。</li>
+</ul>
+<p>在 Query 中允许增加 ABAP 代码，当存在附加表和附加字段时尤其重要。</p>
+<ul>
+<li>
+<p>在这里编写代码可以使用 Infoset 中的任何表来编写逻辑，编写代码完毕后，生成 InfoSet 即可</p>
+<p><img src="/images/SAPUtils/SAP_Query_26.png" alt="Filed Group"></p>
+</li>
+</ul>
+<p><em>附加字段处理</em>：依次将各表所需字段添加到对应字段组，并将附加字段全部添加到附加字段组。</p>
+<h4 id="assigning-to-user-group">Assigning to User Group</h4>
+<p>将创建好的 Infoset 分配到对应的用户组，点击 Role/User Group Assignment 选择对应的User Group。</p>
+<p><img src="/images/SAPUtils/SAP_Query_10.png" alt="Role/User Group Assignment"></p>
+<p>选择需要分配的 User Group，可以分配给多个，勾选并保存。</p>
+<p><img src="/images/SAPUtils/SAP_Query_11.png" alt="Role/User Group Assignment"></p>
+<h3 id="queries---sq01">Queries - SQ01</h3>
+<p>一旦创建了 Infoset 并将其分配给用户组，就需要设计 Query 基本列表。</p>
+<p>最终用户或则模块顾问使用 Query 组件来维护 Query。 可以创建/更改/执行 Query。</p>
+<h4 id="step-1sq01-创建-query">Step 1：SQ01 创建 Query</h4>
+<p>SQ01 创建一个 Query。</p>
+<p>需要先选择需要设计 Query 的用户组。单击图标选择用户组。</p>
+<p><img src="/images/SAPUtils/SAP_Query_14.png" alt="SQ01"></p>
+<p>选择 Query Area。</p>
+<ul>
+<li>
+<p>Standard Area：特定 Client 的 Query，在其他 Client 看不到。不会创建工作台请求，可使用 <code>RSAQR3TR</code> 进行传输</p>
+</li>
+<li>
+<p>Global Area：Queries 是跨 Client 的，但是只能在开发 Client 进行编辑</p>
+</li>
+</ul>
+<p><img src="/images/SAPUtils/SAP_Query_13.png" alt="SQ01"></p>
+<p><img src="/images/SAPUtils/SAP_Query_15.png" alt="SQ01"></p>
+<p>输入 Query 名称，然后单击创建选项。 弹出选择框，选择已创建的 Infoset。</p>
+<p><img src="/images/SAPUtils/SAP_Query_12.png" alt="SQ01"></p>
+<h4 id="step-2维护-query-详细信息">Step 2：维护 Query 详细信息</h4>
+<p>在下一个屏幕中给出 Query 的描述。指定输出长度，然后从 “其他处理选项” 框中选择处理选项。</p>
+<p><img src="/images/SAPUtils/SAP_Query_16.png" alt="Query Details"></p>
+<p>数据可以以各种格式显示，例如表格，下载到文件以及以 Word 显示。</p>
+<h4 id="step-3选择要显示的字段和-query-的处理显示数据方式">Step 3：选择要显示的字段和 Query 的处理显示数据方式</h4>
+<p>点击 InfoSet Query，选择所需的输出/选择字段。</p>
+<p><img src="/images/SAPUtils/SAP_Query_17.png" alt="InfoSet Query"></p>
+<p>在 InfoSet Query 界面设计选择界面和对应的输出报表界面，并选择 Query 的处理和显示数据方式。</p>
+<p><img src="/images/SAPUtils/SAP_Query_18.png" alt="InfoSet Query"></p>
+<p>可以点击 <code>Output</code> 进行显示界面预览。</p>
+<p><strong>Query 的数据处理方式</strong> ：可以通过3种方式处理和显示数据</p>
+<ul>
+<li>Basic List：按功能区定义的顺序显示数据（支持排序和求和）。</li>
+<li>Statistics：显示根据基本数据计算出的统计数字。</li>
+<li>Ranked List：Ranked List 是统计的一种特殊化。</li>
+</ul>
+<p><em>一个 Query 可以具有一个基本列表，最多 9 个统计信息和最多 9 个排名列表。</em></p>
+<h4 id="step-4完成上述所有选项后保存-query-和执行-query">Step 4：完成上述所有选项后，保存 Query 和执行 Query</h4>
+<p>完成输入界面和输出界面字段显示设计后，点击保存按钮，保存数据。</p>
+<p><img src="/images/SAPUtils/SAP_Query_19.png" alt="InfoSet Query"></p>
+<p>回到 SQ01 界面，点击执行按钮，执行 Query。</p>
+<p><img src="/images/SAPUtils/SAP_Query_20.png" alt="Query"></p>
+<p>Report 选择界面，输入查询条件并点击执行按钮。</p>
+<p><img src="/images/SAPUtils/SAP_Query_21.png" alt="Query"></p>
+<p>显示执行结果 Report。</p>
+<p><img src="/images/SAPUtils/SAP_Query_22.png" alt="Query"></p>
+<h4 id="step-5生成应用程序">Step 5：生成应用程序</h4>
+<p>点击 <code>Query -&gt; More functions -&gt; Generate program</code> 生成程序。</p>
+<p><img src="/images/SAPUtils/SAP_Query_41.png" alt="Query Menu"></p>
+<h4 id="translation--query-component">Translation / Query Component</h4>
+<p>定义 Query，InfoSet 和 User Group 时会生成许多文本。这些文本以登录 SAP 系统时选择的语言显示。我们可以使用此组件比较文本/语言。</p>
+<h2 id="为-sap-query-创建事物码">为 SAP Query 创建事物码</h2>
+<h3 id="使用程序名创建事物码">使用程序名创建事物码</h3>
+<p>查询 Query 的程序名：<code>SQ01 → Query → More Functions → Display Report Name</code>。</p>
+<p>SE93 输入需要创建的事物码，并输入描述；在 Start Object 页签中选择第二个选项 “Program and selection screen(report transaction)” 。</p>
+<p><img src="/images/SAPUtils/SAP_Query_32.png" alt="SE93"></p>
+<p>输入 Query 的程序名，勾选 GUI support 页卡的 “SAP GUI for windows” 后保存即可。</p>
+<p><img src="/images/SAPUtils/SAP_Query_35.png" alt="SE93"></p>
+<h4 id="存在问题">存在问题</h4>
+<p>通过程序名创建事务代码，是一种十分方便的方式，但它存在一定的风险，因为在不同的 System 中，两个不同的 Query 的程序名有可能相同，那么程序在系统中传输的时候，有可能产生错误。</p>
+<h3 id="使用参数创建事物码">使用参数创建事物码</h3>
+<p>SE93 输入需要创建的事物码，并输入描述；在 Start Object 页签中选择 “Transaction with Parameters(parameter transaction)” 。</p>
+<p><img src="/images/SAPUtils/SAP_Query_36.png" alt="SE93"></p>
+<p>在 <code>Default Values for</code> 页签下，Transaction 字段填入 “START_REPORT”，并勾选 “Skip Initial Screen”。</p>
+<p><img src="/images/SAPUtils/SAP_Query_37.png" alt="SE93"></p>
+<p>使用此种方法创建 Query 的事物码，需要填入 Query 所属的 UserGroup 以及 QueryName 等 3 个字段，以及对应关系。</p>
+<ul>
+<li>D_SREPOVARI-REPORTTYPE：AQ</li>
+<li>D_SREPOVARI-REPORT：UserGroup + 空格 （ UserGroup 与空格相加应为 12 位 ） + G（ G 应为第13位，代表 Global Area ）</li>
+<li>D_SREPOVARI-EXTDREPORT：QueryName</li>
+<li>如有必要，也可以为事务代码指定变式：D_SREPOVARI-VARIANT。</li>
+</ul>
+<p><img src="/images/SAPUtils/SAP_Query_38.png" alt="SE93"></p>
+<p><img src="/images/SAPUtils/SAP_Query_39.png" alt="SE93"></p>
+<h2 id="query-传输">Query 传输</h2>
+<h3 id="step-1传-sq03-的配置到-package">Step 1：传 SQ03 的配置到 Package</h3>
+<p>选择要传输的 User Group：ZTEST_QUERY，点击 <code>User group-&gt;Change Package</code>。</p>
+<p><img src="/images/SAPUtils/SAP_Query_27.png" alt="SQ03"></p>
+<p>选择自己需要保存的 Package。</p>
+<p><img src="/images/SAPUtils/SAP_Query_28.png" alt="SQ03"></p>
+<p>创建一个新的请求号，填写请求号描述，点击保存。</p>
+<p><img src="/images/SAPUtils/SAP_Query_29.png" alt="SQ03"></p>
+<h3 id="step-2传-sq02-的配置到-package">Step 2：传 SQ02 的配置到 Package</h3>
+<p>选择要传的 InfoSet：ZVENDOR_DATA，点击 <code>Infoset-&gt;More functions-&gt;Change Package</code>。</p>
+<p><img src="/images/SAPUtils/SAP_Query_30.png" alt="SQ02"></p>
+<p>然后选择上一步创建或则选择的请求号，保存。</p>
+<h3 id="step-3传-sq01-的配置到-package">Step 3：传 SQ01 的配置到 Package</h3>
+<p>选择要传的 Query：ZVENDOR，点击 <code>Query-&gt;More functions-&gt;Change Package</code>。</p>
+<p><img src="/images/SAPUtils/SAP_Query_31.png" alt="SQ01"></p>
+<p>然后选择上一步创建或则选择的请求号，保存。</p>
+<h3 id="step-4传-se93-创建的事物码到-package">Step 4：传 SE93 创建的事物码到 Package</h3>
+<p>选择要传的事物码 ZQUERY_V，点击<code>Goto-&gt;Object directory entry</code>。</p>
+<p><img src="/images/SAPUtils/SAP_Query_34.png" alt="SQ01"></p>
+<p>进入界面后，点击修改按钮，并维护需要配置的包。</p>
+<h3 id="step-5传输请求-se09">Step 5：传输请求 SE09</h3>
+<p>通过事物码 SE09 查到已创建的请求号。</p>
+<p><img src="/images/SAPUtils/SAP_Query_33.png" alt="SE09"></p>
+<p>展开折叠，查看验证是否所传信息完整无误。如果没有问题，可以进行传输。</p>
+<h3 id="step-6正式系统调试">Step 6：正式系统调试</h3>
+<p>传输完成后，在正式系统配置新的事务码。</p>
+<ul>
+<li>
+<p>正式系统重新配置 SQ03，分配用户；</p>
+</li>
+<li>
+<p>正式系统运行 SQ02，SQ01，执行测试，生成程序。</p>
+</li>
+<li>
+<p>运行事物码测试 Query。</p>
+</li>
+</ul>
+<p><img src="/images/SAPUtils/SAP_Query_40.png" alt="SQ01"></p>
+<p><strong>调用程序： RSAQR3TR 执行Query的传输。</strong></p>
+<h2 id="infoset--ldb逻辑数据库">InfoSet – (LDB)逻辑数据库</h2>
+<p>LDB 是 ABAP 程序的一种特殊类型，它组合了某些相关数据库表的内容，并检索了一些相关数据并将其提供给应用程序。LDB 通常由诸如结构，选择和数据库程序之类的组件组成。</p>
+<p>简单地说，逻辑数据库可以称为表簇，使用事物码 <strong>SE36</strong> 查看 LDB。</p>
+<p><img src="/images/SAPUtils/SAP_Query_23.png" alt="SE36"></p>
+<p><img src="/images/SAPUtils/SAP_Query_24.png" alt="SE36"></p>
+<h3 id="会计相关的-logical-database">会计相关的 Logical Database</h3>
+<table>
+<thead>
+<tr>
+<th>Logical Database</th>
+<th>Desc</th>
+<th>Logical Database</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADA</td>
+<td>Assets Database</td>
+<td>CKC</td>
+<td>Order BOM</td>
+</tr>
+<tr>
+<td>AUK</td>
+<td>Settlement documents</td>
+<td>CKW</td>
+<td>Costing run: Material Selection</td>
+</tr>
+<tr>
+<td>BRF</td>
+<td>Document Database</td>
+<td>CPK</td>
+<td>Cost Centers – Plan Data</td>
+</tr>
+<tr>
+<td>BRM</td>
+<td>Accounting Documents</td>
+<td>KDF</td>
+<td>Vendor Database</td>
+</tr>
+<tr>
+<td>CEK</td>
+<td>Cost Centers – Line Items</td>
+<td>PAK</td>
+<td>CO-PA Segment Level and Line Items</td>
+</tr>
+<tr>
+<td>CIK</td>
+<td>Cost Centers – Actual Data</td>
+<td>SDF</td>
+<td>G/L Account Database</td>
+</tr>
+<tr>
+<td>CKA</td>
+<td>Costing</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3208</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SAPbusiness/">
+                    #SAPbusiness</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Utils_GetDomainValueRange/" class="prev" rel="prev" title=" 获取Domain的 Value Range "><i class="iconfont icon-dajiantou"></i>&nbsp; 获取Domain的 Value Range </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Smartforms_PaperFormat/" class="next" rel="next" title=" Smartforms 纸张格式设置 "> Smartforms 纸张格式设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-23 00:00:00 \x2b0000 UTC',
+        title: ' SAP Query 使用介绍 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

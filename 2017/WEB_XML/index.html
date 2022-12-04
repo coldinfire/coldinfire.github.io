@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_Reflection/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_XML_Parse/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_XML/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            XML 基础知识  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" XML 基础知识  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" XML 基础知识 "/>
+<meta name="twitter:description" content="XML 简介 什么是 XML XML 指可扩展标记语言（EXtensible Markup Language）。 XML 是一种很像HTML的标记语言。 XML 的设计宗旨是传输数据，而不是显"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " XML 基础知识 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_XML\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "XML",
+  "wordcount":  1088 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_XML\/",
+  "datePublished": "2017-10-25T00:00:00\x2b00:00",
+  "dateModified": "2017-10-25T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> XML 基础知识 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-10-25 >25 October 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="xml-简介">XML 简介</h3>
+<h4 id="什么是-xml">什么是 XML</h4>
+<ul>
+<li>XML 指可扩展标记语言（EXtensible Markup Language）。</li>
+<li>XML 是一种很像HTML的标记语言。</li>
+<li>XML 的设计宗旨是传输数据，而不是显示数据。</li>
+<li>XML 标签没有被预定义。您需要自行定义标签。</li>
+<li>XML 被设计为具有自我描述性。</li>
+</ul>
+<h4 id="xml-树结构">XML 树结构</h4>
+<p>XML 文档形成了一种树结构，它从&quot;根部&quot;开始，然后扩展到&quot;枝叶&rdquo;。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;yes&#34;?&gt;</span>
+<span style="color:#f92672">&lt;notes</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;note</span> <span style="color:#a6e22e">number=</span><span style="color:#e6db74">&#34;n001&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;to</span><span style="color:#f92672">&gt;</span>Tove<span style="color:#f92672">&lt;/to&gt;</span>
+    <span style="color:#f92672">&lt;from</span><span style="color:#f92672">&gt;</span>Jani<span style="color:#f92672">&lt;/from&gt;</span>
+    <span style="color:#f92672">&lt;heading</span><span style="color:#f92672">&gt;</span>Reminder<span style="color:#f92672">&lt;/heading&gt;</span>
+    <span style="color:#f92672">&lt;body</span><span style="color:#f92672">&gt;</span>Don&#39;t forget me this weekend!<span style="color:#f92672">&lt;/body&gt;</span>
+  <span style="color:#f92672">&lt;/note&gt;</span>
+<span style="color:#f92672">&lt;/notes&gt;</span>
+</code></pre></div><h4 id="xml-语法规则">XML 语法规则</h4>
+<ul>
+<li>
+<p>XML 声明文件的可选部分，如果存在需要放在文档的第一行</p>
+</li>
+<li>
+<p>XML 文档必须包含 <strong>根元素</strong>。该元素是所有其他元素的父元素</p>
+</li>
+<li>
+<p>所有的 XML 元素都必须有一个关闭标签</p>
+</li>
+<li>
+<p>XML 标签对大小写敏感</p>
+</li>
+<li>
+<p>XML 必须正确嵌套</p>
+</li>
+<li>
+<p>XML 属性值必须使用引号包含起来</p>
+</li>
+<li>
+<p>XML 中特殊字符需要使用 <strong>实体引用</strong> 来代替</p>
+</li>
+</ul>
+<h4 id="xml-命名规则">XML 命名规则</h4>
+<p>XML 元素必须遵循以下命名规则：</p>
+<ul>
+<li>名称可以包含字母、数字以及其他的字符</li>
+<li>名称不能以数字或者标点符号开始</li>
+<li>名称不能以字母 xml（或者 XML、Xml 等等）开始</li>
+<li>名称不能包含空格</li>
+</ul>
+<p>使名称具有描述性，名称应简短和简单：使用下划线的名称。</p>
+<h4 id="属性">属性</h4>
+<p>元数据（有关数据的数据）应当存储为属性，而数据本身应当存储为元素。</p>
+<p>属性（Attribute）提供有关元素的额外信息。属性通常提供不属于数据组成部分的信息。</p>
+<p>属性难以阅读和维护。请尽量使用元素来描述数据。而仅仅使用属性来提供与数据无关的信息。</p>
+<ul>
+<li>id 属性值唯一</li>
+</ul>
+<h4 id="文本">文本</h4>
+<p>CDATA 区：在该区域中的数据会被原样展示</p>
+<ul>
+<li>格式：<code>&lt;![CDATA[ 数据内容 ]]&gt;</code></li>
+</ul>
+<p>CDATA 部分不能包含字符串 &ldquo;]]&gt;&rdquo;。也不允许嵌套的 CDATA 部分。</p>
+<p>标记 CDATA 部分结尾的 &ldquo;]]&gt;&rdquo; 不能包含空格或换行。</p>
+<h3 id="xml-验证">XML 验证</h3>
+<h4 id="dtd-约束">DTD 约束</h4>
+<p>DTD 的目的是定义 XML 文档的结构。它使用一系列合法的元素来定义文档结构：</p>
+<p>内部 DTD：将约束规则定义在 xml 文档中</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!DOCTYPE notes
+</span><span style="color:#75715e">[
+</span><span style="color:#75715e">&lt;!ELEMENT notes (note*)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT note (to,from,heading,body)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT to (#PCDATA)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT from (#PCDATA)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT heading (#PCDATA)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT body (#PCDATA)&gt;</span>
+]&gt;
+</code></pre></div></li>
+</ul>
+<p>外部 DTD：将约束的规则定义在外部的 DTD 文件中</p>
+<ul>
+<li>
+<pre><code class="language-xml-dtd" data-lang="xml-dtd">&lt;!ELEMENT notes (note*)&gt;
+&lt;!ELEMENT note (to,from,heading,body)&gt;
+&lt;!ELEMENT to (#PCDATA)&gt;
+&lt;!ELEMENT from (#PCDATA)&gt;
+&lt;!ELEMENT heading (#PCDATA)&gt;
+&lt;!ELEMENT body (#PCDATA)&gt;
+&lt;!ALLLIST note number ID #REQUIRED&gt;
+</code></pre></li>
+</ul>
+<p>XML 引入 DTD：</p>
+<ul>
+<li>外部引入：<code>&lt;!DOCTYPE 根标签名 SYSTEM &quot;dtd文件的位置&quot;&gt;</code></li>
+<li>网络资源：<code>&lt;!DOCTYPE 根标签名 PUBLIC &quot;dtd文件名字&quot; &quot;dtd文件的位置URL&quot;&gt;</code></li>
+</ul>
+<h4 id="schema-基于-xml-的-dtd-替代">Schema: 基于 XML 的 DTD 替代</h4>
+<p>作用是定义 XML 文档的合法构建模块，类似 DTD</p>
+<ul>
+<li>定义可出现在文档中的元素</li>
+<li>定义可出现在文档中的属性</li>
+<li>定义哪个元素是子元素</li>
+<li>定义子元素的次序</li>
+<li>定义子元素的数目</li>
+<li>定义元素是否为空，或者是否可包含文本</li>
+<li>定义元素和属性的数据类型</li>
+<li>定义元素和属性的默认值以及固定值</li>
+</ul>
+<p>note.xsd ：文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;xs:schema</span> <span style="color:#a6e22e">xmlns:xs=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;xs:element</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;note&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;xs:complexType</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;xs:sequence</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;xs:element</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;to&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;xs:string&#34;</span><span style="color:#f92672">/&gt;</span>
+         <span style="color:#f92672">&lt;xs:element</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;from&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;xs:string&#34;</span><span style="color:#f92672">/&gt;</span>
+         <span style="color:#f92672">&lt;xs:element</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;heading&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;xs:string&#34;</span><span style="color:#f92672">/&gt;</span>
+         <span style="color:#f92672">&lt;xs:element</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;body&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;xs:string&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;/xs:sequence&gt;</span>
+    <span style="color:#f92672">&lt;/xs:complexType&gt;</span>
+  <span style="color:#f92672">&lt;/xs:element&gt;</span>
+<span style="color:#f92672">&lt;/xs:schema&gt;</span>
+</code></pre></div><p>XML 引入 Schema</p>
+<ul>
+<li>填写 XML 文档的根元素</li>
+<li>引入 xsi 前缀
+<ul>
+<li><code>xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</code></li>
+</ul>
+</li>
+<li>引入 xsd 文件命名空间
+<ul>
+<li><code>xs:schemaLocation=&quot;http://www.w3school.com.cn note.xsd&quot;</code></li>
+</ul>
+</li>
+<li>为每一个 xsd 约束声明一个前缀，作为标识
+<ul>
+<li><code>xmlns=&quot;http://www.w3school.com.cn&quot;</code></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;note</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.w3school.com.cn&#34;</span>
+<span style="color:#a6e22e">xmlns:xs=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+<span style="color:#a6e22e">xs:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.w3school.com.cn note.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1088</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/XML/">
+                    #XML</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_Reflection/" class="prev" rel="prev" title=" JAVA 反射 "><i class="iconfont icon-dajiantou"></i>&nbsp; JAVA 反射 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_XML_Parse/" class="next" rel="next" title=" XML 文档解析 "> XML 文档解析 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-10-25 00:00:00 \x2b0000 UTC',
+        title: ' XML 基础知识 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

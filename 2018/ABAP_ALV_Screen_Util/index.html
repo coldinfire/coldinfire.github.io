@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_Demo_GridALV/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ProgramOpt/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_ALV_Screen_Util/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ALV 屏幕其它功能设置  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ALV 屏幕其它功能设置  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ALV 屏幕其它功能设置 "/>
+<meta name="twitter:description" content="屏幕内创建按钮 SELECTION-SCREEN: PUSHBUTTON [/n] &lt;pos(len)&gt; &lt;name&gt; USER-COMMAND &lt;ucom&gt; [MODIF ID &lt;key&gt;]. /n：按钮初始时距离屏幕左边的位置 &lt;pos(len)&gt;：PUSHBUTTON 按钮在屏幕生成的位"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ALV 屏幕其它功能设置 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_Screen_Util\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  1279 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_ALV_Screen_Util\/",
+  "datePublished": "2018-06-28T00:00:00\x2b00:00",
+  "dateModified": "2018-06-28T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ALV 屏幕其它功能设置 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-28 >28 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="屏幕内创建按钮">屏幕内创建按钮</h3>
+<p><code>  SELECTION-SCREEN: PUSHBUTTON [/n] &lt;pos(len)&gt; &lt;name&gt; USER-COMMAND &lt;ucom&gt; [MODIF ID &lt;key&gt;].</code></p>
+<p><code>/n</code>：按钮初始时距离屏幕左边的位置</p>
+<p><code>&lt;pos(len)&gt;</code>：PUSHBUTTON 按钮在屏幕生成的位置与长度。</p>
+<p><code>&lt;name&gt;</code>：PUSHBUTTON按钮的名称，给按钮赋值时要用到名字。</p>
+<p><code>&lt;ucom&gt;</code>：必须指定的字符代码，当用户在选择屏幕上触发按钮时，<code>&lt;ucom&gt;</code> 被输入到词典对象字段：SSCRFIELDS-UCOMM 中，必须显式使用语句 TABLES 引用 SSCRFIELDS。</p>
+<p>实例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TABLES</span> SSCRFIELDS.
+<span style="color:#66d9ef">INCLUDE</span>:&lt;icon&gt;.
+<span style="color:#66d9ef">SELECTION-SCREEN PUSHBUTTON</span> /<span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">20</span>) PUBU1 USER<span style="color:#f92672">-</span>COMMAND comd1.
+<span style="color:#66d9ef">SELECTION-SCREEN SKIP</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN PUSHBUTTON</span> /<span style="color:#ae81ff">10</span>(<span style="color:#ae81ff">25</span>) PUBU2 USER<span style="color:#f92672">-</span>COMMAND comd2.
+<span style="color:#66d9ef">AT SELECTION-SCREEN OUTPUT</span>.
+  <span style="color:#66d9ef">MOVE</span> <span style="color:#e6db74">&#39;CALL NEXT SCREEN&#39;</span> <span style="color:#66d9ef">TO</span> PUBU1. <span style="color:#75715e">&#34;给PUBU1按钮赋值描述&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">WRITE</span> ICON_OKAY <span style="color:#66d9ef">AS</span> ICON <span style="color:#66d9ef">TO</span> PUBU2. <span style="color:#75715e">&#34;给PUBU2按钮添加图标，并且在给按钮赋值之前，否则将会把文字替换。&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONCATENATE</span> PUBU2 <span style="color:#e6db74">&#39;My Second Button&#39;</span> <span style="color:#66d9ef">INTO</span> PUBU2 <span style="color:#66d9ef">SEPARATED BY</span> SPACE. <span style="color:#75715e">&#34;给第二个按钮添加赋值描述&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">AT SELECTION-SCREEN</span>.
+ <span style="color:#66d9ef">IF</span> SSCRFIELDS<span style="color:#f92672">-</span>UCOMM <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;COMD1&#39;</span>.
+   <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">xxxx</span>.  <span style="color:#75715e">&#34;调用子程序&#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><p>函数设置 Push button 属性：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">INCLUDE</span> &lt;icon&gt;.
+<span style="color:#66d9ef">SELECTION-SCREEN: PUSHBUTTON</span> <span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">22</span>) BUT1 USER<span style="color:#f92672">-</span>COMMAND BT1.
+<span style="color:#66d9ef">INITIALIZATION</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ICON_CREATE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      name                        <span style="color:#f92672">=</span> icon_oo_object
+     text                        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Download Template&#39;</span>
+     info                        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;下载模板文件&#39;</span>
+<span style="color:#75715e">*     ADD_STDINF                  = &#39;X&#39;</span>
+   <span style="color:#66d9ef">IMPORTING</span>
+     RESULT                      <span style="color:#f92672">=</span> BUT1
+   <span style="color:#66d9ef">EXCEPTIONS</span>
+     icon_not_found              <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+     outputfield_too_short       <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+     <span style="color:#66d9ef">OTHERS</span>                      <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+</code></pre></div><h3 id="在工具栏上新增一个功能按钮">在工具栏上新增一个功能按钮</h3>
+<p><code>SELECTION-SCREEN FUNCTION KEY n.</code></p>
+<p>该按钮的定义保存在系统结构体 SSCRFIELDS 中，n 为一个整数序数最大至 5。</p>
+<p>当 n=1 时，其按钮描述保存在字段 SSCRFIELDS-FUNCTXT_01 中，其按钮对象命名为&quot;FC01&rdquo;，保存在字段SSCRFIELDS-UCOMM 中。</p>
+<h4 id="示例代码">示例代码</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TABLES</span> SSCRFIELDS. <span style="color:#75715e">&#34;引用词典对象&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">TYPE-POOLS</span> ICON.   <span style="color:#75715e">&#34;Program Icon Library&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> functxt <span style="color:#66d9ef">TYPE </span>SMP_DYNTXT. <span style="color:#75715e">&#34;SMP_DYNTXT(菜单制作器:动态文本的程序接口)&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">PARAMETERS</span>: p_carrid <span style="color:#66d9ef">TYPE </span>s_carr_id,
+            p_cityfr <span style="color:#66d9ef">TYPE </span>s_from_cit.
+<span style="color:#66d9ef">SELECTION-SCREEN: FUNCTION KEY</span> <span style="color:#ae81ff">1</span>,FUNCTION <span style="color:#66d9ef">KEY</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">INITIALIZATION</span>. <span style="color:#75715e">&#34;屏幕初始化&#34;
+</span><span style="color:#75715e"></span>  functxt<span style="color:#f92672">-</span>icon_id   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@49@&#39;</span>.  <span style="color:#75715e">&#34;文本字段中的图标（替换显示，别名）&#34;
+</span><span style="color:#75715e"></span>  functxt<span style="color:#f92672">-</span>quickinfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Download Template&#39;</span>. <span style="color:#75715e">&#34;菜单制作器：信息文本 (4.0)，滑鼠移去过去显示的信息TIP&#34;
+</span><span style="color:#75715e"></span>  functxt<span style="color:#f92672">-</span>icon_text <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Download Template&#39;</span>.  <span style="color:#75715e">&#34;菜单制作器：图标文本 (4.0)，菜单名称&#34;
+</span><span style="color:#75715e"></span>  sscrfields<span style="color:#f92672">-</span>functxt_01 <span style="color:#f92672">=</span> functxt.
+  functxt<span style="color:#f92672">-</span>icon_text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UA&#39;</span>.
+  sscrfields<span style="color:#f92672">-</span>functxt_02 <span style="color:#f92672">=</span> functxt.
+<span style="color:#66d9ef">AT SELECTION-SCREEN</span>.
+  <span style="color:#66d9ef">CASE</span> SSCRFIELDS<span style="color:#f92672">-</span>UCOMM.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;FC01&#39;</span>.
+      p_carrid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;LH&#39;</span>.
+      p_cityfr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Frankfurt&#39;</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;FC02&#39;</span>.
+      p_carrid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UA&#39;</span>.
+      p_cityfr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Chicago&#39;</span>.
+  <span style="color:#66d9ef">ENDCASE</span>.
+</code></pre></div><h3 id="屏幕单选框分组显示界面内容">屏幕单选框分组显示界面内容</h3>
+<p>通过 Group 将 GUI 需要显示的界面进行分组，并在 <code>AT SELECTION-SCREEN OUTPUT.</code>事件中对每一个单选项选择进行判断，并激活对应的界面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> BLK1 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">TEXT</span>-<span style="color:#ae81ff">008</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: P_R1 <span style="color:#66d9ef">TYPE </span>FLAG <span style="color:#66d9ef">RADIOBUTTON GROUP</span> C1 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span> USER<span style="color:#f92672">-</span>COMMAND US1,
+            P_R2 <span style="color:#66d9ef">TYPE </span>FLAG <span style="color:#66d9ef">RADIOBUTTON GROUP</span> C1,
+            P_R3 <span style="color:#66d9ef">TYPE </span>FLAG <span style="color:#66d9ef">RADIOBUTTON GROUP</span> C1.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> BLK1.
+
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> BLK2 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">TEXT</span>-<span style="color:#ae81ff">007</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: P_PEDTR <span style="color:#66d9ef">TYPE </span>PLAF<span style="color:#f92672">-</span>PEDTR <span style="color:#66d9ef">MODIF ID</span> PR1 <span style="color:#66d9ef">DEFAULT</span> SY<span style="color:#f92672">-</span>DATUM.
+<span style="color:#66d9ef">PARAMETERS</span>: P_WERKS <span style="color:#66d9ef">TYPE </span>T001W<span style="color:#f92672">-</span>WERKS <span style="color:#66d9ef">MODIF ID</span> PR1 MEMORY <span style="color:#66d9ef">ID</span> WRK.
+<span style="color:#66d9ef">PARAMETERS</span>: P_TIME  <span style="color:#66d9ef">TYPE </span>MSEG<span style="color:#f92672">-</span>MENGE <span style="color:#66d9ef">VISIBLE LENGTH</span> <span style="color:#ae81ff">6</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;22.5&#39;</span> <span style="color:#66d9ef">MODIF ID</span> PR1.
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: S_AUFNR <span style="color:#66d9ef">FOR</span> AFKO<span style="color:#f92672">-</span>AUFNR <span style="color:#66d9ef">MODIF ID</span> PR1  .
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> BLK2.
+
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> BLK3 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">TEXT</span>-<span style="color:#ae81ff">008</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: P_WERK <span style="color:#66d9ef">TYPE </span>T001W<span style="color:#f92672">-</span>WERKS  <span style="color:#66d9ef">MODIF ID</span> PR2 MEMORY <span style="color:#66d9ef">ID</span> WRK.
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: S_MATNR <span style="color:#66d9ef">FOR</span> MARA<span style="color:#f92672">-</span>MATNR  <span style="color:#66d9ef">MODIF ID</span> PR2 ,
+                S_DRAWN <span style="color:#66d9ef">FOR</span> MARA<span style="color:#f92672">-</span>ZZ_DRAWING_NO <span style="color:#66d9ef">MODIF ID</span> PR2 ,
+                S_ZMC <span style="color:#66d9ef">FOR</span> ZPP_MOLDMACTON<span style="color:#f92672">-</span>Z_MC <span style="color:#66d9ef">MODIF ID</span> PR2,
+                S_ZTONS <span style="color:#66d9ef">FOR</span> ZPP_MOLDMACTON<span style="color:#f92672">-</span>ZTONS <span style="color:#66d9ef">MODIF ID</span> PR2 ,
+                S_WSHOP <span style="color:#66d9ef">FOR</span> ZPP_MOLDMACTON<span style="color:#f92672">-</span>ZWKSHOP <span style="color:#66d9ef">MODIF ID</span> PR2,
+                S_SDATE <span style="color:#66d9ef">FOR</span> ZPP_MOLDSCHE<span style="color:#f92672">-</span>SDATE <span style="color:#66d9ef">MODIF ID</span> PR2 <span style="color:#66d9ef">NO-EXTENSION</span> <span style="color:#66d9ef">NO INTERVALS</span>,
+                S_SDAT2 <span style="color:#66d9ef">FOR</span> ZPP_MOLDSCHE<span style="color:#f92672">-</span>SDATE <span style="color:#66d9ef">MODIF ID</span> PR2 <span style="color:#66d9ef">DEFAULT</span> SY<span style="color:#f92672">-</span>DATUM.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> BLK3.
+
+<span style="color:#66d9ef">AT SELECTION-SCREEN OUTPUT</span>.
+  <span style="color:#66d9ef">LOOP AT SCREEN</span>.
+    <span style="color:#66d9ef">IF</span> P_R1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">IF</span> SCREEN<span style="color:#f92672">-</span>GROUP1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PR2&#39;</span>.
+        SCREEN<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">ELSE</span>.
+        SCREEN<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ELSEIF</span> P_R2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> <span style="color:#f92672">OR</span> P_R3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">IF</span> SCREEN<span style="color:#f92672">-</span>GROUP1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PR1&#39;</span>.
+        SCREEN<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">ELSE</span>.
+        SCREEN<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+        <span style="color:#66d9ef">IF</span> P_R3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+          <span style="color:#66d9ef">IF</span>  SCREEN<span style="color:#f92672">-</span>NAME <span style="color:#f92672">CS</span> <span style="color:#e6db74">&#39;S_SDATE&#39;</span>.
+            SCREEN<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+          <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">ELSEIF</span> P_R2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+          <span style="color:#66d9ef">IF</span>  SCREEN<span style="color:#f92672">-</span>NAME <span style="color:#f92672">CS</span> <span style="color:#e6db74">&#39;S_SDAT2&#39;</span>.
+            SCREEN<span style="color:#f92672">-</span>ACTIVE <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+          <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">MODIFY SCREEN</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h3 id="选择屏幕子屏幕">选择屏幕子屏幕</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  zsubscreen</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  zsubscreen.
+<span style="color:#66d9ef">TABLES</span> spfli.
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF SCREEN</span> <span style="color:#ae81ff">110</span> <span style="color:#66d9ef">AS SUBSCREEN</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> blk1 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">010</span>.
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: s_carrid <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>carrid,
+s_conn <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>connid.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> blk1.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF SCREEN</span> <span style="color:#ae81ff">110</span>.
+
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF SCREEN</span> <span style="color:#ae81ff">120</span> <span style="color:#66d9ef">AS SUBSCREEN</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> blk2 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">011</span>.
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: s_cntrfr <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>countryfr,
+s_cityfr <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>cityfrom,
+s_airpfr <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>airpfrom.
+<span style="color:#66d9ef">PARAMETERS</span>: s_depdt <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>datum.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> blk2.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF SCREEN</span> <span style="color:#ae81ff">120</span>.
+
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF SCREEN</span> <span style="color:#ae81ff">130</span> <span style="color:#66d9ef">AS SUBSCREEN</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> blk3 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">012</span>.
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: s_cntrto <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>countryto,
+s_cityto <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>cityto,
+s_airpto <span style="color:#66d9ef">FOR</span> spfli<span style="color:#f92672">-</span>airpto.
+<span style="color:#66d9ef">PARAMETERS</span>: s_retdt <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>datum.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> blk3.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF SCREEN</span> <span style="color:#ae81ff">130</span>.
+
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF TABBED BLOCK</span> tab_block <span style="color:#66d9ef">FOR</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">LINES</span>.
+SELECTION<span style="color:#f92672">-</span>SCREEN TAB (<span style="color:#ae81ff">20</span>) tab1 USER<span style="color:#f92672">-</span>COMMAND comm1
+<span style="color:#66d9ef">DEFAULT</span> SCREEN <span style="color:#ae81ff">110</span>.
+SELECTION<span style="color:#f92672">-</span>SCREEN TAB (<span style="color:#ae81ff">20</span>) tab2 USER<span style="color:#f92672">-</span>COMMAND comm2
+<span style="color:#66d9ef">DEFAULT</span> SCREEN <span style="color:#ae81ff">120</span>.
+SELECTION<span style="color:#f92672">-</span>SCREEN TAB (<span style="color:#ae81ff">20</span>) tab3 USER<span style="color:#f92672">-</span>COMMAND comm3
+<span style="color:#66d9ef">DEFAULT</span> SCREEN <span style="color:#ae81ff">130</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> tab_block.
+
+<span style="color:#66d9ef">INITIALIZATION</span>.
+  tab1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Connection&#39;</span>(<span style="color:#ae81ff">010</span>).
+  tab2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Departure. City&#39;</span>(<span style="color:#ae81ff">011</span>).
+  tab3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Arrival City&#39;</span>(<span style="color:#ae81ff">012</span>).
+  tab_block<span style="color:#f92672">-</span>activetab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;COMM1&#39;</span>.
+  tab_block<span style="color:#f92672">-</span>dynnr <span style="color:#f92672">=</span> <span style="color:#ae81ff">110</span>.
+
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">BREAK-POINT</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1279</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Demo_GridALV/" class="prev" rel="prev" title=" GRID ALV Demo "><i class="iconfont icon-dajiantou"></i>&nbsp; GRID ALV Demo </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ProgramOpt/" class="next" rel="next" title=" ABAP 性能优化(程序逻辑) "> ABAP 性能优化(程序逻辑) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-28 00:00:00 \x2b0000 UTC',
+        title: ' ALV 屏幕其它功能设置 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

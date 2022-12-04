@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Enhance_MasterData2/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_Basis_PurchaseRFQ/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_Basis_Purchase/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            有库存的采购流程解析  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 有库存的采购流程解析  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 有库存的采购流程解析 "/>
+<meta name="twitter:description" content="采购流程 单据流 仓库数量被预约 (采购订单下达)。 采购订单收货，总账增加，库存成本增加。 应付账款不改变库存数量，根据数量和价格计算价格。 采购物料"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 有库存的采购流程解析 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_Basis_Purchase\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  1909 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_Basis_Purchase\/",
+  "datePublished": "2019-03-16T00:00:00\x2b00:00",
+  "dateModified": "2019-03-16T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 有库存的采购流程解析 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-03-16 >16 March 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="采购流程">采购流程</h3>
+<h4 id="单据流">单据流</h4>
+<ul>
+<li>
+<p>仓库数量被预约 (采购订单下达)。</p>
+</li>
+<li>
+<p>采购订单收货，总账增加，库存成本增加。</p>
+</li>
+<li>
+<p>应付账款不改变库存数量，根据数量和价格计算价格。</p>
+</li>
+</ul>
+<h4 id="采购物料创建-po">采购物料：创建 PO</h4>
+<ul>
+<li>
+<p>物料可以被用作销售和采购的，库存物料等。</p>
+</li>
+<li>
+<p>分配科目，会记账到指定科目。</p>
+</li>
+<li>
+<p>物料主数据字段：供应商，制造商目录编号，采购计量单位，进口物料关税组，纳税信息等。</p>
+</li>
+</ul>
+<h4 id="采购订单收货">采购订单收货</h4>
+<p>和采购订单有关联关系，可以将采购单的数据展现出来。</p>
+<p>复制到：从已保存单据复制到新单据，可以在复制后删除物料和调整数量。</p>
+<p>复制从：在新单据中输入业务伙伴，从清单中选择一个或多个单据，可定制复制的行和数量等信息。</p>
+<p>影响：</p>
+<ul>
+<li>采购订单会被关闭，已清状态</li>
+<li>会计凭证自动生成</li>
+<li>库存量增加</li>
+<li>基础单据和目标单据产生关联关系</li>
+</ul>
+<h4 id="应付发票应付账款自动产生">应付发票：应付账款自动产生</h4>
+<ul>
+<li>先收货的话，数量会增加，账不会影响库存</li>
+<li>成本核算</li>
+<li>应付账款的凭证</li>
+<li>收货单关闭，关联关系产生</li>
+</ul>
+<h4 id="支付处理财务部门">支付处理：财务部门</h4>
+<ul>
+<li>
+<p>向供应商支付货款</p>
+</li>
+<li>
+<p>输入应付发票</p>
+</li>
+<li>
+<p>根据付款条件创建付款</p>
+</li>
+<li>
+<p>日记账条目：自动减少现金(贷项)，减少向供应商支付的金额</p>
+</li>
+</ul>
+<h3 id="po-创建">PO 创建</h3>
+<p>一般数据：供应商数据、原始数据、订购单位等</p>
+<p>价格和条件：总价格、折扣、运费、关税、其他</p>
+<p>控制数据：交付时间、最小数量、容差</p>
+<p>文本：采购订单文本、信息记录备注</p>
+<p>统计：价格历史记录、采购订单统计、改变历史记录. . . . .</p>
+<h4 id="订单结构">订单结构</h4>
+<p>PR Header：采购订单编号、供应商、货币、付款期限、采购订单日期</p>
+<p>PR Item：物料编号、短文本、发货日期、采购订单数量、采购订单价格、分类</p>
+<p>科目设置对象：</p>
+<p>​	A：资产    K：成本中心    P：项目    F：订单(生产，考虑)    C：销售订单    其他</p>
+<p>无物料的采购订单：采购订单中不输入物料，只输入描述可以收货，但是必须是直接消耗，没有库存管理。适用于低值品的采购</p>
+<p>采购合同   &lt;联系、集成、自动&gt;   采购订单</p>
+<h4 id="采购订单相关表关系">采购订单相关表关系</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Table</th>
+<th align="left">Description</th>
+<th align="left">Table</th>
+<th align="left">Description</th>
+<th align="left">Table</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">EKKO</td>
+<td align="left">采购凭证抬头</td>
+<td align="left">EINA</td>
+<td align="left">采购信息记录 - 一般数据</td>
+<td align="left">EKES</td>
+<td align="left">供应商确认</td>
+</tr>
+<tr>
+<td align="left">EKPO</td>
+<td align="left">采购凭证行项目</td>
+<td align="left">EINE</td>
+<td align="left">采购信息记录 - 采购组织数据</td>
+<td align="left">EKKN</td>
+<td align="left">采购凭证中的帐户设置</td>
+</tr>
+<tr>
+<td align="left">EORD</td>
+<td align="left">采购货源清单</td>
+<td align="left">EKET</td>
+<td align="left">计划协议计划行</td>
+<td align="left">EKBE</td>
+<td align="left">采购凭证历史</td>
+</tr>
+<tr>
+<td align="left">RBKP</td>
+<td align="left">凭证表头：发票收据</td>
+<td align="left">RSEG</td>
+<td align="left">凭证项目：收款发票</td>
+<td align="left">EKBZ</td>
+<td align="left">每个采购凭证的历史：交货费用</td>
+</tr>
+<tr>
+<td align="left">RBCO</td>
+<td align="left">凭证项目，收到的帐单，科目分配</td>
+<td align="left">RBMA</td>
+<td align="left">凭证项目: 物料的收款发票</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="关系结构">关系结构：</h4>
+<p><img src="/images/MM/Purchasing/PurchaseTable.png" alt="Table"></p>
+<h3 id="sap-采购模式">SAP 采购模式</h3>
+<h4 id="标准采购类型">标准采购类型</h4>
+<p>业务人员根据需求部门提报的物资需求计划，用询价/比价的方式，然后根据各项信息创建标准采购订单。这是一种最常用的采购方式。</p>
+<h4 id="sto库存转移单">STO（库存转移单）</h4>
+<p>某些配置方案会把这类采购类型配置成公司间库存转移单。在很多企业中，会有公司间的物资交易。一个集团中，分公司之间的交易，或者分公司与总部的交易。</p>
+<h4 id="委外加工类型">委外加工类型</h4>
+<p>也称为带料加工。这种业务的业务场景是：企业有一种 A 规格管材，而需求部门需要一种 B 规格管材。而根据物资的特性，A 是可以加工成 B 的。那么这时候，就可以建立委外加工的采购订单，通过 541 移动类型对这个采购订单发货，发到供应商。之后通过标准的一步或两部收货收到仓库。</p>
+<h4 id="寄售采购类型">寄售采购类型</h4>
+<p>这是大型企业常用的一种采购方式。在企业的仓库中，会单独建立一个供应商仓库。做寄售采购订单时， 先检查供应商仓库中是否有足够数量的物资，如果有，就把供应商库存的物资通过 411 移动类型收到企业自有仓库，这时产生一个411的物料凭证；如果没有，就先通知供应商往仓库补货，当供应商从外面把货物补到供应商库存以后，会产生一个 101k 移动类型的物料凭证，之后再按照之前同样的方式收到企业自有库存。</p>
+<p>在寄售采购订单中没有单价，只有数量，这是因为企业与供应商先约定某些物资的采购单价，那么在一段比较长的时间内，按照这种价格执行。这个价格会维护在货源清单里面。</p>
+<h4 id="框架采购类型">框架采购类型</h4>
+<p>这种采购类型比较适合大批量物资的采购，比如石化行业的煤炭采购。因为石化行业的煤炭采购量以万吨计。在做这种采购类型时，企业会与几个供应商分别签订框架协议，这种框架协议分为数量型或金额型。约定企业在某一段时间内，会向该供应商采购一定数量或金额的某类物资。那么在做这类采购订单时，会参照之前签订的框架协议做采购订单。</p>
+<h3 id="采购组织分配">采购组织分配</h3>
+<p>能通过复制实现的就复制：可以避免一些意想不到的问题发生</p>
+<p>工厂创建（通过复制形式实现，不会漏掉一些具体配置）： OX10</p>
+<p>采购组织创建： OME4</p>
+<p>采购组织分配给工厂：OX17</p>
+<p>给工厂分配标准采购组织：</p>
+<h4 id="采购组织的使用">采购组织的使用</h4>
+<ul>
+<li>
+<p>当工厂有多个采购组织时，当产生先收货然后自动创建 PO 业务时，PO 中的采购组织为标准的采购组织</p>
+</li>
+<li>
+<p>在合同中会使用到采购组织</p>
+</li>
+</ul>
+<p>Purchase Requisition ：Manual / MRP 创建 PR</p>
+<p>RFQ/Quotation：询价，报价，比较合理的供应商</p>
+<p>Purchase Order：ME21N 创建采购订单</p>
+<p>PR&amp;RFQ 确定 PO，可以向供应商或则其它工厂购买，包含Title and Item</p>
+<p>Issuing Messages：采购信息的发送</p>
+<h4 id="goods-receipt">Goods Receipt</h4>
+<p>GR  会产生两个文档</p>
+<ul>
+<li>
+<p>Material Document：数量等信息</p>
+</li>
+<li>
+<p>Accounting Document：记录价钱或种类分类账信息</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1909</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Enhance_MasterData2/" class="prev" rel="prev" title=" 物料主数据增强自定义字段 "><i class="iconfont icon-dajiantou"></i>&nbsp; 物料主数据增强自定义字段 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_Basis_PurchaseRFQ/" class="next" rel="next" title=" RFQ 流程解析 "> RFQ 流程解析 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-03-16 00:00:00 \x2b0000 UTC',
+        title: ' 有库存的采购流程解析 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

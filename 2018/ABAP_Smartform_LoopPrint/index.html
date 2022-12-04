@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Smartform_page1/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ALV_EditControl/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Smartform_LoopPrint/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Smartform 循环打印&amp;页码统计  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Smartform 循环打印&amp;页码统计  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Smartform 循环打印&amp;页码统计 "/>
+<meta name="twitter:description" content="Smartforms 循环打印数据 在 smartform 的使用中，偶尔会遇到用户要求按某一条件进行数据的分组打印，并进行页码的统计和区分，这里记录下自己使用的方法。 FORM sub_data_print . SORT itab_total BY matkl"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Smartform 循环打印\x26页码统计 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartform_LoopPrint\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "smartforms",
+  "wordcount":  386 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartform_LoopPrint\/",
+  "datePublished": "2018-07-31T00:00:00\x2b00:00",
+  "dateModified": "2018-07-31T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Smartform 循环打印&amp;页码统计 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-31 >31 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="smartforms-循环打印数据">Smartforms 循环打印数据</h3>
+<p>在 smartform 的使用中，偶尔会遇到用户要求按某一条件进行数据的分组打印，并进行页码的统计和区分，这里记录下自己使用的方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">sub_data_print</span> .
+  <span style="color:#66d9ef">SORT</span> itab_total BY matkl budat zcdnr.
+  <span style="color:#66d9ef">SORT</span> s_fenlei BY low.
+  <span style="color:#75715e">&#34;ALV Data&#34; 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: fm_name <span style="color:#66d9ef">TYPE </span>rs38l_fnam.
+  <span style="color:#66d9ef">DATA</span>: ls_control_param <span style="color:#66d9ef">TYPE </span>ssfctrlop .
+  <span style="color:#66d9ef">DATA</span>: ls_composer_param <span style="color:#66d9ef">TYPE </span>ssfcompop .
+  <span style="color:#66d9ef">DATA</span>: outopt <span style="color:#66d9ef">TYPE </span>ssfcresop.
+  <span style="color:#66d9ef">DATA</span>: i_job_output_info <span style="color:#66d9ef">TYPE </span>ssfcrescl.
+  
+  <span style="color:#66d9ef">DATA</span>: itab_print <span style="color:#66d9ef">LIKE </span><span style="color:#66d9ef">TABLE OF</span> wand.
+  <span style="color:#66d9ef">DATA</span>: mid <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">20</span>.
+
+  ls_control_param<span style="color:#f92672">-</span>langu <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>langu.
+  ls_control_param<span style="color:#f92672">-</span>no_open <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  ls_control_param<span style="color:#f92672">-</span>no_close <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SSF_OPEN&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      control_parameters <span style="color:#f92672">=</span> ls_control_param
+      output_options     <span style="color:#f92672">=</span> ls_composer_param
+    <span style="color:#66d9ef">IMPORTING</span>
+      job_output_options <span style="color:#f92672">=</span> outopt
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      formatting_error   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      internal_error     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      send_error         <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      user_canceled      <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+    <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+    <span style="color:#66d9ef">EXIT</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* 根据 SmartForm 名称获得 Form 的 Function Name</span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SSF_FUNCTION_MODULE_NAME&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      formname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FORM_NAME&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+       fm_name <span style="color:#f92672">=</span> fm_name
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+       no_form <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+       no_function_module <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> .
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+    <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+
+  <span style="color:#66d9ef">LOOP AT </span>s_fenlei.
+    <span style="color:#66d9ef">REFRESH</span> itab_print.
+    <span style="color:#66d9ef">LOOP AT </span>itab_total <span style="color:#66d9ef">INTO</span> wand <span style="color:#66d9ef">WHERE</span> fenlei <span style="color:#f92672">=</span> s_fenlei<span style="color:#f92672">-</span>low.
+      <span style="color:#66d9ef">APPEND</span> wand <span style="color:#66d9ef">TO</span> itab_print.
+    <span style="color:#66d9ef">ENDLOOP</span>.
+    <span style="color:#66d9ef">IF</span> itab_print <span style="color:#f92672">IS INITIAL</span>.
+      <span style="color:#66d9ef">CONTINUE</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+   <span style="color:#66d9ef">CONCATENATE</span> sy<span style="color:#f92672">-</span>uname sy<span style="color:#f92672">-</span>uzeit <span style="color:#66d9ef">INTO</span> mid.
+   <span style="color:#75715e">&#34;将内表数据存入 ABAP 内存&#34;
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">EXPORT</span> a <span style="color:#f92672">=</span> itab_print <span style="color:#66d9ef">TO DATABASE</span> indx(hk) <span style="color:#66d9ef">ID</span> mid.
+   <span style="color:#66d9ef">CALL FUNCTION</span> fm_name
+     <span style="color:#66d9ef">EXPORTING</span>
+       control_parameters <span style="color:#f92672">=</span> ls_control_param
+       output_options     <span style="color:#f92672">=</span> ls_composer_param
+     <span style="color:#66d9ef">EXCEPTIONS</span>
+       formatting_error   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+       internal_error     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+       send_error         <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+       user_canceled      <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+       <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+   <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+     <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+             <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+   <span style="color:#66d9ef">ENDIF</span>.
+   <span style="color:#75715e">&#34;删除内存数据&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM DATABASE</span> indx(hk) <span style="color:#66d9ef">ID</span> mid.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SSF_CLOSE&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      job_output_info  <span style="color:#f92672">=</span> i_job_output_info
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      formatting_error <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      internal_error   <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      send_error       <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+            <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; SUB_DATA_PRINT &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>386</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/smartforms/">
+                    #smartforms</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Smartform_page1/" class="prev" rel="prev" title=" Smartforms 分页打印 "><i class="iconfont icon-dajiantou"></i>&nbsp; Smartforms 分页打印 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_EditControl/" class="next" rel="next" title=" ALV 单元格编辑设置 "> ALV 单元格编辑设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-31 00:00:00 \x2b0000 UTC',
+        title: ' Smartform 循环打印\x26页码统计 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

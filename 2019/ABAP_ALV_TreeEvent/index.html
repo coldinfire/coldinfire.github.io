@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_ALV_Tree/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_ALV_TreeDemo/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_ALV_TreeEvent/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ALVTree Event  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ALVTree Event  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ALVTree Event "/>
+<meta name="twitter:description" content="事件处理 事件定义 *--------------------------------------------------------------* * INCLUDE BCALV_TREE_EVENT_RECEIVER * *--------------------------------------------------------------* CLASS lcl_tree_event_receiver DEFINITION. PUBLIC SECTION. METHODS handle_node_ctmenu_request FOR EVENT node_context_menu_request OF cl_gui_alv_tree IMPORTING node_key menu. METHODS handle_node_ctmenu_selected FOR EVENT node_context_menu_selected OF cl_gui_alv_tree IMPORTING node_key fcode. METHODS handle_item_ctmenu_request FOR EVENT item_context_menu_request OF cl_gui_alv_tree IMPORTING node_key fieldname menu. METHODS handle_item_ctmenu_selected FOR EVENT item_context_menu_selected OF cl_gui_alv_tree IMPORTING node_key fieldname fcode. METHODS handle_item_double_click FOR EVENT item_double_click OF cl_gui_alv_tree IMPORTING node_key"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ALVTree Event ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_ALV_TreeEvent\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  988 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_ALV_TreeEvent\/",
+  "datePublished": "2019-06-19T00:00:00\x2b00:00",
+  "dateModified": "2019-06-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ALVTree Event </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-19 >19 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="事件处理">事件处理</h3>
+<h4 id="事件定义">事件定义</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*--------------------------------------------------------------*</span>
+<span style="color:#75715e">*   INCLUDE BCALV_TREE_EVENT_RECEIVER                          *</span>
+<span style="color:#75715e">*--------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_tree_event_receiver <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span> handle_node_ctmenu_request
+      <span style="color:#66d9ef">FOR EVENT</span> node_context_menu_request <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+        <span style="color:#66d9ef">IMPORTING</span> node_key
+                  menu.
+    <span style="color:#66d9ef">METHODS</span> handle_node_ctmenu_selected
+      <span style="color:#66d9ef">FOR EVENT</span> node_context_menu_selected <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+        <span style="color:#66d9ef">IMPORTING</span> node_key
+                  fcode.
+    <span style="color:#66d9ef">METHODS</span> handle_item_ctmenu_request
+      <span style="color:#66d9ef">FOR EVENT</span> item_context_menu_request <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+        <span style="color:#66d9ef">IMPORTING</span> node_key
+                  fieldname
+                  menu.
+    <span style="color:#66d9ef">METHODS</span> handle_item_ctmenu_selected
+      <span style="color:#66d9ef">FOR EVENT</span> item_context_menu_selected <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+        <span style="color:#66d9ef">IMPORTING</span> node_key
+                  fieldname
+                  fcode.
+    <span style="color:#66d9ef">METHODS</span> handle_item_double_click
+      <span style="color:#66d9ef">FOR EVENT</span> item_double_click <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+      <span style="color:#66d9ef">IMPORTING</span> node_key
+                fieldname.
+    <span style="color:#66d9ef">METHODS</span> handle_button_click
+      <span style="color:#66d9ef">FOR EVENT</span> button_click <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+      <span style="color:#66d9ef">IMPORTING</span> node_key
+                fieldname.
+    <span style="color:#66d9ef">METHODS</span> handle_link_click
+      <span style="color:#66d9ef">FOR EVENT</span> link_click <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+      <span style="color:#66d9ef">IMPORTING</span> node_key
+                fieldname.
+    <span style="color:#66d9ef">METHODS</span> handle_header_click
+      <span style="color:#66d9ef">FOR EVENT</span> header_click <span style="color:#66d9ef">OF</span> cl_gui_alv_tree
+      <span style="color:#66d9ef">IMPORTING</span> fieldname.
+<span style="color:#66d9ef">ENDCLASS</span>.
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_tree_event_receiver IMPLEMENTATION</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_tree_event_receiver <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_node_ctmenu_request</span>.
+<span style="color:#75715e">*   append own functions</span>
+    <span style="color:#66d9ef">CALL METHOD</span> menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;USER1&#39;</span>
+                          text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Usercmd 1&#39;</span>.            <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CALL METHOD</span> menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;USER2&#39;</span>
+                          text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Usercmd 2&#39;</span>.            <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CALL METHOD</span> menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;USER3&#39;</span>
+                          text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Usercmd 3&#39;</span>.            <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_node_ctmenu_selected</span>.
+    <span style="color:#66d9ef">CASE</span> fcode.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;USER1&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;USER2&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;USER3&#39;</span>.
+        <span style="color:#66d9ef">MESSAGE</span> i000(<span style="color:#ae81ff">0</span>h) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;Node-Context-Menu on Node &#39;</span> node_key
+                              <span style="color:#e6db74">&#39;fcode : &#39;</span> fcode.             <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_item_ctmenu_request</span> .
+<span style="color:#75715e">*   append own functions</span>
+    <span style="color:#66d9ef">CALL METHOD</span> menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;USER1&#39;</span>
+                          text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Usercmd 1&#39;</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;USER2&#39;</span>
+                          text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Usercmd 2&#39;</span>.
+    <span style="color:#66d9ef">CALL METHOD</span> menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;USER3&#39;</span>
+                          text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Usercmd 3&#39;</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_item_ctmenu_selected</span>.
+    <span style="color:#66d9ef">CASE</span> fcode.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;USER1&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;USER2&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;USER3&#39;</span>.
+        <span style="color:#66d9ef">MESSAGE</span> i000(<span style="color:#ae81ff">0</span>h) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;Item-Context-Menu on Node &#39;</span> node_key
+                              <span style="color:#e6db74">&#39;Fieldname : &#39;</span> fieldname.     <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_item_double_click</span>.
+<span style="color:#75715e">* Processing for when user double clicks on ALVtree</span>
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_button_click</span>.
+<span style="color:#75715e">* Processing when user clicks button</span>
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_link_click</span>.
+<span style="color:#75715e">* ??</span>
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_header_click</span>.
+<span style="color:#75715e">* Processing for when user clicks on ALVtree column headers</span>
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+</code></pre></div><h4 id="注册事件">注册事件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;-------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      REGISTER_EVENTS</span>
+<span style="color:#75715e">*&amp;-------------------------------------------------------------*</span>
+<span style="color:#75715e">* define the events which will be passed to the backend</span>
+  <span style="color:#66d9ef">data</span>: lt_events <span style="color:#66d9ef">type </span>cntl_simple_events,
+        l_event <span style="color:#66d9ef">type </span>cntl_simple_event.
+<span style="color:#75715e">* define the events which will be passed to the backend</span>
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_expand_no_children.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_checkbox_change.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_header_context_men_req.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_node_context_menu_req.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_item_context_menu_req.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_item_double_click.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_header_click.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  l_event<span style="color:#f92672">-</span>eventid <span style="color:#f92672">=</span> cl_gui_column_tree<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>eventid_item_keypress.
+  <span style="color:#66d9ef">append</span> l_event <span style="color:#66d9ef">to</span> lt_events.
+  <span style="color:#66d9ef">call method</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_registered_events
+    <span style="color:#66d9ef">exporting</span>
+      <span style="color:#66d9ef">events</span> <span style="color:#f92672">=</span> lt_events
+    <span style="color:#66d9ef">exceptions</span>
+      cntl_error                <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      cntl_system_error         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      illegal_event_combination <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">if</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">message</span> x208(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">with</span> <span style="color:#e6db74">&#39;ERROR&#39;</span>.                       <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">endif</span>.
+<span style="color:#75715e">* set Handler</span>
+  <span style="color:#66d9ef">data</span>: l_event_receiver <span style="color:#66d9ef">type ref to</span> lcl_tree_event_receiver.
+  <span style="color:#66d9ef">create object</span> l_event_receiver.
+  <span style="color:#66d9ef">set handler</span> l_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_node_ctmenu_request <span style="color:#66d9ef">for</span> gd_tree.
+  <span style="color:#66d9ef">set handler</span> l_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_node_ctmenu_selected <span style="color:#66d9ef">for</span> gd_tree.
+  <span style="color:#66d9ef">set handler</span> l_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_item_ctmenu_request <span style="color:#66d9ef">for</span> gd_tree.
+  <span style="color:#66d9ef">set handler</span> l_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_item_ctmenu_selected <span style="color:#66d9ef">for</span> gd_tree.
+  <span style="color:#66d9ef">set handler</span> l_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_item_double_click <span style="color:#66d9ef">for</span> gd_tree.
+  <span style="color:#66d9ef">set handler</span> l_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>handle_header_click <span style="color:#66d9ef">for</span> gd_tree.
+</code></pre></div><h3 id="alvtree-工具栏处理">ALVtree 工具栏处理</h3>
+<p><code>INCLUDE ZTEST_TOOLBAR_EVENT_RECEIVER.</code> ：Toobar Process</p>
+<p>定义类来处理用户定义的 ALVtree 工具栏按钮。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*--------------------------------------------------------------*</span>
+<span style="color:#75715e">*   INCLUDE ZTEST_TOOLBAR_EVENT_RECEIVER                       *</span>
+<span style="color:#75715e">*--------------------------------------------------------------*</span>
+<span style="color:#66d9ef">data</span> mr_toolbar <span style="color:#66d9ef">type ref to</span> cl_gui_toolbar.  <span style="color:#75715e">&#34;Add to top include
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLASS</span> lcl_toolbar_event_receiver <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>: on_function_selected
+               <span style="color:#66d9ef">FOR EVENT</span> function_selected <span style="color:#66d9ef">OF</span> cl_gui_toolbar
+                 <span style="color:#66d9ef">IMPORTING</span> fcode,
+             on_toolbar_dropdown
+               <span style="color:#66d9ef">FOR EVENT</span> dropdown_clicked <span style="color:#66d9ef">OF</span> cl_gui_toolbar
+                 <span style="color:#66d9ef">IMPORTING</span> fcode
+                           posx
+                           posy.
+<span style="color:#66d9ef">ENDCLASS</span>.
+<span style="color:#75715e">*-------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_toolbar_event_receiver IMPLEMENTATION</span>
+<span style="color:#75715e">*-------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_toolbar_event_receiver <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_function_selected</span>.
+    <span style="color:#66d9ef">DATA</span>: ls_sflight <span style="color:#66d9ef">TYPE </span>sflight.
+    <span style="color:#66d9ef">DATA</span>: lt_list_commentary <span style="color:#66d9ef">TYPE </span>slis_t_listheader,
+          l_logo             <span style="color:#66d9ef">TYPE </span>sdydo_value.
+<span style="color:#75715e">*   Processing for user defined tollbar button goes here</span>
+    <span style="color:#66d9ef">CASE</span> fcode.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;NEXT&#39;</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;DELETE&#39;</span>.
+        <span style="color:#66d9ef">DATA</span>: lt_selected_node <span style="color:#66d9ef">TYPE </span>lvc_t_nkey.
+        <span style="color:#66d9ef">DATA</span>: e_selected_node     <span style="color:#66d9ef">TYPE </span>lvc_nkey,
+              e_fieldname         <span style="color:#66d9ef">TYPE </span>lvc_fname.
+        <span style="color:#66d9ef">DATA</span>: lt_outtab_line(<span style="color:#ae81ff">100</span>)  <span style="color:#66d9ef">TYPE </span>c,
+              lt_node_text         <span style="color:#66d9ef">TYPE </span>lvc_value.
+        <span style="color:#66d9ef">CALL METHOD</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_selected_nodes
+                <span style="color:#66d9ef">CHANGING</span>
+                   ct_selected_nodes <span style="color:#f92672">=</span> lt_selected_node.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;INSERT_LC&#39;</span>.
+<span style="color:#75715e">*     Code for function code INSERT_LC goes here</span>
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;INSERT_FC&#39;</span>.
+<span style="color:#75715e">*     Code for function code INSERT_FC goes here</span>
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;INSERT_FS&#39;</span>.
+<span style="color:#75715e">*     Code for function code INSERT_FS goes here</span>
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;INSERT_LS&#39;</span>.
+<span style="color:#75715e">*     Code for function code INSERT_LS goes here</span>
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;INSERT_NS&#39;</span>.
+<span style="color:#75715e">*     Code for function code INSERT_NS goes here</span>
+    <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#75715e">*   update frontend</span>
+    <span style="color:#66d9ef">CALL METHOD</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>frontend_update.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_toolbar_dropdown</span>.
+<span style="color:#75715e">* create contextmenu</span>
+    <span style="color:#66d9ef">DATA</span>: l_menu <span style="color:#66d9ef">TYPE REF TO</span> cl_ctmenu,
+          l_fc_handled <span style="color:#66d9ef">TYPE </span>as4flag.
+    <span style="color:#66d9ef">CREATE OBJECT</span> l_menu.
+    <span style="color:#66d9ef">CLEAR</span> l_fc_handled.
+<span style="color:#75715e">*   Setup Insert button so options are displayed as drop doan menu</span>
+    <span style="color:#66d9ef">CASE</span> fcode.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;INSERT_LC&#39;</span>.
+        l_fc_handled <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">*       insert as last child</span>
+        <span style="color:#66d9ef">CALL METHOD</span> l_menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSERT_LC&#39;</span>
+                text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Insert New Line as Last Child&#39;</span>.  <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span><span style="color:#75715e">*       insert as first child</span>
+        <span style="color:#66d9ef">CALL METHOD</span> l_menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSERT_FC&#39;</span>
+                text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Insert New Line as First Child&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span><span style="color:#75715e">*       insert as next sibling</span>
+        <span style="color:#66d9ef">CALL METHOD</span> l_menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSERT_NS&#39;</span>
+                text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Insert New Line as Next Sibling&#39;</span>.<span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span><span style="color:#75715e">*       insert as last sibling</span>
+        <span style="color:#66d9ef">CALL METHOD</span> l_menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSERT_LS&#39;</span>
+                text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Insert New Line as Last Sibling&#39;</span>.<span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span><span style="color:#75715e">*       insert as first sibling</span>
+        <span style="color:#66d9ef">CALL METHOD</span> l_menu<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_function
+                <span style="color:#66d9ef">EXPORTING</span> fcode   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSERT_FS&#39;</span>
+              text    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Insert New Line as First Sibling&#39;</span>. <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#75715e">* show dropdownbox</span>
+    <span style="color:#66d9ef">IF</span> l_fc_handled <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+      <span style="color:#66d9ef">CALL METHOD</span> mr_toolbar<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>track_context_menu
+        <span style="color:#66d9ef">EXPORTING</span>
+            context_menu <span style="color:#f92672">=</span> l_menu
+            posx         <span style="color:#f92672">=</span> posx
+            posy         <span style="color:#f92672">=</span> posy.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+
+</code></pre></div><h4 id="change_toolbar">CHANGE_TOOLBAR</h4>
+<p>在 <code>CALL METHOD gd_tree-&gt;set_table_for_first_display</code> 之后执行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;-------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      CHANGE_TOOLBAR</span>
+<span style="color:#75715e">*&amp;-------------------------------------------------------------*</span>
+<span style="color:#75715e">* get toolbar control</span>
+  <span style="color:#66d9ef">call method</span> gd_tree<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_toolbar_object
+          <span style="color:#66d9ef">importing</span>
+              er_toolbar <span style="color:#f92672">=</span> mr_toolbar.
+  <span style="color:#66d9ef">check</span> <span style="color:#f92672">not</span> mr_toolbar <span style="color:#f92672">is initial</span>.
+<span style="color:#75715e">* add seperator to toolbar</span>
+  <span style="color:#66d9ef">call method</span> mr_toolbar<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_button
+          <span style="color:#66d9ef">exporting</span>
+              fcode     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+              icon      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+              butn_type <span style="color:#f92672">=</span> cntb_btype_sep
+              text      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+              quickinfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;This is a Seperator&#39;</span>.         <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span><span style="color:#75715e">* add Standard Button to toolbar (for Delete Subtree)</span>
+  <span style="color:#66d9ef">call method</span> mr_toolbar<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_button
+          <span style="color:#66d9ef">exporting</span>
+              fcode     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DELETE&#39;</span>           <span style="color:#75715e">&#34;Function code of button
+</span><span style="color:#75715e"></span>              icon      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@18@&#39;</span>             <span style="color:#75715e">&#34;Icon ID (see )
+</span><span style="color:#75715e"></span>              butn_type <span style="color:#f92672">=</span> cntb_btype_button  <span style="color:#75715e">&#34;Button type
+</span><span style="color:#75715e"></span>              text      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>                 <span style="color:#75715e">&#34;Button text
+</span><span style="color:#75715e"></span>              quickinfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Delete subtree&#39;</span>.  <span style="color:#75715e">&#34;Quick info text
+</span><span style="color:#75715e"></span><span style="color:#75715e">* add Dropdown Button to toolbar (for Insert Line)</span>
+  <span style="color:#66d9ef">call method</span> mr_toolbar<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_button
+          <span style="color:#66d9ef">exporting</span>
+              fcode     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSERT_LC&#39;</span>         <span style="color:#75715e">&#34;Function code of button
+</span><span style="color:#75715e"></span>              icon      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@17@&#39;</span>              <span style="color:#75715e">&#34;Icon ID (see )
+</span><span style="color:#75715e"></span>              butn_type <span style="color:#f92672">=</span> cntb_btype_dropdown <span style="color:#75715e">&#34;Button type
+</span><span style="color:#75715e"></span>              text      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>                  <span style="color:#75715e">&#34;Button text
+</span><span style="color:#75715e"></span>              quickinfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Insert Line&#39;</span>.      <span style="color:#75715e">&#34;Quick info text
+</span><span style="color:#75715e"></span><span style="color:#75715e">* set event-handler for toolbar-control</span>
+  <span style="color:#66d9ef">data</span>: toolbar_event_receiver <span style="color:#66d9ef">type ref to</span> lcl_toolbar_event_receiver.
+  <span style="color:#66d9ef">create object</span> toolbar_event_receiver.
+  <span style="color:#66d9ef">set handler</span> toolbar_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_function_selected <span style="color:#66d9ef">for</span> mr_toolbar.
+  <span style="color:#66d9ef">set handler</span> toolbar_event_receiver<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_toolbar_dropdown <span style="color:#66d9ef">for</span> mr_toolbar.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>988</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_ALV_Tree/" class="prev" rel="prev" title=" ALV Tree 系统标准程序 "><i class="iconfont icon-dajiantou"></i>&nbsp; ALV Tree 系统标准程序 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_ALV_TreeDemo/" class="next" rel="next" title=" ALVTree Demo "> ALVTree Demo &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-19 00:00:00 \x2b0000 UTC',
+        title: ' ALVTree Event ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

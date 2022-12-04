@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_SmartformsToftp/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/Python_Pycharm/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/Python_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Python 基础  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Python 基础  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Python 基础 "/>
+<meta name="twitter:description" content="变量定义和数据类型 变量定义 Python的变量命名规则： 硬性规则： 变量由字母、数字和下划线构成，不能以数字开头 大小写敏感 不能跟python的关"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Python 基础 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/Python_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "python",
+  "wordcount":  3863 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/Python_Basic\/",
+  "datePublished": "2018-12-21T00:00:00\x2b00:00",
+  "dateModified": "2018-12-21T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Python 基础 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-12-21 >21 December 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/Python/"> Python </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="变量定义和数据类型">变量定义和数据类型</h3>
+<h4 id="变量定义">变量定义</h4>
+<p>Python的变量命名规则：</p>
+<ul>
+<li>硬性规则：
+<ul>
+<li>变量由字母、数字和下划线构成，不能以数字开头</li>
+<li>大小写敏感</li>
+<li>不能跟python的关键字和系统保留字冲突</li>
+</ul>
+</li>
+<li>PEP8要求：
+<ul>
+<li>用小写字母拼写，多个单词用下划线连接</li>
+<li>受保护的实例属性用单个下划线开头</li>
+<li>私有实例属性用两个下划线开头</li>
+</ul>
+</li>
+</ul>
+<p>Python关键字列表：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>False</strong></th>
+<th align="left"><strong>class</strong></th>
+<th align="left"><strong>finally</strong></th>
+<th align="left"><strong>is</strong></th>
+<th align="left"><strong>return</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>None</strong></td>
+<td align="left"><strong>continue</strong></td>
+<td align="left"><strong>for</strong></td>
+<td align="left"><strong>lambda</strong></td>
+<td align="left"><strong>try</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>True</strong></td>
+<td align="left"><strong>def</strong></td>
+<td align="left"><strong>from</strong></td>
+<td align="left"><strong>nonlocal</strong></td>
+<td align="left"><strong>while</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>and</strong></td>
+<td align="left"><strong>del</strong></td>
+<td align="left"><strong>global</strong></td>
+<td align="left"><strong>not</strong></td>
+<td align="left"><strong>with</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>as</strong></td>
+<td align="left"><strong>if/else/elif</strong></td>
+<td align="left"><strong>or</strong></td>
+<td align="left"><strong>yield</strong></td>
+<td align="left"><strong>assert</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>import</strong></td>
+<td align="left"><strong>break</strong></td>
+<td align="left"><strong>pass</strong></td>
+<td align="left"><strong>except</strong></td>
+<td align="left"><strong>raise</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>in</strong></td>
+<td align="left">_* __*</td>
+<td align="left">*</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="数据类型">数据类型</h4>
+<p>基本数据类型：</p>
+<ul>
+<li>
+<p>整型：对整数的处理</p>
+</li>
+<li>
+<p>浮点型：对小数的处理</p>
+</li>
+<li>
+<p>字符串型：单引号和双引号引起来的任意文本</p>
+</li>
+<li>
+<p>布尔型：True和False两种值，也可通过计算得出</p>
+</li>
+<li>
+<p>复数型：数学表示法<code>7i+8j</code></p>
+</li>
+<li>
+<p><code>int()</code>：将一个数值或字符串转换成整数，可以指定进制。</p>
+</li>
+<li>
+<p><code>float()</code>：将一个字符串转换成浮点数。</p>
+</li>
+<li>
+<p><code>str()</code>：将指定的对象转换成字符串形式，可以指定编码。</p>
+</li>
+<li>
+<p><code>chr()</code>：将整数转换成该编码对应的字符串（一个字符）。</p>
+</li>
+<li>
+<p><code>ord()</code>：将字符串（一个字符）转换成对应的编码（整数）。</p>
+</li>
+</ul>
+<p>复杂数据类型：</p>
+<ul>
+<li>列表：<code>[ ]</code>，可以存储任意类型，任意数量的变量</li>
+<li>集合：<code>{ }</code>，可以存储任意类型变量，定以后不能更改其元素</li>
+<li>字典：<code>{ }</code>，以键值对形式存储数据元素</li>
+</ul>
+<h3 id="运算操作符">运算操作符</h3>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>+</strong></th>
+<th align="left"><strong>和</strong></th>
+<th align="left"><strong>/</strong></th>
+<th align="left"><strong>除</strong></th>
+<th align="left"><strong>&laquo;</strong></th>
+<th align="left"><strong>左移</strong></th>
+<th align="left"><strong>&amp;</strong></th>
+<th align="left"><strong>按位与</strong></th>
+<th align="left"><strong>&lt;=</strong></th>
+<th align="left">小于等于</th>
+<th align="left">is/is not</th>
+<th>身份运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>-</strong></td>
+<td align="left"><strong>差</strong></td>
+<td align="left"><strong>//</strong></td>
+<td align="left"><strong>模</strong></td>
+<td align="left"><strong>&raquo;</strong></td>
+<td align="left"><strong>右移</strong></td>
+<td align="left"><strong>|</strong></td>
+<td align="left"><strong>按位或</strong></td>
+<td align="left"><strong>&gt;=</strong></td>
+<td align="left"><strong>大于等于</strong></td>
+<td align="left"><strong>in/not in</strong></td>
+<td><strong>成员运算符</strong></td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left"><strong>积</strong></td>
+<td align="left"><strong>%</strong></td>
+<td align="left"><strong>整除</strong></td>
+<td align="left"><strong>&lt;</strong></td>
+<td align="left"><strong>小于</strong></td>
+<td align="left"><strong>^</strong></td>
+<td align="left"><strong>按位异或</strong></td>
+<td align="left"><strong>==</strong></td>
+<td align="left"><strong>等于</strong></td>
+<td align="left"><strong>not/and/or</strong></td>
+<td><strong>逻辑运算符</strong></td>
+</tr>
+<tr>
+<td align="left">**</td>
+<td align="left"><strong>幂运算</strong></td>
+<td align="left"><strong>@</strong></td>
+<td align="left"></td>
+<td align="left"><strong>&gt;</strong></td>
+<td align="left"><strong>大于</strong></td>
+<td align="left"><strong>~</strong></td>
+<td align="left"><strong>按位取反</strong></td>
+<td align="left"><strong>!=</strong></td>
+<td align="left"><strong>不等于</strong></td>
+<td align="left"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>在实际开发中，运算会有不同的优先级，可以用括号保证运算的执行顺序。</strong></p>
+<h3 id="delimiters">Delimiters</h3>
+<table>
+<thead>
+<tr>
+<th align="left">(  )</th>
+<th align="left">,</th>
+<th align="left">:</th>
+<th align="left">- &gt;</th>
+<th align="left">*=</th>
+<th align="left">%=</th>
+<th align="left">|=</th>
+<th align="left">&laquo;=</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">[  ]</td>
+<td align="left">.</td>
+<td align="left">;</td>
+<td align="left">+=</td>
+<td align="left">/=</td>
+<td align="left">@=</td>
+<td align="left">^=</td>
+<td align="left">**=</td>
+</tr>
+<tr>
+<td align="left">{   }</td>
+<td align="left">@</td>
+<td align="left">=</td>
+<td align="left">-=</td>
+<td align="left">//=</td>
+<td align="left">&amp;=</td>
+<td align="left">&raquo;=</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="分支结构">分支结构</h3>
+<p>在Python中，构造分支结构使用 if、else 和 elif 关键字。与其他语言不同 Python 没有使用花括号构建代码块，而是使用其独特的缩进方式来设置代码的层次结构。连续的代码保持相同的缩进那么就属于同一个代码块。</p>
+<p>分支结构是可以嵌套使用的。</p>
+<h3 id="list">List</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">append</span>(<span style="color:#a6e22e">x</span>)
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#a6e22e">iterable</span>)
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">i</span>,<span style="color:#a6e22e">x</span>)
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#a6e22e">x</span>)
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">pop</span>([<span style="color:#a6e22e">i</span>])
+<span style="color:#a6e22e">from</span> <span style="color:#a6e22e">collections</span> <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">deque</span>  <span style="color:#f92672">:</span>  <span style="color:#a6e22e">deque</span>([])   <span style="color:#a6e22e">deque</span>.<span style="color:#a6e22e">popleft</span>()
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">clear</span>()   <span style="color:#f92672">=</span>  <span style="color:#a6e22e">del</span> <span style="color:#a6e22e">list</span>
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">index</span>(<span style="color:#a6e22e">x</span>[,<span style="color:#a6e22e">start</span>[,<span style="color:#a6e22e">end</span>]])
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">count</span>(<span style="color:#a6e22e">x</span>)
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">None</span>,<span style="color:#a6e22e">reverse</span><span style="color:#f92672">=</span><span style="color:#a6e22e">False</span>)
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">reverse</span>()
+<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">copy</span>() <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>[<span style="color:#f92672">:</span>]
+</code></pre></div><h3 id="tuples--sequences">Tuples &amp; Sequences</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#ae81ff">1.</span> <span style="color:#a6e22e">enumerate</span>()<span style="color:#f92672">:</span> 
+   <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">v</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">enumerate</span>([<span style="color:#e6db74">&#39;tic&#39;</span>, <span style="color:#e6db74">&#39;tac&#39;</span>, <span style="color:#e6db74">&#39;toe&#39;</span>])<span style="color:#f92672">:</span>
+	...     <span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">v</span>)
+	...
+	<span style="color:#ae81ff">0</span> <span style="color:#a6e22e">tic</span>
+	<span style="color:#ae81ff">1</span> <span style="color:#a6e22e">tac</span>
+	<span style="color:#ae81ff">2</span> <span style="color:#a6e22e">toe</span>
+<span style="color:#ae81ff">2.</span> <span style="color:#a6e22e">zip</span>()  <span style="color:#a6e22e">reversed</span>()  <span style="color:#a6e22e">sorted</span>()
+<span style="color:#ae81ff">3.</span> 
+</code></pre></div><h3 id="json">JSON</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">Python</span> <span style="color:#a6e22e">与</span> <span style="color:#a6e22e">JSON</span> <span style="color:#a6e22e">对照</span>
+<span style="color:#a6e22e">dict</span>              {}
+<span style="color:#a6e22e">list</span>              []
+<span style="color:#a6e22e">str</span>               <span style="color:#e6db74">&#39;string&#39;</span>
+<span style="color:#66d9ef">int</span><span style="color:#f92672">/</span><span style="color:#66d9ef">float</span>         <span style="color:#ae81ff">1234.56</span>
+<span style="color:#a6e22e">True</span><span style="color:#f92672">/</span><span style="color:#a6e22e">False</span>        <span style="color:#66d9ef">true</span><span style="color:#f92672">/</span><span style="color:#66d9ef">false</span>
+<span style="color:#a6e22e">None</span>              <span style="color:#66d9ef">null</span>
+<span style="color:#f92672">&gt;</span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">json</span>
+<span style="color:#f92672">&gt;</span><span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">dumps</span>([<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;simple&#39;</span>, <span style="color:#e6db74">&#39;list&#39;</span>])
+<span style="color:#f92672">&gt;</span><span style="color:#e6db74">&#39;[1, &#34;simple&#34;, &#34;list&#34;]&#39;</span>
+<span style="color:#a6e22e">pickle</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">Pickle</span> <span style="color:#a6e22e">Module</span>
+	    <span style="color:#a6e22e">pickle</span>.<span style="color:#a6e22e">dump</span>().
+	    <span style="color:#a6e22e">pickle</span>.<span style="color:#a6e22e">load</span>()
+</code></pre></div><h3 id="函数">函数</h3>
+<p><img src="/images/python/pythonFun.png" alt="Python内置函数"></p>
+<p>位置参数：根据参数位置匹配。</p>
+<p>默认参数：<code>def fun(arg1,arg2,arg = 'xxx')</code></p>
+<ul>
+<li>定义默认参数时，，默认参数必须指向不变对象</li>
+<li>当函数有多个参数时，将变化大的参数放前面，变化小的放后面。变化小的可以作为默认参数。</li>
+<li>默认按参数位置匹配，可以通过名字进行相应的默认字段赋值</li>
+</ul>
+<p>可变参数：<code>def fun(arg1,arg2,*numbers)</code></p>
+<ul>
+<li>允许传入多个参数，在函数调用时自动组装成一个 tuple</li>
+<li>当参数为 list 或则 tuple 时，可以使用<code>*list</code>、<code>*tuple</code></li>
+</ul>
+<p>关键字参数：<code>def fun(arg1,arg2,**kw)</code></p>
+<ul>
+<li>允许传入多个含参数名的参数，这些关键字参数在函数内部自动组装为一个 dict</li>
+<li>传入 dict 时，只是将所有的参数传入函数，对参数的改变不会影响到函数外的 dict</li>
+</ul>
+<p>命名关键字参数：<code>def fun (arg1,arg2,*,arg3,arg4)</code></p>
+<ul>
+<li>对于关键字参数，需要在函数内部进行检查,使用命名关键字必须传入参数名</li>
+</ul>
+<p>参数组合：参数定义的顺序（必选参数，默认参数，可变参数，命名关键字，关键字参数）</p>
+<p>对于任意函数，都可以通过类似 <code>func(*args, **kw)</code> 的形式调用它，无论它的参数是如何定义的。</p>
+<h4 id="递归函数">递归函数</h4>
+<p>注意栈溢出问题：解决递归调用栈溢出的方法是通过尾递归优化，事实上尾递归和循环的效果是一样的，所以，把循环看成是一种特殊的尾递归函数也是可以的。</p>
+<p>尾递归：指在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
+<h3 id="迭代器iterable">迭代器（Iterable）</h3>
+<h4 id="原理">原理</h4>
+<p>For调用了var = iter(str)，next(var)，当 next() 没有元素时，raise a Stop Iteration。</p>
+<p>集合数据类型：list、tuple、dict、set、str等</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">generator</span><span style="color:#f92672">:</span><span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">i</span><span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">range</span>(<span style="color:#ae81ff">10</span>))
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">包括生成器和带yield的generator</span> 
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">def</span> <span style="color:#a6e22e">reverse</span>(<span style="color:#a6e22e">data</span>)<span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">index</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">range</span>(<span style="color:#a6e22e">len</span>(<span style="color:#a6e22e">data</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">:</span>
+     <span style="color:#66d9ef">yield</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">index</span>]
+</code></pre></div><h3 id="模块mod">模块(Mod)</h3>
+<p>导入整个模块：<code>import modname.   from modname import *.</code>
+导入模块部分：<code>from modname import name1[, name2[, ... nameN]].</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">OS</span> <span style="color:#a6e22e">Interface</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">os</span><span style="color:#f92672">:</span><span style="color:#a6e22e">getcwd</span>()  <span style="color:#a6e22e">chdir</span>()  <span style="color:#a6e22e">system</span>() <span style="color:#a6e22e">open</span>()
+  <span style="color:#a6e22e">shutil</span><span style="color:#f92672">:</span><span style="color:#a6e22e">copyfile</span>(<span style="color:#e6db74">&#39;source&#39;</span>,<span style="color:#e6db74">&#39;aim&#39;</span>)     <span style="color:#a6e22e">move</span>(<span style="color:#e6db74">&#39;source&#39;</span>,<span style="color:#e6db74">&#39;aim&#39;</span>)
+<span style="color:#a6e22e">File</span> <span style="color:#a6e22e">Wildcards</span><span style="color:#f92672">:</span> 
+  <span style="color:#a6e22e">glob</span><span style="color:#f92672">:</span><span style="color:#a6e22e">glob</span>.<span style="color:#a6e22e">glog</span>(<span style="color:#e6db74">&#39;*.py&#39;</span>)
+<span style="color:#a6e22e">Output</span> <span style="color:#a6e22e">Formatting</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">reprlib</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reprlib</span>.<span style="color:#a6e22e">repr</span>(<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;adfasfsadfsfsfsfs&#39;</span>))
+  <span style="color:#a6e22e">pprint</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pprint</span>.<span style="color:#a6e22e">pprint</span>((<span style="color:#a6e22e">source</span>,<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">vaule</span>))
+  <span style="color:#a6e22e">textwrap</span><span style="color:#f92672">:</span><span style="color:#a6e22e">格式化输出段落适应屏幕宽度</span>  <span style="color:#a6e22e">textwrap</span>.<span style="color:#a6e22e">fill</span>(<span style="color:#a6e22e">source</span>,<span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#a6e22e">value</span>)
+  <span style="color:#a6e22e">locale</span><span style="color:#f92672">:</span><span style="color:#a6e22e">culture</span> <span style="color:#a6e22e">specific</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">formats</span>	
+      <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234567.8</span>
+      <span style="color:#a6e22e">locale</span>.<span style="color:#a6e22e">format_string</span>(<span style="color:#e6db74">&#34;%s%.*f&#34;</span>, (<span style="color:#a6e22e">conv</span>[<span style="color:#e6db74">&#39;currency_symbol&#39;</span>],<span style="color:#a6e22e">conv</span>[<span style="color:#e6db74">&#39;frac_digits&#39;</span>], <span style="color:#a6e22e">x</span>),
+                           <span style="color:#a6e22e">grouping</span><span style="color:#f92672">=</span><span style="color:#a6e22e">True</span>)
+      <span style="color:#e6db74">&#39;$1,234,567.80&#39;</span>
+<span style="color:#a6e22e">Command</span> <span style="color:#a6e22e">Line</span> <span style="color:#a6e22e">Arg</span><span style="color:#f92672">:</span>	
+  <span style="color:#a6e22e">sys</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sys</span>. <span style="color:#a6e22e">args</span>  <span style="color:#a6e22e">sys</span>.<span style="color:#a6e22e">stdin</span> <span style="color:#a6e22e">sys</span>.<span style="color:#a6e22e">stdout</span>, <span style="color:#a6e22e">sys</span>.<span style="color:#a6e22e">stderr</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#39;Error msg&#39;</span>) , <span style="color:#a6e22e">sys</span>.<span style="color:#a6e22e">exit</span>()
+  <span style="color:#a6e22e">getopt</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">argparse</span><span style="color:#f92672">:</span>
+String <span style="color:#a6e22e">Pattern</span> <span style="color:#a6e22e">Matching</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">re</span><span style="color:#f92672">:</span><span style="color:#a6e22e">re</span>.<span style="color:#a6e22e">fundall</span>(), <span style="color:#a6e22e">re</span>.<span style="color:#a6e22e">sub</span>  <span style="color:#a6e22e">etc</span>.
+<span style="color:#a6e22e">Templating</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">string</span>(<span style="color:#a6e22e">Template</span>)<span style="color:#f92672">:</span><span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Template</span>(<span style="color:#e6db74">&#39;${village}folk send $$10 to $cause.&#39;</span>)
+      <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">substitute</span>(<span style="color:#a6e22e">village</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Nottingham&#39;</span>, <span style="color:#a6e22e">cause</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;the ditch fund&#39;</span>)
+      <span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#e6db74">&#39;Nottinghamfolk send $10 to the ditch fund.&#39;</span>
+<span style="color:#a6e22e">Mathematics</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">math</span><span style="color:#f92672">:</span><span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">cos</span>(),<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">log</span>() <span style="color:#a6e22e">etc</span>.
+  <span style="color:#a6e22e">random</span><span style="color:#f92672">:</span><span style="color:#a6e22e">random</span>.<span style="color:#a6e22e">choice</span>([]),<span style="color:#a6e22e">random</span>.<span style="color:#a6e22e">sample</span>(<span style="color:#a6e22e">range</span>(<span style="color:#ae81ff">100</span>),<span style="color:#ae81ff">10</span>) <span style="color:#a6e22e">etc</span>,
+  <span style="color:#a6e22e">statistics</span><span style="color:#f92672">:</span>(<span style="color:#a6e22e">mean</span>,<span style="color:#a6e22e">median</span>,<span style="color:#a6e22e">variance</span>)<span style="color:#a6e22e">etc</span>.
+<span style="color:#a6e22e">Internet</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">urllim</span>.<span style="color:#a6e22e">request</span>(<span style="color:#a6e22e">retrieving</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">URLs</span>)<span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">smtplib</span>(<span style="color:#a6e22e">sending</span> <span style="color:#a6e22e">mail</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">smtplib</span>.<span style="color:#a6e22e">SMTP</span>(<span style="color:#e6db74">&#39;xxx&#39;</span>) 
+  <span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">sendmail</span>(<span style="color:#e6db74">&#39;from_email&#39;</span>,<span style="color:#e6db74">&#39;to_email&#39;</span>)
+  <span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">quit</span>()
+<span style="color:#a6e22e">Dates</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">Times</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">datetime</span>(<span style="color:#a6e22e">date</span>) <span style="color:#f92672">:</span>  <span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">today</span>()  
+<span style="color:#a6e22e">Data</span> <span style="color:#a6e22e">Compression</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">zlib</span>,<span style="color:#a6e22e">gzip</span>,<span style="color:#a6e22e">bz2</span>,<span style="color:#a6e22e">lzma</span>,<span style="color:#a6e22e">zipfile</span>,<span style="color:#a6e22e">tarfile</span>)
+  <span style="color:#a6e22e">zlib</span><span style="color:#f92672">:</span><span style="color:#a6e22e">zlib</span>.<span style="color:#a6e22e">compress</span>(<span style="color:#e6db74">&#39;source&#39;</span>)   <span style="color:#a6e22e">zlib</span>.<span style="color:#a6e22e">decompress</span>(<span style="color:#e6db74">&#39;zlib_source&#39;</span>)
+<span style="color:#a6e22e">Quality</span> <span style="color:#a6e22e">Control</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">doctest</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">doctest</span>.<span style="color:#a6e22e">testmod</span>()
+  <span style="color:#a6e22e">unittest</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">unittest</span>.<span style="color:#a6e22e">TestCase</span>   <span style="color:#a6e22e">assertRaises</span>()<span style="color:#f92672">:</span>   <span style="color:#a6e22e">unittest</span>.<span style="color:#a6e22e">amin</span>()
+<span style="color:#a6e22e">Multi</span><span style="color:#f92672">-</span><span style="color:#a6e22e">threading</span><span style="color:#f92672">:</span>;
+  <span style="color:#a6e22e">threading</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">threading</span>.<span style="color:#a6e22e">Thread</span>
+<span style="color:#a6e22e">Logging</span><span style="color:#f92672">:</span> 
+  <span style="color:#a6e22e">logging</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sys</span>.<span style="color:#a6e22e">stderr</span>(<span style="color:#a6e22e">file</span>)   <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">debug</span>()  
+  <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">info</span>()  <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">warning</span>()  <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">error</span>() <span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">critical</span>()
+<span style="color:#a6e22e">Weak</span> <span style="color:#a6e22e">References</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">wearkref</span><span style="color:#f92672">:</span> 
+<span style="color:#a6e22e">Tools</span> <span style="color:#a6e22e">For</span> <span style="color:#a6e22e">Lists</span><span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">array</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>(<span style="color:#e6db74">&#39;H&#39;</span>,[<span style="color:#ae81ff">1213</span>,<span style="color:#ae81ff">1414</span>,<span style="color:#ae81ff">4124</span>])  <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">a</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">只计算list中的内容</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">对a的操作只对list有效</span>
+  <span style="color:#a6e22e">collections</span>(<span style="color:#a6e22e">deque</span>)<span style="color:#f92672">:</span>
+  <span style="color:#a6e22e">bisect</span><span style="color:#f92672">:</span><span style="color:#a6e22e">manipulation</span> <span style="color:#a6e22e">sorder</span> <span style="color:#a6e22e">lists</span>  <span style="color:#a6e22e">bisect</span>.<span style="color:#a6e22e">insort</span>(<span style="color:#a6e22e">aim</span>,<span style="color:#a6e22e">source</span>)
+  <span style="color:#a6e22e">heapq</span><span style="color:#f92672">:</span><span style="color:#a6e22e">use</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">repeatedly</span> <span style="color:#a6e22e">access</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">smallest</span> <span style="color:#a6e22e">element</span> <span style="color:#66d9ef">do</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">full</span> <span style="color:#a6e22e">list</span> <span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">堆排序</span>)
+  <span style="color:#a6e22e">heapify</span>(<span style="color:#a6e22e">list</span>)  <span style="color:#a6e22e">heappush</span>(<span style="color:#a6e22e">list</span>,<span style="color:#a6e22e">value</span>)   [<span style="color:#a6e22e">headppop</span>(<span style="color:#a6e22e">list</span>) <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">range</span>(<span style="color:#a6e22e">x</span>)] 
+<span style="color:#a6e22e">Decimal</span> <span style="color:#a6e22e">Floating</span> <span style="color:#a6e22e">Point</span> <span style="color:#a6e22e">Ath</span><span style="color:#f92672">:</span>(<span style="color:#a6e22e">精准计算</span>)
+  <span style="color:#a6e22e">decimal</span><span style="color:#f92672">:</span>  
+    <span style="color:#a6e22e">help</span> <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">financial</span> <span style="color:#a6e22e">applications</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">other</span> <span style="color:#a6e22e">uses</span> <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">require</span> <span style="color:#a6e22e">exact</span> <span style="color:#a6e22e">decimal</span> <span style="color:#a6e22e">representation</span>
+             <span style="color:#ae81ff">2</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">control</span> <span style="color:#a6e22e">over</span> <span style="color:#a6e22e">precision</span>
+             <span style="color:#ae81ff">3</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">control</span> <span style="color:#a6e22e">over</span> <span style="color:#a6e22e">rounding</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">meet</span> <span style="color:#a6e22e">legal</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">regulatory</span> <span style="color:#a6e22e">requirements</span>
+             <span style="color:#ae81ff">4</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">tracking</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">significant</span> <span style="color:#a6e22e">decimal</span> <span style="color:#a6e22e">places</span>, <span style="color:#a6e22e">or</span>
+             <span style="color:#ae81ff">5</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">applications</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">expects</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">results</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">calculations</span> <span style="color:#a6e22e">done</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">hand</span>
+</code></pre></div><h3 id="包管理pip">包管理(pip)</h3>
+<h4 id="create">Create</h4>
+<p>On Windows, invoke the venv command as follows：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">python</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">m</span> <span style="color:#a6e22e">venv</span> <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">path</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">to</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">myenv</span>
+<span style="color:#a6e22e">venv</span> [<span style="color:#f92672">-</span><span style="color:#a6e22e">h</span>] [<span style="color:#f92672">--</span><span style="color:#a6e22e">system</span><span style="color:#f92672">-</span><span style="color:#a6e22e">site</span><span style="color:#f92672">-</span><span style="color:#a6e22e">packages</span>] [<span style="color:#f92672">--</span><span style="color:#a6e22e">symlinks</span> <span style="color:#f92672">|</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">copies</span>] [<span style="color:#f92672">--</span><span style="color:#a6e22e">clear</span>]
+     [<span style="color:#f92672">--</span><span style="color:#a6e22e">upgrade</span>] [<span style="color:#f92672">--</span><span style="color:#a6e22e">without</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pip</span>] <span style="color:#a6e22e">ENV_DIR</span> [<span style="color:#a6e22e">ENV_DIR</span> ...]
+</code></pre></div><p>Activate：安装名\Scripts\activate.bat</p>
+<h4 id="managing-packages--pipon-virtual">Managing Packages  pip(On Virtual)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">https:<span style="color:#f92672">/</span><span style="color:#f92672">/</span>pypi<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>
+pip search xxxx<span style="color:#f92672">.</span>(<span style="color:#960050;background-color:#1e0010">查</span><span style="color:#960050;background-color:#1e0010">找</span>)
+pip install xxxx<span style="color:#f92672">.</span>(<span style="color:#960050;background-color:#1e0010">安</span><span style="color:#960050;background-color:#1e0010">装</span>)
+pip install xxxx<span style="color:#f92672">=</span>version<span style="color:#f92672">.</span>(<span style="color:#960050;background-color:#1e0010">安</span><span style="color:#960050;background-color:#1e0010">装</span><span style="color:#960050;background-color:#1e0010">指</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">版</span><span style="color:#960050;background-color:#1e0010">本</span>)
+pip install <span style="color:#f92672">-</span><span style="color:#f92672">-</span>upgrade xxxx<span style="color:#f92672">.</span>(<span style="color:#960050;background-color:#1e0010">更</span><span style="color:#960050;background-color:#1e0010">新</span><span style="color:#960050;background-color:#1e0010">到</span><span style="color:#960050;background-color:#1e0010">最</span><span style="color:#960050;background-color:#1e0010">新</span><span style="color:#960050;background-color:#1e0010">版</span><span style="color:#960050;background-color:#1e0010">本</span>)
+pip show xxxxx<span style="color:#f92672">.</span>(<span style="color:#960050;background-color:#1e0010">显</span><span style="color:#960050;background-color:#1e0010">示</span><span style="color:#960050;background-color:#1e0010">包</span><span style="color:#960050;background-color:#1e0010">有</span><span style="color:#960050;background-color:#1e0010">关</span><span style="color:#960050;background-color:#1e0010">信</span><span style="color:#960050;background-color:#1e0010">息</span>)
+pip list:(<span style="color:#960050;background-color:#1e0010">将</span><span style="color:#960050;background-color:#1e0010">显</span><span style="color:#960050;background-color:#1e0010">示</span><span style="color:#960050;background-color:#1e0010">虚</span><span style="color:#960050;background-color:#1e0010">拟</span><span style="color:#960050;background-color:#1e0010">环</span><span style="color:#960050;background-color:#1e0010">境</span><span style="color:#960050;background-color:#1e0010">中</span><span style="color:#960050;background-color:#1e0010">安</span><span style="color:#960050;background-color:#1e0010">装</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">所</span><span style="color:#960050;background-color:#1e0010">有</span><span style="color:#960050;background-color:#1e0010">软</span><span style="color:#960050;background-color:#1e0010">件</span><span style="color:#960050;background-color:#1e0010">包</span>)
+pip uninstall xxx,xxxx,xxxx<span style="color:#f92672">.</span>(<span style="color:#960050;background-color:#1e0010">卸</span><span style="color:#960050;background-color:#1e0010">载</span>)
+pip freeze <span style="color:#f92672">&gt;</span> requirements<span style="color:#f92672">.</span>txt<span style="color:#f92672">.</span>(<span style="color:#960050;background-color:#1e0010">以</span><span style="color:#960050;background-color:#1e0010">指</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">文</span><span style="color:#960050;background-color:#1e0010">件</span><span style="color:#960050;background-color:#1e0010">格</span><span style="color:#960050;background-color:#1e0010">式</span><span style="color:#960050;background-color:#1e0010">显</span><span style="color:#960050;background-color:#1e0010">示</span><span style="color:#960050;background-color:#1e0010">已</span><span style="color:#960050;background-color:#1e0010">安</span><span style="color:#960050;background-color:#1e0010">装</span><span style="color:#960050;background-color:#1e0010">软</span><span style="color:#960050;background-color:#1e0010">件</span><span style="color:#960050;background-color:#1e0010">包</span>)
+</code></pre></div><h3 id="异常处理">异常处理</h3>
+<h4 id="捕捉异常">捕捉异常</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语</span><span style="color:#960050;background-color:#1e0010">句</span><span style="color:#f92672">&gt;</span>        <span style="color:#75715e">#运行别的代码</span>
+<span style="color:#66d9ef">except</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#960050;background-color:#1e0010">字</span><span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">：</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语</span><span style="color:#960050;background-color:#1e0010">句</span><span style="color:#f92672">&gt;</span>        <span style="color:#75715e">#如果在try部份引发了&#39;name&#39;异常</span>
+<span style="color:#66d9ef">except</span> <span style="color:#f92672">&lt;</span>name1,name2<span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">据</span><span style="color:#f92672">&gt;</span>:
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语</span><span style="color:#960050;background-color:#1e0010">句</span><span style="color:#f92672">&gt;</span>        <span style="color:#75715e">#如果引发了&#39;name&#39;异常，获得附加的数据</span>
+<span style="color:#66d9ef">else</span>:
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语</span><span style="color:#960050;background-color:#1e0010">句</span><span style="color:#f92672">&gt;</span>        <span style="color:#75715e">#如果没有异常发生</span>
+</code></pre></div><h4 id="最终处理">最终处理</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
+finaly:
+<span style="color:#66d9ef">raise</span>:
+</code></pre></div><h4 id="自定义异常">自定义异常</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Error</span>(<span style="color:#a6e22e">Exception</span>):
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74">Base class for exceptions in this module.</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InputError</span>(Error):
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74">Exception raised for errors in the input.</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    Attributes:</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        expression -- input expression in which the error occurred</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        message -- explanation of the error</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">def</span> __init__(self, expression, message):
+        self<span style="color:#f92672">.</span>expression <span style="color:#f92672">=</span> expression
+        self<span style="color:#f92672">.</span>message <span style="color:#f92672">=</span> message
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TransitionError</span>(Error):
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74">Raised when an operation attempts a state transition that</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">s not</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    allowed.</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    Attributes:</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        previous -- state at beginning of transition</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        next -- attempted new state</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">        message -- explanation of why the specific transition is not allowed</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">def</span> __init__(self, previous, next, message):
+        self<span style="color:#f92672">.</span>previous <span style="color:#f92672">=</span> previous
+        self<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> next
+        self<span style="color:#f92672">.</span>message <span style="color:#f92672">=</span> message
+</code></pre></div><p><img src="https://i.imgur.com/fIWzpEQ.png" alt="异常1"></p>
+<p><img src="https://i.imgur.com/4B9otUe.png" alt="异常2">
+<img src="https://i.imgur.com/xCmfhsi.png" alt="异常3"></p>
+<h3 id="面向对象oo">面向对象(OO)</h3>
+<h4 id="定义">定义</h4>
+<p>类帮助信息：ClassName._doc_查看</p>
+<p>class_suite：有数据属性，类成员，方法组成</p>
+<p>self：代表类的实例，当前对象的地址，而非类，self.class则指向类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassName</span>:
+  <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74">所有员工的基类</span><span style="color:#e6db74">&#34;&#34;&#34;</span>  <span style="color:#75715e">#类文档字符串</span>
+  empCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>    <span style="color:#75715e">#数据属性</span>
+  <span style="color:#66d9ef">def</span> __init__(self, name, salary):   <span style="color:#75715e">#该方法接收参数</span>
+    self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+    self<span style="color:#f92672">.</span>salary <span style="color:#f92672">=</span> salary
+    Employee<span style="color:#f92672">.</span>empCount <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">displayCount</span>(self):
+    <span style="color:#66d9ef">print</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Total Employee </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> Employee<span style="color:#f92672">.</span>empCount
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">displayEmployee</span>(self):
+    <span style="color:#66d9ef">print</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Name : </span><span style="color:#e6db74">&#34;</span>, self<span style="color:#f92672">.</span>name,  <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">, Salary: </span><span style="color:#e6db74">&#34;</span>, self<span style="color:#f92672">.</span>salary
+</code></pre></div><h4 id="添加删除修改访问类的属性">添加，删除，修改，访问类的属性</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">demo<span style="color:#f92672">.</span>attr <span style="color:#f92672">=</span> value1<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">添</span><span style="color:#960050;background-color:#1e0010">加</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span>
+demo<span style="color:#f92672">.</span>attr <span style="color:#f92672">=</span> value2<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">修</span><span style="color:#960050;background-color:#1e0010">改</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span>
+<span style="color:#66d9ef">del</span> demo<span style="color:#f92672">.</span>attr<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">删</span><span style="color:#960050;background-color:#1e0010">除</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span>
+getattr(obj,name[,default])<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">访</span><span style="color:#960050;background-color:#1e0010">问</span><span style="color:#960050;background-color:#1e0010">对</span><span style="color:#960050;background-color:#1e0010">象</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span>
+hasattr(obj,name[,default])<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">检</span><span style="color:#960050;background-color:#1e0010">查</span><span style="color:#960050;background-color:#1e0010">是</span><span style="color:#960050;background-color:#1e0010">否</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">在</span><span style="color:#960050;background-color:#1e0010">一</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span>
+setattr(obj,name[,default])<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">设</span><span style="color:#960050;background-color:#1e0010">置</span><span style="color:#960050;background-color:#1e0010">一</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">果</span><span style="color:#960050;background-color:#1e0010">不</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">在</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">会</span><span style="color:#960050;background-color:#1e0010">创</span><span style="color:#960050;background-color:#1e0010">建</span><span style="color:#960050;background-color:#1e0010">一</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">新</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span>
+delattr(obj,name)<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">删</span><span style="color:#960050;background-color:#1e0010">除</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span>
+</code></pre></div><h4 id="内置属性类">内置属性类</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">__dict__<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#960050;background-color:#1e0010">包</span><span style="color:#960050;background-color:#1e0010">含</span><span style="color:#960050;background-color:#1e0010">一</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">字</span><span style="color:#960050;background-color:#1e0010">典</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">由</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">据</span><span style="color:#960050;background-color:#1e0010">属</span><span style="color:#960050;background-color:#1e0010">性</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">成</span><span style="color:#960050;background-color:#1e0010">）</span>
+__doc__<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">文</span><span style="color:#960050;background-color:#1e0010">档</span><span style="color:#960050;background-color:#1e0010">字</span><span style="color:#960050;background-color:#1e0010">符</span><span style="color:#960050;background-color:#1e0010">串</span>
+__name__<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">名</span>
+_module_<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">义</span><span style="color:#960050;background-color:#1e0010">所</span><span style="color:#960050;background-color:#1e0010">在</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">模</span><span style="color:#960050;background-color:#1e0010">块</span>
+_bases_<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">所</span><span style="color:#960050;background-color:#1e0010">有</span><span style="color:#960050;background-color:#1e0010">父</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">构</span><span style="color:#960050;background-color:#1e0010">成</span><span style="color:#960050;background-color:#1e0010">元</span><span style="color:#960050;background-color:#1e0010">素</span>
+__del__<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">析</span><span style="color:#960050;background-color:#1e0010">构</span><span style="color:#960050;background-color:#1e0010">函</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">在</span><span style="color:#960050;background-color:#1e0010">队</span><span style="color:#960050;background-color:#1e0010">象</span><span style="color:#960050;background-color:#1e0010">销</span><span style="color:#960050;background-color:#1e0010">毁</span><span style="color:#960050;background-color:#1e0010">时</span><span style="color:#960050;background-color:#1e0010">被</span><span style="color:#960050;background-color:#1e0010">调</span><span style="color:#960050;background-color:#1e0010">用</span>
+__class__:<span style="color:#960050;background-color:#1e0010">是</span><span style="color:#960050;background-color:#1e0010">实</span><span style="color:#960050;background-color:#1e0010">例</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">类</span>
+</code></pre></div><h4 id="对象销毁垃圾回收">对象销毁（垃圾回收）</h4>
+<p>采用引用计数来跟踪和回收垃圾</p>
+<h4 id="封装">封装</h4>
+<p>如果类具有<code>__setattr__()</code>或 <code>__delattr__()</code>方法，则调用此方法而不是直接更新实例字典。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">__getattr__</span>(<span style="color:#a6e22e">self</span>,<span style="color:#a6e22e">attr1</span>,<span style="color:#a6e22e">attr2</span>)<span style="color:#f92672">:</span>
+<span style="color:#a6e22e">setattr</span>(<span style="color:#a6e22e">self</span>,<span style="color:#a6e22e">attr1</span>,<span style="color:#a6e22e">attr2</span>)   
+<span style="color:#a6e22e">object</span>.<span style="color:#a6e22e">__getattriabute__</span>()
+<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">self</span>,<span style="color:#a6e22e">实例</span>,<span style="color:#a6e22e">所有者</span>)  <span style="color:#a6e22e">set</span>()  <span style="color:#66d9ef">delete</span>()  <span style="color:#a6e22e">set_name</span>()
+<span style="color:#a6e22e">slots</span>()<span style="color:#f92672">:</span><span style="color:#a6e22e">为此变量分配字符串</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">可迭代</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">阻止每个实例自动创建__dict__和__weakref__</span>
+</code></pre></div><h4 id="类的继承">类的继承</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">(<span style="color:#ae81ff">1</span>) <span style="color:#960050;background-color:#1e0010">语</span><span style="color:#960050;background-color:#1e0010">法</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">派</span><span style="color:#960050;background-color:#1e0010">生</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">basic1</span>,basic2)<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+    <span style="color:#960050;background-color:#1e0010">调</span><span style="color:#960050;background-color:#1e0010">用</span><span style="color:#960050;background-color:#1e0010">：</span>__init_subclass__
+(<span style="color:#ae81ff">2</span>)Python <span style="color:#960050;background-color:#1e0010">内</span><span style="color:#960050;background-color:#1e0010">置</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#a6e22e">@property装饰器就是负责把一个方法变成属性调用</span>
+(<span style="color:#ae81ff">3</span>)mixln:<span style="color:#960050;background-color:#1e0010">主</span><span style="color:#960050;background-color:#1e0010">线</span><span style="color:#960050;background-color:#1e0010">都</span><span style="color:#960050;background-color:#1e0010">是</span><span style="color:#960050;background-color:#1e0010">单</span><span style="color:#960050;background-color:#1e0010">一</span><span style="color:#960050;background-color:#1e0010">继</span><span style="color:#960050;background-color:#1e0010">承</span><span style="color:#960050;background-color:#1e0010">下</span><span style="color:#960050;background-color:#1e0010">来</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">例</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">，</span>Ostrich继承自Bird<span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">但</span><span style="color:#960050;background-color:#1e0010">是</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">果</span><span style="color:#960050;background-color:#1e0010">需</span><span style="color:#960050;background-color:#1e0010">要</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#960050;background-color:#1e0010">混</span><span style="color:#960050;background-color:#1e0010">入</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#960050;background-color:#1e0010">额</span><span style="color:#960050;background-color:#1e0010">外</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">功</span><span style="color:#960050;background-color:#1e0010">能</span><span style="color:#960050;background-color:#1e0010">，</span>
+   <span style="color:#960050;background-color:#1e0010">通</span><span style="color:#960050;background-color:#1e0010">过</span><span style="color:#960050;background-color:#1e0010">多</span><span style="color:#960050;background-color:#1e0010">重</span><span style="color:#960050;background-color:#1e0010">继</span><span style="color:#960050;background-color:#1e0010">承</span><span style="color:#960050;background-color:#1e0010">就</span><span style="color:#960050;background-color:#1e0010">可</span><span style="color:#960050;background-color:#1e0010">以</span><span style="color:#960050;background-color:#1e0010">实</span><span style="color:#960050;background-color:#1e0010">现</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">比</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">让</span>Ostrich除了继承自Bird外<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">再</span><span style="color:#960050;background-color:#1e0010">同</span><span style="color:#960050;background-color:#1e0010">时</span><span style="color:#960050;background-color:#1e0010">继</span><span style="color:#960050;background-color:#1e0010">承</span>Runnable
+</code></pre></div><h4 id="元类">元类</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderedClass</span>(type):
+  <span style="color:#a6e22e">@classmethod</span>
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__prepare__</span>(metacls, name, bases, <span style="color:#f92672">*</span><span style="color:#f92672">*</span>kwds):
+    <span style="color:#66d9ef">return</span> collections<span style="color:#f92672">.</span>OrderedDict()
+  <span style="color:#66d9ef">def</span> __new__(cls, name, bases, namespace, <span style="color:#f92672">*</span><span style="color:#f92672">*</span>kwds):
+    result <span style="color:#f92672">=</span> type<span style="color:#f92672">.</span>__new__(cls, name, bases, dict(namespace))
+    result<span style="color:#f92672">.</span>members <span style="color:#f92672">=</span> tuple(namespace)
+  <span style="color:#66d9ef">return</span> result
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>(metaclass<span style="color:#f92672">=</span>OrderedClass):
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">one</span>(self): <span style="color:#66d9ef">pass</span>
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">two</span>(self): <span style="color:#66d9ef">pass</span>
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">three</span>(self): <span style="color:#66d9ef">pass</span>
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">four</span>(self): <span style="color:#66d9ef">pass</span>
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#f92672">&gt;</span> A<span style="color:#f92672">.</span>members
+(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">__module__</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">one</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">two</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">three</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">four</span><span style="color:#e6db74">&#39;</span>)
+</code></pre></div><h3 id="正则表达式">正则表达式</h3>
+<h4 id="匹配">匹配</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\d</span>:匹配一个数字
+<span style="color:#66d9ef">\w</span>:匹配一个字母或数字
+<span style="color:#66d9ef">\s</span>:匹配一个空格（TAB）
+.:可以匹配任何字符
+*:表示任意个字符（包括0个）
++:表示至少一个字符
+?:表示0个或1个字符
+{n}:表示n个字符
+{n,m}:表示n-m个字符
+A|B：可以匹配A或B
+^:表示行的开头，^<span style="color:#66d9ef">\d</span>表示必须以数字开头。
+<span style="color:#e6db74">$</span>表示行的结束，\d<span style="color:#e6db74">$</span>表示必须以数字结束。
+[0-9a-zA-Z<span style="color:#66d9ef">\_</span>]：可以匹配一个数字、字母或者下划线
+[0-9a-zA-Z<span style="color:#66d9ef">\_</span>]+：可以匹配至少由一个数字、字母或者下划线组成的字符串，比
+如&#39;a100&#39;,&#39;0_Z&#39;,&#39;Py3000&#39;等等
+[a-zA-Z<span style="color:#66d9ef">\_</span>][0-9a-zA-Z<span style="color:#66d9ef">\_</span>]*：可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串
+[a-zA-Z<span style="color:#66d9ef">\_</span>][0-9a-zA-Z<span style="color:#66d9ef">\_</span>]{0, 19}：更精确地限制了变量的长度是1-20个字符（前面1个字符+后面最多19个字符）
+</code></pre></div><h4 id="match">match()</h4>
+<p>判断是否匹配，如果匹配成功，返回一个Match对象，否则返回None</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(re<span style="color:#f92672">.</span>match(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">^</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d{3}</span><span style="color:#e6db74">\</span><span style="color:#e6db74">-</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d{3,8}$</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">010-12345</span><span style="color:#e6db74">&#39;</span>))
+re<span style="color:#f92672">.</span>match(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">^</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d{3}</span><span style="color:#e6db74">\</span><span style="color:#e6db74">-</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d{3,8}$</span><span style="color:#e6db74">&#39;</span>,<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">010 12345</span><span style="color:#e6db74">&#39;</span>)
+</code></pre></div><h4 id="split">split()</h4>
+<p>切割字符串。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">st <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>split(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">[</span><span style="color:#e6db74">\</span><span style="color:#e6db74">s</span><span style="color:#e6db74">\</span><span style="color:#e6db74">,</span><span style="color:#e6db74">\</span><span style="color:#e6db74">;]+</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">a,;;b, c  d</span><span style="color:#e6db74">&#39;</span>)    <span style="color:#66d9ef">print</span>(st)
+</code></pre></div><h4 id="group">group()</h4>
+<p>分组：如果正则表达式中定义了组，就可以在Match对象上用 group() 方法提取出子串来</p>
+<ul>
+<li>0：原始</li>
+<li>1：第几个字串</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">m <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>match(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">^(</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d{3})-(</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d{3,8})$</span><span style="color:#e6db74">&#39;</span>,<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">010-12314</span><span style="color:#e6db74">&#39;</span>)
+<span style="color:#66d9ef">print</span>(m)
+<span style="color:#66d9ef">print</span>(m<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">0</span>))
+<span style="color:#66d9ef">print</span>(m<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>))
+<span style="color:#66d9ef">print</span>(m<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">2</span>))
+</code></pre></div><h4 id="贪婪匹配">贪婪匹配</h4>
+<p>正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(re<span style="color:#f92672">.</span>match(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">^(</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d+)(0*)$</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">102300</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>groups())
+<span style="color:#75715e">#加个?就可以让\d+采用非贪婪匹配</span>
+<span style="color:#66d9ef">print</span>(re<span style="color:#f92672">.</span>match(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">^(</span><span style="color:#e6db74">\</span><span style="color:#e6db74">d+?)(0*)$</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">102300</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>groups())
+</code></pre></div><h4 id="编译">编译</h4>
+<p>编译正则表达式，如果正则表达式的字符串本身不合法，会报错；用编译后的正则表达式去匹配字符串。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3863</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/python/">
+                    #python</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_SmartformsToftp/" class="prev" rel="prev" title=" Smartforms 转换成PDF发送到FTP服务器 "><i class="iconfont icon-dajiantou"></i>&nbsp; Smartforms 转换成PDF发送到FTP服务器 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/Python_Pycharm/" class="next" rel="next" title=" Pycharm 使用 "> Pycharm 使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-12-21 00:00:00 \x2b0000 UTC',
+        title: ' Python 基础 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

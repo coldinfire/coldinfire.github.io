@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_Enhance_MIGO_Exits/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/PP_Enhance_CO11N/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/SAPWebDynproRuntimeEnv/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            WebDynpro configuring Runtime Enviroment  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" WebDynpro configuring Runtime Enviroment  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" WebDynpro configuring Runtime Enviroment "/>
+<meta name="twitter:description" content="Remove User settings option ABAP Enviroment Method 1 Modify the WebDynpro Application and add the Parameter: ​ WDDISABLEUSERPERSONALIZATION = X. Method 2 Alternatively you can call the webdynpro application WD_GLOBAL_SETTING in SE80 and globally disable all user personalization for all applications. This avoids endusers from calling helpdesk because &ldquo;fields are gone&rdquo; etc. pretty well. JAVA Enviroment Procedure A number of settings allow you to influence the behavior of the Web"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " WebDynpro configuring Runtime Enviroment ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/SAPWebDynproRuntimeEnv\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  3326 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/SAPWebDynproRuntimeEnv\/",
+  "datePublished": "2020-08-16T00:00:00\x2b00:00",
+  "dateModified": "2020-08-16T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> WebDynpro configuring Runtime Enviroment </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-08-16 >16 August 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                7 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="remove-user-settings-option">Remove User settings option</h2>
+<h3 id="abap-enviroment">ABAP Enviroment</h3>
+<h4 id="method-1">Method 1</h4>
+<p>Modify the WebDynpro Application and add the Parameter:</p>
+<p>​	<code>WDDISABLEUSERPERSONALIZATION = X</code>.</p>
+<p><img src="/images/webdynpro/webdynproABAP/ABAP_Webdynpro1.png" alt="method1"></p>
+<h4 id="method-2">Method 2</h4>
+<p>Alternatively  you can call the webdynpro application <code>WD_GLOBAL_SETTING</code> in <code>SE80 </code>and globally disable all user personalization for all applications. This avoids endusers from calling helpdesk because &ldquo;fields are gone&rdquo; etc. pretty well.</p>
+<p><img src="/images/webdynpro/webdynproABAP/ABAP_Webdynpro2.png" alt="method2"></p>
+<p><img src="/images/webdynpro/webdynproABAP/ABAP_Webdynpro3.png" alt="method2"></p>
+<h3 id="java-enviroment">JAVA Enviroment</h3>
+<h4 id="procedure">Procedure</h4>
+<p>A number of settings allow you to influence the behavior of the Web Dynpro system configuration. This is done in the archive file <strong>WebDynpro.war</strong> . This file is part of EAR file <strong>sap.com/tc~wd~dispwda.ear</strong> and is automatically deployed on the SAP NetWeaver Application Server.</p>
+<p>To configure a number of basic settings of the Web Dynpro runtime environment in file <code>default.properties</code>, the system administrator defines system configuration properties using <strong>NetWeaver Administrator</strong>.</p>
+<ol>
+<li>Log in to <strong>NetWeaver Administrator</strong> either by choosing NetWeaver Administrator on your engine's <strong>Start</strong> page or by entering the following URL:<code>http://&lt;your host name&gt;:&lt;port&gt;/nwa</code></li>
+<li>In the top level navigation, select <strong>Configuration Management</strong> and in the second level navigation bar select <strong>Infrastructure</strong>.</li>
+<li>Select <strong>Application Modules</strong> and in the <strong>Module List</strong> section enter <code>tc~wd~dispwda</code> (or parts of this string) into the filter row. The complete path name for the module is displayed: webdynpro/resources/sap.com/tc~wd~dispwda</li>
+<li>In the <strong>Web Module Details</strong> section, select the <strong>Web Dynpro Properties</strong> tab and select <strong>default</strong> from the corresponding table.</li>
+<li>In the <strong>Full Details</strong> section, navigate to the property you want to configure, and make the required entries.Such as : AllowUserPersonalization = false</li>
+<li>To save your changes, select <strong>Save</strong> in the <strong>Web Module Details</strong> section.</li>
+</ol>
+<h4 id="parameter-description">Parameter Description</h4>
+<table>
+<thead>
+<tr>
+<th><em>Parameter</em></th>
+<th><em>Description</em></th>
+<th><em>Default</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AccessibilityChecksEnabled</td>
+<td>Specifies the whether accessibility checks are enabled.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>ActivateURLParameters</td>
+<td>If set to false, the Web Dynpro runtime ignores some URL parameters that could be set. These URL parameters are, for instance, the sap.csf.* parameters and the sap.session.plugin parameter. It's recommended to keep parameter value false in order to deactivate URL parameters that might not be available in production mode.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>AllowUserPersonalization</td>
+<td>Enables the end user to implicitly configure the Web Dynpro interface, for example to adapt fields or tables.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>AllowXMLHttpRequestForIE6</td>
+<td>Specifies whether Web Dynpro is allowed to use an XMLHttpRequest object for IE6 user agents. In case ActiveX is not enabled for all such clients, you can use this switch in case of warnings or errors due to the use of an XMLHttpRequest object by Web Dynpro.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>DefaultExpirationTime</td>
+<td>Specifies the expiration time in seconds when no user interaction takes place. This default expiration time is used if an application does not specify its own expiration time explicitly.Valid values:Any positive integer number</td>
+<td>3600</td>
+</tr>
+<tr>
+<td>DevelopmentMode</td>
+<td>Specifies whether the Web Dynpro runtime environment runs in a development mode, or not. This can affect how error messages are displayed. For example, the error message page provides detailed information about product, version, protocol, and stack trace when the Web Dynpro runtime environment runs in a development session.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>IGSUrl</td>
+<td>Specifies the Web address of the Internet Graphics Service (IGS) valid for the application. This service supports the display of the UI elements <em>BusinessGraphics</em> and <em>GeoMap</em>. The URL of the IGS is specified according the following pattern: <code>http://&lt;server host name&gt;&lt;``fully qualified path name&gt;:4&lt;server instance number&gt;80.``Example:</code> http://localhost:40080</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>InlineCSS</td>
+<td>Specifies whether the Web Dynpro runtime performs the optimization of inline CSS rendering. This affects server-side HTML rendering only.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Lightspeed</td>
+<td>Specifies whether the Web Dynpro runtime uses Unified Rendering's Lightspeed control framework (instead of classic UR). This affects server-side HTML rendering only.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>UISecurityLevel</td>
+<td>Specifies the security level of UI security checks. UI security means that the framework checks whether a UI event is allowed in the current state of the UI element. Per default the Web Dynpro runtime throws an exception, if such a situation occurs.Valid values:integer value = 0, 1, 20 No Exceptions are thrown, if UI security is violated, but the violations are traced.1 Exceptions are thrown, if generic checks like enabled, isible and read only fail, other violations are traced.2 Exceptions are thrown, if any security violation is recognized.Note: You should only change the default, if the security exception is caused by framework bugs or known temporary inconsistencies.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>ValidateByRendering</td>
+<td>For the Web Dynpro application to be able to handle the errors caused during data retrieval, the Web Dynpro runtime executes the request for each data set before the call of the wdDoPostProcessing() method. In this context, the request process is referred to as <em>validation</em> (IWDNode.validate() method), while the response to the client is referred to as <em>rendering</em>. The default behavior during the validation phase requires all nodes in all visible views to be validated.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>ZipResponse</td>
+<td>Specifies whether to send the data to the client zipped or unzipped. If this parameter is already defined in the http service in J2EE Engine, this parameter should be set to <code>false``.</code></td>
+<td>false</td>
+</tr>
+<tr>
+<td>context.extended.validation</td>
+<td>Enabling this property, node elements activate an extended sanity check on attribute access, for example regarding destruction of an element via eventing.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>sap-mem-report-filetrc</td>
+<td>Property used for memory report: If set to <code>true</code>, the memory report is written into the <code>defaultTrace.trc </code>file under location com.sap.tc.webdynpro.session.report, severity level <code>INFO</code>.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap-mem-report-level</td>
+<td>Property used for memory report: Granularity level. Specifies whether the memory analyzer is activated, or not. 0 is indicating that it is not activated. Choose value 1 to activate memory reporting.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sap-ser-report-filetrc</td>
+<td>Property used for serialization report: Write report into trace. If set to true, the serialization report is written into the <code>defaultTrace.trc</code> file under location <code>com.sap.tc.webdynpro.session.report</code>, severity level <code>INFO</code>.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap-ser-report-filter</td>
+<td>Specifies the problem filter which the monitor should take into account. Bit mask encoding:1 Class uses custom serialization (i.e. class is NOT shareable)2 Class loader is not shareable4 Class uses non trivial finalizer8 Class has serial persistent field16 Class has transient fields32 Super class does not implement serializable64 Object is not shareable due to a complex reason128 Class does not implement serializable (i.e. class is NOT serializable) 256 Object is not serializable due to a complex reason</td>
+<td>384</td>
+</tr>
+<tr>
+<td>sap-ser-report-level</td>
+<td>Specifies if the monitor is activated and if so, in which granularity information should be gathered.Valid values:<code>0</code> serialization monitor is disabled<code>1</code> serialization monitor creates a short summary report<code>2</code> serialization monitor creates a report on class level, considering only application classes<code>3</code> serialization monitor creates a report on class level, considering all classes<code>4 </code>serialization monitor creates a report on object level, considering objects of all types</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sap.acf.adobe.CABFileVersion</td>
+<td>Specifies which ActiveX version is required for Adobe Interactive-Forms. Value<code>d``efault</code> uses the version specified by default for the current stack.Any other value: May be needed to automatically upgrade the front-end components without a server upgrade</td>
+<td>default</td>
+</tr>
+<tr>
+<td>sap.adobe.zciReady.timeout.limit</td>
+<td>Specifies the time a Web Dynpro application waits for the <em>zciReady</em> message from the Acrobat Reader in milliseconds. The default value is enough for small and medium sized forms to be loaded in the browser. Applicable only for ZCI (Zero Client Install - native) based interactive forms in Web Dynpro for Java.</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>sap.corecomp.useWavelineDesign</td>
+<td>Specifies whether a predefined popup window (Confirmation Dialog, <em>EVS</em>, <em>OVS</em> or <em>TechnicalInfo</em>) is displayed with the new wave line design.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>sap.cmi.useLongTexts</td>
+<td>Messages being reported via an <em>ICMIMessageProvider</em>. can contain a short or a long message text. If you set this property to <code>true</code> you can achieve that the long message text is taken if available.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap.default.authentication</td>
+<td>Specifies whether all Web Dynpro application require authentication per default. If set to true, authentication will be required for all applications. If set to false, only those applications require authentication which have set the authentication flag in the application properties.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap.defaultConnectionTimeOut</td>
+<td>Specifies the duration of the connection (in msec)</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>sap.defaultMaxNumberOfConnections</td>
+<td>Specifies the maximum permitted number of valid JCo destinations</td>
+<td>10</td>
+</tr>
+<tr>
+<td>sap.defaultMaxPoolSize</td>
+<td>Specifies the maximum pool size, i.e. maximum number of simultaneously used JCo connections.</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sap.defaultMaxWaitTime</td>
+<td>Specifies the maximum wait time when calling the system (in msec). If the request fails after this time interval, it will be ended with a LockException.</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>sap.domain.relaxation.blacklist</td>
+<td>Specifies the blacklist of applications for which domain relaxation is not allowed. This property is only taken into account if the configuration parameter<code>sap.domain.relaxation.enabled</code> is set to true.Valid values:Comma-separated list of Web Dynpro applications, containing the DC name and the application short name (i.e. it is equal to the part of the application URL that follows <code>/webdynpro/dispatcher</code>).Examples:<code>sap.com/tc~wd~tools/Explorer</code> <code>sap.com/tc~wd~tools/WebDynproConsole</code></td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.domain.relaxation.enabled</td>
+<td>Specifies whether domain relaxation is enabled or not. Using the parameters <code>sap.domain.relaxation.whitelist</code> and <code>sap.domain.relaxation.blacklist</code>, it is possible to specify a list of applications which are allowed to use domain relaxation, or for which domain relaxation is forbidden.<code>false</code>: the <code>sap.domain.relaxation.whitelist</code> is checked whether it contains applications for which domain relaxation should be allowed anyway.<code>true</code>: the <code>sap.domain.relaxation.blacklist</code> is checked whether it contains applications for which domain relaxation should not be allowed, although it is generally allowed.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>sap.domain.relaxation.whitelist</td>
+<td>Specifies comma-separated whitelist of applications for which domain relaxation is allowed. This property is only taken into account if the configuration parameter <code>sap.domain.relaxation.enabled </code>is set to false, i.e. if domain relaxation is generally not allowed.Valid values:Comma-separated list of Web Dynpro applications, containing the DC name and the application short name (i.e. it is equal to the part of the application URL that follows <code>/webdynpro/dispatcher</code>).Examples:<code>sap.com/tc~wd~tools/Explorer sap.com/tc~wd~tools/WebDynproConsole</code></td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.interoperability_arfc1_arfc2.filter</td>
+<td>Defines interoperability mode between Adaptive RFC 1 and Adaptive RFC 2 model types as for connection management: ARFC1 and ARFC2 model use same stateful backend connection in order to allow applications using different model types to interoperate.Values (all others interpreted as off):off: no connection sharingfilterDestinationName: use list of destination names specified insap.interoperability_arfc1_arfc2.filter propertyfilterModelName: use list of qualified Java model names specified insap.interoperability_arfc1_arfc2.filter propertyon: use connection sharing for all models and destinationsIn general, connection sharing should be restricted as far as possible as this means quite some overhead on the JCO side; That means that you should only activate it for a destination if all applications using this destination should run in interoperability mode with ARFC2. General activation should only be set for test purposes.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.interoperability_arfc1_arfc2.mode</td>
+<td>Interoperability Adaptive RFC 1 / 2 by stateful connection sharing. General activation is only recommended for test purposes.Valid values:Off (default), filterDestinationName, filterModelName, on</td>
+<td>off</td>
+</tr>
+<tr>
+<td>sap.invalid.DeploymentStateURL</td>
+<td>Defines the Web address of the HTLM page to be displayed if the application is terminated due to an invalid status of the corresponding deployable object. Web page address: /webdynpro/resources/sap.com/tc~wd~dispwda/global/deployment.htm Further possible values: Any valid absolute URL.</td>
+<td>required</td>
+</tr>
+<tr>
+<td>sap.locking.maxWaitInterval</td>
+<td>Specifies the maximum wait interval in seconds in the Web Dynpro locking system; needed for long-runners. This is especially needed for long-runners, for which request processing takes longer than 100 seconds. This property is usually not needed and should only be modified if long-runner applications are really used.</td>
+<td>100</td>
+</tr>
+<tr>
+<td>sap.logoffURL</td>
+<td>Specifies the Web address of the standard logoff page displayed when the user terminates the application.Default Web page is /webdynpro/resources/sap.com/tc~wd~dispwda/global/logoff.htmPossible entries: Any valid absolute URLs</td>
+<td>required</td>
+</tr>
+<tr>
+<td>sap.max.session.limit</td>
+<td>Defines the maximum number of Web Dynpro page builder sessions and Web Dynpro standalone application sessions that are allowed per security session.Valid values:values &gt; 0value &lt; 0 deactivates the checkvalue = 0 produces an exception</td>
+<td>7</td>
+</tr>
+<tr>
+<td>sap.maxUpload.file</td>
+<td>Maximal size that an uploaded file may have (in kB, 0 for unlimited)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sap.maxUpload.session</td>
+<td>Maximal total upload in one session (in kB, 0 for unlimited)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sap.msie.no-cache.workaround</td>
+<td>Specifies when the workaround for a problem with Microsoft IE and https will be activated. Reason: Web Dynpro always adds the header &ldquo;Pragma: no-cache&rdquo; to every file transfer during download or file exchange with Adobe or office integration. IE refuses to accept a file if it is accessed via https and this header is present (<a href="http://support.microsoft.com/kb/812935)">http://support.microsoft.com/kb/812935)</a>. The workaround is not to add this header if the client is MSIE6. The Web Dynpro configuration parameter decides when to activate it. With default value auto the workaround will be activated if the request arrived via https. Administrators can set it to yes if there is a reverse proxy between browser and server that accesses the server via http, so that the server cannot see that the browser used https.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>sap.noClientURL</td>
+<td>If no clients are specified in Web Dynpro configuration file clients.properties, you can use this property to configure the displayed error page.Web page address:/webdynpro/resources/sap.com/tc~wd~dispwda/global/noclient.htmFurther possible values: Any valid absolute URL</td>
+<td>Yes (required)</td>
+</tr>
+<tr>
+<td>sap.portalURL</td>
+<td>Specifies the default value for used portal URL. The Portal's iView runtime application is a runtime environment for processing the iViews. This function is assigned to the component iView Runtime Java (IRJ) application. How this function is used depends on the configuration of the deployed portal. The runtime ID appears in the URL after http://<!-- raw HTML omitted -->:<!-- raw HTML omitted -->/</td>
+<td>irj</td>
+</tr>
+<tr>
+<td>sap.previewMode.enabled</td>
+<td>The preview mode enables features which where implemented as an outlook for upcoming functionalities. The use of those features is allowed for demo applications only. There is no support and no guarantee that these features will be available in later versions.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap.protocolSchemeForADSCall</td>
+<td>Specifies which port the Web service client addresses:ConfigPort_Document for http calls orSecConfigPort_Document for https calls.If the property has value <code>request</code>, the protocol with which the Web Dynpro application was started is used. An <em>http</em> setting forces the http protocol, even if Web Dynpro was called using https. Exception: There are methods in the Adobe Document Service that force https. Examples of these are suppressPrint, digital signatures, or certification. In this case, Web Dynpro switches to the https protocol itself.Summary valid values: request: same protocol scheme as current httpRequest from clienthttp: always http (as long as no secure function of ADS is used)https: always https</td>
+<td>request</td>
+</tr>
+<tr>
+<td>sap.resourceCache.deletionTime</td>
+<td>Defines the time span (in secs) after which a cached resource is removed from the cache. If no value is set, the time span is 30 mins.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.resourceCache.encryption</td>
+<td>Defines whether the resources will be encrypted when dumped to a file.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.resourceCache.persistenceTime</td>
+<td>Defines the time span after which a cached resource is stored in the cache.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.resourceCache.pollingTime</td>
+<td>Defines the time interval (in secs) in which the cache is refreshed. If no value is set, the time interval is 60 secs.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.resourcePool.directory</td>
+<td>Defines the directory in which the cache stores its data.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.sld.cacheExpirationTime</td>
+<td>Defines the expiration time (in seconds) of an SLD object that is stored in the cache.</td>
+<td>3600</td>
+</tr>
+<tr>
+<td>sap.sld.cacheInvalidationTime</td>
+<td>Defines the invalidation time of cached SLD objects in seconds. If an unavailable SLD should always trigger an exception, this value must be set equally to the configuration parameter <code>sap.sld.cacheExpirationTime</code>.Valid values: Any positive integer number.</td>
+<td>86400</td>
+</tr>
+<tr>
+<td>sap.systemLocale</td>
+<td>Specifies the standard language key that is used when no language key is provided by the user authentication or no value is set for the <em>Locale</em> configuration property of the application configuration. Therefore, a valid ISO Language code is needed. These codes are the lower-case two-letter codes as defined by ISO-639. You can find a full list of these codes at a number of sites, such as:http://www.ics.uci.edu/pub/ietf/http/related/iso639.txtValid values: A valid ISO language code (ISO-639)</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.techinfo.enabled</td>
+<td>Specifies whether the <em>Technical Info</em> and its system menu entry are permanently enabled.Valid Values:<code>default</code>: The value is automatically determined by the Web Dynpro runtimetrue: permanently enabled<code>onRequest</code>: disabled until the user activates it for the duration of the current application by pressing both the <code>CTRL</code> and <code>ALT</code> keys while opening the context menu (right mouse click)<code>false</code>: permanently disabledCurrently the resulting value for <code>default</code> is <code>onRequest </code>for all system types.</td>
+<td>default</td>
+</tr>
+<tr>
+<td>sap.techinfo.manageExtensions</td>
+<td>Specifies whether <em>Technical Info</em> allows to modify the set of active extensions within a running session. Requires that the <em>Extensions</em> tab is visible. If set to <code>default</code>, the resulting value is automatically determined by the Web Dynpro runtime. Currently, only the <code>System Type</code> as specified in the licensing is taken into account. For Development systems the set of extensions can be modified, for other system (Test, Productive), it is not shown.Valid Values:<code>default</code>, <code>true</code>, <code>false</code></td>
+<td>default</td>
+</tr>
+<tr>
+<td>sap.techinfo.predefinedExtensions</td>
+<td>Comma separated list of predefined <em>Technical Info</em> extensions.All specified extensions are activated when the <em>Technical Info</em> is opened for the first time in a session. There are no further checks, esp. the other configuration entries <code>showExtensions</code>, <code>manageExtensions</code> are not checked. The purpose of this configuration is to allow the extensions of the <em>Technical Info</em> with a set of trusted extensions that should be available in every Web Dynpro session.Be careful when extending this list. Only add trusted components.Default Value is not defined, might vary from release to release.Valid Values: no fixed value setFormat of Entries:<code>QualifiedNameOfExtensionComponent '@' EngineApplicationName</code> The <code>QualifiedNameOfExtensionComponent</code> is a Java qualified name, the <code>EngineApplicationName</code> is the name of a deployment unit in the format as shown in the NetWeaver Administrator.If the configured list starts with a &lsquo;<code>+</code>&rsquo;, then the configured extensions are added to the SAP defined list of extensions, otherwise the SAP defined list is replaced by the configured list.Example:<code>co``m.mycompany.TechnicalInfoAddOn@``mycompany.com/techinfo~plugin</code></td>
+<td>default</td>
+</tr>
+<tr>
+<td>sap.techinfo.showExtensions</td>
+<td>Specifies whether the list of <em>Technical Info</em> extensions is displayed in its own tab.If set to default, visibility is determined by the Web Dynpro runtime automatically.</td>
+<td>default</td>
+</tr>
+<tr>
+<td>sap.textMapping.enable</td>
+<td>Defines whether or not text mapping is used.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap.textMapping.objectName</td>
+<td>Specifies the name of the deployable object (=EAR file) in which the text mapping is defined.</td>
+<td>local/ TextMappings</td>
+</tr>
+<tr>
+<td>sap.textMapping.separators</td>
+<td>Defines a list of separators used for text mappings of a message.</td>
+<td>!;,:-_+=)([]?</td>
+</tr>
+<tr>
+<td>sap.textMapping.systemName</td>
+<td>Defines the system name of the J2EE Engine used for text mapping.</td>
+<td>${SYSTEM_ NAME}</td>
+</tr>
+<tr>
+<td>sap.textMapping.systemNumber</td>
+<td>Defines the system number of the J2EE Engine used for text mapping.</td>
+<td>${INSTANCE_ NUMBER}</td>
+</tr>
+<tr>
+<td>sap.textMapping.webModule</td>
+<td>Specifies the name of the Web module (= name of the Web module's context root) containing the defined text mappings.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.theme.default</td>
+<td>Defines the URL of the Unified Rendering style sheet themes used. This value is not used ifa) the Web Dynpro application runs in SAP NetWeaver Portal, orb) URL parameter <code>stylesheet_theme</code> is set</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.theme.hosts</td>
+<td>Specifies the valid hosts for CSS URLs. Comma-separated list of hosts which are valid provider for theme URLs. The usage of placeholders is possible (the syntax may be compatible with the syntax of the regular expression). If the property is empty or missing, all hosts are allowed to provide theme URLs (this is the default setting). If a host is used that is not included in this list, the <em>Look-and-Feel</em> service will throw an exception.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.theme.name.default</td>
+<td>Specifies the used default theme name.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.ui.table.maxVisibleRowCount</td>
+<td>Determines the maximum count of rows which can be displayed in a table.Valid values:any positive integer</td>
+<td>200</td>
+</tr>
+<tr>
+<td>sap.url.protocols</td>
+<td>Comma-separated list of protocols used by the Web Dynpro URL generator as whitelist of allowed protocols. If the property is empty, the supported default protocols are http and https. If a protocol is used that is not included in this list, the URL generator throws an exception. After changing this property, the server needs to be restarted.</td>
+<td>http,https,ftp,mailto,file,sapacp</td>
+</tr>
+<tr>
+<td>sap.useWebDynproStyleSheet</td>
+<td>If running in the SAP NetWeaver Portal, this flag specifies whether or not the Portal style sheets shall be used. They are used if the parameter is set to false (default). If set to true, the Web Dynpro style sheets are used also when running in the Portal.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap.valuesetlimit.maxondemand</td>
+<td>Defines the maximum size of a simple type value set which is displayed as a Simple Value Selector (DropDownByKey UI element with dropdown list). When the value set size exceeds the configured <code>sap.valuesetlimit.maxondemand</code> value the dropdown list is replaced by an Extended Value Selector (EVS) popup dialog.</td>
+<td>50</td>
+</tr>
+<tr>
+<td>sap.wd.disableAsyncInputValidation</td>
+<td>Specifies whether input validation is disabled. If set to false, the validation of data in input fields bound to numeric simple types is automatically done while the user enters data.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap.wd.disableInputValidationUsingOVSSuggester</td>
+<td>Disables the additional validation of user input via a defined <em>IWDOVSSuggester</em> implementation.. To deactivate this new validation, set this property to <code>true</code>. More information: <a href="https://help.sap.com/saphelp_em900/helpdata/en/4c/4e0abe21cf4d4ce10000000a15822b/content.htm">Providing Search Result Value Lists (OVS)</a></td>
+<td>false</td>
+</tr>
+<tr>
+<td>sap.wd.showPresentationModeDescriptionAsComboBox</td>
+<td>Specifies whether an input field bound to a <em>CctCode</em> with presentation mode description is rendered as ComboBox or as DropDown UI element. If configuration is set to true the input field is rendered as a ComboBox. More information: <a href="https://help.sap.com/saphelp_em900/helpdata/en/44/0d0e7f26821c9fe10000000a11466f/content.htm">Displaying and Formatting Core Data Types</a></td>
+<td>true</td>
+</tr>
+<tr>
+<td>sap.webdispatcher.host - deprecated -</td>
+<td>Web dispatcher host must no longer be configured but is determined automatically by Web Dynpro. Web Dynpro runtime determines a used Web Dispatcher automatically. If an explicit configuration is defined, the explicitly configured Web Dispatcher is used to create balanced application URLs.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.webdispatcher.port - deprecated -</td>
+<td>Web dispatcher port must no longer be configured but is determined automatically by Web Dynpro.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>sap.webdispatcher.protocol - deprecated -</td>
+<td>Web dispatcher protocol must no longer be configured but is determined automatically by Web Dynpro.</td>
+<td><!-- raw HTML omitted --></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3326</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_Enhance_MIGO_Exits/" class="prev" rel="prev" title=" User Exit for MIGO "><i class="iconfont icon-dajiantou"></i>&nbsp; User Exit for MIGO </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/PP_Enhance_CO11N/" class="next" rel="next" title=" User Exit for CO11N "> User Exit for CO11N &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-08-16 00:00:00 \x2b0000 UTC',
+        title: ' WebDynpro configuring Runtime Enviroment ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

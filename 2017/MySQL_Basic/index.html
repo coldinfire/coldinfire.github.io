@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_Tomcat/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/WEB_HTTP/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/MySQL_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            MySQL基本操作  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" MySQL基本操作  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" MySQL基本操作 "/>
+<meta name="twitter:description" content="MySQL 数据库 连接操作 操作 操作语句 连接 mysql -h (ip) -u user_name -p password 断开 exit; 创建授权 grant select on 数据库.* to 用户名@登录主机 identified by &ldquo;密码&rdquo; 删除授权 revoke"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " MySQL基本操作 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/MySQL_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MySQL",
+  "wordcount":  354 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/MySQL_Basic\/",
+  "datePublished": "2017-12-21T00:00:00\u002b00:00",
+  "dateModified": "2017-12-21T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> MySQL基本操作 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-12-21 >21 December 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="mysql-数据库">MySQL 数据库</h3>
+<h4 id="连接操作">连接操作</h4>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>操作语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连接</td>
+<td>mysql -h (ip) -u user_name -p password</td>
+</tr>
+<tr>
+<td>断开</td>
+<td>exit;</td>
+</tr>
+<tr>
+<td>创建授权</td>
+<td>grant select on 数据库.* to 用户名@登录主机 identified by &ldquo;密码&rdquo;</td>
+</tr>
+<tr>
+<td>删除授权</td>
+<td>revoke select,insert,update,delete om <em>.</em> from test2@localhost;</td>
+</tr>
+<tr>
+<td>修改密码</td>
+<td>mysql admin -u user_name -p old_pwd password new_pwd</td>
+</tr>
+</tbody>
+</table>
+<h4 id="基本操作">基本操作</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th>操作语句</th>
+<th style="text-align:left">操作</th>
+<th>操作语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">显示数据库</td>
+<td>show databases;</td>
+<td style="text-align:left">创建库</td>
+<td>create database database_name;</td>
+</tr>
+<tr>
+<td style="text-align:left">使用库(选中库)</td>
+<td>use database_name;</td>
+<td style="text-align:left">删除库</td>
+<td>drop database database_name;</td>
+</tr>
+<tr>
+<td style="text-align:left">显示数据表</td>
+<td>show tables;</td>
+<td style="text-align:left">创建表</td>
+<td>create table table_name (字段设定列表);</td>
+</tr>
+<tr>
+<td style="text-align:left">使用表(选中表)</td>
+<td>use table_name;</td>
+<td style="text-align:left">删除表</td>
+<td>drop table table_name;</td>
+</tr>
+<tr>
+<td style="text-align:left">显示表结构</td>
+<td>describe table_name;</td>
+<td style="text-align:left">修改表</td>
+<td>alter table t1 rename t2;</td>
+</tr>
+<tr>
+<td style="text-align:left">清空表</td>
+<td>delete from table_name;</td>
+<td style="text-align:left">查询表</td>
+<td>select * from table_name;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="复杂操作">复杂操作</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">操作语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">备份表</td>
+<td style="text-align:left">mysql binmysqldump -h(ip) -u root -p(password) databasename tablename &gt; tablename.sql</td>
+</tr>
+<tr>
+<td style="text-align:left">恢复表: (操作前先把原来表删除)</td>
+<td style="text-align:left">mysql binmysql -h(ip) -u root -p(password) databasename tablename &lt; tablename.sql</td>
+</tr>
+<tr>
+<td style="text-align:left">增加列</td>
+<td style="text-align:left">ALTER TABLE t2 ADD c INT UNSIGNED NOT NULL AUTO_INCREMENT,ADD INDEX (c);</td>
+</tr>
+<tr>
+<td style="text-align:left">修改列</td>
+<td style="text-align:left">ALTER TABLE t2 MODIFY a TINYINT NOT NULL, CHANGE b c CHAR(20);</td>
+</tr>
+<tr>
+<td style="text-align:left">删除列</td>
+<td style="text-align:left">ALTER TABLE t2 DROP COLUMN c;</td>
+</tr>
+<tr>
+<td style="text-align:left">备份数据库</td>
+<td style="text-align:left">mysql binmysqldump -h(ip) -uroot -p(password) databasename &gt; database.sql</td>
+</tr>
+<tr>
+<td style="text-align:left">恢复数据库</td>
+<td style="text-align:left">mysql binmysql -h (ip) -u root -p(password) databasename &lt; database.sql</td>
+</tr>
+<tr>
+<td style="text-align:left">复制数据库</td>
+<td style="text-align:left">mysql binmysqldump &ndash;all -databases &gt; all -databases.sql</td>
+</tr>
+<tr>
+<td style="text-align:left">修复数据库</td>
+<td style="text-align:left">mysql check -A -o -u root -p 54safer</td>
+</tr>
+<tr>
+<td style="text-align:left">文本数据导入</td>
+<td style="text-align:left">load data local in file &ldquo;file_name&rdquo; into table table_name;</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>354</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MySQL/">
+                    #MySQL</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Tomcat/" class="prev" rel="prev" title="Tomcat 使用"><i class="iconfont icon-dajiantou"></i>&nbsp;Tomcat 使用</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/WEB_HTTP/" class="next" rel="next" title=" HTTP解析 "> HTTP解析 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-12-21 00:00:00 \u002b0000 UTC',
+        title: ' MySQL基本操作 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_EndZero/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_FieldFindProgram/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_TrafficLight/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ALV显示红绿灯 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ALV显示红绿灯 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ALV显示红绿灯"/>
+<meta name="twitter:description" content="定义 TYPE-POOLS:icon,sym,slis,col. DATA: l_alv_filed TYPE slis_fieldcat_alv, l_alv_filedcat TYPE slis_t_fieldcat_alv. TYPES:BEGIN OF str_alv, id TYPE char25, xxx TYPE xxx, xxx TYPE xxx, xxx TYPE xxx, xxx TYPE string, END OF str_alv. DATA:it_alv TYPE STANDARD TABLE OF str_alv WITH HEADER LINE. CONSTANTS: c_green TYPE icon-id VALUE &#39;@08@&#39;, c_yellow TYPE icon-id VALUE &#39;@09@&#39;, c_red TYPE icon-id VALUE &#39;@0A@&#39;. 赋值 IF it_return-type = &#39;E&#39;. it_alv-id = c_red. CALL FUNCTION &#39;BAPI_TRANSACTION_ROLLBACK&#39;. ELSE. it_alv-id"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ALV显示红绿灯",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_TrafficLight\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils, ALV",
+  "wordcount":  146 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_TrafficLight\/",
+  "datePublished": "2018-06-14T00:00:00\u002b00:00",
+  "dateModified": "2018-06-14T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ALV显示红绿灯</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-06-14 >14 June 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="定义">定义</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">TYPE</span><span style="color:#f92672">-</span><span style="color:#a6e22e">POOLS</span><span style="color:#f92672">:</span><span style="color:#a6e22e">icon</span>,<span style="color:#a6e22e">sym</span>,<span style="color:#a6e22e">slis</span>,<span style="color:#a6e22e">col</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">l_alv_filed</span>     <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">slis_fieldcat_alv</span>,
+      <span style="color:#a6e22e">l_alv_filedcat</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">slis_t_fieldcat_alv</span>.
+<span style="color:#a6e22e">TYPES</span><span style="color:#f92672">:</span><span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">str_alv</span>,
+      <span style="color:#a6e22e">id</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">char25</span>,
+      <span style="color:#a6e22e">xxx</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">xxx</span>,
+      <span style="color:#a6e22e">xxx</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">xxx</span>,
+      <span style="color:#a6e22e">xxx</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">xxx</span>,
+      <span style="color:#a6e22e">xxx</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">string</span>,
+<span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">str_alv</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span><span style="color:#a6e22e">it_alv</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STANDARD</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">str_alv</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">HEADER</span> <span style="color:#a6e22e">LINE</span>.
+<span style="color:#a6e22e">CONSTANTS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">c_green</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">icon</span><span style="color:#f92672">-</span><span style="color:#a6e22e">id</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;@08@&#39;</span>,
+           <span style="color:#a6e22e">c_yellow</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">icon</span><span style="color:#f92672">-</span><span style="color:#a6e22e">id</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;@09@&#39;</span>,
+           <span style="color:#a6e22e">c_red</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">icon</span><span style="color:#f92672">-</span><span style="color:#a6e22e">id</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;@0A@&#39;</span>.
+</code></pre></div><h3 id="赋值">赋值</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">it_return</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+   <span style="color:#a6e22e">it_alv</span><span style="color:#f92672">-</span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_red</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+<span style="color:#a6e22e">ELSE</span>.
+   <span style="color:#a6e22e">it_alv</span><span style="color:#f92672">-</span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c_green</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+     <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#a6e22e">it_alv</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gjahr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_sign</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gjahr</span>.
+<span style="color:#a6e22e">it_alv</span><span style="color:#f92672">-</span><span style="color:#a6e22e">iblnr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_sign</span><span style="color:#f92672">-</span><span style="color:#a6e22e">iblnr</span>.
+<span style="color:#a6e22e">it_alv</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zeili</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wa_sign</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zeili</span>.
+<span style="color:#a6e22e">it_alv</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mes</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">it_return</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message</span>.
+<span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">it_alv</span>.
+</code></pre></div><h3 id="显示">显示</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">l_alv_filed</span>.
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ID&#39;</span>.
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">inttype</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C&#39;</span>.
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext_m</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Status&#39;</span>.
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">icon</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">l_alv_filed</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">l_alv_filedcat</span>.
+
+<span style="color:#a6e22e">clear</span> <span style="color:#a6e22e">l_alv_filed</span>.
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">col_pos</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span>
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GJAHR&#39;</span>.
+<span style="color:#a6e22e">l_alv_filed</span><span style="color:#f92672">-</span><span style="color:#a6e22e">seltext_m</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Year.&#39;</span>.
+<span style="color:#a6e22e">append</span> <span style="color:#a6e22e">l_alv_filed</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">l_alv_filedcat</span>.
+<span style="color:#a6e22e">call</span> <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;REUSE_ALV_GRID_DISPLAY&#39;</span>
+  <span style="color:#a6e22e">exporting</span>
+    <span style="color:#a6e22e">it_fieldcat</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">gt_fieldcat</span>
+  <span style="color:#a6e22e">tables</span>
+      <span style="color:#a6e22e">t_outtab</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">it_alv</span>
+      <span style="color:#a6e22e">t_fieldcat</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l_alv_filedcat</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>146</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_EndZero/" class="prev" rel="prev" title="小数后面去除后缀0"><i class="iconfont icon-dajiantou"></i>&nbsp;小数后面去除后缀0</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_FieldFindProgram/" class="next" rel="next" title=" ABAP通过字段找表程序 "> ABAP通过字段找表程序 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-06-14 00:00:00 \u002b0000 UTC',
+        title: 'ALV显示红绿灯',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

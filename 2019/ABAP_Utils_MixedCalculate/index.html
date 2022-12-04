@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_BADI_MaterialDocument/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_Basis_WebSiteCollect/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_Utils_MixedCalculate/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 混合算术运算  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 混合算术运算  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 混合算术运算 "/>
+<meta name="twitter:description" content="使用 在ABAP程序中将数值与表达式分别存放，通过表达式计算对应的结果。 一、调用BAPI：EVAL_FORMULA TYPES:BEGIN OF TY_VAL, OPERAND TYPE C, VALUE TYPE STRING, END OF TY_VAL. TYPES:BEGIN OF"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 混合算术运算 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_Utils_MixedCalculate\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  482 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_Utils_MixedCalculate\/",
+  "datePublished": "2019-08-12T00:00:00\x2b00:00",
+  "dateModified": "2019-08-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 混合算术运算 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-08-12 >12 August 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="使用">使用</h3>
+<p>在ABAP程序中将数值与表达式分别存放，通过表达式计算对应的结果。</p>
+<h4 id="一调用bapieval_formula">一、调用BAPI：EVAL_FORMULA</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>:<span style="color:#66d9ef">BEGIN OF</span> TY_VAL,
+      OPERAND <span style="color:#66d9ef">TYPE </span>C,
+      <span style="color:#66d9ef">VALUE</span> <span style="color:#66d9ef">TYPE </span>STRING,
+      <span style="color:#66d9ef">END OF</span> TY_VAL.
+<span style="color:#66d9ef">TYPES</span>:<span style="color:#66d9ef">BEGIN OF</span> TY_FRM,
+      NO <span style="color:#66d9ef">TYPE </span>I,
+      FORMULA <span style="color:#66d9ef">TYPE </span>CHAR50,
+      <span style="color:#66d9ef">END OF</span> TY_FRM.
+<span style="color:#66d9ef">DATA</span>:IT_VAL <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TY_VAL,
+     WA_VAL <span style="color:#66d9ef">TYPE </span>TY_VAL.
+<span style="color:#66d9ef">DATA</span>:IT_FORMULA <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TY_FRM,
+     WA_FRM <span style="color:#66d9ef">TYPE </span>TY_FRM.
+<span style="color:#66d9ef">DATA</span>:WF_STRING <span style="color:#66d9ef">TYPE </span>CHAR255,
+     WF_LEN <span style="color:#66d9ef">TYPE </span>I,
+     WF_FORMULA <span style="color:#66d9ef">TYPE </span>CHAR50.
+<span style="color:#66d9ef">DATA</span>: WF_RETCODE      <span style="color:#66d9ef">LIKE </span>SY<span style="color:#f92672">-</span>SUBRC,
+      WF_FUNCNAME(<span style="color:#ae81ff">30</span>) <span style="color:#66d9ef">TYPE </span>C,
+      WF_MESSAGE(<span style="color:#ae81ff">70</span>)  <span style="color:#66d9ef">TYPE </span>C,
+      WF_POS          <span style="color:#66d9ef">TYPE </span>I,
+      WF_C            <span style="color:#66d9ef">TYPE </span>P <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">15</span> <span style="color:#66d9ef">DECIMALS</span> <span style="color:#ae81ff">2</span>.
+      
+WA_VAL<span style="color:#f92672">-</span>OPERAND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.
+WA_VAL<span style="color:#f92672">-</span>VALUE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> WA_VAL <span style="color:#66d9ef">TO</span> IT_VAL.
+WA_VAL<span style="color:#f92672">-</span>OPERAND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B&#39;</span>.
+WA_VAL<span style="color:#f92672">-</span>VALUE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> WA_VAL <span style="color:#66d9ef">TO</span> IT_VAL.
+WA_VAL<span style="color:#f92672">-</span>OPERAND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C&#39;</span>.
+WA_VAL<span style="color:#f92672">-</span>VALUE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;3&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> WA_VAL <span style="color:#66d9ef">TO</span> IT_VAL.
+WA_FRM<span style="color:#f92672">-</span>NO <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+WA_FRM<span style="color:#f92672">-</span>FORMULA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A*B+C&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> WA_FRM <span style="color:#66d9ef">TO</span> IT_FORMULA.
+WA_FRM<span style="color:#f92672">-</span>NO <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+WA_FRM<span style="color:#f92672">-</span>FORMULA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C*(A-B)&#39;</span>.
+<span style="color:#66d9ef">APPEND</span> WA_FRM <span style="color:#66d9ef">TO</span> IT_FORMULA.
+<span style="color:#66d9ef">LOOP AT </span>IT_FORMULA <span style="color:#66d9ef">INTO</span> WA_FRM.
+  WF_STRING <span style="color:#f92672">=</span> WA_FRM<span style="color:#f92672">-</span>FORMULA.
+  WF_FORMULA <span style="color:#f92672">=</span> WA_FRM<span style="color:#f92672">-</span>FORMULA.
+  <span style="color:#66d9ef">REPLACE ALL OCCURRENCES OF REGEX</span> <span style="color:#e6db74">&#39;[^[:alpha:]]&#39;</span> <span style="color:#66d9ef">IN</span> WF_STRING <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">` `</span>.
+  <span style="color:#66d9ef">CONDENSE</span> WF_STRING NO<span style="color:#f92672">-</span>GAPS.
+  WF_LEN <span style="color:#f92672">=</span> STRLEN( WF_STRING ).
+  <span style="color:#66d9ef">DO</span> WF_LEN <span style="color:#66d9ef">TIMES</span>.
+    SY<span style="color:#f92672">-</span>INDEX <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>INDEX <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> IT_VAL <span style="color:#66d9ef">INTO</span> WA_VAL <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> OPERAND <span style="color:#f92672">=</span> WF_STRING<span style="color:#f92672">+</span>SY<span style="color:#f92672">-</span>INDEX(<span style="color:#ae81ff">1</span>).
+    <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">REPLACE ALL OCCURRENCES OF </span>WF_STRING<span style="color:#f92672">+</span>SY<span style="color:#f92672">-</span>INDEX(<span style="color:#ae81ff">1</span>)
+                              <span style="color:#66d9ef">IN</span> WF_FORMULA
+                              <span style="color:#66d9ef">WITH</span> WA_VAL<span style="color:#f92672">-</span>VALUE.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDDO</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CHECK_FORMULA&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      FORMULA  <span style="color:#f92672">=</span> WF_FORMULA
+    <span style="color:#66d9ef">IMPORTING</span>
+      SUBRC    <span style="color:#f92672">=</span> WF_RETCODE
+      FUNCNAME <span style="color:#f92672">=</span> WF_FUNCNAME
+      <span style="color:#66d9ef">MESSAGE</span>  <span style="color:#f92672">=</span> WF_MESSAGE
+      POS      <span style="color:#f92672">=</span> WF_POS.
+  <span style="color:#66d9ef">IF</span> WF_RETCODE <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;EVAL_FORMULA&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        FORMULA <span style="color:#f92672">=</span> WF_FORMULA
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">VALUE</span>   <span style="color:#f92672">=</span> WF_C
+      <span style="color:#66d9ef">EXCEPTIONS</span>
+        <span style="color:#66d9ef">OTHERS</span>  <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+      <span style="color:#66d9ef">WRITE</span>: / WA_FRM<span style="color:#f92672">-</span>FORMULA,<span style="color:#e6db74">&#39;-&#39;</span>, WF_C.
+    <span style="color:#66d9ef">ELSE</span>.
+      <span style="color:#66d9ef">WRITE</span>: / <span style="color:#e6db74">&#39;Error&#39;</span>..
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">WRITE</span>: / WF_FUNCNAME, WF_MESSAGE, WF_POS.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><p><strong>替换表达式的运算单位</strong></p>
+<ul>
+<li><code>REPLACE ALL OCCURRENCES OF REGEX '[^[:alnum:]]' IN WF_STRING WITH ‘ ’</code> .</li>
+<li><code>REPLACE ALL OCCURRENCES OF REGEX '[^[:alpha:]]' IN WF_STRING WITH ‘ ’</code> .</li>
+<li>``：两个表示空格</li>
+</ul>
+<p><strong>将字符串切分保存到内表</strong></p>
+<ul>
+<li><code>SPLIT  WF_STRING  AT SPACE INTO TABLE table_name.</code></li>
+</ul>
+<h4 id="二通过直接调用表达式完成计算">二、通过直接调用表达式完成计算</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">TYPE </span>STRING,
+      <span style="color:#66d9ef">SOURCE </span><span style="color:#66d9ef">TYPE </span>STRING,
+      RETURN_VALUE <span style="color:#66d9ef">TYPE </span>P <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">15</span> <span style="color:#66d9ef">DECIMALS</span> <span style="color:#ae81ff">2</span>,
+      TXT_VAR1 <span style="color:#66d9ef">TYPE </span>CHAR40,
+      TXT_VAR2 <span style="color:#66d9ef">TYPE </span>CHAR40,
+      TXT_VAR3 <span style="color:#66d9ef">TYPE </span>CHAR40 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;987979.234-&#39;</span>.
+
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;CLOI_PUT_SIGN_IN_FRONT&#39;</span>
+  <span style="color:#66d9ef">CHANGING</span>
+    <span style="color:#66d9ef">VALUE</span>  <span style="color:#f92672">=</span> TXT_VAR3.
+
+<span style="color:#66d9ef">MESSAGE</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;(-351422999.55+-59211228.95+-1297670.94+-3135583.53+-35337844.40)*100/(613848716.07+0.00+-1552672.73)&#39;</span>.
+
+<span style="color:#66d9ef">DATA</span>: JS_PROCESSOR <span style="color:#66d9ef">TYPE REF TO</span> CL_JAVA_SCRIPT.
+  JS_PROCESSOR <span style="color:#f92672">=</span> CL_JAVA_SCRIPT<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">CREATE</span>( ).
+	<span style="color:#66d9ef">CONCATENATE</span>
+      <span style="color:#e6db74">&#39;var string = &#39;</span> <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;;&#39;</span>
+      <span style="color:#e6db74">&#39;function Set_String()                          &#39;</span>
+      <span style="color:#e6db74">&#39;  { string = eval(string);                     &#39;</span>
+      <span style="color:#e6db74">&#39;  }                                            &#39;</span>
+      <span style="color:#e6db74">&#39;Set_String();                                  &#39;</span>
+      <span style="color:#e6db74">&#39;string;                                        &#39;</span>
+  	<span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">SOURCE </span><span style="color:#66d9ef">SEPARATED BY</span>
+    CL_ABAP_CHAR_UTILITIES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>CR_LF.
+RETURN_VALUE <span style="color:#f92672">=</span> JS_PROCESSOR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">EVALUATE</span>( SOURCE ).
+<span style="color:#66d9ef">WRITE</span>: RETURN_VALUE.
+</code></pre></div><h4 id="实际使用">实际使用</h4>
+<p>可以将以上两种方法进行结合，计算出表达式的结果。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>482</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_BADI_MaterialDocument/" class="prev" rel="prev" title=" 收货或者货物移动(MIGO,MB11,MB1A)增强 "><i class="iconfont icon-dajiantou"></i>&nbsp; 收货或者货物移动(MIGO,MB11,MB1A)增强 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Basis_WebSiteCollect/" class="next" rel="next" title=" ABAP 学习网站记录 "> ABAP 学习网站记录 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-08-12 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 混合算术运算 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

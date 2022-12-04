@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAP_VOFM/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_DialogDetail/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Dialog/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Dialog 程序简介 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Dialog 程序简介 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dialog 程序简介"/>
+<meta name="twitter:description" content="TCode SE51：屏幕操作器 SE41：菜单编辑器 ABAP与Dialog交互方式 ABAP程序与Dialog屏幕进行数据交换的方式，通过在程序中定义一"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Dialog 程序简介",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Dialog",
+  "wordcount":  709 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog\/",
+  "datePublished": "2018-08-28T00:00:00\u002b00:00",
+  "dateModified": "2018-08-28T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Dialog 程序简介</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-08-28 >28 August 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="tcode">TCode</h3>
+<p>SE51：屏幕操作器</p>
+<p>SE41：菜单编辑器</p>
+<h3 id="abap与dialog交互方式">ABAP与Dialog交互方式</h3>
+<p>ABAP程序与Dialog屏幕进行数据交换的方式，通过在程序中定义一个与Dialog中同名的全局变量或者结构，从而实现数据的自动传递。</p>
+<ul>
+<li>
+<p>加载数据：在PBO中实现</p>
+</li>
+<li>
+<p>推送数据：在PAI中控制</p>
+</li>
+<li>
+<p>PBO：Before the screen is displayed</p>
+</li>
+<li>
+<p>PAI：After a user action on the screen</p>
+</li>
+<li>
+<p>POH：when F1</p>
+</li>
+<li>
+<p>POV：When F4</p>
+</li>
+</ul>
+<p>Screen Flow Logic 定义了在 screen 上的各种事件，而 Dynpro 定义了这个 Screen 和各种事件。ABAP MODULE POOL 会处理这些 Event，在每次事件时调用一个ABAP program。</p>
+<h4 id="语法">语法：</h4>
+<ul>
+<li>
+<p><code>Module  ...  END MODULE. </code></p>
+</li>
+<li>
+<p><code>SET screen xxxx .</code></p>
+</li>
+<li>
+<p><code>CALL screen xxxx.</code></p>
+</li>
+<li>
+<p><code>LEAVE screen.</code></p>
+</li>
+<li>
+<p><code>Call screen xxx   [starting at lc ur] [ending at rc lr].</code>   (Modal dialog box类型)</p>
+</li>
+<li>
+<p><code>set cursor field &lt;f&gt; [offset &lt;o&gt;].  </code></p>
+</li>
+<li>
+<p><code>MODULE EXIT AT EXIT-COMMAND.</code></p>
+</li>
+</ul>
+<h4 id="static-attributes">Static Attributes：</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Attribute</th>
+<th>Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>screen-name</td>
+<td>screen-length</td>
+<td>screen-invisible</td>
+</tr>
+<tr>
+<td>screen-group1</td>
+<td>screen-input</td>
+<td>screen-active</td>
+</tr>
+<tr>
+<td>screen-group2</td>
+<td>screen-output</td>
+<td></td>
+</tr>
+<tr>
+<td>screen-group3</td>
+<td>screen-required</td>
+<td></td>
+</tr>
+<tr>
+<td>screen-group4</td>
+<td>screen-intensified</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="字段检查与逻辑流的控制">字段检查与逻辑流的控制</h3>
+<h4 id="单字段检查">单字段检查</h4>
+<ul>
+<li>单个字段检查： <code>FIELD &lt;FLD1&gt; MODULE &lt;MDL1&gt; .</code></li>
+<li>单个字段多个 MODULE 检查，如 FLD1 有两个 MODULE 检查：<code> FIELD &lt;FLD1&gt; MODULE&lt;MDL1&gt;. MODULE&lt;MDL2&gt;.</code></li>
+</ul>
+<h4 id="检查多字段使用-chain">检查多字段，使用 CHAIN</h4>
+<pre><code class="language-JSP" data-lang="JSP">CHAIN.
+  FIELD&lt;FLD1&gt;.
+  FIELD&lt;FLD2&gt;,&lt;FLD3&gt;,&lt;FLD4&gt;.
+  MODULE&lt;MDL1&gt;.
+  MODULE&lt;MDL2&gt;.
+ENDCHAIN.
+表示FLD1,FLD2,FLD3,FLD4有MDL1与MDL2检查
+</code></pre><h4 id="不是初始值检查">不是初始值检查：</h4>
+<p><code>FIELD &lt;FLD1&gt; MODLE &lt;MDL1&gt; ON INPUT.</code></p>
+<ul>
+<li>ON INPUT表示是初始值改变时执行.
+有一个特殊情况：<code> FIELD &lt;FLD1&gt; MODULE &lt;MDL1&gt; ON *-INPUT</code>
+表示用户输入字段首先输入'*'，并且输入字段属性，MODULE无效。</li>
+</ul>
+<h4 id="有改变检查">有改变检查：</h4>
+<p><code>FIELD&lt;FLD1&gt;MODULE&lt;MDL1&gt;ON REQUEST.</code></p>
+<h4 id="chain中有字段不是初始值检查">CHAIN中有字段不是初始值检查</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">CHAIN</span>.
+  <span style="color:#a6e22e">FIELD</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">FLD1</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">FIELD</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">FLD2</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">FLD3</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">FLD4</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">MODULE</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MDL1</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">ON</span> <span style="color:#a6e22e">CHAIN_INPUT</span>.
+  <span style="color:#a6e22e">MODULE</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MDL2</span><span style="color:#f92672">&gt;</span>.
+<span style="color:#a6e22e">ENDCHAIN</span>.
+<span style="color:#a6e22e">注意</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">CHAIN_INPUT表示FLD1</span>,<span style="color:#a6e22e">FLD2</span>,<span style="color:#a6e22e">FLD3</span>,<span style="color:#a6e22e">FLD4不是初始值是执行MDL1检查</span><span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p>PBO：<code>CALL SUBSCREEN &lt;SUBAREA&gt; INCLUDING &lt;PROGRAM_NAME&gt; &lt;DYNPRO_NUMBER&gt;.</code></p>
+<p>PAI：<code>CALL SUBSCREEN &lt;SUBAREA&gt;. </code>    <code>&lt;program_name&gt; = sy-cprog </code>: 代表本程序</p>
+<p>ON CHANGE OF : 当指定字段修改才会去读取数据</p>
+<h4 id="exit-command">EXIT-COMMAND:</h4>
+<ul>
+<li>
+<p><code>MODULE &lt;mod&gt; AT EXIT-COMMAND.</code> 在对话屏幕中，对于E类型的Function Code触发退出屏幕，其他字段值不会传递到ABAP程序中。</p>
+</li>
+<li>
+<p><code>AT SELECTION-SCREEN ON EXIT-COMMAND.</code>在选择屏幕中，按钮触发事件。</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>709</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Dialog/">
+                    #Dialog</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAP_VOFM/" class="prev" rel="prev" title=" VOFM使用 (例程开发) "><i class="iconfont icon-dajiantou"></i>&nbsp; VOFM使用 (例程开发) </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_DialogDetail/" class="next" rel="next" title="Dialog 程序知识汇总">Dialog 程序知识汇总&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-08-28 00:00:00 \u002b0000 UTC',
+        title: 'Dialog 程序简介',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

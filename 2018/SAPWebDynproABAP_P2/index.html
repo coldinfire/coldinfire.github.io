@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P3/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P1/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P2/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Web Dynpro ABAP Program:DATA_LOAD  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Web Dynpro ABAP Program:DATA_LOAD  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Web Dynpro ABAP Program:DATA_LOAD "/>
+<meta name="twitter:description" content="Component Controller: DATA_LOAD METHOD DATA_LOAD . &#34; ALV 输出的结构定义 &#34; DATA: lt_ZALV_ZPEFF_TOTAL TYPE TABLE OF ZALV_ZPEFF_TOTAL, ls_ZALV_ZPEFF_TOTAL TYPE ZALV_ZPEFF_TOTAL, lt_ZALV_PROD_EFF TYPE TABLE OF ZALV_PROD_EFF, ls_ZALV_PROD_EFF TYPE ZALV_PROD_EFF, lo_node TYPE REF TO if_wd_context_node. &#34; 选择屏幕数据的单属性定义 &#34; DATA: lo_nd_zoption TYPE REF TO if_wd_context_node, lo_el_zoption TYPE REF TO if_wd_context_element, ls_zoption TYPE wd_this-&gt;element_zoption, lv_p_total TYPE wd_this-&gt;element_zoption-p_total, lv_p_detail"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Web Dynpro ABAP Program:DATA_LOAD ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_P2\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  445 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_P2\/",
+  "datePublished": "2018-10-21T00:00:00\x2b00:00",
+  "dateModified": "2018-10-21T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Web Dynpro ABAP Program:DATA_LOAD </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-21 >21 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="component-controller-data_load">Component Controller: DATA_LOAD</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">DATA_LOAD</span> .
+  <span style="color:#75715e">&#34; ALV 输出的结构定义 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: lt_ZALV_ZPEFF_TOTAL   <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ZALV_ZPEFF_TOTAL,
+        ls_ZALV_ZPEFF_TOTAL   <span style="color:#66d9ef">TYPE </span>ZALV_ZPEFF_TOTAL,
+        lt_ZALV_PROD_EFF      <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ZALV_PROD_EFF,
+        ls_ZALV_PROD_EFF      <span style="color:#66d9ef">TYPE </span>ZALV_PROD_EFF,
+        lo_node               <span style="color:#66d9ef">TYPE REF TO</span> if_wd_context_node.
+  <span style="color:#75715e">&#34;  选择屏幕数据的单属性定义 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: lo_nd_zoption   <span style="color:#66d9ef">TYPE REF TO</span> if_wd_context_node,
+        lo_el_zoption   <span style="color:#66d9ef">TYPE REF TO</span> if_wd_context_element,
+        ls_zoption      <span style="color:#66d9ef">TYPE </span>wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>element_zoption,
+        lv_p_total      <span style="color:#66d9ef">TYPE </span>wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>element_zoption<span style="color:#f92672">-</span>p_total,
+        lv_p_detail     <span style="color:#66d9ef">TYPE </span>wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>element_zoption<span style="color:#f92672">-</span>p_detail. 
+  <span style="color:#75715e">&#34; 选择屏幕数据的多属性定义 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: RARBPL   <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+        RKOSTL   <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+        RAUFNR   <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+        RAUART   <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+        RBUDAT   <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>:
+        &lt;RARBPL&gt; <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">table</span>,
+        &lt;RKOSTL&gt; <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">table</span>,
+        &lt;RAUFNR&gt; <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">table</span>,
+        &lt;RAUART&gt; <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">table</span>,
+        &lt;RBUDAT&gt; <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">table</span>.
+  <span style="color:#66d9ef">DATA</span>: l_name <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#75715e">&#34; 获取用户名:需要在Content Administration中配置 Application Para &#39;userid=&lt;User.LogonUid&gt;&#39; &#34;
+</span><span style="color:#75715e"></span>  l_name <span style="color:#f92672">=</span> wdr_task<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>client_window<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_wdr_client_info_object~get_parameter</span>( <span style="color:#e6db74">&#39;USERID&#39;</span> ).
+  <span style="color:#66d9ef">TRANSLATE</span> l_name <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">UPPER CASE</span>.
+  <span style="color:#75715e">&#34; 选择屏幕数据的单属性获取 &#34;
+</span><span style="color:#75715e"></span>  lo_nd_zoption <span style="color:#f92672">=</span> wd_context<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_child_node</span>( name <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>wdctx_zoption ).
+  lo_el_zoption <span style="color:#f92672">=</span> lo_nd_zoption<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_element</span>( ).
+  <span style="color:#66d9ef">IF</span> lo_el_zoption <span style="color:#f92672">IS NOT INITIAL</span>.
+    lo_el_zoption<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_attribute</span>(
+      <span style="color:#66d9ef">EXPORTING</span>
+        name <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;P_TOTAL&#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> lv_p_total ).
+    lo_el_zoption<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_attribute</span>(
+      <span style="color:#66d9ef">EXPORTING</span>
+        name <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;P_DETAIL&#39;</span>
+      <span style="color:#66d9ef">IMPORTING</span>
+        <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> lv_p_detail ).
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#75715e">&#34; 选择屏幕数据的多属性获取 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_handler<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_range_table_of_sel_field
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_id           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ARBPL&#39;</span>
+    RECEIVING
+      rt_range_table <span style="color:#f92672">=</span> RARBPL.
+  <span style="color:#66d9ef">ASSIGN</span> RARBPL-&gt;* <span style="color:#66d9ef">TO</span> &lt;RARBPL&gt;.
+  <span style="color:#66d9ef">CALL METHOD</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_handler<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_range_table_of_sel_field
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_id           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;KOSTL&#39;</span>
+    RECEIVING
+      rt_range_table <span style="color:#f92672">=</span> RKOSTL.
+  <span style="color:#66d9ef">ASSIGN</span> RKOSTL-&gt;* <span style="color:#66d9ef">TO</span> &lt;RKOSTL&gt;.
+  <span style="color:#66d9ef">CALL METHOD</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_handler<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_range_table_of_sel_field
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_id           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AUFNR&#39;</span>
+    RECEIVING
+      rt_range_table <span style="color:#f92672">=</span> RAUFNR.
+  <span style="color:#66d9ef">ASSIGN</span> RAUFNR-&gt;* <span style="color:#66d9ef">TO</span> &lt;RAUFNR&gt;.
+  <span style="color:#66d9ef">CALL METHOD</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_handler<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_range_table_of_sel_field
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_id           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AUART&#39;</span>
+    RECEIVING
+      rt_range_table <span style="color:#f92672">=</span> RAUART.
+  <span style="color:#66d9ef">ASSIGN</span> RAUART-&gt;* <span style="color:#66d9ef">TO</span> &lt;RAUART&gt;.
+  <span style="color:#66d9ef">CALL METHOD</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>m_handler<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>get_range_table_of_sel_field
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_id           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;BUDAT&#39;</span>
+    RECEIVING
+      rt_range_table <span style="color:#f92672">=</span> RBUDAT.
+  <span style="color:#66d9ef">ASSIGN</span> RBUDAT-&gt;* <span style="color:#66d9ef">TO</span> &lt;RBUDAT&gt;.
+  <span style="color:#75715e">&#34; 调用SAP Funciton 获取数据 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;Z_GET_ZPEFF&#39;</span> DESTINATION <span style="color:#e6db74">&#39;WIKR3&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      iv_total  <span style="color:#f92672">=</span> lv_p_total
+      iv_detail <span style="color:#f92672">=</span> lv_p_detail
+   <span style="color:#66d9ef">TABLES</span>
+      IT_ARBPL <span style="color:#f92672">=</span> &lt;RARBPL&gt;
+	  IT_KOSTL <span style="color:#f92672">=</span> &lt;RKOSTL&gt;
+	  IT_AUFNR <span style="color:#f92672">=</span> &lt;RAUFNR&gt;
+	  IT_AUART <span style="color:#f92672">=</span> &lt;RAUART&gt;
+	  IT_BUDAT <span style="color:#f92672">=</span> &lt;RBUDAT&gt;
+	  IT_TOTAL <span style="color:#f92672">=</span>  lt_ZALV_ZPEFF_TOTAL
+	  IT_DETAIL <span style="color:#f92672">=</span> lt_ZALV_PROD_EFF.
+  <span style="color:#75715e">&#34; 结果集的上下文节点绑定 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> lv_p_total <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    lo_node <span style="color:#f92672">=</span> wd_context<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_child_node</span>( name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZALV_ZPEFF_TOTAL&#39;</span> ).
+    lo_node<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">bind_table</span>( lt_ZALV_ZPEFF_TOTAL ).
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#75715e">&#34; Color field setting &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">LOOP AT </span>lt_ZALV_PROD_EFF <span style="color:#66d9ef">into</span> ls_ZALV_PROD_EFF.
+  	ls_ZALV_PROD_EFF<span style="color:#f92672">-</span>color <span style="color:#f92672">=</span> cl_wd_abstr_master_table_col<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>e_cell_design<span style="color:#f92672">-</span>calendar_green.
+    <span style="color:#75715e">&#34; ls_ZALV_PROD_EFF-color = &#39;27&#39;. &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34; ls_ZALV_PROD_EFF-color = &#39;02&#39;. &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34; ls_ZALV_PROD_EFF-color = cl_wd_abstr_master_table_col=&gt;e_cell_design-badvalue_dark. &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">MODIFY</span> lt_ZALV_PROD_EFF <span style="color:#66d9ef">FROM</span> ls_ZALV_PROD_EFF.
+    <span style="color:#66d9ef">CLEAR</span> ls_ZALV_PROD_EFF.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">IF</span> lv_p_detail <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    lo_node <span style="color:#f92672">=</span> wd_context<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_child_node</span>( name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZALV_PROD_EFF&#39;</span> ).
+    lo_node<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">bind_table</span>( lt_ZALV_PROD_EFF ).
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>445</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P3/" class="prev" rel="prev" title=" Web Dynpro ABAP Program:WDDOINIT "><i class="iconfont icon-dajiantou"></i>&nbsp; Web Dynpro ABAP Program:WDDOINIT </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P1/" class="next" rel="next" title=" Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT "> Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-10-21 00:00:00 \x2b0000 UTC',
+        title: ' Web Dynpro ABAP Program:DATA_LOAD ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

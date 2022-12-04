@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_DOM/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Event/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Animation/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            JQuery 动画  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" JQuery 动画  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" JQuery 动画 "/>
+<meta name="twitter:description" content="JQuery 动画 默认方式 方法 描述 hide([speed],[easing],[fn]) 同时修改多个样式属性，将选择元素的 display 样式改为 none show([speed],[easing],[fn]) 将元素的 display 样式设置为之前的显示状态(其它) toggle([speed],[easing],[fn]) 切换元素的可见状体 hide() 方法"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " JQuery 动画 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_H5_JQuery_Animation\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JQuery",
+  "wordcount":  1186 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_H5_JQuery_Animation\/",
+  "datePublished": "2017-12-05T00:00:00\x2b00:00",
+  "dateModified": "2017-12-05T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> JQuery 动画 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-12-05 >5 December 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="jquery-动画">JQuery 动画</h2>
+<h3 id="默认方式">默认方式</h3>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">hide([speed],[easing],[fn])</td>
+<td align="left">同时修改多个样式属性，将选择元素的 display 样式改为 none</td>
+</tr>
+<tr>
+<td align="left">show([speed],[easing],[fn])</td>
+<td align="left">将元素的 display 样式设置为之前的显示状态(其它)</td>
+</tr>
+<tr>
+<td align="left">toggle([speed],[easing],[fn])</td>
+<td align="left">切换元素的可见状体</td>
+</tr>
+</tbody>
+</table>
+<p>hide() 方法在隐藏的时候会先保存原先的 display 属性值(&ldquo;block&rdquo;、&ldquo;inline&quot;或其它除了&quot;none&rdquo; 之外的值)。当调用 show() 方法时，会根据 hide() 方法保存的属性值来显示元素。</p>
+<h4 id="参数解析">参数解析</h4>
+<p><code>speed</code>：设置动画的速度，有三种预定义字符串(&ldquo;slow&rdquo; — 600ms、&ldquo;normal&rdquo; — 400ms、&ldquo;fast&rdquo; — 200ms)，也可以输入毫秒数值；输入关键字时需要添加引号，数字则不需要</p>
+<p><code>easing</code>：用来指定切换效果，默认是 &ldquo;swing&rdquo;，可用参数 &ldquo;linear&rdquo;</p>
+<ul>
+<li>swing：动画执行时效果是开始慢，中间快，最后慢</li>
+<li>linear：动画匀速执行</li>
+</ul>
+<p><code>fn</code>：在动画完成时执行的函数，每个元素执行一次</p>
+<h3 id="滑动方式">滑动方式</h3>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">slideDown([speed],[easing],[fn])</td>
+<td align="left">改变元素的高度，将元素由上至下延伸显示</td>
+</tr>
+<tr>
+<td align="left">slideUp([speed],[easing],[fn])</td>
+<td align="left">改变元素的高度，将元素由下到上缩短隐藏</td>
+</tr>
+<tr>
+<td align="left">slideToggle([speed],[easing],[fn])</td>
+<td align="left">通过高度变化来切换匹配元素的可见性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="淡入淡出方式">淡入淡出方式</h3>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">fadeIn([speed],[easing],[fn])</td>
+<td align="left">改变元素的不透明度，直到元素完整显示</td>
+</tr>
+<tr>
+<td align="left">fadeOut([speed],[easing],[fn])</td>
+<td align="left">改变元素的不透明度，直到元素完全消失</td>
+</tr>
+<tr>
+<td align="left">fadeToggle([speed],[easing],[fn])</td>
+<td align="left">切换以上两种状态</td>
+</tr>
+</tbody>
+</table>
+<h3 id="自定义动画">自定义动画</h3>
+<p>在 jQuery 中，可以使用 animate() 方法来自定义动画。通过该方法，能够实现更加复杂的动画效果，更具有灵活性。</p>
+<p>语法结构：<code>animate([params,]speed,callback);</code></p>
+<ul>
+<li>params：包含样式属性及值的映射，eg：{property1:&ldquo;value&rdquo;,property2:&ldquo;value2&rdquo;&hellip;}</li>
+<li>speed：动画执行的速度</li>
+<li>callback：在动画完成时执行的函数</li>
+</ul>
+<p>复杂示例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#panel&#34;</span>).<span style="color:#a6e22e">click</span>(<span style="color:#66d9ef">function</span>()
+  <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">animate</span>({<span style="color:#a6e22e">left</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;400px&#34;</span>,<span style="color:#a6e22e">height</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;200px&#34;</span>,<span style="color:#a6e22e">opacity</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1&#34;</span>},<span style="color:#ae81ff">2000</span>)
+    .<span style="color:#a6e22e">animate</span>({<span style="color:#a6e22e">top</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;200px&#34;</span>,<span style="color:#a6e22e">width</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;200px&#34;</span>},<span style="color:#ae81ff">3000</span>,<span style="color:#66d9ef">function</span>(){
+      <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">css</span>(<span style="color:#e6db74">&#34;border&#34;</span>,<span style="color:#e6db74">&#34;5px solid green&#34;</span>)
+  })
+});
+</code></pre></div><h4 id="动画队列">动画队列</h4>
+<p>一组元素上的动画效果</p>
+<ul>
+<li>当在一个 animate() 方法中应用多个属性时，动画时同时发生的</li>
+<li>当以链式的写法应用动画方法时，动画时按照顺序发生的</li>
+</ul>
+<p>多组元素上的动画效果</p>
+<ul>
+<li>默认情况下，动画都是同时发生的</li>
+<li>当以回调的形式应用动画方式时，动画是按照顺序发生的</li>
+</ul>
+<p>在动画方法中，要注意其它非动画方法会插队，需要将这些方法写在动画方法的回调函数中。</p>
+<h3 id="停止动画">停止动画</h3>
+<p>语法结构：<code>stop([clearQueue][,gotoEnd]);</code></p>
+<p>clearQueue：true 后续动画不执行；false(默认值) 后续动画会执行</p>
+<p>gotoEnd：true 立即执行完成当前动画；false(默认值) 立即停止当前动画</p>
+<p>当调用stop()方法后，队列里面的下一个动画将会立即开始。</p>
+<p>但是，如果参数clearQueue被设置为true，那么队列面剩余的动画就被删除了，并且永远也不会执行。</p>
+<p>如果参数jumpToEnd被设置为true，那么当前动画会停止，但是参与动画的每一个CSS属性将被立即设置为它们的目标值。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1186</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JQuery/">
+                    #JQuery</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_H5_JQuery_DOM/" class="prev" rel="prev" title=" JQuery 操作 DOM "><i class="iconfont icon-dajiantou"></i>&nbsp; JQuery 操作 DOM </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_H5_JQuery_Event/" class="next" rel="next" title=" JQuery 事件 "> JQuery 事件 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-12-05 00:00:00 \x2b0000 UTC',
+        title: ' JQuery 动画 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2022/ABAP_Utils_TableFields/" />
+  <link rel="next" href="https://coldinfire.github.io/2022/MM_MaterialView/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2022/FI_FM_FB05/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            FB05 使用程序清账  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" FB05 使用程序清账  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" FB05 使用程序清账 "/>
+<meta name="twitter:description" content="FM：POSTING_INTERFACE_CLEARING 目的：财务分别做预收款和开 billing，需要后续做清账对冲 DZ 和 RV。 逻辑：由于只"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " FB05 使用程序清账 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2022\/FI_FM_FB05\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "FICO, DEMO",
+  "wordcount":  1629 ,
+  "url": "https:\/\/coldinfire.github.io\/2022\/FI_FM_FB05\/",
+  "datePublished": "2022-03-07T00:00:00\x2b00:00",
+  "dateModified": "2022-03-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> FB05 使用程序清账 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2022-03-07 >7 March 2022</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="fmposting_interface_clearing">FM：POSTING_INTERFACE_CLEARING</h3>
+<p>目的：财务分别做预收款和开 billing，需要后续做清账对冲 DZ 和 RV。</p>
+<p>逻辑：由于只需要模拟人工 <code>F-32</code> 做清账，只需要根据 XBLNR 找到借贷方进行对冲即可，因此程序非常简单，核心传递的值为 it_ftclear-selfd。由于 VF01 开票中已经做了拆分增强，所以 Billing 的金额和 DZ 的金额是无法对应上的，因此无法采用标准自动清账配置，必须开发实现。</p>
+<p>函数：<code>POSTING_INTERFACE_CLEARING</code>；POSTING_INTERFACE_CLEARING 并非纯函数，本质上是调用 BDC。</p>
+<p>清账逻辑：取出RV、DZ、DG，将 XBLNR 字段相同的行组合在一起，清账。处理异常，事务代码：<code>F-32</code>。</p>
+<ul>
+<li>SE16 查询表 BSAD 按 BUKRS、AUGBL、GJAHR 查询，可查询到清账凭证行及原始行信息</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_create_ab</span>.
+<span style="color:#75715e">*重点需要解决的两个问题：1. 清账函数的使用；</span>
+<span style="color:#75715e">*                    2. 清账数据的准备（按照公司业务逻辑）.</span>
+  <span style="color:#66d9ef">DATA</span>: it_blntab  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> blntab <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        it_ftclear <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ftclear <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        it_ftpost  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> ftpost <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        it_fttax   <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> fttax <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  <span style="color:#66d9ef">DATA</span>: lt_bsad_clearing <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> bsad <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>. <span style="color:#75715e">&#34;客户未清项表&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: lt_kunnr <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> zthy_ecc_kunnr <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+  <span style="color:#66d9ef">DATA</span>: lv_ftclear_agbuk <span style="color:#66d9ef">TYPE </span>bukrs. <span style="color:#75715e">&#34;清账公司代码&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;每次处理一个客户的清账业务.&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*宏.</span>
+<span style="color:#75715e">*SELFD = Field Name from the Document Index</span>
+<span style="color:#75715e">*SELVON = Input Field for Search Criterion for Selecting Open Items.</span>
+  <span style="color:#66d9ef">DEFINE</span> populate_ftclear.
+    it_ftclear<span style="color:#f92672">-</span>agkoa  <span style="color:#f92672">=</span> &amp;1.       <span style="color:#75715e">&#34;科目类型&#34;
+</span><span style="color:#75715e"></span>    it_ftclear<span style="color:#f92672">-</span>agbuk  <span style="color:#f92672">=</span> &amp;2.       <span style="color:#75715e">&#34;公司代码&#34;
+</span><span style="color:#75715e"></span>    it_ftclear<span style="color:#f92672">-</span>xnops  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.      <span style="color:#75715e">&#34;标准未清项目&#34;
+</span><span style="color:#75715e"></span>    it_ftclear<span style="color:#f92672">-</span>AGUMS  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>.      <span style="color:#75715e">&#34;特别总账未清项目&#34;
+</span><span style="color:#75715e"></span>    it_ftclear<span style="color:#f92672">-</span>selfd  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XBLNR&#39;</span>.  <span style="color:#75715e">&#34;凭证索引中的字段名(使用该字段搜索用来做对冲的借贷方)&#34;
+</span><span style="color:#75715e"></span>    it_ftclear<span style="color:#f92672">-</span>selvon <span style="color:#f92672">=</span> &amp;3.       <span style="color:#75715e">&#34;Input Field for Search Criterion for Selecting Open Items&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">append</span> it_ftclear.
+  <span style="color:#66d9ef">END-OF-DEFINITION</span>.
+ 
+  <span style="color:#66d9ef">DEFINE</span> populate_ftpost.
+    it_ftpost<span style="color:#f92672">-</span>stype <span style="color:#f92672">=</span> &amp;1.   <span style="color:#75715e">&#34;K为header，P为item&#34;
+</span><span style="color:#75715e"></span>    it_ftpost<span style="color:#f92672">-</span>count <span style="color:#f92672">=</span> &amp;2.   <span style="color:#75715e">&#34;凭证抬头或行项目的计数器(记帐界面)&#34;
+</span><span style="color:#75715e"></span>    it_ftpost<span style="color:#f92672">-</span>fnam  <span style="color:#f92672">=</span> &amp;3.   <span style="color:#75715e">&#34;BDC 字段名&#34;
+</span><span style="color:#75715e"></span>    it_ftpost<span style="color:#f92672">-</span>fval  <span style="color:#f92672">=</span> &amp;4.   <span style="color:#75715e">&#34;BDC 字段值&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">append</span> it_ftpost.
+  <span style="color:#66d9ef">END-OF-DEFINITION</span>.
+<span style="color:#75715e">*1.Start of call transaction: SHDB.</span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;POSTING_INTERFACE_START&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_client           <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>mandt
+      i_function         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C&#39;</span> <span style="color:#75715e">&#34;B= BDC, C= Call Trans&#34;
+</span><span style="color:#75715e"></span>      i_mode             <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;N&#39;</span> <span style="color:#75715e">&#34;N – no screen, A – all screen, E – Error&#34;
+</span><span style="color:#75715e"></span>      i_update           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span> <span style="color:#75715e">&#34;S: 数据更新完成后执行下一个操作&#34;
+</span><span style="color:#75715e"></span>      i_keep             <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> <span style="color:#75715e">&#34;用于已处理会话的队列删除标志&#34;
+</span><span style="color:#75715e"></span>      i_user             <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>uname
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      client_incorrect   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      function_invalid   <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      group_name_missing <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      mode_invalid       <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      update_invalid     <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+      <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+<span style="color:#75715e">* Implement suitable error handling here</span>
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*2.Fill data for SHDB.</span>
+  populate_ftclear <span style="color:#e6db74">&#39;D&#39;</span> <span style="color:#e6db74">&#39;1000&#39;</span> <span style="color:#e6db74">&#39;SA00012090&#39;</span>. <span style="color:#75715e">&#34;调用两次，一次借方，一次贷方.&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*每执行一次添加一条清账行项目.如果借贷方分录不是正好等于两条，则应使用loop追加清账条目.</span>
+  populate_ftpost: <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;BKPF-BUKRS&#39;</span> <span style="color:#e6db74">&#39;1000&#39;</span>,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;BKPF-BLART&#39;</span> <span style="color:#e6db74">&#39;AB&#39;</span>,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;BKPF-BLDAT&#39;</span> sy<span style="color:#f92672">-</span>datum,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;BKPF-BUDAT&#39;</span> sy<span style="color:#f92672">-</span>datum,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;BKPF-XBLNR&#39;</span> <span style="color:#e6db74">&#39;SA00012090&#39;</span>, <span style="color:#75715e">&#34;清账参考号&#34;
+</span><span style="color:#75715e"></span>                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;BKPF-WAERS&#39;</span> <span style="color:#e6db74">&#39;CNY&#39;</span>.
+                   
+<span style="color:#75715e">**由于根据参考号(XBLNR)自动搜索清账的方式进行清账，因此行项目级别均不需要传值.</span>
+<span style="color:#75715e">**               &#39;P&#39; 1 &#39;RF05A-NEWBS&#39; &#39;17&#39;,</span>
+<span style="color:#75715e">*                &#39;P&#39; 1 &#39;RF05A-NEWBS&#39; &#39;18&#39;,  &#34;通过FB05进行预收和应收对冲清账时，记账码为18（手工做F-32为17）</span>
+<span style="color:#75715e">*                &#39;P&#39; 1 &#39;RF05A-NEWUM&#39; &#39;&#39;,           &#34;Special G/L indicator&#34;</span>
+<span style="color:#75715e">**               &#39;P&#39; 1 &#39;BSEG-HKONT&#39; &#39;0011220001&#39;,</span>
+<span style="color:#75715e">*                &#39;P&#39; 1 &#39;BSEG-KUNNR&#39; &#39;0011000000&#39;,  &#34;统驭科目&#34;</span>
+<span style="color:#75715e">**               &#39;P&#39; 1 &#39;BSEG-WRBTR&#39; &#39;347.09&#39;,      &#34;程序根据搜索条件自动搜出金额，无需指定&#34;</span>
+<span style="color:#75715e">*                &#39;P&#39; 1 &#39;BSEG-ZFBDT&#39; sy-datum,</span>
+<span style="color:#75715e">*                &#39;P&#39; 1 &#39;BSEG-SGTXT&#39; &#39;清账测试&#39;.</span>
+
+  populate_ftpost: <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;BKPF-BUKRS&#39;</span> <span style="color:#e6db74">&#39;1000&#39;</span>,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;BKPF-BLART&#39;</span> <span style="color:#e6db74">&#39;AB&#39;</span>,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;BKPF-BLDAT&#39;</span> sy<span style="color:#f92672">-</span>datum,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;BKPF-BUDAT&#39;</span> sy<span style="color:#f92672">-</span>datum,
+                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;BKPF-XBLNR&#39;</span> <span style="color:#e6db74">&#39;SA00012090&#39;</span>, <span style="color:#75715e">&#34;清账参考号.
+</span><span style="color:#75715e"></span>                   <span style="color:#e6db74">&#39;K&#39;</span> <span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;BKPF-WAERS&#39;</span> <span style="color:#e6db74">&#39;CNY&#39;</span>.
+<span style="color:#75715e">**由于根据参考号(XBLNR)自动搜索清账的方式进行清账，因此行项目级别均不需要传值.</span>
+<span style="color:#75715e">*                  &#39;P&#39; 2 &#39;RF05A-NEWBS&#39; &#39;09&#39;,</span>
+<span style="color:#75715e">*                  &#39;P&#39; 2 &#39;RF05A-NEWUM&#39; &#39;A&#39;,          &#34;Special G/L indicator.&#34;</span>
+<span style="color:#75715e">**                 &#39;P&#39; 2 &#39;BSEG-HKONT&#39; &#39;0022030001&#39;,</span>
+<span style="color:#75715e">*                  &#39;P&#39; 2 &#39;BSEG-KUNNR&#39; &#39;0011000000&#39;,  &#34;统驭科目&#34;</span>
+<span style="color:#75715e">**                 &#39;P&#39; 2 &#39;BSEG-WRBTR&#39; &#39;347.09&#39;,      &#34;程序根据搜索条件自动搜出金额，无需指定&#34;</span>
+<span style="color:#75715e">*                  &#39;P&#39; 2 &#39;BSEG-ZFBDT&#39; sy-datum,</span>
+<span style="color:#75715e">*                  &#39;P&#39; 2 &#39;BSEG-SGTXT&#39; &#39;清账测试&#39;.</span>
+ 
+<span style="color:#75715e">*3.Process BDC.</span>
+<span style="color:#75715e">*每次只能传入一个清账分录.</span>
+<span style="color:#75715e">*AUGLV  Purpose</span>
+<span style="color:#75715e">*AUSGZAHL	Outgoing payment</span>
+<span style="color:#75715e">*EINGZAHL	Incoming payment</span>
+<span style="color:#75715e">*GUTSCHRI	Credit memo(W为承兑汇票，可能比较特殊)</span>
+<span style="color:#75715e">*UMBUCHNG	Transfer posting with clearing</span>
+ 
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;POSTING_INTERFACE_CLEARING&#39;</span> <span style="color:#75715e">&#34;Post with clearing (FB05) using internal posting interface
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">EXPORTING</span>
+      i_auglv                    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AUSGZAHL&#39;</span>    <span style="color:#75715e">&#34; t041a-auglv   Clearing Transaction
+</span><span style="color:#75715e"></span>      i_tcode                    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FB05&#39;</span>        <span style="color:#75715e">&#34; sy-tcode      Transaction code
+</span><span style="color:#75715e"></span>      i_sgfunct                  <span style="color:#f92672">=</span> space         <span style="color:#75715e">&#34; rfipi-sgfunct  Different FUNCT function
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IMPORTING</span>
+      e_msgid                    <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgid      <span style="color:#75715e">&#34; sy-msgid      Message ID 
+</span><span style="color:#75715e"></span>      e_msgno                    <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgno      <span style="color:#75715e">&#34; sy-msgno      Message number 
+</span><span style="color:#75715e"></span>      e_msgty                    <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgty      <span style="color:#75715e">&#34; sy-msgty      Message category 
+</span><span style="color:#75715e"></span>      e_msgv1                    <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv1      <span style="color:#75715e">&#34; sy-msgv1      Message variable 1 
+</span><span style="color:#75715e"></span>      e_msgv2                    <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv2      <span style="color:#75715e">&#34; sy-msgv2      Message variable 2 
+</span><span style="color:#75715e"></span>      e_msgv3                    <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv3      <span style="color:#75715e">&#34; sy-msgv3      Message variable 3 
+</span><span style="color:#75715e"></span>      e_msgv4                    <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>msgv4      <span style="color:#75715e">&#34; sy-msgv4      Message variable 4
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TABLES</span>
+      t_blntab                   <span style="color:#f92672">=</span> it_blntab     <span style="color:#75715e">&#34; blntab        Table of the document numbers
+</span><span style="color:#75715e"></span>      t_ftclear                  <span style="color:#f92672">=</span> it_ftclear    <span style="color:#75715e">&#34; ftclear       Clearing data
+</span><span style="color:#75715e"></span>      t_ftpost                   <span style="color:#f92672">=</span> it_ftpost     <span style="color:#75715e">&#34; ftpost        Document header and item data
+</span><span style="color:#75715e"></span>      t_fttax                    <span style="color:#f92672">=</span> it_fttax      <span style="color:#75715e">&#34; fttax         Taxes
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">EXCEPTIONS</span>
+      clearing_procedure_invalid <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      clearing_procedure_missing <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      table_t041a_empty          <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      transaction_code_invalid   <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      amount_format_error        <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+      too_many_line_items        <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+      company_code_invalid       <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+      screen_not_found           <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
+      no_authorization           <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+      <span style="color:#66d9ef">OTHERS</span>                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#75715e">&#34;清账成功，清账凭证信息存储在it_blntab中.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#75715e">&#34;清账失败，查看importing中的消息.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*4.After bdc processing.</span>
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;POSTING_INTERFACE_END&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      i_bdcimmed              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      session_not_processable <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#66d9ef">OTHERS</span>                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#75715e">*5.log record.</span>
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1629</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/FICO/">
+                    #FICO</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/DEMO/">
+                    #DEMO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2022/ABAP_Utils_TableFields/" class="prev" rel="prev" title=" SAP 获取表字段所有信息 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 获取表字段所有信息 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2022/MM_MaterialView/" class="next" rel="next" title=" 物料主数据视图 "> 物料主数据视图 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2022-03-07 00:00:00 \x2b0000 UTC',
+        title: ' FB05 使用程序清账 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

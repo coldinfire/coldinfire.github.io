@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_JSP_Basic/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_MySQL_Basic/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/JAVA_JSP_Tag/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           JSP 标签库 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="JSP 标签库 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JSP 标签库"/>
+<meta name="twitter:description" content="EL表达式 表达式语言（Expression Language，EL），EL 表达式是用 ${expression} 括起来的脚本，用来更方便的读取对象。EL 表达式主要用来读"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "JSP 标签库",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/JAVA_JSP_Tag\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "JSP",
+  "wordcount":  1051 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/JAVA_JSP_Tag\/",
+  "datePublished": "2017-11-17T00:00:00\u002b00:00",
+  "dateModified": "2017-11-17T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">JSP 标签库</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-11-17 >17 November 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="el表达式">EL表达式</h2>
+<p>表达式语言（Expression Language，EL），EL 表达式是用 <code>${expression}</code> 括起来的脚本，用来更方便的读取对象。EL 表达式主要用来读取数据，进行内容的显示。</p>
+<p>使用 EL 表达式可以方便地获取 4 个内置对象（域）中的数据，自定义对象中的数据、提交的参数、JavaBean、甚至集合。</p>
+<p>使用 EL 表达式可以很方便地引用一些 JavaBean 以及其属性，不会抛出 NullPointerException 之类的错误。但是，EL 表达式非常有限，它不能遍历集合，做逻辑的控制。</p>
+<h3 id="获取数据">获取数据</h3>
+<h4 id="运算符">运算符</h4>
+<p>算术运算符：+、-、*、/、%</p>
+<p>比较运算符：&gt;、&lt;、&gt;=、&lt;=、==、!=</p>
+<p>逻辑运算符：&amp;&amp;、||、!</p>
+<p>空运算符：用于判断字符串、集合、数组对象是否长度为0；</p>
+<ul>
+<li>
+<p>表达式：<code>${empty list}</code></p>
+</li>
+<li>
+<p>EL 三元运算符: ${empty 对象 ? 表达式1 : 表达式2}</p>
+</li>
+</ul>
+<h4 id="获取值">获取值</h4>
+<p>EL 表达式只能从域对象中获取值，<code>${域名称.键名}</code> 从指定域中获取指定键的值。</p>
+<p>EL 表达式从四个域中取值，就是在代替使用 PageContext 中的getAttribute 方法取值的麻烦，底层依然在使用 PageContext 中的getAttribute 方法。</p>
+<p>使用 pageContext 的 getAttribute方法或者 findAttribute 方法从4个范围中取出数据的时候，如果指定的 key 不存在会得到 null，而使用 EL 表达式取出的时候指定的 key 不存在，页面上什么都没有。</p>
+<p>域名称:</p>
+<ul>
+<li>pageScope              -&gt;   pageContext</li>
+<li>requestScope         -&gt;   request</li>
+<li>sessionScope         -&gt;   session</li>
+<li>applicationScope   -&gt;   application (ServletContext)</li>
+</ul>
+<p>web 中的四个域对象（容器对象）范围：从小到大顺序：</p>
+<ul>
+<li>page &lt; request &lt; session &lt; application(ServletContext)</li>
+</ul>
+<p>如果不知道数据在哪个范围中，这时可以不用指定范围直接书写 key值即可 <code>${键名}</code></p>
+<h4 id="el-表达式获取复杂数据">EL 表达式获取复杂数据</h4>
+<p>在 EL 表达式中，获取对象的属性的值的时候，其实不是在看这个对象所在的类是否有这个属性，只要这个对象所在的类中有 getXxxxx 方法，就可以使用 EL 表达式获取 Xxxx 值。</p>
+<ul>
+<li>获取数组数据：<code>${arr1[3]}</code></li>
+<li>获取集合中的值：<code>${list[2]}</code></li>
+<li>获取自定义对象的属性值：<code>${object.attirbute}</code></li>
+</ul>
+<h2 id="jsp-标准标签库jstl">JSP 标准标签库（JSTL）</h2>
+<p>JSP 标准标签库（JSTL）是一个 JSP 标签集合，它封装了 JSP 应用的通用核心功能。</p>
+<p>为什么要使用 JSTL：EL 表达式不够完美，需要 JSTL 的支持。JSTL 与 HTML 代码十分类似，遵循着 XML 标签语法，使用 JSTL 让 JSP 页面显得整洁，可读性非常好，重用性非常高，可以完成复杂的功能。</p>
+<p>JSTL 支持通用的、结构化的任务，比如迭代，条件判断，XML 文档操作，国际化标签，SQL 标签。 除了这些，它还提供了一个框架来使用集成 JSTL 的自定义标签。</p>
+<p>根据 JSTL 标签所提供的功能，可以将其分为5个类别。</p>
+<ul>
+<li>核心标签</li>
+<li>格式化标签</li>
+<li>SQL 标签</li>
+<li>XML 标签</li>
+<li>JSTL 函数</li>
+</ul>
+<h3 id="jstl-使用">JSTL 使用</h3>
+<p>使用任何库，你必须在每个JSP文件中的头部包含<code>&lt;taglib&gt;</code>标签。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1051</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JSP/">
+                    #JSP</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_JSP_Basic/" class="prev" rel="prev" title="JSP 简介"><i class="iconfont icon-dajiantou"></i>&nbsp;JSP 简介</a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_MySQL_Basic/" class="next" rel="next" title=" MySQL基本操作 "> MySQL基本操作 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-11-17 00:00:00 \u002b0000 UTC',
+        title: 'JSP 标签库',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

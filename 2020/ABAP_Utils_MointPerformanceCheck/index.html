@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/WM_Table/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseRequestCreate/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_Utils_MointPerformanceCheck/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 系统监控和性能检查  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 系统监控和性能检查  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 系统监控和性能检查 "/>
+<meta name="twitter:description" content="系统监控 系统监控是一项日常活动，当需要时我们应该清楚如何查找问题。 检查应用服务器 监控全系统的工作流程 监控单个实例的工作流程 监控锁定条目 CPU 使用"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 系统监控和性能检查 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_Utils_MointPerformanceCheck\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1589 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_Utils_MointPerformanceCheck\/",
+  "datePublished": "2020-06-07T00:00:00\x2b00:00",
+  "dateModified": "2020-06-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 系统监控和性能检查 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-06-07 >7 June 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="系统监控">系统监控</h3>
+<p>系统监控是一项日常活动，当需要时我们应该清楚如何查找问题。</p>
+<ul>
+<li>检查应用服务器</li>
+<li>监控全系统的工作流程</li>
+<li>监控单个实例的工作流程</li>
+<li>监控锁定条目</li>
+<li>CPU 使用</li>
+<li>数据库中的可用空间</li>
+<li>监控更新过程</li>
+<li>监控系统日志</li>
+<li>缓冲区统计</li>
+</ul>
+<p>其他一些常用的功能：</p>
+<ul>
+<li>监控批处理作业</li>
+<li>假脱机请求监控</li>
+<li>打印请求数</li>
+<li>ABAP 转储分析</li>
+<li>数据库性能监视器</li>
+<li>数据库检查</li>
+<li>监控应用程序用户</li>
+</ul>
+<h3 id="如何监控">如何监控</h3>
+<h4 id="abap-dumps-st22">ABAP Dumps (ST22)</h4>
+<p>在这里，我们可以查看 SAP 系统产生的 Dump，通过 Dump 中的提示信息找到对应的问题并解决。</p>
+<h4 id="假脱机请求监控-sp01">假脱机请求监控 (SP01)</h4>
+<p>对于 Spool Request 监控，执行 SP01 在 Create by 输入框输入 *，然后点击执行按钮。这里只记录那些因问题而终止的请求。</p>
+<h4 id="监控锁定条目-sm12">监控锁定条目 (SM12)</h4>
+<p>SAP 提供了一种锁定机制来防止其他用户更改您正在处理的记录。 在某些情况下，不会释放锁。 如果用户在他们能够释放锁定之前被切断，即由于网络问题，就会发生这种情况。这些旧锁需要清除，否则可能会阻止访问或更改记录。</p>
+<p>我们可以使用锁统计信息来监控系统中设置的锁。 我们只记录那些具有前一天日期时间戳的锁定条目。</p>
+<h4 id="监控更新过程-sm13">监控更新过程 (SM13)</h4>
+<p>执行事务 SM13 并在字段 USER 中输入“*”，然后单击执行按钮。如果没有长时间挂起的更新记录或没有更新正在进行，则此队列将为空。</p>
+<p>如果更新未激活，请查找以下信息：</p>
+<ul>
+<li>更新是否处于活动状态，如果不是，是由系统还是由用户停用？
+<ul>
+<li>单击 SAP Monitoring &amp; Performance Checks: Complete Tutorial with Tcodes 按钮并获取信息。</li>
+<li>单击 SAP Monitoring &amp; Performance Checks: Complete Tutorial with Tcodes 按钮并获取以下信息：是否有任何更新被取消？是否有超过 10 分钟的待处理更新排长队？</li>
+</ul>
+</li>
+</ul>
+<h4 id="监控系统日志-sm21">监控系统日志 (SM21)</h4>
+<p>我们可以使用日志来查明和纠正系统及其环境中发生的 Errors、Warnings、Security messages、Database problems。</p>
+<p>我们使用以下选择/选项检查前一天的日志：</p>
+<ul>
+<li>输入日期和时间范围</li>
+<li>选择单选按钮 Problems and warnings</li>
+<li>点击：Read system log</li>
+</ul>
+<h4 id="监控后台作业-sm37">监控后台作业 (SM37)</h4>
+<p>对于监控后台作业，执行 SM37 并在用户名和工作名称字段中输入“*”；在Job Status 中选择：已计划、已取消、已发布和已完成请求；点击执行即可查看相应的后台作业。</p>
+<h4 id="监控单个实例的工作流程-sm50-">监控单个实例的工作流程 (SM50 )</h4>
+<p>显示与特定实例相关的所有正在运行、等待、停止和 PRIV 进程。 在这一步下我们检查所有的过程； 进程状态应始终为等待或运行。 如果任何进程处于等待或运行以外的状态，我们需要检查该特定进程并相应地报告。</p>
+<p>该事物码显示了很多信息，例如：</p>
+<ul>
+<li>
+<p>工作进程状态（是否被占用）</p>
+</li>
+<li>
+<p>如果工作流程正在运行，您可能能够在“操作”列中看到它所采取的操作。</p>
+</li>
+<li>
+<p>您可以知道正在处理哪个表</p>
+</li>
+</ul>
+<p>一些典型的问题：</p>
+<ul>
+<li>用户需要很长时间才能登录/无法登录/在线交易非常慢。这可能是 DIA 工作流程被充分利用的结果。也可能是长时间运行作业的结果（时间列下的红色指示器）。如有必要，您可以通过选择作业来取消会话，然后转到 Process&gt;Cancel without core。这将取消作业并释放其他用户/进程的工作进程</li>
+<li>某些用户可能在 Reason 列下具有 PRIV 状态。这可能是因为用户事务太大以至于需要更多内存。发生这种情况时，DIA 工作流程将由用户“拥有”，不会让其他用户使用。如果发生这种情况，请与用户核对，并在可能的情况下将作业作为后台作业运行。</li>
+<li>如果 SPO 工作流程中存在长打印作业，请调查问题。这可能是与打印服务器或打印机相关的问题。</li>
+</ul>
+<h4 id="检查应用服务器-sm51">检查应用服务器 (SM51)</h4>
+<p>SM51 事物码用于检查所有活动的应用程序服务器。在这里可以看到在每个实例中配置了哪些服务或工作流程。</p>
+<h4 id="事务性-rfc-管理-sm58">事务性 RFC 管理 (SM58)</h4>
+<p>Transactional RFC（tRFC）是一种异步通信方式，它在 RFC 服务器中只执行一次被调用的功能模块。</p>
+<p>我们需要选择我们想要查看的 tRFCs 的显示周期，然后在用户名字段中选择“*”来查看所有没有正确执行或在队列中等待的调用。</p>
+<h4 id="监控全系统工作流程-sm66">监控全系统工作流程 (SM66)</h4>
+<p>通过使用全局工作流程概览检查工作流程负载，我们可以快速调查系统性能问题的潜在原因。</p>
+<p>监控系统中所有活动实例的工作进程负载</p>
+<p>使用全局工作流程概览屏幕，我们可以一目了然：</p>
+<ul>
+<li>每个应用服务器的状态</li>
+<li>不运行的原因</li>
+<li>是否已经重启</li>
+<li>CPU 和请求运行时间</li>
+<li>已登录的用户和他们登录的客户端</li>
+<li>正在运行的 Report</li>
+</ul>
+<h4 id="监视应用程序用户al08--sm04">监视应用程序用户（AL08 &amp; SM04）</h4>
+<p>此事务码显示当前 Client 的所有 active 用户。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1589</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/WM_Table/" class="prev" rel="prev" title=" WM 常用表 "><i class="iconfont icon-dajiantou"></i>&nbsp; WM 常用表 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseRequestCreate/" class="next" rel="next" title=" BAPI 创建 Purchase Request "> BAPI 创建 Purchase Request &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-07 00:00:00 \x2b0000 UTC',
+        title: ' SAP 系统监控和性能检查 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

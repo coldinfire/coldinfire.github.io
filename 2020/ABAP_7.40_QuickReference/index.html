@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/MM_IM_Print/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_BAPI_ALL_LIST/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 7.40 Quick Reference  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 7.40 Quick Reference  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 7.40 Quick Reference "/>
+<meta name="twitter:description" content="Inline Declarations 注意@DATA(ITAB)语句的强大，有了它，我们在访问数据库的时候，直接写SELECT就好了，不需要构建各式各样的內表和表类型了。注意"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 7.40 Quick Reference ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_7.40_QuickReference\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  3800 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_7.40_QuickReference\/",
+  "datePublished": "2020-07-14T00:00:00\u002b00:00",
+  "dateModified": "2020-07-14T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 7.40 Quick Reference </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-07-14 >14 July 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="inline-declarations">Inline Declarations</h3>
+<p>注意@DATA(ITAB)语句的强大，有了它，我们在访问数据库的时候，直接写SELECT就好了，不需要构建各式各样的內表和表类型了。注意在使用FOR ALL ENTRIES 语句的时候，管理的內表前面要加上@。</p>
+<h4 id="data-statement">Data statement</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA text TYPE string. 
+text = ABC.
+// With 7.40
+DATA(text) = ABC.
+</code></pre></div><h4 id="loop-at-into-work-area">Loop at into work area</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA wa like LINE OF itab. 
+LOOP AT itab INTO wa.     
+  ...... 
+ENDLOOP.
+// With 7.40
+LOOP AT itab INTO DATA(wa).
+  ......
+ENDLOOP.
+</code></pre></div><h4 id="call-method">Call method</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA a1 TYPE char10.
+DATA a2 TYPE char10.
+oref-&gt;meth( IMPORTING p1 = a1
+            IMPORTING p2 = a2 ).
+// With 7.40
+oref-&gt;meth(  IMPORTING p1 = DATA(a1)
+             IMPORTING p2 = DATA(a2) ). 
+</code></pre></div><h4 id="loop-at-assigning">Loop at assigning</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+FIELD-SYMBOLS: &lt;<span style="color:#f92672">line</span>&gt; type any.
+LOOP AT itab ASSIGNING &lt;<span style="color:#f92672">line</span>&gt;.
+  ...... 
+ENDLOOP.
+// With 7.40
+LOOP AT itab ASSIGNING FIELD-SYMBOL(&lt;<span style="color:#f92672">line</span>&gt;).   
+  .......
+ENDLOOP.
+</code></pre></div><h4 id="read-assigning">Read assigning</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+FIELD-SYMBOLS: &lt;<span style="color:#f92672">line</span>&gt; type any.
+READ TABLE itab ASSIGNING &lt;<span style="color:#f92672">line</span>&gt;.
+// With 7.40
+READ TABLE itab ASSIGNING FIELD-SYMBOL(&lt;<span style="color:#f92672">line</span>&gt;).
+</code></pre></div><h4 id="select-into-table">Select into table</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA itab TYPE TABLE OF dbtab.
+DATA lv_fld1 TYPE char20.
+SELECT * FROM dbtab INTO TABLE itab WHERE fld1 = lv_fld1.
+// With 7.40
+SELECT but000~partner,
+       but000~name_org1,
+       but000~bu_group,
+       lfa1~nodel
+  FROM but000 INNER JOIN lfa1 ON but000~partner = lfa1~lifnr
+  FOR ALL ENTRIES IN @gt_partner
+  WHERE but000~partner = @gt_partner-partner
+  INTO TABLE @DATA(lt_but).
+</code></pre></div><h4 id="select-single">Select single</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+SELECT SINGLE f1 f2 FROM scarr INTO (lv_f1, lv_f2) WHERE carrid = id.
+// With 7.40
+SELECT SINGLE f1 AS my_f1, F2 AS my_f2 
+FROM dbtab INTO DATA(ls_structure) WHERE carrid = @id.
+WRITE: / ls_structure-my_f1, ls_structure-my_f2.
+</code></pre></div><h3 id="table-expressions">Table Expressions</h3>
+<p><code>itab [ ... ]</code>相当于<code>READ TABLE itab...</code>。</p>
+<p>如果对应没找到，会抛出 CX_SY_ITAB_LINE_NOT_FOUND 异常，系统变量 SY-SUBRC 不会记录成功与否。</p>
+<p>可使用 line_exists(itab[&hellip;]) 。</p>
+<h4 id="read-table-index">Read table index</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+READ TABLE itab INDEX idx INTO wa.
+// With 7.40
+ wa = itab[ idx ].
+</code></pre></div><h4 id="read-table-using-key">Read table using key</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+READ TABLE itab INDEX idx USING KEY key INTO wa.
+// With 7.40
+wa = itab[ KEY key INDEX idx ].
+</code></pre></div><h4 id="read-table-with-key">Read table with key</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+READ TABLE itab WITH KEY col1 = lv_col1 col2 = lv_col2 INTO wa.
+// With 7.40
+wa = itab[ col1 = lv_col1 col2 = lv_col2 ].
+</code></pre></div><h4 id="read-table-with-key-components">Read table with key components</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+READ TABLE itab WITH TABLE KEY key COMPONENTS col1 = lv_col1 col2 = lv_col2 INTO wa.
+// With 7.40
+wa = itab[ KEY key col1 = lv_col1 col2 = lv_col2 ].
+</code></pre></div><h4 id="does-record-exist">Does record exist</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+READ TABLE itab … TRANSPORTING NO FIELDS. 
+IF sy-subrc = 0.
+  ...... 
+ENDIF.
+// With 7.40
+IF line_exists( itab[ … ] ).
+  ...... 
+ENDIF. 
+</code></pre></div><h4 id="get-table-index">Get table index</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA idx type sy-tabix. 
+READ TABLE itab ... TRANSPORTING NO FIELDS. 
+idx = sy-tabix.
+// With 7.40
+DATA(idx) = line_index( itab[ ... ] ).
+</code></pre></div><h3 id="conversion-operator-conv">Conversion Operator CONV</h3>
+<h4 id="definition">Definition</h4>
+<p>CONV dtype|# ( &hellip; )</p>
+<p><code>dtype</code> : Type you want to convert to (explicit)</p>
+<p><code>#</code> : Compiler must use the context to decide the type to convert to (implicit)</p>
+<h4 id="example">Example</h4>
+<p>Method &ldquo;cl_abap_codepage=&gt;convert_to&rdquo; expects a string.</p>
+<p>Before 7.40</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA text   TYPE c LENGTH 255.
+DATA helper TYPE string.
+DATA xstr   TYPE xstring.
+helper = text.
+xstr = cl_abap_codepage=&gt;convert_to( source = helper ).
+</code></pre></div><p>With 7.40</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA text TYPE c LENGTH 255.
+DATA(xstr) = cl_abap_codepage=&gt;convert_to( source = CONV string( text ) ).
+&#34;或则使用&#34;
+DATA(xstr) = cl_abap_codepage=&gt;convert_to( source = CONV #( text ) ).
+</code></pre></div><h3 id="value-operator-value">Value Operator Value</h3>
+<h4 id="definition-1">Definition</h4>
+<p><code>Variables</code>: VALUE dtype|# (  ).</p>
+<p><code>Structures</code>: VALUE dtype|# ( [BASE dobj] compl = a1 comp2 = a2 &hellip; )</p>
+<p><code>Tables</code>: VALUE dtype|# ( [BASE itab] ( line1-com1 = dobj1 ) ( line2&hellip; ) &hellip; ) &hellip;)</p>
+<h4 id="example-for-structures">Example for structures</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">TYPES:BEGIN OF ty_columns1, “Simple structure&#34;
+    cols1 TYPE i,
+    cols2 TYPE i,
+  END OF ty_columns1.
+TYPES: BEGIN OF ty_columnns2, &#34;Nested structure&#34;
+    coln1 TYPE i,
+    coln2 TYPE ty_columns1,
+  END OF ty_columns2.
+DATA: struc_simple TYPE ty_columns1,
+      struc_nest TYPE ty_columns2.
+struct_nest = VALUE t_struct(coln1 = 1 
+                             coln2-cols1 = 1
+                             coln2-cols2 = 2 ).
+&#34;或则使用&#34;
+struct_nest = VALUE t_struct(coln1 = 1 
+                             coln2 = VALUE #( cols1 = 1 cols2 = 2 ) ).
+</code></pre></div><h4 id="example-for-internal-tables">Example for internal tables</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Elementary line type:
+TYPES t_itab TYPE TABLE OF i WITH EMPTY KEY.
+DATA itab TYPE t_itab.
+itab = VALUE #( ( 1 ) ( 2 ) ( 3 ) ).
+// 覆盖
+itab = VALUE #( ( 4 ) ( 5 ) ( 6 ) ).
+// 追加
+itab = VALUE #( BASE itab ( 1 ) ( 2 ) ( 3 ) ).
+// Structured line type (RANGES table):
+DATA itab TYPE RANGE OF i.
+itab = VALUE #( sign = &#39;I&#39;  
+              option = &#39;BT&#39; ( low = 1  high = 10 )
+                            ( low = 21 high = 30 )
+                            ( low = 41 high = 50 )
+              option = &#39;GE&#39; ( low = 61 )  ).
+</code></pre></div><h3 id="for-operator">For operator</h3>
+<h4 id="definition-2">Definition</h4>
+<p><code>FOR wa|&lt;fs&gt; IN itab [INDEX INTO idx] [COND]. 	</code></p>
+<p><code>VALUE itab( FOR i = ... [THEN expr] UNTIL|WHERE log_ext ... )</code></p>
+<p><code>REDUCE type (INIT FOR ... NEXT ...)</code></p>
+<h4 id="explanation">Explanation</h4>
+<p>This effectively causes a loop at itab. For each loop the row read is assigned to a work area (wa) or field-symbol(<code>&lt;fs&gt;</code>).</p>
+<p>This wa or <code>&lt;fs&gt;</code> is local to the expression i.e. if declared in a  subrourine the variable wa or <code>&lt;fs&gt;</code> is a local variable of that subroutine. Index like SY-TABIX in loop.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">TYPES: BEGIN OF ty_ship,
+           tknum TYPE tknum,     “Shipment Number
+           name  TYPE ernam,     “Name of Person who Created the Object
+           city  TYPE ort01,     “Starting city
+           route TYPE route,     “Shipment route
+       END OF ty_ship.
+TYPES: ty_ships TYPE SORTED TABLE OF ty_ship WITH UNIQUE KEY tknum.
+TYPES: ty_citys TYPE STANDARD TABLE OF ort01 WITH EMPTY KEY. 
+DATA: gt_ships type ty_ships.
+</code></pre></div><p>Example1</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA: gt_citys TYPE ty_citys,
+      gs_ship  TYPE ty_ship,
+      gs_city  TYPE ort01.
+LOOP AT gt_ships INTO gs_ship.
+  gs_city =  gs_ship–city.
+  APPEND gs_city TO gt_citys.
+ENDLOOP.
+// With 7.40
+DATA(gt_citys) = VALUE ty_citys( FOR ls_ship IN gt_ships ( ls_ship-city ) ).
+</code></pre></div><p>注意：ls_ship似乎尚未声明，但已隐式声明。</p>
+<p>Example2</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA: gt_citys TYPE ty_citys,
+      gs_ship  TYPE ty_ship,
+      gs_city  TYPE ort01.
+LOOP AT gt_ships INTO gs_ship WHERE route = ‘R0001’.
+  gs_city =  gs_ship–city.
+  APPEND gs_city TO gt_citys.
+ENDLOOP.
+// With 7.40
+DATA(gt_citys) = VALUE ty_citys( FOR ls_ship IN gt_ships WHERE ( route = &#39;R0001&#39; )
+                                                               ( ls_ship-city ) ).
+</code></pre></div><p><strong>FOR with THEN and UNTIL|WHILE</strong></p>
+<p><code>FOR i = … [THEN expr] UNTIL|WHILE log_exp</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">TYPES:
+  BEGIN OF ty_line,
+    col1 TYPE i,
+    col2 TYPE i,
+    col3 TYPE i,
+  END OF ty_line,
+  ty_tab TYPE STANDARD TABLE OF ty_line WITH EMPTY KEY.
+// Before 7.40
+DATA: gt_itab TYPE ty_tab,
+      j TYPE i.
+FIELD-SYMBOLS &lt;<span style="color:#f92672">ls_tab</span>&gt; TYPE ty_line.
+j = 1.
+DO.
+  j = j + 10.
+  IF j &gt; 40. EXIT. ENDIF.
+  APPEND INITIAL LINE TO gt_itab ASSIGNING &lt;<span style="color:#f92672">ls_tab</span>&gt;.
+  &lt;<span style="color:#f92672">ls_tab</span>&gt;–col1 = j.
+  &lt;<span style="color:#f92672">ls_tab</span>&gt;–col2 = j + 1.
+  &lt;<span style="color:#f92672">ls_tab</span>&gt;–col3 = j + 2.
+ENDDO.
+// With 7.40
+DATA(gt_itab) = VALUE ty_tab( FOR j = 11 THEN j + 10 UNTIL j &gt; 40
+                            ( col1 = j col2 = j + 1 col3 = j + 2  ) ).
+</code></pre></div><h3 id="reduction-operator-reduce">Reduction operator REDUCE</h3>
+<h4 id="definition-3">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">REDUCE type(
+  INIT result = start_value
+  FOR for_exp1
+  FOR for_exp2
+  ......
+  NEXT …
+  result = iterated_value
+… )
+</code></pre></div><p>虽然VALUE和NEW表达式可以包含FOR表达式，但REDUCE必须包含至少一个FOR表达式。您可以在REDUCE中使用各种FOR表达式</p>
+<ul>
+<li>With IN for iterating internal tables</li>
+<li>With UNTIL or WHILE for conditional iterations</li>
+</ul>
+<h4 id="example1">Example1</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA: lv_lines TYPE i.
+LOOP AT gt_itab INTO ls_itab where F1 = ‘XYZ’.
+  lv_lines = lv_lines + 1.
+ENDLOOP.
+// With 7.40 
+DATA(lv_lines) = Reduce i( INIT x = 0 FOR wa IN gt_itab
+                           WHERE( F1 = &#39;XUZ&#39; ) NEXT x = x + 1 )
+</code></pre></div><h4 id="example2">Example2</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA gt_itab TYPE STANDARD TABLE OF i WITH EMPTY KEY.
+gt_itab = VALUE #( FOR j = 1 WHILE j <span style="color:#960050;background-color:#1e0010">&lt;</span>= 10 ( j ) ).
+// Before 7.40
+DATA: lv_lines TYPE i.
+LOOP AT gt_itab INTO ls_itab where F1 = ‘XYZ’.
+  lv_lines = lv_lines + 1.
+ENDLOOP.
+// With 7.40 
+DATA(lv_sum) = REDUCE i( INIT x = 0 FOR wa IN itab NEXT x = x + wa ).
+</code></pre></div><h3 id="conditional-operators-cond-and-switch">Conditional operators COND and SWITCH</h3>
+<h4 id="definition-4">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">COND dtype|#( WHEN log_exp1 THEN result1
+[ WHEN log_exp2 THEN result2 ]
+...
+[ ELSE resultn ] ) .
+
+SWITCH dtype|#( operand WHEN const1 THEN result1
+[ WHEN const2 THEN result2 ]
+...
+[ ELSE resultn ] ) .
+</code></pre></div><h4 id="example-for-cond">Example for COND</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA(time) = COND string(
+    WHEN sy-timlo <span style="color:#960050;background-color:#1e0010">&lt;</span> ‘120000’ THEN |{ sy-timlo TIME = ISO } AM|
+    WHEN sy-timlo &gt; ‘120000’ THEN
+      |{ CONV t( sy-timlo – 12 * 3600 ) TIME = ISO } PM|
+    WHEN sy-timlo = ‘120000’ THEN |High Noon|
+    ELSE
+      THROW cx_cant_be( ) 
+).
+</code></pre></div><h4 id="example-for-switch">Example for SWITCH</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA(text) = NEW class( )-&gt;meth(
+  SWITCH #( sy-langu
+    WHEN &#39;D&#39; THEN &#39;DE&#39;
+    WHEN &#39;E&#39; THEN &#39;EN&#39;
+    ELSE THROW cx_langu_not_supported(
+    )
+  )
+).
+</code></pre></div><h3 id="move-corresponding-operator">Move Corresponding Operator</h3>
+<h4 id="definition-5">Definition</h4>
+<p><code>CORRESPONDING type( [BASE ( base )] struct|itab [mapping|except] )</code></p>
+<h4 id="example-code">Example Code</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// With 7.40
+TYPES: BEGIN OF line1,
+  col1 TYPE i, 
+  col2 TYPE i,
+END OF line1.
+TYPES: BEGIN OF line2, 
+  col1 TYPE i, 
+  col2 TYPE i, 
+  col3 TYPE i, 
+END OF line2.
+DATA(ls_line1) = VALUE line1( col1 = 1 col2 = 2 ).
+WRITE: / ‘ls_line1 =’ ,15 ls_line1–col1, ls_line1–col2.
+DATA(ls_line2) = VALUE line2( col1 = 4 col2 = 5 col3 = 6 ).
+WRITE: / ‘ls_line2 =’ ,15 ls_line2–col1, ls_line2–col2, ls_line2–col3.
+SKIP 2.
+
+ls_line2 = CORRESPONDING #( ls_line1 ).
+WRITE: / ‘ls_line2 = CORRESPONDING #( ls_line1 )’,70 ‘Result is ls_line2 = ‘     
+        ,ls_line2–col1, ls_line2–col2, ls_line2–col3.
+SKIP.
+
+ls_line2 = VALUE line2( col1 = 4 col2 = 5 col3 = 6 ).   “Restore ls_line2
+ls_line2 = CORRESPONDING #( BASE ( ls_line2 ) ls_line1 ).
+WRITE: / ‘ls_line2 = CORRESPONDING #( BASE ( ls_line2 ) ls_line1 )’
+       , 70 ‘Result is ls_line2 = ‘, ls_line2–col1, ls_line2–col2, ls_line2–col3.
+SKIP.
+
+ls_line2 = VALUE line2( col1 = 4 col2 = 5 col3 = 6 ).   “Restore ls_line2
+DATA(ls_line3) = CORRESPONDING line2( BASE ( ls_line2 ) ls_line1 ).
+WRITE: / ‘DATA(ls_line3) = CORRESPONDING line2( BASE ( ls_line2 ) ls_line1 )’
+       , 70 ‘Result is ls_line3 = ‘ , ls_line3–col1, ls_line3–col2, ls_line3–col3.
+</code></pre></div><h3 id="strings">Strings</h3>
+<h4 id="string-templates">String Templates</h4>
+<p>字符串模板由两个字符&quot;|&ldquo;括起来并创建一个字符串。</p>
+<p>文字文本由不在大括号&rdquo;{}&ldquo;中的所有字符组成。</p>
+<p>大括号可以包含：</p>
+<ul>
+<li>数据对象</li>
+<li>计算表达式</li>
+<li>构造函数表达式</li>
+<li>表表达式</li>
+<li>预定义功能，或 功能方法和方法链</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA itab TYPE TABLE OF scarr.
+DATA wa LIKE LINE OF itab.
+DATA output TYPE string.
+SELECT * FROM scarr INTO TABLE itab.
+READ TABLE itab WITH KEY carrid = ‘LH’ INTO wa.
+CONCATENATE ‘Carrier:’ wa-carrname INTO output SEPARATED BY space.
+cl_demo_output=&gt;display( output ).
+// With 7.40
+SELECT * FROM scarr INTO TABLE @DATA(lt_scarr).
+cl_demo_output=&gt;display( |Carrier: { lt_scarr[ carrid = ‘LH’ ]–carrname }|  ).
+</code></pre></div><h4 id="conacatenation">Conacatenation</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA lv_output TYPE string.
+CONCATENATE ‘Hello’ ‘world’ INTO lv_output SEPARATED BY space.
+// With 7.40
+DATA(lv_out) = |Hello| <span style="color:#960050;background-color:#1e0010">&amp;</span> | | <span style="color:#960050;background-color:#1e0010">&amp;</span> |world|.
+</code></pre></div><h4 id="widthalignmentpadding">Width/Alignment/Padding</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// With 7.40
+WRITE / |{ &#39;Left&#39;   WIDTH = 20 ALIGN = LEFT   PAD = &#39;0&#39; }|.
+WRITE / |{ &#39;Center&#39; WIDTH = 20 ALIGN = CENTER PAD = &#39;0&#39; }|.
+WRITE / |{ &#39;Right&#39;  WIDTH = 20 ALIGN = RIGHT  PAD = &#39;0&#39; }|.
+</code></pre></div><h4 id="case">Case</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">WRITE / |{ ‘Text’ CASE = (cl_abap_format=&gt;c_raw) }|.
+WRITE / |{ ‘Text’ CASE = (cl_abap_format=&gt;c_upper) }|.
+WRITE / |{ ‘Text’ CASE = (cl_abap_format=&gt;c_lower) }|.
+</code></pre></div><h4 id="alpha-conversion">ALPHA conversion</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA(lv_vbeln) = ‘0000012345’.
+WRITE / |{ lv_vbeln  ALPHA = OUT }|.     
+// OR use &#34;ALPHA = IN&#34; to go in other direction
+</code></pre></div><h4 id="date-conversion">Date conversion</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">DATA(pa_date) = sy-datum.
+WRITE / |{ pa_date DATE = ISO }|.           “Date Format YYYY-MM-DD
+WRITE / |{ pa_date DATE = User }|.          “As per user settings
+WRITE / |{ pa_date DATE = Environment }|.   “Formatting setting of language environment
+</code></pre></div><h3 id="loop-at-group-by">Loop at group by</h3>
+<h4 id="definition-6">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">LOOP AT itab result [cond] GROUP BY key ( key1 = dobj1 key2 = dobj2 ...
+    [gs = GROUP SIZE] [gi = GROUP INDEX] )
+    [ASCENDING|DESCENDING [AS TEXT]]
+    [WITHOUT MEMBERS]
+    [{INTO group}|{ASSIGNING &lt;<span style="color:#f92672">group</span>&gt;}]
+      ...
+    [LOOP AT GROUP group|&lt;<span style="color:#f92672">group</span>&gt;
+      ...
+    ENDLOOP.]
+      ...
+ENDLOOP.
+</code></pre></div><p>外循环将对每个键执行一次迭代。 因此，如果 3 个记录与键匹配，则这 3 个记录将只有一个迭代。 结构“ group”不寻常，因为可以使用“LOOP AT GROUP”语句进行循环。 这将遍历该组的 3 个记录（成员）。 结构 “group” 还包含当前键以及组的大小和组的索引（如果已为 GROUP SIZE 和 GROUP INDEX 分配了字段名）。 通过示例可以最好地理解这一点。</p>
+<h4 id="example-1">Example</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">TYPES: BEGIN OF ty_employee,
+  name TYPE char30,
+  role    TYPE char30,
+  age    TYPE i,
+END OF ty_employee,
+ty_employee_t TYPE STANDARD TABLE OF ty_employee WITH KEY name.
+DATA(gt_employee) = VALUE ty_employee_t(
+( name = ‘John‘   role = ‘ABAP guru‘      age = 34 )
+( name = ‘Alice‘  role = ‘FI Consultant‘  age = 42 )
+( name = ‘Barry‘  role = ‘ABAP guru‘      age = 54 )
+( name = ‘Mary‘   role = ‘FI Consultant‘  age = 37 )
+( name = ‘Arthur‘ role = ‘ABAP guru‘      age = 34 )
+( name = ‘Mandy‘  role = ‘SD Consultant‘  age = 64 ) ).
+DATA: gv_tot_age TYPE i,gv_avg_age TYPE decfloat34.
+“Loop with grouping on Role
+LOOP AT gt_employee INTO DATA(ls_employee)
+  GROUP BY ( role  = ls_employee-role
+             size  = GROUP SIZE
+             index = GROUP INDEX )
+  ASCENDING ASSIGNING FIELD-SYMBOL(&lt;<span style="color:#f92672">group</span>&gt;).
+  CLEAR: gv_tot_age.
+  “Output info at group level
+  WRITE: / |Group: { &lt;<span style="color:#f92672">group</span>&gt;-index } Role: { &lt;<span style="color:#f92672">group</span>&gt;-role WIDTH = 15 }|
+              <span style="color:#960050;background-color:#1e0010">&amp;</span> |Number in this role: { &lt;<span style="color:#f92672">group</span>&gt;-size }|.
+   “Loop at members of the group
+   LOOP AT GROUP &lt;<span style="color:#f92672">group</span>&gt; ASSIGNING FIELD-SYMBOL(&lt;<span style="color:#f92672">ls_member</span>&gt;).
+      gv_tot_age = gv_tot_age + &lt;<span style="color:#f92672">ls_member</span>&gt;-age.
+      WRITE: /13 &lt;<span style="color:#f92672">ls_member</span>&gt;-name.
+   ENDLOOP.
+   “Average age
+   gv_avg_age = gv_tot_age / &lt;<span style="color:#f92672">group</span>&gt;-size.
+   WRITE: / |Average age: { gv_avg_age }|.
+   SKIP.
+ENDLOOP.
+</code></pre></div><p>Output</p>
+<pre><code class="language-htnl" data-lang="htnl">Group: 1 Role: ABAP guru  Number in this role: 3
+         John
+         Barry
+         Arthur
+Average age: 40.66666666666666666666666666666667
+Group: 2 Role: FI Consultant Number in this role: 2
+         Alice
+         Mary
+Average age: 39.5
+Group: 3 Role: SD Consultant Number in this role: 1
+         Mandy
+Average age: 64
+</code></pre><h3 id="classesmethods">Classes/Methods</h3>
+<h4 id="referencing-fields-within-returned-structures">Referencing fields within returned structures</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA: ls_lfa1  TYPE lfa1,
+      lv_name1 TYPE lfa1-name1.
+ls_lfa1  = my_class=&gt;get_lfa1( ).
+lv_name1 = ls_lfa1-name1.
+// With 7.40
+DATA(lv_name1) = my_class=&gt;get_lfa1( )-name1.
+</code></pre></div><h4 id="methods-that-return-a-type-boolean">Methods that return a type BOOLEAN</h4>
+<p>类型BOOLEAN不是真正的布尔值，而是具有允许值&quot;X&rdquo;，&quot;-&ldquo;和&quot;blank&quot;的char1。使用“ FLAG”或“ WDY_BOOLEAN”类型也可以。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+IF my_class=&gt;return_boolean( ) = abap_true.
+  ...
+ENDIF.
+// With 7.40
+IF my_class=&gt;return_boolean( ).
+  ...
+ENDIF.
+</code></pre></div><h4 id="new-operator">New Operator</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// Before 7.40
+DATA: lo_delivs TYPE REF TO zcl_sd_delivs,
+      lo_deliv  TYPE REF TO zcl_sd_deliv.
+CREATE OBJECT lo_delivs.
+CREATE OBJECT lo_deliv.
+lo_deliv = lo_delivs-&gt;get_deliv( lv_vbeln ).
+// With 7.40
+DATA(lo_deliv) = new zcl_sd_delivs-&gt;get_deliv( lv_vbeln ).
+</code></pre></div><h3 id="filter">Filter</h3>
+<p>基于一个表中的记录过滤另一个表中的记录。</p>
+<h4 id="definition-7">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">FILTER ptype|#( itab [EXCEPT] [IN ftab] [USING KEY keyname]
+           WHERE c1 op f1 [AND c2 op f2 […]] )
+</code></pre></div><h4 id="solution">Solution</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">TYPES: BEGIN OF ty_filter,
+    cityfrom TYPE spfli–cityfrom,
+    cityto   TYPE spfli–cityto,
+    f3       TYPE i,
+END OF ty_filter,
+ty_filter_tab TYPE HASHED TABLE OF ty_filter WITH UNIQUE KEY cityfrom cityto.
+DATA: lt_splfi TYPE STANDARD TABLE OF spfli.
+SELECT * FROM spfli APPENDING TABLE lt_splfi.
+DATA(lt_filter) = VALUE ty_filter_tab( f3 = 2
+    ( cityfrom = ‘NEW YORK’  cityto  = ‘SAN FRANCISCO’ )
+    ( cityfrom = ‘FRANKFURT’ cityto  = ‘NEW YORK’ )  ).
+DATA(lt_myrecs) = FILTER #( lt_splfi IN lt_filter
+                  WHERE cityfrom = cityfrom 
+                  AND cityto = cityto ).
+“Output filtered records
+LOOP AT lt_myrecs ASSIGNING FIELD–SYMBOL(&lt;<span style="color:#f92672">ls_rec</span>&gt;).
+  WRITE: / &lt;<span style="color:#f92672">ls_rec</span>&gt;–carrid,8 &lt;<span style="color:#f92672">ls_rec</span>&gt;–cityfrom,30
+           &lt;<span style="color:#f92672">ls_rec</span>&gt;–cityto,45 &lt;<span style="color:#f92672">ls_rec</span>&gt;–deptime.
+ENDLOOP.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3800</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/MM_IM_Print/" class="prev" rel="prev" title=" Output Determination in Inventory Management (IM) "><i class="iconfont icon-dajiantou"></i>&nbsp; Output Determination in Inventory Management (IM) </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_BAPI_ALL_LIST/" class="next" rel="next" title=" MM BAPI List "> MM BAPI List &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-07-14 00:00:00 \u002b0000 UTC',
+        title: ' ABAP 7.40 Quick Reference ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

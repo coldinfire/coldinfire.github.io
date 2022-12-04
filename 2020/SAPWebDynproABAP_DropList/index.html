@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/SAPWebDynproABAP_Error/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/SAP_LSMW/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/SAPWebDynproABAP_DropList/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Web Dynpro ABAP:ALV dropdown  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Web Dynpro ABAP:ALV dropdown  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Web Dynpro ABAP:ALV dropdown "/>
+<meta name="twitter:description" content="ALV Dropdown Step1:给ALV结构添加VALUE SET字段。 Attribute Name : TYPE_SET Type : WDR_CONTEXT_ATTR_VALUE_LIST Step2:将TYPE_SET字段设置为值范围 METHOD wddoinit . DATA: lo_node TYPE REF TO if_wd_context_node, lo_elem TYPE REF TO"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Web Dynpro ABAP:ALV dropdown ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/SAPWebDynproABAP_DropList\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  305 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/SAPWebDynproABAP_DropList\/",
+  "datePublished": "2020-08-26T00:00:00\x2b00:00",
+  "dateModified": "2020-08-26T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Web Dynpro ABAP:ALV dropdown </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-08-26 >26 August 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="alv-dropdown">ALV Dropdown</h3>
+<h4 id="step1给alv结构添加value-set字段">Step1:给ALV结构添加VALUE SET字段。</h4>
+<p>Attribute Name : TYPE_SET</p>
+<p>Type : WDR_CONTEXT_ATTR_VALUE_LIST</p>
+<h4 id="step2将type_set字段设置为值范围">Step2:将TYPE_SET字段设置为值范围</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">wddoinit</span> .
+  <span style="color:#66d9ef">DATA</span>:
+    lo_node      <span style="color:#66d9ef">TYPE REF TO</span> if_wd_context_node,
+    lo_elem      <span style="color:#66d9ef">TYPE REF TO</span> if_wd_context_element,
+    ls_order     <span style="color:#66d9ef">TYPE </span>wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>element_order,
+    lt_order     <span style="color:#66d9ef">TYPE </span>wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>elements_order,
+    ls_value_set <span style="color:#66d9ef">TYPE </span>wdr_context_attr_value.
+  <span style="color:#66d9ef">CLEAR</span>:ls_order.
+  ls_order<span style="color:#f92672">-</span>object_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0210002047&#39;</span>.
+  ls_order<span style="color:#f92672">-</span>process_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSV1&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSV2&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSV2&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> ls_value_set <span style="color:#66d9ef">TO</span> ls_order<span style="color:#f92672">-</span>type_set.
+  ls_value_set<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSV3&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSV3&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> ls_value_set <span style="color:#66d9ef">TO</span> ls_order<span style="color:#f92672">-</span>type_set.
+  ls_value_set<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSV4&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSV4&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> ls_value_set <span style="color:#66d9ef">TO</span> ls_order<span style="color:#f92672">-</span>type_set.
+  <span style="color:#66d9ef">APPEND</span> ls_order <span style="color:#66d9ef">TO</span> lt_order.
+  <span style="color:#66d9ef">CLEAR</span>:ls_order.
+  ls_order<span style="color:#f92672">-</span>object_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0210002048&#39;</span>.
+  ls_order<span style="color:#f92672">-</span>process_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSO1&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSO2&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSO2&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> ls_value_set <span style="color:#66d9ef">TO</span> ls_order<span style="color:#f92672">-</span>type_set.
+  ls_value_set<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSO3&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSO3&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> ls_value_set <span style="color:#66d9ef">TO</span> ls_order<span style="color:#f92672">-</span>type_set.
+  ls_value_set<span style="color:#f92672">-</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSO4&#39;</span>.
+  ls_value_set<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSO4&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> ls_value_set <span style="color:#66d9ef">TO</span> ls_order<span style="color:#f92672">-</span>type_set.
+  <span style="color:#66d9ef">APPEND</span> ls_order <span style="color:#66d9ef">TO</span> lt_order.
+  lo_node <span style="color:#f92672">=</span> wd_context<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_child_node</span>( name <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>wdctx_order ).
+  lo_node<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">bind_table</span>( lt_order ).
+  lo_node<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_lead_selection_index</span>( <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> ).
+<span style="color:#75715e">* use ALV</span>
+  <span style="color:#66d9ef">DATA</span>:
+    lr_salv_wd_table_usage <span style="color:#66d9ef">TYPE REF TO</span> if_wd_component_usage,
+    lr_salv_wd_table       <span style="color:#66d9ef">TYPE REF TO</span> iwci_salv_wd_table,
+    lr_table               <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_config_table,
+    lr_column              <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_column,
+    lr_dropdown            <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_uie_dropdown_by_idx.
+  lr_salv_wd_table_usage <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">wd_cpuse_alv</span>( ).
+  <span style="color:#66d9ef">IF</span> lr_salv_wd_table_usage<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">has_active_component</span>( ) <span style="color:#f92672">IS INITIAL</span>.
+    lr_salv_wd_table_usage<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create_component</span>( ).
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* get reference to ALV component interface</span>
+  lr_salv_wd_table <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">wd_cpifc_alv</span>( ).
+  lr_salv_wd_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_data</span>( lo_node ).
+<span style="color:#75715e">* get ConfigurationModel from ALV Component</span>
+  lr_table <span style="color:#f92672">=</span> lr_salv_wd_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_model</span>( ).
+<span style="color:#75715e">* get the column</span>
+  <span style="color:#66d9ef">CALL METHOD</span> lr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>if_salv_wd_column_settings~get_column
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">id</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PROCESS_TYPE&#39;</span>
+    RECEIVING
+      <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> lr_column.
+<span style="color:#75715e">* create UI element</span>
+  <span style="color:#66d9ef">CREATE OBJECT</span> lr_dropdown
+    <span style="color:#66d9ef">EXPORTING</span>
+      selected_key_fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PROCESS_TYPE&#39;</span>.
+<span style="color:#75715e">* set the value set</span>
+  <span style="color:#66d9ef">CALL METHOD</span> lr_dropdown<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_valueset_fieldname
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TYPE_SET&#39;</span>.
+<span style="color:#75715e">* set editor</span>
+  <span style="color:#66d9ef">CALL METHOD</span> lr_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_cell_editor
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> lr_dropdown.
+<span style="color:#75715e">* 很重要 Dropdownlist 才会出现</span>
+  <span style="color:#66d9ef">CALL METHOD</span> lr_table<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>if_salv_wd_table_settings~set_read_only
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> abap_false.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>305</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/SAPWebDynproABAP_Error/" class="prev" rel="prev" title=" Web Dynpro ABAP:Error List "><i class="iconfont icon-dajiantou"></i>&nbsp; Web Dynpro ABAP:Error List </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/SAP_LSMW/" class="next" rel="next" title=" LSMW 批处理使用方法 "> LSMW 批处理使用方法 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-08-26 00:00:00 \x2b0000 UTC',
+        title: ' Web Dynpro ABAP:ALV dropdown ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_RoundDecimals/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_ALV_Screen_Layout/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_Utils_FunctionDiff/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            RFC-BAPI-BADI-BDC 区别  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" RFC-BAPI-BADI-BDC 区别  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" RFC-BAPI-BADI-BDC 区别 "/>
+<meta name="twitter:description" content="RFC RFC 代表远程函数调用。 它是 SAP 环境中不同系统应用程序之间通信的协议，包括 SAP 系统之间以及 SAP 系统与非 SAP 系统之间的连接。 它是用于不同 SAP 系统之间通信的"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " RFC-BAPI-BADI-BDC 区别 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_FunctionDiff\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  976 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_Utils_FunctionDiff\/",
+  "datePublished": "2021-06-23T00:00:00\u002b00:00",
+  "dateModified": "2021-06-23T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> RFC-BAPI-BADI-BDC 区别 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-06-23 >23 June 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="rfc">RFC</h3>
+<p>RFC 代表远程函数调用。 它是 SAP 环境中不同系统应用程序之间通信的协议，包括 SAP 系统之间以及 SAP 系统与非 SAP 系统之间的连接。 它是用于不同 SAP 系统之间通信的标准 SAP 接口。 它描述了 SAP 系统中可用的系统功能模块的外部接口。 R/3 应用程序的功能可以使用 RFC 接口从外部程序扩展。</p>
+<p>仅使用 RFC，SAP 系统无法连接到非 SAP 系统来检索数据。 只有通过 BAPI，RFC 才能从非 SAP 系统访问 SAP 系统，反之亦然。可以说 BAPI 是 RFC 的子集。 RFC 通过 BAPI 连接到另一个系统。</p>
+<p>RFC 只是一个功能模块，您可以在外部系统中将其作为功能调用进行调用。</p>
+<h4 id="特点">特点</h4>
+<ul>
+<li>RFC 是独立处理异常的。</li>
+</ul>
+<h3 id="bapi-介绍">BAPI 介绍</h3>
+<p>BAPI (Business Application Programming Interface) 代表业务应用程序编程接口。</p>
+<p>BAPI 是存储在 SAP 系统的 BOR（Business Object Repository ）中以执行特定业务任务的特定方法。 它支持 SAP 组件之间以及 SAP 和非 SAP 组件之间的业务数据交换。 它允许在业务级别而不是技术级别进行集成。 它作为 RFC 启用的功能模块存储在 ABAP Workbench Function Builder 中。</p>
+<p>从技术上讲，BAPI 函数是可以使用 RFC 技术远程调用的功能模块，但 BAPI 基本上是一个业务对象的方法，它被称为外部系统中的方法。要使用 BAPI 方法访问 SAP 业务对象中的数据，应用程序只需要知道如何使用 BAPI 名称和导入/导出参数调用该方法。</p>
+<p>标准 BAPI 更易于使用，因为它可以防止用户不得不处理大量不同的 BAPI。 标准 BAPI 优于单个 BAPI。</p>
+<h4 id="特点-1">特点</h4>
+<ul>
+<li>BAPI 无法处理异常，调用程序必须处理</li>
+<li>BAPI 是直接更新数据库，无法处理程序员为满足用户需求而进行的所有流程逻辑检查和增强</li>
+<li>BAPI 支持 API 方法，而 FM 不支持 API 方法</li>
+<li>BAPI 会执行数据完整性所需的所有检查</li>
+</ul>
+<h3 id="bdc">BDC</h3>
+<p>BDC（批量数据通信）是一种用于数据传输的技术。 它用于通过 SAP 事务本身传输数据。 当您使用 BDC 进行数据传输时，步骤顺序与您使用标准 sap 事务屏幕进行数据上传时相同。 唯一的区别是您可以使用不同的选项进行前景/背景处理。</p>
+<p>BDC 主要用于将数据上传到 SAP R/3 系统。通过 Dialog 屏幕模拟用户输入,</p>
+<p>生成 ABAP 程序。 Abaper 将创建一个程序读取文本文件并上传到 SAP 系统。事物码 SHDB 将用于记录用户使用的前台执行操作。 仿真后，Abaper 可以生成一个示例程序并从那里修改。BDC 使编程更容易和更快。</p>
+<h4 id="特点-2">特点</h4>
+<ul>
+<li>BDC 通过屏幕流运行</li>
+</ul>
+<h3 id="badi">BADI</h3>
+<p>BADI 是用户出口的面向对象版本。 不是将程序代码输入某个功能模块（如在客户出口中），而是定义一些必须实现预定义方法的类，并且这些方法在预定义点被触发，就像旧的用户出口一样。 一些 BADI 可以有多个独立的实现，这对于软件部署要好得多，因为多个开发人员可以独立实现相同的 BADI。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>976</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_RoundDecimals/" class="prev" rel="prev" title=" ABAP 数值四舍五入函数 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 数值四舍五入函数 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_ALV_Screen_Layout/" class="next" rel="next" title=" 选择屏幕添加 Layout 选择 "> 选择屏幕添加 Layout 选择 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-06-23 00:00:00 \u002b0000 UTC',
+        title: ' RFC-BAPI-BADI-BDC 区别 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

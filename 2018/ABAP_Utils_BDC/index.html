@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPAuthorization_details/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Basis_FieldSymbol/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Utils_BDC/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BDC 屏幕录制  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BDC 屏幕录制  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BDC 屏幕录制 "/>
+<meta name="twitter:description" content="定义BDC (Batch Data Communication) BDC：SAP常用的一种数据传输方法。用于一些数据量大，但对速度要求不高的数据传输. 使用 BDC 的基本流程 Step1：获取源数据 一"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BDC 屏幕录制 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_BDC\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  2612 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_BDC\/",
+  "datePublished": "2018-09-26T00:00:00\x2b00:00",
+  "dateModified": "2018-09-26T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BDC 屏幕录制 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-26 >26 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="定义bdc-batch-data-communication">定义BDC (Batch Data Communication)</h2>
+<p>BDC：SAP常用的一种数据传输方法。用于一些数据量大，但对速度要求不高的数据传输.</p>
+<h3 id="使用-bdc-的基本流程">使用 BDC 的基本流程</h3>
+<h4 id="step1获取源数据">Step1：获取源数据</h4>
+<p>一般情况下，在进行传输之前要把外部的数据源(Txt,Excel 等)放入内部表中。</p>
+<ul>
+<li>从系统内部获取</li>
+<li>从系统外部获取</li>
+</ul>
+<h4 id="step2生成bdc程序框架">Step2：生成BDC程序框架</h4>
+<p>通过事物码 SHDB 录制工具录制事务，生成程序框架。</p>
+<ul>
+<li>可以把保存号的程序导出到本地文件</li>
+<li>让系统自动生成代码</li>
+</ul>
+<h4 id="step3数据转换">Step3：数据转换</h4>
+<p>把要输入的数据转换为 BDCDATA 的格式。循环内表，把内表字段赋值给 BDCDATA 作为输入数据集</p>
+<ul>
+<li>如有需要，可以调整修改已生成的BDC程序代码</li>
+</ul>
+<h4 id="step4执行-bdc">Step4：执行 BDC</h4>
+<p><em>Method 1：Call Transaction</em> 直接调用 BDC 进行数据批量导入。</p>
+<ul>
+<li>优点：方便快捷，程序处理方便</li>
+<li>缺点：日志管理能力差，需要自己建立透明表来维护数据</li>
+</ul>
+<p>CALL TRANSACTION 语法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL TRANSACTION</span> &lt;TCode&gt; <span style="color:#66d9ef">USING</span> &lt;BDCDATA&gt;
+                         MODE  &lt;CTUMODE&gt;
+                         <span style="color:#66d9ef">UPDATE</span> &lt;CPUDATE&gt;
+                         MESSAGES <span style="color:#66d9ef">INTO</span> &lt;MESSTAB&gt;.
+</code></pre></div><ul>
+<li>
+<p>TCode：需要执行的事务代码</p>
+</li>
+<li>
+<p>BDCDATA：BDC 的传入数据</p>
+</li>
+<li>
+<p>MODE：BDC 执行时的显示模式</p>
+<table>
+<thead>
+<tr>
+<th align="left">Mode</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">A</td>
+<td align="left">(默认)显示所有输入屏幕，如果在 bdc_tab 中包含该屏幕的功能码，则会出现小窗口显示这个功能码</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">只有在出现错误时才显示屏幕，用户可以修正数据，修正后程序可以继续处理</td>
+</tr>
+<tr>
+<td align="left">N</td>
+<td align="left">不显示屏幕的静默模式。如果到达被调用事务的断点，则系统处理终止</td>
+</tr>
+<tr>
+<td align="left">P</td>
+<td align="left">不显示屏幕的调试模式。如果到达被调用事务的断点，则系统自动转到ABAP调试器，主要用于调试过程</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>UPDATE：更新模式</p>
+<table>
+<thead>
+<tr>
+<th align="left">Mode</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">S</td>
+<td align="left">Synchronously (这种方式比较适 合于数据一致性要求比较高，多个不同事务码的连续处理。)</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="left">Asynchronously（这种 方式比较适合于用一个事务码大量更新指定数据，比如维护主数据等。）</td>
+</tr>
+<tr>
+<td align="left">L</td>
+<td align="left">数据更新在主程序所在的进程中完成，主程序必定等到被调用事务完成才继续执行。）</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>MESSAGES：用于存放 BDC 执行过程中的消息</p>
+</li>
+</ul>
+<p><em>Method2：BDC_INSERT</em> 不直接运行，而是将 BDC 程序生成 Session，间接运行的一种方法。</p>
+<ul>
+<li>优点：通过Tcode - SM35可以进行运行管理和日志管理，方便查错。</li>
+<li>缺点：方法相对来说比较繁琐。</li>
+</ul>
+<p>使用步骤：</p>
+<ul>
+<li>
+<p>在程序中调用 Function &lsquo;BDC_INSERT&rsquo; 把 BDCDATA 生成 Session。</p>
+</li>
+<li>
+<p>程序 RSBDCSUB 是执行 Session 的专用程序，要建立相应的 VARIANT，供 JOB 中使用。</p>
+</li>
+<li>
+<p>建立 BATCH JOB 来执行 RSBDCSUB，从而实现 Session 自动执行的目的；不使用 REBDCSUNB 和 JOB，每次手工在 SM35 中执行 Session 也可以。</p>
+</li>
+</ul>
+<h3 id="录制更新-bdc">录制，更新 BDC</h3>
+<p>使用事务码 SHDB/SM35 录制 BDC，SE35：Upoload BDC。</p>
+<h4 id="创建-bdc">创建 BDC</h4>
+<p>输入事物码 SHDB 创建 New Recording，也可以查看创建过的 BDC 记录。</p>
+<p><img src="/images/ABAP/BDC1.png" alt="SHDB"></p>
+<p>输入需要创建的 Recording Name 和需要进行录制的 TCode 然后执行。程序会自动跳到输入的 TCode 界面。</p>
+<p><img src="/images/ABAP/BDC2.png" alt="Create Recording"></p>
+<p>根据实际业务需求进行对应的录制，完成后保存或则返回结束录屏。录制中不要使用键盘操作，尽量使用鼠标点击。</p>
+<p><img src="/images/ABAP/BDC4.png" alt="Record Result"></p>
+<h4 id="创建程序">创建程序</h4>
+<p>选择录制好的 BDC，创建程序，放到本地。记录中的所有信息都保存在程序中。也可以通过导出 BDC Record，然后在其他 Client 导入 BDC Record 后创建程序。</p>
+<p><img src="/images/ABAP/BDC3.png" alt="BDC Program"></p>
+<h4 id="修改生成的标准-bdc">修改生成的标准 BDC</h4>
+<p>对系统自动生成的程序进行修改，达到实际业务的需求。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">PARAMETERS</span>: dataset(<span style="color:#ae81ff">132</span>) <span style="color:#66d9ef">LOWER CASE</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;Program_name&#39;</span>.
+<span style="color:#75715e">&#34; BDC attribute define &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:bdcdata <span style="color:#66d9ef">LIKE </span>BDCDATA OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.    <span style="color:#75715e">&#34;保存录屏过程中的变量及常量数据&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:messtab <span style="color:#66d9ef">LIKE </span>BDCMSGCOLL OCCURS <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>. <span style="color:#75715e">&#34;记录BDC执行返回数据&#34; 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:e_msg <span style="color:#66d9ef">type </span>bapi_msg,
+     lv_msg <span style="color:#66d9ef">type </span>t100<span style="color:#f92672">-</span>text.
+<span style="color:#66d9ef">DATA</span>:ctu_params <span style="color:#66d9ef">LIKE </span>CTU_PARAMS.   <span style="color:#75715e">&#34;调事务代码时带的一些参数，是否前台执行，报错停止等&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span> ctu_params.
+ctu_params<span style="color:#f92672">-</span>dismode  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;N&#39;</span>.
+ctu_params<span style="color:#f92672">-</span>updmode  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+ctu_params<span style="color:#f92672">-</span>racommit <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#75715e">&#34;循环调用 BDC&#34;
+</span><span style="color:#75715e"></span>LOOP <span style="color:#66d9ef">AT</span> &lt;DYN_TABLE&gt; <span style="color:#66d9ef">ASSIGNING</span> &lt;DYN_WA&gt;.
+  <span style="color:#66d9ef">CLEAR</span> :bdcdata,messtab.
+  <span style="color:#66d9ef">REFRESH</span>: bdcdata,messtab.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">BDC_DYNPRO</span> <span style="color:#66d9ef">USING</span>  <span style="color:#e6db74">&#39;SAPLCOKO1&#39;</span>        <span style="color:#e6db74">&#39;0110&#39;</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">BDC_FIELD</span>  <span style="color:#66d9ef">USING</span>: <span style="color:#e6db74">&#39;BDC_CURSOR&#39;</span>       <span style="color:#e6db74">&#39;CAUFVD-AUFNR&#39;</span>,
+                            <span style="color:#e6db74">&#39;BDC_OKCODE&#39;</span>       <span style="color:#e6db74">&#39;/00&#39;</span>,
+                            <span style="color:#e6db74">&#39;CAUFVD-AUFNR&#39;</span>     lv_aufnr,
+                            <span style="color:#e6db74">&#39;R62CLORD-FLG_OVIEW&#39;</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">BDC_DYNPRO</span> <span style="color:#66d9ef">USING</span>  <span style="color:#e6db74">&#39;SAPLCOKO1&#39;</span>        <span style="color:#e6db74">&#39;0115&#39;</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">BDC_FIELD</span>  <span style="color:#66d9ef">USING</span>: <span style="color:#e6db74">&#39;BDC_OKCODE&#39;</span>       <span style="color:#e6db74">&#39;=BU&#39;</span>,
+                            <span style="color:#e6db74">&#39;BDC_CURSOR&#39;</span>       <span style="color:#e6db74">&#39;CAUFVD-GSTRS&#39;</span>,
+                            <span style="color:#e6db74">&#39;CAUFVD-GLTRS&#39;</span>     lv_endda,
+                            <span style="color:#e6db74">&#39;CAUFVD-GLUZS&#39;</span>     <span style="color:#e6db74">&#39;23:40&#39;</span>,
+                            <span style="color:#e6db74">&#39;CAUFVD-GSTRS&#39;</span>     lv_begda,
+                            <span style="color:#e6db74">&#39;CAUFVD-GSUZS&#39;</span>     <span style="color:#e6db74">&#39;23:01&#39;</span>,
+                            <span style="color:#e6db74">&#39;CAUFVD-TERKZ&#39;</span>     <span style="color:#e6db74">&#39;3&#39;</span> .
+  <span style="color:#66d9ef">CALL TRANSACTION</span> <span style="color:#e6db74">&#39;CO02&#39;</span> <span style="color:#66d9ef">USING</span> bdcdata
+                          OPTIONS <span style="color:#66d9ef">FROM</span> ctu_params
+                          MESSAGES <span style="color:#66d9ef">INTO</span> messtab.
+  <span style="color:#66d9ef">LOOP AT </span>messtab.
+    <span style="color:#66d9ef">CLEAR</span> lv_msg.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;MESSAGE_TEXT_BUILD&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        msgid  <span style="color:#f92672">=</span> messtab<span style="color:#f92672">-</span>msgid
+        msgnr  <span style="color:#f92672">=</span> messtab<span style="color:#f92672">-</span>msgnr
+        msgv1  <span style="color:#f92672">=</span> messtab<span style="color:#f92672">-</span>msgv1
+        msgv2  <span style="color:#f92672">=</span> messtab<span style="color:#f92672">-</span>msgv2
+        msgv3  <span style="color:#f92672">=</span> messtab<span style="color:#f92672">-</span>msgv3
+        msgv4  <span style="color:#f92672">=</span> messtab<span style="color:#f92672">-</span>msgv4
+      <span style="color:#66d9ef">IMPORTING</span>
+        message_text_output <span style="color:#f92672">=</span> lv_msg.
+    <span style="color:#66d9ef">CONCATENATE</span> e_msg lv_msg <span style="color:#66d9ef">INTO</span> e_msg.
+    <span style="color:#66d9ef">CLEAR</span>: lv_msg,messtab.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><ul>
+<li>BDC_OKCODE  &lsquo;=BU&rsquo; 表示单击保存按钮</li>
+<li>BDC_OKCODE  &lsquo;/00&rsquo; 表示回车</li>
+</ul>
+<h4 id="两个固定表">两个固定表</h4>
+<p>Batch inputdata of single transaction：输入数据表</p>
+<ul>
+<li><code>DATA:bdcdata LIKE BDCDATA OCCURS 0 WITH HEADER LINE.</code></li>
+</ul>
+<p>Messages of call transaction：返回信息</p>
+<ul>
+<li><code>DATA:messtab LIKE BDCMSGCOLL OCCURS 0 WITH HEADER LINE.</code></li>
+</ul>
+<h4 id="两个固定-form">两个固定 FORM</h4>
+<p><em>BDC_DYNPRO</em>：指定 bdc_dynpro 的实参，告知系统 dialog 程序名称以及 Screen number。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*----------------------------------------------------------------*</span>
+<span style="color:#75715e">*        Start new screen                                        *</span>
+<span style="color:#75715e">*----------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">bdc_dynpro</span> <span style="color:#66d9ef">USING</span> <span style="color:#66d9ef">PROGRAM</span> dynpro.
+  <span style="color:#66d9ef">CLEAR</span> bdcdata.
+  bdcdata<span style="color:#f92672">-</span>program  <span style="color:#f92672">=</span> <span style="color:#66d9ef">program</span>.
+  bdcdata<span style="color:#f92672">-</span>dynpro   <span style="color:#f92672">=</span> dynpro.
+  bdcdata<span style="color:#f92672">-</span>dynbegin <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#66d9ef">APPEND</span> bdcdata.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><p><em>BDC_FIELD</em>：指定 bdc_field 的实参，告知系统把光标放在哪个字段。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*----------------------------------------------------------------*</span>
+<span style="color:#75715e">*        Insert field                                            *</span>
+<span style="color:#75715e">*----------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">bdc_field</span> <span style="color:#66d9ef">USING</span> fnam fval.
+  <span style="color:#66d9ef">IF</span> fval <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">OR</span> fnam fval <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#66d9ef">CLEAR</span> bdcdata.
+    bdcdata<span style="color:#f92672">-</span>fnam <span style="color:#f92672">=</span> fnam.
+    bdcdata<span style="color:#f92672">-</span>fval <span style="color:#f92672">=</span> fval.
+    <span style="color:#66d9ef">CONDENSE</span> bdcdata<span style="color:#f92672">-</span>fval.
+    <span style="color:#66d9ef">APPEND</span> bdcdata.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><table>
+<thead>
+<tr>
+<th align="left">Field name</th>
+<th align="left">Type</th>
+<th align="left">Length</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">PROGRAM</td>
+<td align="left">CHAR</td>
+<td align="left">8</td>
+<td align="left">Module pool</td>
+</tr>
+<tr>
+<td align="left">DYNPRO</td>
+<td align="left">NUMC</td>
+<td align="left">4</td>
+<td align="left">Dynpro number</td>
+</tr>
+<tr>
+<td align="left">DYNBEGIN</td>
+<td align="left">CHAR</td>
+<td align="left">1</td>
+<td align="left">Starting a dynpro</td>
+</tr>
+<tr>
+<td align="left">FNAM</td>
+<td align="left">CHAR</td>
+<td align="left">35</td>
+<td align="left">Field name</td>
+</tr>
+<tr>
+<td align="left">FVAL</td>
+<td align="left">CHAR</td>
+<td align="left">80</td>
+<td align="left">Field value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bdc中按顺序使用的功能模块">BDC中按顺序使用的功能模块</h3>
+<p>三个功能模块依次使用，使 BDC 编程成功进行数据传输。</p>
+<ul>
+<li>
+<p>BDC_OPEN_GROUP：打开批量输入会话会话</p>
+</li>
+<li>
+<p>BDC_INSERT：将事务传输到 session</p>
+</li>
+<li>
+<p>BDC_CLOSE_GROUP：关闭批处理输入会话</p>
+</li>
+</ul>
+<h3 id="bdc-执行类型">BDC 执行类型</h3>
+<h4 id="call-transaction-method">Call Transaction Method</h4>
+<p>定义变量时需要添加两个变量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>:bdcdata <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BDCDATA <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.    <span style="color:#75715e">&#34;保存录屏过程中的变量及常量数据&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:messtab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> BDCMSGCOLL <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>. <span style="color:#75715e">&#34;记录BDC执行返回数据&#34; 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>:ctu_params <span style="color:#66d9ef">LIKE </span>CTU_PARAMS.   <span style="color:#75715e">&#34;调事务代码时带的一些参数，是否前台执行，报错停止等&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34; 从程序中选一些dynpro和field的BDC行，不需要的字段或则屏幕，可以直接删除对应的代码。&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CLEAR</span> ctu_params.
+ctu_params<span style="color:#f92672">-</span>updmode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+ctu_params<span style="color:#f92672">-</span>dismode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+ctu_params<span style="color:#f92672">-</span>defsize <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>. <span style="color:#75715e">&#34;设置窗口非默认大小&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;调用BDC执行 T-code COOIS 显示订单抬头&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL TRANSACTION</span> <span style="color:#e6db74">&#39;COOIS&#39;</span> <span style="color:#66d9ef">USING</span> bdcdata
+                         OPTIONS  <span style="color:#66d9ef">FROM</span> ctu_params
+                         MESSAGES <span style="color:#66d9ef">INTO</span> messtab.
+</code></pre></div><p><code>OPTIONS FROM [opt]</code>：参考ABAP字典结构类型 <code>CTU_PARAMS</code> 的结构数据对象来传递参数。</p>
+<ul>
+<li>DISMODE：显示模式，其值对应于前面介绍的 MODE 参数；</li>
+<li>UPDMODE：更新模式，其值对应于前面介绍的 UPDATE 参数；</li>
+<li>CATTMODE：CATT 模式，有三个值：
+<ul>
+<li>&quot; &ldquo;：非 CATT 模式；</li>
+<li>N：CATT 模式但不对每个屏幕进行控制；</li>
+<li>A：CATT 模式并对每个屏幕进行控制；</li>
+</ul>
+</li>
+<li>DEFSIZE：是否使用屏幕的定义大小，有两个值：
+<ul>
+<li>&quot; &ldquo;：不使用屏幕定义大小，即显示给用户的屏幕跟普通运行时一样，根据用户窗口大小而自动扩展到全屏；</li>
+<li>&ldquo;X&rdquo;：使用屏幕定义大小，即只用源程序中固定的屏幕大小，无论用户窗口如何；</li>
+</ul>
+</li>
+<li>RACOMMIT：CALL TRANSACTION USING&hellip; is not completed by COMMIT</li>
+<li>NOBINPT：调用事务码时，系统字段 sy-binpt 的值，有两个值：
+<ul>
+<li>&quot; &ldquo;：在被调用事务执行时，系统字段 sy-binpt 的值为&quot;X&rdquo;；</li>
+<li>&ldquo;X&rdquo;：在被调用事务执行时，系统字段 sy-binpt 的值为&rdquo; &ldquo;；</li>
+</ul>
+</li>
+<li>NOBIEND：调用事务码完成后，系统字段 sy-binpt 的值，有两个值：
+<ul>
+<li>&ldquo;&quot;：在被调用事务执行后，系统字段 sy-binpt 的值为&quot;X&rdquo;；</li>
+<li>&ldquo;X&rdquo;：在被调用事务执行后，系统字段 sy-binpt 的值为&rdquo; &ldquo;。</li>
+</ul>
+</li>
+</ul>
+<h4 id="执行类的">执行类的</h4>
+<p>录屏和上面同样的方法生成程序。然后选择需要的代码段。不需要的可以注释，或者删除。直接执行 BDC。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2612</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPAuthorization_details/" class="prev" rel="prev" title=" SAP 自定义权限对象并使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP 自定义权限对象并使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Basis_FieldSymbol/" class="next" rel="next" title=" SAP Field Symbols "> SAP Field Symbols &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-26 00:00:00 \x2b0000 UTC',
+        title: ' BDC 屏幕录制 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

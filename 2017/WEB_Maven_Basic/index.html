@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_JQuery_Ajax/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_Maven_POM/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_Maven_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Maven使用 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="Maven使用 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Maven使用"/>
+<meta name="twitter:description" content="Maven简介 什么是Maven Maven 是 apache 下的开源项目，自动化构件工具，服务于java的项目构件和依赖管理。 Maven 采用引用的方式将依赖的 jar 包引入项目，"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Maven使用",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_Maven_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Maven",
+  "wordcount":  3557 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_Maven_Basic\/",
+  "datePublished": "2017-12-22T00:00:00\u002b00:00",
+  "dateModified": "2017-12-22T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Maven使用</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-12-22 >22 December 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="maven简介">Maven简介</h3>
+<h4 id="什么是maven">什么是Maven</h4>
+<p>Maven 是 apache 下的开源项目，自动化构件工具，服务于java的项目构件和依赖管理。</p>
+<p>Maven 采用引用的方式将依赖的 jar 包引入项目，不对真实的 jar 包进行 copy。但是打包的时候，运行时所需要的 jar 包都会被 copy 到安装包中。</p>
+<p>Maven 是一个项目管理工具，它包含了一个项目对象模型 (POM：Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
+<p>1、项目对象模型 (Project Object Model)</p>
+<p>POM 对象模型，每个 maven 工程中都有一个 pom.xml 文件，定义工程所依赖的 jar 包、本工程的坐标、打包运行方式。</p>
+<p>执行任务或目标时，Maven 会在当前目录中查找 POM。它读取 POM，获取所需的配置信息，然后执行目标。</p>
+<p>2、依赖管理系统 (基础核心)</p>
+<p>maven 通过坐标对项目工程所依赖的 jar 包统一规范管理。</p>
+<p>3、maven 定义了一套项目生命周期</p>
+<p>清理、初始化、编译、测试、报告 、打包、部署、站点生成。</p>
+<p>4、一组标准集合</p>
+<p>强调：maven 工程有自己标准的工程目录结构、定义坐标有标准。</p>
+<p>5、插件(plugin)目标(goal)</p>
+<p>maven 管理项目生命周期过程都是基于插件完成的。</p>
+<h4 id="maven仓库">Maven仓库</h4>
+<p>Maven 给我们带来的最大的好处就是管理 jar 包，Maven 管理 jar 包的模式是从远程仓库中把 jar 包下载到本地仓库中。仓库可以理解为缓存的地址，就是缓存项目需要的 jar 包，那么随着项目的扩大，本地仓库肯定为越来越大。</p>
+<p>1、中央仓库</p>
+<p>就是远程仓库；在 maven 软件中内置一个远程仓库地址http://repo1.maven.org/maven2 ，它是中央仓库，服务于整个互联网，它是由 Maven 团队自己维护，里面存储了非常全的 jar 包，它包含了世界上大部分流行的开源项目构件。可以通过修改配置文件，将仓库修改成自己需要的地址源。</p>
+<p>要浏览中央仓库的内容，maven 社区提供了一个 URL：<a href="http://search.maven.org/#browse">http://search.maven.org/#browse</a>。使用这个仓库，开发人员可以搜索所有可以获取的代码库。</p>
+<p>2、本地仓库</p>
+<p>相当于缓存，工程第一次会从远程仓库（互联网）去下载 jar 包，将 jar 包存在本地仓库（本地电脑上）。第二次获取 jar 包时不需要从远程仓库去下载，先从本地仓库找，找到了则直接使用；如果本地仓库找不到，Maven 才会去远程仓库找，找到后下载到本地仓库再使用。</p>
+<p>Maven默认的本地仓库目录位置：<code>${user.home}\.m2\repository</code></p>
+<p>3、私服仓库</p>
+<p>私服是一种特殊的远程仓库，为了节省带宽和时间，在局域网内架设一个私有的仓库服务器，用其代理所有外部的远程仓库。内部的项目还能部署到私服上供其他项目使用。</p>
+<h3 id="maven环境搭建">Maven环境搭建</h3>
+<h4 id="maven下载">Maven下载</h4>
+<p>可以到 maven 的 <a href="http://maven.apache.org/download.cgi">官网下载</a>，不同操作系统下载不同的压缩包：Windows: apache-maven-version-bin.zip ；将下载的压缩包解压到[D]盘的根目录下，maven 文件夹包含以下内容：</p>
+<p><img src="/images/WEB/Maven1.png" alt="Maven Folder"></p>
+<ul>
+<li>
+<p>bin：存放了 maven 的可执行程序，比如 mvn tomcat:run</p>
+</li>
+<li>
+<p>boot：存放了一些 maven 本身的引导程序，如类加载器等</p>
+</li>
+<li>
+<p>conf：存放了 maven 的一些配置文件，如 setting.xml 文件</p>
+</li>
+<li>
+<p>lib：存放了 maven 本身运行所需的一些 jar 包</p>
+</li>
+</ul>
+<h4 id="默认仓库位置配置">默认仓库位置配置</h4>
+<p>1、创建 .m2 文件夹</p>
+<p>我们会发现<code>${user.home}</code>下面没有<code>.m2</code>文件夹，这时候需要创建文件夹。新建文件夹的时候，windows是不支持文件命以小数点开头的，这里需要用命令行创建文件夹。在想要创建 .m2 文件夹的文件夹下按住shift加鼠标右键打开右键菜单，进入 powerShell 或者命令行。</p>
+<p><img src="/images/WEB/Maven3.png" alt="powerShell"></p>
+<p>输入命令 <code>mkdir .m2</code>创建文件夹</p>
+<p><img src="/images/WEB/Maven4.png" alt="powerShell"></p>
+<p>2、在 .m2 文件夹下创建必要的文件结构</p>
+<p><img src="/images/WEB/Maven5.png" alt="Maven Forder"></p>
+<p>找到之前下载的 maven 目录，复制<code>conf/settings.xml</code>文件到上方的.m2文件夹；然后创建一个repository文件夹在 .m2文件夹下面。</p>
+<p>最好在 mirrors 标签下加上阿里云的镜像连接站点，这样能极大的加快下载 jar 包的速度。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;mirror&gt;</span>
+  <span style="color:#f92672">&lt;id&gt;</span>aliyunmaven<span style="color:#f92672">&lt;/id&gt;</span>
+  <span style="color:#f92672">&lt;mirrorOf&gt;</span>central<span style="color:#f92672">&lt;/mirrorOf&gt;</span>
+  <span style="color:#f92672">&lt;name&gt;</span>aliyun maven<span style="color:#f92672">&lt;/name&gt;</span>
+  <span style="color:#f92672">&lt;url&gt;</span>https://maven.aliyun.com/nexus/content/groups/public/<span style="color:#f92672">&lt;/url&gt;</span>
+<span style="color:#f92672">&lt;/mirror&gt;</span>
+<span style="color:#f92672">&lt;mirror&gt;</span>
+  <span style="color:#f92672">&lt;id&gt;</span>repo1<span style="color:#f92672">&lt;/id&gt;</span>
+  <span style="color:#f92672">&lt;mirrorOf&gt;</span>central<span style="color:#f92672">&lt;/mirrorOf&gt;</span>
+  <span style="color:#f92672">&lt;name&gt;</span>central repo<span style="color:#f92672">&lt;/name&gt;</span>
+  <span style="color:#f92672">&lt;url&gt;</span>http://repo1.maven.org/maven2/<span style="color:#f92672">&lt;/url&gt;</span>
+<span style="color:#f92672">&lt;/mirror&gt;</span>
+</code></pre></div><h4 id="本地仓库配置">本地仓库配置</h4>
+<p>1、到官网下载 maven</p>
+<p>将下载的 apache-maven-version-bin.zip 解压到[D]盘根目录下</p>
+<p>2、配置本地仓库</p>
+<p>打开 maven 的安装目录中 conf/settings.xml 文件，在这里配置自定义的本地仓库，目录为：D:\Maven-Repository</p>
+<p><code>&lt;localRepository&gt;D:\Maven-Repository&lt;/localRepository&gt;</code></p>
+<h4 id="全局-setting-与用户-setting">全局 Setting 与用户 Setting</h4>
+<p>在 maven 安装目录下的有 conf/setting.xml 文件，此 setting.xml 文件用于 maven 的所有项目，它作为 maven 的全局配置。</p>
+<p>如需要个性配置则需要在用户配置中设置，用户配置的 setting.xml 文件默认的位置在：<code>${user.home}/.m2/settings.xml</code> 位置。</p>
+<p>配置文件查找顺序：maven 会先找用户配置，如果找到则以用户配置文件为准，否则使用全局配置文件。</p>
+<h3 id="eclipse-配置-maven">Eclipse 配置 Maven</h3>
+<h4 id="使用-eclipse-自带的-maven-插件">使用 Eclipse 自带的 maven 插件</h4>
+<p>1、配置 Maven 的安装目录</p>
+<p>进入 eclipse 选择菜单 Windows -&gt; Preferences ；在左侧的树状导航中找到 Maven，选择 User Settings 可以看到默认的本地仓库目录位置、默认的User Settings 位置：</p>
+<p><img src="/images/WEB/Maven2.png" alt="Eclipse Maven"></p>
+<p>2、配置 User Settings</p>
+<p>选择 .m2 目录下的 settings.xml；然后点击 Update Settings -&gt; Apply 按钮。</p>
+<h4 id="重建本地仓库索引">重建本地仓库索引</h4>
+<p>选择菜单 window -&gt; show View -&gt; Other 选择 Maven Repositories</p>
+<p><img src="/images/WEB/Maven6.png" alt="Eclipse Maven Repositories"></p>
+<p>打开Global  Repositories 选择对应的 mirror 右键选择 Rebuild  Index 重新创建索引，完成后可以在 D:\Maven-Repository 看到下载的 Jar 包内容。</p>
+<h3 id="创建maven-project">创建Maven Project</h3>
+<h4 id="创建项目">创建项目</h4>
+<p>选择菜单  File -&gt;new -&gt; Other；选择 Maven 下的 Maven Project，则出现以下界面：</p>
+<p><img src="/images/WEB/Maven7.png" alt="Maven Project"></p>
+<p>选中红框部分的复选框（跳过骨架），如果不跳过骨架，可以选择并使用一些项目骨架模板来创建 Maven 项目(例如：maven-archetype-quickstart)。</p>
+<p>点击 next，输入项目参数：</p>
+<p><img src="/images/WEB/Maven8.png" alt="Maven Project"></p>
+<p>这里有几个参数groupId、artifactId、version、packaging。</p>
+<ul>
+<li>groupId：定义当前 Maven 项目隶属的实际项目，项目的名称；项目名称以域名的倒序，比如：com.baidu.mavendemo</li>
+<li>artifactId：该元素定义实际项目的中的一个 Maven 项目(模块名称即子项目名称)</li>
+<li>version：定义 Maven 项目当前所处的版本，snapshot 为快照版本即非正式版本；release 为正式发布版本。</li>
+<li>packaging：定义 Maven 项目的打包方式，有三个值 jar、pom 和 war。
+<ul>
+<li>jar：代表普通 java 项目，执行 package 会打成 jar 包</li>
+<li>war：代表 web 项目，执行 package 会打成 war 包</li>
+<li>pom：用于集合 maven 组件的时候使用，通常父工程设置成 pom</li>
+</ul>
+</li>
+</ul>
+<h4 id="工程目录结构说明">工程目录结构说明</h4>
+<p>Maven 提倡使用一个共同的标准目录结构，Maven 使用约定优于配置的原则。</p>
+<ul>
+<li>src/main/java：核心代码部分，项目的 java 源文件（不要放配置文件）</li>
+<li>src/main/resources：项目所需要的配置文件（不要放 java 文件）</li>
+<li>src/main/webapp：页面资源，js，css，图片等资源</li>
+<li>src/test/java：单元测试程序 java 源文件</li>
+<li>src/test/resources：单元测试程序所用的配置文件</li>
+<li>target：打包输出目录</li>
+<li>target/classes：编译输出目录</li>
+<li>target/test-classes：测试编译输出目录</li>
+<li>pom.xml：Maven进行工作的主要配置文件。</li>
+</ul>
+<h4 id="生成-webxml-文件">生成 web.xml 文件</h4>
+<p>新建好的 web 项目下面是没有 web.xml 的，需要在右击 Deploymeny Descriptor，然后点击 Generate Deployment Descriptor，生成 web.xml 文件。</p>
+<h4 id="定义工程坐标pomxml">定义工程坐标：pom.xml</h4>
+<p>maven 对所有工程管理基于坐标进行管理。</p>
+<p>Maven 坐标为各种构件引入了秩序，任何一个构件都必须明确定义自己的坐标，一组 Maven 坐标是通过一些元素定义的，他们是 groupId、artifactId、version、packaging。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns =</span> <span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
+    <span style="color:#a6e22e">xmlns:xsi =</span> <span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+    <span style="color:#a6e22e">xsi:schemaLocation =</span> <span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0
+</span><span style="color:#e6db74">    http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#75715e">&lt;!-- 模型版本 --&gt;</span>
+    <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
+    <span style="color:#75715e">&lt;!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， 如com.companyname.project-group --&gt;</span>
+    <span style="color:#75715e">&lt;!-- maven会将该项目打成的jar包放本地路径：/com/companyname/project-group --&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>com.companyname.project-group<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#75715e">&lt;!-- 项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 --&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>project<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#75715e">&lt;!-- 产品版本号 --&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>1.0<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#75715e">&lt;!-- 打包方式 jar,war,pom 等 --&gt;</span>
+    <span style="color:#f92672">&lt;packaging&gt;</span>war<span style="color:#f92672">&lt;/packaging&gt;</span>
+    <span style="color:#75715e">&lt;!-- 项目构建配置，配置编译、运行插件等 --&gt;</span>
+    <span style="color:#f92672">&lt;build&gt;&lt;plugins&gt;&lt;plugin&gt;</span>...<span style="color:#f92672">&lt;/plugin&gt;&lt;/plugins&gt;&lt;/build&gt;</span>
+    <span style="color:#75715e">&lt;!-- 项目依赖构件配置，配置项目依赖构件的坐标 --&gt;</span>
+    <span style="color:#f92672">&lt;dependencies&gt;&lt;dependency&gt;</span>...<span style="color:#f92672">&lt;/dependency&gt;&lt;/dependencies&gt;</span>
+<span style="color:#f92672">&lt;/project&gt;</span>
+</code></pre></div><h4 id="设置编译版本">设置编译版本</h4>
+<p>Maven 的核心插件之一 compiler 插件支持的 JDK 版本较低 ，我们需要将编译版本改为自己所需的版本，这里设置为 JDK1.8。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;build&gt;</span>
+    <span style="color:#f92672">&lt;plugins&gt;</span>
+      <span style="color:#f92672">&lt;plugin&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>maven-war-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;version&gt;</span>3.3.1<span style="color:#f92672">&lt;/version&gt;</span>
+      <span style="color:#f92672">&lt;/plugin&gt;</span>
+      <span style="color:#f92672">&lt;plugin&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>maven-compiler-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;version&gt;</span>3.2<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;configuration&gt;</span>
+          <span style="color:#f92672">&lt;source&gt;</span>1.8<span style="color:#f92672">&lt;/source&gt;</span>
+          <span style="color:#f92672">&lt;target&gt;</span>1.8<span style="color:#f92672">&lt;/target&gt;</span>
+          <span style="color:#f92672">&lt;encoding&gt;</span>UTF-8<span style="color:#f92672">&lt;/encoding&gt;</span>
+        <span style="color:#f92672">&lt;/configuration&gt;</span>
+      <span style="color:#f92672">&lt;/plugin&gt;</span>
+      <span style="color:#f92672">&lt;plugin&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.tomcat.maven<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>tomcat7-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;version&gt;</span>2.2<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;configuration&gt;</span>
+          <span style="color:#75715e">&lt;!-- 设置编码格式 --&gt;</span>
+          <span style="color:#f92672">&lt;uriEncoding&gt;</span>UTF-8<span style="color:#f92672">&lt;/uriEncoding&gt;</span>
+          <span style="color:#75715e">&lt;!-- 控制 tomcat 端口号 --&gt;</span>
+          <span style="color:#f92672">&lt;port&gt;</span>80<span style="color:#f92672">&lt;/port&gt;</span>
+          <span style="color:#75715e">&lt;!-- 项目发布到 tomcat 后的名称 --&gt;</span>
+          <span style="color:#75715e">&lt;!-- 如果写 /，相当于项目发布后的名称为 ROOT --&gt;</span>
+          <span style="color:#75715e">&lt;!-- 如果写 /abc，相当于项目发布后的名称为 abc --&gt;</span>
+          <span style="color:#f92672">&lt;path&gt;</span>/<span style="color:#f92672">&lt;/path&gt;</span>
+        <span style="color:#f92672">&lt;/configuration&gt;</span>
+      <span style="color:#f92672">&lt;/plugin&gt;</span>
+    <span style="color:#f92672">&lt;/plugins&gt;</span>
+  <span style="color:#f92672">&lt;/build&gt;</span>
+</code></pre></div><p>将上边的配置信息粘贴到pom.xml中。点击工程右键  Maven -&gt;  Update Project，弹出窗口后OK 。操作后 ，编译版本改为 1.8。</p>
+<p><img src="/images/WEB/Maven9.png" alt="Maven Project"></p>
+<h4 id="maven-dependency-for-servlet-api">Maven dependency for Servlet API</h4>
+<p>For Tomcat 8 (Java 8, Servlet 3.1)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>javax.servlet<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>javax.servlet-api<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>3.1.0<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;scope&gt;</span>provided<span style="color:#f92672">&lt;/scope&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>javax.servlet.jsp<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>javax.servlet.jsp-api<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>2.3.0<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;scope&gt;</span>provided<span style="color:#f92672">&lt;/scope&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>javax.el<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>javax.el-api<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>3.0.0<span style="color:#f92672">&lt;/version&gt;</span>
+  <span style="color:#f92672">&lt;scope&gt;</span>provided<span style="color:#f92672">&lt;/scope&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>javax.servlet<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>jstl<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>1.2<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><h4 id="执行-maven-命令">执行 Maven 命令</h4>
+<p>在 Maven 项目上点击鼠标右键，在弹出的选择菜单中共选择 Run As，可以看到常见的 Maven 命令。</p>
+<p><img src="/images/WEB/Maven12.png" alt="Maven Command"></p>
+<p>如果默认选项中没有我们想要执行的 Maven 命令，可以选择 <code>Maven build ...</code> 来自定义 Maven 运行命令。在 Goals 中输入想要执行的命令：tomcat7:run，设置下自定义名称，点击 Run 即可。下可以直接选择 <code>Maven build</code> 来使用之前配置的命令。</p>
+<p><img src="/images/WEB/Maven13.png" alt="Maven Command"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3557</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Maven/">
+                    #Maven</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_JQuery_Ajax/" class="prev" rel="prev" title="JQuery Ajax"><i class="iconfont icon-dajiantou"></i>&nbsp;JQuery Ajax</a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_Maven_POM/" class="next" rel="next" title="Maven-POM标签大全详解">Maven-POM标签大全详解&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-12-22 00:00:00 \u002b0000 UTC',
+        title: 'Maven使用',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

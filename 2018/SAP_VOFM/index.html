@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Range/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ALV_Utils/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAP_VOFM/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            VOFM 使用(例程开发)  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" VOFM 使用(例程开发)  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" VOFM 使用(例程开发) "/>
+<meta name="twitter:description" content="例程介绍 SAP ERP 实施中，经常会用到例程开发 (TCODE:VOFM)。这个开发目前我用到的是影响 SD 和 MM 的定价过程。创建例程需要 ACCESS KEY，这个可以通"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " VOFM 使用(例程开发) ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAP_VOFM\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "saputils, Enhance",
+  "wordcount":  665 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAP_VOFM\/",
+  "datePublished": "2018-08-19T00:00:00\x2b00:00",
+  "dateModified": "2018-08-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> VOFM 使用(例程开发) </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-08-19 >19 August 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="例程介绍">例程介绍</h4>
+<p>SAP ERP 实施中，经常会用到例程开发 (TCODE:VOFM)。这个开发目前我用到的是影响 SD 和 MM 的定价过程。创建例程需要 ACCESS KEY，这个可以通过 Basis 申请得到，创建后例程会被包含在一个 REQUEST 下。写好代码以后，在 SPRO 里面的“条件计算方案”将你写的代码编号配置进去，就可以影响到这个定价了。</p>
+<p><img src="/images/ABAP/VOFM.png" alt="VOFM"></p>
+<p><strong>例程工作原理</strong>：</p>
+<p>例程，即 Fomula，是使用在销售、采购、发票、交货等单据中定价过程的一小段程序。之所以有 Fomula 存在，是因为在不同的业务场景下，定价过程可能千差万别，但是却可以拆分为一些关键的组成部分，如复制请求、数据传输、要求、公式，每个例程就是一小段专用程序，这些例程程序会被标准程序动态调用：如：PERFORM XXX IN XXXX IF FOUND. 我们可以在例程中编写代码片段，修改运行环境中的数据。具体的每种例程都有不同的环境变量和接口数据，在此就不详细说明了。</p>
+<p>创建例程的过程，实际上是做了以下几件事，我们<strong>以routine 922 为例说明</strong>：</p>
+<ul>
+<li>
+<p>创建了程序：RV61A922，该程序可通过 SE38 查看</p>
+</li>
+<li>
+<p>在表 TFRM、TFRMT 中添加数据，记录创建的例程编号等信息</p>
+</li>
+<li>
+<p>激活例程时，RV61A998 被 INCLUDE 在 RV61ANNN，即在 RV61ANNN 中添加一行：INCLUDE RV61A998.</p>
+</li>
+</ul>
+<p><strong>解释下传输后无法正常使用</strong></p>
+<p>CHANGE REQUEST 释放后传输，1、2 两步可以正常完成，但是第三步，虽然在目标系统中激活了，但是未能 INCLUDE 在 RV61ANNN 程序中，因此定价过程配置好之后，会出现 ABAP DUMP.</p>
+<p><strong>解决方法</strong>：在目标系统中运行程序：RV80HGEN 即可修复 BUG，而不需要在目标系统中通过 VOFM 激活例程。该程序的作用是根据表 TFRM、TFRMT 在 RV61ANNN 等程序中增加 INCLUDE RV61A998 这样的代码，如此才能正常运行。具体见 Notes:28683</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>665</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/saputils/">
+                    #saputils</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Enhance/">
+                    #Enhance</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Range/" class="prev" rel="prev" title=" ABAP Range 定义 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP Range 定义 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_Utils/" class="next" rel="next" title=" ALV 常用工具 "> ALV 常用工具 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-08-19 00:00:00 \x2b0000 UTC',
+        title: ' VOFM 使用(例程开发) ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

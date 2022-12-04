@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_ResultRead/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_Demo/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_Editable/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV 可编辑设置  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV 可编辑设置  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV 可编辑设置 "/>
+<meta name="twitter:description" content="SALV Editable with Single (custom) Method 不使用按钮 找到一个被触发但在输出显示给用户之前的事件。 找到一个可以在 Grid 和 Full Screen ALV 中工作的事件。 Full Screen ALV 触发 TOP_OF_PAGE 而不是 Grid ALV，至于 Grid 没"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV 可编辑设置 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Editable\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  2666 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Editable\/",
+  "datePublished": "2019-06-10T00:00:00\x2b00:00",
+  "dateModified": "2019-06-10T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV 可编辑设置 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-10 >10 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                6 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="salv-editable-with-single-custom-method">SALV Editable with Single (custom) Method</h3>
+<h4 id="不使用按钮">不使用按钮</h4>
+<p>找到一个被触发但在输出显示给用户之前的事件。 找到一个可以在 Grid 和 Full Screen ALV 中工作的事件。</p>
+<p>Full Screen ALV 触发 TOP_OF_PAGE 而不是 Grid ALV，至于 Grid 没有直接的 TOP_OF_PAGE。 Full Screen ALV 在使用 O_SALV-&gt;SET_TOP_OF_LIST( ) 方法创建页面顶部时触发它。 这也会在 ALV 中显示一个标题。 对于 Grid，您需要为 CL_DD_DOCUMENT 创建一个对象，将其传递给 Grid 对象并引发事件 TOP_OF_PAGE。 没有 Grid 开始，无法分配标题，因此无法使 TOP_OF_PAGE 事件起作用。</p>
+<h4 id="event--after_refresh">EVENT  AFTER_REFRESH</h4>
+<p>系统完成 ALV 渲染后触发事件 AFTER_REFRESH – 解析字段目录、发送到 DP（数据提供者）又名前端的数据、应用布局、创建工具栏以及所有其他与 ALV 相关的内容。 现在，如何在没有 Grid 对象的情况下捕获此事件。 因此，声明了一个事件处理程序来处理类 CL_GUI_ALV_GRID 的事件 AFTER_REFRESH。 诀窍是使用 SET EVENT HANDLER 添加 FOR ALL INSTANCES 来注册事件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#960050;background-color:#1e0010">“</span>To gain an access <span style="color:#66d9ef">to</span> the underlying <span style="color:#66d9ef">object</span> <span style="color:#f92672">and</span> <span style="color:#66d9ef">do</span> the magic<span style="color:#75715e">&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SET HANDLER</span> lo_event_h<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_after_refresh
+  <span style="color:#66d9ef">FOR</span> ALL INSTANCES
+  ACTIVATION <span style="color:#960050;background-color:#1e0010">‘</span>X<span style="color:#960050;background-color:#1e0010">’</span>.
+</code></pre></div><p>FOR ALL INSTANCES 非常强大。 它可以为该事件所属的任何对象注册该事件，即使该对象是在注册处理程序后实例化的。 这在这种情况下非常有用，因为 Grid 对象尚未实例化。</p>
+<h4 id="避免无限循环陷阱">避免无限循环陷阱</h4>
+<p>要使 Grid 可编辑，可以使用以下 REFRESH_TABLE_DISPLAY() 调用或方法 SET_READY_FOR_INPUT 调用传递 LAYOUT-EDIT = ‘X’。 问题是，这两种方法都会调用方法 SOFT_REFRESH_TABLE_DISPLAY 并引发事件 AFTER_REFRESH。 这将再次被我们的事件处理程序捕获。 事件处理程序将通过刷新使网格再次可编辑——因此进入循环。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;Deregister the event handler&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SET HANDLER</span> me<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_after_refresh
+  <span style="color:#66d9ef">FOR</span> ALL INSTANCES
+  ACTIVATION space.
+</code></pre></div><p>为避免这种情况，我们将关闭 - 更技术地取消注册事件处理程序。 使用 SET HANDLER 中的附加 ACTIVATION 空间将为我们做到这一点。</p>
+<h4 id="工具栏">工具栏</h4>
+<p>接下来是工具栏。 工具栏中的编辑按钮无需任何额外工作即可显示，但对于 Grid，有一些特殊的逻辑会阻止它在工具栏中创建编辑按钮。 这一切都发生在方法 CL_SALV_CONTROLLER_EVENTS=&gt; RAISE_BUILD_UIFUNCTION 中，其中只显示了几个按钮。</p>
+<p>因此，我们将欺骗工具栏添加相同的缺失按钮。 为此，我们需要为 CL_GUI_ALV_GRID 注册事件 TOOLBAR。 使用 FOR ALL INSTANCE 也可以这样做。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;Only for GRID, would need to add the toolbar buttons&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">IF</span> io_salv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_display_object</span>( ) <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">SET HANDLER</span> lo_event_h<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_toolbar
+    <span style="color:#66d9ef">FOR</span> ALL INSTANCES
+    ACTIVATION <span style="color:#960050;background-color:#1e0010">‘</span>X<span style="color:#960050;background-color:#1e0010">’</span>.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="使其可编辑的单一方法">使其可编辑的单一方法</h4>
+<p>不是开箱即用的单一方法，但将所有这些逻辑都包含在一个方法中。 通过在 DISPLAY 方法之前传递 ALV 对象来调用此方法，一切都完成了。</p>
+<p>该方法将注册事件 AFTER_REFRESH 和 TOOLBAR（用于网格）。 该类还在本地类中承载事件处理程序方法。 事件处理程序将使网格可编辑并在工具栏中添加按钮。 使其可编辑的所有复杂性都隐藏并包装在此方法中。</p>
+<p>此外，此方法将控制多个 SALV 对象的逻辑。 使用具有对象池设计模式的事件处理程序的可选参数 SENDER。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;Make grid editable: call before display&#34;
+</span><span style="color:#75715e"></span>zcl_test_np_salv_model<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_editable</span>( go_alv ). 
+</code></pre></div><h4 id="实现结果">实现结果</h4>
+<ul>
+<li>Full screen ALV generated by SALV in Editable mode</li>
+<li>ALV Grid generated by SALV in Editable mode</li>
+<li>Multiple Grid, only one is editable</li>
+</ul>
+<h3 id="完整代码实现">完整代码实现</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CLASS</span> ZCL_TEST_NP_SALV_MODEL <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC</span> FINAL <span style="color:#66d9ef">create public</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">class-methods</span> SET_EDITABLE
+        <span style="color:#66d9ef">importing</span> <span style="color:#f92672">!</span>IO_SALV <span style="color:#66d9ef">type ref to</span> CL_SALV_TABLE .
+  <span style="color:#66d9ef">PROTECTED SECTION</span>.
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">class-data</span> o_event_h <span style="color:#66d9ef">type ref to</span> <span style="color:#66d9ef">OBJECT</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+
+<span style="color:#66d9ef">CLASS</span> ZCL_TEST_NP_SALV_MODEL <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#75715e">&#34;IO_SALV TYPE REF TO CL_SALV_TABLE&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_editable</span>.
+    <span style="color:#66d9ef">DATA</span>: lo_event_h <span style="color:#66d9ef">TYPE REF TO</span> lcl_event_handler.
+    <span style="color:#75715e">&#34;Event handler&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> zcl_test_np_salv_model<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>o_event_h <span style="color:#f92672">IS NOT BOUND</span>.
+      <span style="color:#66d9ef">CREATE OBJECT</span> zcl_test_np_salv_model<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>o_event_h <span style="color:#66d9ef">TYPE </span>lcl_event_handler.
+    <span style="color:#66d9ef">ENDIF</span>.
+    lo_event_h <span style="color:#f92672">?</span><span style="color:#f92672">=</span> zcl_test_np_salv_model<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>o_event_h.
+    <span style="color:#66d9ef">APPEND</span> io_salv <span style="color:#66d9ef">TO</span> lo_event_h<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>t_salv.
+    <span style="color:#75715e">&#34;To gain an access to the underlying object and do the magic&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">SET HANDLER</span> lo_event_h<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_after_refresh <span style="color:#66d9ef">FOR</span> ALL INSTANCES ACTIVATION <span style="color:#960050;background-color:#1e0010">‘</span>X<span style="color:#960050;background-color:#1e0010">’</span>.
+    <span style="color:#75715e">&#34;only for GRID, would need to add the toolbar buttons&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> io_salv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_display_object</span>( ) <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+      <span style="color:#66d9ef">SET HANDLER</span> lo_event_h<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_toolbar <span style="color:#66d9ef">FOR</span> ALL INSTANCES ACTIVATION <span style="color:#960050;background-color:#1e0010">‘</span>X<span style="color:#960050;background-color:#1e0010">’</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.
+<span style="color:#66d9ef">ENDCLASS</span>.
+<span style="color:#75715e">*——————————————————————--------------—-*</span>
+<span style="color:#75715e">* Event handler ALV events</span>
+<span style="color:#75715e">*———————————————————————---------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_event_handler <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>: on_after_refresh <span style="color:#66d9ef">FOR EVENT</span> after_refresh <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+               <span style="color:#66d9ef">IMPORTING</span>
+                 sender,
+             on_toolbar <span style="color:#66d9ef">FOR EVENT</span> toolbar <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+               <span style="color:#66d9ef">IMPORTING</span>
+                 e_object
+                 e_interactive
+                 sender.
+  <span style="color:#66d9ef">DATA</span>: t_salv <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> <span style="color:#66d9ef">REF TO</span> cl_salv_table.
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_event_handler DEFINITION&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">CLASS</span> lcl_event_handler <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_after_refresh</span>.
+    <span style="color:#66d9ef">DATA</span>: lo_grid <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+    <span style="color:#66d9ef">DATA</span>: ls_layout <span style="color:#66d9ef">TYPE </span>lvc_s_layo.
+    <span style="color:#66d9ef">DATA</span>: lo_salv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+    <span style="color:#66d9ef">TRY</span> .
+      <span style="color:#66d9ef">LOOP AT </span>t_salv <span style="color:#66d9ef">INTO</span> lo_salv.
+        lo_grid <span style="color:#f92672">=</span> zcl_test_np_salv_model<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_grid</span>( lo_salv ).
+        <span style="color:#66d9ef">CHECK</span> lo_grid <span style="color:#f92672">EQ</span> sender.
+        <span style="color:#75715e">&#34;Deregister the event handler&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">SET HANDLER</span> me<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_after_refresh <span style="color:#66d9ef">FOR</span> ALL INSTANCES ACTIVATION space.
+        <span style="color:#75715e">&#34;Set editable&#34;
+</span><span style="color:#75715e"></span>        ls_layout<span style="color:#960050;background-color:#1e0010">–</span>edit <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>X<span style="color:#960050;background-color:#1e0010">’</span>.
+        lo_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_frontend_layout</span>( ls_layout ).
+        lo_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_ready_for_input</span>( <span style="color:#ae81ff">1</span> ).
+      <span style="color:#66d9ef">ENDLOOP</span>.
+      <span style="color:#66d9ef">CATCH</span> cx_salv_error.
+    <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;ON_AFTER_REFRESH&#34;
+</span><span style="color:#75715e"></span>  
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_toolbar</span>.
+    <span style="color:#66d9ef">DATA</span>: lo_grid <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_alv_grid.
+    <span style="color:#66d9ef">DATA</span>: ls_layout <span style="color:#66d9ef">TYPE </span>lvc_s_layo.
+    <span style="color:#66d9ef">DATA</span>: mt_toolbar <span style="color:#66d9ef">TYPE </span>ttb_button.
+    <span style="color:#66d9ef">DATA</span>: ls_toolbar <span style="color:#66d9ef">LIKE LINE OF</span> mt_toolbar.
+    <span style="color:#66d9ef">DATA</span>: lo_salv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+    <span style="color:#66d9ef">TRY</span> .
+      <span style="color:#66d9ef">LOOP AT </span>t_salv <span style="color:#66d9ef">INTO</span> lo_salv.
+        lo_grid <span style="color:#f92672">=</span> zcl_test_np_salv_model<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_grid</span>( lo_salv ).
+        <span style="color:#66d9ef">IF</span> lo_grid <span style="color:#f92672">EQ</span> sender.
+          <span style="color:#66d9ef">EXIT</span>.
+        <span style="color:#66d9ef">ELSE</span>.
+          <span style="color:#66d9ef">CLEAR</span> lo_grid.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDLOOP</span>.
+      <span style="color:#66d9ef">CATCH</span> cx_salv_msg.
+        <span style="color:#66d9ef">EXIT</span>.
+    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#66d9ef">CHECK</span> lo_grid <span style="color:#f92672">IS BOUND</span>.
+    <span style="color:#66d9ef">CHECK</span> lo_grid<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">is_ready_for_input</span>( ) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#75715e">&#34;Toolbar Button CHECK&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_check.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">053</span>.  <span style="color:#75715e">&#34;Eingaben prfen&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_check.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Seperator&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>SEP01<span style="color:#960050;background-color:#1e0010">’</span>.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>butn_type  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button CUT&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_cut.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">046</span>.  <span style="color:#75715e">&#34;Ausschneiden&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_system_cut.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button COPY&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_copy.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">045</span>.  <span style="color:#75715e">&#34;Kopieren&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_system_copy.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button PASTE OVER ROW&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_paste.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">047</span>.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_system_paste.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button PASTE NEW ROW&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_paste_new_row.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">063</span>.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_system_paste.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button UNDO&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_undo.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">052</span>.  <span style="color:#960050;background-color:#1e0010">“</span>Rckgngig
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_system_undo.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Separator&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>SEP02<span style="color:#960050;background-color:#1e0010">’</span>.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>butn_type  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button APPEND ROW&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_append_row.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">054</span>.  <span style="color:#960050;background-color:#1e0010">“</span>Zeile anhngen<span style="color:#75715e">&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_create.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button INSERT ROW&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_insert_row.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">048</span>.  <span style="color:#960050;background-color:#1e0010">“</span>Zeile einfgen
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_insert_row.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button DELETE ROW&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_delete_row.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">049</span>.  <span style="color:#960050;background-color:#1e0010">“</span>Zeile lschen<span style="color:#75715e">&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_delete_row.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Button COPY ROW&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> cl_gui_alv_grid<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>mc_fc_loc_copy_row.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>quickinfo  <span style="color:#f92672">=</span> text<span style="color:#960050;background-color:#1e0010">–</span><span style="color:#ae81ff">051</span>.  <span style="color:#960050;background-color:#1e0010">“</span>Duplizieren<span style="color:#75715e">&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>icon        <span style="color:#f92672">=</span> icon_copy_object.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>disabled    <span style="color:#f92672">=</span> space.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#75715e">&#34;Toolbar Separator&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CLEAR</span> ls_toolbar.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>function    <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>SEP03<span style="color:#960050;background-color:#1e0010">’</span>.
+    ls_toolbar<span style="color:#960050;background-color:#1e0010">–</span>butn_type  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> mt_toolbar.
+    <span style="color:#66d9ef">APPEND LINES OF</span> mt_toolbar <span style="color:#66d9ef">TO</span> e_object<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>mt_toolbar.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_toolbar&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;lcl_event_handler IMPLEMENTATION&#34;
+</span></code></pre></div><h4 id="参考链接">参考链接</h4>
+<ul>
+<li><a href="https://blogs.sap.com/2015/06/25/salv-editable-with-single-custom-method/">https://blogs.sap.com/2015/06/25/salv-editable-with-single-custom-method/</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2666</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_ResultRead/" class="prev" rel="prev" title=" ALV 结果读取 "><i class="iconfont icon-dajiantou"></i>&nbsp; ALV 结果读取 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Demo/" class="next" rel="next" title=" SALV ALV Demo"> SALV ALV Demo&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-10 00:00:00 \x2b0000 UTC',
+        title: ' SALV 可编辑设置 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

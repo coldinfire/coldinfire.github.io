@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_NumberQAS/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SD_BAPI_CustomerCreate/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SD_BAPI_ALL_List/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SD 模块常用BAPI  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SD 模块常用BAPI  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SD 模块常用BAPI "/>
+<meta name="twitter:description" content="SD 常用 BAPI BAPI Description SD_SALESDOCUMENT_CREATE 创建销售订单 SD_SALES_DOCUMENT_SAVE 从复制的文档创建销售订单 BAPI_SALESORDER_CREATEFROMDAT2 创建销售订单 BAPI_SALESORDER_CHANGE 修改或者删除销售订单 BAPI_OUTB_DELIVERY_CREATE_SLS 根据销售订单创建交货单 BAPI_BILLINGDOC_CREATEMULTIPLE 创建发票，注意参数 ref_doc_ca MB_CANCEL_GOODS_MOVEMENT 冲销"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SD 模块常用BAPI ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SD_BAPI_ALL_List\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI",
+  "wordcount":  727 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SD_BAPI_ALL_List\/",
+  "datePublished": "2019-10-23T00:00:00\x2b00:00",
+  "dateModified": "2019-10-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SD 模块常用BAPI </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-10-23 >23 October 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sd-常用-bapi">SD 常用 BAPI</h3>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SD_SALESDOCUMENT_CREATE</td>
+<td align="left">创建销售订单</td>
+</tr>
+<tr>
+<td align="left">SD_SALES_DOCUMENT_SAVE</td>
+<td align="left">从复制的文档创建销售订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_SALESORDER_CREATEFROMDAT2</td>
+<td align="left">创建销售订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_SALESORDER_CHANGE</td>
+<td align="left">修改或者删除销售订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_OUTB_DELIVERY_CREATE_SLS</td>
+<td align="left">根据销售订单创建交货单</td>
+</tr>
+<tr>
+<td align="left">BAPI_BILLINGDOC_CREATEMULTIPLE</td>
+<td align="left">创建发票，注意参数 ref_doc_ca</td>
+</tr>
+<tr>
+<td align="left">MB_CANCEL_GOODS_MOVEMENT</td>
+<td align="left">冲销交货单的过账发货</td>
+</tr>
+<tr>
+<td align="left">BAPI_BILLINGDOC_CANCEL1</td>
+<td align="left">发票的冲销</td>
+</tr>
+<tr>
+<td align="left">BAPI_INB_DELIVERY_SAVEREPLICA</td>
+<td align="left">创建 Inbound Delivery</td>
+</tr>
+<tr>
+<td align="left">GN_DELIVERY_CREATE</td>
+<td align="left">单个创建 Outbound Delivery</td>
+</tr>
+<tr>
+<td align="left">SHP_VL10_DELIVERY_CREATE</td>
+<td align="left">创建 Outbound Delivery</td>
+</tr>
+<tr>
+<td align="left">BAPI_OUTB_DELIVERY_CHANGE</td>
+<td align="left">修改外向交货单</td>
+</tr>
+<tr>
+<td align="left">SD_DELIVERY_UPDATE_PICKING</td>
+<td align="left">修改外向交货单拣配数量</td>
+</tr>
+<tr>
+<td align="left">WS_DELIVERY_UPDATE</td>
+<td align="left">外向交货单的发货过账</td>
+</tr>
+<tr>
+<td align="left">BAPI_OUTB_DELIVERY_CONFIRM_DEC</td>
+<td align="left">用于来自分散系统的外向交货验证的 BAPI ，可以使用此方法将外向交货从 WM 系统报告回 (ERP) 系统。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2019/SD_BAPI_CustomerCreate/">SD_CUSTOMER_MAINTAIN_ALL</a></td>
+<td align="left">创建客户；table 参数中有很多表，其中X开头代表要插入的数据，Y开头代表要删除的数据。</td>
+</tr>
+<tr>
+<td align="left">SD_SALES_DOCUMENT_READ</td>
+<td align="left">读取销售单据标题和业务数据：tables VBAK, VBKD and VBPA (Sold-to (AG), Payer (RG) and Ship-to (WE) parties)</td>
+</tr>
+<tr>
+<td align="left">SD_SALES_DOCUMENT_READ_POS</td>
+<td align="left">读取销售凭证抬头和物料：表 VBAK、VBAP-MATNR</td>
+</tr>
+<tr>
+<td align="left">SD_DOCUMENT_PARTNER_READ</td>
+<td align="left">合作伙伴信息，包括地址。 调用 SD_PARTNER_READ</td>
+</tr>
+<tr>
+<td align="left">SD_PARTNER_READ</td>
+<td align="left">所有合作伙伴信息和地址</td>
+</tr>
+<tr>
+<td align="left">SD_DETERMINE_CONTRACT_TYPE</td>
+<td align="left">确定文档是服务合同还是数量合同</td>
+</tr>
+<tr>
+<td align="left">SD_SALES_DOCUMENT_COPY</td>
+<td align="left">将销售单据复制到具有所需销售单据类型 (VBAK-AUART) 的新单据中，以便进一步创建。 Example：O - 创建后续文档</td>
+</tr>
+<tr>
+<td align="left">SD_SALES_DOCUMENT_ENQUEUE</td>
+<td align="left">出列使用 DEQUEUE_EVVBAKE</td>
+</tr>
+<tr>
+<td align="left">SD_PACKING_PRINT_VIEW</td>
+<td align="left">用于 Dlv 便笺打印的 SD 数据收集</td>
+</tr>
+<tr>
+<td align="left">SD_DELIVERY_VIEW</td>
+<td align="left">从 RV_DELIVERY_PRINT_VIEW、SD_PACKING_PRINT_VIEW 调用的打印数据收集</td>
+</tr>
+<tr>
+<td align="left">SD_COND_ACCESS</td>
+<td align="left">选择条件记录</td>
+</tr>
+<tr>
+<td align="left">RV_DELIVERY_CREATE</td>
+<td align="left">创建 Delivery</td>
+</tr>
+<tr>
+<td align="left">RV_BILLING_PRINT_VIEW</td>
+<td align="left">用于开票凭证打印的数据提供</td>
+</tr>
+<tr>
+<td align="left">RV_DELIVERY_PRINT_VIEW</td>
+<td align="left">为交货单打印提供数据</td>
+</tr>
+<tr>
+<td align="left">RV_PRICE_PRINT_HEAD</td>
+<td align="left">用于打印程序以获取标题 [和行项目] 级别的定价数据。 输入：结构 KOMK（字段 mandt、kalsm、waerk、knumv、vbtyp 取自 VBDKR，kappl=‘V’）。 [和 KOMP（字段 kposn 取自 VBDPR，字段 mglme（数量）可以更改以相应地计算价格]。输出：表 TKOMV [和 TKOMVD] 中的定价数据。</td>
+</tr>
+<tr>
+<td align="left">RV_ORDER_FLOW_INFORMATION</td>
+<td align="left">在交货和开票后读取销售凭证的销售凭证流，不要忘记检查您正在搜索的起始凭证 # 和前/后凭证类型的直接参考凭证（例如，如果您搜索给定 SO 的交货， 如果在性能方面可能，还请检查 LIPS-VGBEL 和 LIPS-VGPOS）。</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>727</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_NumberQAS/" class="prev" rel="prev" title=" ABAP 科学计数法问题 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 科学计数法问题 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SD_BAPI_CustomerCreate/" class="next" rel="next" title=" BAPI 创建 Customer "> BAPI 创建 Customer &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-23 00:00:00 \x2b0000 UTC',
+        title: ' SD 模块常用BAPI ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

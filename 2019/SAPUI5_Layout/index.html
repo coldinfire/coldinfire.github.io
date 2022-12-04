@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAPUI5_Basic/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAPUI5_DialogAndFragment/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAPUI5_Layout/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAPUI5 Layout  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAPUI5 Layout  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAPUI5 Layout "/>
+<meta name="twitter:description" content="Layout设置 多页面显示和跳转 sap.m.App : 是一个全局对象，可以通过 app.to(sPageId) 跳转到另一个页面。 to(sPageId, sTransitionName ? , oData ? , oTransitionParameters ? ): [sap.m.NavContainer] app.back()则跳回到刚才的pa"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAPUI5 Layout ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Layout\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "sapui5",
+  "wordcount":  1550 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_Layout\/",
+  "datePublished": "2019-04-19T00:00:00\x2b00:00",
+  "dateModified": "2019-04-19T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAPUI5 Layout </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-19 >19 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="layout设置">Layout设置</h2>
+<h3 id="多页面显示和跳转">多页面显示和跳转</h3>
+<p>sap.m.App : 是一个全局对象，可以通过 app.to(sPageId) 跳转到另一个页面。</p>
+<ul>
+<li>to(sPageId, sTransitionName <em>?</em> , oData <em>?</em> , oTransitionParameters <em>?</em> ): [sap.m.NavContainer]</li>
+</ul>
+<p>app.back()则跳回到刚才的page：</p>
+<ul>
+<li>back(oBackData <em>?</em> , oTransitionParameters <em>?</em> ): [sap.m.NavContainer]</li>
+</ul>
+<p><code>sap.m.Page</code>中，<code>showNavButton</code>设置为<code>true</code>，就会出现 Navigation 按钮，点击按钮的 event hander 通过 Controller 中<code>onNavPress</code>函数来实现。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oDetailPage</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">Page</span>({
+  <span style="color:#a6e22e">showNavButton</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+  <span style="color:#a6e22e">navButtonPress</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">oController</span>.<span style="color:#a6e22e">onNavPress</span>, <span style="color:#a6e22e">oController</span>],
+  <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;供应商明细&#34;</span>,
+  <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">oObjectHeader</span>]
+});
+</code></pre></div><p><code>sap.m.ColumnListItem</code>的 type 必须为 Navigation，否则不能实现跳转。<code>sap.m.ColumnListItem</code>的 press 属性设置为一个数组，这种方法能够保证在 Controller 中，this 表示 Controller 本身，而不是某个控件。</p>
+<h3 id="布局类型">布局类型</h3>
+<p>sap.ui.layout.HorizontalLayout() : 水平布局</p>
+<p>sap.ui.layout.VerticalLayout() : 垂直布局</p>
+<p>sap.ui.layout.Grid() : 表格式布局</p>
+<h4 id="grid-layout">Grid Layout</h4>
+<p>Grid Layout 控件负责将页面进行表格式布局，将页面分为 12 列，子控件从左至右排列。每个控件并不是占一列，OpenUI5 根据屏幕的大小，将屏幕分为 4 种，分别是<code>XL: extra large 、 L: large、M: medium、S: small </code>。XL 的如 PC 机的大桌面，L 的如 PC 的桌面，M 的比如平板，S 的比如手机。默认情况下，每个控件在 XL 桌面上占 3 列，在 L 桌面上占 3 列，在 M 桌面上占 6 列，在 S 桌面上占 12 列。OpenUI5 用一个字符串表示为<code> XL3 L3 M6 S12</code>，通过 default Span 属性来设置。</p>
+<p>当屏幕的尺寸变更的时候，OpenUI5 检测到尺寸的变化，根据上面的 4 个分类对控件的位置进行调整，从而实现所谓的自适应。</p>
+<p>Grid layout 控件宽度 (Width)，可以基于像素，或者基于页面宽度的相对比例。控件之间的间距可以通过 vSpacing 和 hSpacing 属性进行设置。</p>
+<p><code> sap.ui.layout</code> : 该function可以对Layout页面布局进行设置。</p>
+<ul>
+<li><code>new sap.ui.layout.Grid({ content: [ a1,b1,c1,d1] }).placeAt(&quot;content&quot;);</code></li>
+</ul>
+<p>将各个空间放到Layout.Grid中，然后将该Grid放到页面指定位置上。</p>
+<h3 id="layoutdata-属性">LayoutData 属性</h3>
+<p><code>sap.ui.core.Element</code> 类定义了<code> layoutData</code> 属性、<code>getLayoutData()</code> 方法和<code> setLayoutData()</code> 方法。控件都是 <code>sap.ui.core.Element</code> 类的间接子类，从而控件都可以利用这些属性和方法设定这个控件在页面中如何定位。<code>setLayoutData()</code> 方法的参数是<code> sap.ui.core.LayoutData</code> 对象。 Grid 布局时<code>layoutData</code> 我们可以用<code>sap.ui.core.LayoutData</code> 类的子类 <code>sap.ui.layout.GridData</code>。</p>
+<pre><code class="language-JSP" data-lang="JSP">var oLabel2 = new sap.m.Label({
+   text : &quot;XXXXXXXXXXXXXXXXXXX&quot;,
+   layoutData : new sap.ui.layout.GridData({
+     span : &quot;XL12 L12 M12 S12&quot;       //通过该设置让该元素独占屏幕元素的一整行
+   })
+});
+</code></pre><h4 id="margin-classes">Margin Classes</h4>
+<p>在 class 属性中设置了四种标准的大小: tiny-8px、small-16px、medium-32px、large-48px，Begin is left and End is right。</p>
+<p>在 div 的 class 属性中添加对应的属性值来解决边距问题。</p>
+<ol>
+<li>
+<p>Full Margins：all around control</p>
+<ul>
+<li>sapUiTinyMargin</li>
+<li>sapUiSmallMargin</li>
+<li>sapUiMediumMargin</li>
+<li>sapUiLargeMargin</li>
+</ul>
+</li>
+<li>
+<p>Single-sided margins：class中只能设定一个边框距离</p>
+<ul>
+<li>sapUixxxxMarginTop</li>
+<li>sapUixxxxMarginBottom</li>
+<li>sapUixxxxMarginBegin</li>
+<li>sapUixxxxMarginEnd</li>
+</ul>
+</li>
+<li>
+<p>Two-Sided Margins：两个方向</p>
+<ul>
+<li>sapUiTinyMarginBeginEnd</li>
+<li>sapUiTinyMarginTopBottom</li>
+</ul>
+</li>
+<li>
+<p>Responsive Margins：margins depending on the screen width</p>
+<p>sapUiResponsiveMargin</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Panel</span> <span style="color:#a6e22e">headerText</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{i18n&gt;helloPanelTitle}&#34;</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sapUiResponsiveMargin&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;auto&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">P</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">e</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">body</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sapUiBody sapUiResponsiveMargin&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;application&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;content&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">v</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">y</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</code></pre></div></li>
+<li>
+<p>100% 宽度控制</p>
+<p>如果控件包含有<code>width</code>属性，设置该属性为<code>width=auto</code>.如果没有该属性，可以添加 sapUiForceWidthAuto属性到控件的 class。</p>
+</li>
+<li>
+<p>移除 Margins</p>
+<ul>
+<li>sapUiNoMarginTop</li>
+<li>sapUiNoMarginBottom</li>
+<li>sapUiNoMarginBegin</li>
+<li>sapUiNoMarginEnd</li>
+</ul>
+</li>
+</ol>
+<h4 id="自定义css和主题颜色">自定义CSS和主题颜色</h4>
+<p>不要在自定义 CSS 中指定颜色，而是使用标准的主题依赖类。</p>
+<h3 id="对象组件显示">对象组件显示</h3>
+<p>组件</p>
+<blockquote>
+<p><code>sap.m.ObjectIdentifier:</code> 用于需要对操作对象进行明确区分的时候，使用这个组件进行显示。强调的是标识。				title属性是主要标识，text属性是补充，如果titleActive为true，则标题用颜色标识.</p>
+<p><code>sap.m.ObjectNumber:</code> 显示数字,能根据不同的状态提供颜色区分。有四种state: Warning, Error, Success,Default.</p>
+<p><code>sap.m.ObjectMarker:</code> 以图标的方式显示预定义的几种类型，可以绑定press事件。包括 [Flagged、Favorite、Draft</p>
+<p>、Locked、LockedBy、Unsaved、UnsavedBy].</p>
+<p><code>sap.m.ObjectAttribute:</code> 显示对象，并提供普通和active两种状态，active状态可与事件绑定。</p>
+<p><code>sap.m.ObjectStatus:</code> 显示对象的文本，并且根据状态不同，文本以不同的颜色区分。</p>
+<p><code>sap.m.ObjectHeader:</code> 显示对象，包括标识和附加的信息，图标等。</p>
+</blockquote>
+<h2 id="icons">Icons</h2>
+<p>sap.ui.core.Icon</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1550</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/sapui5/">
+                    #sapui5</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_Basic/" class="prev" rel="prev" title=" SAPUI5 概述 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAPUI5 概述 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_DialogAndFragment/" class="next" rel="next" title=" SAPUI5 Dialog and Fragment "> SAPUI5 Dialog and Fragment &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-19 00:00:00 \x2b0000 UTC',
+        title: ' SAPUI5 Layout ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

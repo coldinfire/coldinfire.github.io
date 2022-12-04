@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_SFP_Basis/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_SFP_Utils/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_SFP_Use/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Adobe 使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Adobe 使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Adobe 使用 "/>
+<meta name="twitter:description" content="Adobe Form 程序调用 画好了对应的 Form 格式与数据绑定，就可以在 Report 程序中通过具体代码进行调用了。 SFPOUTPUTPARAMS 参数介绍 Parameter Desc Parameter Desc nodialog 是否弹出打印对话框 dest 打印终端指定 noprint 不打"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Adobe 使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_SFP_Use\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  450 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_SFP_Use\/",
+  "datePublished": "2020-04-13T00:00:00\x2b00:00",
+  "dateModified": "2020-04-13T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Adobe 使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-04-13 >13 April 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="adobe-form-程序调用">Adobe Form 程序调用</h2>
+<p>画好了对应的 Form 格式与数据绑定，就可以在 Report 程序中通过具体代码进行调用了。</p>
+<h3 id="sfpoutputparams-参数介绍">SFPOUTPUTPARAMS 参数介绍</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Desc</th>
+<th>Parameter</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodialog</td>
+<td>是否弹出打印对话框</td>
+<td>dest</td>
+<td>打印终端指定</td>
+</tr>
+<tr>
+<td>noprint</td>
+<td>不打印，能预览</td>
+<td>copies</td>
+<td>打印多少份</td>
+</tr>
+<tr>
+<td>nopdf</td>
+<td>不会产生PDF文档</td>
+<td>reqnew</td>
+<td>新开启一个SPOOL请求</td>
+</tr>
+<tr>
+<td>getpdf</td>
+<td>得到PDF文档</td>
+<td>reqfinal</td>
+<td>SPOOL请求结束</td>
+</tr>
+<tr>
+<td>xfp</td>
+<td>外部程序可以调用，得到只有内容的xml文件(没有layout)</td>
+<td>connection</td>
+<td>ADSRFC的</td>
+</tr>
+</tbody>
+</table>
+<h3 id="程序内容">程序内容</h3>
+<h4 id="data-define">Data define</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* Define Adobe Form Name</span>
+<span style="color:#66d9ef">DATA</span>: lv_form_name <span style="color:#66d9ef">TYPE </span>FPWBFORMNAME.
+<span style="color:#75715e">* Define Function Name</span>
+<span style="color:#66d9ef">DATA</span>: lv_fm_name <span style="color:#66d9ef">TYPE </span>RS381_FNAM.
+<span style="color:#75715e">* Define Print parameter</span>
+<span style="color:#66d9ef">DATA</span>: lwa_fp_params <span style="color:#66d9ef">TYPE </span>SFPOUTPUTPARAMS.
+<span style="color:#75715e">* Define Form Parameters for Form Processing</span>
+<span style="color:#66d9ef">DATA</span>: lwa_fp_docparams <span style="color:#66d9ef">TYPE </span>SFPDOCPARAMS.
+<span style="color:#75715e">* Define Result</span>
+<span style="color:#66d9ef">DATA</span>: lv_result <span style="color:#66d9ef">TYPE </span>SFPJOBOUTPUT.
+<span style="color:#66d9ef">DATA</span>: lv_matnr <span style="color:#66d9ef">TYPE </span>matnr.
+
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+<span style="color:#75715e">* Fetch the Data and store it in the Internal Table</span>
+  lv_matnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;3011223452&#39;</span>.
+</code></pre></div><h4 id="open-spool-job">Open spool job</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* Sets the output parameters and opens the spool job</span>
+<span style="color:#66d9ef">CLEAR</span> lwa_fp_params.
+lwa_fp_params<span style="color:#f92672">-</span>connection <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ADS&#39;</span>. 
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;FP_JOB_OPEN&#39;</span>    <span style="color:#75715e">&#34;&amp; Form Processing: Call Form&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CHANGING</span>
+    ie_outputparams <span style="color:#f92672">=</span> lwa_fp_params
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    cancel          <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    usage_error     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    system_error    <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    internal_error  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+    <span style="color:#66d9ef">OTHERS</span>          <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+    <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="get-function-name">Get function name</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* Get the name of the generated function module</span>
+<span style="color:#66d9ef">CLEAR</span> lv_form_name.
+lv_form_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSFP_FORM&#39;</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;FP_FUNCTION_MODULE_NAME&#39;</span>  <span style="color:#75715e">&#34;Form Processing Generation&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">EXPORTING</span>
+    i_name     <span style="color:#f92672">=</span> lv_form_name
+  <span style="color:#66d9ef">IMPORTING</span>
+    e_funcname <span style="color:#f92672">=</span> lv_fm_name.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+    <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="print-control">Print Control</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* Language and country setting (Chinese)</span>
+<span style="color:#66d9ef">CLEAR</span> lwa_fp_docparams.
+lwa_fp_docparams<span style="color:#f92672">-</span>langu   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;D&#39;</span>.
+lwa_fp_docparams<span style="color:#f92672">-</span>country <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CN&#39;</span>.
+<span style="color:#75715e">* Call the generated function module</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> lv_fm_name
+  <span style="color:#66d9ef">EXPORTING</span>
+    /<span style="color:#ae81ff">1</span>bcdwb/docparams     <span style="color:#f92672">=</span> lwa_fp_docparams
+    matnr                 <span style="color:#f92672">=</span> lv_matnr
+<span style="color:#75715e">*  IMPORTING</span>
+<span style="color:#75715e">*   /1BCDWB/FORMOUTPUT    =</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    usage_error           <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    system_error          <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    internal_error        <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+    <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="close-spool-job">Close spool job</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* Close the spool job</span>
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;FP_JOB_CLOSE&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    E_RESULT         <span style="color:#f92672">=</span> lv_result
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    usage_error      <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    system_error     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    internal_error   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    <span style="color:#66d9ef">others</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+	<span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>450</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_SFP_Basis/" class="prev" rel="prev" title=" SAP Adobe Form "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP Adobe Form </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_SFP_Utils/" class="next" rel="next" title=" SAP Adobe Form 工具 "> SAP Adobe Form 工具 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-04-13 00:00:00 \x2b0000 UTC',
+        title: ' SAP Adobe 使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

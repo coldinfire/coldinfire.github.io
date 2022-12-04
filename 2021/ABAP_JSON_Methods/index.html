@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_Enhance_Text/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ABAP_JSON/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ABAP_JSON_Methods/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP&amp;Json 转换 Methods  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP&amp;Json 转换 Methods  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP&amp;Json 转换 Methods "/>
+<meta name="twitter:description" content="方法列表 DATA_TO_JSON METHOD DATA_TO_JSON. DATA:LO_DESCR TYPE REF TO CL_ABAP_TYPEDESCR. LO_DESCR = CL_ABAP_TYPEDESCR=&gt;DESCRIBE_BY_DATA( IA_DATA ). RV_JSON = DATA_TO_JSON_INTERNAL( IA_DATA = IA_DATA IO_DESCR = LO_DESCR ). &#34;Test if root is an single element, if yes root object { ... } needed&#34; IF LO_DESCR-&gt;KIND EQ CL_ABAP_TYPEDESCR=&gt;KIND_ELEM. CONCATENATE &#39;{&#34;$ROOT&#34;:&#39; RV_JSON &#39;}&#39; INTO RV_JSON. ENDIF. ENDMETHOD. JSON_TO_DATA METHOD JSON_TO_DATA. DATA:LV_JSON TYPE STRING. LV_JSON = IV_JSON. JSON_TO_DATA_INTERNAL( CHANGING CV_JSON = LV_JSON CA_DATA ="/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP\x26Json 转换 Methods ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ABAP_JSON_Methods\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  5036 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ABAP_JSON_Methods\/",
+  "datePublished": "2021-03-06T00:00:00\x2b00:00",
+  "dateModified": "2021-03-06T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP&amp;Json 转换 Methods </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-03-06 >6 March 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                11 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="方法列表">方法列表</h3>
+<h4 id="data_to_json">DATA_TO_JSON</h4>
+<p><img src="/images/ABAP/ABAP_JSON7.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">DATA_TO_JSON</span>.
+  <span style="color:#66d9ef">DATA</span>:LO_DESCR <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TYPEDESCR.
+  LO_DESCR <span style="color:#f92672">=</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DESCRIBE_BY_DATA</span>( IA_DATA ).
+  RV_JSON <span style="color:#f92672">=</span> DATA_TO_JSON_INTERNAL( IA_DATA <span style="color:#f92672">=</span> IA_DATA IO_DESCR <span style="color:#f92672">=</span> LO_DESCR ).
+  <span style="color:#75715e">&#34;Test if root is an single element, if yes root object { ... } needed&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>KIND <span style="color:#f92672">EQ</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>KIND_ELEM.
+    <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{&#34;$ROOT&#34;:&#39;</span> RV_JSON <span style="color:#e6db74">&#39;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="json_to_data">JSON_TO_DATA</h4>
+<p><img src="/images/ABAP/ABAP_JSON8.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">JSON_TO_DATA</span>.
+  <span style="color:#66d9ef">DATA</span>:LV_JSON <span style="color:#66d9ef">TYPE </span>STRING.
+  LV_JSON <span style="color:#f92672">=</span> IV_JSON.
+  JSON_TO_DATA_INTERNAL(
+    <span style="color:#66d9ef">CHANGING</span>
+      CV_JSON <span style="color:#f92672">=</span> LV_JSON
+      CA_DATA <span style="color:#f92672">=</span> CA_DATA ).
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="to_string">TO_STRING</h4>
+<p><img src="/images/ABAP/ABAP_JSON9.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">TO_STING</span>.
+<span style="color:#75715e">* number is not rounded, maximum precision is preserved: 123.456 JPY -&gt; 123.456 JPY</span>
+<span style="color:#75715e">* trailing zero decimals are cut off: 123,456000 JPY -&gt; 123,456 JPY</span>
+<span style="color:#75715e">* number of currency decimals is ensured: 123 EUR -&gt; 123.00 EUR</span>
+<span style="color:#75715e">* for negative amounts the negative sign is rendered before the number</span>
+  <span style="color:#66d9ef">DEFINE</span> RETURN_STRING.
+    <span style="color:#75715e">&#34; negative sign shall be in front of number &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> LV_IS_NEGATIVE <span style="color:#f92672">EQ</span> ABAP_TRUE.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;-&#39;</span> LV_STRING <span style="color:#66d9ef">INTO</span> LV_STRING.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> LV_STRING IS_AMOUNT<span style="color:#f92672">-</span>CURRENCY <span style="color:#66d9ef">INTO</span> RV_STRING
+      <span style="color:#66d9ef">SEPARATED BY</span> SPACE.
+    <span style="color:#66d9ef">CONDENSE</span> RV_STRING.
+    <span style="color:#66d9ef">RETURN</span>.
+  <span style="color:#66d9ef">END-OF-DEFINITION</span>.
+<span style="color:#75715e">* check if this is a negative number</span>
+  <span style="color:#66d9ef">DATA</span>: LV_IS_NEGATIVE <span style="color:#66d9ef">TYPE </span>BOOLE_D <span style="color:#66d9ef">VALUE</span> ABAP_FALSE.
+  <span style="color:#66d9ef">IF</span> IS_AMOUNT<span style="color:#f92672">-</span>NUMBER <span style="color:#f92672">LT</span> <span style="color:#ae81ff">0</span>.
+    LV_IS_NEGATIVE <span style="color:#f92672">=</span> ABAP_TRUE.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* move to local, preserving precision</span>
+  <span style="color:#66d9ef">DATA</span>: LV_STRING <span style="color:#66d9ef">TYPE </span>STRING.
+  <span style="color:#66d9ef">MOVE</span> IS_AMOUNT<span style="color:#f92672">-</span>NUMBER <span style="color:#66d9ef">TO</span> LV_STRING.
+<span style="color:#75715e">* throw away sign</span>
+  <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;+&#39;</span> <span style="color:#66d9ef">IN</span> LV_STRING <span style="color:#66d9ef">WITH</span> SPACE.
+  <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#66d9ef">IN</span> LV_STRING <span style="color:#66d9ef">WITH</span> SPACE.
+  <span style="color:#66d9ef">CONDENSE</span> LV_STRING.
+<span style="color:#75715e">* cut off trailing zero decimals</span>
+  <span style="color:#66d9ef">IF</span> LV_STRING <span style="color:#f92672">CA</span> <span style="color:#e6db74">&#39;.&#39;</span>.
+    <span style="color:#66d9ef">SHIFT</span> LV_STRING <span style="color:#66d9ef">RIGHT</span> DELETING TRAILING <span style="color:#e6db74">&#39;0&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* cut off decimal separator if there are no decimals anymore</span>
+  <span style="color:#66d9ef">IF</span> LV_STRING <span style="color:#f92672">CA</span> <span style="color:#e6db74">&#39;.&#39;</span>.
+    <span style="color:#66d9ef">SHIFT</span> LV_STRING <span style="color:#66d9ef">RIGHT</span> DELETING TRAILING <span style="color:#e6db74">&#39;.&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CONDENSE</span> LV_STRING.
+<span style="color:#75715e">* ensure number of decimals according to currency</span>
+<span style="color:#75715e">* get decimals from currency</span>
+  <span style="color:#66d9ef">DATA</span>: LV_TCURX_DECIMALS <span style="color:#66d9ef">TYPE </span>I.
+  LV_TCURX_DECIMALS <span style="color:#f92672">=</span> GET_CURRENCY_DECIMALS( IV_CURRENCY <span style="color:#f92672">=</span> IS_AMOUNT<span style="color:#f92672">-</span>CURRENCY ).
+  <span style="color:#66d9ef">IF</span> LV_TCURX_DECIMALS <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#75715e">&#34; no decimals to ensure ... &#34;
+</span><span style="color:#75715e"></span>    RETURN_STRING.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* split into integer and decimals part</span>
+  <span style="color:#66d9ef">DATA</span>: LV_INTEGER_PART <span style="color:#66d9ef">TYPE </span>STRING,
+        LV_DECIMAL_PART <span style="color:#66d9ef">TYPE </span>STRING.
+  <span style="color:#66d9ef">SPLIT</span> LV_STRING <span style="color:#66d9ef">AT</span> GC_ABAP_DECIMALS_SEPARATOR
+   <span style="color:#66d9ef">INTO</span> LV_INTEGER_PART LV_DECIMAL_PART.
+  <span style="color:#66d9ef">CONDENSE</span>: LV_INTEGER_PART,LV_DECIMAL_PART.
+<span style="color:#75715e">* get number of decimals</span>
+  <span style="color:#66d9ef">DATA</span>: LV_DECIMALS_COUNT <span style="color:#66d9ef">TYPE </span>I.
+  LV_DECIMALS_COUNT <span style="color:#f92672">=</span> STRLEN( LV_DECIMAL_PART ).
+  <span style="color:#66d9ef">IF</span> LV_DECIMALS_COUNT <span style="color:#f92672">GE</span> LV_TCURX_DECIMALS.
+   <span style="color:#75715e">&#34;there are already enough decimals&#34;
+</span><span style="color:#75715e"></span>    RETURN_STRING.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* ensure decimals, add trailing zeros</span>
+  <span style="color:#66d9ef">DATA</span>: LV_TIMES <span style="color:#66d9ef">TYPE </span>I.
+  LV_TIMES <span style="color:#f92672">=</span> LV_TCURX_DECIMALS <span style="color:#f92672">-</span> LV_DECIMALS_COUNT.
+  <span style="color:#66d9ef">DO</span> LV_TIMES <span style="color:#66d9ef">TIMES</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> LV_DECIMAL_PART <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#66d9ef">INTO</span> LV_DECIMAL_PART.
+  <span style="color:#66d9ef">ENDDO</span>.
+<span style="color:#75715e">* build number</span>
+  <span style="color:#66d9ef">CONCATENATE</span> LV_INTEGER_PART
+              GC_ABAP_DECIMALS_SEPARATOR
+              LV_DECIMAL_PART
+         <span style="color:#66d9ef">INTO</span> LV_STRING.
+  RETURN_STRING.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="quantity_to_sting">QUANTITY_TO_STING</h4>
+<p><img src="/images/ABAP/ABAP_JSON10.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">method</span> <span style="color:#a6e22e">QUANTITY_TO_STING</span>.
+<span style="color:#75715e">* number is not rounded, maximum precision is preserved: 123.456789 KG -&gt; 123.456789 KG</span>
+<span style="color:#75715e">* trailing zero decimals are cut off: 123.45000 KG -&gt; 123.45 KG</span>
+<span style="color:#75715e">* number of T006-DECAN decimals is ensured: 123 D10  -&gt; 123.000 D10</span>
+<span style="color:#75715e">* accept initial/invalid unit, set decimals to 3</span>
+<span style="color:#75715e">* NO user-dependent formatting: no thousands separator, decimals separator is ABAP default &#39;.&#39;</span>
+<span style="color:#75715e">* for negative quantites the negative sign is rendered before the number</span>
+  <span style="color:#66d9ef">DEFINE</span> RETURN_STRING.
+    <span style="color:#75715e">&#34; negative sign shall be in front of number &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> LV_IS_NEGATIVE <span style="color:#f92672">EQ</span> ABAP_TRUE.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;-&#39;</span> LV_STRING <span style="color:#66d9ef">INTO</span> LV_STRING.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> LV_STRING IS_QUANTITY<span style="color:#f92672">-</span>UNIT <span style="color:#66d9ef">INTO</span> RV_STRING
+      <span style="color:#66d9ef">SEPARATED BY</span> SPACE.
+    <span style="color:#66d9ef">CONDENSE</span> RV_STRING.
+    <span style="color:#66d9ef">RETURN</span>.
+  <span style="color:#66d9ef">END-OF-DEFINITION</span>.
+<span style="color:#75715e">* check if this is a negative number</span>
+  <span style="color:#66d9ef">DATA</span>: LV_IS_NEGATIVE <span style="color:#66d9ef">TYPE </span>BOOLE_D <span style="color:#66d9ef">VALUE</span> ABAP_FALSE.
+  <span style="color:#66d9ef">IF</span> IS_QUANTITY<span style="color:#f92672">-</span>NUMBER <span style="color:#f92672">LT</span> <span style="color:#ae81ff">0</span>.
+    LV_IS_NEGATIVE <span style="color:#f92672">=</span> ABAP_TRUE.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* move to local</span>
+  <span style="color:#66d9ef">DATA</span>: LV_STRING <span style="color:#66d9ef">TYPE </span>STRING.
+  <span style="color:#66d9ef">MOVE</span> IS_QUANTITY<span style="color:#f92672">-</span>NUMBER <span style="color:#66d9ef">TO</span> LV_STRING.
+<span style="color:#75715e">* throw away sign</span>
+  <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;+&#39;</span> <span style="color:#66d9ef">IN</span> LV_STRING <span style="color:#66d9ef">WITH</span> SPACE.
+  <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#66d9ef">IN</span> LV_STRING <span style="color:#66d9ef">WITH</span> SPACE.
+  <span style="color:#66d9ef">CONDENSE</span> LV_STRING.
+<span style="color:#75715e">* cut off trailing zero decimals</span>
+  <span style="color:#66d9ef">IF</span> LV_STRING <span style="color:#f92672">CA</span> GC_ABAP_DECIMALS_SEPARATOR.
+    <span style="color:#66d9ef">SHIFT</span> LV_STRING <span style="color:#66d9ef">RIGHT</span> DELETING TRAILING <span style="color:#e6db74">&#39;0&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* cut off decimal separator if there are no decimals anymore</span>
+  <span style="color:#66d9ef">IF</span> LV_STRING <span style="color:#f92672">CA</span> GC_ABAP_DECIMALS_SEPARATOR.
+    <span style="color:#66d9ef">SHIFT</span> LV_STRING <span style="color:#66d9ef">RIGHT</span> DELETING TRAILING GC_ABAP_DECIMALS_SEPARATOR.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CONDENSE</span> LV_STRING.
+<span style="color:#75715e">* ensure number of decimals according to unit</span>
+<span style="color:#75715e">* get decimals from unit</span>
+  <span style="color:#66d9ef">DATA</span>: LV_DECAN <span style="color:#66d9ef">TYPE </span>T006<span style="color:#f92672">-</span>DECAN.
+  <span style="color:#66d9ef">IF</span> IS_QUANTITY<span style="color:#f92672">-</span>UNIT <span style="color:#f92672">IS NOT INITIAL</span>.
+    <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;UNIT_PARAMETERS_GET&#39;</span>
+      <span style="color:#66d9ef">EXPORTING</span>
+        unit           <span style="color:#f92672">=</span> IS_QUANTITY<span style="color:#f92672">-</span>UNIT
+      <span style="color:#66d9ef">IMPORTING</span>
+        decan          <span style="color:#f92672">=</span> LV_DECAN
+      <span style="color:#66d9ef">EXCEPTIONS</span>
+        unit_not_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+    <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+      <span style="color:#75715e">&#34;unit invalid, default is 3&#34;
+</span><span style="color:#75715e"></span>      LV_DECAN <span style="color:#f92672">=</span> gc_decimals_default.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#75715e">&#34;default is 3&#34;
+</span><span style="color:#75715e"></span>    lv_decan <span style="color:#f92672">=</span> gc_decimals_default.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">IF</span> lv_decan <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#75715e">&#34;no decimals to ensure ...&#34;
+</span><span style="color:#75715e"></span>    return_string.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* split into integer and decimals part</span>
+  <span style="color:#66d9ef">DATA</span>: lv_integer_part <span style="color:#66d9ef">TYPE </span>string,
+        lv_decimal_part <span style="color:#66d9ef">TYPE </span>string.
+  <span style="color:#66d9ef">SPLIT</span> lv_string <span style="color:#66d9ef">AT</span> gc_abap_decimals_separator
+   <span style="color:#66d9ef">INTO</span> lv_integer_part lv_decimal_part.
+  <span style="color:#66d9ef">CONDENSE</span>: lv_integer_part,
+            lv_decimal_part.
+<span style="color:#75715e">* get number of decimals</span>
+  <span style="color:#66d9ef">DATA</span>: lv_decimals_count <span style="color:#66d9ef">TYPE </span>i.
+  lv_decimals_count <span style="color:#f92672">=</span> strlen( lv_decimal_part ).
+  <span style="color:#66d9ef">IF</span> lv_decimals_count <span style="color:#f92672">GE</span> lv_decan.
+    <span style="color:#75715e">&#34;there are already enough decimals&#34;
+</span><span style="color:#75715e"></span>    return_string.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* ensure decimals, add trailing zeros</span>
+  <span style="color:#66d9ef">DATA</span>: lv_times <span style="color:#66d9ef">TYPE </span>i.
+  lv_times <span style="color:#f92672">=</span> lv_decan <span style="color:#f92672">-</span> lv_decimals_count.
+  <span style="color:#66d9ef">DO</span> lv_times <span style="color:#66d9ef">TIMES</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> lv_decimal_part <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#66d9ef">INTO</span> lv_decimal_part.
+  <span style="color:#66d9ef">ENDDO</span>.
+<span style="color:#75715e">* build number</span>
+  <span style="color:#66d9ef">CONCATENATE</span> lv_integer_part
+              gc_abap_decimals_separator
+              lv_decimal_part
+         <span style="color:#66d9ef">INTO</span> lv_string.
+  return_string.
+<span style="color:#66d9ef">endmethod</span>.
+</code></pre></div><h4 id="convert_timepoint_to_text">CONVERT_TIMEPOINT_TO_TEXT</h4>
+<p><img src="/images/ABAP/ABAP_JSON11.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">CONVERT_TIMEPOINT_TO_TEXT</span>.
+  <span style="color:#66d9ef">CONSTANTS</span> MC_DATE_NULL <span style="color:#66d9ef">TYPE </span>DATS <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00010101&#39;</span>.         <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_TIME_ZERO <span style="color:#66d9ef">TYPE </span>TIMS <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;000000&#39;</span>.           <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_TIMESTAMP_NULL <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TIMESTAMP <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00010101000000&#39;</span>.<span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_DST_FIRST_YEAR <span style="color:#66d9ef">TYPE </span>TZNYEARACT <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;1916&#39;</span>.  <span style="color:#75715e">&#34;#NO_TEXT #EC NOT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_EMPTY_TIMEZONE <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TIMEZONE</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;      &#39;</span>.  <span style="color:#75715e">&#34;#NO_TEXT #EC NOT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_MINUTES_INITIAL <span style="color:#66d9ef">TYPE </span>CHAR3 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;000&#39;</span>.<span style="color:#75715e">&#34;#NO_TEXT #EC&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_SIGN_MINUS <span style="color:#66d9ef">TYPE </span>TZNUTCSIGN <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;-&#39;</span>.  <span style="color:#75715e">&#34;#NO_TEXT #EC NOT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_SIGN_PLUS <span style="color:#66d9ef">TYPE </span>TZNUTCSIGN <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;+&#39;</span>.   <span style="color:#75715e">&#34;#NO_TEXT #EC NOTE&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_TIME_INITIAL <span style="color:#66d9ef">TYPE </span>CHAR5 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00:00&#39;</span>. <span style="color:#75715e">&#34;#NO_TEXT #EC NO&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_SEPARATOR_ISO_DATE <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;-&#39;</span>.          <span style="color:#75715e">&#34;#NO_TEXT #EC&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_SEPARATOR_ISO_INTERVAL <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;/&#39;</span>.      <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_SEPARATOR_ISO_TIME <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;:&#39;</span>.          <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_INDICATOR_TIME <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;T&#39;</span>.              <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_INDICATOR_UTC <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;Z&#39;</span>.               <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: LS_MESSAGE <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>S_MESSAGE,
+        LT_MESSAGE <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>T_MESSAGE.
+<span style="color:#75715e">* Prepare return value</span>
+  <span style="color:#66d9ef">CLEAR</span> RV_TEXT.
+<span style="color:#75715e">* Move to local FDT timepoint</span>
+  <span style="color:#66d9ef">DATA</span>: LS_TIMEPOINT_LOCAL <span style="color:#66d9ef">TYPE </span>FDT_S_TIMEPOINT.
+<span style="color:#75715e">* Move to local FDT timepoint</span>
+  <span style="color:#66d9ef">CASE</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TYPE.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE <span style="color:#f92672">OR</span> SPACE.
+      LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> MC_DATE_NULL.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> MC_TIME_ZERO.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME.
+      LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> MC_DATE_NULL.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> MC_TIME_ZERO.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIMESTAMP_UTC.
+      LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIMESTAMP_UTC.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIMESTAMP <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIMESTAMP <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIMESTAMP <span style="color:#f92672">=</span> MC_TIMESTAMP_NULL.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIMESTAMP <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIMESTAMP.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME_OFFSET_UTC.
+      LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME_OFFSET_UTC.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> MC_DATE_NULL.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> MC_TIME_ZERO.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">EQ</span> SPACE.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">=</span> MC_OFFSET_SIGN_PLUS.
+      <span style="color:#66d9ef">ELSE</span>.
+        LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN.
+      <span style="color:#66d9ef">ENDIF</span>.
+      LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_TIME.
+      _ENSURE_DIGITS( <span style="color:#66d9ef">CHANGING</span> CHV_OFFSET_MINUTES <span style="color:#f92672">=</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_TIME ).
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#75715e">* Check condition: Timepoint is valid</span>
+  <span style="color:#66d9ef">DATA</span>: LV_IS_VALID <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_BOOLEAN.
+  LV_IS_VALID <span style="color:#f92672">=</span> IS_VALID( LS_TIMEPOINT_LOCAL ).
+<span style="color:#75715e">* Timepoint is invalid -&gt; Raise Exception</span>
+  <span style="color:#66d9ef">IF</span> LV_IS_VALID <span style="color:#f92672">EQ</span> ABAP_FALSE.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+       <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4
+       <span style="color:#66d9ef">INTO</span> LS_MESSAGE<span style="color:#f92672">-</span>TEXT.
+    <span style="color:#66d9ef">MOVE-CORRESPONDING</span> SYST <span style="color:#66d9ef">TO</span> LS_MESSAGE.
+    LS_MESSAGE<span style="color:#f92672">-</span>SOURCE <span style="color:#f92672">=</span> CX_FDT<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_SOURCE_NAME</span>( ).
+    <span style="color:#66d9ef">APPEND</span> LS_MESSAGE <span style="color:#66d9ef">TO</span> LT_MESSAGE.
+    <span style="color:#66d9ef">CLEAR</span> LS_MESSAGE.
+    <span style="color:#66d9ef">MESSAGE</span> E052(FDT_SERVICE) <span style="color:#66d9ef">INTO</span> LS_MESSAGE<span style="color:#f92672">-</span>TEXT.
+    <span style="color:#66d9ef">MOVE-CORRESPONDING</span> SYST <span style="color:#66d9ef">TO</span> LS_MESSAGE.
+    LS_MESSAGE<span style="color:#f92672">-</span>SOURCE <span style="color:#f92672">=</span> CX_FDT<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_SOURCE_NAME</span>( ).
+    <span style="color:#66d9ef">APPEND</span> LS_MESSAGE <span style="color:#66d9ef">TO</span> LT_MESSAGE.
+
+    <span style="color:#66d9ef">RAISE</span> <span style="color:#66d9ef">EXCEPTION</span> <span style="color:#66d9ef">TYPE </span>CX_FDT_CONVERSION
+      <span style="color:#66d9ef">EXPORTING</span>
+        MT_MESSAGE <span style="color:#f92672">=</span> LT_MESSAGE.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">** This is an AP system</span>
+<span style="color:#75715e">*  IF cl_fdt_environment=&gt;ap_is_on( ) EQ abap_true.</span>
+<span style="color:#75715e">**   cast FDT to /ISDT/</span>
+<span style="color:#75715e">*    DATA: ls_timepoint TYPE /isdt/s_timepoint.</span>
+<span style="color:#75715e">*    cast_fdt_to_isdt ls_timepoint_local ls_timepoint.</span>
+<span style="color:#75715e">**   call /ISDT/ service</span>
+<span style="color:#75715e">*    DATA: lv_timepoint_iso TYPE /isdt/datetime_iso.</span>
+<span style="color:#75715e">*    /isdt/cl_udtm=&gt;convert_tp_to_iso( EXPORTING is_timepoint     = ls_timepoint</span>
+<span style="color:#75715e">*                                      IMPORTING ev_timepoint_iso = lv_timepoint_iso ).</span>
+<span style="color:#75715e">*    rv_text = lv_timepoint_iso.</span>
+<span style="color:#75715e">*    RETURN.</span>
+<span style="color:#75715e">*  ENDIF.</span>
+<span style="color:#75715e">* This is not an AP system</span>
+  <span style="color:#66d9ef">DATA</span>: LV_DATE_ISO  <span style="color:#66d9ef">TYPE  </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT,
+        LV_TIME_ISO  <span style="color:#66d9ef">TYPE  </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_TEXT,
+        LS_TP_DATE   <span style="color:#66d9ef">TYPE  </span>FDT_S_TIMEPOINT,
+        LS_TP_TIME   <span style="color:#66d9ef">TYPE  </span>FDT_S_TIMEPOINT.
+  <span style="color:#66d9ef">CLEAR</span> RV_TEXT.
+  <span style="color:#66d9ef">CASE</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TYPE.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      <span style="color:#75715e">&#34;YYYY-MM-DD&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CONCATENATE</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">4</span>)  MC_SEPARATOR_ISO_DATE
+                  LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>(<span style="color:#ae81ff">2</span>)  MC_SEPARATOR_ISO_DATE
+                  LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE<span style="color:#f92672">+</span><span style="color:#ae81ff">6</span>(<span style="color:#ae81ff">2</span>)
+             <span style="color:#66d9ef">INTO</span> RV_TEXT.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      <span style="color:#75715e">&#34;Thh:mm:ss &#34;to be compatible with NW710&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CONCATENATE</span> MC_INDICATOR_TIME  <span style="color:#75715e">&#34;see ISO8601
+</span><span style="color:#75715e"></span>                  LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">2</span>)  MC_SEPARATOR_ISO_TIME
+                  LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>(<span style="color:#ae81ff">2</span>)  MC_SEPARATOR_ISO_TIME
+                  LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>(<span style="color:#ae81ff">2</span>)
+             <span style="color:#66d9ef">INTO</span> RV_TEXT.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME.
+      <span style="color:#75715e">&#34;Convert both parts individually and concatenate them
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">&#34;YYYY-MM-DDThh:mm:ss
+</span><span style="color:#75715e"></span>      LS_TP_DATE<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      LS_TP_DATE<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE.
+      LV_DATE_ISO     <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TP_DATE ).
+      LS_TP_TIME<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      LS_TP_TIME<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME.
+      LV_TIME_ISO     <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TP_TIME ).
+      <span style="color:#66d9ef">CONCATENATE</span> LV_DATE_ISO<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">10</span>) LV_TIME_ISO<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">9</span>)
+             <span style="color:#66d9ef">INTO</span> RV_TEXT.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIMESTAMP_UTC.
+      <span style="color:#75715e">&#34;YYYY-MM-DDThh:mm:ssZ&#34;
+</span><span style="color:#75715e"></span>      LS_TP_DATE<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      LS_TP_TIME<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      <span style="color:#66d9ef">CONVERT TIME</span> STAMP LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIMESTAMP
+              <span style="color:#66d9ef">TIME</span> ZONE  MC_EMPTY_TIMEZONE
+              <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">DATE</span>  LS_TP_DATE<span style="color:#f92672">-</span>DATE
+                   <span style="color:#66d9ef">TIME</span>  LS_TP_TIME<span style="color:#f92672">-</span>TIME.
+      LV_DATE_ISO     <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TP_DATE ).
+      LV_TIME_ISO     <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TP_TIME ).
+      <span style="color:#66d9ef">CONCATENATE</span> LV_DATE_ISO<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">10</span>)
+                  LV_TIME_ISO<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">9</span>)
+                  MC_INDICATOR_UTC
+             <span style="color:#66d9ef">INTO</span> RV_TEXT.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME_OFFSET_UTC.
+      <span style="color:#75715e">&#34;YYYY-MM-DDThh:mm:ss[+|-]hh:mm&#34;
+</span><span style="color:#75715e"></span>      LS_TP_DATE<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      LS_TP_DATE<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>DATE.
+      LV_DATE_ISO     <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TP_DATE ).
+      LS_TP_TIME<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      LS_TP_TIME<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>TIME.
+      LV_TIME_ISO     <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TP_TIME ).
+      <span style="color:#75715e">&#34;prepare offset&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">DATA</span>: LV_OFFSET_HOURS_I   <span style="color:#66d9ef">TYPE </span>I <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00&#39;</span>,
+            LV_OFFSET_MINUTES_I <span style="color:#66d9ef">TYPE </span>I <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00&#39;</span>,
+            LV_OFFSET_HOURS     <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">2</span>,
+            LV_OFFSET_MINUTES   <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">2</span>,
+            LV_OFFSET_TIME      <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">5</span>.
+
+      <span style="color:#66d9ef">IF</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span>
+         LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">EQ</span> MC_OFFSET_MINUTES_INITIAL.
+        LV_OFFSET_TIME <span style="color:#f92672">=</span> MC_OFFSET_TIME_INITIAL.
+      <span style="color:#66d9ef">ELSE</span>.
+        LV_OFFSET_HOURS_I <span style="color:#f92672">=</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_TIME DIV <span style="color:#ae81ff">60</span>.
+        LV_OFFSET_HOURS <span style="color:#f92672">=</span> LV_OFFSET_HOURS_I.
+
+        LV_OFFSET_MINUTES_I <span style="color:#f92672">=</span> LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_TIME MOD <span style="color:#ae81ff">60</span>.
+        LV_OFFSET_MINUTES <span style="color:#f92672">=</span> LV_OFFSET_MINUTES_I.
+
+        <span style="color:#66d9ef">CONCATENATE</span> LV_OFFSET_HOURS
+                    MC_SEPARATOR_ISO_TIME
+                    LV_OFFSET_MINUTES
+               <span style="color:#66d9ef">INTO</span> LV_OFFSET_TIME.
+        _ENSURE_DIGITS( <span style="color:#66d9ef">CHANGING</span> CHV_OFFSET_TIME <span style="color:#f92672">=</span> LV_OFFSET_TIME ).
+
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> LV_DATE_ISO<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">10</span>)
+                  LV_TIME_ISO<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">9</span>)
+                  LS_TIMEPOINT_LOCAL<span style="color:#f92672">-</span>OFFSET_SIGN
+                  LV_OFFSET_TIME
+             <span style="color:#66d9ef">INTO</span> RV_TEXT.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="get_currency_decimals">GET_CURRENCY_DECIMALS</h4>
+<p><img src="/images/ABAP/ABAP_JSON12.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">GET_CURRENCY_DECIMALS</span>.
+<span style="color:#75715e">* iv_relative not supported, deprecated.</span>
+  <span style="color:#66d9ef">DATA</span>: LS_TCURX    <span style="color:#66d9ef">TYPE </span>TCURX,
+        LS_CURR_DEC <span style="color:#66d9ef">TYPE </span>S_CURR_DEC.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;LS_CURR_DEC&gt; <span style="color:#66d9ef">TYPE </span>S_CURR_DEC.
+<span style="color:#75715e">* always return the default</span>
+  <span style="color:#66d9ef">IF</span> IV_CURRENCY <span style="color:#f92672">IS INITIAL</span>.
+    RV_DECIMALS <span style="color:#f92672">=</span> GC_DECIMALS_DEFAULT.
+    <span style="color:#66d9ef">RETURN</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* lookup buffer</span>
+  <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> GTH_CURR_DEC <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">KEY</span> CURR <span style="color:#f92672">=</span> IV_CURRENCY
+    <span style="color:#66d9ef">ASSIGNING</span> &lt;LS_CURR_DEC&gt;.
+  <span style="color:#66d9ef">IF</span> &lt;LS_CURR_DEC&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+    RV_DECIMALS <span style="color:#f92672">=</span> &lt;LS_CURR_DEC&gt;<span style="color:#f92672">-</span>DEC.
+    <span style="color:#66d9ef">RETURN</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* select from TCURX; TCURX contains only currencies with decimals other than 2</span>
+<span style="color:#75715e">* if not found there rv_decimals must be 2</span>
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TCURX <span style="color:#66d9ef">INTO</span> LS_TCURX <span style="color:#66d9ef">WHERE</span> CURRKEY <span style="color:#f92672">=</span> IV_CURRENCY.
+  <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    RV_DECIMALS <span style="color:#f92672">=</span> LS_TCURX<span style="color:#f92672">-</span>CURRDEC.
+  <span style="color:#66d9ef">ELSE</span>.
+    RV_DECIMALS <span style="color:#f92672">=</span> GC_DECIMALS_DEFAULT.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* write buffer</span>
+  LS_CURR_DEC<span style="color:#f92672">-</span>CURR <span style="color:#f92672">=</span> IV_CURRENCY.
+  LS_CURR_DEC<span style="color:#f92672">-</span>DEC  <span style="color:#f92672">=</span> RV_DECIMALS.
+  <span style="color:#66d9ef">INSERT</span> LS_CURR_DEC <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> GTH_CURR_DEC.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="_ensure_digits">_ENSURE_DIGITS</h4>
+<p><img src="/images/ABAP/ABAP_JSON13.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">_ENSURE_DIGITS</span>.
+  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_MINUTES_INITIAL <span style="color:#66d9ef">TYPE </span>CHAR3 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;000&#39;</span>. <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_SEPARATOR_ISO_TIME <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;:&#39;</span>.           <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DEFINE</span> ENSURE.
+    <span style="color:#66d9ef">IF</span> CHV_&amp;1 IS SUPPLIED.
+      <span style="color:#75715e">&#34;ensure that &amp;1 has two digits&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">IF</span> STRLEN( CHV_&amp;1 ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+        CHV_&amp;1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>.
+      <span style="color:#66d9ef">ELSEIF</span> STRLEN( CHV_&amp;1 ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">1</span>.
+        <span style="color:#66d9ef">IF</span> CHV_&amp;1 <span style="color:#f92672">IS INITIAL</span>.
+          CHV_&amp;1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;0&#39;</span> CHV_&amp;1 <span style="color:#66d9ef">INTO</span> CHV_&amp;1.
+      <span style="color:#66d9ef">ELSEIF</span> STRLEN( CHV_&amp;1 ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">2</span>.
+        <span style="color:#66d9ef">IF</span> CHV_&amp;1 <span style="color:#f92672">IS INITIAL</span>.
+          CHV_&amp;1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+        LV_CHAR2 <span style="color:#f92672">=</span> CHV_&amp;1.
+        CHV_&amp;1 <span style="color:#f92672">=</span> LV_CHAR2<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">2</span>).
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#75715e">&#34;ensure that every digit is not SPACE but at least 0&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CLEAR</span> LV_CHAR2.
+      LV_CHAR2 <span style="color:#f92672">=</span> CHV_&amp;1.
+      <span style="color:#66d9ef">IF</span> LV_CHAR2<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+        LV_CHAR2<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> LV_CHAR2<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+        LV_CHAR2<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      CHV_&amp;1 <span style="color:#f92672">=</span> LV_CHAR2<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">2</span>).
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">END-OF-DEFINITION</span>.
+  
+  <span style="color:#66d9ef">IF</span> CHV_OFFSET_MINUTES IS SUPPLIED.
+    <span style="color:#75715e">&#34;ensure that offset_minutes has three digits&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> STRLEN( CHV_OFFSET_MINUTES ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+      CHV_OFFSET_MINUTES <span style="color:#f92672">=</span> MC_OFFSET_MINUTES_INITIAL.
+    <span style="color:#66d9ef">ELSEIF</span> STRLEN( CHV_OFFSET_MINUTES ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">1</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;00&#39;</span> CHV_OFFSET_MINUTES <span style="color:#66d9ef">INTO</span> CHV_OFFSET_MINUTES.
+    <span style="color:#66d9ef">ELSEIF</span> STRLEN( CHV_OFFSET_MINUTES ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">2</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;0&#39;</span> CHV_OFFSET_MINUTES <span style="color:#66d9ef">INTO</span> CHV_OFFSET_MINUTES.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34;ensure that every digit is not SPACE but at least 0&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> CHV_OFFSET_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      CHV_OFFSET_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> CHV_OFFSET_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      CHV_OFFSET_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> CHV_OFFSET_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      CHV_OFFSET_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+
+  <span style="color:#66d9ef">IF</span> CHV_OFFSET_TIME IS SUPPLIED.
+    <span style="color:#66d9ef">DATA</span>: LV_OFFSET_TIME_HOURS   <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">2</span>,
+          LV_OFFSET_TIME_MINUTES <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">2</span>.
+    <span style="color:#66d9ef">SPLIT</span> CHV_OFFSET_TIME
+       <span style="color:#66d9ef">AT</span> MC_SEPARATOR_ISO_TIME
+     <span style="color:#66d9ef">INTO</span> LV_OFFSET_TIME_HOURS LV_OFFSET_TIME_MINUTES.
+    <span style="color:#75715e">&#34;ensure that offset_time_hours has two digits&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> STRLEN( LV_OFFSET_TIME_HOURS ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+      LV_OFFSET_TIME_HOURS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>.
+    <span style="color:#66d9ef">ELSEIF</span> STRLEN( LV_OFFSET_TIME_HOURS ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">1</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;0&#39;</span> LV_OFFSET_TIME_HOURS
+             <span style="color:#66d9ef">INTO</span> LV_OFFSET_TIME_HOURS.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34;ensure that every digit is not SPACE but at least 0&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> LV_OFFSET_TIME_HOURS<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_OFFSET_TIME_HOURS<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> LV_OFFSET_TIME_HOURS<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_OFFSET_TIME_HOURS<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34;ensure that offset_time_minutes has two digits&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> STRLEN( LV_OFFSET_TIME_MINUTES ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+      LV_OFFSET_TIME_MINUTES <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;00&#39;</span>.
+    <span style="color:#66d9ef">ELSEIF</span> STRLEN( LV_OFFSET_TIME_MINUTES ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">1</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;0&#39;</span> LV_OFFSET_TIME_MINUTES
+             <span style="color:#66d9ef">INTO</span> LV_OFFSET_TIME_MINUTES.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34;ensure that every digit is not SPACE but at least 0&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> LV_OFFSET_TIME_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_OFFSET_TIME_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> LV_OFFSET_TIME_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_OFFSET_TIME_MINUTES<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">CLEAR</span> CHV_OFFSET_TIME.
+    <span style="color:#66d9ef">CONCATENATE</span> LV_OFFSET_TIME_HOURS
+                MC_SEPARATOR_ISO_TIME
+                LV_OFFSET_TIME_MINUTES
+           <span style="color:#66d9ef">INTO</span> CHV_OFFSET_TIME.
+  <span style="color:#66d9ef">ENDIF</span>.
+  
+  <span style="color:#66d9ef">IF</span> CHV_YEAR IS SUPPLIED.
+    <span style="color:#75715e">&#34;ensure that year has four digits&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">IF</span> STRLEN( CHV_YEAR ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+      CHV_YEAR <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0000&#39;</span>.
+    <span style="color:#66d9ef">ELSEIF</span> STRLEN( CHV_YEAR ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">1</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;000&#39;</span> CHV_YEAR <span style="color:#66d9ef">INTO</span> CHV_YEAR.
+    <span style="color:#66d9ef">ELSEIF</span> STRLEN( CHV_YEAR ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">2</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;00&#39;</span> CHV_YEAR <span style="color:#66d9ef">INTO</span> CHV_YEAR.
+    <span style="color:#66d9ef">ELSEIF</span> STRLEN( CHV_YEAR ) <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">3</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;0&#39;</span> CHV_YEAR <span style="color:#66d9ef">INTO</span> CHV_YEAR.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#75715e">&#34;ensure that every digit is not SPACE but at least 0&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: LV_CHAR4 <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">4</span>.
+    LV_CHAR4 <span style="color:#f92672">=</span> CHV_YEAR.
+    <span style="color:#66d9ef">IF</span> LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">IF</span> LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">EQ</span> SPACE.
+      LV_CHAR4<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+    CHV_YEAR <span style="color:#f92672">=</span> LV_CHAR4.
+  <span style="color:#66d9ef">ENDIF</span>.
+  
+  <span style="color:#66d9ef">DATA</span>: LV_CHAR2 <span style="color:#66d9ef">TYPE </span>C <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">2</span>.
+  ENSURE MONTH.
+  ENSURE WEEK.
+  ENSURE DAY.
+  ENSURE HOUR.
+  ENSURE MINUTE.
+  ENSURE SECOND.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="is_valid">IS_VALID</h4>
+<p><img src="/images/ABAP/ABAP_JSON14.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">IS_VALID</span>.
+  <span style="color:#66d9ef">CONSTANTS</span> MC_DATE_NULL <span style="color:#66d9ef">TYPE </span>DATS <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00010101&#39;</span>.          <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_EMPTY_TIMEZONE <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TIMEZONE</span> <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;      &#39;</span>.   <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_SIGN_PLUS <span style="color:#66d9ef">TYPE </span>TZNUTCSIGN <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;+&#39;</span>.    <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_SIGN_MINUS <span style="color:#66d9ef">TYPE </span>TZNUTCSIGN <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;-&#39;</span>.   <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">constants</span> MC_OFFSET_MINUTES_INITIAL <span style="color:#66d9ef">type </span>CHAR3 <span style="color:#66d9ef">value</span> <span style="color:#e6db74">&#39;000&#39;</span>. <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: LS_MESSAGE <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>S_MESSAGE,
+        LT_MESSAGE <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>T_MESSAGE.
+<span style="color:#75715e">* NULL Timepoint is valid</span>
+  <span style="color:#66d9ef">DATA</span>: LV_IS_NULL <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_BOOLEAN.
+  LV_IS_NULL <span style="color:#f92672">=</span> IS_NULL( IS_TIMEPOINT ).
+  <span style="color:#66d9ef">IF</span> LV_IS_NULL <span style="color:#f92672">EQ</span> ABAP_TRUE.
+    RV_IS_VALID <span style="color:#f92672">=</span> ABAP_TRUE.
+    <span style="color:#66d9ef">RETURN</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* switch from Julian to Gregorian calendar</span>
+<span style="color:#75715e">* Thu, 04. October 1582 is followed by Fri, 15. October 1582</span>
+<span style="color:#75715e">*  -&gt; days between 05.Oct.1582 and 14.Oct.1582 do not exist</span>
+  <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">EQ</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+    <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE BETWEEN <span style="color:#e6db74">&#39;15821005&#39;</span> <span style="color:#f92672">AND</span> <span style="color:#e6db74">&#39;15821014&#39;</span>.
+      RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">RETURN</span>.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* determine validity</span>
+  <span style="color:#66d9ef">DATA</span>: LS_TP_DATE <span style="color:#66d9ef">TYPE </span>FDT_S_TIMEPOINT.
+  <span style="color:#66d9ef">DATA</span>: LS_TP_TIME <span style="color:#66d9ef">TYPE </span>FDT_S_TIMEPOINT.
+<span style="color:#75715e">* default: timepoint is valid</span>
+  RV_IS_VALID <span style="color:#f92672">=</span> ABAP_TRUE.
+<span style="color:#75715e">* check validity according to timepoint type</span>
+  <span style="color:#66d9ef">CASE</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TYPE.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">EQ</span> MC_DATE_NULL.
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_TRUE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#75715e">&#34;move date to number, if number is 0 date is invalid.&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">DATA</span>: LV_DATE_I <span style="color:#66d9ef">TYPE </span>I.
+      LV_DATE_I <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE.
+      <span style="color:#66d9ef">IF</span> LV_DATE_I <span style="color:#f92672">IS INITIAL</span> .
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      <span style="color:#75715e">&#34;FDT does not handle time 24:00:00&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;240000&#39;</span> .
+        <span style="color:#66d9ef">DATA</span>: LV_MSGV1 <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGV1.
+        <span style="color:#66d9ef">WRITE</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#66d9ef">TO</span> LV_MSGV1.
+        <span style="color:#66d9ef">MESSAGE</span> E050(FDT_SERVICE) <span style="color:#66d9ef">WITH</span> LV_MSGV1 <span style="color:#66d9ef">INTO</span> LS_MESSAGE<span style="color:#f92672">-</span>TEXT.
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#75715e">&#34;Convert to integer value and back to time.&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">&#34;If the result is identical to the input it is valid.&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">DATA</span>: LV_TIME_I <span style="color:#66d9ef">TYPE </span>I,
+            LV_TIME   <span style="color:#66d9ef">TYPE </span>TIMS.
+      LV_TIME_I <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+      LV_TIME   <span style="color:#f92672">=</span> LV_TIME_I.
+      <span style="color:#66d9ef">IF</span> LV_TIME <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_TRUE.
+      <span style="color:#66d9ef">ELSE</span>.
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME.
+      LS_TP_DATE<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      LS_TP_DATE<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE.
+      LS_TP_TIME<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      LS_TP_TIME<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+      <span style="color:#66d9ef">IF</span> IS_VALID( LS_TP_DATE ) <span style="color:#f92672">EQ</span> ABAP_FALSE <span style="color:#f92672">OR</span>
+         IS_VALID( LS_TP_TIME ) <span style="color:#f92672">EQ</span> ABAP_FALSE.
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIMESTAMP_UTC.
+      LS_TP_DATE<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      LS_TP_TIME<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      <span style="color:#66d9ef">CONVERT TIME</span> STAMP IS_TIMEPOINT<span style="color:#f92672">-</span>TIMESTAMP <span style="color:#66d9ef">TIME</span> ZONE MC_EMPTY_TIMEZONE
+               <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">DATE</span> LS_TP_DATE<span style="color:#f92672">-</span>DATE <span style="color:#66d9ef">TIME</span> LS_TP_TIME<span style="color:#f92672">-</span>TIME.
+      <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">12</span>.
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> IS_VALID( LS_TP_DATE ) <span style="color:#f92672">EQ</span> ABAP_FALSE .
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> IS_VALID( LS_TP_TIME ) <span style="color:#f92672">EQ</span> ABAP_FALSE .
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME_OFFSET_UTC.
+      LS_TP_DATE<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      LS_TP_DATE<span style="color:#f92672">-</span>DATE <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE.
+      LS_TP_TIME<span style="color:#f92672">-</span>TYPE <span style="color:#f92672">=</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      LS_TP_TIME<span style="color:#f92672">-</span>TIME <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+      <span style="color:#66d9ef">IF</span> IS_VALID( LS_TP_DATE ) <span style="color:#f92672">EQ</span> ABAP_FALSE .
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> IS_VALID( LS_TP_TIME ) <span style="color:#f92672">EQ</span> ABAP_FALSE .
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* CHECK IS_TIMEPOINT</span>
+      RV_IS_VALID <span style="color:#f92672">=</span> ABAP_TRUE.
+<span style="color:#75715e">* check offset sign</span>
+      <span style="color:#66d9ef">IF</span> ( IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">NE</span> SPACE )                <span style="color:#f92672">AND</span>
+         ( IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">NE</span> MC_OFFSET_SIGN_PLUS )  <span style="color:#f92672">AND</span>
+         ( IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">NE</span> MC_OFFSET_SIGN_MINUS ) .
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">ELSE</span>.
+<span style="color:#75715e">*  check offset value</span>
+<span style="color:#75715e">*  value is initial</span>
+        <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span>
+           IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">EQ</span> MC_OFFSET_MINUTES_INITIAL.
+          RV_IS_VALID <span style="color:#f92672">=</span> ABAP_TRUE.
+        <span style="color:#66d9ef">ELSE</span>.
+<span style="color:#75715e">* value is not initial =&gt; try to get timezone</span>
+          <span style="color:#66d9ef">DATA</span>: RV_TIMEZONE <span style="color:#66d9ef">TYPE </span>TZNZONE.
+<span style="color:#75715e">* Prepare return value</span>
+          <span style="color:#66d9ef">CLEAR</span> RV_TIMEZONE.
+<span style="color:#75715e">* map offset sign</span>
+          <span style="color:#66d9ef">DATA</span>: LV_SIGN <span style="color:#66d9ef">TYPE </span>C.
+          <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">EQ</span> MC_OFFSET_SIGN_MINUS.
+            LV_SIGN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>.
+          <span style="color:#66d9ef">ELSE</span>.
+            LV_SIGN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;P&#39;</span>.
+          <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">* map offset minutes</span>
+          <span style="color:#66d9ef">DATA</span>: LV_MINUTES <span style="color:#66d9ef">TYPE </span>CHAR3.
+          <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">IS INITIAL</span>.
+            LV_MINUTES <span style="color:#f92672">=</span> MC_OFFSET_MINUTES_INITIAL.
+          <span style="color:#66d9ef">ELSE</span>.
+            LV_MINUTES <span style="color:#f92672">=</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_TIME.
+            <span style="color:#75715e">&#34; FDT: Difference between local and UTC time (in minutes)&#34;
+</span><span style="color:#75715e"></span>            _ENSURE_DIGITS( <span style="color:#66d9ef">CHANGING</span> CHV_OFFSET_MINUTES <span style="color:#f92672">=</span> LV_MINUTES ).   
+          <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*   get timezone</span>
+          RV_TIMEZONE <span style="color:#f92672">=</span> _GET_TIMEZONE( IV_SIGN     <span style="color:#f92672">=</span> LV_SIGN
+                                       IV_MINUTES  <span style="color:#f92672">=</span> LV_MINUTES ).
+          <span style="color:#66d9ef">IF</span> RV_TIMEZONE <span style="color:#f92672">EQ</span> MC_EMPTY_TIMEZONE.
+            RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+          <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">IF</span> RV_IS_VALID <span style="color:#f92672">EQ</span> ABAP_FALSE.
+        RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#75715e">&#34;unsupported timepoint type&#34;
+</span><span style="color:#75715e"></span>      RV_IS_VALID <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">MESSAGE</span> E051(FDT_SERVICE) <span style="color:#66d9ef">WITH</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TYPE <span style="color:#66d9ef">INTO</span> LS_MESSAGE<span style="color:#f92672">-</span>TEXT.
+      <span style="color:#66d9ef">MOVE-CORRESPONDING</span> SYST <span style="color:#66d9ef">TO</span> LS_MESSAGE.
+      LS_MESSAGE<span style="color:#f92672">-</span>SOURCE <span style="color:#f92672">=</span> CX_FDT<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_SOURCE_NAME</span>( ).
+      <span style="color:#66d9ef">APPEND</span> LS_MESSAGE <span style="color:#66d9ef">TO</span> LT_MESSAGE.
+      <span style="color:#66d9ef">RAISE</span> <span style="color:#66d9ef">EXCEPTION</span> <span style="color:#66d9ef">TYPE </span>CX_FDT_CONVERSION
+        <span style="color:#66d9ef">EXPORTING</span>
+          MT_MESSAGE <span style="color:#f92672">=</span> LT_MESSAGE.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="is_null">IS_NULL</h4>
+<p><img src="/images/ABAP/ABAP_JSON15.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">IS_NULL</span>.
+  <span style="color:#66d9ef">CONSTANTS</span> MC_DATE_NULL <span style="color:#66d9ef">TYPE </span>DATS <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00010101&#39;</span>.          <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_TIME_ZERO <span style="color:#66d9ef">TYPE </span>TIMS <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;000000&#39;</span>.            <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_TIMESTAMP_NULL <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TIMESTAMP <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00010101000000&#39;</span>. <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_SIGN_PLUS <span style="color:#66d9ef">TYPE </span>TZNUTCSIGN <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;+&#39;</span>.    <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CONSTANTS</span> MC_OFFSET_MINUTES_INITIAL <span style="color:#66d9ef">TYPE </span>CHAR3 <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;000&#39;</span>. <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: LS_MESSAGE <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>S_MESSAGE,
+        LT_MESSAGE <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>T_MESSAGE.
+<span style="color:#75715e">* set default</span>
+  RV_IS_NULL <span style="color:#f92672">=</span> ABAP_FALSE.
+<span style="color:#75715e">* handle every timepoint type</span>
+  <span style="color:#66d9ef">CASE</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TYPE.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">EQ</span> MC_DATE_NULL.
+        RV_IS_NULL <span style="color:#f92672">=</span> ABAP_TRUE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span>
+         IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">EQ</span> MC_TIME_ZERO.
+        RV_IS_NULL <span style="color:#f92672">=</span> ABAP_TRUE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME.
+      <span style="color:#66d9ef">IF</span> ( IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">EQ</span> MC_DATE_NULL ) <span style="color:#f92672">AND</span>
+         ( IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">EQ</span> MC_TIME_ZERO ).
+        RV_IS_NULL <span style="color:#f92672">=</span> ABAP_TRUE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIMESTAMP_UTC.
+      <span style="color:#66d9ef">IF</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIMESTAMP <span style="color:#f92672">EQ</span> MC_TIMESTAMP_NULL.
+        RV_IS_NULL <span style="color:#f92672">=</span> ABAP_TRUE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME_OFFSET_UTC.
+      <span style="color:#66d9ef">IF</span> ( IS_TIMEPOINT<span style="color:#f92672">-</span>DATE <span style="color:#f92672">EQ</span> MC_DATE_NULL ) <span style="color:#f92672">AND</span>
+         ( IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TIME <span style="color:#f92672">EQ</span> MC_TIME_ZERO ) <span style="color:#f92672">AND</span>
+         ( IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_SIGN <span style="color:#f92672">EQ</span>  MC_OFFSET_SIGN_PLUS ) <span style="color:#f92672">AND</span>
+         ( IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">IS INITIAL</span> <span style="color:#f92672">OR</span> IS_TIMEPOINT<span style="color:#f92672">-</span>OFFSET_TIME <span style="color:#f92672">EQ</span>  MC_OFFSET_MINUTES_INITIAL ).
+        RV_IS_NULL <span style="color:#f92672">=</span> ABAP_TRUE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#75715e">&#34;unsupported timepoint type&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">MESSAGE</span> E051(FDT_SERVICE) <span style="color:#66d9ef">WITH</span> IS_TIMEPOINT<span style="color:#f92672">-</span>TYPE <span style="color:#66d9ef">INTO</span> LS_MESSAGE<span style="color:#f92672">-</span>TEXT.
+      <span style="color:#66d9ef">MOVE-CORRESPONDING</span> SYST <span style="color:#66d9ef">TO</span> LS_MESSAGE.
+      LS_MESSAGE<span style="color:#f92672">-</span>SOURCE <span style="color:#f92672">=</span> CX_FDT<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_SOURCE_NAME</span>( ).
+      <span style="color:#66d9ef">APPEND</span> LS_MESSAGE <span style="color:#66d9ef">TO</span> LT_MESSAGE.
+      <span style="color:#66d9ef">RAISE</span> <span style="color:#66d9ef">EXCEPTION</span> <span style="color:#66d9ef">TYPE </span>CX_FDT_CONVERSION
+        <span style="color:#66d9ef">EXPORTING</span>
+          MT_MESSAGE <span style="color:#f92672">=</span> LT_MESSAGE.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="_get_timezone">_GET_TIMEZONE</h4>
+<p><img src="/images/ABAP/ABAP_JSON16.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">method</span> <span style="color:#a6e22e">_GET_TIMEZONE</span>.
+<span style="color:#75715e">* Prepare return value</span>
+  <span style="color:#66d9ef">constants</span> MC_EMPTY_TIMEZONE <span style="color:#66d9ef">type </span><span style="color:#66d9ef">TIMEZONE</span> <span style="color:#66d9ef">value</span> <span style="color:#e6db74">&#39;      &#39;</span>.  <span style="color:#75715e">&#34;#NO_TEXT&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CLEAR</span> rv_timezone.
+<span style="color:#75715e">* build the string</span>
+  <span style="color:#66d9ef">DATA</span>: lv_string <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">13</span>.
+  <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;MC_UTC_&#39;</span>
+              iv_sign
+              iv_minutes
+         <span style="color:#66d9ef">INTO</span> lv_string.
+<span style="color:#75715e">* check validity</span>
+  <span style="color:#66d9ef">CASE</span> lv_string.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M000&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m000 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M060&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m060 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M120&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m120 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M180&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m180 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M210&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m210 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M240&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m240 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M270&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m270 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M300&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m300 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M360&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m360 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M420&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m420 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M480&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m480 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M510&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m510 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M540&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m540 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M600&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m600 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M660&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m660 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_M720&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_m720 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P000&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p000 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P060&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p060 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P120&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p120 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P180&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p180 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P210&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p210 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P240&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p240 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P270&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p270 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P300&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p300 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P330&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p330 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P345&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p345 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P360&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p360 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P390&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p390 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P420&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p420 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P480&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p480 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P540&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p540 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P570&#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p570 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P600  &#39;</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p600 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P660&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p660 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P720&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p720 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P780&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p780 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MC_UTC_P840&#39;</span> .
+      rv_timezone <span style="color:#f92672">=</span> mc_utc_p840 .
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      rv_timezone <span style="color:#f92672">=</span> mc_empty_timezone.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">endmethod</span>.
+</code></pre></div><h4 id="brf_struc_to_json">BRF_STRUC_TO_JSON</h4>
+<p><img src="/images/ABAP/ABAP_JSON17.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">BRF_STRUC_TO_JSON</span>.
+  <span style="color:#66d9ef">DATA</span>:
+     LV_STR_NUMBER <span style="color:#66d9ef">TYPE </span>STRING,
+     LV_STR_TIMEST <span style="color:#66d9ef">TYPE </span>STRING.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>:
+    &lt;A_NUMBER&gt;       <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_AMOUNT<span style="color:#f92672">-</span>NUMBER,
+    &lt;CURRENCY&gt;       <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_AMOUNT<span style="color:#f92672">-</span>CURRENCY,
+    &lt;Q_NUMBER&gt;       <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_QUANTITY<span style="color:#f92672">-</span>NUMBER,
+    &lt;UNIT&gt;           <span style="color:#66d9ef">TYPE </span>IF_FDT_TYPES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>ELEMENT_QUANTITY<span style="color:#f92672">-</span>UNIT,
+    &lt;DATE&gt;           <span style="color:#66d9ef">TYPE </span>DATS,
+    &lt;TIME&gt;           <span style="color:#66d9ef">TYPE </span>TIMS,
+    &lt;TIMESTAMP&gt;      <span style="color:#66d9ef">TYPE </span>DECV15,
+    &lt;OFFSET_TIME&gt;    <span style="color:#66d9ef">TYPE </span>CHAR3,
+    &lt;OFFSET_SIGN&gt;    <span style="color:#66d9ef">TYPE </span>TZNUTCSIGN,
+    &lt;TYPE&gt;           <span style="color:#66d9ef">TYPE </span>NA_NATYP.
+<span style="color:#75715e">* Predetermined structures have an additional key value pair at the beginning: &#34;$T&#34;: CHAR, </span>
+<span style="color:#75715e">* which describes the data type. The dollar symbol was chosen, because it is not allowed</span>
+<span style="color:#75715e">* as first character for elements in ABAP structures and therefore $T can never </span>
+<span style="color:#75715e">* be a name fora structure element.</span>
+  <span style="color:#66d9ef">CASE</span> IV_TYPE.
+    <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_AMOUNT
+      <span style="color:#f92672">OR</span> GC_FDT_AMOUNT.
+      <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;NUMBER&#39;</span>   <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;A_NUMBER&gt;.
+      <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;CURRENCY&#39;</span> <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;CURRENCY&gt;.
+      LV_STR_NUMBER <span style="color:#f92672">=</span> &lt;A_NUMBER&gt;.
+<span style="color:#75715e">*        lv_str_number = data_to_json_internal( &lt;a_number&gt; ).</span>
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{ &#34;$T&#34;:&#34;&#39;</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_AMOUNT <span style="color:#e6db74">&#39;&#34;, &#34;NUMBER&#34;:&#39;</span>
+                  LV_STR_NUMBER <span style="color:#e6db74">&#39;, &#34;CURRENCY&#34;:&#34;&#39;</span> &lt;CURRENCY&gt; <span style="color:#e6db74">&#39;&#34;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+    <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_QUANTITY
+      <span style="color:#f92672">OR</span> GC_FDT_QUANTITY.
+      <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;NUMBER&#39;</span> <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;Q_NUMBER&gt;.
+      <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;UNIT&#39;</span>   <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;UNIT&gt;.
+      LV_STR_NUMBER <span style="color:#f92672">=</span> &lt;Q_NUMBER&gt;.
+<span style="color:#75715e">*        lv_str_number = data_to_json_internal( &lt;q_number&gt; ).</span>
+      <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{ &#34;$T&#34;:&#34;&#39;</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_QUANTITY 
+                  <span style="color:#e6db74">&#39;&#34;, &#34;NUMBER&#34;:&#39;</span> LV_STR_NUMBER 
+                  <span style="color:#e6db74">&#39;, &#34;UNIT&#34;:&#34;&#39;</span> &lt;UNIT&gt; <span style="color:#e6db74">&#39;&#34;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+    <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_TIMEPOINT
+      <span style="color:#f92672">OR</span> GC_FDT_TIMEPOINT.
+      <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;TYPE&#39;</span> <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;TYPE&gt;.
+      <span style="color:#66d9ef">CASE</span> &lt;TYPE&gt;.
+        <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATE.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;DATE&#39;</span>        <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;DATE&gt;.
+          <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{&#34;$T&#34;:&#34;&#39;</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_TIMEPOINT <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;DATE&#34;:&#34;&#39;</span> &lt;DATE&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TYPE&#34;:&#34;&#39;</span> &lt;TYPE&gt;  <span style="color:#e6db74">&#39;&#34;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+        <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIME.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;TIME&#39;</span>        <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;TIME&gt;.
+          <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{&#34;$T&#34;:&#34;&#39;</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_TIMEPOINT <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TIME&#34;:&#34;&#39;</span> &lt;TIME&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TYPE&#34;:&#34;&#39;</span> &lt;TYPE&gt;  <span style="color:#e6db74">&#39;&#34;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+        <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;DATE&#39;</span>        <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;DATE&gt;.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;TIME&#39;</span>        <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;TIME&gt;.
+          <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{&#34;$T&#34;:&#34;&#39;</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_TIMEPOINT <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;DATE&#34;:&#34;&#39;</span> &lt;DATE&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TIME&#34;:&#34;&#39;</span> &lt;TIME&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TYPE&#34;:&#34;&#39;</span> &lt;TYPE&gt;  <span style="color:#e6db74">&#39;&#34;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+        <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_TIMESTAMP_UTC.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;TIMESTAMP&#39;</span>   <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;TIMESTAMP&gt;.
+          LV_STR_TIMEST <span style="color:#f92672">=</span> &lt;TIMESTAMP&gt;.
+          <span style="color:#66d9ef">IF</span> &lt;TIMESTAMP&gt; <span style="color:#f92672">LT</span> <span style="color:#ae81ff">0</span>. <span style="color:#75715e">&#34;get sign to the front!&#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">SHIFT</span> LV_STR_TIMEST CIRCULAR <span style="color:#66d9ef">RIGHT</span>.
+          <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*            lv_str_timest = data_to_json_internal( &lt;timestamp&gt; ).</span>
+          <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{&#34;$T&#34;:&#34;&#39;</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_TIMEPOINT <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TIMESTAMP&#34;:&#39;</span> LV_STR_TIMEST <span style="color:#e6db74">&#39;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TYPE&#34;:&#34;&#39;</span> &lt;TYPE&gt;  <span style="color:#e6db74">&#39;&#34;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+        <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_TP_DATETIME_OFFSET_UTC.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;DATE&#39;</span>        <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;DATE&gt;.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;TIME&#39;</span>        <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;TIME&gt;.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;OFFSET_TIME&#39;</span> <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;OFFSET_TIME&gt;.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;OFFSET_SIGN&#39;</span> <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;OFFSET_SIGN&gt;.
+          <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;{&#34;$T&#34;:&#34;&#39;</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_TIMEPOINT <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;DATE&#34;:&#34;&#39;</span> &lt;DATE&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TIME&#34;:&#34;&#39;</span> &lt;TIME&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;OFFSET_TIME&#34;:&#34;&#39;</span> &lt;OFFSET_TIME&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;OFFSET_SIGN&#34;:&#34;&#39;</span> &lt;OFFSET_SIGN&gt; <span style="color:#e6db74">&#39;&#34;,&#39;</span>
+                      <span style="color:#e6db74">&#39;&#34;TYPE&#34;:&#34;&#39;</span> &lt;TYPE&gt;  <span style="color:#e6db74">&#39;&#34;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+        <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#66d9ef">ENDCASE</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#66d9ef">CLEAR</span> RV_JSON.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="convert_token">CONVERT_TOKEN</h4>
+<p><img src="/images/ABAP/ABAP_JSON18.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">CONVERT_TOKEN</span>.
+  <span style="color:#66d9ef">DATA</span>: LO_DESCR      <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TYPEDESCR.
+  <span style="color:#75715e">&#34; Check target type if conversion is needed &#34;
+</span><span style="color:#75715e"></span>  LO_DESCR <span style="color:#f92672">=</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DESCRIBE_BY_DATA</span>( IA_DATA ).
+  <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ABSOLUTE_NAME.
+    <span style="color:#66d9ef">WHEN</span> GC_ABAP_BOOL
+      <span style="color:#f92672">OR</span> GC_FDT_BOOLEAN
+      <span style="color:#f92672">OR</span> GC_ELEMENT_BOOLEAN.
+      <span style="color:#66d9ef">IF</span> CV_TOKEN <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;true&#39;</span>.
+        CV_TOKEN <span style="color:#f92672">=</span> ABAP_TRUE.
+      <span style="color:#66d9ef">ELSEIF</span> CV_TOKEN <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;false&#39;</span>.
+        CV_TOKEN <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+<span style="color:#75715e">*        cv_token = cv_token.</span>
+      <span style="color:#75715e">&#34; replace escape characters &#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> CL_ABAP_CHAR_UTILITIES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>NEWLINE.
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\t&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> CL_ABAP_CHAR_UTILITIES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>HORIZONTAL_TAB.
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\f&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> CL_ABAP_CHAR_UTILITIES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>FORM_FEED.
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\v&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> CL_ABAP_CHAR_UTILITIES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>VERTICAL_TAB.
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\b&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> CL_ABAP_CHAR_UTILITIES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>BACKSPACE.
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\r&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> CL_ABAP_CHAR_UTILITIES<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">CR_LF</span>(<span style="color:#ae81ff">1</span>).
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\&#34;&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;&#34;&#39;</span>.
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\/&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;/&#39;</span>.
+      <span style="color:#66d9ef">REPLACE </span>ALL OCCURRENCES <span style="color:#66d9ef">OF</span> <span style="color:#e6db74">&#39;\\&#39;</span> <span style="color:#66d9ef">IN</span> CV_TOKEN <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;\&#39;</span>.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="data_to_json_internal">DATA_TO_JSON_INTERNAL</h4>
+<p><img src="/images/ABAP/ABAP_JSON19.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">DATA_TO_JSON_INTERNAL</span>.
+  <span style="color:#66d9ef">DATA</span>:
+     LO_DESCR       <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TYPEDESCR,
+     LO_STRUC_DESCR <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_STRUCTDESCR,
+     LO_TABLE_DESCR <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TABLEDESCR,
+     LT_COMP        <span style="color:#66d9ef">TYPE </span>CL_ABAP_STRUCTDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>INCLUDED_VIEW,
+     LV_FIRST       <span style="color:#66d9ef">TYPE </span>ABAP_BOOL <span style="color:#66d9ef">VALUE</span> ABAP_TRUE,
+     LV_JSON        <span style="color:#66d9ef">TYPE </span>STRING.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>:
+    &lt;LA_DATA&gt; <span style="color:#66d9ef">TYPE </span>ANY,
+    &lt;LT_DATA&gt; <span style="color:#66d9ef">TYPE </span>ANY <span style="color:#66d9ef">TABLE</span>,
+    &lt;LS_COMP&gt; <span style="color:#66d9ef">TYPE LINE OF</span> CL_ABAP_STRUCTDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>INCLUDED_VIEW.
+  <span style="color:#66d9ef">IF</span> IO_DESCR IS SUPPLIED.
+    LO_DESCR <span style="color:#f92672">=</span> IO_DESCR.
+  <span style="color:#66d9ef">ELSE</span>.
+    LO_DESCR <span style="color:#f92672">=</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DESCRIBE_BY_DATA</span>( IA_DATA ).
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TYPE_KIND.
+    <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_STRUCT1
+      <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_STRUCT2.
+      <span style="color:#75715e">&#34;check brf + structures first&#34;
+</span><span style="color:#75715e"></span>      RV_JSON <span style="color:#f92672">=</span> BRF_STRUC_TO_JSON(
+        IA_DATA <span style="color:#f92672">=</span> IA_DATA
+        IV_TYPE <span style="color:#f92672">=</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ABSOLUTE_NAME ).
+      <span style="color:#66d9ef">IF</span> RV_JSON <span style="color:#f92672">IS INITIAL</span>. <span style="color:#75715e">&#34;do standard evaluation
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">&#34;JSON starts with {&#34;elem1&#34;:value1, ...
+</span><span style="color:#75715e"></span>        RV_JSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{&#39;</span>.
+        LO_STRUC_DESCR <span style="color:#f92672">?</span><span style="color:#f92672">=</span> LO_DESCR.
+        <span style="color:#75715e">&#34;use following method instead of method get_components to get 
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">&#34; includes directly included!
+</span><span style="color:#75715e"></span>        LT_COMP <span style="color:#f92672">=</span> LO_STRUC_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_INCLUDED_VIEW</span>( ).
+        <span style="color:#66d9ef">LOOP AT </span>LT_COMP <span style="color:#66d9ef">ASSIGNING</span> &lt;LS_COMP&gt;.
+          <span style="color:#66d9ef">IF</span> LV_FIRST <span style="color:#f92672">EQ</span> ABAP_FALSE.
+            <span style="color:#66d9ef">CONCATENATE</span> RV_JSON  <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+          <span style="color:#66d9ef">ENDIF</span>.
+          <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> &lt;LS_COMP&gt;<span style="color:#f92672">-</span>NAME <span style="color:#66d9ef">OF STRUCTURE</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;LA_DATA&gt;.
+          LV_JSON <span style="color:#f92672">=</span> DATA_TO_JSON_INTERNAL( IA_DATA <span style="color:#f92672">=</span> &lt;LA_DATA&gt; IO_DESCR <span style="color:#f92672">=</span> &lt;LS_COMP&gt;<span style="color:#f92672">-</span>TYPE ).
+          <span style="color:#66d9ef">CONCATENATE</span> RV_JSON <span style="color:#e6db74">&#39;&#34;&#39;</span> &lt;LS_COMP&gt;<span style="color:#f92672">-</span>NAME <span style="color:#e6db74">&#39;&#34;:&#39;</span> LV_JSON <span style="color:#66d9ef">INTO</span> RV_JSON.
+          LV_FIRST <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">ENDLOOP</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> RV_JSON <span style="color:#e6db74">&#39;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_TABLE.
+      <span style="color:#75715e">&#34;JSON starts with [value1, ...&#34;
+</span><span style="color:#75715e"></span>      RV_JSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[&#39;</span>.
+      <span style="color:#66d9ef">ASSIGN</span> IA_DATA <span style="color:#66d9ef">TO</span> &lt;LT_DATA&gt;.
+      LO_TABLE_DESCR <span style="color:#f92672">?</span><span style="color:#f92672">=</span> LO_DESCR.
+      LO_DESCR <span style="color:#f92672">=</span> LO_TABLE_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">GET_TABLE_LINE_TYPE</span>( ).
+      LOOP <span style="color:#66d9ef">AT</span> &lt;LT_DATA&gt; <span style="color:#66d9ef">ASSIGNING</span> &lt;LA_DATA&gt;.
+        <span style="color:#66d9ef">IF</span> LV_FIRST <span style="color:#f92672">EQ</span> ABAP_FALSE.
+          <span style="color:#66d9ef">CONCATENATE</span> RV_JSON  <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+        <span style="color:#66d9ef">ENDIF</span>.
+        LV_JSON <span style="color:#f92672">=</span> DATA_TO_JSON_INTERNAL( IA_DATA <span style="color:#f92672">=</span> &lt;LA_DATA&gt; IO_DESCR <span style="color:#f92672">=</span> LO_DESCR ).
+        <span style="color:#66d9ef">CONCATENATE</span> RV_JSON LV_JSON <span style="color:#66d9ef">INTO</span> RV_JSON.
+        LV_FIRST <span style="color:#f92672">=</span> ABAP_FALSE.
+      <span style="color:#66d9ef">ENDLOOP</span>.
+      <span style="color:#66d9ef">CONCATENATE</span> RV_JSON <span style="color:#e6db74">&#39;]&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+    <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_DREF.
+      <span style="color:#66d9ef">ASSIGN</span> IA_DATA-&gt;* <span style="color:#66d9ef">TO</span> &lt;LA_DATA&gt;.
+      <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+        RV_JSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{&#39;</span>.          <span style="color:#75715e">&#34;needed?&#34;
+</span><span style="color:#75715e"></span>        LV_JSON <span style="color:#f92672">=</span> DATA_TO_JSON_INTERNAL( IA_DATA <span style="color:#f92672">=</span> &lt;LA_DATA&gt; ).
+        <span style="color:#66d9ef">CONCATENATE</span> RV_JSON LV_JSON <span style="color:#e6db74">&#39;}&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+      <span style="color:#66d9ef">ELSE</span>.
+        RV_JSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{}&#39;</span>. <span style="color:#75715e">&#34;Will produce empty JS object&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#75715e">&#34;convert single field value&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ABSOLUTE_NAME.
+        <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_BOOLEAN
+          <span style="color:#f92672">OR</span> GC_FDT_BOOLEAN
+          <span style="color:#f92672">OR</span> GC_ABAP_BOOL.
+          <span style="color:#66d9ef">IF</span> IA_DATA <span style="color:#f92672">EQ</span> ABAP_TRUE.
+            RV_JSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;true&#39;</span>.                               <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">ELSE</span>.
+            RV_JSON <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;false&#39;</span>.                              <span style="color:#75715e">&#34;#EC NOTEXT
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+          <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TYPE_KIND.
+            <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CLIKE
+              <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_STRING
+              <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CHAR.
+              RV_JSON <span style="color:#f92672">=</span> IA_DATA.
+<span style="color:#75715e">&#34; Escape special characters &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF &#39;\&#39;                                    IN RV_JSON WITH &#39;\\&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF &#39;/&#39;                                    IN RV_JSON WITH &#39;\/&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF &#39;&#34;&#39;                                    IN RV_JSON WITH &#39;\&#34;&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF CL_ABAP_CHAR_UTILITIES=&gt;CR_LF(1)       IN RV_JSON WITH &#39;\r&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF CL_ABAP_CHAR_UTILITIES=&gt;NEWLINE        IN RV_JSON WITH &#39;\n&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF CL_ABAP_CHAR_UTILITIES=&gt;HORIZONTAL_TAB IN RV_JSON WITH &#39;\t&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF CL_ABAP_CHAR_UTILITIES=&gt;FORM_FEED      IN RV_JSON WITH &#39;\f&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF CL_ABAP_CHAR_UTILITIES=&gt;VERTICAL_TAB   IN RV_JSON WITH &#39;\v&#39;.</span>
+<span style="color:#75715e">*   REPLACE ALL OCCURRENCES OF CL_ABAP_CHAR_UTILITIES=&gt;BACKSPACE      IN RV_JSON WITH &#39;\b&#39;. &#34;</span>
+              <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;&#34;&#39;</span> RV_JSON <span style="color:#e6db74">&#39;&#34;&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+            <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_NUM
+              <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_DATE
+              <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_TIME.
+              <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;&#34;&#39;</span> IA_DATA <span style="color:#e6db74">&#39;&#34;&#39;</span> <span style="color:#66d9ef">INTO</span> RV_JSON.
+            <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_FLOAT <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;/&#39;</span>.
+              RV_JSON <span style="color:#f92672">=</span> IA_DATA.
+            <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;I&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;P&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;8&#39;</span>.
+              RV_JSON <span style="color:#f92672">=</span> IA_DATA.
+              <span style="color:#66d9ef">IF</span> IA_DATA <span style="color:#f92672">LT</span> <span style="color:#ae81ff">0</span>. <span style="color:#75715e">&#34;get sign to the front!&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">SHIFT</span> RV_JSON CIRCULAR <span style="color:#66d9ef">RIGHT</span>.
+              <span style="color:#66d9ef">ENDIF</span>.
+            <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+              RV_JSON <span style="color:#f92672">=</span> IA_DATA.
+          <span style="color:#66d9ef">ENDCASE</span>.
+      <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDCASE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="get_string">GET_STRING</h4>
+<p><img src="/images/ABAP/ABAP_JSON20.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">GET_STRING</span>.
+  <span style="color:#66d9ef">DATA</span>:
+    LV_ESCAPE   <span style="color:#66d9ef">TYPE </span>I,
+    LV_CHAR     <span style="color:#66d9ef">TYPE </span>STRING, <span style="color:#75715e">&#34;instead of &#39;C&#39; to keep spaces&#34;
+</span><span style="color:#75715e"></span>    LV_IS_STRING <span style="color:#66d9ef">TYPE </span>ABAP_BOOL <span style="color:#66d9ef">VALUE</span> ABAP_TRUE.
+  <span style="color:#66d9ef">WHILE</span> STRLEN( CV_JSON ) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#f92672">AND</span> LV_IS_STRING <span style="color:#f92672">EQ</span> ABAP_TRUE.
+    LV_CHAR <span style="color:#f92672">=</span> CV_JSON(<span style="color:#ae81ff">1</span>).
+    <span style="color:#66d9ef">SHIFT</span> CV_JSON BY <span style="color:#ae81ff">1</span> PLACES.
+    <span style="color:#66d9ef">CASE</span> LV_CHAR.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;\&#39;</span>.  
+        LV_ESCAPE <span style="color:#f92672">=</span> LV_ESCAPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> EV_STRING LV_CHAR <span style="color:#66d9ef">INTO</span> EV_STRING.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;&#34;&#39;</span>.
+        LV_ESCAPE <span style="color:#f92672">=</span> LV_ESCAPE MOD <span style="color:#ae81ff">2</span>.
+        <span style="color:#66d9ef">IF</span> LV_ESCAPE <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.         <span style="color:#75715e">&#34;end of string?&#34;
+</span><span style="color:#75715e"></span>          LV_IS_STRING <span style="color:#f92672">=</span> ABAP_FALSE.
+        <span style="color:#66d9ef">ELSE</span>.
+          <span style="color:#66d9ef">CONCATENATE</span> EV_STRING LV_CHAR <span style="color:#66d9ef">INTO</span> EV_STRING.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">CLEAR</span> LV_ESCAPE.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>. <span style="color:#75715e">&#34;all other chars could be collected without any check!&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CONCATENATE</span> EV_STRING LV_CHAR <span style="color:#66d9ef">INTO</span> EV_STRING.
+        <span style="color:#66d9ef">CLEAR</span> LV_ESCAPE.
+    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDWHILE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="json_to_brf_struc">JSON_TO_BRF_STRUC</h4>
+<p><img src="/images/ABAP/ABAP_JSON21.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">JSON_TO_BRF_STRUC</span>.
+  <span style="color:#66d9ef">DATA</span>:
+    LV_TOKEN      <span style="color:#66d9ef">TYPE </span>STRING,
+    LS_AMOUNT     <span style="color:#66d9ef">TYPE </span>FDT_S_AMOUNT,
+    LS_QUANTITY   <span style="color:#66d9ef">TYPE </span>FDT_S_QUANTITY,
+    LS_TIMEPOINT  <span style="color:#66d9ef">TYPE </span>fdt_s_timepoint,
+    LO_DESCR      <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TYPEDESCR,
+    LX_ROOT       <span style="color:#66d9ef">TYPE REF TO</span> CX_ROOT.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;LA_ANY&gt; <span style="color:#66d9ef">TYPE </span>ANY.
+  <span style="color:#75715e">&#34;JSON example:&#39; &#34;A&#34;, &#34;AMOUNT&#34;:1234,&#34;CURRENCY&#34;:&#34;EUR&#34;} ...&#39; &#34;
+</span><span style="color:#75715e"></span>  LO_DESCR <span style="color:#f92672">=</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DESCRIBE_BY_DATA</span>( CA_DATA ).
+
+  <span style="color:#75715e">&#34;1. get the special type&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">SHIFT</span> CV_JSON UP <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;&#34;&#39;</span>.
+  <span style="color:#66d9ef">SHIFT</span> CV_JSON BY <span style="color:#ae81ff">1</span> PLACES. <span style="color:#75715e">&#34; eleminate quotes  &#34; 
+</span><span style="color:#75715e"></span>  GET_STRING(
+    <span style="color:#66d9ef">IMPORTING</span>
+      EV_STRING <span style="color:#f92672">=</span> LV_TOKEN
+    <span style="color:#66d9ef">CHANGING</span>
+      CV_JSON <span style="color:#f92672">=</span> CV_JSON ).
+  <span style="color:#66d9ef">SHIFT</span> CV_JSON UP <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;,&#39;</span>.
+  <span style="color:#66d9ef">SHIFT</span> CV_JSON BY <span style="color:#ae81ff">1</span> PLACES. <span style="color:#75715e">&#34; eleminate comma &#39;,&#39; &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CASE</span> LV_TOKEN.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_AMOUNT.
+      <span style="color:#66d9ef">ASSIGN</span> LS_AMOUNT <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_QUANTITY.
+      <span style="color:#66d9ef">ASSIGN</span> LS_QUANTITY <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;.
+    <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_TIMEPOINT.
+      <span style="color:#66d9ef">ASSIGN</span> LS_TIMEPOINT <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#66d9ef">RETURN</span>. <span style="color:#75715e">&#34;?&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#75715e">&#34;2. get values for special type&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> &lt;LA_ANY&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+    JSON_TO_DATA_INTERNAL(
+      <span style="color:#66d9ef">CHANGING</span>
+        CV_JSON <span style="color:#f92672">=</span> CV_JSON
+        CA_DATA <span style="color:#f92672">=</span> &lt;LA_ANY&gt; ).
+    <span style="color:#66d9ef">TRY</span>.
+        <span style="color:#66d9ef">CASE</span> LV_TOKEN.
+          <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_AMOUNT.
+            <span style="color:#75715e">&#34;Check target type&#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ABSOLUTE_NAME.
+              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_AMOUNT
+                <span style="color:#f92672">OR</span> GC_FDT_AMOUNT.
+                CA_DATA <span style="color:#f92672">=</span> LS_AMOUNT.   <span style="color:#75715e">&#34;no conversion needed&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_NUMBER.
+                CA_DATA <span style="color:#f92672">=</span> LS_AMOUNT<span style="color:#f92672">-</span>NUMBER.
+              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_TEXT.
+                CA_DATA <span style="color:#f92672">=</span> TO_STING( LS_AMOUNT ).
+              <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+                <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TYPE_KIND.
+                  <span style="color:#66d9ef">WHEN</span>  <span style="color:#e6db74">&#39;F&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;P&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;I&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;8&#39;</span>.
+                    CA_DATA <span style="color:#f92672">=</span> LS_AMOUNT<span style="color:#f92672">-</span>NUMBER.
+                  <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CLIKE
+                    <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CHAR
+                    <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_STRING.
+                    CA_DATA <span style="color:#f92672">=</span> TO_STING( LS_AMOUNT ).
+                  <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+                    <span style="color:#66d9ef">CLEAR</span> CA_DATA. <span style="color:#75715e">&#34;no conversion possible&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">ENDCASE</span>.
+            <span style="color:#66d9ef">ENDCASE</span>.
+          <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_QUANTITY.
+            <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ABSOLUTE_NAME.
+              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_QUANTITY
+                <span style="color:#f92672">OR</span> GC_FDT_QUANTITY.
+                CA_DATA <span style="color:#f92672">=</span> LS_QUANTITY.    <span style="color:#75715e">&#34;no conversion needed&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_NUMBER.
+                CA_DATA <span style="color:#f92672">=</span> LS_QUANTITY<span style="color:#f92672">-</span>NUMBER.
+              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_TEXT.
+                CA_DATA <span style="color:#f92672">=</span> QUANTITY_TO_STING( LS_QUANTITY ).
+              <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+                <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TYPE_KIND.
+                  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;F&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;P&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;I&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;8&#39;</span>.
+                    CA_DATA <span style="color:#f92672">=</span> LS_QUANTITY<span style="color:#f92672">-</span>NUMBER.
+                  <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CLIKE
+                    <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CHAR
+                    <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_STRING.
+                    CA_DATA <span style="color:#f92672">=</span> QUANTITY_TO_STING( LS_QUANTITY ).
+                  <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+                    <span style="color:#66d9ef">CLEAR</span> CA_DATA. <span style="color:#75715e">&#34;no conversion possible&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">ENDCASE</span>.
+            <span style="color:#66d9ef">ENDCASE</span>.
+          <span style="color:#66d9ef">WHEN</span> IF_FDT_CONSTANTS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>GC_ELEMENT_TYPE_TIMEPOINT.
+            <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ABSOLUTE_NAME.
+              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_TIMEPOINT
+                <span style="color:#f92672">OR</span> GC_FDT_TIMEPOINT.
+                CA_DATA <span style="color:#f92672">=</span> LS_TIMEPOINT.             <span style="color:#75715e">&#34;no conversion needed&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_NUMBER.
+                CA_DATA <span style="color:#f92672">=</span> LS_TIMEPOINT<span style="color:#f92672">-</span>TIMESTAMP.
+              <span style="color:#66d9ef">WHEN</span> GC_ELEMENT_TEXT.
+                CA_DATA <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TIMEPOINT ).
+              <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+                <span style="color:#66d9ef">CASE</span> LO_DESCR<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TYPE_KIND.
+                  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;F&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;P&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;I&#39;</span> <span style="color:#f92672">OR</span> <span style="color:#e6db74">&#39;8&#39;</span>.
+                    CA_DATA <span style="color:#f92672">=</span> LS_TIMEPOINT<span style="color:#f92672">-</span>TIMESTAMP.
+                  <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CLIKE
+                    <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_CHAR
+                    <span style="color:#f92672">OR</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_STRING.
+                    CA_DATA <span style="color:#f92672">=</span> CONVERT_TIMEPOINT_TO_TEXT( LS_TIMEPOINT ).
+                  <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_DATE.
+                    CA_DATA <span style="color:#f92672">=</span> LS_TIMEPOINT<span style="color:#f92672">-</span>DATE.
+                  <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_TIME.
+                    CA_DATA <span style="color:#f92672">=</span> LS_TIMEPOINT<span style="color:#f92672">-</span>TIME.
+                  <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+                    <span style="color:#66d9ef">CLEAR</span> CA_DATA. <span style="color:#75715e">&#34;no conversion possible&#34;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">ENDCASE</span>.
+            <span style="color:#66d9ef">ENDCASE</span>.
+        <span style="color:#66d9ef">ENDCASE</span>.
+      <span style="color:#66d9ef">CATCH</span> CX_ROOT <span style="color:#66d9ef">INTO</span> LX_ROOT.
+        <span style="color:#66d9ef">CLEAR</span> CA_DATA.
+    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#75715e">&#34;to end the level - as this sign is already stripped in method before&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;}&#39;</span> CV_JSON <span style="color:#66d9ef">INTO</span> CV_JSON RESPECTING BLANKS.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div><h4 id="json_to_data_internal">JSON_TO_DATA_INTERNAL</h4>
+<p><img src="/images/ABAP/ABAP_JSON22.png" alt="Method parameters"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">JSON_TO_DATA_INTERNAL</span>.
+  <span style="color:#75715e">&#34;JSON               ABAP                     &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;{...} object  --&gt;  field, structure, ...    &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;[...] array   --&gt;  table                    &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>:
+    LV_CHAR      <span style="color:#66d9ef">TYPE </span>C,
+    LV_TOKEN     <span style="color:#66d9ef">TYPE </span>STRING,
+    LV_DUMMY     <span style="color:#66d9ef">TYPE </span>STRING,   <span style="color:#75715e">&#34;is used in case of invalid fieldname&#34;
+</span><span style="color:#75715e"></span>    LT_DUMMY     <span style="color:#66d9ef">LIKE STANDARD TABLE OF</span> LV_DUMMY, <span style="color:#75715e">&#34;is used in case of invalid table&#34;
+</span><span style="color:#75715e"></span>    LV_IS_FILLED <span style="color:#66d9ef">TYPE </span>ABAP_BOOL,
+    LR_LINE      <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">DATA</span>,
+    LR_TD        <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TYPEDESCR,
+    LR_TTD       <span style="color:#66d9ef">TYPE REF TO</span> CL_ABAP_TABLEDESCR,
+    LX_ROOT      <span style="color:#66d9ef">TYPE REF TO</span> CX_ROOT.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>:
+    &lt;LA_ANY&gt;  <span style="color:#66d9ef">TYPE </span>ANY,
+    &lt;LA_LINE&gt; <span style="color:#66d9ef">TYPE </span>ANY,
+    &lt;LT_ANY&gt;  <span style="color:#66d9ef">TYPE </span>ANY <span style="color:#66d9ef">TABLE</span>,
+    &lt;LT_SRTD&gt; <span style="color:#66d9ef">TYPE </span>SORTED <span style="color:#66d9ef">TABLE</span>,
+    &lt;LT_HASH&gt; <span style="color:#66d9ef">TYPE </span>HASHED <span style="color:#66d9ef">TABLE</span>,
+    &lt;LT_STND&gt; <span style="color:#66d9ef">TYPE </span>STANDARD <span style="color:#66d9ef">TABLE</span>.
+
+  LR_TD <span style="color:#f92672">=</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DESCRIBE_BY_DATA</span>( CA_DATA ).
+  <span style="color:#66d9ef">CASE</span> LR_TD<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TYPE_KIND.
+    <span style="color:#66d9ef">WHEN</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TYPEKIND_DREF.
+      <span style="color:#66d9ef">ASSIGN</span> CA_DATA-&gt;* <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;.
+      <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>. <span style="color:#66d9ef">ASSIGN</span> LV_DUMMY <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;. <span style="color:#66d9ef">ENDIF</span>.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+      <span style="color:#66d9ef">ASSIGN</span> CA_DATA <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;.
+  <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">WHILE</span> STRLEN( CV_JSON ) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    LV_CHAR <span style="color:#f92672">=</span> CV_JSON(<span style="color:#ae81ff">1</span>).
+    <span style="color:#66d9ef">SHIFT</span> CV_JSON BY <span style="color:#ae81ff">1</span> PLACES.
+    <span style="color:#66d9ef">CASE</span> LV_CHAR.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;{&#39;</span>.   <span style="color:#75715e">&#34;object starts --&gt; next level&#34;
+</span><span style="color:#75715e"></span>        JSON_TO_DATA_INTERNAL(
+          <span style="color:#66d9ef">EXPORTING</span>
+            IV_IS_TABLINE <span style="color:#f92672">=</span> ABAP_FALSE
+          <span style="color:#66d9ef">IMPORTING</span>
+            EV_IS_FILLED  <span style="color:#f92672">=</span> EV_IS_FILLED
+          <span style="color:#66d9ef">CHANGING</span>
+            CV_JSON     <span style="color:#f92672">=</span> CV_JSON
+            CA_DATA     <span style="color:#f92672">=</span> &lt;LA_ANY&gt; ).
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;[&#39;</span>.   <span style="color:#75715e">&#34;array starts --&gt; next level&#34;
+</span><span style="color:#75715e"></span>        LR_TD <span style="color:#f92672">=</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DESCRIBE_BY_DATA</span>( &lt;LA_ANY&gt; ).
+        <span style="color:#66d9ef">IF</span> LR_TD<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>KIND <span style="color:#f92672">EQ</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>KIND_TABLE.
+          <span style="color:#66d9ef">ASSIGN</span> &lt;LA_ANY&gt; <span style="color:#66d9ef">TO</span> &lt;LT_ANY&gt;.
+        <span style="color:#66d9ef">ELSE</span>.     <span style="color:#75715e">&#34;Type mismatch - to prevent short dump&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">ASSIGN</span> LT_DUMMY <span style="color:#66d9ef">TO</span> &lt;LT_ANY&gt;.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">CREATE DATA</span> LR_LINE <span style="color:#66d9ef">LIKE LINE OF</span> &lt;LT_ANY&gt;.
+        <span style="color:#66d9ef">ASSIGN</span> LR_LINE-&gt;* <span style="color:#66d9ef">TO</span> &lt;LA_LINE&gt;.
+        <span style="color:#66d9ef">CLEAR</span> LV_IS_FILLED.
+        JSON_TO_DATA_INTERNAL(
+          <span style="color:#66d9ef">EXPORTING</span>
+            IV_IS_TABLINE <span style="color:#f92672">=</span> ABAP_TRUE
+          <span style="color:#66d9ef">IMPORTING</span>
+            EV_IS_FILLED  <span style="color:#f92672">=</span> LV_IS_FILLED
+          <span style="color:#66d9ef">CHANGING</span>
+            CV_JSON     <span style="color:#f92672">=</span> CV_JSON
+            CA_DATA     <span style="color:#f92672">=</span> &lt;LA_LINE&gt; ).
+        <span style="color:#66d9ef">IF</span> &lt;LA_LINE&gt; <span style="color:#f92672">IS NOT INITIAL</span>
+        <span style="color:#f92672">OR</span> LV_IS_FILLED <span style="color:#f92672">EQ</span> ABAP_TRUE.
+          EV_IS_FILLED <span style="color:#f92672">=</span> ABAP_TRUE.
+          LR_TD <span style="color:#f92672">=</span> CL_ABAP_TYPEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">DESCRIBE_BY_DATA</span>( &lt;LT_ANY&gt; ).
+          LR_TTD <span style="color:#f92672">?</span><span style="color:#f92672">=</span> LR_TD.
+          <span style="color:#66d9ef">IF</span> LR_TTD<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TABLE_KIND <span style="color:#f92672">EQ</span> CL_ABAP_TABLEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TABLEKIND_SORTED.
+            <span style="color:#75715e">&#34; sorted table &#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">ASSIGN</span> &lt;LT_ANY&gt; <span style="color:#66d9ef">TO</span> &lt;LT_SRTD&gt;.
+            <span style="color:#66d9ef">INSERT</span> &lt;LA_LINE&gt; <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> &lt;LT_SRTD&gt;.
+          <span style="color:#66d9ef">ELSEIF</span> LR_TTD<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>TABLE_KIND <span style="color:#f92672">=</span> CL_ABAP_TABLEDESCR<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>TABLEKIND_HASHED.
+            <span style="color:#75715e">&#34; hashed table &#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">ASSIGN</span> &lt;LT_ANY&gt; <span style="color:#66d9ef">TO</span> &lt;LT_HASH&gt;.
+            <span style="color:#66d9ef">INSERT</span> &lt;LA_LINE&gt; <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> &lt;LT_HASH&gt;.
+          <span style="color:#66d9ef">ELSE</span>.
+            <span style="color:#75715e">&#34; standard table &#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">ASSIGN</span> &lt;LT_ANY&gt; <span style="color:#66d9ef">TO</span> &lt;LT_STND&gt;.
+            <span style="color:#66d9ef">APPEND</span> &lt;LA_LINE&gt; <span style="color:#66d9ef">TO</span> &lt;LT_STND&gt;.
+          <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;]&#39;</span>.    <span style="color:#75715e">&#34;Array ends --&gt; previous level&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">IF</span> LV_TOKEN <span style="color:#f92672">IS NOT INITIAL</span>.
+          CONVERT_TOKEN(
+            <span style="color:#66d9ef">EXPORTING</span>
+              IA_DATA      <span style="color:#f92672">=</span> &lt;LA_ANY&gt;
+            <span style="color:#66d9ef">CHANGING</span>
+              CV_TOKEN     <span style="color:#f92672">=</span> LV_TOKEN ).
+          <span style="color:#66d9ef">TRY</span>.
+              &lt;LA_ANY&gt; <span style="color:#f92672">=</span> LV_TOKEN.
+              EV_IS_FILLED <span style="color:#f92672">=</span> ABAP_TRUE.
+            <span style="color:#66d9ef">CATCH</span> CX_ROOT <span style="color:#66d9ef">INTO</span> LX_ROOT.          <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">ENDTRY</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;}&#39;</span>.   <span style="color:#75715e">&#34;Object ends --&gt; previous level&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">IF</span> LV_TOKEN <span style="color:#f92672">IS NOT INITIAL</span>.
+          CONVERT_TOKEN(
+            <span style="color:#66d9ef">EXPORTING</span>
+              IA_DATA      <span style="color:#f92672">=</span> &lt;LA_ANY&gt;
+            <span style="color:#66d9ef">CHANGING</span>
+              CV_TOKEN     <span style="color:#f92672">=</span> LV_TOKEN ).
+          <span style="color:#66d9ef">TRY</span>.
+              &lt;LA_ANY&gt; <span style="color:#f92672">=</span> LV_TOKEN.
+              EV_IS_FILLED <span style="color:#f92672">=</span> ABAP_TRUE.
+            <span style="color:#66d9ef">CATCH</span> CX_ROOT <span style="color:#66d9ef">INTO</span> LX_ROOT.        <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">ENDTRY</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">RETURN</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;:&#39;</span>.   <span style="color:#75715e">&#34;key ends, value starts&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">TRANSLATE</span> LV_TOKEN <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">UPPER CASE</span>.
+        <span style="color:#66d9ef">SHIFT</span> LV_TOKEN LEFT DELETING LEADING SPACE.
+        <span style="color:#66d9ef">IF</span> LV_TOKEN <span style="color:#f92672">IS NOT INITIAL</span>.
+          <span style="color:#66d9ef">IF</span> LV_TOKEN <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;$ROOT&#39;</span>.              <span style="color:#75715e">&#34;Do nothing - already assigned!&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">ELSEIF</span> LV_TOKEN <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;$T&#39;</span>.             <span style="color:#75715e">&#34;ignore the value! do special things&#34;
+</span><span style="color:#75715e"></span>            JSON_TO_BRF_STRUC(
+              <span style="color:#66d9ef">CHANGING</span>
+                CA_DATA    <span style="color:#f92672">=</span> &lt;LA_ANY&gt;
+                CV_JSON    <span style="color:#f92672">=</span> CV_JSON ).
+            EV_IS_FILLED <span style="color:#f92672">=</span> ABAP_TRUE.
+          <span style="color:#66d9ef">ELSE</span>.
+            <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> LV_TOKEN <span style="color:#66d9ef">OF STRUCTURE</span> CA_DATA <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;.
+            <span style="color:#66d9ef">IF</span> SY<span style="color:#f92672">-</span>SUBRC <span style="color:#f92672">NE</span> <span style="color:#ae81ff">0</span>.                  <span style="color:#75715e">&#34;Field not found?&#34;
+</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">ASSIGN</span> LV_DUMMY <span style="color:#66d9ef">TO</span> &lt;LA_ANY&gt;.     <span style="color:#75715e">&#34;ignore the value!&#34;
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">ENDIF</span>.
+          <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">CLEAR</span> LV_TOKEN.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;,&#39;</span>.   <span style="color:#75715e">&#34;next value -- same level&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">IF</span> LV_TOKEN <span style="color:#f92672">IS NOT INITIAL</span>.
+          CONVERT_TOKEN(
+            <span style="color:#66d9ef">EXPORTING</span>
+              IA_DATA      <span style="color:#f92672">=</span> &lt;LA_ANY&gt;
+            <span style="color:#66d9ef">CHANGING</span>
+              CV_TOKEN     <span style="color:#f92672">=</span> LV_TOKEN ).
+          <span style="color:#66d9ef">TRY</span>.
+              &lt;LA_ANY&gt; <span style="color:#f92672">=</span> LV_TOKEN.
+              EV_IS_FILLED <span style="color:#f92672">=</span> ABAP_TRUE.
+            <span style="color:#66d9ef">CATCH</span> CX_ROOT <span style="color:#66d9ef">INTO</span> LX_ROOT.        <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">ENDTRY</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+        <span style="color:#66d9ef">CLEAR</span> LV_TOKEN.
+        <span style="color:#66d9ef">IF</span> IV_IS_TABLINE <span style="color:#f92672">EQ</span> ABAP_TRUE.  <span style="color:#75715e">&#34;to trigger next table line&#34;
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;[&#39;</span> CV_JSON <span style="color:#66d9ef">INTO</span> CV_JSON.
+          <span style="color:#66d9ef">RETURN</span>.
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;&#34;&#39;</span>.    <span style="color:#75715e">&#34;string starts&#34;
+</span><span style="color:#75715e"></span>        GET_STRING(
+          <span style="color:#66d9ef">IMPORTING</span>
+            EV_STRING <span style="color:#f92672">=</span> LV_TOKEN
+          <span style="color:#66d9ef">CHANGING</span>
+            CV_JSON <span style="color:#f92672">=</span> CV_JSON ).
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>. <span style="color:#75715e">&#34;ie. numbers, ...&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CONCATENATE</span> LV_TOKEN LV_CHAR <span style="color:#66d9ef">INTO</span> LV_TOKEN.
+    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDWHILE</span>.
+<span style="color:#66d9ef">ENDMETHOD</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>5036</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Enhance_Text/" class="prev" rel="prev" title=" Text Enhancements "><i class="iconfont icon-dajiantou"></i>&nbsp; Text Enhancements </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_JSON/" class="next" rel="next" title=" ABAP Json 转换 "> ABAP Json 转换 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-03-06 00:00:00 \x2b0000 UTC',
+        title: ' ABAP\x26Json 转换 Methods ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

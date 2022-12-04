@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_Servlet_Listener/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/JAVA_JSP_Basic/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/JAVA_Servlet_Filter/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Filter 过滤器  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Filter 过滤器  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Filter 过滤器 "/>
+<meta name="twitter:description" content="Filter 使用 Filter 是 Servlet2.3 新增加的功能，它不是 Servlet，不能处理用户请求，也不能处理用户响应。主要对 HttpServletRequest 进行预处理，也对 HttpServletResponse 进行后续处理，是典型的处理链"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Filter 过滤器 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/JAVA_Servlet_Filter\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Servlet",
+  "wordcount":  1181 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/JAVA_Servlet_Filter\/",
+  "datePublished": "2017-11-14T00:00:00\x2b00:00",
+  "dateModified": "2017-11-14T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Filter 过滤器 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-11-14 >14 November 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="filter-使用">Filter 使用</h3>
+<p>Filter 是 Servlet2.3 新增加的功能，它不是 Servlet，不能处理用户请求，也不能处理用户响应。主要对 HttpServletRequest 进行预处理，也对 HttpServletResponse 进行后续处理，是典型的处理链。</p>
+<p>Filter 的工作内容</p>
+<ul>
+<li>在 servlet 被调用之前截获；</li>
+<li>在 servlet 被调用之前检查 ServletRequest；</li>
+<li>根据需要修改 request 头和 request 数据；</li>
+<li>根据需要修改 response 头和 response 数据；</li>
+<li>在 servlet 被调用之后截获；</li>
+</ul>
+<p>WEB 中的过滤器：它处于客户端与服务器资源文件之间的一道过滤网，当访问服务器资源之前，通过一系列的过滤器对请求进行修改、判断等，把不符合规则的请求在中途拦截或修改。也可以对响应进行过滤，拦截或修改响应。</p>
+<p>WEB 开发人员可以通过 Filter 技术，对 web 服务器管理的所有 web 资源：例如 Jsp、Servlet、静态图片文件或静态 html 文件、字符编码转换等进行过滤，从而实现一些特殊的功能，还可以实现 URL 级别的权限访问控制、过滤敏感词汇、防止脚本攻击的过滤器、压缩响应信息等一些高级功能。</p>
+<h3 id="使用步骤">使用步骤</h3>
+<h4 id="step1定义一个-java-类实现-filter-接口">Step1：定义一个 java 类实现 Filter 接口</h4>
+<p>通过覆写其 doFilter 方法进行过滤功能的实现。必须执行 <code>chain.doFilter(request, response);</code> 对请求进行放行。</p>
+<h4 id="step2拦截路径配置">Step2：拦截路径配置</h4>
+<p>方法一、注解方式：<code>@WebFilter(value = &quot;/*&quot;,dispatcherTypes = { DispatcherType.REQUEST })</code></p>
+<p>方法二、配置 web.xml 文件；在 web.xml 文件中对 Filter 类进行注册，并设置它所能拦截的资源。web 服务器根据 Filter 在 web.xml 文件中的注册顺序，决定先调用哪个Filter。</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;filter</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;filter-name</span><span style="color:#f92672">&gt;</span>demo1<span style="color:#f92672">&lt;/filter-name&gt;</span>
+  <span style="color:#f92672">&lt;filter-class</span><span style="color:#f92672">&gt;</span>domain.FilterDemo1<span style="color:#f92672">&lt;/filter-class&gt;</span>
+<span style="color:#f92672">&lt;/filter&gt;</span>
+<span style="color:#f92672">&lt;filter-mapping</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;filter-name</span><span style="color:#f92672">&gt;</span>demo1<span style="color:#f92672">&lt;/filter-name&gt;</span>
+  <span style="color:#f92672">&lt;url-pattern</span><span style="color:#f92672">&gt;</span>/*<span style="color:#f92672">&lt;/url-pattern&gt;</span>
+<span style="color:#f92672">&lt;/filter-mapping&gt;</span>
+</code></pre></div></li>
+<li>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Describe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;filter&gt;</code></td>
+<td>Filter 对应的 xml 标签</td>
+</tr>
+<tr>
+<td><code>&lt;filter-name&gt;</code></td>
+<td>为 Filter 设置名称</td>
+</tr>
+<tr>
+<td><code>&lt;filter-class&gt;</code></td>
+<td>Filter 完整的限定类名</td>
+</tr>
+<tr>
+<td><code>&lt;init-param&gt;</code></td>
+<td>初始化参数，可以设置值<code>&lt;param-name&gt;</code>,<code>&lt;param-value&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;filter-mapping&gt;</code></td>
+<td>设置 Filter 所负责拦截的资源</td>
+</tr>
+<tr>
+<td><code>&lt;filter-name&gt;</code></td>
+<td>子元素对应的 Filter 名称，需要在前面设置过</td>
+</tr>
+<tr>
+<td><code>&lt;url-pattern&gt;</code></td>
+<td>设置 Filter 所拦截的请求路径</td>
+</tr>
+<tr>
+<td><code>&lt;servlet-name&gt;</code></td>
+<td>设置 Filter 所拦截的Servlet名称</td>
+</tr>
+<tr>
+<td><code>&lt;dispatcher&gt;</code></td>
+<td>设置拦截的资源被调用的方式：REQUEST(默认),INCLUDE,FORWARD,ERROR。</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>拦截路径配置：</p>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">示例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">拦截所有资源</td>
+<td align="left">/*</td>
+<td align="left">无论访问何种资源，都会别拦截</td>
+</tr>
+<tr>
+<td align="left">后缀名拦截</td>
+<td align="left">*.jsp</td>
+<td align="left">当访问特定后缀名资源时(.jsp)被拦截</td>
+</tr>
+<tr>
+<td align="left">目录拦截</td>
+<td align="left">/test/*</td>
+<td align="left">当访问 /test 下的资源时会被拦截</td>
+</tr>
+<tr>
+<td align="left">具体资源路径拦截</td>
+<td align="left">/index.html</td>
+<td align="left">当访问服务器 index.html 资源时才会被拦截</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>拦截方式配置：</p>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th>拦截方式</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REQUEST</td>
+<td>DispatcherType.REQUEST</td>
+<td>直接访问目标资源时执行过滤器</td>
+</tr>
+<tr>
+<td>INCLUDE</td>
+<td>DispatcherType.INCLUDE</td>
+<td>转发访问资源时执行过滤器</td>
+</tr>
+<tr>
+<td>FORWARD</td>
+<td>DispatcherType.FORWARD</td>
+<td>包含访问资源时执行过滤器</td>
+</tr>
+<tr>
+<td>ERROR</td>
+<td>DispatcherType.ERROR</td>
+<td>错误跳转资源时执行过滤器</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h4 id="过滤器链配置">过滤器链配置</h4>
+<p>注解配置：按照类名的字符串比较规则进行比较，值小的先执行</p>
+<ul>
+<li>AFilter 和 BFilter，AFilter 先执行</li>
+</ul>
+<p>web.xml：按照在 <code>&lt;filter-mapping&gt;</code> 中定义顺序执行</p>
+<h3 id="filter-执行流程">Filter 执行流程</h3>
+<p><img src="/images/JAVA/Filter.png" alt="Filter"></p>
+<h3 id="filter-生命周期">Filter 生命周期</h3>
+<h4 id="初始化">初始化</h4>
+<p>在服务器启动后，会创建 Filter 对象，然后调用 init 方法。该方法只执行一次，用于加载资源。</p>
+<ul>
+<li><code>public void init(FilterConfig filterConfig) throws ServletException;</code></li>
+</ul>
+<h4 id="执行">执行</h4>
+<p>每次客户请求访问与过滤器关联的目标资源时，Servlet 过滤器将先执行 doFilter 方法，FilterChain 参数用于访问后续过滤器。</p>
+<ul>
+<li><code>public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException;</code></li>
+</ul>
+<p>将 ServletRequest 请求转换成 HttpServletRequest ：</p>
+<ul>
+<li><code>HttpServletRequest hrequest = (HttpServletRequest)request;</code></li>
+</ul>
+<h4 id="销毁">销毁</h4>
+<p>在服务器关闭后，Filter 对象被销毁。如果服务器是正常关闭，则会执行 destroy 方法。只执行一次。用于释放资源。</p>
+<ul>
+<li><code>public void destroy();</code></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1181</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Servlet/">
+                    #Servlet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_Servlet_Listener/" class="prev" rel="prev" title=" Listener 监听器 "><i class="iconfont icon-dajiantou"></i>&nbsp; Listener 监听器 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_JSP_Basic/" class="next" rel="next" title=" JSP 使用 "> JSP 使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-11-14 00:00:00 \x2b0000 UTC',
+        title: ' Filter 过滤器 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

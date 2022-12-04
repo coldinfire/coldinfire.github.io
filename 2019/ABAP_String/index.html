@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Outsourcing_Business/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_IDoc/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_String/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ABAP字符串处理 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="ABAP字符串处理 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ABAP字符串处理"/>
+<meta name="twitter:description" content="字符串的处理在程序中的使用十分常见，在这里结合自己日常的使用对ABAP的字符串常用操作进行总结，以便后续使用。 1.获取字符串长度 var1 = strl"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ABAP字符串处理",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_String\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1016 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_String\/",
+  "datePublished": "2019-09-18T00:00:00\u002b00:00",
+  "dateModified": "2019-09-18T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">ABAP字符串处理</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-09-18 >18 September 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>字符串的处理在程序中的使用十分常见，在这里结合自己日常的使用对ABAP的字符串常用操作进行总结，以便后续使用。</p>
+<p><strong>1.获取字符串长度</strong></p>
+<p><code>var1  = strlen(str);</code>将str作为字符数据处理，计算出其字符长度</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">l_len</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">i</span>,
+	    <span style="color:#a6e22e">str1</span>(<span style="color:#ae81ff">20</span>) <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;1234&#39;</span>.
+	<span style="color:#a6e22e">l_len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(<span style="color:#a6e22e">str1</span>).
+<span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">/ len.  </span>
+</code></pre></div><p><strong>2.拼接字符串</strong></p>
+<ul>
+<li><code>CONCATENATE &lt;str1&gt; ... &lt;strn&gt; into &lt;var&gt; [SEPARATED BY &lt;s&gt;][RESPECTING BLANKS]</code></li>
+<li>将多个字符串拼接到指定的变量Var中，注意Var的长度</li>
+<li>C,D,N,T类型的前导空格会保留，尾部空格会去掉，对String类型的所有空格都会保留</li>
+<li><code>[SEPARATED BY &lt;s&gt;]</code>:根据该间隔符号(S)进行拼接(SPACE)</li>
+<li>respecting：针对C,D,N,T数据，表示尾部空格会保留</li>
+</ul>
+<p><strong>3.压缩字符串</strong></p>
+<ul>
+<li><code>CONDENCE &lt;str&gt; [NO-GAPS]</code>:去除字段str中的前后空格，并将字段中多个空格使用一个空格替换；如果加上NO-GAPS则去除所有空格。</li>
+</ul>
+<p><strong>4.截取字符串</strong></p>
+<ul>
+<li>subtext = str+0(4)：从最左边取出4个字符</li>
+<li>subtext = str+2(4)：从第2个字符开始取出4个字符</li>
+<li>str+0(1) = &lsquo;X&rsquo;：变更指定位置的值</li>
+</ul>
+<p><strong>5.查找字符串</strong></p>
+<ul>
+<li><code>SEARCH &lt;var&gt; FOR &lt;str&gt; &lt;options&gt;.</code>:在var中搜索子字符串，成功SY-SUBRC=0</li>
+<li>str:可以使用正则表达式，也可以使用普通字符串</li>
+</ul>
+<p><strong>6.替换字符串</strong></p>
+<ul>
+<li><code>REPLACE &lt;str1&gt; WITH &lt;str2&gt; INTO &lt;var&gt; [LENGTH &lt;l&gt;].</code></li>
+<li>将str1在var中的字段替换为str2</li>
+<li>如果指定长度，则只将str1中指定长度的字符替换为str2中的内容</li>
+<li>如果替换后内容总长度超过var定义的长度，会出现截断现象</li>
+</ul>
+<p><strong>7.移动字符串内容</strong></p>
+<ul>
+<li>
+<p><code>SHIFT &lt;var&gt; [BY &lt;n&gt; PLACES] [&lt;mode&gt;].</code></p>
+</li>
+<li>
+<p>将var移动n个位置，</p>
+</li>
+<li>
+<p>MODE:LEFT(默认),RIGHT,CIRCULAR</p>
+</li>
+<li>
+<p><code>SHIFT &lt;var&gt; LEFT DELETING LEADING &lt;str&gt;.</code></p>
+</li>
+<li>
+<p><code>SHIFT &lt;var&gt; RIGHT DELETING TRAILING &lt;str&gt;.</code></p>
+</li>
+<li>
+<p>如果左边第一个字符串或则右边第一个字符串出现在str中，将var移动相应的位置</p>
+</li>
+</ul>
+<p><strong>8.比较字符串</strong></p>
+<p>判断是否包含特定值</p>
+<ul>
+<li>IF field CN &lsquo;0123456789&rsquo;.</li>
+<li>IF field CN &lsquo;ABCDEFG*&rsquo;</li>
+<li>IF field CN &lsquo;abcdefg*&rsquo;</li>
+<li>IF field CN &lsquo;/&rsquo; &hellip;..</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>CN：Contains Not Only (包含，不仅包含)</strong></th>
+<th style="text-align:left"><strong>CO：Contains Only（仅包含）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CS：Contains String (包含字符串)</strong></td>
+<td style="text-align:left"><strong>NS：Contains No String (不包含字符串)</strong></td>
+</tr>
+<tr>
+<td><strong>NP：No Pattern （不包含记号）</strong></td>
+<td style="text-align:left"><strong>NA：Contains Not Only(不包含任何)</strong></td>
+</tr>
+<tr>
+<td><strong>CA：Contains Any（包含任何）</strong></td>
+<td style="text-align:left"><strong>CP：Covers Pattern (包含记号)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>9.<strong>拆分字符串</strong>：</p>
+<p>​	SPLIT dobj AT sep INTO {res1 res2&hellip;&hellip;resn}. ：将字符串的值分配给具体变量</p>
+<p>​	SPLIT s_source AT sep INTO TABLE itab：将字符串的值分配给一内表。</p>
+<p><strong>10.大小写转换：</strong></p>
+<p>​	TRANSLATE c TO UPPER|LOWER CASE.：将字符串转换为大|小写</p>
+<p><strong>11.字符前拼接空格</strong></p>
+<p>​	在Grid ALV上也显示空格：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">IF</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fw_output</span><span style="color:#f92672">&gt;-</span><span style="color:#a6e22e">name2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">1</span>) <span style="color:#a6e22e">eq</span> <span style="color:#a6e22e">space</span> <span style="color:#a6e22e">AND</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fw_output</span><span style="color:#f92672">&gt;-</span><span style="color:#a6e22e">name2</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">INITIAL</span>.
+  <span style="color:#a6e22e">h_white</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_abap_conv_in_ce</span>=&gt;<span style="color:#a6e22e">uccpi</span>( <span style="color:#ae81ff">160</span> ).
+  <span style="color:#a6e22e">REPLACE</span> <span style="color:#a6e22e">ALL</span> <span style="color:#a6e22e">OCCURRENCES</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">REGEX</span> <span style="color:#e6db74">&#39;\s&#39;</span> <span style="color:#a6e22e">IN</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">fw_output</span><span style="color:#f92672">&gt;-</span><span style="color:#a6e22e">name2</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">h_white</span>.
+<span style="color:#a6e22e">ENDIF</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1016</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Outsourcing_Business/" class="prev" rel="prev" title="MM 委外业务(外发加工)"><i class="iconfont icon-dajiantou"></i>&nbsp;MM 委外业务(外发加工)</a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_IDoc/" class="next" rel="next" title="IDoc操作">IDoc操作&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-09-18 00:00:00 \u002b0000 UTC',
+        title: 'ABAP字符串处理',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

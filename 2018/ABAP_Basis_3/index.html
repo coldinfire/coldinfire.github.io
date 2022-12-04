@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Basis_2/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Table_Basis/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Basis_3/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 数据类型和变量  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 数据类型和变量  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 数据类型和变量 "/>
+<meta name="twitter:description" content="ABAP 数据类型 数据类型在 ABAP 程序中用于定义具体的变量类型。 基本数据类型 ABAP 基本数据类型是系统内部定义的数据类型。 Type Description Length Type Description Length C 文本字段（字母数字字符"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 数据类型和变量 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_3\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1699 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_3\/",
+  "datePublished": "2018-05-12T00:00:00\u002b00:00",
+  "dateModified": "2018-05-12T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 数据类型和变量 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-05-12 >12 May 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="abap-数据类型">ABAP 数据类型</h3>
+<p>数据类型在 ABAP 程序中用于定义具体的变量类型。</p>
+<h4 id="基本数据类型">基本数据类型</h4>
+<p>ABAP 基本数据类型是系统内部定义的数据类型。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Length</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">文本字段（字母数字字符）</td>
+<td style="text-align:left">定义时指定字符个数</td>
+<td style="text-align:left">I</td>
+<td style="text-align:left">整数(非整数会四舍五入)</td>
+<td style="text-align:left">4字节</td>
+</tr>
+<tr>
+<td style="text-align:left">N</td>
+<td style="text-align:left">数字文本字段（数字字符）</td>
+<td style="text-align:left">定义时指定字符个数</td>
+<td style="text-align:left">F</td>
+<td style="text-align:left">浮点类型</td>
+<td style="text-align:left">8字节</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">日期(YYYYMMDD)</td>
+<td style="text-align:left">8字符</td>
+<td style="text-align:left">P</td>
+<td style="text-align:left">组合数值类型(1-16)</td>
+<td style="text-align:left">定义时指定长度，小数位</td>
+</tr>
+<tr>
+<td style="text-align:left">T</td>
+<td style="text-align:left">时间(HHMMSS)</td>
+<td style="text-align:left">6字符</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">变长字符串</td>
+<td style="text-align:left">长度不固定</td>
+</tr>
+<tr>
+<td style="text-align:left">X</td>
+<td style="text-align:left">十六进制</td>
+<td style="text-align:left">定义时指定字节数</td>
+<td style="text-align:left">xstring</td>
+<td style="text-align:left">变长字节序列类型</td>
+<td style="text-align:left">长度不固定</td>
+</tr>
+</tbody>
+</table>
+<h4 id="本地数据类型">本地数据类型</h4>
+<p>在 ABAP 程序中，使用 <code>TYPES</code> 定义本地数据类型。定义局部数据类型时可以使用基本数据类型、局部数据类型、全局数据类型。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_demo,
+    <span style="color:#66d9ef">index</span> <span style="color:#66d9ef">TYPE </span>i,
+    matnr <span style="color:#66d9ef">TYPE </span>matnr,
+    werks <span style="color:#66d9ef">TYPE </span>werks_d,
+    <span style="color:#66d9ef">message</span> <span style="color:#66d9ef">TYPE </span>string,
+  <span style="color:#66d9ef">END OF</span> str_demo.
+<span style="color:#66d9ef">DATA</span>: demo <span style="color:#66d9ef">TYPE </span>str_dmeo.
+</code></pre></div><h4 id="全局数据类型">全局数据类型</h4>
+<p>ABAP 数据字典数据类型和系统变量，无需声明可在系统中直接使用。</p>
+<h3 id="abap-变量">ABAP 变量</h3>
+<h4 id="常用系统变量">常用系统变量</h4>
+<p>系统变量表 <code>SYST</code> (ABAP System Fields)。ABAP 系统变量可供所有程序访问，字段值由运行时环境填充。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SY-UNAME</td>
+<td style="text-align:left">用户登录名</td>
+<td style="text-align:left">SY-TCODE</td>
+<td style="text-align:left">当前执行的事物码</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-SUBRC</td>
+<td style="text-align:left">表示系统执行成功与否</td>
+<td style="text-align:left">SY-TMAXL</td>
+<td style="text-align:left">内表总行数</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-REPID</td>
+<td style="text-align:left">当前程序名</td>
+<td style="text-align:left">SY-BATCH</td>
+<td style="text-align:left">程序是否后台 JOB 执行</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-DATUM</td>
+<td style="text-align:left">当前系统日期</td>
+<td style="text-align:left">SY-HOST</td>
+<td style="text-align:left">服务器名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-UZEIT</td>
+<td style="text-align:left">当前系统时间</td>
+<td style="text-align:left">SY-DYNNR</td>
+<td style="text-align:left">屏幕的编号</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-INDEX</td>
+<td style="text-align:left">DO-ENDDO 中是有效的</td>
+<td style="text-align:left">SY-DBCNT</td>
+<td style="text-align:left">DB 操作处理过的表行号</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-TABIX</td>
+<td style="text-align:left">LOOP索引，Read内表索引</td>
+<td style="text-align:left">SY-LANGU</td>
+<td style="text-align:left">当前登陆的语言</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-MSGID</td>
+<td style="text-align:left">Message Class</td>
+<td style="text-align:left">SY-MSGV1/2/3/4</td>
+<td style="text-align:left">Message Variable</td>
+</tr>
+<tr>
+<td style="text-align:left">SY-MSGTY</td>
+<td style="text-align:left">Message Type</td>
+<td style="text-align:left">SY-MSGNO</td>
+<td style="text-align:left">Message Number</td>
+</tr>
+<tr>
+<td style="text-align:left">SPACE</td>
+<td style="text-align:left">空白字符串</td>
+<td style="text-align:left">SY-ZONLO</td>
+<td style="text-align:left">当前时区</td>
+</tr>
+</tbody>
+</table>
+<h4 id="自定义变量类型">自定义变量类型</h4>
+<p>可以使用 DATA 语句定义数据变量，变量名最长可定义 30 位，变量的类型可以是基本类型，局部类型，全局类型。</p>
+<p><code>DATA var_name(len) TYPE var_type [VALUE value] [DECIMALS n].</code></p>
+<p>参考字段定义变量：<code>DATA &lt;var1&gt; like &lt;var2&gt;.</code>  &amp; <code>DATA &lt;var1&gt; TYPE &lt;var2&gt;.</code></p>
+<ul>
+<li>透明表、结构、数据字典：既是类型又是对象，可用 TYPE 和 LIKE</li>
+<li>只能使用 LIKE 引用另一自定义变量的类型，不可以使用 TYPE</li>
+</ul>
+<p><code>DATA &lt;var&gt; LIKE LINE OF xxx.</code></p>
+<ul>
+<li>后面参照内表，表示该变量具有和参照内表一样的结构，可当做工作区使用</li>
+</ul>
+<p><code>DATA &lt;var&gt; LIKE TABLE OF xxx.</code></p>
+<ul>
+<li>后面参照结构，表示该变量是一个和参照结构一样的内表，这个内表和后面参照的结构一样</li>
+</ul>
+<p><strong>使用 Type 和 Like 的区别</strong></p>
+<ul>
+<li>
+<p>TYPE：在声明时直接将数据类型分配给数据对象。</p>
+</li>
+<li>
+<p>LIKE：将另一个对象的数据类型分配给声明的数据对象。</p>
+</li>
+<li>
+<p>Type 指的是现有数据类型，而 Like 指的是现有数据对象。</p>
+</li>
+</ul>
+<h4 id="参考变量">参考变量</h4>
+<p>声明引用变量的语法是:</p>
+<p><code>DATA &lt;ref&gt; TYPE REF TO &lt;type&gt; VALUE IS INITIAL. </code></p>
+<ul>
+<li>REF TO 附加声明一个引用变量</li>
+<li>REF TO 之后的规范指定了引用变量的静态类型</li>
+<li>静态类型限制引用变量的对象集合</li>
+<li>引用变量的动态类型是它当前引用的数据类型或类</li>
+<li>静态类型总是更加通用或与动态类型相同</li>
+<li>TYPE 添加用于创建绑定引用类型和起始值，并且只能在 VALUE 添加后指定 IS INITIAL</li>
+</ul>
+<h3 id="变量赋值">变量赋值</h3>
+<h4 id="定义时赋值">定义时赋值</h4>
+<p>定义变量时可以通过 VALUE 语句赋初始值。</p>
+<ul>
+<li>单引号 '' 和 Grave `` 的区别：grave 能够识别字符串中包含的所有空格</li>
+</ul>
+<h4 id="程序中赋值">程序中赋值</h4>
+<p><code>MOVE var1 TO var2.</code> &amp; <code>WRITE var1 TO var2.</code></p>
+<ul>
+<li>变量 2 只能是字符串类型：C、N、D、T</li>
+</ul>
+<p><code>MOVE-CORRESPONDING</code>语句经常用于不同结构体之间赋值，其特点是<strong>找到名字相同的字段进行赋值。</strong></p>
+<h3 id="定义常量宏">定义常量、宏</h3>
+<h4 id="常量定义">常量定义</h4>
+<p><code>CONSTANTS var_name(len) TYPE &lt;var_type&gt; VALUE &lt;value&gt;.</code></p>
+<p><code>CONSTANTS var_name(len) LIKE &lt;var&gt; VALUE &lt;value&gt;.</code></p>
+<h4 id="宏定义">宏定义</h4>
+<p>如果需要在程序中多次重复使用同一组语句，可以将它们包含在宏中。最常使用的场景是 ALV 的字段目录构造。</p>
+<ul>
+<li>宏定义应在程序中使用宏之前发生</li>
+<li>宏是基于占位符设计的，宏定义中占位符的最大数量为 9</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DEFINE</span> &lt;macro_name&gt;. 
+  &lt;statements&gt; 
+<span style="color:#66d9ef">END-OF-DEFINITION</span>. 
+&lt;macro_name&gt; [&lt;param1&gt; &lt;param2&gt;....].
+</code></pre></div><h3 id="abap-运算符函数">ABAP 运算符&amp;函数</h3>
+<h4 id="二元运算符">二元运算符</h4>
+<p>ABAP 的操作符需要跟操作数之间至少一个空格分开。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">加法</td>
+<td style="text-align:left">*</td>
+<td style="text-align:left">乘法</td>
+<td style="text-align:left">**</td>
+<td style="text-align:left">乘幂</td>
+<td style="text-align:left">MOD</td>
+<td style="text-align:left">取模，求余数</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">减法</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left">除法</td>
+<td style="text-align:left">DIV</td>
+<td style="text-align:left">整除，忽略余数</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="逻辑运算符">逻辑运算符</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">GE | &gt;=</td>
+<td style="text-align:left">大于等于</td>
+<td style="text-align:left">LE | &lt;=</td>
+<td style="text-align:left">小于等于</td>
+<td style="text-align:left">EQ | =</td>
+<td style="text-align:left">等于</td>
+</tr>
+<tr>
+<td style="text-align:left">GT | &gt;</td>
+<td style="text-align:left">大于</td>
+<td style="text-align:left">LT | &lt;</td>
+<td style="text-align:left">小于</td>
+<td style="text-align:left">NE | &lt;&gt;</td>
+<td style="text-align:left">不等于</td>
+</tr>
+</tbody>
+</table>
+<h4 id="函数使用">函数使用</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CEIL(N)</td>
+<td style="text-align:left">返回大于数值N的最小整数</td>
+<td style="text-align:left">TRUNC(N)</td>
+<td style="text-align:left">返回数值N的整数部分</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOOR(N)</td>
+<td style="text-align:left">返回小于数值N的最大整数</td>
+<td style="text-align:left">FRAC(N)</td>
+<td style="text-align:left">返回数值N的小数部分</td>
+</tr>
+<tr>
+<td style="text-align:left">ABS(N)</td>
+<td style="text-align:left">求绝对值</td>
+<td style="text-align:left">SIGN(N)</td>
+<td style="text-align:left">N&gt;0 = 1；N&lt;0 = -1；N=0=0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="describe-使用">DESCRIBE 使用</h3>
+<h4 id="describe-field">DESCRIBE FIELD</h4>
+<p>对一个 Elementary data 的属性进行描述，可以通过这条语句知道某一个 data 的类型、长度、小数点、输出长度等信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DESCRIBE FIELD</span> dobj 
+  [<span style="color:#66d9ef">TYPE </span>typ [COMPONENTS com]] 
+  [LENGTH ilen <span style="color:#66d9ef">IN</span> <span style="color:#960050;background-color:#1e0010">{</span>BYTE<span style="color:#960050;background-color:#1e0010">|</span>CHARACTER<span style="color:#960050;background-color:#1e0010">}</span> MODE] 
+  [DECIMALS dec] 
+  [<span style="color:#66d9ef">OUTPUT-LENGTH</span> olen] 
+  [HELP<span style="color:#f92672">-</span>ID hlp] 
+  [EDIT MASK mask].
+</code></pre></div><h4 id="describe-table">DESCRIBE TABLE</h4>
+<p><code>DESCRIBE TABLE itab [KIND knd] [LINES lin] [OCCURS n].</code></p>
+<p>不同的选项返回表类型、行数、初始化大小。另外，系统字段 <code>sy-tfill</code> 和 <code>sy-tleng</code> 保存着内表行数量和以字节计的表行长度。</p>
+<p>KIND：T 标准表；S 排序表；H 哈希表</p>
+<p>LINES：内表行数，返回值为 i 类型。可以使用函数 LINES(itab) 计算内表行数</p>
+<p>OCCURS：内表所需要的初始化内存大小</p>
+<h4 id="describe-distance">DESCRIBE DISTANCE</h4>
+<p><code>DESCRIBE DISTANCE BETWEEN dobj1 AND dobj2 INTO dst IN {BYTE|CHARACTER} MODE.</code></p>
+<ul>
+<li>dobj1 and dobj2 两个变量地址起始位置的距离</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1699</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Basis_2/" class="prev" rel="prev" title=" ABAP 简介 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 简介 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Table_Basis/" class="next" rel="next" title=" SAP 数据字典 "> SAP 数据字典 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-05-12 00:00:00 \u002b0000 UTC',
+        title: ' ABAP 数据类型和变量 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

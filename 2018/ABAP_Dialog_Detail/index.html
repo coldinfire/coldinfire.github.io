@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Dialog_Basis/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Dialog_ProgrammingTechniques/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Dialog_Detail/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Dialog 逻辑控制  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Dialog 逻辑控制  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Dialog 逻辑控制 "/>
+<meta name="twitter:description" content="Dialog 屏幕操作 语法 Module ... END MODULE. SET screen xxxx . CALL screen xxxx. LEAVE screen. CALL screen xxx [starting at lc ur] [ending at rc lr]. (Modal dialog box类型) SET CURSOR FIELD &lt;f&gt; [offset &lt;o&gt;]. MODULE EXIT AT EXIT-COMMAND. Static Attributes Attribute Attribute Attribute Attribute Attribute Attribute screen-name screen-active screen-invisible screen-input screen-group1 screen-group3 screen-length screen-required screen-intensified screen-output screen-group2 screen-group4 screen-color"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Dialog 逻辑控制 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_Detail\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Dialog",
+  "wordcount":  1624 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_Detail\/",
+  "datePublished": "2018-08-28T00:00:00\x2b00:00",
+  "dateModified": "2018-08-28T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Dialog 逻辑控制 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-08-28 >28 August 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="dialog-屏幕操作">Dialog 屏幕操作</h3>
+<h4 id="语法">语法</h4>
+<ul>
+<li>
+<p><code>Module  ...  END MODULE. </code></p>
+</li>
+<li>
+<p><code>SET screen xxxx .</code></p>
+</li>
+<li>
+<p><code>CALL screen xxxx.</code></p>
+</li>
+<li>
+<p><code>LEAVE screen.</code></p>
+</li>
+<li>
+<p><code>CALL screen xxx [starting at lc ur] [ending at rc lr].</code>   (Modal dialog box类型)</p>
+</li>
+<li>
+<p><code>SET CURSOR FIELD &lt;f&gt; [offset &lt;o&gt;].  </code></p>
+</li>
+<li>
+<p><code>MODULE EXIT AT EXIT-COMMAND.</code></p>
+</li>
+</ul>
+<h4 id="static-attributes">Static Attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Attribute</th>
+<th>Attribute</th>
+<th>Attribute</th>
+<th>Attribute</th>
+<th>Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>screen-name</td>
+<td>screen-active</td>
+<td>screen-invisible</td>
+<td>screen-input</td>
+<td>screen-group1</td>
+<td>screen-group3</td>
+</tr>
+<tr>
+<td>screen-length</td>
+<td>screen-required</td>
+<td>screen-intensified</td>
+<td>screen-output</td>
+<td>screen-group2</td>
+<td>screen-group4</td>
+</tr>
+<tr>
+<td>screen-color</td>
+<td>screen-request</td>
+<td>screen-value_help</td>
+<td>screen-intensified</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="字段检查与逻辑流的控制">字段检查与逻辑流的控制</h3>
+<p>有许多方法可以验证在 Dialog screen 程序的 dynpro 上创建的字段，一般在 PAI Module 中进行验证。</p>
+<h4 id="单字段检查">单字段检查</h4>
+<ul>
+<li>单个字段检查： <code>FIELD &lt;FLD1&gt; MODULE &lt;MDL1&gt; .</code></li>
+<li>单个字段多个 MODULE 检查，如 FLD1 有两个 MODULE 检查：
+<ul>
+<li><code> FIELD &lt;FLD1&gt; MODULE &lt;MDL1&gt;. MODULE &lt;MDL2&gt;.</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="检查多字段使用-chain">检查多字段，使用 CHAIN</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">CHAIN.
+  <span style="color:#66d9ef">FIELD</span> &lt;FLD1&gt;.
+  <span style="color:#66d9ef">FIELD</span> &lt;FLD2&gt;,&lt;FLD3&gt;,&lt;FLD4&gt;.
+  <span style="color:#66d9ef">MODULE</span> &lt;MDL1&gt;.
+  <span style="color:#66d9ef">MODULE</span> &lt;MDL2&gt;.
+ENDCHAIN.
+<span style="color:#75715e">&#34;表示FLD1,FLD2,FLD3,FLD4有MDL1与MDL2检查&#34;
+</span></code></pre></div><h4 id="直接通过-abap-表查询验证-dynpro-屏幕字段">直接通过 ABAP 表查询验证 dynpro 屏幕字段</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FIELD</span> scr_field<span style="color:#f92672">-</span>ebeln
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> ekko
+   <span style="color:#66d9ef">WHERE</span> ebeln <span style="color:#f92672">=</span> scr_field<span style="color:#f92672">-</span>ebeln
+    <span style="color:#66d9ef">INTO</span> ekko
+  WHENEVER <span style="color:#f92672">NOT</span> FOUND SEND ERRORMESSAGE <span style="color:#ae81ff">001</span> <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;Document Number&#39;</span> <span style="color:#66d9ef">ON</span> INPUT.
+</code></pre></div><h4 id="其它检查">其它检查</h4>
+<p>不是初始值检查： <code>FIELD &lt;FLD1&gt; MODLE &lt;MDL1&gt; ON INPUT.</code></p>
+<ul>
+<li>ON INPUT表示是初始值改变时执行。
+<ul>
+<li>有一个特殊情况：<code> FIELD &lt;FLD1&gt; MODULE &lt;MDL1&gt; ON *-INPUT</code>
+表示用户输入字段首先输入&rsquo;*'，并且输入字段属性，MODULE无效。</li>
+</ul>
+</li>
+</ul>
+<p>有改变检查：<code>FIELD &lt;FLD1&gt; MODULE &lt;MDL1&gt; ON REQUEST.</code></p>
+<h4 id="chain-中有字段不是初始值检查">CHAIN 中有字段不是初始值检查</h4>
+<ul>
+<li>
+<p>CHAIN_INPUT： 表示FLD1、FLD2、FLD3、FLD4 不是初始值时执行 MDL1 检查</p>
+</li>
+<li>
+<p>ON CHAIN_REQUEST：当指定字段修改才会去读取数据</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">CHAIN.
+  <span style="color:#66d9ef">FIELD</span> &lt;FLD1&gt;.
+  <span style="color:#66d9ef">FIELD</span> &lt;FLD2&gt;,&lt;FLD3&gt;,&lt;FLD4&gt;.
+  <span style="color:#66d9ef">MODULE</span> &lt;MDL1&gt; <span style="color:#66d9ef">ON</span> CHAIN_INPUT.
+  <span style="color:#66d9ef">MODULE</span> &lt;MDL2&gt; <span style="color:#66d9ef">ON</span> CHAIN_REQUEST.
+ENDCHAIN.
+</code></pre></div><h4 id="exit-command">EXIT-COMMAND</h4>
+<p><code>MODULE &lt;mod&gt; AT EXIT-COMMAND.</code> ：在 Dialog Screen 中，对于 E 类型的 Function Code 触发退出屏幕，其他字段值不会传递到 ABAP 程序中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CASE</span> sy<span style="color:#f92672">-</span>command .
+  <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;BACK&#39;</span> .
+    <span style="color:#66d9ef">CHECK</span> abap_on
+       <span style="color:#f92672">EQ</span> lcl_workbench<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">popup_to_confirm</span>( iv_text <span style="color:#f92672">=</span> lcl_workbench<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>v_text<span style="color:#f92672">-</span>t138 ).
+    <span style="color:#66d9ef">LEAVE TO SCREEN</span> <span style="color:#ae81ff">0</span> .
+<span style="color:#66d9ef">ENDCASE</span>.
+</code></pre></div><p><code>AT SELECTION-SCREEN ON EXIT-COMMAND.</code>：在选择屏幕中，按钮触发事件。</p>
+<h3 id="call-subscreen">CALL Subscreen</h3>
+<p>子屏幕是显示在另一个（“主”）屏幕区域中的独立屏幕。子屏幕允许在运行时将一个屏幕嵌入到另一个屏幕中。 您可以在主屏幕上包含多个子屏幕。</p>
+<p>子屏幕既适用于嵌入的屏幕，也适用于放置它的主屏幕上的区域。 如果在屏幕属性中定义，则通过 SE51 事务创建的实际屏幕称为子屏幕屏幕。</p>
+<p>当使用子屏幕时，嵌入屏幕的流逻辑也嵌入到主屏幕的流逻辑中。因此，在屏幕上使用子屏幕就像在 ABAP 程序中使用包含一样。每当调用主屏幕时，都会调用主屏幕的 PBO。但是在显示之前，还调用了主屏幕上附有子屏幕区域的每个屏幕的PBO。</p>
+<p>步骤</p>
+<ul>
+<li>定义屏幕上的子屏幕区域</li>
+<li>定义合适的子屏幕</li>
+<li>在子屏幕区域中包含子屏幕屏幕</li>
+</ul>
+<h4 id="创建子屏幕">创建子屏幕</h4>
+<p>在 ABAP dynpro 屏幕上创建子屏幕是一个相当简单的过程，只需将子屏幕区域（SUB0）添加到主程序屏幕，然后在主屏幕的 PBO 流逻辑中添加相应的 ABAP 代码。</p>
+<p>添加子屏幕区域：SUB0</p>
+<p><img src="/images/ABAP/ABAP_Dialog_3.png" alt="Subscreen"></p>
+<p>添加 ABAP 调用代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Dynpro PBO flow logic for screen 0100</span>
+<span style="color:#66d9ef">PROCESS BEFORE OUTPUT</span>.
+ <span style="color:#66d9ef">MODULE</span> STATUS_0100.
+ <span style="color:#66d9ef">CALL SUBSCREEN</span> sub0 <span style="color:#66d9ef">INCLUDING</span> <span style="color:#e6db74">&#39;call_prog&#39;</span> <span style="color:#e6db74">&#39;call_subscreen_number&#39;</span>.
+ <span style="color:#75715e">&#34;CALL SUBSCREEN sub0 INCLUDING &#39;ZSAPPROG&#39;  &#39;0110&#39;.&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">PROCESS AFTER INPUT</span>.
+ <span style="color:#66d9ef">MODULE</span> USER_COMMAND_0100.
+</code></pre></div><h4 id="使用子屏幕">使用子屏幕</h4>
+<p>可以在主屏幕的流逻辑中使用 CALL SUBSCREEN 语句包含子屏幕屏幕。</p>
+<p>要在主屏幕的子屏幕区域中包含一个子屏幕屏幕并调用其 PBO 流程逻辑，请在主屏幕的 PBO 事件中使用以下语句：</p>
+<ul>
+<li><code>CALL SUBSCREEN &lt;subarea&gt; INCLUDING [&lt;prog&gt;] &lt;dynp&gt;.</code></li>
+<li><code>&lt;prog&gt; = sy-cprog </code>：代表本程序</li>
+</ul>
+<p>调用子屏幕的 PAI 流逻辑，在主屏的PAI流逻辑中使用如下语句：</p>
+<ul>
+<li><code>CALL SUBSCREEN &lt;subarea&gt;.</code></li>
+</ul>
+<h4 id="注意事项">注意事项</h4>
+<ul>
+<li>子屏幕需要在主屏幕的流逻辑（PBO 和 PAI）中调用</li>
+<li>一个屏幕内的子屏幕元素的名称应该是唯一的</li>
+<li>不应该将 OK_CODE 或 FCODE 附加到子屏幕。主屏本身的 OK_CODE 就是副屏的 OK_CODE</li>
+<li>子屏幕不能有任何包含 SET TITLEBAR、SET PF-STATUS、SET SCREEN、LEAVE SCREEN 或 LEAVE TO SCREEN 的对话模块，这将导致运行时错误</li>
+<li>CHAIN..ENDCHAIN 和 LOOP ENDLOOP 语句中不允许 CALL SUBSCREEN</li>
+<li>子屏幕不能有 AT EXIT-COMMAND 模块</li>
+<li>使用的字段是全局字段时必须先在顶部声明</li>
+<li>如果使用来自另一个对话程序的子屏幕，除非添加特定代码，否则不会发生数据传输</li>
+</ul>
+<h3 id="屏幕下拉列表">屏幕下拉列表</h3>
+<p>使用 Listbox 选项将下拉列表添加到 SAP dynpro screen。</p>
+<p>打开 Screen 的 Layou，创建字段后双击输入字段，出现属性窗口。 更新 Dropdown 属性，使其设置为 Listbox 。</p>
+<h4 id="pbo-中添加代码">PBO 中添加代码</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Module  STATUS_0100  OUTPUT</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">MODULE</span> <span style="color:#a6e22e">STATUS_0100</span> <span style="color:#66d9ef">OUTPUT</span>.
+<span style="color:#75715e">*  SET PF-STATUS &#39;xxxxxxxx&#39;.</span>
+<span style="color:#75715e">*  SET TITLEBAR &#39;xxx&#39;.</span>
+  <span style="color:#66d9ef">TYPE-POOLS</span> : VRM.
+  <span style="color:#66d9ef">DATA</span>: ld_field    <span style="color:#66d9ef">TYPE </span>VRM_ID ,
+        it_listbox  <span style="color:#66d9ef">TYPE </span>VRM_VALUES,
+        wa_listbox  <span style="color:#66d9ef">LIKE LINE OF</span> it_listbox.
+  <span style="color:#66d9ef">DATA</span>: it_mara <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> mara,
+        wa_mara <span style="color:#66d9ef">TYPE </span>mara.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> up <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">10</span> rows
+    <span style="color:#66d9ef">FROM</span> mara
+    <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> it_mara.
+  <span style="color:#66d9ef">LOOP AT </span>it_mara <span style="color:#66d9ef">INTO</span> wa_mara.
+    wa_listbox<span style="color:#f92672">-</span>key <span style="color:#f92672">=</span> wa_mara<span style="color:#f92672">-</span>matnr.
+    wa_listbox<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> wa_mara<span style="color:#f92672">-</span>matnr.
+    <span style="color:#66d9ef">APPEND</span> wa_listbox <span style="color:#66d9ef">TO</span> it_listbox.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  ld_field <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EKKO-EBELN&#39;</span>.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;VRM_SET_VALUES&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">id</span>     <span style="color:#f92672">=</span> ld_field
+      <span style="color:#66d9ef">values</span> <span style="color:#f92672">=</span> it_listbox.
+<span style="color:#66d9ef">ENDMODULE</span>.                 <span style="color:#75715e">&#34; STATUS_0100  OUTPUT &#34;
+</span></code></pre></div><h3 id="sap-dynpro-屏幕单选按钮分组">SAP dynpro 屏幕单选按钮分组</h3>
+<p>Dialog dynpro screen 上创建单选按钮时，默认情况下它们不会相互链接。因此需要将它们链接在一起，以便在选择其中一个时，SAP 知道取消选择已选择的那个。</p>
+<p>打开图形布局编辑器并选择要组合在一起的单选按钮，选中后右键单击选择并选择 &ldquo;Radio Buton Group =&gt; Define&rdquo;。 单选按钮现在应该可以正常工作，并且每次只允许选择一个单选按钮。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1624</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Dialog/">
+                    #Dialog</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_Basis/" class="prev" rel="prev" title=" Dialog 程序简介 "><i class="iconfont icon-dajiantou"></i>&nbsp; Dialog 程序简介 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_ProgrammingTechniques/" class="next" rel="next" title=" Dialog 编程技术 "> Dialog 编程技术 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-08-28 00:00:00 \x2b0000 UTC',
+        title: ' Dialog 逻辑控制 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

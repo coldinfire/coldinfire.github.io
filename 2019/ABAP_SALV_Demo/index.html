@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_Editable/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_BAPI_Basis/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_Demo/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV ALV Demo | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV ALV Demo | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV ALV Demo"/>
+<meta name="twitter:description" content="SALV 框架代码 *&amp;---------------------------------------------------------------------* *&amp; Report ZSALV_DEMO *&amp;---------------------------------------------------------------------* REPORT zsalv_demo. TABLES: mara,marc,rlgrap. TYPES: BEGIN OF str_demo, matnr TYPE mara-matnr, werks TYPE marc-werks, dismm TYPE marc-dismm, dispo TYPE marc-dispo, END OF str_demo. DATA: gt_alv TYPE STANDARD TABLE OF str_demo, gs_alv TYPE str_demo. &#34;SALV Data&#34; DATA: list_display TYPE sap_bool. DATA: go_container TYPE REF TO cl_gui_custom_container. DATA: go_alv TYPE REF TO cl_salv_table. DATA: go_error TYPE REF TO cx_salv_error. DATA: go_message TYPE"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV ALV Demo",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Demo\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  792 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Demo\/",
+  "datePublished": "2019-06-13T00:00:00\x2b00:00",
+  "dateModified": "2019-06-13T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV ALV Demo</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-13 >13 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="salv-框架代码">SALV 框架代码</h3>
+<p><img src="/images/ABAP/SALV13.png" alt="SALV Demo"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  ZSALV_DEMO</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  zsalv_demo.
+<span style="color:#66d9ef">TABLES</span>: mara,marc,rlgrap.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> str_demo,
+  matnr <span style="color:#66d9ef">TYPE </span>mara<span style="color:#f92672">-</span>matnr,
+  werks <span style="color:#66d9ef">TYPE </span>marc<span style="color:#f92672">-</span>werks,
+  dismm <span style="color:#66d9ef">TYPE </span>marc<span style="color:#f92672">-</span>dismm,
+  dispo <span style="color:#66d9ef">TYPE </span>marc<span style="color:#f92672">-</span>dispo,
+<span style="color:#66d9ef">END OF</span> str_demo.
+<span style="color:#66d9ef">DATA</span>: gt_alv <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> str_demo,
+      gs_alv <span style="color:#66d9ef">TYPE </span>str_demo.
+<span style="color:#75715e">&#34;SALV Data&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: list_display <span style="color:#66d9ef">TYPE </span>sap_bool.
+<span style="color:#66d9ef">DATA</span>: go_container <span style="color:#66d9ef">TYPE REF TO</span> cl_gui_custom_container.
+<span style="color:#66d9ef">DATA</span>: go_alv       <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#66d9ef">DATA</span>: go_error     <span style="color:#66d9ef">TYPE REF TO</span> cx_salv_error.
+<span style="color:#66d9ef">DATA</span>: go_message   <span style="color:#66d9ef">TYPE REF TO</span> cx_salv_msg.
+<span style="color:#75715e">&#34;Selection Screen&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> blk1 <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">001</span>.
+<span style="color:#66d9ef">PARAMETERS</span>: p_werks <span style="color:#66d9ef">TYPE </span>marc<span style="color:#f92672">-</span>werks .
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: s_matnr <span style="color:#66d9ef">FOR</span> mara<span style="color:#f92672">-</span>matnr .
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> blk1 .
+<span style="color:#75715e">&#34;Event Handle&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_handle_events DEFINITION</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_handle_events <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:
+      on_user_command <span style="color:#66d9ef">FOR EVENT</span> added_function <span style="color:#66d9ef">OF</span> cl_salv_events
+         <span style="color:#66d9ef">IMPORTING</span> e_salv_function,
+      on_before_salv_function <span style="color:#66d9ef">FOR EVENT</span> before_salv_function <span style="color:#66d9ef">OF</span> cl_salv_events
+         <span style="color:#66d9ef">IMPORTING</span> e_salv_function,
+      on_after_salv_function <span style="color:#66d9ef">FOR EVENT</span> after_salv_function <span style="color:#66d9ef">OF</span> cl_salv_events
+         <span style="color:#66d9ef">IMPORTING</span> e_salv_function,
+      on_double_click <span style="color:#66d9ef">FOR EVENT</span> double_click <span style="color:#66d9ef">OF</span> cl_salv_events_table
+         <span style="color:#66d9ef">IMPORTING</span> row column,
+      on_link_click <span style="color:#66d9ef">FOR EVENT</span> link_click <span style="color:#66d9ef">OF</span> cl_salv_events_table
+         <span style="color:#66d9ef">IMPORTING</span> row column.
+<span style="color:#66d9ef">ENDCLASS</span>.             <span style="color:#75715e">&#34; lcl_handle_events DEFINITION &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       CLASS lcl_handle_events IMPLEMENTATION</span>
+<span style="color:#75715e">*----------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">CLASS</span> lcl_handle_events <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_user_command</span>.
+    <span style="color:#66d9ef">DATA</span>: lv_flag <span style="color:#66d9ef">TYPE </span>char1.
+    <span style="color:#66d9ef">DATA</span>: lo_selections <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_selections.
+    <span style="color:#66d9ef">DATA</span>: lt_selected_rows <span style="color:#66d9ef">TYPE </span>salv_t_row,
+          ls_selected_row  <span style="color:#66d9ef">LIKE LINE OF</span> lt_selected_rows.
+    lo_selections <span style="color:#f92672">=</span> go_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_selections</span>( ) .
+    lt_selected_rows  <span style="color:#f92672">=</span> lo_selections<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_selected_rows</span>( ).
+    <span style="color:#66d9ef">CASE</span> e_salv_function.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">OTHERS</span>.
+    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_user_command&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_before_salv_function</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_before_salv_function&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_after_salv_function</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_after_salv_function&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_double_click</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_double_click&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">on_link_click</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;on_single_click&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.            <span style="color:#75715e">&#34; lcl_handle_events IMPLEMENTATION &#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">get_data</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">process_data</span>.
+  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">show_alv</span> <span style="color:#66d9ef">USING</span> gt_alv.
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  GET_DATA</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">get_data</span> .
+  <span style="color:#66d9ef">CLEAR</span> gt_alv.
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+    <span style="color:#66d9ef">FROM</span> mara INNER <span style="color:#66d9ef">JOIN</span> marc <span style="color:#66d9ef">ON</span> mara~matnr <span style="color:#f92672">=</span> marc~matnr
+    <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">CORRESPONDING FIELDS OF</span> <span style="color:#66d9ef">TABLE</span> gt_alv
+   <span style="color:#66d9ef">WHERE</span> mara~matnr <span style="color:#66d9ef">IN</span> s_matnr
+     <span style="color:#f92672">AND</span> werks <span style="color:#f92672">EQ</span> p_werks.
+  <span style="color:#66d9ef">IF</span> gt_alv <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;No data.&#39;</span> TYPE <span style="color:#e6db74">&#39;S&#39;</span> DISPLAY LIKE <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#66d9ef">LEAVE</span> LIST<span style="color:#f92672">-</span>PROCESSING.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; GET_DATA &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  PROCESS_DATA</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">process_data</span> .
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; PROCESS_DATA&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  show_alv</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">show_alv</span> <span style="color:#66d9ef">USING</span> gt_output.
+  <span style="color:#66d9ef">DATA</span>: lo_functions <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_functions_list.
+  <span style="color:#66d9ef">TRY</span> .
+      cl_salv_table<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">factory</span>(
+        <span style="color:#66d9ef">EXPORTING</span>
+          list_display   <span style="color:#f92672">=</span> list_display
+         <span style="color:#75715e">&#34;R_CONTAINER    = &#34;
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">&#34;CONTAINER_NAME = &#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">IMPORTING</span>
+          r_salv_table   <span style="color:#f92672">=</span> go_alv
+        <span style="color:#66d9ef">CHANGING</span>
+          t_table        <span style="color:#f92672">=</span> gt_output
+     ).
+    <span style="color:#66d9ef">CATCH</span> cx_salv_msg <span style="color:#66d9ef">INTO</span> go_message.
+  <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#75715e">&#34;set default set of generic functions&#34;
+</span><span style="color:#75715e"></span>  lo_functions <span style="color:#f92672">=</span> go_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_functions</span>( ).
+  lo_functions<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_all</span>( if_salv_c_bool_sap<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>true ).
+  <span style="color:#75715e">&#34;define settings&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">define_settings</span> <span style="color:#66d9ef">USING</span> go_alv.
+  <span style="color:#75715e">&#34;display ALV&#34;
+</span><span style="color:#75715e"></span>  go_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; show_alv &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  define_settings</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">define_settings</span> <span style="color:#66d9ef">USING</span> co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  PERFORM: set_display <span style="color:#66d9ef">USING</span> co_alv,
+           set_columns <span style="color:#66d9ef">USING</span> co_alv,
+           set_sorts <span style="color:#66d9ef">USING</span> co_alv,
+           set_aggregs <span style="color:#66d9ef">USING</span> co_alv,
+           set_filter <span style="color:#66d9ef">USING</span> co_alv,
+           set_layout <span style="color:#66d9ef">USING</span> co_alv
+           set_handler <span style="color:#66d9ef">USING</span> co_alv.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; define_settings &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  set_display</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">set_display</span> <span style="color:#66d9ef">USING</span> p_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: lo_display <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_display_settings,
+        lo_selections <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_selections,
+        lv_title   <span style="color:#66d9ef">TYPE </span>lvc_title.
+  <span style="color:#75715e">&#34;get display settings object&#34;
+</span><span style="color:#75715e"></span>  lo_display <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_display_settings</span>( ).
+  <span style="color:#75715e">&#34;set header&#34;
+</span><span style="color:#75715e"></span>  lv_title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SALV Demo&#39;</span>.
+  lo_display<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_list_header</span>( <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> lv_title ).
+  <span style="color:#75715e">&#34;set horizontal lines off&#34;
+</span><span style="color:#75715e"></span>  lo_display<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_horizontal_lines</span>( <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span> ).
+  <span style="color:#75715e">&#34;set striped pattern&#34;
+</span><span style="color:#75715e"></span>  lo_display<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_striped_pattern</span>( <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> ).
+  <span style="color:#75715e">&#34;set the selection mode&#34;
+</span><span style="color:#75715e"></span>  lo_selections <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_selections</span>( ).
+  lo_selections<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_selection_mode</span>( <span style="color:#66d9ef">value</span>  <span style="color:#f92672">=</span> if_salv_c_selection_mode<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>cell ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; set_display &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  set_columns</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">set_columns</span> <span style="color:#66d9ef">USING</span> p_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: lo_columns <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_columns_table.
+  <span style="color:#66d9ef">DATA</span>: lo_column  <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_column.
+  <span style="color:#75715e">&#34;help field for tooltip&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: l_lvc_tip <span style="color:#66d9ef">TYPE </span>lvc_tip.
+  <span style="color:#75715e">&#34;help field for column position&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: l_pos <span style="color:#66d9ef">TYPE </span>i.
+  lo_columns <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_columns</span>( ).
+  <span style="color:#75715e">&#34;optimize columns&#39; width&#34;
+</span><span style="color:#75715e"></span>  lo_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_optimize</span>( <span style="color:#e6db74">&#39;X&#39;</span> ).
+  <span style="color:#75715e">&#34;fix key fields&#34;
+</span><span style="color:#75715e"></span>  lo_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_key_fixation</span>( if_salv_c_bool_sap<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>true ).
+  <span style="color:#75715e">&#34;Column setting&#34;
+</span><span style="color:#75715e"></span>  lo_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lo_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;MATNR&#39;</span> ).
+  lo_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_short_text</span>( <span style="color:#e6db74">&#39;Material&#39;</span> ).
+  lo_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_medium_text</span>( <span style="color:#e6db74">&#39;Material&#39;</span> ).
+  lo_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_long_text</span>( <span style="color:#e6db74">&#39;Material&#39;</span> ).
+
+  lo_column <span style="color:#f92672">?</span><span style="color:#f92672">=</span> lo_columns<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;WERKS&#39;</span> ).
+  lo_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_short_text</span>( <span style="color:#e6db74">&#39;Plant&#39;</span> ).
+  lo_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_medium_text</span>( <span style="color:#e6db74">&#39;Plant&#39;</span> ).
+  lo_column<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_long_text</span>( <span style="color:#e6db74">&#39;Plant&#39;</span> ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; set_columns &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  set_sorts</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">set_sorts</span>  <span style="color:#66d9ef">USING</span>  p_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: lo_sorts <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_sorts.
+  lo_sorts <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_sorts</span>( ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; set_sorts &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  set_aggregs</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">set_aggregs</span>  <span style="color:#66d9ef">USING</span> p_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: lo_aggregs <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_aggregations.
+  lo_aggregs <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_aggregations</span>( ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; set_aggregs &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  set_filter</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">set_filter</span> <span style="color:#66d9ef">USING</span>  p_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: lo_filter <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_filters.
+  lo_filter <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_filters</span>( ).
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; set_sorts &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  set_layout</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">set_layout</span> <span style="color:#66d9ef">USING</span> p_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: lo_layout <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_layout,
+        ls_key    <span style="color:#66d9ef">TYPE </span>salv_s_layout_key.
+  lo_layout <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_layout</span>( ).
+  <span style="color:#75715e">&#34;set the layout key&#34;
+</span><span style="color:#75715e"></span>  ls_key<span style="color:#f92672">-</span>report <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>cprog.
+  lo_layout<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_key</span>( <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> ls_key ).
+  lo_layout<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_save_restriction</span>( if_salv_c_layout<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>restrict_none ).
+  <span style="color:#75715e">&#34;allow setting a default layout&#34;
+</span><span style="color:#75715e"></span>  lo_layout<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_default</span>( <span style="color:#66d9ef">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span> ).
+  <span style="color:#75715e">&#34;Customized Toolbar&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL METHOD</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>set_screen_status
+    <span style="color:#66d9ef">EXPORTING</span>
+      pfstatus <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SALV_TABLE_STANDARD&#39;</span>
+      <span style="color:#66d9ef">report</span>   <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; set_layout &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  SET_HANDLER</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">set_handler</span>  <span style="color:#66d9ef">USING</span>  p_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+  <span style="color:#66d9ef">DATA</span>: lo_events <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_events_table.
+  <span style="color:#66d9ef">DATA</span>: lo_handle_event <span style="color:#66d9ef">TYPE REF TO</span> lcl_handle_events.
+  lo_events <span style="color:#f92672">=</span> p_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_event</span>( ).
+  <span style="color:#66d9ef">CREATE OBJECT</span> lo_handle_event.
+  <span style="color:#66d9ef">SET HANDLER</span> lo_handle_event<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_user_command <span style="color:#66d9ef">FOR</span> lo_events.
+  <span style="color:#66d9ef">SET HANDLER</span> lo_handle_event<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_before_salv_function <span style="color:#66d9ef">FOR</span> lo_events.
+  <span style="color:#66d9ef">SET HANDLER</span> lo_handle_event<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_after_salv_function <span style="color:#66d9ef">FOR</span> lo_events.
+  <span style="color:#66d9ef">SET HANDLER</span> lo_handle_event<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_double_click <span style="color:#66d9ef">FOR</span> lo_events.
+  <span style="color:#66d9ef">SET HANDLER</span> lo_handle_event<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>on_link_click <span style="color:#66d9ef">FOR</span> lo_events.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; set_handler &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>792</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Editable/" class="prev" rel="prev" title=" SALV 可编辑设置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV 可编辑设置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_BAPI_Basis/" class="next" rel="next" title=" BAPI 使用 "> BAPI 使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-13 00:00:00 \x2b0000 UTC',
+        title: ' SALV ALV Demo',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

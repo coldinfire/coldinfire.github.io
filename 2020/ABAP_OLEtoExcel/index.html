@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/SAPAuthorizationTable/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_Code_Search/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_OLEtoExcel/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           OLE下载数据到EXCEL模板及速度优化 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="OLE下载数据到EXCEL模板及速度优化 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OLE下载数据到EXCEL模板及速度优化"/>
+<meta name="twitter:description" content="引用链接：OLE 下载数据到EXCEL模板及速度优化 问题描述: 当项目中对导出数据EXCEL模板有要求时，ALV标准导出功能不能满足需要开发人员"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OLE下载数据到EXCEL模板及速度优化",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_OLEtoExcel\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils, ALV",
+  "wordcount":  2043 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_OLEtoExcel\/",
+  "datePublished": "2020-03-20T00:00:00\u002b00:00",
+  "dateModified": "2020-03-20T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">OLE下载数据到EXCEL模板及速度优化</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-03-20 >20 March 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>引用链接：<a href="https://mp.weixin.qq.com/s/9_1gyAgRwgGa09dXID-_LA">OLE 下载数据到EXCEL模板及速度优化</a></p>
+<p><strong>问题描述:</strong> 当项目中对导出数据EXCEL模板有要求时，ALV标准导出功能不能满足需要开发人员自定义下载数据程序。</p>
+<p>步骤：</p>
+<ul>
+<li>上传模板 tcode：SMW0</li>
+<li>获取并展示数据</li>
+<li>自定义按钮</li>
+<li>将ALV数据下载到EXCEL模板中</li>
+<li>下载速度的优化</li>
+<li>程序源码（ZOLE_EXCEL）</li>
+</ul>
+<h4 id="下载速度优化">下载速度优化：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*</span> <span style="color:#a6e22e">将内表数据先放到剪切板上</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">全量粘贴</span>
+<span style="color:#a6e22e">DESCRIBE</span> <span style="color:#a6e22e">FIELD</span> <span style="color:#a6e22e">LW_ALV</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LV_TYPE</span> <span style="color:#a6e22e">COMPONENTS</span> <span style="color:#a6e22e">LV_RC</span>.
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">T_ALV</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">W_ALV</span>.
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MANDT</span>.      
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PERSNUMBER</span>.    
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_LAST</span>.    
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE4</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_TEXT</span>.    
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE5</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMPANY</span>.    
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">LW_CHAR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE</span>.
+    <span style="color:#a6e22e">DO</span> <span style="color:#a6e22e">LV_RC</span> <span style="color:#a6e22e">TIMES</span>.
+     <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">COMPONENT</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">INDEX</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">STRUCTURE</span> <span style="color:#a6e22e">LW_ALV</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">LV_FIELD</span><span style="color:#f92672">&gt;</span>.
+     <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">LW_CHAR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">LV_FIELD</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">CL_ABAP_CHAR_UTILITIES</span>=&gt;<span style="color:#a6e22e">HORIZONTAL_TAB</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">LW_CHAR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE</span>.
+    <span style="color:#a6e22e">ENDDO</span>.
+    <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">LW_CHAR</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">LT_CHAR</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">将内表数据放到excel剪切板上</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">CL_GUI_FRONTEND_SERVICES</span>=&gt;<span style="color:#a6e22e">CLIPBOARD_EXPORT</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">DATA</span>                 <span style="color:#f92672">=</span> <span style="color:#a6e22e">LT_CHAR</span>  <span style="color:#e6db74">&#34;Data&#34;</span>
+    <span style="color:#a6e22e">CHANGING</span>
+      <span style="color:#a6e22e">RC</span>                   <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_RC</span>    <span style="color:#e6db74">&#34;Return Code&#34;</span>
+    <span style="color:#a6e22e">EXCEPTIONS</span>
+      <span style="color:#a6e22e">CNTL_ERROR</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">ERROR_NO_GUI</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#a6e22e">NOT_SUPPORTED_BY_GUI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+<span style="color:#f92672">*</span>     <span style="color:#a6e22e">no_authority</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      <span style="color:#a6e22e">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.</span>
+
+  <span style="color:#a6e22e">GET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;ACTIVECELL&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SHEET</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;Worksheets&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SHEET</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Sheet1&#39;</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">SHEET</span> <span style="color:#e6db74">&#39;Activate&#39;</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">cell</span> <span style="color:#a6e22e">A1</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;CELLS&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CELL</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>  <span style="color:#e6db74">&#34; i_row &#34;</span>
+      <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span> <span style="color:#e6db74">&#34; i_col &#34;</span>
+
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Paste</span> <span style="color:#a6e22e">clipboard</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">cell</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">CELL</span> <span style="color:#e6db74">&#39;SELECT&#39;</span>. <span style="color:#e6db74">&#34; 选择单元格 &#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">SHEET</span> <span style="color:#e6db74">&#39;Paste&#39;</span>. <span style="color:#e6db74">&#34; 粘贴 &#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;CELLS&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CELL</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+     <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+     <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> .
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">CELL</span> <span style="color:#e6db74">&#39;SELECT&#39;</span>. <span style="color:#e6db74">&#34; 取消全选&#34;</span>
+</code></pre></div><h4 id="程序源码">程序源码</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">TABLES</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ADRP</span>.
+<span style="color:#e6db74">&#34; Declare Internal Table TYPE &#34;</span>
+<span style="color:#a6e22e">TYPES</span><span style="color:#f92672">:</span><span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">TP_ALV</span> ,
+       <span style="color:#a6e22e">MANDT</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ADRP</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CLIENT</span>,      <span style="color:#e6db74">&#34;客户端&#34;</span>
+       <span style="color:#a6e22e">PERSNUMBER</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ADRP</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PERSNUMBER</span>,  <span style="color:#e6db74">&#34;人员编号&#34;</span>
+       <span style="color:#a6e22e">NAME_LAST</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ADRP</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_LAST</span>,   <span style="color:#e6db74">&#34;姓&#34;</span>
+       <span style="color:#a6e22e">NAME_TEXT</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">ADRP</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_TEXT</span>,   <span style="color:#e6db74">&#34;全名&#34;</span>
+       <span style="color:#a6e22e">COMPANY</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">CHAR50</span>,           <span style="color:#e6db74">&#34;公司&#34;</span>
+      <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">TP_ALV</span>.
+<span style="color:#e6db74">&#34; Declare Internal Table &#34;</span>
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">T_ALV</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STANDARD</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">TP_ALV</span>.
+<span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">W_ALV</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">TP_ALV</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">W_LAYOUT</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LVC_S_LAYO</span>,
+      <span style="color:#a6e22e">W_FCAT</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LVC_S_FCAT</span>,
+      <span style="color:#a6e22e">T_FCAT</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LVC_T_FCAT</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;excel object&#34;</span>
+      <span style="color:#a6e22e">WORKBOOK</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;excel workbook objcet&#34;</span>
+      <span style="color:#a6e22e">SHEET</span>       <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;workbook sheet object&#34;</span>
+      <span style="color:#a6e22e">COLUMNS</span>     <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;sheet col objcet&#34;</span>
+      <span style="color:#a6e22e">ROWS</span>        <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;sheet row objcet&#34;</span>
+      <span style="color:#a6e22e">RANGE</span>       <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;range&#34;</span>
+      <span style="color:#a6e22e">RANGE1</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;range1&#34;</span>
+      <span style="color:#a6e22e">FONT</span>        <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;font&#34;</span>
+      <span style="color:#a6e22e">CELL</span>        <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;cell&#34;</span>
+      <span style="color:#a6e22e">CELL1</span>       <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;cell1&#34;</span>
+      <span style="color:#a6e22e">SHEET1</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>,       <span style="color:#e6db74">&#34;workbook sheet object&#34;</span>
+      <span style="color:#a6e22e">BORDERS</span>     <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">OLE2_OBJECT</span>.       <span style="color:#e6db74">&#34;borders&#34;</span>
+      
+<span style="color:#e6db74">&#34; Constants: &#34;</span>
+<span style="color:#a6e22e">CONSTANTS</span> <span style="color:#a6e22e">LC_PF_STATUS</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">SLIS_FORMNAME</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;ALV_PF_STATUS&#39;</span> .       <span style="color:#e6db74">&#34;alv 自定义按钮&#34;</span>
+<span style="color:#a6e22e">CONSTANTS</span> <span style="color:#a6e22e">LC_USER_COMMAND</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">SLIS_FORMNAME</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;ALV_USER_COMMAND&#39;</span> . <span style="color:#e6db74">&#34;alv 自定义按钮响应事件&#34;</span>
+<span style="color:#a6e22e">CONSTANTS</span> <span style="color:#a6e22e">LC_COMPANY</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">CHAR50</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;XXXXX科技有限公司&#39;</span>.
+
+<span style="color:#f92672">**---------</span><span style="color:#a6e22e">Selection</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Screen</span><span style="color:#f92672">----------**</span>
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">B01</span> <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">FRAME</span> <span style="color:#a6e22e">TITLE</span> <span style="color:#a6e22e">TEXT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">P01</span>.
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">R_1</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">R1</span> <span style="color:#a6e22e">DEFAULT</span> <span style="color:#e6db74">&#39;X&#39;</span>,    
+            <span style="color:#a6e22e">R_2</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">RADIOBUTTON</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">R1</span> .  
+<span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">BLOCK</span> <span style="color:#a6e22e">B01</span>.
+<span style="color:#f92672">**======================================================================**</span>
+<span style="color:#f92672">**</span>  <span style="color:#a6e22e">Report</span> <span style="color:#a6e22e">Events</span><span style="color:#f92672">*</span>
+<span style="color:#a6e22e">INITIALIZATION</span>.
+<span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span> <span style="color:#a6e22e">OUTPUT</span>.             
+<span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">SELECTION</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SCREEN</span>.
+<span style="color:#a6e22e">START</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELECTION</span>.
+  <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">CORRESPONDING</span> <span style="color:#a6e22e">FIELDS</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">T_ALV</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">ADRP</span>.
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">T_ALV</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">W_ALV</span>.
+    <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MANDT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MANDT</span>.
+    <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMPANY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LC_COMPANY</span>.
+    <span style="color:#a6e22e">MODIFY</span> <span style="color:#a6e22e">T_ALV</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">W_ALV</span>.
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">W_ALV</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#a6e22e">END</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELECTION</span>.
+
+  <span style="color:#a6e22e">DEFINE</span> <span style="color:#a6e22e">_APPEND_FCAT</span>.
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">w_fcat</span>.
+    <span style="color:#a6e22e">w_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fieldname</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1.</span>
+    <span style="color:#a6e22e">w_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">scrtext_l</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">2.</span>
+<span style="color:#f92672">**</span>  <span style="color:#a6e22e">ls_fcat</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hotspot</span>   <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#ae81ff">3.</span><span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">append</span>  <span style="color:#a6e22e">w_fcat</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">t_fcat</span>.
+  <span style="color:#a6e22e">END</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">DEFINITION</span>.
+
+  <span style="color:#a6e22e">W_LAYOUT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ZEBRA</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ABAP_TRUE</span>.
+  <span style="color:#a6e22e">W_LAYOUT</span><span style="color:#f92672">-</span><span style="color:#a6e22e">CWIDTH_OPT</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">ABAP_TRUE</span>.
+  <span style="color:#a6e22e">_APPEND_FCAT</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;MANDT&#39;</span> <span style="color:#e6db74">&#39;客户端&#39;</span>,
+                <span style="color:#e6db74">&#39;PERSNUMBER&#39;</span> <span style="color:#e6db74">&#39;人员编号&#39;</span> ,
+                <span style="color:#e6db74">&#39;NAME_LAST&#39;</span> <span style="color:#e6db74">&#39;姓&#39;</span> ,
+                <span style="color:#e6db74">&#39;NAME_TEXT&#39;</span> <span style="color:#e6db74">&#39;全名&#39;</span> ,
+                <span style="color:#e6db74">&#39;COMPANY&#39;</span> <span style="color:#e6db74">&#39;公司&#39;</span>.
+
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;REUSE_ALV_GRID_DISPLAY_LVC&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">I_CALLBACK_PROGRAM</span>       <span style="color:#f92672">=</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">REPID</span>
+      <span style="color:#a6e22e">I_CALLBACK_PF_STATUS_SET</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LC_PF_STATUS</span>    <span style="color:#e6db74">&#34; 自定义按钮GUI &#34;</span>
+      <span style="color:#a6e22e">I_CALLBACK_USER_COMMAND</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">LC_USER_COMMAND</span> <span style="color:#e6db74">&#34; 自定义按钮响应事件 &#34;</span>
+      <span style="color:#a6e22e">IS_LAYOUT_LVC</span>            <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_LAYOUT</span>
+      <span style="color:#a6e22e">IT_FIELDCAT_LVC</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">T_FCAT</span>
+    <span style="color:#a6e22e">TABLES</span>
+      <span style="color:#a6e22e">T_OUTTAB</span>                 <span style="color:#f92672">=</span> <span style="color:#a6e22e">T_ALV</span>.
+
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">ALV_PF_STATUS</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">RT_EXTAB</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">SLIS_T_EXTAB</span> .
+  <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">STATUS</span> <span style="color:#e6db74">&#39;STANDARD_001&#39;</span>.
+<span style="color:#a6e22e">ENDFORM</span>.
+
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">ALV_USER_COMMAND</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">R_UCOMM</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">UCOMM</span>     <span style="color:#e6db74">&#34;user_command&#34;</span>
+                       <span style="color:#a6e22e">RS_SELFIELD</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">SLIS_SELFIELD</span>.
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LR_GRID</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">CL_GUI_ALV_GRID</span>.
+  <span style="color:#e6db74">&#34;将变更的数据刷新&#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;GET_GLOBALS_FROM_SLVC_FULLSCR&#39;</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">E_GRID</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LR_GRID</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">LR_GRID</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">CHECK_CHANGED_DATA</span>.
+  <span style="color:#a6e22e">RS_SELFIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">REFRESH</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  
+  <span style="color:#a6e22e">CASE</span> <span style="color:#a6e22e">R_UCOMM</span>.
+    <span style="color:#a6e22e">WHEN</span> <span style="color:#e6db74">&#39;&amp;DOWNLOAD&#39;</span>.
+     <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_DOWNLOAD_ALV</span>.  <span style="color:#e6db74">&#34;附加关税成本追加&#34;</span>
+  <span style="color:#a6e22e">ENDCASE</span>.
+<span style="color:#a6e22e">ENDFORM</span>.
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_DOWNLOAD_ALV</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_DOWNLOAD_ALV</span> .
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LV_FILE</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">RLGRAP</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FILENAME</span>,
+        <span style="color:#a6e22e">LV_PATH</span>    <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">RLGRAP</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FILENAME</span> ,
+        <span style="color:#a6e22e">LV_ERROR</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">CHAR1</span>,
+        <span style="color:#a6e22e">LV_PERCENT</span>(<span style="color:#ae81ff">5</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">P</span> <span style="color:#a6e22e">DECIMALS</span> <span style="color:#ae81ff">2.</span>
+  <span style="color:#e6db74">&#34;获取文件路径&#34;</span>
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_GET_FILE</span> <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">LV_PATH</span> <span style="color:#a6e22e">LV_ERROR</span>.
+  <span style="color:#a6e22e">CHECK</span> <span style="color:#a6e22e">LV_ERROR</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_PROCESS_INDCATOR</span> <span style="color:#a6e22e">USING</span> <span style="color:#e6db74">&#39;程序正在下载模板&#39;</span> <span style="color:#ae81ff">0</span> .
+  <span style="color:#a6e22e">LV_FILE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_PATH</span>.
+  <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">LV_FILE</span> <span style="color:#e6db74">&#39;员工信息表&#39;</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">UZEIT</span> <span style="color:#e6db74">&#39;.xlsx&#39;</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">LV_FILE</span>.
+  <span style="color:#e6db74">&#34;下载模板&#34;</span>
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_DOWN_TEMPLATE</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">LV_FILE</span> <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">LV_ERROR</span>.
+  <span style="color:#a6e22e">CHECK</span> <span style="color:#a6e22e">LV_ERROR</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+  <span style="color:#e6db74">&#34;打开excel&#34;</span>
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_OPEN_EXCEL_HIDE</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">LV_FILE</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_PROCESS_INDCATOR</span> <span style="color:#a6e22e">USING</span> <span style="color:#e6db74">&#39;程序正在把数据写入到Excel&#39;</span> <span style="color:#a6e22e">LV_PERCENT</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">R_1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_WRITE_DATA</span>.
+  <span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">R_2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_WRITE_DATA_YH</span> .
+  <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#e6db74">&#34;关闭excel&#34;</span>
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_CLOSE_EXCEL</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">LV_FILE</span>.
+  <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_FREE_OBJECT</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_DOWNLOAD_ALV&#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_GET_FILE</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_GET_FILE</span>  <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">OV_FILE</span> <span style="color:#a6e22e">OV_ERROR</span>.
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LV_FOLDER</span>  <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">CL_GUI_FRONTEND_SERVICES</span>=&gt;<span style="color:#a6e22e">DIRECTORY_BROWSE</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">WINDOW_TITLE</span>         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;文件路径选择&#39;</span>
+<span style="color:#f92672">*</span>     <span style="color:#a6e22e">initial_folder</span>       <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">CHANGING</span>
+      <span style="color:#a6e22e">SELECTED_FOLDER</span>      <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_FOLDER</span>
+    <span style="color:#a6e22e">EXCEPTIONS</span>
+      <span style="color:#a6e22e">CNTL_ERROR</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">ERROR_NO_GUI</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#a6e22e">NOT_SUPPORTED_BY_GUI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      <span style="color:#a6e22e">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">4.</span>
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBRC</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">0.</span>
+    <span style="color:#a6e22e">MESSAGE</span> <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGID</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#e6db74">&#39;S&#39;</span> <span style="color:#a6e22e">NUMBER</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGNO</span>
+      <span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV1</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV2</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV3</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MSGV4</span> <span style="color:#a6e22e">DISPLAY</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#a6e22e">OV_ERROR</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">LV_FOLDER</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+    <span style="color:#a6e22e">MESSAGE</span> <span style="color:#e6db74">&#39;文件下载取消！&#39;</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#e6db74">&#39;S&#39;</span>.
+    <span style="color:#a6e22e">OV_ERROR</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#a6e22e">ELSE</span>.
+    <span style="color:#a6e22e">OV_FILE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_FOLDER</span>.
+  <span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_GET_FILE &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_PROCESS_INDCATOR</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_PROCESS_INDCATOR</span>  <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">TEXT</span> <span style="color:#a6e22e">PERCENTAGE</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;SAPGUI_PROGRESS_INDICATOR&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">PERCENTAGE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">PERCENTAGE</span>
+      <span style="color:#a6e22e">TEXT</span>       <span style="color:#f92672">=</span> <span style="color:#a6e22e">TEXT</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_PROCESS_INDCATOR &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_DOWN_TEMPLATE</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_DOWN_TEMPLATE</span>  <span style="color:#a6e22e">USING</span>    <span style="color:#a6e22e">I_FILE</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">RLGRAP</span><span style="color:#f92672">-</span><span style="color:#a6e22e">FILENAME</span>
+                        <span style="color:#a6e22e">CHANGING</span> <span style="color:#a6e22e">OV_ERROR</span>.
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LO_OBJDATA</span>     <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">WWWDATATAB</span>,
+        <span style="color:#a6e22e">LO_MIME</span>        <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">W3MIME</span>,
+        <span style="color:#a6e22e">LS_OBJNAM</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>,
+        <span style="color:#a6e22e">LI_RC</span>          <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBRC</span>,
+        <span style="color:#a6e22e">LS_ERRTXT</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STRING</span>,
+        <span style="color:#a6e22e">LV_OBJID</span>       <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">WWWDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OBJID</span>.
+  <span style="color:#a6e22e">LV_OBJID</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZOLE_EXCEL&#39;</span>.
+  <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">LV_OBJID</span> <span style="color:#e6db74">&#39;.XLSX&#39;</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">LS_OBJNAM</span>.
+  <span style="color:#a6e22e">CONDENSE</span> <span style="color:#a6e22e">LS_OBJNAM</span> <span style="color:#a6e22e">NO</span><span style="color:#f92672">-</span><span style="color:#a6e22e">GAPS</span>.
+  <span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">SINGLE</span> <span style="color:#a6e22e">RELID</span> <span style="color:#a6e22e">OBJID</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">WWWDATA</span>
+    <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">CORRESPONDING</span> <span style="color:#a6e22e">FIELDS</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LO_OBJDATA</span>
+    <span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">SRTF2</span>    <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+      <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">RELID</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MI&#39;</span>
+      <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">OBJID</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_OBJID</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SUBRC</span> <span style="color:#a6e22e">NE</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">OR</span> <span style="color:#a6e22e">LO_OBJDATA</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OBJID</span> <span style="color:#a6e22e">EQ</span> <span style="color:#a6e22e">SPACE</span>.
+    <span style="color:#a6e22e">MESSAGE</span> <span style="color:#e6db74">&#39;模板文件不存在，请用TCODE：SMW0进行加载!&#39;</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#a6e22e">OV_ERROR</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;DOWNLOAD_WEB_OBJECT&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">KEY</span>         <span style="color:#f92672">=</span> <span style="color:#a6e22e">LO_OBJDATA</span>
+      <span style="color:#a6e22e">DESTINATION</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">I_FILE</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">RC</span>          <span style="color:#f92672">=</span> <span style="color:#a6e22e">LI_RC</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">LI_RC</span> <span style="color:#a6e22e">NE</span> <span style="color:#ae81ff">0.</span>
+    <span style="color:#a6e22e">MESSAGE</span> <span style="color:#e6db74">&#39;模板文件下载失败!&#39;</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#e6db74">&#39;E&#39;</span>.
+    <span style="color:#a6e22e">OV_ERROR</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+  <span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_DOWN_TEMPLATE &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_OPEN_EXCEL_HIDE</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_OPEN_EXCEL_HIDE</span>  <span style="color:#a6e22e">USING</span>    <span style="color:#a6e22e">P_FILE</span>
+                                   <span style="color:#a6e22e">P_HIDE</span>.
+  <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;EXCEL.APPLICATION&#39;</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">P_HIDE</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">INITIAL</span>.
+    <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;VISIBLE&#39;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>
+  <span style="color:#a6e22e">ELSE</span>.
+    <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;Visible&#39;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>
+  <span style="color:#a6e22e">ENDIF</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;Workbooks&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WORKBOOK</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">WORKBOOK</span> <span style="color:#e6db74">&#39;Open&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WORKBOOK</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+     <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">P_FILE</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_OPEN_EXCEL_HIDE &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_WRITE_DATA</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_WRITE_DATA</span> .
+  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">L_COUNT</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">I</span> <span style="color:#a6e22e">VALUE</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">T_ALV</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">W_ALV</span> .
+    <span style="color:#a6e22e">L_COUNT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">L_COUNT</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.</span>
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_FILL_CELL</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">L_COUNT</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MANDT</span> <span style="color:#a6e22e">SPACE</span>.
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_FILL_CELL</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">L_COUNT</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PERSNUMBER</span> <span style="color:#a6e22e">SPACE</span>.
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_FILL_CELL</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">L_COUNT</span> <span style="color:#ae81ff">3</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_LAST</span> <span style="color:#a6e22e">SPACE</span>.
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_FILL_CELL</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">L_COUNT</span> <span style="color:#ae81ff">4</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_TEXT</span> <span style="color:#a6e22e">SPACE</span>.
+    <span style="color:#a6e22e">PERFORM</span> <span style="color:#a6e22e">FRM_FILL_CELL</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">L_COUNT</span> <span style="color:#ae81ff">5</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMPANY</span> <span style="color:#a6e22e">SPACE</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">L_COUNT</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_WRITE_DATA &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_FILL_CELL</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**</span>       <span style="color:#a6e22e">text</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**----------------------------------------------------------------------**</span>
+<span style="color:#f92672">**</span>      <span style="color:#f92672">--&gt;</span><span style="color:#a6e22e">P_2</span>      <span style="color:#a6e22e">text</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**</span>      <span style="color:#f92672">--&gt;</span><span style="color:#a6e22e">P_1</span>      <span style="color:#a6e22e">text</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**</span>      <span style="color:#f92672">--&gt;</span><span style="color:#a6e22e">P_L_HEADDATA</span>  <span style="color:#a6e22e">text</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**</span>      <span style="color:#f92672">--&gt;</span><span style="color:#a6e22e">P_SPACE</span>  <span style="color:#a6e22e">text</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**----------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_FILL_CELL</span>  <span style="color:#a6e22e">USING</span>    <span style="color:#a6e22e">I_ROW</span> <span style="color:#a6e22e">I_COL</span> <span style="color:#a6e22e">I_VALUE</span> <span style="color:#a6e22e">P_FLAG</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;CELLS&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CELL</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+     <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">I_ROW</span>
+     <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">I_COL</span>.
+  <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">CELL</span> <span style="color:#e6db74">&#39;VALUE&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">I_VALUE</span>.
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">P_FLAG</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.
+<span style="color:#f92672">*</span>    <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">cell</span> <span style="color:#e6db74">&#39;HORIZONTALALIGNMENT&#39;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">P_FLAG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cns_C</span>.<span style="color:#f92672">*</span>
+<span style="color:#f92672">*</span>    <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">cell</span> <span style="color:#e6db74">&#39;HORIZONTALALIGNMENT&#39;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.</span><span style="color:#f92672">*</span>
+  <span style="color:#a6e22e">ELSEIF</span> <span style="color:#a6e22e">P_FLAG</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Z&#39;</span>.
+    <span style="color:#a6e22e">SET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">CELL</span> <span style="color:#e6db74">&#39;HORIZONTALALIGNMENT&#39;</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">4108.</span>
+  <span style="color:#a6e22e">ENDIF</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_FILL_CELL &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_CLOSE_EXCEL</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_CLOSE_EXCEL</span> <span style="color:#a6e22e">USING</span> <span style="color:#a6e22e">P_FILE</span>.
+  <span style="color:#a6e22e">GET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;ActiveWorkbook&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WORKBOOK</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">WORKBOOK</span> <span style="color:#e6db74">&#39;SAVE&#39;</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">WORKBOOK</span> <span style="color:#e6db74">&#39;ClOSE&#39;</span>.
+<span style="color:#f92672">*</span>    <span style="color:#a6e22e">EXPORTING</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">*</span>    <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span><span style="color:#f92672">*</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">WORKBOOK</span> <span style="color:#e6db74">&#39;QUIT&#39;</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                      <span style="color:#e6db74">&#34; FRM_CLOSE_EXCEL &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_FREE_OBJECT</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_FREE_OBJECT</span> .
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">FONT</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">RANGE</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">RANGE1</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">COLUMNS</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">ROWS</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">CELL</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">CELL1</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">SHEET1</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">SHEET</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">WORKBOOK</span>.
+  <span style="color:#a6e22e">FREE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">APPLICATION</span>.
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_FREE_OBJECT &#34;</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#f92672">**&amp;</span>      <span style="color:#a6e22e">Form</span>  <span style="color:#a6e22e">FRM_WRITE_DATA_YH</span><span style="color:#f92672">*</span>
+<span style="color:#f92672">**&amp;---------------------------------------------------------------------**</span>
+<span style="color:#a6e22e">FORM</span> <span style="color:#a6e22e">FRM_WRITE_DATA_YH</span> .
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LW_CHAR</span>,
+    <span style="color:#a6e22e">LINE</span>(<span style="color:#ae81ff">2200</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span>,
+  <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LW_CHAR</span>.
+  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">LT_CHAR</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LW_CHAR</span>. <span style="color:#e6db74">&#34; 将数据拷贝到剪切板上 &#34;</span>
+  <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BEGIN</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LW_ALV</span> ,
+           <span style="color:#a6e22e">LINE1</span>(<span style="color:#ae81ff">200</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span>,    
+           <span style="color:#a6e22e">LINE2</span>(<span style="color:#ae81ff">200</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span>,    
+           <span style="color:#a6e22e">LINE3</span>(<span style="color:#ae81ff">200</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span>,    
+           <span style="color:#a6e22e">LINE4</span>(<span style="color:#ae81ff">200</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span>,    
+           <span style="color:#a6e22e">LINE5</span>(<span style="color:#ae81ff">200</span>) <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span>,    
+        <span style="color:#a6e22e">END</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">LW_ALV</span>.
+  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">LV_RC</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">I</span>.
+  <span style="color:#a6e22e">DATA</span> <span style="color:#a6e22e">LV_TYPE</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">C</span>.
+  <span style="color:#a6e22e">FIELD</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SYMBOLS</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">LV_FIELD</span><span style="color:#f92672">&gt;</span>.
+  <span style="color:#a6e22e">DESCRIBE</span> <span style="color:#a6e22e">FIELD</span> <span style="color:#a6e22e">LW_ALV</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">LV_TYPE</span> <span style="color:#a6e22e">COMPONENTS</span> <span style="color:#a6e22e">LV_RC</span>.
+  <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">T_ALV</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">W_ALV</span>.
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">MANDT</span>.      
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">PERSNUMBER</span>. 
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_LAST</span>.  
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE4</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">NAME_TEXT</span>.  
+    <span style="color:#a6e22e">LW_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE5</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">W_ALV</span><span style="color:#f92672">-</span><span style="color:#a6e22e">COMPANY</span>.    
+    <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">LW_CHAR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE</span>.
+    <span style="color:#a6e22e">DO</span> <span style="color:#a6e22e">LV_RC</span> <span style="color:#a6e22e">TIMES</span>.
+     <span style="color:#a6e22e">ASSIGN</span> <span style="color:#a6e22e">COMPONENT</span> <span style="color:#a6e22e">SY</span><span style="color:#f92672">-</span><span style="color:#a6e22e">INDEX</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">STRUCTURE</span> <span style="color:#a6e22e">LW_ALV</span> <span style="color:#a6e22e">TO</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">LV_FIELD</span><span style="color:#f92672">&gt;</span>.
+     <span style="color:#a6e22e">CONCATENATE</span> <span style="color:#a6e22e">LW_CHAR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">LV_FIELD</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">CL_ABAP_CHAR_UTILITIES</span>=&gt;<span style="color:#a6e22e">HORIZONTAL_TAB</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">LW_CHAR</span><span style="color:#f92672">-</span><span style="color:#a6e22e">LINE</span>.
+    <span style="color:#a6e22e">ENDDO</span>.
+    <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">LW_CHAR</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">LT_CHAR</span>.
+  <span style="color:#a6e22e">ENDLOOP</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">将内表数据放到Excel剪切板上</span> <span style="color:#f92672">*</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">CL_GUI_FRONTEND_SERVICES</span>=&gt;<span style="color:#a6e22e">CLIPBOARD_EXPORT</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">DATA</span>                 <span style="color:#f92672">=</span> <span style="color:#a6e22e">LT_CHAR</span>   <span style="color:#e6db74">&#34; Data &#34;</span>
+    <span style="color:#a6e22e">CHANGING</span>
+      <span style="color:#a6e22e">RC</span>                   <span style="color:#f92672">=</span> <span style="color:#a6e22e">LV_RC</span>     <span style="color:#e6db74">&#34; Return Code &#34;</span>
+    <span style="color:#a6e22e">EXCEPTIONS</span>
+      <span style="color:#a6e22e">CNTL_ERROR</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#a6e22e">ERROR_NO_GUI</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#a6e22e">NOT_SUPPORTED_BY_GUI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+<span style="color:#f92672">**</span>     <span style="color:#a6e22e">no_authority</span>         <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>
+      <span style="color:#a6e22e">OTHERS</span>               <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.</span>
+  <span style="color:#a6e22e">GET</span> <span style="color:#a6e22e">PROPERTY</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;ACTIVECELL&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SHEET</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;Worksheets&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SHEET</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+     <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Sheet1&#39;</span>.
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">SHEET</span> <span style="color:#e6db74">&#39;Activate&#39;</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">cell</span> <span style="color:#a6e22e">A1</span> <span style="color:#f92672">*</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;CELLS&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CELL</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>   <span style="color:#e6db74">&#34; i_row &#34;</span>
+      <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> . <span style="color:#e6db74">&#34; i_col &#34;</span>
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Paste</span> <span style="color:#a6e22e">clipboard</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">cell</span> <span style="color:#f92672">*</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">CELL</span> <span style="color:#e6db74">&#39;SELECT&#39;</span>. <span style="color:#e6db74">&#34;选择单元格&#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">SHEET</span> <span style="color:#e6db74">&#39;Paste&#39;</span>. <span style="color:#e6db74">&#34;粘贴&#34;</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">APPLICATION</span> <span style="color:#e6db74">&#39;CELLS&#39;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CELL</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+    <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#960050;background-color:#1e0010">\#</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> .
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">CELL</span> <span style="color:#e6db74">&#39;SELECT&#39;</span>. <span style="color:#e6db74">&#34;取消全选&#34;</span>
+<span style="color:#a6e22e">ENDFORM</span>.                    <span style="color:#e6db74">&#34; FRM_WRITE_DATA_YH&#34;</span> 
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2043</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/SAPAuthorizationTable/" class="prev" rel="prev" title="SAP Authorization table"><i class="iconfont icon-dajiantou"></i>&nbsp;SAP Authorization table</a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Code_Search/" class="next" rel="next" title=" SAP source scan ABAP Report 工具 "> SAP source scan ABAP Report 工具 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-03-20 00:00:00 \u002b0000 UTC',
+        title: 'OLE下载数据到EXCEL模板及速度优化',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

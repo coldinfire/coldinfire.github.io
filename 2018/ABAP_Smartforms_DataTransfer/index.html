@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Smartforms/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Smartform_Print/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Smartforms_DataTransfer/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Smartforms 数据传输  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Smartforms 数据传输  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Smartforms 数据传输 "/>
+<meta name="twitter:description" content="数据传输到 Smartforms Smartforms 是一个独立的外部 Function Module，对于 ABAP 程序内部定义的内表数据不能直接传递，需要定义外部的数据结构 Structure 或者使用标准的表结构。如果 ABAP"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Smartforms 数据传输 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartforms_DataTransfer\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "smartforms",
+  "wordcount":  1054 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Smartforms_DataTransfer\/",
+  "datePublished": "2018-07-24T00:00:00\x2b00:00",
+  "dateModified": "2018-07-24T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Smartforms 数据传输 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-24 >24 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="数据传输到-smartforms">数据传输到 Smartforms</h3>
+<p>Smartforms 是一个独立的外部 Function Module，对于 ABAP 程序内部定义的内表数据不能直接传递，需要定义外部的数据结构 Structure 或者使用标准的表结构。如果 ABAP 程序变更，需要传递的数据发生变化，那么对应的 Sturcture 也需要修改，这是 Smartforms 中不方便的地方。</p>
+<p>我们也可以在 Smartforms 内部写取数据的逻辑，但是在 Smart Forms 中编程不是很方便，而且有时我们的数据需要首先以 ALV 的方式显示，然后再打印，所以在 Smart Forms 中书写取数据逻辑只能对一些要求非常简单的场合适用。</p>
+<h3 id="method1通过-form-interface-接收表数据">Method1：通过 Form Interface 接收表数据</h3>
+<p>在 <code>Global Settings -&gt; Form Interface -&gt; table </code> 中定义和 ABAP 程序中数据结构相同的表参数。</p>
+<h3 id="method2通过-export--import-传输数据">Method2：通过 Export / Import 传输数据</h3>
+<p>在 ABAP 程序中进行取数逻辑，然后将数据传递到 Smartforms  中。首先需要 Export 内表到内存或者数据库中，然后将句柄传递到 Smartforms 中，在 Smartforms 中需要定义和要显示数据结构完全相同类型的内表，最后将数据 Impor 到内表中即可完全恢复数据，这样就完成的数据的传递工作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZPRINT_SMARTFORM_DEMO.
+<span style="color:#66d9ef">INCLUDE</span> ZINC_SF_HELPER.
+
+<span style="color:#66d9ef">DATA</span>: wf_name <span style="color:#66d9ef">TYPE </span>rs38l_fnam.
+<span style="color:#66d9ef">DATA</span>: lv_stp <span style="color:#66d9ef">TYPE </span>timestampl,
+      lv_stp2(<span style="color:#ae81ff">22</span>).
+<span style="color:#66d9ef">DATA</span>: lv_buffid1(<span style="color:#ae81ff">18</span>), <span style="color:#75715e">&#34;header&#34;
+</span><span style="color:#75715e"></span>      lv_buffid2(<span style="color:#ae81ff">18</span>). <span style="color:#75715e">&#34;detail&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34; 在句柄中加上服务器当前时间作为句柄名称，防止多人同时使用该程序，导致句柄名称相同 &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">GET TIME STAMP</span> <span style="color:#66d9ef">FIELD</span> lv_stp.
+lv_stp2 <span style="color:#f92672">=</span> lv_stp.
+<span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;HEADER&#39;</span> lv_stp2<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>(<span style="color:#ae81ff">14</span>) <span style="color:#66d9ef">INTO</span> lv_buffid1.
+<span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;DETAIL&#39;</span> lv_stp2<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>(<span style="color:#ae81ff">14</span>) <span style="color:#66d9ef">INTO</span> lv_buffid2.
+<span style="color:#75715e">&#34;保存数据到内存中&#34;
+</span><span style="color:#75715e"></span>savebuffer it_header[] lv_buffid1. <span style="color:#75715e">&#34;保存输出表单表头数据的内表&#34;
+</span><span style="color:#75715e"></span>savebuffer it_detail[] lv_buffid2. <span style="color:#75715e">&#34;保存输出数据明细的内表&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34;调用 Smartforms&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SSF_FUNCTION_MODULE_NAME&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    formname           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Form_name&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    fm_name            <span style="color:#f92672">=</span> wf_name
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    no_form            <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    no_function_module <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+    <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">CALL FUNCTION</span> wf_name
+  <span style="color:#66d9ef">EXPORTING</span>
+    user_settings      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    id_header          <span style="color:#f92672">=</span> vl_buffid1
+    id_detail          <span style="color:#f92672">=</span> vl_buffid2
+    control_parameters <span style="color:#f92672">=</span> control
+    output_options     <span style="color:#f92672">=</span> options
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    formatting_error   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    internal_error     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    send_error         <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    user_canceled      <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+    <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34;调用完毕以后，删除数据&#34;
+</span><span style="color:#75715e"></span>clearbuffer lv_buffid1.  
+clearbuffer lv_buffid2.
+</code></pre></div><h4 id="include-程序">Include 程序</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;  包括              ZINC_SF_HELPER                                   *</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">TYPES</span> buffer_id(<span style="color:#ae81ff">80</span>) <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">DATA</span> wa_indx <span style="color:#66d9ef">TYPE </span>indx.
+<span style="color:#66d9ef">DEFINE</span> savebuffer.
+  <span style="color:#66d9ef">perform</span> <span style="color:#a6e22e">save_to_buffer</span> <span style="color:#66d9ef">using</span> &amp;1 &amp;2.
+<span style="color:#66d9ef">END-OF-DEFINITION</span>.
+<span style="color:#66d9ef">DEFINE</span> clearbuffer.
+  <span style="color:#66d9ef">perform</span> <span style="color:#a6e22e">clear_buffer</span> <span style="color:#66d9ef">using</span> &amp;1.
+<span style="color:#66d9ef">END-OF-DEFINITION</span>.
+<span style="color:#75715e">*&amp;--------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  Save_To_Buffer</span>
+<span style="color:#75715e">*&amp;--------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;T          text</span>
+<span style="color:#75715e">*      --&gt;BUFF_ID    text</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">save_to_buffer</span> <span style="color:#66d9ef">USING</span> t_data <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">table</span> typeid <span style="color:#66d9ef">TYPE </span>c .
+  wa_indx<span style="color:#f92672">-</span>aedat <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum.
+  wa_indx<span style="color:#f92672">-</span>usera <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>uname.
+  wa_indx<span style="color:#f92672">-</span>pgmid <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>repid.
+  <span style="color:#66d9ef">EXPORT</span> t_data <span style="color:#66d9ef">TO DATABASE</span> indx(hk) <span style="color:#66d9ef">ID</span> typeid <span style="color:#66d9ef">from</span> wa_indx.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;Save_To_Buffer&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;--------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  Clear_Buffer</span>
+<span style="color:#75715e">*&amp;--------------------------------------------------------------------*</span>
+<span style="color:#75715e">*       text</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*      --&gt;BUFF_ID    text</span>
+<span style="color:#75715e">*---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">clear_buffer</span> <span style="color:#66d9ef">USING</span> buffid <span style="color:#66d9ef">TYPE </span>c.
+  <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM DATABASE</span> indx(hk) <span style="color:#66d9ef">ID</span> buffid.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34;Clear_Buffer&#34;
+</span></code></pre></div><h4 id="smartform-接收数据">Smartform 接收数据</h4>
+<p>在 Smartform 中获取程序传入的表头和明细的数据。</p>
+<h5 id="global-settings-----form-interface-----import-设置参数">Global Settings  -&gt;  Form Interface  -&gt;  Import 设置参数</h5>
+<p>定义两个参数用来传入我们在 Report 中 Export 内表数据的句柄 (ID key)。</p>
+<ul>
+<li><code>i_header type c</code></li>
+<li><code>i_items type c</code></li>
+</ul>
+<h5 id="global-settings-----global-definitions">Global Settings  -&gt;  Global definitions</h5>
+<p><em>Types 定义</em></p>
+<p>在这里需要定义4个类型，一个用来保存表头数据的工作区和内表，一个用来保存明细数据的工作区和内表，它们的结构必须与 Report 中 Export 到数据库中的内表的结构完全对应一致。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">* 抬头信息</span>
+<span style="color:#66d9ef">TYPES</span>:<span style="color:#66d9ef">BEGIN OF</span> TYP_header_ROW ,
+        mblnr          <span style="color:#66d9ef">LIKE </span>mseg<span style="color:#f92672">-</span>mblnr,    
+        bldat          <span style="color:#66d9ef">LIKE </span>rkpf<span style="color:#f92672">-</span>rsdat,   
+        bwart          <span style="color:#66d9ef">LIKE </span>mseg<span style="color:#f92672">-</span>bwart,   
+<span style="color:#66d9ef">END OF</span> TYP_header_ROW .
+<span style="color:#66d9ef">TYPES</span>: TYP_HEADER_TABLE <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TYP_HEADER_ROW <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>
+<span style="color:#75715e">* 明细信息</span>
+<span style="color:#66d9ef">TYPES</span>:<span style="color:#66d9ef">BEGIN OF</span> TYP_ITEMS_ROW ,
+        mblnr       <span style="color:#66d9ef">LIKE </span>mseg<span style="color:#f92672">-</span>mblnr,     
+        rsnum       <span style="color:#66d9ef">LIKE </span>rkpf<span style="color:#f92672">-</span>rsnum,     
+        mjahr       <span style="color:#66d9ef">LIKE </span>mseg<span style="color:#f92672">-</span>mjahr,     
+        zeile       <span style="color:#66d9ef">LIKE </span>mseg<span style="color:#f92672">-</span>zeile,     
+        werks       <span style="color:#66d9ef">LIKE </span>mseg<span style="color:#f92672">-</span>werks,      
+        matnr       <span style="color:#66d9ef">LIKE </span>mseg<span style="color:#f92672">-</span>matnr,      
+        maktx       <span style="color:#66d9ef">LIKE </span>makt<span style="color:#f92672">-</span>maktx,      
+<span style="color:#66d9ef">END OF</span> TYP_ITEMS_ROW.
+<span style="color:#66d9ef">TYPES</span>: TYP_ITEMS_TABLE <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> TYP_ITEMS_ROW <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>.
+</code></pre></div><p><em>Global Data 定义</em></p>
+<p>定义工作区，用于循环数据的处理。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP">gt_header <span style="color:#66d9ef">type </span>typ_header_table
+wa_header <span style="color:#66d9ef">type </span>typ_header_row
+gt_items  <span style="color:#66d9ef">type </span>typ_items_table
+wa_items  <span style="color:#66d9ef">type </span>typ_items_row
+gt_blanks <span style="color:#66d9ef">type </span>typ_items_table
+wa_blanks <span style="color:#66d9ef">type </span>typ_items_row
+g_totallines <span style="color:#66d9ef">type </span>i
+</code></pre></div><p><em>Initialization 数据</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">restor_buffer</span> <span style="color:#66d9ef">USING</span> i_header <span style="color:#66d9ef">CHANGING</span> gt_header.
+<span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">restor_buffer</span> <span style="color:#66d9ef">USING</span> i_items  <span style="color:#66d9ef">CHANGING</span> gt_items.
+<span style="color:#66d9ef">DESCRIBE TABLE</span> gt_items <span style="color:#66d9ef">LINES</span> g_totallines.
+</code></pre></div><p><em>Form Roution 定义函数</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">restor_buffer</span> <span style="color:#66d9ef">USING</span> typeid <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">CHANGING</span> t_data <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">table</span>.
+  <span style="color:#66d9ef">IMPORT</span> t_data <span style="color:#66d9ef">FROM DATABASE</span> indx(hk) <span style="color:#66d9ef">ID</span> typeid.
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1054</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/smartforms/">
+                    #smartforms</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Smartforms/" class="prev" rel="prev" title=" Smart Forms 使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; Smart Forms 使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Smartform_Print/" class="next" rel="next" title=" Smartforms 连续打印 "> Smartforms 连续打印 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-24 00:00:00 \x2b0000 UTC',
+        title: ' Smartforms 数据传输 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

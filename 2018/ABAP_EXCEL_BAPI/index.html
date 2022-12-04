@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/MM_BOM_USE/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Enhance_Util2/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_EXCEL_BAPI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Excel 操作实例(BAPI)  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Excel 操作实例(BAPI)  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Excel 操作实例(BAPI) "/>
+<meta name="twitter:description" content="SAP Excel 操作实现 (BAPI) *&amp;---------------------------------------------------------------------* *&amp; Report ZEXCEL_BAPI *&amp;---------------------------------------------------------------------* REPORT zexcel_bapi. TABLES: sscrfields,rlgrap. TYPE-POOLS: slis. &#34; TEXT-000 : Select file to upload &#34; &#34; TEXT-001 : Select file &#34; SELECTION-SCREEN BEGIN OF BLOCK file_name WITH FRAME TITLE text-000. SELECTION-SCREEN BEGIN OF LINE. SELECTION-SCREEN COMMENT 1(31) text-001 FOR FIELD p_file. PARAMETERS: p_file LIKE rlgrap-filename . SELECTION-SCREEN END OF LINE. SELECTION-SCREEN END OF BLOCK file_name. SELECTION-SCREEN FUNCTION KEY 1."/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Excel 操作实例(BAPI) ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_EXCEL_BAPI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV, abaputils, DEMO",
+  "wordcount":  935 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_EXCEL_BAPI\/",
+  "datePublished": "2018-11-28T00:00:00\x2b00:00",
+  "dateModified": "2018-11-28T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Excel 操作实例(BAPI) </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-11-28 >28 November 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-excel-操作实现-bapi">SAP Excel 操作实现 (BAPI)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp; Report  ZEXCEL_BAPI</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">REPORT</span>  zexcel_bapi.
+<span style="color:#66d9ef">TABLES</span>: sscrfields,rlgrap.
+<span style="color:#66d9ef">TYPE-POOLS</span>: slis.
+<span style="color:#75715e">&#34; TEXT-000 : Select file to upload &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34; TEXT-001 : Select file &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF BLOCK</span> file_name <span style="color:#66d9ef">WITH FRAME</span> <span style="color:#66d9ef">TITLE</span> <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">000</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN BEGIN OF LINE</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN COMMENT</span> <span style="color:#ae81ff">1</span>(<span style="color:#ae81ff">31</span>) <span style="color:#66d9ef">text</span>-<span style="color:#ae81ff">001</span> <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">FIELD</span> p_file.
+<span style="color:#66d9ef">PARAMETERS</span>: p_file <span style="color:#66d9ef">LIKE </span>rlgrap<span style="color:#f92672">-</span>filename .
+<span style="color:#66d9ef">SELECTION-SCREEN END OF LINE</span>.
+<span style="color:#66d9ef">SELECTION-SCREEN END OF BLOCK</span> file_name.
+
+<span style="color:#66d9ef">SELECTION-SCREEN FUNCTION KEY</span> <span style="color:#ae81ff">1</span>.
+
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> tp_template,
+  pspid  <span style="color:#66d9ef">TYPE </span>proj<span style="color:#f92672">-</span>pspid,   <span style="color:#75715e">&#34; Project Definition &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*  stufe  TYPE prps-stufe,   &#34; Level in Project Hierarchy &#34;</span>
+  posid  <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>posid,   <span style="color:#75715e">&#34; WBS Element &#34;
+</span><span style="color:#75715e"></span>  post1  <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>post1,   <span style="color:#75715e">&#34; WBS Element Desc &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*  wbs_up   TYPE ps_posid,   &#34; WBS Up Level Element &#34;</span>
+<span style="color:#75715e">*  wbs_left TYPE ps_posid,   &#34; WBS Up Element &#34;</span>
+  usr00  <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>usr00,   <span style="color:#75715e">&#34; Cost Category &#34;
+</span><span style="color:#75715e"></span>  usr01  <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>usr01,   <span style="color:#75715e">&#34; Cost Item &#34;
+</span><span style="color:#75715e"></span>  usr02  <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>usr02,   <span style="color:#75715e">&#34; Cost Type &#34;
+</span><span style="color:#75715e"></span>  usr03  <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>usr03,   <span style="color:#75715e">&#34; Capex/Opex &#34;
+</span><span style="color:#75715e"></span>  belkz <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>belkz,    <span style="color:#75715e">&#34; Acct asst elem. &#34;
+</span><span style="color:#75715e"></span>  fakkz <span style="color:#66d9ef">TYPE </span>prps<span style="color:#f92672">-</span>fakkz,    <span style="color:#75715e">&#34; Billing element &#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">END OF</span> tp_template.
+<span style="color:#66d9ef">DATA</span>: gt_template <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> tp_template.
+
+<span style="color:#66d9ef">INITIALIZATION</span>.
+  <span style="color:#75715e">&#34; 设置选择屏幕下载模板按钮 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_init_screen</span>.
+
+<span style="color:#66d9ef">AT SELECTION-SCREEN ON VALUE-REQUEST FOR</span> p_file.
+  <span style="color:#75715e">&#34; 给文件搜索帮助 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_get_filename</span> <span style="color:#66d9ef">CHANGING</span> p_file.
+
+<span style="color:#66d9ef">AT SELECTION-SCREEN</span>.
+  <span style="color:#66d9ef">IF</span> sscrfields<span style="color:#f92672">-</span>ucomm <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;FC01&#39;</span>.
+    <span style="color:#75715e">&#34; 从服务器(SMW0)下载模板 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_download_file</span>.
+  <span style="color:#66d9ef">ELSEIF</span> sscrfields<span style="color:#f92672">-</span>ucomm <span style="color:#f92672">EQ</span> <span style="color:#e6db74">&#39;ONLI&#39;</span>.
+    <span style="color:#75715e">&#34; 查看本地文件是否存在 &#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_check_file</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+
+<span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#75715e">&#34; 将Excel模板转换为内表数据 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">frm_get_data</span>.
+
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_INIT_SCREEN</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_init_screen</span> .
+  <span style="color:#75715e">&#34; Dynpro text define &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">DATA</span>: gs_dyntxt <span style="color:#66d9ef">TYPE </span>smp_dyntxt.
+  gs_dyntxt<span style="color:#f92672">-</span>icon_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;@49@&#39;</span>.
+  gs_dyntxt<span style="color:#f92672">-</span>quickinfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Download Template&#39;</span>.
+  gs_dyntxt<span style="color:#f92672">-</span>icon_text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Download Template&#39;</span>.
+  sscrfields<span style="color:#f92672">-</span>functxt_01 <span style="color:#f92672">=</span> gs_dyntxt.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_INIT_SCREEN &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_GET_FILENAME</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_filename</span>  <span style="color:#66d9ef">CHANGING</span> p_file.
+<span style="color:#75715e">&#34; Method 1 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;WS_FILENAME_GET&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      def_path           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C:\&#39;</span>  <span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">      mask               = &#39;</span>,Excel(<span style="color:#f92672">*</span>.xls),<span style="color:#f92672">*</span>.XLS,<span style="color:#f92672">*</span>.XLSX,<span style="color:#f92672">*</span>.xlsx,<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">      mode               = &#39;</span>O<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">      title              = &#39;</span>Please choose file<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">    IMPORTING
+</span><span style="color:#e6db74">      filename           = p_file
+</span><span style="color:#e6db74">*   RC                   =
+</span><span style="color:#e6db74">    EXCEPTIONS
+</span><span style="color:#e6db74">      inv_winsys         = 1
+</span><span style="color:#e6db74">      no_batch           = 2
+</span><span style="color:#e6db74">      selection_cancel   = 3
+</span><span style="color:#e6db74">      selection_error    = 4
+</span><span style="color:#e6db74">      OTHERS             = 5.
+</span><span style="color:#e6db74">  IF sy-subrc &lt;&gt; 0.
+</span><span style="color:#e6db74">* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+</span><span style="color:#e6db74">*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+</span><span style="color:#e6db74">  ENDIF.
+</span><span style="color:#e6db74">&#34; Method 2 &#34;
+</span><span style="color:#e6db74">*  CALL FUNCTION &#39;</span>KD_GET_FILENAME_ON_F4<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">*    CHANGING
+</span><span style="color:#e6db74">*      file_name = cv_file.
+</span><span style="color:#e6db74">*  IF sy-subrc &lt;&gt; 0.
+</span><span style="color:#e6db74">*    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+</span><span style="color:#e6db74">*    WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+</span><span style="color:#e6db74">*    EXIT.
+</span><span style="color:#e6db74">*  ENDIF.
+</span><span style="color:#e6db74">ENDFORM.                    &#34; FRM_GET_FILENAME &#34;
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">*&amp;      Form  FRM_DOWNLOAD_FILE
+</span><span style="color:#e6db74">*&amp;---------------------------------------------------------------------*
+</span><span style="color:#e6db74">FORM frm_download_file .
+</span><span style="color:#e6db74">  DATA: ls_filekey  TYPE wwwdatatab,
+</span><span style="color:#e6db74">        lt_mime     TYPE STANDARD TABLE OF w3mime.
+</span><span style="color:#e6db74">  DATA: lv_download_path TYPE rlgrap-filename,
+</span><span style="color:#e6db74">        lv_rc TYPE sy-subrc,
+</span><span style="color:#e6db74">        lv_temp TYPE c,
+</span><span style="color:#e6db74">        lv_message TYPE string.
+</span><span style="color:#e6db74">  ls_filekey-relid = &#39;</span>MI<span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">  ls_filekey-objid = &#39;</span>ZPSR_UPLOAD_WBS<span style="color:#e6db74">&#39;. &#34; SMW0定义的对象名称 &#34;
+</span><span style="color:#e6db74">  &#34; 判断模板是否存在 &#34;
+</span><span style="color:#e6db74">  CALL FUNCTION &#39;</span>WWWDATA_IMPORT<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">    EXPORTING
+</span><span style="color:#e6db74">      key               = ls_filekey
+</span><span style="color:#e6db74">    TABLES
+</span><span style="color:#e6db74">      mime              = lt_mime
+</span><span style="color:#e6db74">    EXCEPTIONS
+</span><span style="color:#e6db74">      wrong_object_type = 1
+</span><span style="color:#e6db74">      import_error      = 2
+</span><span style="color:#e6db74">      OTHERS            = 3.
+</span><span style="color:#e6db74">  IF sy-subrc &lt;&gt; 0.
+</span><span style="color:#e6db74">    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+</span><span style="color:#e6db74">         WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+</span><span style="color:#e6db74">    STOP.
+</span><span style="color:#e6db74">  ENDIF.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#34; 判断服务器模板是否存在 &#34;
+</span><span style="color:#e6db74">*SELECT SINGLE relid objid INTO CORRESPONDING FIELDS OF ls_filekey
+</span><span style="color:#e6db74">*  FROM wwwdata
+</span><span style="color:#e6db74">*  WHERE srtf2 EQ 0
+</span><span style="color:#e6db74">*  AND relid EQ &#39;</span>MI<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">*  AND objid EQ &#39;</span>ZPSR_UPLOAD_WBS<span style="color:#e6db74">&#39;.      &#34;SY-CPROG.上传的文件对象名&#34;
+</span><span style="color:#e6db74">*IF sy-subrc NE 0.
+</span><span style="color:#e6db74">*  MESSAGE &#39;</span>Template is <span style="color:#f92672">not</span> exist<span style="color:#e6db74">&#39; TYPE &#39;</span>E<span style="color:#e6db74">&#39;.
+</span><span style="color:#e6db74">*  RETURN.
+</span><span style="color:#e6db74">*ENDIF.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">  &#34; 选择下载路径 &#34;
+</span><span style="color:#e6db74">  CALL FUNCTION &#39;</span>WS_FILENAME_GET<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">  EXPORTING
+</span><span style="color:#e6db74">    def_path           = &#39;</span>C:<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#39; &#39;</span>
+    mask               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;,Excel(*.xls),*.XLS,*.XLSX,*.xlsx,&#39;</span>
+    mode               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;S&#39;</span>
+    <span style="color:#66d9ef">title</span>              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Please choose file&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    filename           <span style="color:#f92672">=</span> lv_download_path
+<span style="color:#75715e">*   RC                   =</span>
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    inv_winsys         <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    no_batch           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    selection_cancel   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+    selection_error    <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+    <span style="color:#66d9ef">OTHERS</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;Please choose save path&#39;</span> TYPE <span style="color:#e6db74">&#39;I&#39;</span>.
+    <span style="color:#66d9ef">STOP</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#75715e">&#34; 下载模板 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;DOWNLOAD_WEB_OBJECT&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      <span style="color:#66d9ef">key</span>         <span style="color:#f92672">=</span> ls_filekey
+      destination <span style="color:#f92672">=</span> lv_download_path
+    <span style="color:#66d9ef">IMPORTING</span>
+      rc          <span style="color:#f92672">=</span> lv_rc
+    <span style="color:#66d9ef">CHANGING</span>
+      temp        <span style="color:#f92672">=</span> lv_temp.
+  <span style="color:#66d9ef">IF</span> lv_rc <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#e6db74">&#39;The File Download Directory:&#39;</span> lv_download_path <span style="color:#66d9ef">INTO</span> lv_message.
+    <span style="color:#66d9ef">MESSAGE</span> lv_message TYPE <span style="color:#e6db74">&#39;S&#39;</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+        <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_DOWNLOAD_FILE &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_EXCUTE_CHECK</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_check_file</span> .
+  <span style="color:#66d9ef">DATA</span> l_file_exist <span style="color:#66d9ef">TYPE </span>c.
+  <span style="color:#66d9ef">CLEAR</span> l_file_exist.
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;WS_QUERY&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      filename <span style="color:#f92672">=</span> p_file
+      query    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;FE&#39;</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      <span style="color:#66d9ef">return</span>   <span style="color:#f92672">=</span> l_file_exist.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> sy<span style="color:#f92672">-</span>msgid <span style="color:#66d9ef">TYPE </span>sy<span style="color:#f92672">-</span>msgty <span style="color:#66d9ef">NUMBER</span> sy<span style="color:#f92672">-</span>msgno
+    <span style="color:#66d9ef">WITH</span> sy<span style="color:#f92672">-</span>msgv1 sy<span style="color:#f92672">-</span>msgv2 sy<span style="color:#f92672">-</span>msgv3 sy<span style="color:#f92672">-</span>msgv4.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">IF</span> l_file_exist <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">OR</span> l_file_exist <span style="color:#f92672">IS INITIAL</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;File not found&#39;</span> TYPE <span style="color:#e6db74">&#39;E&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_EXCUTE_CHECK &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#75715e">*&amp;      Form  FRM_GET_DATA</span>
+<span style="color:#75715e">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">frm_get_data</span> .
+  <span style="color:#66d9ef">DATA</span>: lt_intern <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> alsmex_tabline,
+        ls_intern <span style="color:#66d9ef">LIKE LINE OF</span> lt_intern.
+  <span style="color:#66d9ef">DATA</span>: ls_template <span style="color:#66d9ef">LIKE LINE OF</span> gt_template,
+        lv_index  <span style="color:#66d9ef">LIKE </span>sy<span style="color:#f92672">-</span>tabix.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fv_value&gt; .
+  <span style="color:#75715e">&#34; 将Excel数据转换到内表数据 &#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;ALSM_EXCEL_TO_INTERNAL_TABLE&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      filename                <span style="color:#f92672">=</span> p_file
+      i_begin_col             <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      i_begin_row             <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      i_end_col               <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+      i_end_row               <span style="color:#f92672">=</span> <span style="color:#ae81ff">65536</span>
+    <span style="color:#66d9ef">TABLES</span>
+      intern                  <span style="color:#f92672">=</span> lt_intern
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      inconsistent_parameters <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      upload_ole              <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      <span style="color:#66d9ef">OTHERS</span>                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#e6db74">&#39;Excel parsing failed&#39;</span> TYPE <span style="color:#e6db74">&#39;S&#39;</span> DISPLAY LIKE <span style="color:#e6db74">&#39;E&#39;</span> .
+    <span style="color:#66d9ef">LEAVE</span> LIST<span style="color:#f92672">-</span>PROCESSING.
+  <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">LOOP AT </span>lt_intern <span style="color:#66d9ef">INTO</span> ls_intern.
+    lv_index <span style="color:#f92672">=</span> ls_intern<span style="color:#f92672">-</span>col.
+    UNASSIGN &lt;fv_value&gt;.
+    <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> lv_index <span style="color:#66d9ef">OF STRUCTURE</span> ls_template <span style="color:#66d9ef">TO</span> &lt;fv_value&gt;.
+    <span style="color:#66d9ef">MOVE</span> ls_intern<span style="color:#f92672">-</span>value <span style="color:#66d9ef">TO</span> &lt;fv_value&gt;.
+    <span style="color:#66d9ef">AT END OF</span> row.
+      <span style="color:#66d9ef">APPEND</span> ls_template <span style="color:#66d9ef">TO</span> gt_template.
+      <span style="color:#66d9ef">CLEAR</span>: ls_template.
+    <span style="color:#66d9ef">ENDAT</span>.
+    <span style="color:#66d9ef">CLEAR</span>:ls_intern.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  <span style="color:#66d9ef">CHECK</span> gt_template[] <span style="color:#f92672">IS NOT INITIAL</span>.
+<span style="color:#66d9ef">ENDFORM</span>.                    <span style="color:#75715e">&#34; FRM_GET_DATA &#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>935</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/DEMO/">
+                    #DEMO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/MM_BOM_USE/" class="prev" rel="prev" title=" BOM 展开 "><i class="iconfont icon-dajiantou"></i>&nbsp; BOM 展开 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Enhance_Util2/" class="next" rel="next" title=" 查找增强程序(2) "> 查找增强程序(2) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-11-28 00:00:00 \x2b0000 UTC',
+        title: ' SAP Excel 操作实例(BAPI) ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

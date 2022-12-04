@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Utils_Timestamp/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_ALV_FileDialog/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Utils_Date/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            日期操作  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 日期操作  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 日期操作 "/>
+<meta name="twitter:description" content="日期格式转换 系统标准Function CONVERSION_EXIT_IDATE_OUTPUT：INPUT (20080203)；OUTPUT (03FEB2008)"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 日期操作 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_Date\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1015 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Utils_Date\/",
+  "datePublished": "2018-12-10T00:00:00\x2b00:00",
+  "dateModified": "2018-12-10T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 日期操作 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-12-10 >10 December 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="日期格式转换">日期格式转换</h3>
+<h4 id="系统标准function">系统标准Function</h4>
+<ul>
+<li><code>CONVERSION_EXIT_IDATE_OUTPUT</code>：INPUT (20080203)；OUTPUT (03FEB2008)</li>
+<li><code>CONVERT_DATE_TO_EXTERNAL</code>：INPUT (20080203)；OUTPUT (02/03/2008) 输出结果参照用户默认设置的格式</li>
+<li><code>CONVERT_DATE_TO_INTERNAL</code>：INPUT (02/03/2008) 格式应与用户的默认设置相同；OUPUT (20080203)</li>
+</ul>
+<h4 id="自定义工具">自定义工具</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> ZCONVERT_DATE_FORMAT.
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+<span style="color:#75715e">*&#34;*&#34;Local interface:</span>
+<span style="color:#75715e">*&#34;  IMPORTING</span>
+<span style="color:#75715e">*&#34;     REFERENCE(ZNAME) LIKE  USR01-BNAME</span>
+<span style="color:#75715e">*&#34;  CHANGING</span>
+<span style="color:#75715e">*&#34;     REFERENCE(ZDATE) TYPE  C</span>
+<span style="color:#75715e">*&#34;----------------------------------------------------------------------</span>
+<span style="color:#66d9ef">DATA</span>: date_format <span style="color:#66d9ef">LIKE </span>usr01<span style="color:#f92672">-</span>datfm,
+      year(<span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">TYPE </span>c,
+      month(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">TYPE </span>c,
+      day(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">TYPE </span>c.
+  zdate <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum.
+  lv_year <span style="color:#f92672">=</span> zdate<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">4</span>).
+  lv_month <span style="color:#f92672">=</span> zdate<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>(<span style="color:#ae81ff">2</span>).
+  lv_day <span style="color:#f92672">=</span> zdate<span style="color:#f92672">+</span><span style="color:#ae81ff">6</span>(<span style="color:#ae81ff">2</span>).
+  <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SINGLE</span> datfm <span style="color:#66d9ef">INTO</span> lv_datfm <span style="color:#66d9ef">FROM</span> usr01 UP <span style="color:#66d9ef">TO</span> <span style="color:#ae81ff">1</span> ROWS 
+    <span style="color:#66d9ef">WHERE</span> bname <span style="color:#f92672">=</span> zname.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">CLEAR</span> zdate.
+    <span style="color:#66d9ef">CASE</span> lv_datfm.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;1&#39;</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> lv_day lv_month lv_year <span style="color:#66d9ef">INTO</span> zdate <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;.&#39;</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;2&#39;</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> lv_month lv_day lv_year <span style="color:#66d9ef">INTO</span> zdate <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;/&#39;</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;3&#39;</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> lv_month lv_day lv_year <span style="color:#66d9ef">INTO</span> zdate <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;-&#39;</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;4&#39;</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> lv_year lv_month lv_day <span style="color:#66d9ef">INTO</span> zdate <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;.&#39;</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;5&#39;</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> lv_year lv_month lv_day <span style="color:#66d9ef">INTO</span> zdate <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;/&#39;</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;6&#39;</span>.
+        <span style="color:#66d9ef">CONCATENATE</span> lv_year lv_month lv_day <span style="color:#66d9ef">INTO</span> zdate <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;-&#39;</span>.
+    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ELSE</span>.
+    <span style="color:#66d9ef">CLEAR</span> zdate.
+    <span style="color:#66d9ef">CONCATENATE</span> lv_month lv_day lv_year <span style="color:#66d9ef">INTO</span> zdate <span style="color:#66d9ef">SEPARATED BY</span> <span style="color:#e6db74">&#39;.&#39;</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div><h3 id="f4-help-for-month">F4 Help for Month</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">INCLUDE</span> rmcs0f0m.
+<span style="color:#66d9ef">SELECT-OPTIONS</span>: s_month <span style="color:#66d9ef">FOR</span> s001<span style="color:#f92672">-</span>spmon <span style="color:#66d9ef">NO-EXTENSION</span> <span style="color:#66d9ef">NO INTERVALS</span> <span style="color:#66d9ef">OBLIGATORY</span>.
+<span style="color:#66d9ef">AT SELECTION-SCREEN ON VALUE-REQUEST FOR</span> s_month<span style="color:#f92672">-</span>low.
+   <span style="color:#66d9ef">PERFORM</span> <span style="color:#a6e22e">monat_f4</span> <span style="color:#66d9ef">USING</span> s_month<span style="color:#f92672">-</span>low.
+   
+<span style="color:#66d9ef">FORM</span> <span style="color:#a6e22e">monat_f4</span> <span style="color:#66d9ef">USING</span> month.
+  <span style="color:#66d9ef">DATA</span> lv_month <span style="color:#66d9ef">TYPE </span>isellist<span style="color:#f92672">-</span>month.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;fs_field&gt; <span style="color:#66d9ef">TYPE </span>any.
+  lv_month <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>(<span style="color:#ae81ff">6</span>).
+ 
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;POPUP_TO_SELECT_MONTH&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      actual_month               <span style="color:#f92672">=</span> lv_month
+<span style="color:#75715e">*     FACTORY_CALENDAR           = &#39; &#39;</span>
+<span style="color:#75715e">*     HOLIDAY_CALENDAR           = &#39; &#39;</span>
+<span style="color:#75715e">*     LANGUAGE                   = SY-LANGU</span>
+<span style="color:#75715e">*     START_COLUMN               = 8</span>
+<span style="color:#75715e">*     START_ROW                  = 5</span>
+    <span style="color:#66d9ef">IMPORTING</span>
+      selected_month             <span style="color:#f92672">=</span> lv_month
+<span style="color:#75715e">*     RETURN_CODE                =</span>
+    <span style="color:#66d9ef">EXCEPTIONS</span>
+      factory_calendar_not_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      holiday_calendar_not_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      month_not_found            <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      <span style="color:#66d9ef">OTHERS</span>                     <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">CHECK</span> lv_month <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;000000&#39;</span>.
+    <span style="color:#66d9ef">ASSIGN</span> month <span style="color:#66d9ef">TO</span> &lt;fs_field&gt;.
+    <span style="color:#66d9ef">IF</span> &lt;fs_field&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+      &lt;fs_field&gt; <span style="color:#f92672">=</span> lv_month.
+      UNASSIGN &lt;fs_field&gt;.
+    <span style="color:#66d9ef">ENDIF</span>.
+  <span style="color:#66d9ef">ENDIF</span>.
+  
+<span style="color:#66d9ef">ENDFORM</span>.
+</code></pre></div><h3 id="常用的日期函数">常用的日期函数</h3>
+<h4 id="日期有效性检查">日期有效性检查</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;DATE_CHECK_PLAUSIBILITY&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">DATE</span>                        <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    PLAUSIBILITY_CHECK_FAILED   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>                      <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+     <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="根据日期计算另一个日期">根据日期计算另一个日期</h4>
+<p>返回指定月以前的日期</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">DATE</span> <span style="color:#66d9ef">LIKE </span>SCAL<span style="color:#f92672">-</span>DATE.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#960050;background-color:#1e0010">‘</span>CCM_GO_BACK_MONTHS<span style="color:#960050;background-color:#1e0010">’</span> 
+  <span style="color:#66d9ef">EXPORTING</span> 
+    CURRDATE <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum 
+    BACKMONTHS <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span> 
+  <span style="color:#66d9ef">IMPORTING</span> 
+    NEWDATE <span style="color:#f92672">=</span> <span style="color:#66d9ef">DATE</span> . 
+</code></pre></div><p>输入一个日期，输入间隔的天、月、年，输入运算符，函数返回计算出的日期。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;RP_CALC_DATE_IN_INTERVAL&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">DATE</span>            <span style="color:#f92672">=</span> SY<span style="color:#f92672">-</span>DATUM
+    DAYS            <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    MONTHS          <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    SIGNUM          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;+&#39;</span> <span style="color:#75715e">&#34;+，-&#34;
+</span><span style="color:#75715e"></span>    YEARS           <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    CALC_DATE       <span style="color:#f92672">=</span> DATE_RESULT.
+</code></pre></div><h4 id="查询两个日期间的日间间隔">查询两个日期间的日间间隔</h4>
+<p>返回两个日期之间的年数、月数、天数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;FIMA_DAYS_AND_MONTHS_AND_YEARS&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span> 
+    I_DATE_FROM <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20180202&#39;</span>
+<span style="color:#75715e">* I_KEY_DAY_FROM = </span>
+    I_DATE_TO   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20180919&#39;</span>
+<span style="color:#75715e">* I_KEY_DAY_TO  = </span>
+<span style="color:#75715e">* I_FLG_SEPARATE = ’ ’ </span>
+  <span style="color:#66d9ef">IMPORTING</span> 
+    E_DAYS   <span style="color:#f92672">=</span> E_DAYS    <span style="color:#75715e">&#34;229:相差天数&#34;
+</span><span style="color:#75715e"></span>    E_MONTHS <span style="color:#f92672">=</span> E_MONTHS  <span style="color:#75715e">&#34;8:相差月数&#34; 
+</span><span style="color:#75715e"></span>    E_YEARS  <span style="color:#f92672">=</span> E_YEARS . <span style="color:#75715e">&#34;1:相差年数&#34;
+</span></code></pre></div><p>两个日期作差，即是两个日期相减，包括当天时间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: datediff <span style="color:#66d9ef">TYPE </span>p,
+      timediff <span style="color:#66d9ef">TYPE </span>p,
+      earliest <span style="color:#66d9ef">TYPE </span>c.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SD_DATETIME_DIFFERENCE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    date1            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20140101&#39;</span>
+    time1            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;240000&#39;</span>
+    date2            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20140101&#39;</span>
+    time2            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;083000&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    datediff         <span style="color:#f92672">=</span> datediff     <span style="color:#75715e">&#34;返回日期差：0 &#34;
+</span><span style="color:#75715e"></span>    timediff         <span style="color:#f92672">=</span> timediff     <span style="color:#75715e">&#34;返回时间差：16&#34;
+</span><span style="color:#75715e"></span>    earliest         <span style="color:#f92672">=</span> earliest     <span style="color:#75715e">&#34;返回时间正负：2，1-负 0-相等 2-正&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">EXCEPTIONS</span>
+    invalid_datetime <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">OTHERS</span>           <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+</code></pre></div><p>分别输入开始日期、开始时间、结束日期、结束时间，函数返回两个日期间隔秒数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>: diff_second <span style="color:#66d9ef">TYPE </span>int4.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;SALP_SM_CALC_TIME_DIFFERENCE&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    date_1  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20080801&#39;</span>
+    time_1  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;17:22:12&#39;</span>
+    date_2  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20080802&#39;</span>
+    time_2  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;18:22:12&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span>
+    seconds <span style="color:#f92672">=</span> diff_second.   <span style="color:#75715e">&#34;86,400&#34;
+</span></code></pre></div><h4 id="获取日期所在的周数">获取日期所在的周数</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> week <span style="color:#66d9ef">LIKE </span>scal<span style="color:#f92672">-</span>week.
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;DATE_GET_WEEK&#39;</span>
+  <span style="color:#66d9ef">EXPORTING</span>
+    <span style="color:#66d9ef">date</span>               <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum
+  <span style="color:#66d9ef">IMPORTING</span>
+    week               <span style="color:#f92672">=</span> week
+  <span style="color:#66d9ef">EXCEPTIONS</span>
+    date_invalid       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">others</span>             <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+         <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="获得某周的第一天日期">获得某周的第一天日期</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">DATE</span> <span style="color:#66d9ef">LIKE </span>SCAL<span style="color:#f92672">-</span>DATE. 
+<span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#960050;background-color:#1e0010">‘</span>WEEK_GET_FIRST_DAY<span style="color:#960050;background-color:#1e0010">’</span> 
+  <span style="color:#66d9ef">EXPORTING</span> 
+    WEEK <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;201848&#39;</span>
+  <span style="color:#66d9ef">IMPORTING</span> 
+    <span style="color:#66d9ef">DATE</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">DATE</span>.  <span style="color:#75715e">&#34;2018-11-26&#34;
+</span></code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1015</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_Timestamp/" class="prev" rel="prev" title=" 时间戳操作 "><i class="iconfont icon-dajiantou"></i>&nbsp; 时间戳操作 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_FileDialog/" class="next" rel="next" title=" Screen 文件对话框 "> Screen 文件对话框 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-12-10 00:00:00 \x2b0000 UTC',
+        title: ' 日期操作 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

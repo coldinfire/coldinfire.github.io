@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_Basis_WebSiteCollect/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/PP_ProductOrderStatus/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_EXCEL_Export/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            内表导出到 Excel  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" 内表导出到 Excel  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 内表导出到 Excel "/>
+<meta name="twitter:description" content="SAP 提供了 cl_salv_export_tool 类用于将 ALV 数据导出到 Excel，如果是早一点的版本，系统没有这个函数可以使用 XXL_SIMPLE_API。 XXL_SIMPLE_API 函数 XXL_SIMPLE_API 实现将 internal table 的数据"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " 内表导出到 Excel ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_EXCEL_Export\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils, ALV",
+  "wordcount":  503 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_EXCEL_Export\/",
+  "datePublished": "2019-08-22T00:00:00\x2b00:00",
+  "dateModified": "2019-08-22T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> 内表导出到 Excel </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-08-22 >22 August 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SAP 提供了 cl_salv_export_tool 类用于将 ALV 数据导出到 Excel，如果是早一点的版本，系统没有这个函数可以使用 XXL_SIMPLE_API。</p>
+<h3 id="xxl_simple_api-函数">XXL_SIMPLE_API 函数</h3>
+<p>XXL_SIMPLE_API 实现将 internal table 的数据导出到 Excel，相对而言，比 OLE 和 DOI 技术更加简单。但每次导出时，弹出对话框，略显不便。</p>
+<p>为了使用这个函数，需要先定义 3 个内表，最重要的是根据 gxxlt_v 结构创建内表，代表要在 Excel 显示的数据的表头 (heading)。这个结构和导出数据的 internal table 的字段数必须相同。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;GXXLT_V: Headings for DATA columns&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">BEGIN OF</span> gt_gxxlt_v OCCURS <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">INCLUDE</span> STRUCTURE gxxlt_v.
+<span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">END OF</span> gt_gxxlt_v.
+<span style="color:#75715e">&#34;GXXLT_O: Table with online text&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">BEGIN OF</span> gt_gxxlt_o OCCURS <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">INCLUDE</span> STRUCTURE gxxlt_o.
+<span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">END OF</span> gt_gxxlt_v.
+<span style="color:#75715e">&#34;GXXLT_P: Table with print texts&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">BEGIN OF</span> gt_gxxlt_p OCCURS <span style="color:#ae81ff">1</span>.
+  <span style="color:#66d9ef">INCLUDE</span> STRUCTURE gxxlt_p.
+<span style="color:#66d9ef">DATA</span> <span style="color:#66d9ef">END OF</span> gt_gxxlt_v.
+<span style="color:#75715e">&#34;定义内表&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">START-OF-SELECTION</span>.
+  <span style="color:#75715e">&#34;获取数据填充内表&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;输出内表数据到EXCEL&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;XXL_SIMPLE_API&#39;</span>
+    <span style="color:#66d9ef">EXPORTING</span>
+      filename                <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ULO&#39;</span>
+      header                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span>
+      n_key_cols              <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+     <span style="color:#66d9ef">TABLES</span>
+       col_text               <span style="color:#f92672">=</span> gt_gxxlt_v[]
+       <span style="color:#66d9ef">data</span>                   <span style="color:#f92672">=</span> gt_alv[]
+       online_text            <span style="color:#f92672">=</span> gt_gxxlt_o[]
+       print_text             <span style="color:#f92672">=</span> gt_gxxlt_p[]
+    <span style="color:#66d9ef">exceptions</span>
+      dim_mismatch_data       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      file_open_error         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      file_write_error        <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      inv_winsys              <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      inv_xxl                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+      <span style="color:#66d9ef">OTHERS</span>                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+  <span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>.
+    <span style="color:#66d9ef">MESSAGE</span> <span style="color:#66d9ef">ID</span> SY<span style="color:#f92672">-</span>MSGID <span style="color:#66d9ef">TYPE </span>SY<span style="color:#f92672">-</span>MSGTY <span style="color:#66d9ef">NUMBER</span> SY<span style="color:#f92672">-</span>MSGNO
+       <span style="color:#66d9ef">WITH</span> SY<span style="color:#f92672">-</span>MSGV1 SY<span style="color:#f92672">-</span>MSGV2 SY<span style="color:#f92672">-</span>MSGV3 SY<span style="color:#f92672">-</span>MSGV4.
+  <span style="color:#66d9ef">ENDIF</span>.
+      
+</code></pre></div><h3 id="zitab_to_excel">ZITAB_TO_EXCEL</h3>
+<p>IMPORT：INTERNAL_TAB TYPE ANY TABLE.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FUNCTION</span> ZITAB_TO_EXCEL.
+  <span style="color:#66d9ef">DATA</span> dref <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>.
+  <span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;itab&gt; <span style="color:#66d9ef">TYPE </span>STANDARD <span style="color:#66d9ef">TABLE</span>.
+  <span style="color:#66d9ef">DATA</span>: tabledescr_ref <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_tabledescr,
+        descr_ref      <span style="color:#66d9ef">TYPE REF TO</span> cl_abap_structdescr,
+        comp_descr     <span style="color:#66d9ef">TYPE        </span>abap_compdescr.
+  <span style="color:#66d9ef">DATA</span>: t_heading <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> gxxlt_v <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">HEADER LINE</span>,
+        t_online  <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> gxxlt_o,
+        t_print   <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> gxxlt_p.
+
+  <span style="color:#66d9ef">CREATE DATA</span> dref <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> (INTERNAL_TAB).
+  <span style="color:#66d9ef">ASSIGN</span> dref-&gt;* <span style="color:#66d9ef">TO</span> &lt;itab&gt;.
+  
+  tabledescr_ref  <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cl_abap_structdescr<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">describe_by_data</span>( &lt;itab&gt; ).
+  descr_ref <span style="color:#f92672">?</span><span style="color:#f92672">=</span> tabledescr_ref<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_table_line_type</span>( ).
+  <span style="color:#66d9ef">LOOP AT </span>descr_ref<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>components <span style="color:#66d9ef">INTO</span> comp_descr.
+    t_heading<span style="color:#f92672">-</span>col_no <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>tabix.
+    t_heading<span style="color:#f92672">-</span>col_name <span style="color:#f92672">=</span> comp_descr<span style="color:#f92672">-</span>name.
+    <span style="color:#66d9ef">APPEND</span> t_heading.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  
+  <span style="color:#66d9ef">CALL FUNCTION</span> <span style="color:#e6db74">&#39;XXL_SIMPLE_API&#39;</span>
+     <span style="color:#66d9ef">TABLES</span>
+       col_text               <span style="color:#f92672">=</span> t_heading 
+       <span style="color:#66d9ef">data</span>                   <span style="color:#f92672">=</span> &lt;itab&gt;
+       online_text            <span style="color:#f92672">=</span> t_online
+       print_text             <span style="color:#f92672">=</span> t_print
+    <span style="color:#66d9ef">exceptions</span>
+      dim_mismatch_data       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+      file_open_error         <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+      file_write_error        <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+      inv_winsys              <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+      inv_xxl                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+      <span style="color:#66d9ef">OTHERS</span>                  <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>.
+<span style="color:#66d9ef">ENDFUNCTION</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>503</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Basis_WebSiteCollect/" class="prev" rel="prev" title=" ABAP 学习网站记录 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 学习网站记录 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/PP_ProductOrderStatus/" class="next" rel="next" title=" SAP 生产订单状态 "> SAP 生产订单状态 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-08-22 00:00:00 \x2b0000 UTC',
+        title: ' 内表导出到 Excel ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

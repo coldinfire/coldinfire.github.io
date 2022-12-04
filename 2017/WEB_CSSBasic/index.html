@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/WEB_DOM/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_CSSAttributes/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/WEB_CSSBasic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           CSS格式与标准总结 | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="CSS格式与标准总结 | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CSS格式与标准总结"/>
+<meta name="twitter:description" content="CSS基础知识 编码规则 编码统一为 utf-8； 使用双空格短缩进——只有这样才能保证代码能在所有渲染器中显示一致； 当成组使用选择器时，每个选择器"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CSS格式与标准总结",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/WEB_CSSBasic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "CSS",
+  "wordcount":  1184 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/WEB_CSSBasic\/",
+  "datePublished": "2017-09-05T00:00:00\u002b00:00",
+  "dateModified": "2017-09-05T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">CSS格式与标准总结</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-09-05 >5 September 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="css基础知识">CSS基础知识</h2>
+<h3 id="编码规则">编码规则</h3>
+<ul>
+<li>编码统一为 utf-8；</li>
+<li>使用双空格短缩进——只有这样才能保证代码能在所有渲染器中显示一致；</li>
+<li>当成组使用选择器时，每个选择器单独一行；</li>
+<li>一条声明的开大括号前留一空格；声明的关闭右括号新起一行；每条引用声明冒号后留一个空格；</li>
+<li>每条声明有单独的一行，以便错误报告更精确；每条声明以分号结尾；</li>
+<li>以逗号分隔属性值之间，要在逗号后面保留一个空格（ <code>box-shadow </code>）；</li>
+<li>在<code>rgb()</code>、<code>rgba()</code>、<code>hsl()</code>、<code>hsla()</code>以及<code>rect()</code>属性值中逗号后不要加空格，这样能把多色彩值（逗号无空格）与多属性值的情况区分开来（逗号带空格）；</li>
+<li>省略掉属性值以及颜色参数的首位0（例如：用 <code>.5</code> 代替 <code>0.5</code> ，用 <code>-.5px</code> 取代 <code>-0.5px</code>）；</li>
+<li>十六进制值要用小写，简化十六进制值的写法，像 <code>#fff</code>这样，当一个文档中有很多的字母时，小写字母更容易分辨；</li>
+<li>在选择器中引用属性值，例如：<code>input[type=&quot;text&quot;]</code>，在某些情况下可选是否使用，这样做也能更好地统一代码；</li>
+<li>零值不需要添加单位，例如：用 <code>margin: 0;</code> 代替 <code>margin: 0px;</code>；</li>
+</ul>
+<h3 id="属性书写顺序">属性书写顺序</h3>
+<p>有关联的属性声明之间应该按照以下顺序组在一起：</p>
+<ol>
+<li>布局定位</li>
+<li>盒模型，自身属性</li>
+<li>文本属性</li>
+<li>视觉设计(CSS)</li>
+<li>其他杂项</li>
+</ol>
+<p>布局定位摆在第一位，因为它能把元素从文档正常流中脱离出来，覆盖盒模型样式。</p>
+<p>盒模型表示着组件的度量尺寸和摆放位置，因此排第二。</p>
+<p>文本排版和视觉都是属于元素内部的属性，不会影响到前两项，所以排为3、4。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-CSS" data-lang="CSS">.<span style="color:#a6e22e">header</span> {
+<span style="color:#75715e">/* 布局定位属性 */</span>
+    <span style="color:#960050;background-color:#1e0010">display</span> <span style="color:#960050;background-color:#1e0010">||</span> <span style="color:#960050;background-color:#1e0010">visibility</span>
+    <span style="color:#960050;background-color:#1e0010">list-style</span>
+    <span style="color:#960050;background-color:#1e0010">position</span> <span style="color:#960050;background-color:#1e0010">top</span> <span style="color:#960050;background-color:#1e0010">||</span> <span style="color:#960050;background-color:#1e0010">right</span> <span style="color:#960050;background-color:#1e0010">||</span> <span style="color:#960050;background-color:#1e0010">bottom</span> <span style="color:#960050;background-color:#1e0010">||</span> <span style="color:#960050;background-color:#1e0010">left</span>
+    <span style="color:#960050;background-color:#1e0010">z-index</span>
+    <span style="color:#960050;background-color:#1e0010">clear</span>
+    <span style="color:#960050;background-color:#1e0010">float</span>
+    <span style="color:#960050;background-color:#1e0010">overflow</span>
+<span style="color:#75715e">/* 盒模型，自身属性 */</span>
+    <span style="color:#960050;background-color:#1e0010">width</span> <span style="color:#960050;background-color:#1e0010">max-width</span> <span style="color:#960050;background-color:#1e0010">||</span> <span style="color:#960050;background-color:#1e0010">min-width</span>
+    <span style="color:#960050;background-color:#1e0010">height</span> <span style="color:#960050;background-color:#1e0010">max-height</span> <span style="color:#960050;background-color:#1e0010">||</span> <span style="color:#960050;background-color:#1e0010">min-height</span>
+    <span style="color:#960050;background-color:#1e0010">overflow</span> <span style="color:#960050;background-color:#1e0010">||</span> <span style="color:#960050;background-color:#1e0010">clip</span>
+    <span style="color:#960050;background-color:#1e0010">margin</span>
+    <span style="color:#960050;background-color:#1e0010">padding</span>
+    <span style="color:#960050;background-color:#1e0010">outline</span>
+    <span style="color:#960050;background-color:#1e0010">border</span>
+    <span style="color:#960050;background-color:#1e0010">background</span>
+<span style="color:#75715e">/* 文本属性 */</span>
+    <span style="color:#960050;background-color:#1e0010">color</span>
+    <span style="color:#960050;background-color:#1e0010">font</span>
+    <span style="color:#960050;background-color:#1e0010">text-decoration</span>
+    <span style="color:#960050;background-color:#1e0010">text-overflow</span>
+    <span style="color:#960050;background-color:#1e0010">text-align</span>
+    <span style="color:#960050;background-color:#1e0010">text-indent</span>
+    <span style="color:#960050;background-color:#1e0010">line-height</span>
+    <span style="color:#960050;background-color:#1e0010">white-space</span>
+    <span style="color:#960050;background-color:#1e0010">vertical-align</span>
+<span style="color:#75715e">/* CSS 视觉设计 */</span>
+    <span style="color:#960050;background-color:#1e0010">cursor</span>
+    <span style="color:#960050;background-color:#1e0010">content</span>
+    <span style="color:#960050;background-color:#1e0010">box-shadow</span>
+    <span style="color:#960050;background-color:#1e0010">text-shadow</span>
+    <span style="color:#960050;background-color:#1e0010">border-radius</span>
+}<span style="color:#f92672">;</span>
+</code></pre></div><h3 id="选择器">选择器</h3>
+<h4 id="选择器使用规则">选择器使用规则</h4>
+<ul>
+<li>为了更好的显示性能，请使用类名( class )而非一般的元素标签；</li>
+<li>对于经常使用的组件，不要使用多个属性选择器，这样调用对浏览器性能有不小影响；</li>
+<li>尽可能保持简短，如果可以请限制在3个元素以内；</li>
+<li>只有在不得已的情况下再回溯最近的父级元素（例如：类名无前缀时）；</li>
+</ul>
+<h4 id="选择器类型">选择器类型</h4>
+<ul>
+<li>
+<p>元素(标签)选择器：<code>p { color: red; }</code></p>
+</li>
+<li>
+<p>id选择器：<code>#id { color: red; }</code></p>
+</li>
+<li>
+<p>class选择器：<code>.menuList { color: red; }</code></p>
+</li>
+<li>
+<p>组选择器：<code>h1,h2,p { color: red; }</code></p>
+</li>
+<li>
+<p>子选择器：用于选择指定标签元素的子元素，作用于元素的第一代后代</p>
+<ul>
+<li><code>.menuList&gt;li { border:1px solid red; }</code></li>
+</ul>
+</li>
+<li>
+<p>后代选择器：用于选择指定标签元素下的后辈元素，作用于元素的所有后代</p>
+<ul>
+<li><code>.menuList span { color:red; }</code></li>
+</ul>
+</li>
+<li>
+<p>伪类选择器</p>
+<ul>
+<li><code>a:hover { text-decoration: none; }</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="优先级">优先级</h4>
+<p>浏览器根据优先级来决定给元素应用哪个样式，而优先级仅由选择器的匹配规则来决定，<strong>不同的权重，权重值高则生效</strong>。</p>
+<ul>
+<li>Level 0：!important 优先级是最高 (提升样式优先级)</li>
+<li>Level 1：内联</li>
+<li>Level 2：ID 选择器</li>
+<li>Level 3：伪类 = 属性选择器 = 类选择器</li>
+<li>Level 4：元素选择器【p】</li>
+<li>Level 5：通用选择器 (*)</li>
+<li>Level 6：继承的样式</li>
+</ul>
+<p><strong>权重记忆口诀</strong>：<em>从 0 开始，一个行内样式 + 1000，一个 id 选择器 + 100，一个伪类、属性选择器、或者class + 10，一个元素选择器或者伪元素 + 1，通配符 + 0。</em></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1184</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/CSS/">
+                    #CSS</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/WEB_DOM/" class="prev" rel="prev" title="DOM 知识汇总"><i class="iconfont icon-dajiantou"></i>&nbsp;DOM 知识汇总</a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_CSSAttributes/" class="next" rel="next" title="CSS属性">CSS属性&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-09-05 00:00:00 \u002b0000 UTC',
+        title: 'CSS格式与标准总结',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

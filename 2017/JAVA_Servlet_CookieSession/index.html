@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_Servlet_ServletContext/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/JAVA_Servlet_Listener/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/JAVA_Servlet_CookieSession/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Servlet Cookie&amp;Session对象  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Servlet Cookie&amp;Session对象  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Servlet Cookie&amp;Session对象 "/>
+<meta name="twitter:description" content="Cookie：客户端会话技术 Cookie 是一小段文本信息，伴随着用户请求和页面在 Web 服务器和浏览器之间传递。一般用于存储少量的不太敏感的数据信息，以键值"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Servlet Cookie\x26Session对象 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/JAVA_Servlet_CookieSession\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Servlet",
+  "wordcount":  2293 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/JAVA_Servlet_CookieSession\/",
+  "datePublished": "2017-11-12T00:00:00\x2b00:00",
+  "dateModified": "2017-11-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Servlet Cookie&amp;Session对象 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-11-12 >12 November 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="cookie客户端会话技术">Cookie：客户端会话技术</h3>
+<p>Cookie 是一小段文本信息，伴随着用户请求和页面在 Web 服务器和浏览器之间传递。一般用于存储少量的不太敏感的数据信息，以键值对形式存储。可以在用户不登录的情况下，完成服务器对客服端的身份识别。</p>
+<p>基于响应头 Set-Cookie 和请求头 cookie 实现。</p>
+<p>Cookie 特性</p>
+<ul>
+<li>Cookie有大小限制。浏览器对于单个 cookie 的大小限制为(4KB)，字符串长度超过 4KB，该属性返回空字符串</li>
+<li>Cookie 最终都是以文件形式放在客户端机器中，查看和修改都是很方便的，因此不建议存放重要信息</li>
+<li>同一个域名下的总 cookie 数量有限制(20)</li>
+<li>Cookie 是存在有效期的。默认情况下，当浏览器关闭后 Cookie 数据被销毁。可以通过 setMaxAge(int second) 设置 Cookie 有效期</li>
+</ul>
+<h4 id="cookie-操作">Cookie 操作</h4>
+<p>创建 Cookie 对象，绑定数据</p>
+<ul>
+<li><code>new Cookie(String name, String value);</code></li>
+<li><code>cookie.setMaxAge(3600);</code>：设置 Cookie 存活期</li>
+</ul>
+<p>发送 Cookie，会在响应头设置 set-cookie:name=value 的响应头消息。</p>
+<ul>
+<li><code>response.addCookie(Cookie cookie);</code></li>
+<li>可以在一次响应中创建多个 Cooike 对象，使用 response 发送多个 cooike。</li>
+</ul>
+<p>获取 Cookie 对象获取数据，当浏览器发出请求时，会将 Cookie 信息放在请求头 cookie 中。</p>
+<ul>
+<li><code>Cookie[] request.getCookies();</code></li>
+</ul>
+<p>cookie 中存取中文：</p>
+<ul>
+<li>Cookie cookie = new Cookie(&ldquo;userName&rdquo;, URLEncoder.encode(&ldquo;中文&rdquo;, &ldquo;UTF-8&rdquo;)) ：先进行转码</li>
+<li>response.addCookie(cookie);</li>
+<li>URLDecoder.decode(cookies[i].getValue(), &ldquo;UTF-8&rdquo;)：获取数据时，进行解码</li>
+</ul>
+<h4 id="cookie-对象方法">Cookie 对象方法</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Cookie(String name, String value)</td>
+<td align="left">实例化Cookie对象，设置Cookie的名称和cookie的值</td>
+</tr>
+<tr>
+<td align="left">String getName()</td>
+<td align="left">取得当前cookie对象的名字</td>
+</tr>
+<tr>
+<td align="left">String getValue()</td>
+<td align="left">取得当前cookie对象的值</td>
+</tr>
+<tr>
+<td align="left">void setValue(String newValue)</td>
+<td align="left">设置cookie的值</td>
+</tr>
+<tr>
+<td align="left">void setMaxAge(int expiry)</td>
+<td align="left">设置cookie的最大保存时间，即cookie的有效期，单位是：秒</td>
+</tr>
+<tr>
+<td align="left">int getMaxAge()</td>
+<td align="left">获取cookies的有效期</td>
+</tr>
+<tr>
+<td align="left">void setPath(String uri)</td>
+<td align="left">设置cookie的有效路径</td>
+</tr>
+<tr>
+<td align="left">String getPath()</td>
+<td align="left">获取cookie的有效路径</td>
+</tr>
+<tr>
+<td align="left">void setDomain(String pattern)</td>
+<td align="left">设置cookie的有效域</td>
+</tr>
+<tr>
+<td align="left">String getDomain()</td>
+<td align="left">获取cookie的有效域</td>
+</tr>
+</tbody>
+</table>
+<p>setMaxAge(int seconds)：设置 Cookie 对象的存活时间，默认值是 -1</p>
+<ul>
+<li>正数：设置 Cookie 的存活时间</li>
+<li>零：删除 Cookie 信息</li>
+<li>负数：cookies auto-expire，当浏览器关闭时，自动删除</li>
+</ul>
+<h4 id="cookie-共享">Cookie 共享</h4>
+<p>Cookie 有域(domain)和路径(routing)的概念。</p>
+<p>同一个 tomcat 服务器中共享，多个 Web 项目，此时路径不同：路径就是routing，一个网页所创建的 Cookie 只能被与这个网页在同一目录或子目录下的所有网页访问，而不能被其他目录下的网页访问。</p>
+<ul>
+<li>路径默认设置为当前的虚拟目录，此时 cookie 不能共享</li>
+<li>setPath(String path)：设置 cookie 的获取范围为 “/”，此时可以共享</li>
+<li>setSecure(true)：如果访问的是 https 网页，需要设置安全模式，否则浏览器不会发送该 Cookie</li>
+</ul>
+<p>不同的 tomcat 服务器间共享，此时 domain 不同：不同的域之间是不能互相访问 Cookie。</p>
+<ul>
+<li>setDomain(String path)：如果设置一级域名相同，那么多个服务器之间 cookie 可以共享</li>
+</ul>
+<h4 id="cookie-被禁用">Cookie 被禁用</h4>
+<p>如果客户端的浏览器禁用了 Cookie 怎么办：</p>
+<ul>
+<li>使用一种叫做 URL 重写的技术来进行会话跟踪，即每次 HTTP 交互，URL 后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此来识别用户；通过 response.encodeURL(url) 进行实现</li>
+<li>使用 Token 机制，原理和 Cookie 类似；只不过令牌是存在请求头中验证</li>
+</ul>
+<h3 id="session服务器端会话技术">Session：服务器端会话技术</h3>
+<p>由于 HTTP 协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识具体的用户，这个机制就是 Session。Session 是在服务端保存的一个数据结构，可以存储任意类型，任意大小的数据，用来跟踪用户的状态。</p>
+<p>Session 是基于唯一 ID 识别用户身份的。每个用户第一次访问服务器后，会自动获得一个 sessionID 并且把这个 ID 保存到客户端的 Cookie 中，保存形式是以<code>JSESSIONID</code> 来保存的。下次访问时 Cookie 会带着该 JSESSIONID 访问服务器。如果用户在一段时间内没有访问服务器(默认失效时间 30 分钟)，那么 Session 会自动失效，下次即使带着上次分配的 sessionID 访问，服务器也认为这是一个新用户，会分配新的 sessionID。</p>
+<p><img src="/images/JAVA/JAVA_Session.png" alt="JSESSIONID"></p>
+<p>在服务端保存 Session 的方法很多，内存、数据库、文件都有。使用 Session 时，由于服务器把所有用户的 Session 都存储在内存中，如果遇到内存不足的情况，就需要把部分不活动的 Session 序列化到磁盘上，这会大大降低服务器的运行效率，因此，放入 Session 的对象要小。</p>
+<h4 id="session-操作">Session 操作</h4>
+<ul>
+<li>
+<p>Session在用户第一次访问服务器的时候自动创建，只有访问 JSP、Servlet 等程序时才会创建Session</p>
+</li>
+<li>
+<p><code>HttpSession request.getSession();</code>：强制生成 Session，同时服务器会为该 Session 生成唯一的 sessionID，这个 sessionID 在随后的请求中会被用来重新获得已经创建的 Session</p>
+</li>
+<li>
+<p><code>setMaxInactiveInterval(long interval);</code>：设置 session 的有效时间</p>
+</li>
+<li>
+<p>选择性配置修改 Session 有效时间：在tomcat -&gt; conf -&gt; web.xml 修改配置</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;session-config</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;session-timeout</span><span style="color:#f92672">&gt;</span>30<span style="color:#f92672">&lt;/session-timeout&gt;</span>
+<span style="color:#f92672">&lt;/session-config&gt;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="session-对象方法">Session 对象方法</h4>
+<p>HttpSession 方法列表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">boolean isNew()</td>
+<td align="left">判断该 Session 对象是否是新的</td>
+</tr>
+<tr>
+<td align="left">void invalidate()</td>
+<td align="left">设置整个 Session 无效</td>
+</tr>
+<tr>
+<td align="left">String getId()</td>
+<td align="left">返回 SessionID</td>
+</tr>
+<tr>
+<td align="left">long getCreationTime()</td>
+<td align="left">获取 Session 创建时间</td>
+</tr>
+<tr>
+<td align="left">long getLastAccessedTime()</td>
+<td align="left">获取最后访问时间</td>
+</tr>
+<tr>
+<td align="left">void setMaxInactiveInterval(int interval)</td>
+<td align="left">设置 session 的有效时间，单位：分钟</td>
+</tr>
+<tr>
+<td align="left">int getMaxInactiveInterval()</td>
+<td align="left">获取 session 的有效时间</td>
+</tr>
+<tr>
+<td align="left"><code>Object getAttribute(String name)</code></td>
+<td align="left">根据属性名获取 Session 属性值</td>
+</tr>
+<tr>
+<td align="left"><code>void setAttribute(String name, Object value)</code></td>
+<td align="left">设置 Session 中键值对形式的属性</td>
+</tr>
+<tr>
+<td align="left"><code>void removeAttribute(String name)</code></td>
+<td align="left">根据属性名删除键值对属性</td>
+</tr>
+</tbody>
+</table>
+<h4 id="session-细节">Session 细节</h4>
+<p>客户端关闭后，服务器不关闭，两次获取的 session 是否为同一个</p>
+<ul>
+<li>
+<p>默认情况下：不是。因为客户端关闭后，cookie 的有效期就截止了</p>
+</li>
+<li>
+<p>如果需要保持相同，可以创建 Cookie，键为 JSESSIONID，设置最大存活时间，将 Cookie 持久化保持。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Cookie cookie <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Cookie<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;JSESSIONID&#34;</span><span style="color:#f92672">,</span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+cookie<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxAge</span><span style="color:#f92672">(</span>60<span style="color:#f92672">*</span>60<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+response<span style="color:#f92672">.</span><span style="color:#a6e22e">addCookie</span><span style="color:#f92672">(</span>cookie<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div></li>
+</ul>
+<p>客户端不关闭，服务器关闭后，两次获取的 session 是否为同一个</p>
+<ul>
+<li>不是同一个，但是要确保数据不丢失。tomcat 自动完成以下工作</li>
+<li>session 的钝化
+<ul>
+<li>在服务器正常关闭之前，将 session 对象序列化到硬盘上</li>
+</ul>
+</li>
+<li>session 的活化
+<ul>
+<li>在服务器启动后，将 session 文件转化为内存中的 session 对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="cookie-和-session-结合使用">Cookie 和 session 结合使用</h3>
+<p>SessionID 是连接 Cookie 和 Session 的一道桥梁。</p>
+<p>持久化 sessionid：将 sessionid 保存到 cookie 中，访问时浏览器会把对应的 cookie 发给服务器，服务器获取 cookie 中的 sessionid，然后从内存中获取对应的 session 做登录判断即可。</p>
+<h4 id="cookie-和-session-的区别">Cookie 和 Session 的区别</h4>
+<ul>
+<li>session 存储数据在服务器端，Cookie 在客户端</li>
+<li>session 没有数据大小限制，Cookie 有限制</li>
+<li>session 数据是安全的，Cookie 相对于 session 不安全</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2293</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Servlet/">
+                    #Servlet</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_Servlet_ServletContext/" class="prev" rel="prev" title=" Servlet ServletContext 对象 "><i class="iconfont icon-dajiantou"></i>&nbsp; Servlet ServletContext 对象 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_Servlet_Listener/" class="next" rel="next" title=" Listener 监听器 "> Listener 监听器 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-11-12 00:00:00 \x2b0000 UTC',
+        title: ' Servlet Cookie\x26Session对象 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_OOALV_Basic1/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_OOALV_Demo/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_OOALV_Basic2/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           报表开发&lt;OO ALV工具&gt; | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="报表开发&lt;OO ALV工具&gt; | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="报表开发&lt;OO ALV工具&gt;"/>
+<meta name="twitter:description" content="显示后，修改字段目录和布局 在运行期间，可以在首次显示列表后设置新的布局或新字段目录。 这些组件具有 get/set 方法来完成此操作。 Field Catalog GET_FRONTEND_FIELDCATALOG SET_FRONTEND_FIELDCATALOG Layout GET_FRONTEND_LAYOUT SET_FRONTEND_LAYOUT 代码示例 DATA"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "报表开发\u003cOO ALV工具\u003e",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_Basic2\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ALV",
+  "wordcount":  1158 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_OOALV_Basic2\/",
+  "datePublished": "2018-07-05T00:00:00\u002b00:00",
+  "dateModified": "2018-07-05T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">报表开发&lt;OO ALV工具&gt;</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-07-05 >5 July 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="显示后修改字段目录和布局">显示后，修改字段目录和布局</h3>
+<p>在运行期间，可以在首次显示列表后设置新的布局或新字段目录。 这些组件具有 get/set 方法来完成此操作。</p>
+<ul>
+<li>Field Catalog
+<ul>
+<li>GET_FRONTEND_FIELDCATALOG</li>
+<li>SET_FRONTEND_FIELDCATALOG</li>
+</ul>
+</li>
+<li>Layout
+<ul>
+<li>GET_FRONTEND_LAYOUT</li>
+<li>SET_FRONTEND_LAYOUT</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码示例">代码示例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> ls_fcat <span style="color:#66d9ef">TYPE </span>lvc_s_fcat .
+<span style="color:#66d9ef">DATA</span> lt_fcat <span style="color:#66d9ef">TYPE </span>lvc_t_fcat .
+<span style="color:#66d9ef">DATA</span> ls_layout <span style="color:#66d9ef">TYPE </span>lvc_s_layo .
+<span style="color:#75715e">&#34;Field Cattalog&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL METHOD</span> obj_alv<span style="color:#f92672">-&gt;</span>get_frontend_fieldcatalog
+  <span style="color:#66d9ef">IMPORTING</span>
+    et_fieldcatalog <span style="color:#f92672">=</span> lt_fcat[] .
+<span style="color:#66d9ef">LOOP AT </span>lt_fcat <span style="color:#66d9ef">INTO</span> ls_fcat .
+  <span style="color:#66d9ef">IF</span> ls_fcat<span style="color:#f92672">-</span>fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Field_name&#39;</span> .
+    ls_fcat<span style="color:#f92672">-</span>no_out <span style="color:#f92672">=</span> space .
+    <span style="color:#66d9ef">MODIFY</span> lt_fcat <span style="color:#66d9ef">FROM</span> ls_fcat .
+  <span style="color:#66d9ef">ENDIF</span> .
+  <span style="color:#66d9ef">CLEAR</span> ls_fcat .
+<span style="color:#66d9ef">ENDLOOP</span> .
+<span style="color:#66d9ef">CALL METHOD</span> obj_alv<span style="color:#f92672">-&gt;</span>set_frontend_fieldcatalog
+  <span style="color:#66d9ef">EXPORTING</span>
+    it_fieldcatalog <span style="color:#f92672">=</span> lt_fcat[] .
+<span style="color:#75715e">&#34;Layout&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL METHOD</span> obj_alv<span style="color:#f92672">-&gt;</span>get_frontend_layout
+  <span style="color:#66d9ef">IMPORTING</span>
+    es_layout <span style="color:#f92672">=</span> ls_layout .
+    ls_layout<span style="color:#f92672">-</span>grid_title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Title name&#39;</span> .
+<span style="color:#66d9ef">CALL METHOD</span> obj_alv<span style="color:#f92672">-&gt;</span>set_frontend_layout
+  <span style="color:#66d9ef">EXPORTING</span>
+    is_layout <span style="color:#f92672">=</span> ls_layout .
+</code></pre></div><h3 id="给alv对象注册事件">给ALV对象注册事件</h3>
+<p>如果我们想处理由 ALV Grid 实例触发的事件，我们应该定义并实现一个事件处理程序类。 创建 ALV Grid 实例后，我们必须注册此事件处理程序类的实例来处理 ALV Grid 事件。</p>
+<p>(1) HANDLE_TOOLBAR：这个事件用于给ALV加自定义工具条按钮。</p>
+<p>(2) HANDLE_CLICK：用于给ALV点击其中一行后处理代码段。</p>
+<p>(3) HANDLE_COMMAND：事件用于接收用户按了自定义按钮后，触发的代码段。</p>
+<p>(4) HANDLE_DOUBLE_CLICK：双击事件</p>
+<p>(5) DATA_CHANGED：可编辑字段的数据发生变化时触发，可用来检查数据的输入正确性</p>
+<p>(6) DATA_CHANGED_FINISHED：当数据修改完成后触发，数据没有被修改，当失去焦点或回车时触发</p>
+<p>&hellip;&hellip;</p>
+<p><strong>定义事件</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CLASS</span> cl_event_receiver <span style="color:#66d9ef">DEFINITION</span>.
+  <span style="color:#66d9ef">PUBLIC SECTION</span>.
+    <span style="color:#75715e">&#34;声明单击事件的方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_hotspot_click
+      <span style="color:#66d9ef">FOR EVENT</span> hotspot_click <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_row_id e_column_id.
+    <span style="color:#75715e">&#34;声明双击事件方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_double_click
+      <span style="color:#66d9ef">FOR EVENT</span> double_click <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_row e_column.
+    <span style="color:#75715e">&#34;声明 Toolbar 事件方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_toolbar
+      <span style="color:#66d9ef">FOR EVENT</span> toolbar <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_object e_interactive.
+    <span style="color:#75715e">&#34;声明 USER-COMMAND 事件方法&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">METHODS</span> handle_command
+      <span style="color:#66d9ef">FOR EVENT</span> user_command <span style="color:#66d9ef">OF</span> cl_gui_alv_grid
+      <span style="color:#66d9ef">IMPORTING</span> e_ucomm.
+<span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;cl_event_receiver DEFINITION&#34;
+</span></code></pre></div><p><strong>事件执行的方法代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CLASS</span> cl_event_receiver <span style="color:#66d9ef">IMPLEMENTATION</span>.
+  <span style="color:#75715e">&#34;单击事件方法的实现&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_hotspot_click</span>.
+    <span style="color:#66d9ef">CONDENSE</span> e_row_id     NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">CONDENSE</span> e_column_id  NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">MESSAGE</span> i001(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39; 单击事件 -&gt; 行号:&#39;</span> e_row_id  <span style="color:#e6db74">&#39;、列名：&#39;</span> e_column_id.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_HOTSPOT_CLICK&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;双击事件方法的实现&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_double_click</span>.
+    <span style="color:#66d9ef">CONDENSE</span> e_row     NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">CONDENSE</span> e_column  NO<span style="color:#f92672">-</span>GAPS.
+    <span style="color:#66d9ef">MESSAGE</span> i001(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39; 双击事件 -&gt; 行号:&#39;</span> e_row  <span style="color:#e6db74">&#39;、列名：&#39;</span> e_column.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_double_click&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;实现 Toolbar 事件方法&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_toolbar</span>.
+    <span style="color:#66d9ef">DATA</span>: ls_toolbar <span style="color:#66d9ef">TYPE </span>stb_button.
+    <span style="color:#66d9ef">CLEAR</span>: ls_toolbar.
+    ls_toolbar<span style="color:#f92672">-</span>butn_type <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>.   <span style="color:#75715e">&#34;分隔符&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> e_object<span style="color:#f92672">-&gt;</span>mt_toolbar.
+    <span style="color:#66d9ef">CLEAR</span>: ls_toolbar.
+    ls_toolbar<span style="color:#f92672">-</span>function <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DISP&#39;</span>.    <span style="color:#75715e">&#34;功能码&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>icon <span style="color:#f92672">=</span> icon_display.  <span style="color:#75715e">&#34;图标名称&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>quickinfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; 显示&#39;</span>.   <span style="color:#75715e">&#34;图标的提示信息&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>butn_type <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.        <span style="color:#75715e">&#34;0 表示正常按钮&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>disabled <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>.        <span style="color:#75715e">&#34;X 表示灰色，不可用&#34;
+</span><span style="color:#75715e"></span>    ls_toolbar<span style="color:#f92672">-</span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;btn1&#39;</span>.      <span style="color:#75715e">&#34;按钮上显示的文本&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">APPEND</span> ls_toolbar <span style="color:#66d9ef">TO</span> e_object<span style="color:#f92672">-&gt;</span>mt_toolbar.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;handle_toolbar&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34;实现 USER-COMMAND 事件方法&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">handle_command</span>.
+    <span style="color:#66d9ef">CASE</span> e_ucomm.
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;DISP&#39;</span>.
+       <span style="color:#66d9ef">MESSAGE</span> i001(<span style="color:#ae81ff">00</span>) <span style="color:#66d9ef">WITH</span> <span style="color:#e6db74">&#39;Toolbar 事件 + USER-COMMAND 事件 &#39;</span>.
+    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;HANDLE_COMMAND&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ENDCLASS</span>.                    <span style="color:#75715e">&#34;cl_event_receiver IMPLEMENTATION&#34;
+</span></code></pre></div><p><strong>注册事件</strong></p>
+<p>在创建GRID实例后注册事件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CREATE OBJECT</span> event_receiver.
+  <span style="color:#75715e">&#34;注册事件 handler 方法&#34;
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_hotspot_click  <span style="color:#66d9ef">FOR</span> g_grid01.
+   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_double_click   <span style="color:#66d9ef">FOR</span> g_grid01.
+   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_toolbar <span style="color:#66d9ef">FOR</span> g_grid01.
+   <span style="color:#66d9ef">SET HANDLER</span> event_receiver<span style="color:#f92672">-&gt;</span>handle_command <span style="color:#66d9ef">FOR</span> g_grid01.
+</code></pre></div><p><strong>单元格编辑</strong></p>
+<p>设置FIELDCAT的 EDIT 属性。还需要在显示ALV前添加触发数据改变事件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">CALL METHOD</span> ALV_GRID<span style="color:#f92672">-&gt;</span>REGISTER_EDIT_EVENT
+  <span style="color:#66d9ef">EXPORTING</span>
+    I_EVENT_ID <span style="color:#f92672">=</span> CL_GUI_ALV_GRID<span style="color:#f92672">=&gt;</span>MC_EVT_MODIFIED. <span style="color:#75715e">&#34;必须设置一种触发方式&#34;
+</span></code></pre></div><ul>
+<li>按回车触发：I_EVENT_ID = CL_GUI_ALV_GRID=&gt;MC_EVENT_ENTER.</li>
+<li>单元格失去焦点触发：I_EVENT_ID = CL_GUI_ALV_GRID=&gt;MC_EVENT_MODIFIES.</li>
+</ul>
+<h3 id="将字段作为下拉菜单">将字段作为下拉菜单</h3>
+<p>使用内表存放句柄和对应的值，表类型：&ldquo;LVC_T_DROP&rdquo;</p>
+<p>内表通过方法&quot;
+SET_DROP_DOWN_TABLE&quot;</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1158</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ALV/">
+                    #ALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_Basic1/" class="prev" rel="prev" title="报表开发&lt;OO ALV&gt;"><i class="iconfont icon-dajiantou"></i>&nbsp;报表开发&lt;OO ALV&gt;</a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_OOALV_Demo/" class="next" rel="next" title="OO ALV 实例程序">OO ALV 实例程序&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-07-05 00:00:00 \u002b0000 UTC',
+        title: '报表开发\u003cOO ALV工具\u003e',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

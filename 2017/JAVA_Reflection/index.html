@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_IO/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/WEB_XML/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/JAVA_Reflection/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            JAVA 反射  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" JAVA 反射  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" JAVA 反射 "/>
+<meta name="twitter:description" content="反射 Java 反射机制 (Reflection) 在程序 运行时，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性。 这种动态"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " JAVA 反射 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/JAVA_Reflection\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "javabasis",
+  "wordcount":  1412 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/JAVA_Reflection\/",
+  "datePublished": "2017-10-21T00:00:00\x2b00:00",
+  "dateModified": "2017-10-21T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> JAVA 反射 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-10-21 >21 October 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="反射">反射</h3>
+<p>Java 反射机制 (Reflection) 在程序 <strong>运行时</strong>，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性。</p>
+<p>这种动态的获取信息以及动态调用对象的方法的功能称为 <strong>java 的反射机制</strong>。</p>
+<h4 id="反射机制的应用场景">反射机制的应用场景</h4>
+<ul>
+<li>在运行时判断任意一个对象所属的类</li>
+<li>在运行时构造任意一个类的对象</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法(含构造方法)</li>
+<li>在运行时调用任意一个对象的方法</li>
+<li>生成动态代理</li>
+</ul>
+<h4 id="反射机制实现">反射机制实现</h4>
+<p><code>java.lang.reflect</code> 包内包含实现 Java 反射机制的类。</p>
+<ul>
+<li>Class类：类对象</li>
+<li>Constructor类：类的构造器对象</li>
+<li>Method类：类的方法对象</li>
+<li>Field类：类的属性对象</li>
+<li>Array类：提供了动态创建数组，以及访问数组的元素的静态方法</li>
+</ul>
+<h4 id="反射机制的缺点">反射机制的缺点</h4>
+<ul>
+<li>执行效率低
+<ul>
+<li>反射的操作主要通过 JVM 执行，所以时间成本会高于直接执行相同操作</li>
+<li>编译器难以对动态调用的代码提前做优化</li>
+</ul>
+</li>
+<li>容易破坏类结构
+<ul>
+<li>反射操作绕过了源码，容易干扰类原有的内部逻辑</li>
+</ul>
+</li>
+</ul>
+<h3 id="反射使用">反射使用</h3>
+<p>反射机制的实现主要通过操作<code>java.lang.Class</code>类；该对象存放着对应类型对象的运行时信息。</p>
+<p>使用步骤：</p>
+<ul>
+<li>
+<p>获取目标类型的 Class 对象</p>
+</li>
+<li>
+<p>通过 Class 对象分别获取 Constructor 类对象、Method 类对象 和 Field 类对象</p>
+</li>
+<li>
+<p>通过 Constructor 类对象、Method 类对象 和 Field 类对象分别获取类的构造函数、方法和属性的具体信息，并进行后续操作</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 获取类的 Class 对象实例
+</span><span style="color:#75715e"></span>Class clazz <span style="color:#f92672">=</span> Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;类的全路径名&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#75715e">// 根据 Class 对象实例获取 Constructor 对象
+</span><span style="color:#75715e"></span>Constructor constructor <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getConstructor</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#75715e">// 使用 Constructor 对象的 newInstance 方法获取反射类对象
+</span><span style="color:#75715e"></span>Object object <span style="color:#f92672">=</span> constructor<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#75715e">// 获取方法的 Method 对象
+</span><span style="color:#75715e"></span>Method method <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;method_name&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#75715e">// 使用 invoke 方法调用方法
+</span><span style="color:#75715e"></span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>object<span style="color:#f92672">,</span> 4<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div></li>
+</ul>
+<h4 id="获取反射中的-class-对象">获取反射中的 Class 对象</h4>
+<p>要获取一个类或调用一个类的方法，我们首先需要获取到该类的 Class 对象。</p>
+<ul>
+<li>使用<code>Class.forName(&quot;类的全路径名&quot;)</code> 静态方法：根据类所在全路径名获取 Class 对象</li>
+<li>使用<code>类对象.class</code> 方法：任何数据类型都有一个静态的 class 属性</li>
+<li>使用<code>类对象 getClass()</code>方法：返回对象运行时类，需要先创建对象</li>
+</ul>
+<h4 id="通过反射创建类对象">通过反射创建类对象</h4>
+<p>通过反射创建类对象主要有两种方式</p>
+<ul>
+<li>通过 Class 对象的 newInstance() 方法</li>
+<li>通过 Constructor 对象的 newInstance() 方法：Object newInstance(Object&hellip; initargs)</li>
+</ul>
+<p>通过 Constructor 对象创建类对象可以选择特定构造方法，而通过 Class 对象则只能使用默认的无参数构造方法</p>
+<h4 id="通过反射获取类属性方法构造器">通过反射获取类属性、方法、构造器</h4>
+<p>Class 对象获取类属性</p>
+<ul>
+<li>Field getField(String fieldName)：获取单个 public 字段</li>
+<li>Field getDeclaredField(String fieldName)：获取单个字段(包括私有的)</li>
+<li>Field[] getFields()：获取 Class 类的所有 public 访问权限的属性，以及其所继承的父类</li>
+<li>Field[] getDeclaredFields()：获取包括私有属性在内的所有属性</li>
+<li>Field 对象方法
+<ul>
+<li>void set(Object obj,Object value)：设置指定对象对应字段的值</li>
+</ul>
+</li>
+</ul>
+<p>Class 对象获取方法</p>
+<ul>
+<li>Method getMethod(String methodName,Class&lt;?&gt;&hellip; parameterTypes):获取单个 public 方法，Class 形参的类型对象</li>
+<li>Method getDeclaredMethod(String name,Class&lt;?&gt;&hellip; parameterTypes)：获取单个方法，Class 形参的类型对象</li>
+<li>getMethods()：获取所有 public 访问权限的方法，包括从父类继承的</li>
+<li>getDeclaredMethods()：获取所有本类的方法(不包括继承的)</li>
+<li>Method 类方法
+<ul>
+<li>Object invoke(Object obj,Object&hellip; args)：obj 要调用方法的对象；args 调用方式时所传递的实参</li>
+</ul>
+</li>
+</ul>
+<p>Class 对象获取构造器</p>
+<ul>
+<li>Constructor getConstructor(Class&hellip; parameterTypes)：获取单个 public 构造方法</li>
+<li>Constructor getDeclaredConstructor(Class&hellip; parameterTypes)：获取单个构造方法</li>
+<li>Constructor[] getConstructors()：获取所有 public 访问权限的构造方法</li>
+<li>Constructor[] getDeclaredConstructors()：获取所有的构造方法</li>
+<li>Construtor 对象方法
+<ul>
+<li>Object constructor.newInstance(Object&hellip; initargs)：创建类对象</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1412</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/javabasis/">
+                    #javabasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_IO/" class="prev" rel="prev" title=" JAVA IO "><i class="iconfont icon-dajiantou"></i>&nbsp; JAVA IO </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/WEB_XML/" class="next" rel="next" title=" XML 基础知识 "> XML 基础知识 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-10-21 00:00:00 \x2b0000 UTC',
+        title: ' JAVA 反射 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

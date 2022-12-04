@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2017/JAVA_BeanUtil/" />
+  <link rel="next" href="https://coldinfire.github.io/2017/JAVA_IO/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2017/JAVA_Collection/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            JAVA 集合框架  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" JAVA 集合框架  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" JAVA 集合框架 "/>
+<meta name="twitter:description" content="集合 集合类的特点：集合只用于存储对象，集合长度是可变的，集合可以存储不同类型的对象。 所有集合类都位于 java.util包下。 集合里只能保存对"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " JAVA 集合框架 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2017\/JAVA_Collection\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "javabasis",
+  "wordcount":  3660 ,
+  "url": "https:\/\/coldinfire.github.io\/2017\/JAVA_Collection\/",
+  "datePublished": "2017-10-15T00:00:00\x2b00:00",
+  "dateModified": "2017-10-15T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> JAVA 集合框架 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2017-10-15 >15 October 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/JAVA/"> JAVA </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="集合">集合</h3>
+<p>集合类的特点：集合只用于存储对象，集合长度是可变的，集合可以存储不同类型的对象。</p>
+<p>所有集合类都位于 <code>java.util</code>包下。</p>
+<p>集合里只能保存对象（实际上只是保存对象的引用变量），基本数据类型的变量要转换成对应的包装类才能放入集合类中。</p>
+<h4 id="基本类型包装类">基本类型包装类</h4>
+<table>
+<thead>
+<tr>
+<th align="left">基本类型</th>
+<th>包装类</th>
+<th>基本类型</th>
+<th>包装类</th>
+<th>基本类型</th>
+<th>包装类</th>
+<th>基本类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">boolean</td>
+<td>Boolean</td>
+<td>short</td>
+<td>Short</td>
+<td>int</td>
+<td>Integer</td>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td align="left">byte</td>
+<td>Byte</td>
+<td>long</td>
+<td>Long</td>
+<td>float</td>
+<td>Fload</td>
+<td>double</td>
+<td>Double</td>
+</tr>
+</tbody>
+</table>
+<h4 id="集合框架图">集合框架图</h4>
+<p>集合框架主要由 Collection 和 Map 两个接口派生而出；两者区别：</p>
+<ul>
+<li>Collection 是单列集合；Map 是双列集合</li>
+<li>Collection 中只有 Set 系列要求元素唯一；Map 中键需要唯一，值可以重复</li>
+<li>Collection 的数据结构是针对元素的；Map 的数据结构是针对键的</li>
+</ul>
+<p><img src="/images/JAVA/Collections_API0.png" alt="集合框架图"></p>
+<p>API 关系图</p>
+<ul>
+<li>点线边框的是接口(6个)：Collection，Iterator，List等</li>
+<li>虚线边框的是抽象类(5个)：AbstractCollection，AbstractList，AbstractMap等</li>
+<li>实线边框的是实现类(8个)：ArrayList，LinkedList，HashMap等；对接口的具体实现</li>
+<li>Arrays 和 Collections。它们是操作数组、集合的两个工具类</li>
+</ul>
+<p><img src="/images/JAVA/Collections_API1.png" alt="集合框架图"></p>
+<h3 id="迭代器">迭代器</h3>
+<p><strong>Iterator</strong> 是遍历集合的工具，我们通常通过 Iterator 迭代器来遍历集合。Collection 依赖于 Iterator，是因为 Collection 的实现类都要实现 iterator() 函数，返回一个 Iterator 对象。</p>
+<p>一般遍历数组都是采用 for 循环或者增强 for 循环，这两个方法也可以用在集合框架，但是还有一种方法是采用迭代器遍历集合框架，它是一个对象，实现了 Iterator 接口或 ListIterator 接口。迭代器遍历元素时，通过集合是不能修改元素的，会报异常：<code>ConcurrentModificationException</code> 可以通过迭代器修改元素 。</p>
+<p>当使用 Iterator 对集合元素进行迭代时，Iterator 并不是把集合元素本身传给了迭代变量，而是把集合元素的值传给了迭代变量（就如同参数传递是值传递，基本数据类型传递的是值，引用类型传递的仅仅是对象的引用变量），所以修改迭代变量的值对集合元素本身没有任何影响。</p>
+<p>ListIterator 继承了 Iterator，以允许双向遍历列表和修改元素。ListIterator 是专门为遍历 List 而存在的。</p>
+<h4 id="方法列表">方法列表</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Iterator Method</th>
+<th align="left">Description</th>
+<th align="left">List Iterator Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">boolean hasNext();</td>
+<td align="left">判断集合里是否存在下一个元素</td>
+<td align="left">boolean hasPrevious();</td>
+<td align="left">判断集合里是否存在上一个元素</td>
+</tr>
+<tr>
+<td align="left">Object next();</td>
+<td align="left">返回集合里下一个元素并更新迭代器状态</td>
+<td align="left">Object previous();</td>
+<td align="left">返回集合里上一个元素</td>
+</tr>
+<tr>
+<td align="left">void remove()</td>
+<td align="left">删除集合里上一次next方法返回的元素</td>
+<td align="left">void set(Object element);</td>
+<td align="left">设置元素值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">void add(Object element);</td>
+<td align="left">在指定位置插入一个元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="collection-继承关系">Collection 继承关系</h3>
+<p>Collection 是一个接口，是高度抽象出来的集合，Collection定义了集合框架的共性功能。</p>
+<p>List 和 Set 都继承自 Collection。</p>
+<h4 id="操作方法">操作方法</h4>
+<p><img src="/images/JAVA/Collection_Methods.png" alt="Collection Methods"></p>
+<h3 id="list-集合">List 集合</h3>
+<p>存取有序，有索引，可以根据索引来进行取值，元素可以重复。可以动态增长，根据实际存储的数据的长度自动增长 List 的长度。</p>
+<p>数组和 List 之间的转换：</p>
+<ul>
+<li>数组转 List：使用 Arrays. asList(array) 进行转换。</li>
+<li>List 转数组：使用 List 自带的 toArray() 方法。</li>
+</ul>
+<p>特有方法：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Object get(int index);</td>
+<td align="left">根据索引获取指定位置的元素</td>
+</tr>
+<tr>
+<td align="left">Object set(int index, Object element);</td>
+<td align="left">根据索引修改元素，返回被修改的元素</td>
+</tr>
+<tr>
+<td align="left">void add(int index, Object element);</td>
+<td align="left">在指定索引位置添加元素</td>
+</tr>
+<tr>
+<td align="left">Object remove(int index);</td>
+<td align="left">根据索引删除元素，返回删除的元素</td>
+</tr>
+<tr>
+<td align="left">int indexOf(Object o);</td>
+<td align="left">获取指定元素的索引</td>
+</tr>
+<tr>
+<td align="left">int lastIndexOf(Object o);</td>
+<td align="left">获取集合最后一个元素的坐标</td>
+</tr>
+<tr>
+<td align="left">Object[] toArray();</td>
+<td align="left">返回按适当顺序包含列表中的所有元素的数组</td>
+</tr>
+<tr>
+<td align="left">void sort(Comparator c);</td>
+<td align="left">根据Comparator参数对List集合的元素排序</td>
+</tr>
+<tr>
+<td align="left"><code>List&lt;E&gt; subList(int fromIndex, int toIndex);</code></td>
+<td align="left">List 集合分隔，返回 List 集合</td>
+</tr>
+<tr>
+<td align="left"><code>ListIterator&lt;E&gt; listIterator();</code></td>
+<td align="left">List集合特有的迭代器</td>
+</tr>
+</tbody>
+</table>
+<h4 id="arraylist">ArrayList</h4>
+<p>底层基于数组实现，查询速度快；增删速度慢；线程不安全；效率高。</p>
+<p>每一个 ArrayList 都有一个初始容量（10），该容量代表了数组的大小。随着容器中的元素不断增加，容器的大小也会随着增加。在每次向容器中增加元素的同时都会进行容量检查，当快溢出时，就会进行扩容操作。所以如果我们明确所插入元素的多少，最好指定一个初始容量值，避免过多的进行扩容操作而浪费时间、效率。</p>
+<p>特有方法：</p>
+<ul>
+<li>
+<p><code>void ensureCapacity(int minCapacity);</code>：如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。</p>
+</li>
+<li>
+<p><code>void trimToSize();</code>：将此 ArrayList 实例的容量调整为列表的当前大小。</p>
+</li>
+</ul>
+<h4 id="linkedlist">LinkedList</h4>
+<p>底层基于双向链表结构实现，查询速度慢；增删速度快；线程不安全；效率高。</p>
+<p>LinkedList 中包含了大量操作首尾元素的方法。所以当我们需要实现的需求增删操作很多，查询很少或者查询很多但都是查询手尾的时候，我们就可以使用 LinkedList 集合。</p>
+<p>特有方法：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Object getFirst();</td>
+<td align="left">获取并返回第一个元素</td>
+<td align="left">Object peek();</td>
+<td align="left">返回集合第一个元素</td>
+</tr>
+<tr>
+<td align="left">void addFirst(Object e);</td>
+<td align="left">添加元素到集合头部</td>
+<td align="left">Object poll();</td>
+<td align="left">删除并返回第一个元素</td>
+</tr>
+<tr>
+<td align="left">Object getLast();</td>
+<td align="left">获取并返回集合最后一个元素</td>
+<td align="left">void push(Object obj);</td>
+<td align="left">添加元素到集合头部</td>
+</tr>
+<tr>
+<td align="left">Object removeFirst();</td>
+<td align="left">删除并返回集合第一个元素</td>
+<td align="left">Object pop();</td>
+<td align="left">删除并返回集合第一个元素</td>
+</tr>
+<tr>
+<td align="left">Object removeLast();</td>
+<td align="left">删除并返回集合最后一个元素</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="vector">Vector</h4>
+<p>线程安全，但是速度太慢，被 ArrayList 替代。</p>
+<h4 id="stack">Stack</h4>
+<p>继承自Vector。用户模拟“栈”这种数据结构，“栈”通常是指“后进先出”(LIFO)的容器。最后“push”进栈的元素，将被最先“pop”出栈。</p>
+<p>Java 里其实没有纯粹的 Stack，可以自己实现，用组合的方式，封装一下LinkedList 即可。</p>
+<h4 id="queue">Queue</h4>
+<p>队列通常是指“先进先出”(FIFO，first-in-first-out)的容器。JDK 里使用 LinkedList 来提供这个功能。</p>
+<p>新元素插入(offer)到队列的尾部，访问元素(poll)操作会返回队列头部的元素。队列不允许随机访问队列中的元素。</p>
+<p>方法列表：</p>
+<p><img src="/images/JAVA/Queue_Methods.png" alt="Collection Methods"></p>
+<h3 id="set-集合">Set 集合</h3>
+<p>元素是无序(存入和取出的顺序不一定一致)；元素不可以重复；无下标。</p>
+<p>Set 集合与 Collection 集合基本相同，没有提供任何额外的方法。</p>
+<p>可以用迭代器或者转换成 list。</p>
+<h4 id="hashset">HashSet</h4>
+<p>内部采用 HashMap 实现的，底层数据结构是哈希表；<code>允许有 null 值</code>；线程不安全；不同步。</p>
+<p>HashSet 是如何保证元素唯一性的呢？</p>
+<ul>
+<li>是通过元素的两个方法，hashCode 和 equals 来完成。
+<ul>
+<li>如果元素的 hashCode 值相同，才会判断 equals 是否为 true。</li>
+<li>如果元素的 hashcode 值不同，不会调用 equals。</li>
+</ul>
+</li>
+</ul>
+<p>在向 HashSet 集合中存储自定义对象时，为了保证 set 集合的唯一性，那么必须重写 hashCode 和 equals 方法。</p>
+<h4 id="linkedhashset">LinkedHashSet</h4>
+<p>是 HashSet 的子类基于链表和哈希表共同实现(LinkedHashMap)；所以存取有序；元素唯一。</p>
+<h4 id="treeset">TreeSet</h4>
+<p>基于二叉树的数据结构；存取无序；元素唯一；线程不安全；可以对Set集合中的元素进行排序。</p>
+<p>二叉树的存储过程：</p>
+<p>如果是第一个元素，那么直接存入，作为根节点，下一个元素进来是会跟节点比较，如果大于节点放右边的，小于节点放左边；等于节点就不存储。后面的元素进来会依次比较，直到有位置存储为止。</p>
+<p>TreeSet 保证元素唯一的两种方式</p>
+<ul>
+<li>自定义对象实现 Comparable 接口，重写 comparaTo 方法，该方法返回0表示相等，小于0表示准备存入的元素比被比较的元素小，否则大于0；</li>
+<li>在创建 TreeSet 的时候向构造器中传入比较器 Comparator 接口实现类对象，实现Comparator 接口重写 compara 方法。</li>
+</ul>
+<h3 id="collections-工具类">Collections 工具类</h3>
+<p>Collections 工具类常用方法：排序、查找、替换操作。</p>
+<h4 id="操作方法-1">操作方法</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">void reverse(List list);</td>
+<td align="left">反转集合</td>
+</tr>
+<tr>
+<td align="left">void shuffle(List list);</td>
+<td align="left">随机排序</td>
+</tr>
+<tr>
+<td align="left">void sort(List list);</td>
+<td align="left">按自然排序的升序排序</td>
+</tr>
+<tr>
+<td align="left">void sort(List list, Comparator c);</td>
+<td align="left">定制排序，由Comparator控制排序逻辑</td>
+</tr>
+<tr>
+<td align="left">void swap(List list, int i , int j);</td>
+<td align="left">交换两个索引位置的元素</td>
+</tr>
+<tr>
+<td align="left">int max(Collection coll);</td>
+<td align="left">根据元素的自然顺序，返回最大的元素</td>
+</tr>
+<tr>
+<td align="left">int max(Collection coll, Comparator c);</td>
+<td align="left">根据定制排序，返回最大元素，排序规则由Comparatator类控制</td>
+</tr>
+<tr>
+<td align="left">void fill(List list, Object obj);</td>
+<td align="left">用指定的元素代替指定list中的所有元素。</td>
+</tr>
+<tr>
+<td align="left">int frequency(Collection c, Object o);</td>
+<td align="left">统计元素出现次数</td>
+</tr>
+<tr>
+<td align="left">boolean replaceAll(List list, Object oldVal, Object newVal);</td>
+<td align="left">用新元素替换旧元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="map-集合">Map 集合</h3>
+<p>Collection、Set、List 接口都属于单值的操作，而 Map 中的每个元素都使用 key—&gt;value 的形式存储在集合中。</p>
+<p>Map 集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。</p>
+<h4 id="方法列表-1">方法列表</h4>
+<p><img src="/images/JAVA/Map_Methods.png" alt="Map Methods"></p>
+<p>Map 迭代方式：</p>
+<ul>
+<li>keySet()：只获取 key 值，然后可以通过 get(key) 获取对应的 value</li>
+<li>values()：直接获取所有的 value 值</li>
+<li>entrySet()：返回包含映射关系的 Set 视图</li>
+</ul>
+<h4 id="entry-类">Entry 类</h4>
+<p>方法：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">K getKey();</td>
+<td align="left">返回与此项对应的键</td>
+</tr>
+<tr>
+<td align="left">V getValue();</td>
+<td align="left">返回与此项对应的值</td>
+</tr>
+<tr>
+<td align="left">V setValue(V value);</td>
+<td align="left">用指定的值替换与此项对应的值</td>
+</tr>
+<tr>
+<td align="left">boolean equals(Object o);</td>
+<td align="left">比较指定对象与当前对象是否相等</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hashmap--hashtable">HashMap / HashTable</h4>
+<p>基于哈希表结构实现，超过初始容量会对性能有损耗；存储自定义对象作为键时，必须重写 hasCode 和 equals 方法。</p>
+<p>HashMap 最多允许有一条记录的键为 null；线程不同步。</p>
+<h4 id="linkedhashmap">LinkedHashMap</h4>
+<p>继承自 HashMap，但通过重写嵌套类 HashMap.Entry 实现了链表结构，基于链表和哈希表结构的所以具有存取有序，键不重复的特性；同样有容量的问题。</p>
+<h4 id="treemap">TreeMap</h4>
+<p>TreeMap是SortedMap接口的实现类。TreeMap 是一个<strong>有序的key-value集合</strong>，它是通过红黑树实现的，每个key-value对即作为红黑树的一个节点。</p>
+<p>TreeMap 底层使用的二叉树，其中存放进去的所有数据都需要排序，要排序，就要求对象具备比较功能。对象所属的类需要实现 Comparable 接口。或者给 TreeMap 集合传递一个 Comparator 接口对象。</p>
+<h4 id="properties">Properties</h4>
+<p>Properties 继承于 Hashtable，表示一个持久的属性集，属性列表中每个键及其对应值都是一个字符串。</p>
+<p>文本中的数据，必须是键值对形式，可以使用空格、等号、冒号等符号分隔。</p>
+<p>常用方法列表：</p>
+<ul>
+<li>Object setProperty(String key,String value)：添加键值对属性值</li>
+<li>String getProperty(String key)：通过键，获取对应的属性值</li>
+<li>Set stringPropertyNames()：获取所有键的集合，返回键的集合集</li>
+<li>void load(Reader reader)：把键值对形式的文本文件内容以字符流方式加载到集合中</li>
+<li>void load(InputStream inStream)：把键值对形式的文本文件内容以字节流方式加载到集合中</li>
+<li>void store(Writer writer,String comments)：把集合中的数据存储到文本文件中</li>
+<li>void store(OutputStream out,String comments)：把集合中的数据存储到文本文件中</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3660</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/javabasis/">
+                    #javabasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_BeanUtil/" class="prev" rel="prev" title=" BeanUtil 工具类使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; BeanUtil 工具类使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2017/JAVA_IO/" class="next" rel="next" title=" JAVA IO "> JAVA IO &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-10-15 00:00:00 \x2b0000 UTC',
+        title: ' JAVA 集合框架 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_PageTopEnd/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_IConsTooltips/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_SortsFilter/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV 排序&amp;分类汇总&amp;过滤  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV 排序&amp;分类汇总&amp;过滤  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV 排序&amp;分类汇总&amp;过滤 "/>
+<meta name="twitter:description" content="排序设置 排序在 ALV 中也是一个比较重要的功能，在有合计的场合下，排序能实现排序字段的小计(subtotal)。 通过 get_sorts 方法，得到类 CL_SALV_SORTS 的引用 调用类方"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV 排序\x26分类汇总\x26过滤 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_SortsFilter\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  748 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_SortsFilter\/",
+  "datePublished": "2019-06-06T00:00:00\x2b00:00",
+  "dateModified": "2019-06-06T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV 排序&amp;分类汇总&amp;过滤 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-06 >6 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="排序设置">排序设置</h3>
+<p>排序在 ALV 中也是一个比较重要的功能，在有合计的场合下，排序能实现排序字段的小计(subtotal)。</p>
+<ul>
+<li>通过 get_sorts 方法，得到类 CL_SALV_SORTS 的引用</li>
+<li>调用类方法 add_sort 添加排序的字段，如果还要小计，输入参数 subtotal 需要传入 &lsquo;X&rsquo;</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>: set_sort
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+    <span style="color:#66d9ef">CALL METHOD</span> set_sort
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#f92672">=</span> gr_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_sort</span>.
+    <span style="color:#66d9ef">DATA</span>: lr_sort <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_sorts.
+    <span style="color:#75715e">&#34;Get Sort object&#34;
+</span><span style="color:#75715e"></span>    lr_sort <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_sorts</span>( ).
+    <span style="color:#75715e">&#34;Set the SORT on the AUART with Subtotal&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        <span style="color:#66d9ef">CALL METHOD</span> lr_sort<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_sort
+          <span style="color:#66d9ef">EXPORTING</span>
+            columnname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;AUART&#39;</span>
+            <span style="color:#66d9ef">position</span>   <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">&#34;排序的顺序，如果根据多个字段来排时，决定哪个先排&#34;
+</span><span style="color:#75715e"></span>            sequence   <span style="color:#f92672">=</span> if_salv_c_sort<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>sort_up <span style="color:#75715e">&#34;升序&#34;
+</span><span style="color:#75715e"></span>            subtotal   <span style="color:#f92672">=</span> if_salv_c_bool_sap<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>true.<span style="color:#75715e">&#34;是否需要以此字段进行分类小计&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">CALL METHOD</span> lr_sort<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_sort
+          <span style="color:#66d9ef">EXPORTING</span>
+            columnname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ERDAT&#39;</span>
+            <span style="color:#66d9ef">position</span>   <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> 
+            sequence   <span style="color:#f92672">=</span> if_salv_c_sort<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>sort_down <span style="color:#75715e">&#34;降序&#34;
+</span><span style="color:#75715e"></span>            subtotal   <span style="color:#f92672">=</span> if_salv_c_bool_sap<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>false.
+      <span style="color:#66d9ef">CATCH</span> cx_salv_not_found .                         <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CATCH</span> cx_salv_existing .                          <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CATCH</span> cx_salv_data_error .                        <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_sort&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div><h3 id="分类汇总apply-aggregations">分类汇总：Apply Aggregations</h3>
+<p>计算平均值，取最大值、最小值，这类操作统称为 Aggregations(聚集)。</p>
+<ul>
+<li>通过 get_aggregations 方法，得到类 CL_SALV_AGGREGATIONS 的引用</li>
+<li>调用类方法 ADD_AGGREGATION 添加 Aggregations</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:set_aggregation
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+    <span style="color:#66d9ef">CALL METHOD</span> set_aggregation
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#f92672">=</span> gr_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+ <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_aggregation</span>.
+    <span style="color:#66d9ef">DATA</span>: lr_aggrs <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_aggregations.
+    lr_aggrs <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_aggregations</span>( ).
+    <span style="color:#75715e">&#34;Add TOTAL for COLUMN NETWR&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;如果不先进行排序，则只有汇总，不会进行分类小计&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        <span style="color:#66d9ef">CALL METHOD</span> lr_aggrs<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_aggregation
+          <span style="color:#66d9ef">EXPORTING</span>
+            columnname  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NETWR&#39;</span>
+            aggregation <span style="color:#f92672">=</span> if_salv_c_aggregation<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>total.
+      <span style="color:#66d9ef">CATCH</span> cx_salv_data_error .                        <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CATCH</span> cx_salv_not_found .                         <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CATCH</span> cx_salv_existing .                          <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDTRY</span>.
+    <span style="color:#75715e">&#34;将合计放置到SALV的顶端&#34;
+</span><span style="color:#75715e"></span>    lr_aggrs<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_aggregation_before_items</span>( ).
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_aggregation&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div><h3 id="过滤设置">过滤设置</h3>
+<p>SALV 的标准按钮中已经有过滤的功能，我们也可以在初始显示的时候就设置过滤条件。</p>
+<ul>
+<li>
+<p>通过方法 get_filters， 得到 filter 类 CL_SALV_FILTERS 的引用</p>
+</li>
+<li>
+<p>调用类方法 ADD_FILTERS 添加过滤的条件，过滤条件和 range、select-options 一样，用到了sign、option、low</p>
+<p>、high</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:set_filter
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+<span style="color:#75715e">*Set Filters</span>
+    <span style="color:#66d9ef">CALL METHOD</span> set_filter
+      <span style="color:#66d9ef">CHANGING</span> co_alv <span style="color:#f92672">=</span> gr_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+ <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_filter</span>.
+    <span style="color:#66d9ef">DATA</span>: lr_filter <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_filters.
+    lr_filter <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_filters</span>( ).
+    <span style="color:#75715e">&#34;Set the filter for the column ERDAT&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">TRY</span>.
+        <span style="color:#66d9ef">CALL METHOD</span> lr_filter<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>add_filter
+          <span style="color:#66d9ef">EXPORTING</span>
+            columnname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ERDAT&#39;</span>
+            <span style="color:#66d9ef">sign</span>       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;I&#39;</span>
+            option     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EQ&#39;</span>
+            low        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;20190602&#39;</span>
+            high       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;201906*&#39;</span>.
+      <span style="color:#66d9ef">CATCH</span> cx_salv_not_found .                         <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CATCH</span> cx_salv_data_error .                        <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">CATCH</span> cx_salv_existing .                          <span style="color:#75715e">&#34;#EC NO_HANDLER&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ENDTRY</span>.
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_filter&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>748</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_PageTopEnd/" class="prev" rel="prev" title=" SALV 页头和页尾设置 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV 页头和页尾设置 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_IConsTooltips/" class="next" rel="next" title=" SALV 图标设置 "> SALV 图标设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-06 00:00:00 \x2b0000 UTC',
+        title: ' SALV 排序\x26分类汇总\x26过滤 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_BADI/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_TryCatch/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_GoodsMVT_BAPI/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            BAPI_GOODSMVT_CREATE Demo  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" BAPI_GOODSMVT_CREATE Demo  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" BAPI_GOODSMVT_CREATE Demo "/>
+<meta name="twitter:description" content="Inventory Management使用的BAPI There are two BAPIs for posting Goods Movements: BAPI_GOODSMVT_CREATE (universal BAPI for posting Goods Movements) BAPI_GOODSMVT_CANCEL (only for reverting Goods Movements) And two in combination with for the transactional handling: BAPI_TRANSACTION_COMMIT (Commit the posting, general) BAPI_TRANSACTION_ROLLBACK (Rollback the posting, general) 参数 关于要创建的物料凭证"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " BAPI_GOODSMVT_CREATE Demo ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_GoodsMVT_BAPI\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM, BAPI",
+  "wordcount":  533 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_GoodsMVT_BAPI\/",
+  "datePublished": "2019-07-04T00:00:00\u002b00:00",
+  "dateModified": "2019-07-04T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> BAPI_GOODSMVT_CREATE Demo </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-07-04 >4 July 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="inventory-management使用的bapi">Inventory Management使用的BAPI</h3>
+<p>There are two BAPIs for posting Goods Movements:</p>
+<ul>
+<li>BAPI_GOODSMVT_CREATE (universal BAPI for posting Goods Movements)</li>
+<li>BAPI_GOODSMVT_CANCEL (only for reverting Goods Movements)</li>
+</ul>
+<p>And two in combination with for the transactional handling:</p>
+<ul>
+<li>BAPI_TRANSACTION_COMMIT (Commit the posting, general)</li>
+<li>BAPI_TRANSACTION_ROLLBACK (Rollback the posting, general)</li>
+</ul>
+<h4 id="参数">参数</h4>
+<p><strong>关于要创建的物料凭证的以下信息传递到 BAPI：</strong></p>
+<ul>
+<li>A structure with the header data</li>
+<li>A structure with the code for the movement</li>
+<li>A table with the item data</li>
+<li>A table with the serial numbers</li>
+<li>The posting is made by the function module MB_CREATE_GOODS_MOVEMENT.</li>
+<li>Messages are returned in the Return parameter.</li>
+</ul>
+<p><strong>Goods Movement Code:</strong></p>
+<table>
+<thead>
+<tr>
+<th>GM_CODED</th>
+<th>TCODE</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>MB01</td>
+<td>Goods receipt for purchase order</td>
+</tr>
+<tr>
+<td>02</td>
+<td>MB31</td>
+<td>Goods receipt for production order</td>
+</tr>
+<tr>
+<td>03</td>
+<td>MB1A</td>
+<td>Goods issue</td>
+</tr>
+<tr>
+<td>04</td>
+<td>MB1B</td>
+<td>Transfer posting</td>
+</tr>
+<tr>
+<td>05</td>
+<td>MB1C</td>
+<td>Other goods receipt</td>
+</tr>
+<tr>
+<td>06</td>
+<td>MB11</td>
+<td>Reversal of goods movements</td>
+</tr>
+<tr>
+<td>07</td>
+<td>MB04</td>
+<td>Subsequent adjustment with regard to a subcontract order</td>
+</tr>
+</tbody>
+</table>
+<p>输入 <strong>movement indicator</strong></p>
+<ul>
+<li>GM_Code 01 : B</li>
+<li>GM_Code 02 : F</li>
+<li>Others : blank.</li>
+</ul>
+<h3 id="example-code-for-calling-the-gm-bapi-to-post-a-561-goods-movement">Example Code for calling the GM BAPI to post a 561 Goods Movement</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Report</span>  <span style="color:#a6e22e">Z_BAPI_GDSMVT</span>
+<span style="color:#f92672">*&amp;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+ 
+<span style="color:#a6e22e">REPORT</span>  <span style="color:#a6e22e">z_bapi_gdsmvt</span>.
+ 
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ls_mmdochdr</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_head_01</span>,
+      <span style="color:#a6e22e">lt_gm</span>       <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STANDARD</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">bapi2017_gm_item_create</span>,
+      <span style="color:#a6e22e">ls_gm</span>       <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_item_create</span>,
+      <span style="color:#a6e22e">lt_ret</span>      <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">STANDARD</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">bapiret2</span>,
+      <span style="color:#a6e22e">ls_ret</span>      <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapiret2</span>,
+      <span style="color:#a6e22e">ls_hdr</span>      <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_head_ret</span>,
+      <span style="color:#a6e22e">ls_ser</span>      <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_serialnumber</span>,
+      <span style="color:#a6e22e">lt_ser</span>      <span style="color:#a6e22e">LIKE</span>  <span style="color:#a6e22e">STANDARD</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">OF</span> <span style="color:#a6e22e">bapi2017_gm_serialnumber</span>.
+ 
+<span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">p_pstdat</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_head_01</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pstng_date</span>,
+            <span style="color:#a6e22e">p_docdat</span> <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_head_01</span><span style="color:#f92672">-</span><span style="color:#a6e22e">doc_date</span>,
+            <span style="color:#a6e22e">p_matnr</span>  <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_item_create</span><span style="color:#f92672">-</span><span style="color:#a6e22e">material</span>,
+            <span style="color:#a6e22e">p_plant</span>  <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_item_create</span><span style="color:#f92672">-</span><span style="color:#a6e22e">plant</span>,
+            <span style="color:#a6e22e">p_sloc</span>   <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_item_create</span><span style="color:#f92672">-</span><span style="color:#a6e22e">stge_loc</span>,
+            <span style="color:#a6e22e">p_quant</span>  <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_item_create</span><span style="color:#f92672">-</span><span style="color:#a6e22e">entry_qnt</span>,
+            <span style="color:#a6e22e">p_batch</span>  <span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">bapi2017_gm_item_create</span><span style="color:#f92672">-</span><span style="color:#a6e22e">batch</span>.
+ 
+<span style="color:#a6e22e">START</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELECTION</span>.
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Prepare</span> <span style="color:#a6e22e">Data</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">Goods</span> <span style="color:#a6e22e">Movement</span>
+  <span style="color:#a6e22e">ls_mmdochdr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pstng_date</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_pstdat</span>.
+  <span style="color:#a6e22e">ls_mmdochdr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">doc_date</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_docdat</span>.
+ 
+  <span style="color:#a6e22e">ls_gm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">move_type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;561&#39;</span>.
+  <span style="color:#a6e22e">ls_gm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">material</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_matnr</span>.
+  <span style="color:#a6e22e">ls_gm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">plant</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_plant</span>.
+  <span style="color:#a6e22e">ls_gm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">stge_loc</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_sloc</span>.
+  <span style="color:#a6e22e">ls_gm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">entry_qnt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_quant</span>.
+  <span style="color:#a6e22e">ls_gm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">batch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p_batch</span>.
+ 
+  <span style="color:#a6e22e">APPEND</span> <span style="color:#a6e22e">ls_gm</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">lt_gm</span>.
+  <span style="color:#a6e22e">CLEAR</span> <span style="color:#a6e22e">ls_gm</span>.
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Call</span> <span style="color:#a6e22e">BAPI</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_GOODSMVT_CREATE&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">goodsmvt_header</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_mmdochdr</span>
+      <span style="color:#a6e22e">goodsmvt_code</span>    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;05&#39;</span>
+    <span style="color:#a6e22e">IMPORTING</span>
+      <span style="color:#a6e22e">goodsmvt_headret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls_hdr</span>
+    <span style="color:#a6e22e">TABLES</span>
+      <span style="color:#a6e22e">goodsmvt_item</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_gm</span>
+      <span style="color:#66d9ef">return</span>           <span style="color:#f92672">=</span> <span style="color:#a6e22e">lt_ret</span>.
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">If</span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">commit</span>
+  <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">lt_ret</span> <span style="color:#a6e22e">IS</span> <span style="color:#a6e22e">INITIAL</span>.
+    <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Material Document posted:&#39;</span>, <span style="color:#a6e22e">ls_hdr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mat_doc</span>, <span style="color:#e6db74">&#39; &#39;</span>, <span style="color:#a6e22e">ls_hdr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">doc_year</span>.
+ 
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">Alternative</span> <span style="color:#a6e22e">COMMIT</span> <span style="color:#a6e22e">WORK</span>.
+  <span style="color:#a6e22e">ELSE</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span>.
+<span style="color:#f92672">*</span>   <span style="color:#a6e22e">Alternative</span> <span style="color:#a6e22e">ROLLBACK</span> <span style="color:#a6e22e">WORK</span>.
+    <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Error during posting Material document:&#39;</span>, <span style="color:#960050;background-color:#1e0010">/.</span>
+    <span style="color:#a6e22e">LOOP</span> <span style="color:#a6e22e">AT</span> <span style="color:#a6e22e">lt_ret</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">ls_ret</span>.
+      <span style="color:#a6e22e">WRITE</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">id</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">number</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">log_no</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">log_msg_no</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message_v1</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message_v2</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message_v3</span>,
+             <span style="color:#a6e22e">ls_ret</span><span style="color:#f92672">-</span><span style="color:#a6e22e">message_v4</span>.
+    <span style="color:#a6e22e">ENDLOOP</span>.
+  <span style="color:#a6e22e">ENDIF</span>.
+</code></pre></div><p><strong>循环调用BAPI:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#f92672">*&amp;</span> <span style="color:#a6e22e">Report</span>  <span style="color:#a6e22e">ZBAPI_GDSMVT</span>
+<span style="color:#f92672">*&amp;</span>
+<span style="color:#f92672">*&amp;---------------------------------------------------------------------*</span>
+<span style="color:#a6e22e">REPORT</span>  <span style="color:#a6e22e">zbapi_gdsmvt</span>. 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> ...
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">PARAMETERS</span><span style="color:#f92672">:</span> ...
+ 
+<span style="color:#a6e22e">START</span><span style="color:#f92672">-</span><span style="color:#a6e22e">OF</span><span style="color:#f92672">-</span><span style="color:#a6e22e">SELECTION</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Prepare</span> <span style="color:#a6e22e">data</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">first</span> <span style="color:#a6e22e">Goods</span> <span style="color:#a6e22e">Movement</span>
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Call</span> <span style="color:#a6e22e">BAPI</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">Goods</span> <span style="color:#a6e22e">Movement</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_GOODSMVT_CREATE&#39;</span> <span style="color:#a6e22e">DESTINATION</span> <span style="color:#e6db74">&#39;NONE&#39;</span>
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">If</span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">commit</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span> <span style="color:#a6e22e">DESTINATION</span> <span style="color:#e6db74">&#39;NONE&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">ELSE</span>
+<span style="color:#f92672">*</span> Error <span style="color:#a6e22e">handling</span> 
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span> <span style="color:#a6e22e">DESTINATION</span> <span style="color:#e6db74">&#39;NONE&#39;</span>.
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Close</span> <span style="color:#a6e22e">RFC</span> <span style="color:#a6e22e">connection</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;RFC_CONNECTION_CLOSE&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">destination</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NONE&#39;</span>.
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Prepare</span> <span style="color:#a6e22e">data</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">next</span> <span style="color:#a6e22e">Goods</span> <span style="color:#a6e22e">Movement</span>
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Call</span> <span style="color:#a6e22e">BAPI</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">Goods</span> <span style="color:#a6e22e">Movement</span>
+<span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_GOODSMVT_CREATE&#39;</span> <span style="color:#a6e22e">DESTINATION</span> <span style="color:#e6db74">&#39;NONE&#39;</span>
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">If</span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">commit</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_COMMIT&#39;</span> <span style="color:#a6e22e">DESTINATION</span> <span style="color:#e6db74">&#39;NONE&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;X&#39;</span>.
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">ELSE</span>
+<span style="color:#f92672">*</span> Error <span style="color:#a6e22e">handling</span> 
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span> <span style="color:#a6e22e">DESTINATION</span> <span style="color:#e6db74">&#39;NONE&#39;</span>.
+ 
+<span style="color:#f92672">*</span> <span style="color:#a6e22e">Close</span> <span style="color:#a6e22e">RFC</span> <span style="color:#a6e22e">connection</span>
+  <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">FUNCTION</span> <span style="color:#e6db74">&#39;RFC_CONNECTION_CLOSE&#39;</span>
+    <span style="color:#a6e22e">EXPORTING</span>
+      <span style="color:#a6e22e">destination</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NONE&#39;</span>.
+</code></pre></div><h4 id="bapi_goodsmvt_cancel-冲销物料凭证">BAPI_GOODSMVT_CANCEL 冲销物料凭证</h4>
+<p><strong>参考</strong></p>
+<ul>
+<li><a href="https://wiki.scn.sap.com/wiki/display/ERPSCM/Goods+Movements+with+BAPI">Goods Movements with BAPI</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>533</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_BADI/" class="prev" rel="prev" title="BADI 维护"><i class="iconfont icon-dajiantou"></i>&nbsp;BADI 维护</a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_TryCatch/" class="next" rel="next" title="SAP 异常处理">SAP 异常处理&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-07-04 00:00:00 \u002b0000 UTC',
+        title: ' BAPI_GOODSMVT_CREATE Demo ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

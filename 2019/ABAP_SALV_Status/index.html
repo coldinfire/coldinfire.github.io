@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_SALV_Event/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_SALV_Layout/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_SALV_Status/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SALV Status 设置  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SALV Status 设置  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SALV Status 设置 "/>
+<meta name="twitter:description" content="Status 设置 CL_SALV_TABLE 中提供了方法 get_functions，set_default；通过这两个方法可以创建 Status。 *$*$*.....CODE_ADD_1 - Begin..................................1..*$*$* PRIVATE SECTION. METHODS:set_pf_status CHANGING co_alv TYPE REF TO cl_salv_table. *$*$*.....CODE_ADD_1 - End....................................1..*$*$* *$*$*.....CODE_ADD_2"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SALV Status 设置 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Status\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "SALV",
+  "wordcount":  767 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_SALV_Status\/",
+  "datePublished": "2019-06-06T00:00:00\u002b00:00",
+  "dateModified": "2019-06-06T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SALV Status 设置 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-06-06 >6 June 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="status-设置">Status 设置</h3>
+<p>CL_SALV_TABLE 中提供了方法 <code>get_functions</code>，<code>set_default</code>；通过这两个方法可以创建 Status。</p>
+<p><img src="/images/ABAP/SALV8.png" alt="cl_salv_functions_list"></p>
+<p><img src="/images/ABAP/SALV9.png" alt="cl_salv_functions_list"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:set_pf_status
+        <span style="color:#66d9ef">CHANGING</span> 
+          co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+    <span style="color:#66d9ef">CALL METHOD</span> set_pf_status
+      <span style="color:#66d9ef">CHANGING</span>
+        co_alv <span style="color:#f92672">=</span> go_alv.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_pf_status</span>.
+    <span style="color:#66d9ef">DATA</span>: lo_functions <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_functions_list.
+    lo_functions <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_functions</span>( ).
+    <span style="color:#75715e">&#34;Setting a default status&#34;
+</span><span style="color:#75715e"></span>    lo_functions<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_default</span>( abap_true ).
+    <span style="color:#75715e">&#34;Activate All Generic ALV Functions&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;lo_functions-&gt;set_all( abap_true ).&#34; 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDMETHOD</span>.     <span style="color:#75715e">&#34;set_pf_status&#34;
+</span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div><h3 id="设置自定义-status不适用于-container-模式">设置自定义 Status：不适用于 CONTAINER 模式</h3>
+<p>有时默认的标准 GUI Status 并不能完全满足我们的需求，需要在状态栏中添加自定义的按钮，这时要创建一个自定义的状态栏添加到SALV上。</p>
+<p>CL_SALV_TABLE 的方法 <code>SET_SCREEN_STATUS</code> 可以指定自定义的 Status。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:set_pf_status
+        <span style="color:#66d9ef">CHANGING</span>
+          co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+    <span style="color:#66d9ef">CALL METHOD</span> set_pf_status
+      <span style="color:#66d9ef">CHANGING</span>
+        co_alv <span style="color:#f92672">=</span> go_alv.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_pf_status</span>.
+    <span style="color:#75715e">&#34;系统提示的标准Status为SAPLSALV_METADATA_STATUS&#34;
+</span><span style="color:#75715e"></span>    co_alv<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_screen_status</span>(
+      pfstatus      <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;STANDARD_STATUS&#39;</span>
+      <span style="color:#66d9ef">report</span>        <span style="color:#f92672">=</span>  sy<span style="color:#f92672">-</span>repid
+      <span style="color:#75715e">&#34;此参数只对SALV标准的预设保留按钮起作用，也就是说当T001 GUI Status是从系统中&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">&#34;提供的标准Gui Status拷贝时才起作用，即通过此参数来屏蔽或显示某些预置按钮&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">&#34;对自己完全新创建的GUI Status按钮（实质上是根据FunCode来判断的）不起作用&#34;
+</span><span style="color:#75715e"></span>      set_functions <span style="color:#f92672">=</span> co_alv<span style="color:#f92672">-&gt;</span>c_functions_all ). <span style="color:#75715e">&#34;显示所有通用的预设按钮&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;set_functions = co_alv-&gt;c_functions_default).&#34; &#34;显示基本默认选择性的预设按钮&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">&#34;set_functions = co_alv-&gt;c_functions_none).&#34; &#34;所有预设按钮都不显示&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_pf_status&#34;
+</span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div><h3 id="在预设工具栏上附加按钮只适用于-container-模式">在预设工具栏上附加按钮：只适用于 CONTAINER 模式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*$*$*.....CODE_ADD_1 - Begin..................................1..*$*$*</span>
+  <span style="color:#66d9ef">PRIVATE SECTION</span>.
+    <span style="color:#66d9ef">METHODS</span>:set_pf_status
+        <span style="color:#66d9ef">CHANGING</span>
+          co_alv <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_table.
+<span style="color:#75715e">*$*$*.....CODE_ADD_1 - End....................................1..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - Begin..................................2..*$*$*</span>
+    <span style="color:#66d9ef">CALL METHOD</span> set_pf_status
+      <span style="color:#66d9ef">CHANGING</span>
+        co_alv <span style="color:#f92672">=</span> go_alv.
+<span style="color:#75715e">*$*$*.....CODE_ADD_2 - End....................................2..*$*$*</span>
+
+<span style="color:#75715e">*$*$*.....CODE_ADD_3 - Begin..................................3..*$*$*</span>
+  <span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">set_pf_status</span>.
+    <span style="color:#75715e">&#34;附加刷新按钮&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">DATA</span>: lo_functions <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_functions_list.
+    lo_functions <span style="color:#f92672">=</span> go_alv<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_functions</span>( ).
+    lo_functions<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">set_all</span>( abap_true ). <span style="color:#75715e">&#34;激活所有的ALV内置通用按钮&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">INCLUDE</span> &lt;icon&gt;.
+    <span style="color:#66d9ef">DATA</span>: lv_icon <span style="color:#66d9ef">TYPE </span>string.
+    lv_icon <span style="color:#f92672">=</span> icon_refresh.
+    <span style="color:#75715e">&#34;附加按钮，只适用于‘可控模式’下的 SALV&#34;
+</span><span style="color:#75715e"></span>    lo_functions<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">add_function</span>(
+      name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;refresh&#39;</span>
+      icon <span style="color:#f92672">=</span> lv_icon
+      text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;刷新按钮&#39;</span>
+      tooltip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;刷新数据&#39;</span>
+      <span style="color:#75715e">&#34;按钮存放的位置：这里在右边附加。该参数的取值信息可查看方法源码&#34;
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">position</span> <span style="color:#f92672">=</span> if_salv_c_function_position<span style="color:#f92672">=&gt;</span>right_of_salv_functions ).
+  <span style="color:#66d9ef">ENDMETHOD</span>.                    <span style="color:#75715e">&#34;set_pf_status&#34;
+</span><span style="color:#75715e">*$*$*.....CODE_ADD_3 - End....................................3..*$*$*</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>767</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/SALV/">
+                    #SALV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Event/" class="prev" rel="prev" title=" SALV 事件处理 "><i class="iconfont icon-dajiantou"></i>&nbsp; SALV 事件处理 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_SALV_Layout/" class="next" rel="next" title=" SALV Layout 设置 "> SALV Layout 设置 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-06 00:00:00 \u002b0000 UTC',
+        title: ' SALV Status 设置 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

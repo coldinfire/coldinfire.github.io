@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPWebDynproJAVA/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_View/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_Structure/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Web Dynpro ABAP:Structure  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Web Dynpro ABAP:Structure  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Web Dynpro ABAP:Structure "/>
+<meta name="twitter:description" content="一般的程序框架 Component Controller 组件控制器是定义全局的组建，与视图相似，组件控制器是一个程序对外的部分，是整个程序最开始执行的环节 ，也是控制多个视图间数据"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Web Dynpro ABAP:Structure ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_Structure\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  1410 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_Structure\/",
+  "datePublished": "2018-10-18T00:00:00\x2b00:00",
+  "dateModified": "2018-10-18T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Web Dynpro ABAP:Structure </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-18 >18 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="一般的程序框架">一般的程序框架</h3>
+<p><img src="/images/webdynpro/webdynproABAP/Portal24.png" alt="Web Dynpro Role"></p>
+<h4 id="component-controller">Component Controller</h4>
+<p>组件控制器是定义全局的组建，与视图相似，组件控制器是一个程序对外的部分，是整个程序最开始执行的环节 ，也是控制多个视图间数据交互的纽带，一般考虑到程序的扩展性会优先使用组件控制器，然后关联各视图。</p>
+<h4 id="component-interface">Component Interface</h4>
+<p>组件接口是用来引入一些外部组件接口的。引入的组件接口可添加到相应的视图窗口中使用</p>
+<h4 id="views">Views</h4>
+<p>视图是一个DYNPRO程序显示的部分，可有多个视图，视图间可进行跳转，每个视图中需要显示的字段结构表等信息需要单独定义在该视图的节点中（CONTEXT）</p>
+<p>注意：组件控制器中也可以添加节点，作为全局节点属性，如果将它与某视图中的节点进行MAPPING，则可以在视图结束后，程序没结束的时候保存节点属性。一般界面跳转进行如此操作。</p>
+<h4 id="windows">Windows</h4>
+<p>窗口与视图相似，只是每个程序每次显示只能有一个单独的窗口，可定义多个窗口，窗口间跳转，与视图跳转相似，都是在Inbound Plugs（入站）和Outbound Plugs（出站）里做对应的绑定。</p>
+<h4 id="application">Application</h4>
+<p>应用程序，单独的执行程序。</p>
+<h3 id="others">Others</h3>
+<h4 id="web-dynpro-component-的-controller-分类">Web Dynpro Component 的 controller 分类</h4>
+<p>Component controller：这种类型的 controller 在一个 web dynpro component 内只存在一个，并且没有 visual interface。
+Custom controller：这类 controller 是可选的，用于封装 component controller 的 sub-function。
+View controller：每一个 view 都有一个对应的 view controller，负责与视图有关的逻辑，如检查用户的输入和处理 user action。
+Window controller：一个 window 内只存在一个 window controller，用于通过 inbound plugs 传递数据。</p>
+<h4 id="context-mapping">Context Mapping</h4>
+<p>每个 controller 内部都会有一个 context，用于存储 controller 所用的数据。</p>
+<p>Context 是一个包含 node 和 attribute 的结构。</p>
+<ul>
+<li>Attribute: 用于存储单个值，这些值类似于表或结构中的字段。</li>
+<li>Note: 是属性的集合，它类似于结构或内部表。</li>
+</ul>
+<p>每个 context 都有一个默认的 root node，这个 root node 不能被修改或删除。一个 node 可以包含子元素（node 和 attribute），而 attribute 只能依附于其他 node 或 context root node 而存在。在同一个 context 内，每个 node 的名字必须是唯一的。一个 node 连同其子元素被合称为一个 element。</p>
+<p>Context 中的每个 node 都有两个重要的 property：</p>
+<ul>
+<li>Cardinality：这个属性给出了当前 node collection 在运行时包含的元素数目的最小值和最大值。这个属性的取值包括:
+<ul>
+<li>0..1（仅允许 0 或 1 个元素）</li>
+<li>0..n（允许 0 或更多元素）</li>
+<li>1..1（仅允许一个元素）</li>
+<li>1..n（允许一个或多个元素）</li>
+</ul>
+</li>
+<li>Singleton：这个属性决定了子节点在实例化时是 singleton 还是不是 singleton，因此它的值就是布尔值。Singleton 和 Supply function，两者常在一起使用以实现 lazy data instantiation。比如在加载一个包含多行的表时，每一行包含的更详细数据不会被首先加载，而只有在用户选中并查特定行时，与该行相关的数据在会被读取。</li>
+</ul>
+<p>Context mapping 提供了一种机制，供不同的 controller 之间交换数据。context mapping 分为 internal 和 external 两种。</p>
+<ul>
+<li>如果同一个 component 内的不同 controller 之间共享数据，这被成为 internal context mapping</li>
+<li>共享数据的 controller 不在同一个 component 之内，这被称为 external context mapping。</li>
+</ul>
+<p>要注意的是 view controller 一类不能作为 context mapping 的源，否则就违背了 MVC 的设计原则。</p>
+<h4 id="data-binding">Data Binding</h4>
+<p>在上下文和UI元素之间自动传输数据，对上下文的任何更改都将自动传输到链接的UI元素。</p>
+<ul>
+<li>将 UI 元素数据(例如：输入字段，复选框，表等) 绑定到相应的节点或属性称为数据绑定。</li>
+<li>数据自动从视图控制器上下文传输到 UI 元素</li>
+<li>通过使用数据绑定概念，我们可以控制 UI 元素的多个属性，例如可见性，启用 / 禁用等。</li>
+<li>可以使用数据绑定通过上下文来操作 UI 元素属性。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1410</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproJAVA/" class="prev" rel="prev" title=" WebDynpro for JAVA "><i class="iconfont icon-dajiantou"></i>&nbsp; WebDynpro for JAVA </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_View/" class="next" rel="next" title=" Web Dynpro ABAP:View Details "> Web Dynpro ABAP:View Details &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-10-18 00:00:00 \x2b0000 UTC',
+        title: ' Web Dynpro ABAP:Structure ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

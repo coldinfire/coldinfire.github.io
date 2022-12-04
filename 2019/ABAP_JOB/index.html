@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_STO/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_Email/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_JOB/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SAP后台JOB | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content="SAP后台JOB | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAP后台JOB"/>
+<meta name="twitter:description" content="定义后台 job 第一种：SE38执行可执行程序 菜单栏‘program’&mdash;&gt;&lsquo;Execute in Background&rsquo; 输入输出设备 选择开始时"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SAP后台JOB",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_JOB\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils, JOB",
+  "wordcount":  856 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_JOB\/",
+  "datePublished": "2019-04-05T00:00:00\u002b00:00",
+  "dateModified": "2019-04-05T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">SAP后台JOB</h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-05 >5 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="定义后台-job">定义后台 job</h3>
+<p>第一种：SE38执行可执行程序</p>
+<ul>
+<li>
+<p>菜单栏‘program’&mdash;&gt;&lsquo;Execute in Background&rsquo;</p>
+<p><img src="/images/ABAP/JOB1.png" alt="后台JOB"></p>
+</li>
+<li>
+<p>输入输出设备</p>
+<p><img src="/images/ABAP/JOB3.png" alt="输出设备"></p>
+</li>
+<li>
+<p>选择开始时间（立刻执行，或定义日期时间，也可周期执行）后保存。</p>
+<p><img src="/images/ABAP/JOB2.png" alt="时间"></p>
+</li>
+</ul>
+<p>第二种：SM36定义作业名</p>
+<ul>
+<li>
+<p>点击<code>Start condition</code>选择job开始时间（立刻执行，或定义日期时间，也可周期执行）后保存.</p>
+<p><img src="/images/ABAP/JOB4.png" alt="Start Condition"></p>
+</li>
+<li>
+<p>再点击<code>Step</code>，填写abap程序NAME和Variant后保存，回到主界面后再保存。后台会在你定义的时间，自动执行按照变式的条件执行程序。</p>
+<p><img src="/images/ABAP/JOB5.png" alt="Step"></p>
+</li>
+</ul>
+<p><a href="http://blog.sina.com.cn/s/blog_76c57b480100rumm.html">如何在 SAP 中定义 Event 类型的后台 Job</a></p>
+<h3 id="强制结束后台作业-sm37-sm35-sm50">强制结束后台作业（ SM37 SM35 SM50)</h3>
+<p>第一步：SM50</p>
+<p>找到 &ldquo;Ty.&rdquo; 列为 BGD 的(Background)，然后再找到你刚运行的那个后台 Job 的行，选中；然后在菜单点击：Process &mdash;&gt; Cancel with core 即可。</p>
+<p>第二步：SM37 查看 Background Job，应该为 “取消” 状态。</p>
+<p>第三步：SM35，选中 Session Name，点击小绿旗 release 即可。</p>
+<h3 id="如何查看一个后台job对应哪些程序">如何查看一个后台job对应哪些程序?</h3>
+<p>SM36 -&gt; 点击 job selection -&gt; 运行结果双击选择 job -&gt; 回到第一个界面，点击&quot;Step&quot;按钮，转到步骤清单总览，里面就可以看到程序名称了已取消，完成的 job 是不能修改的其它状态的都可以改，在SM37里，选择相应的job，菜单里有个更改项。</p>
+<p>SM37 就是 SM36 里 job selection 的链接。</p>
+<h3 id="调试后台-job">调试后台 Job</h3>
+<p>事务码：SM37，选中要调试的 job，输入事务码 JDBG，回车，进入调试界面，根据需要打断点等就行了。</p>
+<h4 id="后台job状态类型">后台JOB状态类型</h4>
+<ul>
+<li>Scheduled：job 创建了但是还没有 release，这种状态的 job 是不会执行的</li>
+<li>Released：job 在启动条件满足后会启动，Ready 就是启动条件满足后，系统开始为该 job 分配但尚未分配合适的后台进程的一个中间状态</li>
+<li>Active：job 正在运行当中</li>
+<li>Finished：job 得所有 step 都成功的完成了</li>
+<li>Canceled：job 在某一个 step 得运行过程中异常中止了。</li>
+</ul>
+<h3 id="批量删除后台作业">批量删除后台作业</h3>
+<p>SE38执行 <strong>RSBTCDEL2</strong>  根据条件输入后台Job名或则根据用户天数，Commit尽可能大一点，Test Run勾上会显示满足条件的Job名字.</p>
+<h3 id="查看后台-job-执行记录">查看后台 JOB 执行记录</h3>
+<p>从表 TBTCO 或 TBTCP 中获取所需信息。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>856</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/JOB/">
+                    #JOB</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_STO/" class="prev" rel="prev" title="STO 详解"><i class="iconfont icon-dajiantou"></i>&nbsp;STO 详解</a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Email/" class="next" rel="next" title=" SAP 发送 Email "> SAP 发送 Email &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-05 00:00:00 \u002b0000 UTC',
+        title: 'SAP后台JOB',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

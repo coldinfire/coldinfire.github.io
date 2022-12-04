@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Utils_BDC/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_TABLE_Maintenance/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Basis_FieldSymbol/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Field Symbols  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Field Symbols  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Field Symbols "/>
+<meta name="twitter:description" content="字段符号 定义 FIELD-SYMBOLS: &lt;fs_tb&gt; TYPE ANY TABLE. FIELD-SYMBOLS: &lt;fs_wa&gt; TYPE ANY. FIELD-SYMBOLS: &lt;fs_struc&gt; LIKE LINE OF &lt;table&gt;. FIELD-SYMBOLS: &lt;fs_struc&gt; LIKE &lt;structure&gt;. 使用 FIELD-SYMBOLS 必须和某个变量，结构或者内表绑定后才能使用，在使用字段符号前必须分配给某个变量，不然"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Field Symbols ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_FieldSymbol\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1314 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Basis_FieldSymbol\/",
+  "datePublished": "2018-09-29T00:00:00\x2b00:00",
+  "dateModified": "2018-09-29T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Field Symbols </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-29 >29 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="字段符号">字段符号</h3>
+<h4 id="定义">定义</h4>
+<ul>
+<li><code>FIELD-SYMBOLS: &lt;fs_tb&gt; TYPE ANY TABLE.</code></li>
+<li><code>FIELD-SYMBOLS: &lt;fs_wa&gt; TYPE ANY.</code></li>
+<li><code>FIELD-SYMBOLS: &lt;fs_struc&gt; LIKE LINE OF &lt;table&gt;.</code></li>
+<li><code>FIELD-SYMBOLS: &lt;fs_struc&gt; LIKE &lt;structure&gt;.</code></li>
+</ul>
+<h4 id="使用">使用</h4>
+<p>FIELD-SYMBOLS 必须和某个变量，结构或者内表绑定后才能使用，在使用字段符号前必须分配给某个变量，不然会发生 FIELD-SYMBOLS 未分配的运行时错误。如果 LOOP 内表时 ASSIGNING 到 FIELD-SYMBOLS，之后假如有 REFRESH 内表的操作的话，FIELD-SYMBOLS 也会再次回到初始未被  ASSIGNING 的状态，这时如果使用 FIELD-SYMBOLS 也会发生字段符号未分配的 RUNTIME ERROR。</p>
+<p><code>ASSIGN &lt;value&gt; TO &lt;fs&gt;.</code></p>
+<ul>
+<li>将某个内存区域分配给字段符号，这样字段符号就代表了该内存区域，即该内存区域别名字段符号可以看作仅是已经被解引用的指针，即某个变量的别名。</li>
+</ul>
+<p><code>UNASSIGN &lt;fs&gt;.</code></p>
+<ul>
+<li>初始化<code>&lt;fs&gt;</code>字段符号，执行后字段符号将不再引用内存区域，<code>&lt;fs&gt; IS ASSIGNED.</code>返回 False。</li>
+</ul>
+<p><code>CLEAR &lt;fs&gt;.</code></p>
+<ul>
+<li>与 UNASSIGN 不同的是，它只有一个作用就是初始化它所指向的内存区域，而不是解除 ASSIGN。</li>
+</ul>
+<p><em>循环中使用字段符号</em></p>
+<ul>
+<li>LOOP 内表 INTO 结构时，系统会把先把当前行的数据复制到结构，如果结构的值改了，还需要使用 MODIFY 语句把更改后的值传回内表。也就是说，结构是内表里的数据的一个副本，操作这个副本不会影响内表里的数据。为了提高效率，可以使用字段符号，字段符号直接指向内表数据，省去了复制数据到结构的过程。修改字段符号的值也就是相当于直接修改内表里的数据，不需要再使用 MODIFY 语句。</li>
+</ul>
+<p><em>读取表数据时使用字段符号</em></p>
+<ul>
+<li>将内表数据的行记录分配到字段符号，修改字段符号的值也就是相当于直接修改内表里的数据。</li>
+</ul>
+<h3 id="字段符号使用实例">字段符号使用实例</h3>
+<h4 id="append--insert">APPEND &amp; INSERT</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;fs_mara&gt; <span style="color:#66d9ef">TYPE </span>ANY.
+<span style="color:#75715e">&#34;Append line&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">APPEND INITIAL LINE TO</span> t_mara <span style="color:#66d9ef">ASSIGNING</span> &lt;fs_mara&gt;.
+&lt;fs_mara&gt;<span style="color:#f92672">-</span>matnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sapclub&#39;</span>.
+<span style="color:#75715e">&#34;Insert table&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT INITIAL LINE INTO</span> t_mara <span style="color:#66d9ef">ASSIGNING</span> &lt;fs_mara&gt; <span style="color:#66d9ef">INDEX</span> <span style="color:#ae81ff">2</span>.
+&lt;fs_mara&gt;<span style="color:#f92672">-</span>matnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ABCDEF&#39;</span>.
+</code></pre></div><h4 id="loop-modify--read-modify">LOOP MODIFY &amp; READ MODIFY</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;Loop table&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">LOOP AT </span>t_mara <span style="color:#66d9ef">ASSIGNING</span> &lt;fs_mara&gt;.
+  &lt;fs_mara&gt;<span style="color:#f92672">-</span>ersda <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+<span style="color:#75715e">&#34;Read table&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> t_mara <span style="color:#66d9ef">ASSIGNING</span> &lt;fs_mara&gt; <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> matnr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXX&#39;</span>.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">EQ</span> <span style="color:#ae81ff">0</span>.
+  &lt;fs_mara&gt;<span style="color:#f92672">-</span>ersda <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum.
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="直接复制内表数据">直接复制内表数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">ASSIGN</span> lt_1 <span style="color:#66d9ef">TO</span> &lt;fs1&gt;
+<span style="color:#66d9ef">ASSIGN</span> lt_2 <span style="color:#66d9ef">TO</span> &lt;fs2&gt;.
+...
+&lt;lt_2&gt; <span style="color:#f92672">=</span> &lt;lt_1&gt;.
+<span style="color:#66d9ef">DATA</span>: lv_lines <span style="color:#66d9ef">TYPE </span>i.
+lv_lines <span style="color:#f92672">=</span> <span style="color:#66d9ef">lines</span>( lt_2 ).
+<span style="color:#66d9ef">WRITE</span>: lv_lines.
+</code></pre></div><h4 id="循环单条复制内表数据">循环单条复制内表数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">LOOP AT </span>lt_1 <span style="color:#66d9ef">ASSIGNING</span> &lt;fs_1&gt;.
+  <span style="color:#66d9ef">APPEND INITIAL LINE TO</span> lt_2 <span style="color:#66d9ef">ASSIGNING</span> &lt;ls_2&gt;.
+  &lt;ls_2&gt; <span style="color:#f92672">=</span> &lt;fs_1&gt;.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h4 id="通过结构中字段名称获取内表数据">通过结构中字段名称获取内表数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> field_name <span style="color:#66d9ef">type </span>char20.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>:&lt;lv_field&gt; <span style="color:#66d9ef">type </span>any.
+<span style="color:#66d9ef">LOOP AT </span>lt_1 <span style="color:#66d9ef">ASSIGNING</span> &lt;fs&gt;.
+  <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> &lt;field_name&gt; <span style="color:#66d9ef">OF STRUCTURE</span> &lt;fs&gt; <span style="color:#66d9ef">TO</span> &lt;lv_field&gt;.
+  <span style="color:#66d9ef">CHECK</span> &lt;lv_field&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h4 id="通过结构中字段索引获取内表数据">通过结构中字段索引获取内表数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> index_number <span style="color:#66d9ef">type </span>i.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>:&lt;lv_field&gt; <span style="color:#66d9ef">type </span>any.
+<span style="color:#66d9ef">LOOP AT </span>lt_1 <span style="color:#66d9ef">ASSIGNING</span> &lt;fs&gt;.
+  <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> index_number <span style="color:#66d9ef">OF STRUCTURE</span> &lt;fs&gt; <span style="color:#66d9ef">TO</span> &lt;lv_field&gt;.
+  <span style="color:#66d9ef">CHECK</span> &lt;lv_field&gt; <span style="color:#f92672">IS ASSIGNED</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h4 id="assign-隐式强转">ASSIGN 隐式强转</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> t_date,
+  year(<span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">TYPE  </span>n,
+  month(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">TYPE </span>n,
+  day(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">TYPE </span>n,
+<span style="color:#66d9ef">END OF</span> t_date.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;fs&gt; <span style="color:#66d9ef">TYPE </span>t_date.  <span style="color:#75715e">&#34;将&lt;fs&gt;定义成了具体限定类型&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ASSIGN</span> sy<span style="color:#f92672">-</span>datum <span style="color:#66d9ef">TO</span> &lt;fs&gt; CASTING. <span style="color:#75715e">&#34;后面没有指定具体类型，所以使用定义时的类型进行隐式转换&#34;
+</span></code></pre></div><h4 id="assign-显示强转">ASSIGN 显示强转</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span> txt(<span style="color:#ae81ff">8</span>) <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;19980606&#39;</span>.
+<span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;fs&gt;.
+<span style="color:#66d9ef">ASSIGN</span> txt <span style="color:#66d9ef">TO</span> &lt;fs&gt; CASTING <span style="color:#66d9ef">TYPE </span>d. <span style="color:#75715e">&#34;由于定义时未指定具体的类型，所以这里需要显示强转&#34;
+</span></code></pre></div><h4 id="动态引用">动态引用</h4>
+<p>通过循环赋值给定义的字段符号，对其进行修改，等于直接修改原内表。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">FIELD-SYMBOLS</span> &lt;l_shortageqty&gt; <span style="color:#66d9ef">type </span>mng01.
+LOOP <span style="color:#66d9ef">AT</span> &lt;dyn_table&gt; <span style="color:#66d9ef">ASSIGNING</span> &lt;dyn_wa&gt;.
+  <span style="color:#66d9ef">ASSIGN</span> <span style="color:#66d9ef">COMPONENT</span> <span style="color:#e6db74">&#39;SHORTAGEQTY&#39;</span> <span style="color:#66d9ef">of STRUCTURE</span> &lt;dyn_wa&gt; <span style="color:#66d9ef">to</span> &lt;l_shortageqty&gt;.
+  &lt;l_shortageqty&gt; <span style="color:#f92672">=</span> &lt;l_shortageqty&gt; <span style="color:#f92672">-</span> <span style="color:#ae81ff">20</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h3 id="data-references">Data References</h3>
+<p>数据引用是指向数据对象的指针。它们作为数据引用变量的内容出现在 ABAP 中，可以使用数据引用来动态创建数据对象。</p>
+<ul>
+<li><code>TYPES t_dref TYPE REF TO data.</code></li>
+<li><code>DATA dref TYPE REF TO data</code></li>
+</ul>
+<h4 id="动态创建数据对象">动态创建数据对象</h4>
+<p><code>CREATE DATA dref {TYPE type}|{LIKE dobj}.</code></p>
+<h4 id="获取数据对象的引用">获取数据对象的引用</h4>
+<p><code>GET REFERENCE OF dobj INTO dref.</code></p>
+<h4 id="取消引用数据的引用">取消引用数据的引用</h4>
+<p>要访问数据引用所指向的数据对象的内容，必须要取消引用它。</p>
+<p><code>ASSIGN dref-&gt;* TO &lt;fs&gt; [CASTING ...].</code></p>
+<ul>
+<li>此语句将数据对象分配给引用变量 dref 中的数据引用所指向的 <code>field symbol &lt;fs&gt;</code>。 如果分配成功，则 sy-subrc = 0。</li>
+</ul>
+<h4 id="demo">Demo</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> demo_data_reference.
+<span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> t_struct,
+    col1 <span style="color:#66d9ef">TYPE </span>i,
+    col2 <span style="color:#66d9ef">TYPE </span>i,
+  <span style="color:#66d9ef">END OF</span> t_struct.
+<span style="color:#75715e">*创建引用</span>
+<span style="color:#66d9ef">DATA</span>: dref1 <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>,
+      dref2 <span style="color:#66d9ef">TYPE REF TO</span> <span style="color:#66d9ef">data</span>.
+<span style="color:#75715e">*声明字段符号</span>
+<span style="color:#66d9ef">FIELD-SYMBOLS</span>: &lt;fs1&gt; <span style="color:#66d9ef">TYPE </span>t_struct,
+               &lt;fs2&gt; <span style="color:#66d9ef">TYPE </span>i.
+<span style="color:#75715e">*动态对象创建</span>
+<span style="color:#66d9ef">CREATE DATA</span> dref1 <span style="color:#66d9ef">TYPE </span>t_struct.
+<span style="color:#75715e">*解除数据引用</span>
+<span style="color:#66d9ef">ASSIGN</span> dref1-&gt;* <span style="color:#66d9ef">TO</span> &lt;fs1&gt;.
+
+&lt;fs1&gt;<span style="color:#f92672">-</span>col1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>.
+&lt;fs1&gt;<span style="color:#f92672">-</span>col2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>.
+dref2 <span style="color:#f92672">=</span> dref1.
+<span style="color:#66d9ef">ASSIGN</span> dref2-&gt;* <span style="color:#66d9ef">TO</span> &lt;fs2&gt; CASTING.
+<span style="color:#66d9ef">WRITE</span>: / <span style="color:#e6db74">&#39;Result 1:&#39;</span>, &lt;fs2&gt;.
+<span style="color:#66d9ef">GET REFERENCE OF</span> &lt;fs1&gt;<span style="color:#f92672">-</span>col2 <span style="color:#66d9ef">INTO</span> dref2.
+<span style="color:#66d9ef">ASSIGN</span> dref2-&gt;* <span style="color:#66d9ef">TO</span> &lt;fs2&gt; .
+<span style="color:#66d9ef">WRITE</span>: / <span style="color:#e6db74">&#39;Result 2:&#39;</span>, &lt;fs2&gt;.
+</code></pre></div><ul>
+<li>Result 1 : 1</li>
+<li>Result 2 : 2</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1314</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Utils_BDC/" class="prev" rel="prev" title=" BDC 屏幕录制 "><i class="iconfont icon-dajiantou"></i>&nbsp; BDC 屏幕录制 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_TABLE_Maintenance/" class="next" rel="next" title=" SM30 表维护 "> SM30 表维护 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-29 00:00:00 \x2b0000 UTC',
+        title: ' SAP Field Symbols ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_Table_Adjust/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_SFP_Use/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_SFP_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Adobe Form  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Adobe Form  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Adobe Form "/>
+<meta name="twitter:description" content="SAP 中关于 Form 的设计有三种工具：Script Form，Smart Form 和 Interactive Form(Adobe Form). 要在 SAP 系统中展示 Adobe Form 需要 SAP 版本在 ECC6.0以上 ，而且要开发自定义的 Adobe"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Adobe Form ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_SFP_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  1662 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_SFP_Basic\/",
+  "datePublished": "2020-04-09T00:00:00\u002b00:00",
+  "dateModified": "2020-04-09T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Adobe Form </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-04-09 >9 April 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SAP 中关于 Form 的设计有三种工具：Script Form，Smart Form 和 Interactive Form(Adobe Form).</p>
+<p>要在 SAP 系统中展示 Adobe Form 需要 SAP 版本在 <strong>ECC6.0以上</strong> ，而且要开发自定义的 Adobe Form 还需要在 PC 上安装  <strong>Adobe Life Cycle Desinger</strong>  的工具。在满足以上两个条件后就可以开发自己想要使用的 Adobe Form。</p>
+<p>Adobe Form 相对于 Smartforms 可以让 Form 程序的开发设计更简单：</p>
+<ul>
+<li>Adobe Live Cycle 直接集成在 SAP 中，画 Form 更方便</li>
+<li>图片处理更方便</li>
+<li>可以导入既有的 PDF 或则 Word</li>
+<li>Layout 可以重用</li>
+<li>字体支持更加强大</li>
+<li>Barcode 等使用更加方便</li>
+</ul>
+<h2 id="设计adobe-form">设计Adobe Form</h2>
+<h4 id="form-设计好的方法">Form 设计好的方法</h4>
+<ul>
+<li>尽量不要只用一个 Master Page 去管理整个 Form(除非非常简单)</li>
+<li>在使用嵌套 subform 的时候注意，不要嵌套在不同页的两个 subform</li>
+<li>页面有不同的内容就添加一个 body page ，而不要选择 goto</li>
+<li>Keep with prev ones 和 Keep with next 仅使用于普通的 subform 而不适用于 body page</li>
+</ul>
+<h3 id="interface">Interface</h3>
+<p>这里的 Interface 的概念其实比较好解释，它就是相当于一个后台数据的接口，可以为前台各种 Adobe Form 提供对应的数据。不同形式的 Adobe Form 可以调用相同的 Interface。</p>
+<p>在 Interface 中可以定义一些参数和进行一些数据处理。包括import、export、tables 以及 exceptions，有点像Function Module 的定义。当然在里面也可以定义一些全局变量，以及可以写些初始化代码以及 sub routine。</p>
+<h4 id="创建-interface">创建 Interface</h4>
+<p>进入事务代码：SFP，输入 Interface 名字，点击创建。</p>
+<p><img src="/images/ABAP/ABAP_SFP0.png" alt="SFP Interface"></p>
+<h4 id="接口类型">接口类型</h4>
+<p>不同的接口类型适用于不同业务场景。</p>
+<p><img src="/images/ABAP/ABAP_SFP3.png" alt="Interface"></p>
+<ul>
+<li>ABAP Dictionary-Based Interface：ABAP程序调用</li>
+<li>Smart Forms-Compatible Interface：兼容Smart Form</li>
+<li>XML Schema-Based Interface：Web Dynpro 调用
+<ul>
+<li>对于输入参数，不能更改，只有一个 XSTRING 类型的参数(除却标准的 Print Parameter)</li>
+<li>XML Schema: 这个一般是自动生成，也可以选择手工上传一个 <strong>XSD</strong> 文件</li>
+</ul>
+</li>
+</ul>
+<h4 id="接口参数">接口参数</h4>
+<p>在接口中添加需要使用的自定义参数。</p>
+<p><img src="/images/ABAP/ABAP_SFP1.png" alt="Interface"></p>
+<p><em>Form Interface：传递参数</em></p>
+<p>注意：参数定义用 TYPE，只有兼容 Smart Form 的接口类型才能用 LIKE。</p>
+<ul>
+<li>Import</li>
+<li>Export</li>
+<li>Tables (Only Smart Form Type)</li>
+<li>Exceptions</li>
+</ul>
+<p><em>Global Definitions：全局变量</em> ：定义 Form 中需要使用到的全局变量</p>
+<ul>
+<li>Global Data</li>
+<li>Types</li>
+<li>Field Symbols</li>
+</ul>
+<p><em>Initialization：初始化</em></p>
+<ul>
+<li>
+<p>Code Initialization：如果不是 Smart Form 兼容的接口类型，那么这里是你唯一可以写 ABAP 代码的地方，在未真正调用 Form 之前执行</p>
+</li>
+<li>
+<p>Form Routines：这里可以写子程序供 Code 初始化调用</p>
+</li>
+</ul>
+<p><em>Currency/Quantity Fields：货币和单位字段的设置</em></p>
+<ul>
+<li>通过这里的设置，决定了表单中数字或货币的显示方式。</li>
+</ul>
+<h3 id="form">Form</h3>
+<h4 id="创建-form">创建 Form</h4>
+<p>进入事务代码：SFP，在 Form 中输入要创建的 form 名字，点击创建，在弹出框中输入之前创建的 Interface。</p>
+<p><img src="/images/ABAP/ABAP_SFP2.png" alt="SFP Form"></p>
+<h4 id="form-properties">Form Properties</h4>
+<p><img src="/images/ABAP/ABAP_SFP5.png" alt="Form properties"></p>
+<p>Layout Type : 需要使用脚本做交互式报表时使用</p>
+<ul>
+<li>
+<p>xACF Layout：现在基本使用 ZCI 而不是使用 xACF</p>
+</li>
+<li>
+<p>Standard Layout：标准的 Layout type</p>
+</li>
+<li>
+<p>ZCI Layout：对 Adobe Reader 的版本有要求，note 号：955795</p>
+</li>
+</ul>
+<p>Interface : 需要调用的接口名字</p>
+<h4 id="context">Context</h4>
+<p>在这里使用 Interface 中定义的内容，可以有选择的使用。在 Context 中也可以自己添加一些文本模块或则图像。</p>
+<p><img src="/images/ABAP/ABAP_SFP4.png" alt="Context"></p>
+<ul>
+<li>
+<p>Interface：包括我们设计接口的字段以及系统字段(System Fields)</p>
+</li>
+<li>
+<p>Interface Property：接口字段的属性</p>
+</li>
+<li>
+<p>Context：在 Form 中用到的字段列表</p>
+</li>
+<li>
+<p>Context Property：Context 字段属性</p>
+</li>
+</ul>
+<p>Context 主工作区可以创建各种元素类型，也可以决定是否激活某个元素(Set to Active/Deactivate)。</p>
+<p><img src="/images/ABAP/ABAP_SFP7.png" alt="Context"></p>
+<h4 id="layout-设置">Layout 设置</h4>
+<p>Layout 进行 Form 主体的绘制，主要在于控件的应用，它可以决定该 Form 的整体格式与相关的页面设置 (翻页设置，页面结构，页码，页边间距等等)。其中最关键的是数据绑定的内容，在 Layout 进行数据绑定就可以将 Interface 中的数据展示到该 Form 中对应的字段中。</p>
+<p>使用 Adobe LiveCycle Designer：</p>
+<ul>
+<li>静态元素控件
+<ul>
+<li>图片容器</li>
+<li>文本</li>
+<li>几何图形</li>
+</ul>
+</li>
+<li>动态元素控件：引用自 Context
+<ul>
+<li>Text 字段</li>
+<li>图像</li>
+<li>数量字段</li>
+<li>时间和日期字段</li>
+</ul>
+</li>
+<li>Table
+<ul>
+<li>动态表：打印表的行数在设计时未知</li>
+<li>静态表：设计时确定记录数据内容</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/ABAP/ABAP_SFP6.png" alt="Context"></p>
+<p><strong>Live Cycle 设计器</strong>：主要设计内容 Master Page、Context Area、Body Pages、SubForms。</p>
+<p><img src="/images/ABAP/ABAP_SFP10.png" alt="Context"></p>
+<p>Master Pages：主页面，可以放置一些静态元素，在每个打印页面都可以看到这些静态元素</p>
+<ul>
+<li>Name：Master page 名字</li>
+<li>Paper type：纸张类型</li>
+<li>Restrict Page Occurrence：打印的页数</li>
+</ul>
+<p>Content Area：放置动态元素，例如表内容等。Context Area 只能包含在 Master Page 中</p>
+<p>Body Page：包含在 Context Area 之中，是动态元素的内容，顶级的 Subform</p>
+<p>Subforms：用来组织 Form 元素，使 Form 的设计逻辑更加清晰</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1662</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Table_Adjust/" class="prev" rel="prev" title=" 透明表删除Key值后激活 "><i class="iconfont icon-dajiantou"></i>&nbsp; 透明表删除Key值后激活 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_SFP_Use/" class="next" rel="next" title=" SAP Adobe 使用 "> SAP Adobe 使用 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-04-09 00:00:00 \u002b0000 UTC',
+        title: ' SAP Adobe Form ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

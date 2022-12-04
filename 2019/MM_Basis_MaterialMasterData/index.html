@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_Basis_Detail2/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_Basis_Vender/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/MM_Basis_MaterialMasterData/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            MM 物料主数据管理  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" MM 物料主数据管理  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" MM 物料主数据管理 "/>
+<meta name="twitter:description" content="Material Master Data 相关事物码 MM01/02/03：创建 / 修改 / 显示 MM06：立即删除标记。Material 的删除分两个层次：一个是加 Delete flag material 但号码还存在，"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " MM 物料主数据管理 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/MM_Basis_MaterialMasterData\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM",
+  "wordcount":  3416 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/MM_Basis_MaterialMasterData\/",
+  "datePublished": "2019-03-12T00:00:00\x2b00:00",
+  "dateModified": "2019-03-12T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> MM 物料主数据管理 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-03-12 >12 March 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                7 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="material-master-data-">Material Master Data</h3>
+<h4 id="相关事物码">相关事物码</h4>
+<ul>
+<li>
+<p>MM01/02/03：创建 / 修改 / 显示</p>
+</li>
+<li>
+<p>MM06：立即删除标记。Material 的删除分两个层次：一个是加 Delete flag material 但号码还存在， 但强制使用还是可以的， 所以建议使用 Status 来控制，将所有的状态都 block 住。</p>
+<p><img src="/images/MM/MM06_Delete.png" alt="MM06"></p>
+</li>
+<li>
+<p>MM17：批量维护物料主数据内容</p>
+</li>
+<li>
+<p>MM50：物料视图扩充</p>
+</li>
+<li>
+<p>MM60：物料清单</p>
+</li>
+<li>
+<p>MMAM：配置物料类型</p>
+</li>
+<li>
+<p>MMD1：MRP文档创建</p>
+</li>
+</ul>
+<h4 id="主要信息-">主要信息</h4>
+<p>描述性信息：描述，尺寸，体积等</p>
+<p>控制性信息：MRP类型，价格控制，采购组等</p>
+<p>物料主数据：</p>
+<ul>
+<li>General：Material Number、Description、Base Unit Of Measure、Technical</li>
+<li>Plan Specific：MRP type、Planned delivery time、Purchasing group、Batch indicator</li>
+<li>Valuation：Valuation price、Valuation procedure、Valuated quantity</li>
+</ul>
+<h4 id="必要数据">必要数据</h4>
+<p>物料编码：物料编码用来唯一地识别有关物料主记录，用户可在物料管理客户化修改中设置长度并记录物料编码的模式。</p>
+<ul>
+<li>号码范围：(Group、Material type、Number Ranges) 外部给号，内部给号范围的限制；允不允许外部给号，需要设置Group中包不包含外部Number range；</li>
+</ul>
+<p><img src="/images/MM/MM_NR.png" alt="定义Number Ranger"></p>
+<p>行业领域：根据不同的行业领域，决定有哪些与行业相关的数据可以显示；</p>
+<p>物料类型：按照物料在公司的不同用途，将物料分为不同类型；决定财务和仓库管理的特性。例如：可将物料分为原材料、半成品、成品、服务。贸易型货物或内部、外部拥有的空容器等各种类型。可做如下控制：</p>
+<ul>
+<li>定义哪个部门可维护物料数据</li>
+<li>定义采购类型</li>
+<li>在相关的工厂中定义库存管理类型，例如，可通过物料类型定义更新哪些数据，但价值不变</li>
+<li>是自动过帐定义的一个因素，财务参照物料类型确定库存科目</li>
+</ul>
+<p>标准物料类型：</p>
+<table>
+<thead>
+<tr>
+<th>Detail</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>成品（FERT）：Finished Product</td>
+<td>备品备件（ERSA）：Spare Parts</td>
+</tr>
+<tr>
+<td>半成品（HALB）：Semifinished Product</td>
+<td>贸易货物（HAWA）：Trading Goods</td>
+</tr>
+<tr>
+<td>原材料（ROH）：Raw materials</td>
+<td>可反复利用包装（LEIH）</td>
+</tr>
+<tr>
+<td>包装物料（VERP）：Packaging</td>
+<td>未估价物料(UNBW)</td>
+</tr>
+<tr>
+<td>管线物料（PIPE）：Pipeline materials</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>物料类型设置：</p>
+<ul>
+<li>
+<p>SPRO：SAP后台配置</p>
+<p><img src="/images/MM/MM_material_type1.png" alt="Material Types"></p>
+</li>
+<li>
+<p>详细信息：User departments（决定哪些部门需要维护）</p>
+<p><img src="/images/MM/MM_material_type.png" alt="Material Types Control"></p>
+<ul>
+<li>External no. assignment w/o check, 如果选中就代表，建立 Material 并且外部给号的时候，不会去检查是否符合 External no range。</li>
+</ul>
+</li>
+<li>
+<p>控制数量/价值更新：决定数量和价值的更新（客户供料：只会做数量更新，不会做价钱更新&lt;不属于本公司&gt;）</p>
+<p><img src="/images/MM/MM_material_type2.png" alt="Material Types Control"></p>
+</li>
+<li>
+<p>控制内/外部采购订单：决定是不是自生产的(影响采购类型)，这两个配置主要作用于 MRP2 中的 “采购类型” 字段</p>
+<ul>
+<li>0：不允许</li>
+<li>1：允许外部采购，但是会有警告</li>
+<li>2：允许外部采购</li>
+</ul>
+<p><img src="/images/MM/MM_material_type3.png" alt="Material Types Control"></p>
+</li>
+<li>
+<p>决定使用哪个G/L Account：过账时的总账分类账</p>
+</li>
+</ul>
+<p><img src="/images/MM/MM_material_type4.png" alt="Material Types Control"></p>
+<p>更改物料类型：满足以下条件并使用TCode：<em><strong>MMAM</strong></em></p>
+<ul>
+<li>没有库存;没有预留;没有采购文档（PR，PO，协议，合同）可以更改</li>
+<li>新的物料类型和旧的物料类型有相同的G/L Account；有相同的数量/价值更新</li>
+</ul>
+<p>物料状态定义：控制该物料可以做什么和不可以做什么</p>
+<ul>
+<li>SPRO<img src="/images/MM/MM_MS1.png" alt="Material Status"></li>
+<li>定义<img src="/images/MM/MM_MS2.png" alt="Material Status"></li>
+<li>设置<img src="/images/MM/MM_MS3.png" alt="Material Status"></li>
+</ul>
+<h4 id="视图设置">视图设置</h4>
+<ul>
+<li>物料主数据记录中的数据是集合在不同的视图中；</li>
+<li>公司所有部门都需要使用物料主数据，因此在不同的部门会有不同的物料主数据视图。</li>
+</ul>
+<p>视图结构：<img src="/images/MM/MMMain.png" alt="视图"></p>
+<p>视图默认值设置：</p>
+<ul>
+<li>通过缺省值设置默认Industry sector</li>
+<li>通过缺省值设置默认View</li>
+<li>通过缺省值设置默认Organization level，可从其他工厂复制</li>
+<li>通过复制其他的物料号</li>
+</ul>
+<p>数据屏幕：可以分为以下三层数据结构</p>
+<ul>
+<li>
+<p>初始级别：设置初始化必需数据</p>
+</li>
+<li>
+<p>主体工作级别：主要的数据设置</p>
+</li>
+<li>
+<p>辅助数据级别：在主数据级别外进行额外的信息补充</p>
+<p><img src="/images/MM/MMScreen.png" alt="数据屏幕"></p>
+</li>
+</ul>
+<p>字段控制：控制前台字段的显示状态</p>
+<p>​	给字段组分配字段；通过组别的方式进行设置字段的显示状态：</p>
+<p><img src="/images/MM/MM_FS.png" alt="组别类型"></p>
+<p><img src="/images/MM/MM_FS2.png" alt="各组别定义"></p>
+<p><img src="/images/MM/MM_FS1.png" alt="各组别定义"></p>
+<p>多个因素的优先级：</p>
+<ul>
+<li>Hide</li>
+<li>Display</li>
+<li>Required entry field</li>
+<li>Option entry field</li>
+</ul>
+<h4 id="视图选择">视图选择</h4>
+<p><strong>Basic Data1:一般属于物料描述等属性，属于集团类别。</strong></p>
+<p>单位：基本单位，订单单位，转换因子（附加数据中有计量单位的设定，
+计量单位组：预先定义好单位转换 &lt;通过后台设置关键字 设置计量单位组中进行设置的&gt;）</p>
+<ul>
+<li>计量单位(计量单位组)</li>
+</ul>
+<p><img src="/images/MM/MM_DUMG.png" alt="计量单位组定义"></p>
+<p>物料组：对物料进行分组，便于分析</p>
+<ul>
+<li>
+<p>通过物料组可以将不同的物料对应到评估类再对应不同的总账科目并实现自动过账，这是MM与FI实现集成的重要配置</p>
+</li>
+<li>
+<p>物料组可以用来在做没有物料号的成本中心采购时，确定费用科目</p>
+</li>
+</ul>
+<p>旧物料号： 便于查找旧系统数据</p>
+<p>部门：Division (1) 影响 SD/FI 两个模块 (2) 无值将导致销售无法生成订单，单价录入，报告书等</p>
+<p>实验室 / 办公室：描述信息没有特殊描述</p>
+<p>产品组：根据公司产品分组，不填写销售无法生成订单</p>
+<p>毛重、净重：报关使用,创建SO的时候，重量会被自动带出</p>
+<p>附加数据：通过附加数据来维护不同语言环境的物料描述</p>
+<ul>
+<li>凭证数据、内部批注</li>
+</ul>
+<p><strong>Purchase</strong></p>
+<p><strong>MRP1：MRP控制</strong></p>
+<p>MRP 类型、MRP 控制者、批量（在 PP 中会使用到的）</p>
+<p>MRP 组：</p>
+<p>MRP 类型：（固定值 <strong>PD</strong>）</p>
+<p>MRP 控制者：谁来负责该MRP控制</p>
+<p>批量大小：（固定值 <strong>EX</strong>）</p>
+<p>MRP参数文件：MMD1创建</p>
+<p><strong>MRP2：影响 MRP 运算</strong></p>
+<p>采购类型：内部生产或则外部采购</p>
+<p>特殊采购类型：有偿加工必填 &lt;31&gt;, 无偿加工品必填 &lt; 30&gt;
+外部采购</p>
+<p>仓储地点：物料存储仓库</p>
+<p>计划边际码：采购品须填写准确日期，影响 MRP 运输</p>
+<p>计划交货时间：进口件</p>
+<p><strong>MRP3：可用性检查（02）</strong></p>
+<p>策略组：内部生产品必填，固定值</p>
+<p><strong>MRP4:</strong></p>
+<p>选择方法：内部生产品必填，固定值</p>
+<p>重复生产：内部生产品必填，固定值</p>
+<p>重复生产参数 文件：内部生产品必填，固定值</p>
+<p>工厂数据 / 存储：</p>
+<p>存储条件：关系到销售出库</p>
+<p>End Item：直买直卖的物品必须勾选</p>
+<p><strong>Account 1</strong></p>
+<p><code>评估类、价格控制、价格单位、标准价格</code></p>
+<p>评估分类：影响会计计算，必须准确</p>
+<p>价格确定：系统自动存在，没有时必须输入</p>
+<p><strong>Consting 1</strong></p>
+<h3 id="后台配置操作">后台配置操作</h3>
+<h4 id="1物料主数据视图">1.物料主数据视图：</h4>
+<ul>
+<li>包含：常规，采购，销售，库存， 计划，属性，备注等视图维护。</li>
+</ul>
+<h4 id="2定义全球估价类型split-valuation-configuration--omwc">2.定义全球估价类型(Split Valuation configuration) : OMWC</h4>
+<ul>
+<li>SPRO -&gt; IMG -&gt; MM -&gt; valuation and account assign -&gt; split valuation -&gt;config split valuation</li>
+</ul>
+<p>第一个屏幕（Global Types）</p>
+<p>第二个屏幕（创建新的估价类型 Valuation Types：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">Valuation</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span><span style="color:#a6e22e">识别估价类型的关键</span>
+<span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">PO</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">是否允许外部采购订单</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">不允许</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">允许</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">提示警告</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">允许</span><span style="color:#960050;background-color:#1e0010">）</span>
+<span style="color:#a6e22e">Int</span>.<span style="color:#a6e22e">PO</span>  <span style="color:#f92672">:</span> <span style="color:#a6e22e">是否允许内部订单</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">不允许</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">允许</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">提示警告</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">允许</span><span style="color:#960050;background-color:#1e0010">）</span>
+<span style="color:#a6e22e">Acct</span> <span style="color:#a6e22e">cat</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">账户参考必填字段</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">选择合适的值</span><span style="color:#960050;background-color:#1e0010">）</span>
+     <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">创建新的估价类别</span><span style="color:#960050;background-color:#1e0010">：</span> <span style="color:#a6e22e">Valuation</span> <span style="color:#a6e22e">category</span> <span style="color:#f92672">:</span>
+        <span style="color:#a6e22e">Def</span> <span style="color:#a6e22e">ext</span>.<span style="color:#a6e22e">procure</span><span style="color:#f92672">:</span><span style="color:#a6e22e">默认外部采购</span>
+        <span style="color:#a6e22e">ext</span>.<span style="color:#a6e22e">procurement</span> <span style="color:#a6e22e">mand</span> <span style="color:#960050;background-color:#1e0010">：</span> <span style="color:#a6e22e">复选框勾选则无法在PO级别更改评估类型</span>
+        <span style="color:#a6e22e">Def</span> <span style="color:#66d9ef">in</span><span style="color:#f92672">-</span><span style="color:#a6e22e">house</span><span style="color:#f92672">:</span>
+        <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">automatic</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">复选框用于拆分评估和批次管理</span>
+</code></pre></div><h4 id="3定义物料组-omsf">3.定义物料组： OMSF</h4>
+<ul>
+<li>SPRO -&gt; Logistic general -&gt; MM -&gt; Settings for Key Fields -&gt; Define Material Group</li>
+</ul>
+<p>物料组：是物料统计分组的标识，属于无组织机构级别，它在采购信息记录、采购订单等中使用。在创建采购订单时， 当输入物料编号，物料组就自动被带出。物料组用于内部管理，分类较细。用户可以通过物料组获取整个采购状况及当前库存的标准SAP报表。</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_40672823/article/details/109766124">物料组的实用功能</a></li>
+</ul>
+<h4 id="4创建物料类型-oms2">4.创建物料类型： OMS2</h4>
+<ul>
+<li>SPRO -&gt; Logistic general -&gt; MM -&gt; Basic Settings -&gt; Material Types</li>
+</ul>
+<p>物料类型用来控制视图的范围，也用来控制物料的计价方式以及物料是否能够用于库存管理。也是SAP报表和分析涉及的重要对象。作为物料统计和分类的标准之一。如需新建物料类型，不能采用新建条目，只能采用复制方法，具体步骤是：</p>
+<ul>
+<li>
+<p>&lt;1&gt;参考已有的物料类型进行复制，但不要修改条目细节的属性值；</p>
+</li>
+<li>
+<p>&lt;2&gt;对新建的物料类型进行修改，以其符合自身需求。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">新建物料类型后</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">需要维护编码范围</span><span style="color:#960050;background-color:#1e0010">；</span><span style="color:#a6e22e">维护数量</span><span style="color:#f92672">/</span><span style="color:#a6e22e">价值更新</span><span style="color:#960050;background-color:#1e0010">；</span><span style="color:#a6e22e">字段状态维护</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#a6e22e">字段参考</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">为字段状态服务的分组码</span>
+<span style="color:#a6e22e">项目类别组</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">设定默认的项目类别组</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">用于销售项目类别确认</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">计划类别确认</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">交货项目类别确认</span>
+<span style="color:#a6e22e">账户分类参考</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">设计会计视图的可应用的评估类</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">与自动记账相关</span>
+<span style="color:#a6e22e">用户部门</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">根据业务需求选择部门内部</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">外部采购订单</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">根据业务要求选择值</span>
+<span style="color:#a6e22e">计价</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">价格控制</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">选择适用</span>
+<span style="color:#a6e22e">关联科目</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">从列表中选择</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">检查输入评估类是否允许维护物料主记录中的会计数据</span>
+<span style="color:#a6e22e">库存项目</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">不是库存项目</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">值更新</span><span style="color:#960050;background-color:#1e0010">；</span><span style="color:#a6e22e">具有值的库存项目</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">数量更新和值更新</span>
+</code></pre></div><h4 id="5define-industry-sectors--oms3">5.Define industry Sectors ： OMS3</h4>
+<p>Industry sectors , industry desc , Field Reference.</p>
+<h4 id="6maintain-company-codes-for-material-management">6.Maintain company codes for material management</h4>
+<p>SPRO &gt; Logistics &gt; General &gt; MM &gt; Basic settings &gt; Maintain company code for MM</p>
+<p>CoCD,Company Name,Year,等字段信息更新保存。</p>
+<h4 id="7定义mrp-controller">7.定义MRP Controller</h4>
+<ul>
+<li>SPRO &gt; IMG &gt; Production &gt; MRP &gt; Master Data &gt; Define MRP Controllers(Plant,MRP Controller, Tel)</li>
+</ul>
+<p>SAP MRP are planned for each plant and every plant has its own MRP data.</p>
+<h4 id="8创建修改显示-物料主数据--mm01mm02mm03">8.创建/修改/显示 物料主数据 : MM01/MM02/MM03</h4>
+<ul>
+<li>SPRO &gt; Logistics &gt; MMt &gt; MMa &gt; Material &gt; Create general</li>
+</ul>
+<h4 id="9create-purchasing-info-records--me11me12me13">9.Create Purchasing info records : ME11/ME12/ME13</h4>
+<p>为不同的采购类型创建采购信息记录，例如标准、分包、管道、寄售。用于将供应商和物料在工厂级别或则采购组织数据作为主数据存储。</p>
+<p><img src="/images/MM/MMInfoRecord.png" alt="Info Record"></p>
+<p>总账科目确认：</p>
+<ul>
+<li>
+<p>按物料级别设置科目：手动输入的科目</p>
+</li>
+<li>
+<p>按仓库设置总账科目：仓库定义中的科目</p>
+</li>
+<li>
+<p>按物料组设置总账科目：物料组定义中的科目</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3416</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_Basis_Detail2/" class="prev" rel="prev" title=" 库存采购基础 "><i class="iconfont icon-dajiantou"></i>&nbsp; 库存采购基础 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_Basis_Vender/" class="next" rel="next" title=" 供应商管理 "> 供应商管理 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-03-12 00:00:00 \x2b0000 UTC',
+        title: ' MM 物料主数据管理 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

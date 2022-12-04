@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAPUI5_Module/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAPUI5_Routing/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAPUI5_DataBinding/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAPUI5 数据绑定  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAPUI5 数据绑定  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAPUI5 数据绑定 "/>
+<meta name="twitter:description" content="Model Binding 单数据绑定 使用数据绑定前 需要先实例化Model。构造函数获取实例的 URL 或则数据本身作为第一个参数。 JSON-Model: var oModel = new sap.ui.model.json.JSONModel(dataUrlOrData); XML-Model: var oModel = new sap.ui.model.xml.XMLModel(dataUrlOrData); OData-Model: var oModel = new sap.ui.model.odata.ODataModel(dataUrl[,userJSON,user,pass]); 给 Model"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAPUI5 数据绑定 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_DataBinding\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "sapui5",
+  "wordcount":  1434 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_DataBinding\/",
+  "datePublished": "2019-04-23T00:00:00\x2b00:00",
+  "dateModified": "2019-04-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAPUI5 数据绑定 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-23 >23 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="model-binding">Model Binding</h2>
+<h3 id="单数据绑定">单数据绑定</h3>
+<h4 id="使用数据绑定前">使用数据绑定前</h4>
+<p>需要先实例化Model。构造函数获取实例的 URL 或则数据本身作为第一个参数。</p>
+<p>JSON-Model:</p>
+<ul>
+<li><code>var oModel = new sap.ui.model.json.JSONModel(dataUrlOrData);</code></li>
+</ul>
+<p>XML-Model:</p>
+<ul>
+<li><code>var oModel = new sap.ui.model.xml.XMLModel(dataUrlOrData);</code></li>
+</ul>
+<p>OData-Model:</p>
+<ul>
+<li><code>var oModel = new sap.ui.model.odata.ODataModel(dataUrl[,userJSON,user,pass]);</code></li>
+</ul>
+<h4 id="给-model-设置值">给 Model 设置值</h4>
+<p>oModel.setData(data);：绑定定义的数据</p>
+<p>oModel.loadData(&ldquo;models/suppliers.json&rdquo;);：从文件中读取数据绑定</p>
+<h4 id="将-model-分配给-core-或则其他的控制器setmodel方法">将 Model 分配给 Core 或则其他的控制器（setModel）方法</h4>
+<p>Global model:</p>
+<ul>
+<li><code>sap.ui.getCore().setModel(oModel) </code> : 这样oModel对整个应用程序可见</li>
+</ul>
+<p>Bind a model to a view</p>
+<ul>
+<li>
+<p><code>var oView = sap.ui.view({type:sap.ui.core.mvc.ViewType.JS,viewName:&quot;text.view&quot;})</code></p>
+</li>
+<li>
+<p><code>oView.setModel(oModel);</code></p>
+</li>
+</ul>
+<p>Bind a model to a specific control</p>
+<ul>
+<li>
+<p><code>var oTable = sap.ui.getCore().byId(&quot;table&quot;);</code></p>
+</li>
+<li>
+<p><code>oTable.setModel(oModel);</code></p>
+</li>
+</ul>
+<h4 id="model属性绑定方法--curly-bracesbindproperty">Model属性绑定方法（{ } curly braces，bindProperty()）</h4>
+<p>控件的大多数属性都可以绑定到模型属性。</p>
+<p>bindProperty  method: [extend : sap.ui.base.ManagedObject]</p>
+<ul>
+<li>
+<p><code>oControl.bindProperty(&quot;sName&quot;,&quot;oBindingInfo&quot;);</code></p>
+</li>
+<li>
+<p>oBindingInfo attributes : path、model、formatter等</p>
+<ul>
+<li>path : 指定绑定的数据路径</li>
+<li>model : sap.ui.model.BindingMode.OneWay、sap.ui.model.BindingMode.TwoWay</li>
+<li>formatter :</li>
+</ul>
+</li>
+</ul>
+<p>花括号:{ }</p>
+<ul>
+<li><code>var oControl = new sap.ui.commons.TextView({controlProperty:&quot;{/modelProperty}&quot;});</code></li>
+</ul>
+<p>alternatively</p>
+<ul>
+<li><code>var oControl = new sap.ui.commons.TextView({controlProperty:{path:&quot;/modelProperty&quot;}});</code></li>
+</ul>
+<h4 id="model属性的获取">Model属性的获取</h4>
+<ul>
+<li>oModel.getProperty(&quot;/sName&rdquo;); ：根据JSON数据属性名获取对应的值</li>
+</ul>
+<h3 id="多数据绑定">多数据绑定</h3>
+<p>用于绑定集合数据，如绑定多行数据到一个表格中。</p>
+<ul>
+<li>使用模板:所有行都用同样的方法显示数据</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oItemTemplate</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">core</span>.<span style="color:#a6e22e">ListItem</span>({<span style="color:#a6e22e">text</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;{aggrProperty}&#34;</span>});
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oComboBox</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">commons</span>.<span style="color:#a6e22e">ComboBox</span>({
+  <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span>{<span style="color:#a6e22e">path</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;/modelAggregation&#34;</span>, <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">oItemTemplate</span>}
+});
+</code></pre></div><ul>
+<li>bindAggregation():</li>
+</ul>
+<p>​    <code>oComboBox.bindAggregation(&quot;items&quot;,&quot;/modelAggregation&quot;,oItemTemplate);</code></p>
+<ul>
+<li>
+<p>工厂函数实现聚合绑定</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">oTable</span>.<span style="color:#a6e22e">bindAggregation</span>(<span style="color:#e6db74">&#34;items&#34;</span>,<span style="color:#e6db74">&#34;/modelData&#34;</span>,<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">sId</span>,<span style="color:#a6e22e">oContext</span>){
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">oColumnListItem</span>;	<span style="color:#75715e">//通过工厂函数，定义数据并返回
+</span><span style="color:#75715e"></span>});
+</code></pre></div></li>
+</ul>
+<h3 id="元素绑定">元素绑定</h3>
+<p>元素绑定指根据上下文(binding context)使用相对绑定的方式绑定到model数据的某一具体对象。尤其适用于**主从数据显示(master-detail data)**的情况。</p>
+<p>sap.m.List(sId?, mSettings?) : List控件适用于显示行项目，所有类型都可以。</p>
+<p>sap.m.ObjectListItem(sId?, mSettings?) : 适用于显示行项目的信息，主要使用title属性进行标识，text、icon、atrributes和statuses等属性可以用于提供对象更多信息。</p>
+<p>sap.m.Panel().bindElement({path:sPath}) : 将显示的明细与Model绑定。</p>
+<ol>
+<li>左边是一个List控件，右边在Panel中放置几个控件组合。当选择左边某个产品的时候，右边相应显示该产品的信息。</li>
+</ol>
+<p><code>oEvent.getSource().getBindingContext()</code>获取绑定的项，再使用<code>getPath()</code>方法得到path路径，然后设置右边的detailPanel与这个路径绑定。</p>
+<ol start="2">
+<li>
+<p>Model 中detail包含多条数据的情况，点击 一个header,显示多个行项目，可以通过<code>sap.ui.model.Filter()</code>的方法实现。</p>
+<p>绑定点击事件,<code>oSupTable.attachRowSelectionChange(fuction(oEvent()))</code>。</p>
+<p>通过<code>var oRowContext = oEvent.getParameter(&quot;rowContext&quot;)</code>获取行的上下文。如果选中第一行，rowContext就是constructor {oModel: 指定Model, sPath: &ldquo;数据第一行地址&rdquo;}。</p>
+<p>然后通过<code>var sSelectedId = oModel.getProperty(&quot;id&quot;, oRowContext)</code>;就能获取到所选择行的id数据。</p>
+<p>通过 <code>var oBinding = oPrdTable.getBinding()</code>;获取对应详细数据的绑定。</p>
+<p>定义过滤规则，var oF = new sap.ui.model.Filter({path:&ldquo;key index&rdquo;,oprator: new sap.ui.model.FilterOperator.BT,value1:value&hellip;})。</p>
+<p>使用过滤规则，oBinding.filter(oF);</p>
+</li>
+</ol>
+<h3 id="绝对绑定和相对绑定">绝对绑定和相对绑定</h3>
+<ol>
+<li>
+<p>绝对绑定</p>
+<p>将 value 属性绑定到 json model 根目录下对应的字段 title/attr。</p>
+</li>
+<li>
+<p>相对绑定</p>
+<p><strong>相对绑定尤其适用于布局(layout)控件或者容器控件</strong></p>
+<p>当父控件的绑定路径设置后，子控件可以基于这个路径使用相对路径。</p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1434</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/sapui5/">
+                    #sapui5</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_Module/" class="prev" rel="prev" title=" SAPUI5 模块化 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAPUI5 模块化 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_Routing/" class="next" rel="next" title=" SAPUI5 Routing 导航 "> SAPUI5 Routing 导航 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-23 00:00:00 \x2b0000 UTC',
+        title: ' SAPUI5 数据绑定 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

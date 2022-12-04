@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/SAPHANA_Basic/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/SAPHANA_DevEnv/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/SAPHANA_Architecture/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP HANA 结构分析  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP HANA 结构分析  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP HANA 结构分析 "/>
+<meta name="twitter:description" content="HANA 结构 SAP HANA 服务器使用各种组件来处理传入请求并返回结果集。 这些组件分为服务器和引擎，服务器是在操作系统级别运行的进程和服务，引擎是服务器内处理"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP HANA 结构分析 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/SAPHANA_Architecture\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "HANA",
+  "wordcount":  1578 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/SAPHANA_Architecture\/",
+  "datePublished": "2021-11-07T00:00:00\x2b00:00",
+  "dateModified": "2021-11-07T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP HANA 结构分析 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-11-07 >7 November 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="hana-结构">HANA 结构</h3>
+<p>SAP HANA 服务器使用各种组件来处理传入请求并返回结果集。 这些组件分为服务器和引擎，服务器是在操作系统级别运行的进程和服务，引擎是服务器内处理特定查询请求的组件。经典应用程序用例中常见的一些重要的 SAP HANA 数据库服务：</p>
+<p><img src="/images/HANA/HANA_DB_Architecture.png" alt="HANA Architecture"></p>
+<p>在经典场景中，从数据库中获取数据的请求是从 Web 服务器或应用程序发起的。这些请求可以是 SQL 语句或 MDX(Multidimensional Expressions)的形式。这些传入请求由会话和事务管理器处理和验证。 SQL/MDX 处理器执行 SQL 或 MDX 命令并传递给 SQL 引擎。</p>
+<p>SAP HANA 数据库有自己的脚本语言，称为 SQLScript。 你可以在数据库层将 SQLScript 用于数据密集型逻辑，这意味着 SQLScript 可以与常规 SQL 命令一起执行。 这种集成是在内置库（也称为 SAP HANA 库）的帮助下实现的。 除了 SQLScript，SAP HANA 库还支持各种专用功能库，例如 SAP HANA 业务功能库 (BFL) 和 SAP HANA 预测分析库 (PAL)。这些库紧密集成到各种引擎中。</p>
+<p>此外，复杂的查询由不同的组件引擎处理，例如计划引擎和计算引擎，或者由数据库中的存储过程处理。</p>
+<h4 id="xs-server">XS Server</h4>
+<p>XS 服务器：支持使用 SAP HANA 扩展应用程序服务 (SAP HANA XS)，它由 HTTP 服务器和将查询分派到各个组件的运行时环境组成。 XS 服务器与索引服务器和开发对象的 SAP HANA 存储库进行交互。</p>
+<h4 id="pre-processor-server">Pre-Processor Server</h4>
+<p>预处理器服务器：分析文本数据并从该数据中提取信息。 该服务器还有助于 SAP HANA 的搜索功能。</p>
+<h4 id="statistical-server">Statistical Server</h4>
+<p>统计服务器：通过收集有关单个组件整体性能的信息以及每个组件消耗的资源状态来监控 SAP HANA 数据库。</p>
+<h4 id="name-server">Name Server</h4>
+<p>名称服务器：包含有关 SAP HANA 系统拓扑的所有信息，例如租户数据库的位置。 此名称服务器保存存储在相关租户数据库目录中的表和表分区的位置。</p>
+<h3 id="index-server">Index Server</h3>
+<p>索引服务器：是 SAP HANA 的主要组件，主要负责服务 SQL/数据请求。 索引服务器是保存实际数据的地方，引擎可以帮助处理数据请求的数据。 在索引服务器中找到的引擎/组件包括以下内容：</p>
+<ul>
+<li>会话和事务管理器</li>
+<li>SQL/多维表达式 (MDX) 处理器</li>
+<li>数据引擎</li>
+<li>SQL引擎、SQLScript、R语言引擎、计算引擎</li>
+<li>存储库</li>
+<li>持久层</li>
+</ul>
+<h4 id="data-engine">Data Engine</h4>
+<p>为了支持 R 语言的使用，R 语言引擎使 R 语言的程序能够在 SAP HANA 中执行。 类似地，计算引擎用于执行生成计算视图的各种过程。所有这些引擎都运行在 Data Engine 之上，Data Engine 具有称为数据引擎函数的内置函数。 这些函数可以访问 SAP HANA 存储库，其中包含元定义，包括关系表、列、视图、索引等的定义。所有这些元数据都保存到作为存储库一部分的目录中。</p>
+<p>持久层：是保存所有数据以及事务日志的地方。 在这一层，系统确保数据符合 ACID 原则。 持久层确保在由于意外关闭而重新启动的情况下恢复最新的数据集。</p>
+<h3 id="platform-capabilities">Platform Capabilities</h3>
+<p>SAP HANA 已经从一个数据库发展成为一个支持广泛的复杂业务需求，并且可以执行实时分析。SAP HANA 作为平台提供的功能不断扩展，现在包括高级分析功能、处理结构化和非结构化数据以及流数据的能力。</p>
+<p><img src="/images/HANA/HANA_Platform_Capabilities.png" alt="HANA_Platform_Capabilities"></p>
+<h4 id="database-services">Database Services</h4>
+<p>SAP HANA 的数据库服务是使其他应用程序能够在 SAP HANA 上更快、更好地运行的基础服务。其中的一些功能，例如多核 CPU、数据压缩、在线分析处理 (OLAP) 和在线事务处理 (OLTP)、数据分区、数据建模、多租户数据库和多层存储等。同时通过灾难恢复、管理和安全管理功能保持高可用性。</p>
+<h4 id="processing-services">Processing Services</h4>
+<p>SAP HANA 的处理能力与基础数据库服务紧密集成。 这种紧密集成可帮助您执行预测分析、搜索、文本分析和空间分析。</p>
+<h4 id="application-services">Application Services</h4>
+<p>SAP HANA 支持一系列服务，例如 SAP Fiori 用户体验、图形建模和应用程序生命周期管理。 应用程序服务可用于构建支持开放式开发标准的基于 Web 的应用程序，例如 SQL、HTML5、JavaScript、Java 数据库连接 (JDBC)、开放式数据库连接 (ODBC)、JavaScript 对象表示法 (JSON) 和 OData。</p>
+<h4 id="integration-services">Integration Services</h4>
+<p>在许多组织中，数据是在整个环境中的多个系统中生成和存储的。 为了提供完全集成的解决方案，SAP 支持各种集成策略，例如：</p>
+<ul>
+<li>SAP HANA 智能数据访问允许访问存在于孤岛中的数据，而无需复制这些数据。</li>
+<li>SAP HANA 智能数据集成将数据从基于云的或本地系统实时复制并移动到 SAP HANA 平台中。</li>
+<li>SAP HANA 远程数据同步在 SAP HANA 和远程数据库之间同步数据。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1578</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/HANA/">
+                    #HANA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/SAPHANA_Basic/" class="prev" rel="prev" title=" SAP HANA 知识链接 "><i class="iconfont icon-dajiantou"></i>&nbsp; SAP HANA 知识链接 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/SAPHANA_DevEnv/" class="next" rel="next" title=" SAP HANA 开发环境 "> SAP HANA 开发环境 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-11-07 00:00:00 \x2b0000 UTC',
+        title: ' SAP HANA 结构分析 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

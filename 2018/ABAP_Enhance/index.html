@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_Table_CopyFields/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Enhance_Util1/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Enhance/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP 增强  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP 增强  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP 增强 "/>
+<meta name="twitter:description" content="基本概念 SAP 增强已经发展过几代了，可参考 SAP 标准教材 BC425 和 BC427。 SAP 增强从用途方面分类：数据元素增强、菜单增强、屏幕增强、功能增强。 SAP 增强从实"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP 增强 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Enhance\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Enhance",
+  "wordcount":  3808 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Enhance\/",
+  "datePublished": "2018-09-13T00:00:00\x2b00:00",
+  "dateModified": "2018-09-13T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP 增强 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-09-13 >13 September 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                8 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="基本概念">基本概念</h3>
+<p>SAP 增强已经发展过几代了，可参考 SAP 标准教材 BC425 和 BC427。</p>
+<p>SAP 增强从用途方面分类：数据元素增强、菜单增强、屏幕增强、功能增强。</p>
+<p>SAP 增强从实现方式的分类：User Exits (第一代增强)、Customer Exits (第二代增强)、BADI (第三代增强)、Enhancement-Point (第四代增强)。</p>
+<p>其他相关增强</p>
+<ul>
+<li><strong>BTE</strong>：财务模块常用的替代和验证</li>
+<li><strong>VOFM</strong>：销售模块常用的例程等
+<ul>
+<li>Display：Requirements &amp; Formulas =&gt; Formulas =&gt; Condition value 可定义增强公式</li>
+</ul>
+</li>
+</ul>
+<p>实现某个用途采用何种实现方式，四代增强可能都不是万能的，具体采用哪种方式实现，需要考虑实际情况（可能四种方式都能实现某个增强），以及个人喜好选择合适的增强方式。</p>
+<h3 id="增强分类详解">增强分类详解</h3>
+<h4 id="user-exit-第一代增强">User Exit (第一代增强)</h4>
+<p>User Exits 是系统中预留的一些空的 Form/Subroutine，这些 Form 的名称一般是以 <strong>UserExit</strong> 开头的子模块，所以一般找到所要增强的主程序，再查找 UserExit_ 关键字即可找到相关的出口。这类增强都需要修改 SAP 的标准代码，在做增强开发时需要先获得 Access key， 然后在 Form 中写入业务逻辑。</p>
+<p>User Exits 通常用于 SD 模块，SAP 在销售，运输，计费领域提供许多增强出口。</p>
+<ul>
+<li>
+<p>SD出口文档：IMG -&gt; Sales and Distribution -&gt; System Modifications -&gt; User Exits.</p>
+<p><img src="/images/ABAP/ABAP_Enhance1.png" alt="User Exits"></p>
+</li>
+<li>
+<p>这种源代码增强和屏幕增强的说明可以从事务码 spro 后台配置中相关模块的路径里面找到。</p>
+</li>
+<li>
+<p>同时使用的针对数据表的增强是 Append structure，可以在事务码 se11 中打开透明表，为数据表追加新的字段。</p>
+</li>
+</ul>
+<h4 id="customer-exit-第二代增强">Customer Exit (第二代增强)</h4>
+<p>使用 SMOD 和 CMOD 维护该类型增强；在 SAP 标准程序中，使用 <code>CALL CUSTOMER-FUNCTION 'num'</code> 调用对应的函数模块，出口函数名称由三部分组成：<code>EXIT_&lt;程序名&gt;_&lt;3位数字&gt;</code>，程序名是调用该出口函数的程序名。</p>
+<ul>
+<li>示例：<code>SAPMM06E -&gt; CALL CUSTOMER-FUNCTION '010' -&gt; FM：EXIT_SAPMM06E_010</code></li>
+</ul>
+<p>增强类型：</p>
+<ul>
+<li>E（FM Exits）：在 FM 中 include 保留的 Z 程序来提供功能扩展点
+<ul>
+<li>检查功能出口类用户出口是否被激活：<code>MODX_FUNCTION_ACTIVE_CHECK</code></li>
+</ul>
+</li>
+<li>C（Menu Exits）：在 GUI status 中预留 Fcode menu item，在程序中预留对应的 Handling FM Exits
+<ul>
+<li>检查菜单关键字类增强激活状况：<code>MODX_MENUENTRY_ACTIVE_CHECK</code> 、<code>MODX_ALL_ACTIVE_MENUENTRIES</code></li>
+</ul>
+</li>
+<li>S（Screen Exits）：在 Screen 中预留 Subscreen，在程序中预留 transport data to subscreen &amp; return/retrieve data from subscreen 的 FM Exits；增强调用使用 <code>CALL CUSTOMER-SUBSCREEN</code>
+<ul>
+<li>检查屏幕类增强激活状况：<code>MODX_SUBSCREEN_ACTIVE_CHECK</code></li>
+</ul>
+</li>
+<li>T（Table）：表结构增强，针对数据表的增强出口是 **CI_** 开头的结构，这些结构将 <code>.INCLUDE</code> 结构的形式包含到时相应的数据表中，用户可以通过向这些结构中添加字段从而达到对数据表字段的增加</li>
+</ul>
+<p>Enhancement &amp; Enhancement Project：</p>
+<ul>
+<li>Enhancement（<code>SMOD</code>）：把系统程序中的相关 Customer Exits 收集起来成为一个 Enhancement，一般情况是按功能和类型来收集的，例如几个相关的 FM eixts 组成一个 Enhancemnet，或者一个 screen 或 menu exits 形成一个 Enhancement。</li>
+<li>Enhancement Project（<code>CMOD</code>）：在使用 Enhacement 时，要先建立一个 Enhancement Project，可以将多个Enhancement assign 给一个 Enhancement project 去管理。</li>
+</ul>
+<p>增强实现：</p>
+<ul>
+<li>Customer Exit 需要将增强放到 PROJECT 里面才能使用</li>
+<li>步骤：SMOD 查找开发类下增强 &mdash;&gt; 查看增强下的 FM &mdash;&gt; 进入 FM下的 include &mdash;&gt; include下编写增强代码 &mdash;&gt; 激活增强代码 &mdash;&gt; CMOD 创建 PROJECT &mdash;&gt; PROJECT 绑定增强 &mdash;&gt; 激活 PROJECT &mdash;&gt; 业务模拟验证</li>
+</ul>
+<h4 id="badi-business-add-in第三代增强">BADI (Business Add-in,第三代增强)</h4>
+<p>BADI 通过面向对象的方式来提供扩展点，它支持 Customer Exits 所有的 Enhancement 类型，因目前 Class 中不能包含 subscreen 所以在用 BADI Enhance Screen 时比用 Customer Exits 要复杂些。</p>
+<p>SAP 预定义了 Interface，由客户来实例化相应的接口，应用程序通过方法调用来获得用户所定义 class 的 instance。</p>
+<p>在某些情况下，出于业务需求，可能存在多个开发内容需要放置在这种 BADI 的实施中。因为只有一个实施类可用，就可能会导致不同开发人员的代码发生碰撞，造成一些不好的结果。这时会自然地产生为这种 BADI 创造多个实施，并让它们依次执行的需求。解决方法：</p>
+<ol>
+<li>为我们想要增强的类创建一个基本 BADI 实施，在该实施类中使用 cl_sic_configuration 获取 BADI 对应的所有自定义实施类的列表。</li>
+<li>过滤掉系统类、以及基本实施类本身。为剩余的自定义实施类创建实例、并调用相关方法。</li>
+<li>基本 BADI 实施需要设置为 Active 状态。</li>
+<li>创建的其它 BADI 是 Inactive 状态。</li>
+</ol>
+<p>读取 BADI 接口对应的自定义实施类: <strong>cl_sic_configuration</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">REPORT</span> ZGET_BADI_IMPL_LIST.
+<span style="color:#66d9ef">DATA</span>: lt_classes <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> sic_s_class_descr.
+<span style="color:#66d9ef">DATA</span>: ls_class   <span style="color:#66d9ef">LIKE LINE OF</span> lt_classes.
+<span style="color:#66d9ef">TRY</span>.
+  lt_classes <span style="color:#f92672">=</span> cl_sic_configuration<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_classes_for_interface</span>( <span style="color:#e6db74">&#39;IF_EX_N1_CANCEL&#39;</span> ).
+  <span style="color:#66d9ef">CATCH</span> cx_class_not_existent .
+<span style="color:#66d9ef">ENDTRY</span>.
+<span style="color:#66d9ef">LOOP AT </span>lt_classes <span style="color:#66d9ef">INTO</span> ls_class.
+  <span style="color:#66d9ef">WRITE</span>: ls_class<span style="color:#f92672">-</span>clsname, / .
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><h4 id="enhancement-point-第四代增强">Enhancement-Point (第四代增强)</h4>
+<p>第四代增强是对第三代做的加强。Enhancement Spot 是对 Enhancement options 的一个管理平台；在该容器中我们可以定义自己的 BADI 或则 Enhancement Point。Enhancement Implementation 用来组织 Enhancement options 的实现代码。</p>
+<p>Enhancement-Point 技术与 BADI 是有区别的，首先 BADI 是 SAP 预留的类的接口，而 Enhancement-Point 则是允许用户对现有的 SAP 代码进行修改：例如插入、替换，只要符合一定的规则即可，不需要 SAP 预先定义好。其最大的优势在于方便，可以直接使用程序中所有已定义的变量，不像 BADI 和 USER EXIT中只能使用方法或函数接口传过来看参数。</p>
+<p><em><strong>隐式增强和显式增强：</strong></em></p>
+<p>显式增强：就是手动加入到程序中的 Enhancement options，显式增强有两种方式</p>
+<ul>
+<li><strong>ENHANCEMENT-POINT（增强点）</strong>：是在程序中直接插入代码，其概念与 USER EXIT 类似，标准程序预留了部分已定义好的增强点，没有代码，只有一个预留点。可以插入代码来实现这个增强（也可以自定义增强点，但不能自定义增强选项，增强选项一定是系统预留下来的，如果没有增强选项则该处不可做增强），但是不能做屏幕和菜单增强。</li>
+<li><strong>ENHANCEMENT-SECTION（增强选项）</strong>：定义和实现的方法与 ENHANCEMENT-POINT 一样。两者的区别是：增强点没有代码，只有一个预留点，允许在这个位置插入新代码（implementation）；而在 Enhancement-section 和 End-enhancement-section. 之间有代码，implementation  之后会替换旧代码，只执行新代码，原来的代码不再执行。</li>
+</ul>
+<p>隐式增强：系统内置的 Enhancement options。在执行程序，包含程序，函数组，对话模块的结尾；Form例程，函数模块，方法等的开始和结尾；结构的结尾这些地方都会有。</p>
+<p><em><strong>一般增强步骤</strong></em></p>
+<ol>
+<li>
+<p>DEBUG 标准程序找到需要增强的位置，点 EDIT -&gt; SHOW IMPLICIT ENHANCEMENT OPTIONS 查看是否有预留增强选项。（标准程序不能自己创建 enhancement point ,只能使用系统预留的）</p>
+</li>
+<li>
+<p>创建增强点；创建增强点的实现，在增强点的实现中添加代码</p>
+</li>
+</ol>
+<h4 id="注意事项">注意事项</h4>
+<ul>
+<li>User Exit 与 Customer Exit 的区别在于 User Exit 的使用需要 Access Key 但 Customer Exit 不要</li>
+<li>FM exit 在关联的 Function Group 中的命名规则为：EXIT_PROGRAMNAME_XXX</li>
+<li>Customer exit 的调用方式为：
+<ul>
+<li>FM Exit：<code>CALL CUSTOMER-FUNCTION 'xxx' EXPORTING ... IMPORTING ...</code></li>
+<li>Subscreen：<code>Call CUSTOMER-SUBSCREEN INCLUDING</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="增强查找">增强查找</h3>
+<h4 id="user-exit-查找">User Exit 查找</h4>
+<p>使用事务码 <strong>SE93</strong> 输入需要查找的 T-code -&gt; 从这里转到主程序；然后单击“查找”按钮，在查找内容中输入 <strong>USEREXIT</strong> 并选择“In main program”，然后点击“搜索”。</p>
+<ul>
+<li>如果使用了用户出口，将会显示出出口在 SAP 中的所有位置</li>
+<li>如果使用了用户出口，则会在用户出口上方有一个注释</li>
+</ul>
+<p><img src="/images/ABAP/ABAP_Enhance2.png" alt="User Exits"></p>
+<h4 id="customer-exit-查找">Customer Exit 查找</h4>
+<ol>
+<li>
+<p>通过一些专门的程序，如:<a href="https://www.591sap.com/thread-87-1-1.html">利用t-code查找增强出口的程序工具</a></p>
+</li>
+<li>
+<p>使用函数 MODX_FUNCTION_ACTIVE_CHECK，代码最后添加断点；执行需要查找的 TCODE，如果有增强就会自动跳入 DEBUG 界面；在 DEBUG 界面，查看 <code>L_FUNCNAME</code> 字段，该字段显示的值即为增强出口（如果对应的增强出口值不是想要查找的操作点位，退出 Debug 界面，然后继续正常的业务操作，当再次进入该 Debug 界面时，再次查看是否满足需求）。这些增强都是属于 <code>EXIT_&lt;程序名&gt;_&lt;3位数字&gt;</code> 这种形式。查阅  <code>MODSAP</code> 表，确定增强属于哪个 SMOD。</p>
+<p><img src="/images/ABAP/ABAP_Enhance4.png" alt="Customer Exit"></p>
+</li>
+<li>
+<p>SE11 查看表 <strong>MODSAPVIEW</strong> -&gt; 在字段 MEMBER 中输入 Enhancement 后执行：得到的SAP extension name 即为 Customer Exits Enhancement Name.</p>
+<p><img src="/images/ABAP/ABAP_Enhance3.png" alt="Customer Exits"></p>
+</li>
+<li>
+<p>首先使用 SE93 根据事物码找到对应程序名；然后 SE11 查询数据表 TADIR（限定 PGMID = &ldquo;R3TR&rdquo;、 OBJECT =  &ldquo;PROG&rdquo;、OBJ_NAME = &ldquo;程序名&rdquo;）找对应开发类；如果找不到对应开发类，通过 SE38 查看程序，在菜单&quot;转到 - 属性&quot;中找开发类。然后再用 SE11 查询数据表 TADIR（限定 PGMID = &ldquo;R3TR&rdquo;、 OBJECT= &ldquo;SMOD&rdquo;、DEVCLASS = &ldquo;开发类&rdquo;）就可找到此程序可用的增强点（并非万能）。然后根据增强点从表 <strong>MODSAP</strong> 中就可以看到此增强具备哪些功能【屏幕增强（S）、菜单增强（C）、功能增强（E）、表增强（T）】</p>
+</li>
+<li>
+<p>SE80 -&gt; Repository Infomation Systerm -&gt; Enhancements -&gt; Customer Exits -&gt; Input search condition -&gt; Execute</p>
+</li>
+</ol>
+<h4 id="badi-查找">BADI 查找</h4>
+<ol>
+<li>
+<p>通过一些专门的程序，如:<a href="https://www.591sap.com/thread-86-1-1.html">一个功能非常全面的增强出口查找工具</a></p>
+</li>
+<li>
+<p>SE80 -&gt; Repository Infomation System -&gt; Enhancements -&gt; Business Add-ins -&gt; Implementations查找</p>
+<p><img src="/images/SAPUtils/SAP_ENHANCE_1.png" alt="SE80"></p>
+</li>
+<li>
+<p>在主程序源代码中搜索字符串 <code>CL_EXITHANDLER</code>，查看它对应的 TYPE REF TO 接口名，接口命名规则 <code>IF_EX_&lt;BADI&gt;</code>，得到 BADI 名称</p>
+</li>
+<li>
+<p>ST05 选择 &ldquo;TABLE BUFFER TRACE&rdquo; 而不是常用的 &ldquo;SQL trace&rdquo;，然后查找表(SXS_INTER、SXC_EXIT、SXC_CLASS、SXC_ATTR) 找到 BADI</p>
+</li>
+<li>
+<p>Classic BADI ：通过 <strong>CL_EXITHANDLER -&gt; GET_INSTANCE</strong> Debug 程序查找调用的 BADI；New BADI：调用 <strong>GET BADI handle</strong> （handle TYPE REF TO BADI定义名）、<strong>CALL BADI handle-&gt;method</strong> 来判断对象是否存在和返回对应实例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#f92672">&lt;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Go</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">TCode</span> <span style="color:#a6e22e">SE24</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">enter</span> <span style="color:#a6e22e">CL_EXITHANDLER</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">object</span> <span style="color:#a6e22e">type</span>.
+<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">In</span> <span style="color:#e6db74">&#39;Display&#39;</span> <span style="color:#a6e22e">mode</span>, <span style="color:#a6e22e">go</span> <span style="color:#a6e22e">to</span> <span style="color:#e6db74">&#39;Methods&#39;</span> <span style="color:#a6e22e">tab</span>.
+<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">3</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Double</span> <span style="color:#a6e22e">click</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">method</span> <span style="color:#e6db74">&#39;Get_Instance&#39;</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">display</span> <span style="color:#a6e22e">it</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">code</span>.
+<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">4</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Set</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">breakpoint</span> <span style="color:#a6e22e">on</span> <span style="color:#e6db74">&#39;CALL METHOD cl_exithandler=&gt;get_class_name_by_interface&#39;</span>.
+<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">5</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Then</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">your</span> <span style="color:#a6e22e">transaction</span>. <span style="color:#a6e22e">The</span> <span style="color:#a6e22e">screen</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">stop</span> <span style="color:#a6e22e">at</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">method</span>.
+<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">7</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Check</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">value</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">parameter</span> <span style="color:#e6db74">&#39;EXIT_NAME&#39;</span>.<span style="color:#a6e22e">It</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">show</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">BADI</span> <span style="color:#a6e22e">name</span>.
+</code></pre></div></li>
+</ol>
+<h3 id="badi-implementation">BADI implementation</h3>
+<p>BADI 创建和实现：<a href="https://coldinfire.github.io/2019/ABAP_Enhance_BADI/">https://coldinfire.github.io/2019/ABAP_Enhance_BADI/</a></p>
+<h3 id="显式和隐式增强技术">显式和隐式增强技术</h3>
+<p><img src="/images/ABAP/ABAP_Enhance5.png" alt="Customer Exits"></p>
+<p><img src="/images/ABAP/ABAP_Enhance6.png" alt="Customer Exits"></p>
+<ul>
+<li>
+<p><a href="https://blog.csdn.net/weixin_40672823/article/details/105994981">显式增强</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/weixin_40672823/article/details/106055695">隐式增强</a></p>
+</li>
+</ul>
+<h3 id="查找的功能程序">查找的功能程序：</h3>
+<ul>
+<li><a href="https://coldinfire.github.io/2018/ABAP_Enhance_Util1/">查找增强出口和 BADI</a></li>
+<li><a href="https://coldinfire.github.io/2018/ABAP_Enhance_Util2/">利用 t-code 查找增强出口的程序工具</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>3808</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Enhance/">
+                    #Enhance</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Table_CopyFields/" class="prev" rel="prev" title=" 复制其他的内表/结构到当前表/结构 "><i class="iconfont icon-dajiantou"></i>&nbsp; 复制其他的内表/结构到当前表/结构 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Enhance_Util1/" class="next" rel="next" title=" 查找增强程序(1) "> 查找增强程序(1) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-13 00:00:00 \x2b0000 UTC',
+        title: ' SAP 增强 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P2/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P4/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P1/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT "/>
+<meta name="twitter:description" content="ALV_VIEW: WDDOINIT METHOD WDDOINIT . *1.数据定义 *========================================================= DATA: alv_usage TYPE REF TO if_wd_component_usage, &#34;①&#34; alv_controller TYPE REF TO iwci_salv_wd_table, &#34;②&#34; alv_config TYPE REF TO cl_salv_wd_config_ta"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_P1\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "WebDynpro",
+  "wordcount":  999 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/SAPWebDynproABAP_P1\/",
+  "datePublished": "2018-10-21T00:00:00\x2b00:00",
+  "dateModified": "2018-10-21T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-21 >21 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="alv_view-wddoinit">ALV_VIEW: WDDOINIT</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">METHOD</span> <span style="color:#a6e22e">WDDOINIT</span> .
+<span style="color:#75715e">*1.数据定义</span>
+<span style="color:#75715e">*=========================================================</span>
+ <span style="color:#66d9ef">DATA</span>: alv_usage       <span style="color:#66d9ef">TYPE REF TO</span> if_wd_component_usage,  <span style="color:#75715e">&#34;①&#34;
+</span><span style="color:#75715e"></span>       alv_controller  <span style="color:#66d9ef">TYPE REF TO</span> iwci_salv_wd_table,     <span style="color:#75715e">&#34;②&#34;
+</span><span style="color:#75715e"></span>       alv_config      <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_config_table.<span style="color:#75715e">&#34;③&#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">DATA</span>: column_settings <span style="color:#66d9ef">TYPE REF TO</span> if_salv_wd_column_settings,
+       table_settings  <span style="color:#66d9ef">TYPE REF TO</span> if_salv_wd_table_settings,
+       column_nd       <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_column,
+       column_header   <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_column_header,
+       <span style="color:#66d9ef">function</span>        <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_function,
+       button          <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_fe_button.
+ <span style="color:#66d9ef">DATA</span>: columns  <span style="color:#66d9ef">TYPE </span>salv_wd_t_column_ref,
+       column   <span style="color:#66d9ef">TYPE </span>salv_wd_s_column_ref,
+       <span style="color:#66d9ef">fields</span>   <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> dfies,
+       <span style="color:#66d9ef">field</span>    <span style="color:#66d9ef">TYPE </span>dfies.
+<span style="color:#75715e">&#34; Add Check Box &#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">DATA</span>:checkbox      <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_uie_checkbox,
+      input_field   <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_uie_input_field.
+ <span style="color:#75715e">&#34; Get Context note &#34;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">DATA</span> context_node <span style="color:#66d9ef">TYPE REF TO</span> if_wd_context_node.
+ context_node <span style="color:#f92672">=</span> wd_context<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_child_node</span>( name <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>wdctx_ZALV_ZPEFF_TOTAL ).
+<span style="color:#75715e">*2.实例化alv 组件</span>
+<span style="color:#75715e">*=========================================================</span>
+<span style="color:#75715e">&#34; 实例化ALV 组件 &#34;
+</span><span style="color:#75715e"></span>  alv_usage <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">wd_cpuse_alv</span>( ). <span style="color:#75715e">&#34;① 将引用的ALV组件实例(ALV)复制给参数&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">IF</span> alv_usage<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">has_active_component</span>( ) <span style="color:#f92672">IS INITIAL</span>.
+    alv_usage<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create_component</span>( ).
+  <span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">&#34; 通过向导引入控制器中的Context节点和其对应的SET_DATA方法，并将节点传入控制器 &#34;
+</span><span style="color:#75715e"></span>  alv_controller <span style="color:#f92672">=</span> wd_this<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">wd_cpifc_alv</span>( ). <span style="color:#75715e">&#34;② 将引用的ALV组件实例（ALV_OUTPUT）复制给参数&#34;
+</span><span style="color:#75715e"></span>  alv_controller<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_data</span>( r_node_data <span style="color:#f92672">=</span> lo_nd_node ). <span style="color:#75715e">&#34;上面定义的节点参数&#34;  
+</span><span style="color:#75715e"></span><span style="color:#75715e">&#34; 获取参考模型 &#34;
+</span><span style="color:#75715e"></span>  alv_config <span style="color:#f92672">=</span> alv_controller<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_model</span>( ). <span style="color:#75715e">&#34;③ 获取控制器的GET_MODEL方法，实现ALV定制&#34;
+</span><span style="color:#75715e"></span>  column_settings <span style="color:#f92672">?</span><span style="color:#f92672">=</span> alv_config.
+  table_settings  <span style="color:#f92672">?</span><span style="color:#f92672">=</span> alv_config.
+<span style="color:#75715e">*3.ALV Table Standard Functions Setting</span>
+<span style="color:#75715e">*=========================================================</span>
+  alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_salv_wd_std_functions~set_export_allowed</span>( abap_true ) .<span style="color:#75715e">&#34;设置是否可以导出&#34;
+</span><span style="color:#75715e"></span>  alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_salv_wd_std_functions~set_edit_append_row_allowed</span>( abap_false ). <span style="color:#75715e">&#34;附加行&#34;
+</span><span style="color:#75715e"></span>  alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_salv_wd_std_functions~set_edit_delete_row_allowed</span>( abap_false ). <span style="color:#75715e">&#34;删除行&#34;
+</span><span style="color:#75715e"></span>  alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_salv_wd_std_functions~set_edit_insert_row_allowed</span>( abap_false ). <span style="color:#75715e">&#34;插入行&#34;
+</span><span style="color:#75715e"></span>  alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_salv_wd_std_functions~set_pdf_allowed</span>( abap_false ).             <span style="color:#75715e">&#34;打印版本&#34;
+</span><span style="color:#75715e"></span>  alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_salv_wd_std_functions~set_count_records_allowed</span>( abap_true ). <span style="color:#75715e">&#34;Count Records&#34;
+</span><span style="color:#75715e"></span>  alv_config<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">if_salv_wd_std_functions~set_edit_check_available</span>( abap_false ). <span style="color:#75715e">&#34;控制是否显示检查按钮&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*4.ALV Table 设置</span>
+<span style="color:#75715e">*=========================================================</span>
+  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_READ_ONLY</span>( ABAP_FALSE ).<span style="color:#75715e">&#34;设置ALV整体不可编辑&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_VISIBLE_ROW_COUNT</span>( <span style="color:#e6db74">&#39;50&#39;</span> ).<span style="color:#75715e">&#34;设置可见行&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_FIXED_TABLE_LAYOUT</span>( ABAP_FALSE ).  <span style="color:#75715e">&#34;使列宽可自动调节&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_ROW_SELECTABLE</span>( ABAP_TRUE ).<span style="color:#75715e">&#34;设置行选择&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_SCROLLABLE_COL_COUNT</span>( <span style="color:#e6db74">&#39;10&#39;</span> ).<span style="color:#75715e">&#34;设置滚动条&#34;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">&#34; 控制是否有默认的选择黄条 &#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_SELECTION_MODE</span>( cl_wd_table<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>e_selection_mode<span style="color:#f92672">-</span>single_no_lead ).
+  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_WIDTH</span>( <span style="color:#e6db74">&#39;80%&#39;</span> ).<span style="color:#75715e">&#34;设置ALV宽度&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_EDIT_MODE</span>( IF_SALV_WD_C_TABLE_SETTINGS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>EDIT_MODE ).  <span style="color:#75715e">&#34;设置编辑模式&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_EDIT_MODE</span>( IF_SALV_WD_C_TABLE_SETTINGS<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>EDIT_MODE_STANDARD ).<span style="color:#75715e">&#34;设置不可编辑模式&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_ENABLED</span>( ABAP_TRUE ) .<span style="color:#75715e">&#34;可处理的&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_EMPTY_TABLE_TEXT</span>( <span style="color:#e6db74">&#39;Empty&#39;</span> ) .<span style="color:#75715e">&#34;设置空表时显示的文本&#34;
+</span><span style="color:#75715e"></span>  table_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_DISPLAY_EMPTY_ROWS</span>( ABAP_FALSE ).  <span style="color:#75715e">&#34;不展示空表&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*5.ALV Columns 设置</span>
+<span style="color:#75715e">*=========================================================</span>
+  columns <span style="color:#f92672">=</span> column_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_columns</span>(  ).
+  <span style="color:#66d9ef">LOOP AT </span>columns <span style="color:#66d9ef">INTO</span> column. 
+    column_nd <span style="color:#f92672">=</span> column<span style="color:#f92672">-</span>r_column.
+    <span style="color:#66d9ef">CASE</span> column<span style="color:#f92672">-</span>id.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;WERKS&#39;</span>.
+        column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_position</span>( <span style="color:#ae81ff">0</span> ).
+        column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">SET_RESIZABLE</span>( abap_true ).
+        column_header <span style="color:#f92672">=</span> column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_header</span>(  ) .
+        column_header<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_ddic_binding_field</span>(  ).
+        column_header<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_text</span>(<span style="color:#e6db74">&#39;Plant&#39;</span>).
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;MEINS&#39;</span>.
+        column_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">delete_column</span>( column<span style="color:#f92672">-</span>id ).
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;STAT&#39;</span>.  <span style="color:#75715e">&#34;设置文本色: TEXT_BACKG =&gt; WDY_UIE_LIBRARY_ENUM_TYPE&#34;
+</span><span style="color:#75715e"></span>      	<span style="color:#66d9ef">DATA</span> cell_editor <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_uie.
+        <span style="color:#66d9ef">DATA</span> text_view <span style="color:#66d9ef">TYPE REF TO</span> cl_salv_wd_uie_text_view.
+        cell_editor <span style="color:#f92672">=</span> column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_cell_editor</span>( ).
+        <span style="color:#66d9ef">IF</span> cell_editor<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>editor <span style="color:#f92672">=</span> if_salv_wd_c_column_settings<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>cell_editor_text_view.
+          text_view <span style="color:#f92672">?</span><span style="color:#f92672">=</span> cell_editor.
+          text_view<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_semantic_color_fieldname</span>( <span style="color:#e6db74">&#39;TEXT_BACKG&#39;</span> ).
+        <span style="color:#66d9ef">ENDIF</span>.
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;DATE&#39;</span>. <span style="color:#75715e">&#34;设置列背景色 COL_BACKG =&gt; WDY_UIE_LIBRARY_ENUM_TYPE&#34;
+</span><span style="color:#75715e"></span>		column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_cell_design</span>( cl_wd_abstr_master_table_col<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>e_cell_design<span style="color:#f92672">-</span>positive ).
+      <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;OTHERS&#39;</span>. <span style="color:#75715e">&#34;COLOR:单元格背景色&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">&#34; Setting Color field:WDUI_TABLE_CELL_DESIGN (Table Cell Design) &#34;
+</span><span style="color:#75715e"></span>        column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_cell_design_fieldname</span>( <span style="color:#e6db74">&#39;COLOR&#39;</span> ). 
+    <span style="color:#66d9ef">ENDCASE</span>.
+  <span style="color:#66d9ef">ENDLOOP</span>.
+  column_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">delete_column</span>( <span style="color:#e6db74">&#39;COLOR&#39;</span> ). <span style="color:#75715e">&#34;Delete column&#34;
+</span><span style="color:#75715e"></span>  column_nd <span style="color:#f92672">=</span> column_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;BDAUT&#39;</span> ). <span style="color:#75715e">&#34;Get column&#34;
+</span><span style="color:#75715e"></span>  column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_visible</span>( cl_wd_uielement<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>e_visible<span style="color:#f92672">-</span>none ). <span style="color:#75715e">&#34; Set colums not display in alv &#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*6.ALV Table设置选择按钮和ALV hearder text 设置,ZSELE添加在Context中</span>
+<span style="color:#75715e">*==========================================================</span>
+  <span style="color:#66d9ef">CREATE OBJECT</span> checkbox
+    <span style="color:#66d9ef">EXPORTING</span>
+      checked_fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSELE&#39;</span>.
+  column_nd <span style="color:#f92672">=</span> column_settings<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_column</span>( <span style="color:#e6db74">&#39;ZSELE&#39;</span> ).
+  <span style="color:#66d9ef">CREATE OBJECT</span> input_field
+    <span style="color:#66d9ef">EXPORTING</span>
+      value_fieldname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ZSELE&#39;</span>.
+  column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_cell_editor</span>( input_field ).
+  column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_cell_editor</span>( checkbox ).
+  column_header <span style="color:#f92672">=</span> column_nd<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">create_header</span>( ).
+  column_header<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_text</span>( <span style="color:#e6db74">&#39;Selected&#39;</span> ).
+<span style="color:#66d9ef">endmethod</span>.
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>999</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/WebDynpro/">
+                    #WebDynpro</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P2/" class="prev" rel="prev" title=" Web Dynpro ABAP Program:DATA_LOAD "><i class="iconfont icon-dajiantou"></i>&nbsp; Web Dynpro ABAP Program:DATA_LOAD </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/SAPWebDynproABAP_P4/" class="next" rel="next" title=" Web Dynpro ABAP Program:ALV_VIEW-Function "> Web Dynpro ABAP Program:ALV_VIEW-Function &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-10-21 00:00:00 \x2b0000 UTC',
+        title: ' Web Dynpro ABAP Program:ALV_VIEW-WDDOINIT ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

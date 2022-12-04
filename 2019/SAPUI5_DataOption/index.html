@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/SAPUI5_DialogAndFragment/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/SAPUI5_Module/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAPUI5_DataOption/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAPUI5 数据类型和操作  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAPUI5 数据类型和操作  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAPUI5 数据类型和操作 "/>
+<meta name="twitter:description" content="数据类型和操作 基本数据类型 sap.ui.model.type.Integer(oFormatOptions?, oConstraints?):支持minimum,maximum sap.ui.model.type.Float(oFormatOptions?, oConstraints?):decimalS"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAPUI5 数据类型和操作 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_DataOption\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "sapui5",
+  "wordcount":  1231 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAPUI5_DataOption\/",
+  "datePublished": "2019-04-21T00:00:00\x2b00:00",
+  "dateModified": "2019-04-21T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAPUI5 数据类型和操作 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-21 >21 April 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/SAP-Fiori/"> SAP Fiori </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="数据类型和操作">数据类型和操作</h2>
+<h3 id="基本数据类型">基本数据类型</h3>
+<blockquote>
+<p>sap.ui.model.type.Integer(oFormatOptions?, oConstraints?):支持minimum,maximum</p>
+<p>sap.ui.model.type.Float(oFormatOptions?, oConstraints?):<code>decimalSeparator</code>定义小数位的分隔符</p>
+<p>sap.ui.model.type.String(&hellip;&hellip;&hellip;)</p>
+<p>sap.ui.model.type.Boolean</p>
+<p>sap.ui.model.type.Date : ui5支持原数据为JavaScript和原数据为String的日期数据进行格式输出</p>
+<p>sap.ui.model.type.Time : Time也支持原数据为Time类型或者字符串类型</p>
+<p>sap.ui.model.type.DateTime</p>
+</blockquote>
+<h3 id="属性设置">属性设置</h3>
+<ol>
+<li>
+<p>尽可能使用数据类型而不是自定义格式化程序。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">number</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{
+</span><span style="color:#e6db74"> parts: [{path: &#39;invoice&gt;ExtendedPrice&#39;}, {path: &#39;view&gt;/currency&#39;}],
+</span><span style="color:#e6db74"> type: &#39;sap.ui.model.type.Currency&#39;,
+</span><span style="color:#e6db74"> formatOptions: {
+</span><span style="color:#e6db74">     showMeasure: false
+</span><span style="color:#e6db74"> }
+</span><span style="color:#e6db74">}&#34;</span>
+</code></pre></div><ul>
+<li>计算字段绑定(parts)：它允许将来自不同模型的多个属性绑定到控件的单个属性。</li>
+<li>控件的属性是数字，从两个不同模型检索的绑定属性（“部件”）invoice&gt; ExtendedPrice和view&gt; / currency。</li>
+</ul>
+</li>
+<li>
+<p>Expression Binding 仅使用表达式绑定进行简单的计算。</p>
+<p><code>numberState=&quot;{= ${invoice&gt;ExtendedPrice} &gt; 50 ? 'Error' : 'Success' }</code></p>
+</li>
+</ol>
+<h3 id="数据校验">数据校验</h3>
+<h4 id="基本使用">基本使用</h4>
+<p>sap.ui.core.message.MessageManager();</p>
+<p>registerObject(oObject,bHandelValidation)：第一个参数是 ManagedObject 对象的实例；第二个参数是 boolean 类型变量，为 true 时执行数据校验。</p>
+<ul>
+<li>
+<p>attachValidationError(this,function(){})：控件都有该方法，用于校验失败时的处理。</p>
+</li>
+<li>
+<p>attachValidationSuccess(this,function(){})：用于校验成功时的处理。</p>
+</li>
+</ul>
+<p>ValueState 种类：setValueState()</p>
+<ul>
+<li>
+<p>sap.ui.core.ValueState.Error</p>
+</li>
+<li>
+<p>sap.ui.core.ValueState.None</p>
+</li>
+<li>
+<p>sap.ui.core.ValueState.Success</p>
+</li>
+<li>
+<p>sap.ui.core.ValueState.Warning</p>
+</li>
+</ul>
+<h4 id="集中处理数据校验">集中处理数据校验</h4>
+<p>sap.ui.core.Core 也可添加 attachValidationError().</p>
+<h4 id="自定义数据类型校验">自定义数据类型校验</h4>
+<p>sap.ui.model.SimpleType.extend() 自定义数据类型，可以使用 formatValue()、parseValue()</p>
+<p>validateValue() 实现自定义的校验规则和提示消息。</p>
+<p>抛出异常信息：throw new sap.ui.model.ValidationException(&ldquo;Message&rdquo;);</p>
+<p>截取异常消息：使用该类型的控件通过<code>oEvent.getParameter(&quot;message&quot;)</code>获取该错误消息。</p>
+<h3 id="formart设置">Formart设置</h3>
+<ol>
+<li>
+<p>在Constructor或绑定方法中定义formatter (绑定单个控件)</p>
+<p>var oText = new sap.m.Text({
+text:{ formatter:function(sValue){
+return sValue &amp;&amp; sValue.toUpperCase();
+}
+}
+});</p>
+</li>
+<li>
+<p>在Controller中定义formatter (更灵活，可重复调用)</p>
+<!-- raw HTML omitted -->
+<p>其中<code> .toUpper</code> 前面的<code>.</code>表示当前Controller方法。</p>
+</li>
+<li>
+<p>在专门模块中定义formatter</p>
+<p>单独定义formatter在Controller中引入该文件。并在view中调用。</p>
+</li>
+<li>
+<p>自定义数据类型中设置formatter</p>
+</li>
+</ol>
+<h3 id="搜索与过滤">搜索与过滤</h3>
+<ol>
+<li>
+<p>添加搜索框并绑定事件 <code>sap.m.SearchField</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;List</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;invoiceList&#34;</span> <span style="color:#a6e22e">items=</span><span style="color:#e6db74">&#34;{invoice&gt;/Invoices}&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;headerToolbar</span><span style="color:#f92672">&gt;</span>
+   <span style="color:#f92672">&lt;Toolbar</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;Title</span> <span style="color:#a6e22e">text=</span><span style="color:#e6db74">&#34;{i18n&gt;invoiceListTitle}&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;ToolbarSpacer</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;SearchField</span> <span style="color:#a6e22e">width=</span><span style="color:#e6db74">&#34;50%&#34;</span> <span style="color:#a6e22e">search=</span><span style="color:#e6db74">&#34;.onFilterInvoices&#34;</span><span style="color:#f92672">/&gt;</span>
+   <span style="color:#f92672">&lt;/Toolbar&gt;</span>
+<span style="color:#f92672">&lt;/headerToolbar&gt;</span>
+   <span style="color:#f92672">&lt;items</span><span style="color:#f92672">&gt;</span>
+     <span style="color:#f92672">&lt;ObjectListItem</span><span style="color:#f92672">&gt;</span>
+         ,,,,,,
+     <span style="color:#f92672">&lt;/ObjectListItem&gt;</span> 
+   <span style="color:#f92672">&lt;/items&gt;</span>
+<span style="color:#f92672">&lt;/List&gt;</span>
+</code></pre></div></li>
+<li>
+<p>事件定义并实现过滤</p>
+<p>filter对象将保留我们对filter操作的配置。<strong>new sap.ui.model.Filter(vFilterInfo, vOperator?, vValue1?, vValue2?)</strong></p>
+<p>FilterOperator是我们需要的帮助器类型，以指定过滤器，范围。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Filter</span>({
+      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Price&#34;</span>,
+      <span style="color:#a6e22e">operator</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">FilterOperator</span>.<span style="color:#a6e22e">BT</span>,
+      <span style="color:#a6e22e">value1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">11.0</span>,
+      <span style="color:#a6e22e">value2</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">23.0</span>
+    });
+       
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Filter</span>({
+    <span style="color:#a6e22e">filters</span><span style="color:#f92672">:</span> [
+      ...
+      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Filter</span>({
+        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Quantity&#39;</span>,
+        <span style="color:#a6e22e">operator</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">FilterOperator</span>.<span style="color:#a6e22e">LT</span>,
+        <span style="color:#a6e22e">value1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span>
+      }),
+      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Filter</span>({
+        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Price&#39;</span>,
+        <span style="color:#a6e22e">operator</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">FilterOperator</span>.<span style="color:#a6e22e">GT</span>,
+        <span style="color:#a6e22e">value1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">14.0</span>
+      })
+      ...
+    ],
+    <span style="color:#a6e22e">and</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">|</span><span style="color:#66d9ef">false</span>
+  })
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">onFilterInvoices</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">oEvent</span>) {
+ <span style="color:#75715e">// build filter array
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">aFilter</span> <span style="color:#f92672">=</span> [];
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sQuery</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oEvent</span>.<span style="color:#a6e22e">getParameter</span>(<span style="color:#e6db74">&#34;query&#34;</span>); <span style="color:#75715e">//&#34;query&#34; 获取搜索字段
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sQuery</span>) {
+     <span style="color:#a6e22e">aFilter</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Filter</span>(<span style="color:#e6db74">&#34;ProductName&#34;</span>, <span style="color:#a6e22e">FilterOperator</span>.<span style="color:#a6e22e">Contains</span>, <span style="color:#a6e22e">sQuery</span>)); <span style="color:#75715e">//添加过滤条件
+</span><span style="color:#75715e"></span> }
+   
+ <span style="color:#75715e">// filter binding
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">byId</span>(<span style="color:#e6db74">&#34;invoiceList&#34;</span>);     <span style="color:#75715e">//获取List对象
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oBinding</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">oList</span>.<span style="color:#a6e22e">getBinding</span>(<span style="color:#e6db74">&#34;items&#34;</span>); <span style="color:#75715e">//获取绑定的items
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">oBinding</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">aFilter</span>);			   <span style="color:#75715e">//根据过滤条件过滤items数据
+</span><span style="color:#75715e"></span>}
+</code></pre></div></li>
+</ol>
+<h3 id="排序与分组">排序与分组</h3>
+<p>​		<code>new sap.ui.model.Sorter(sPath, bDescending?, vGroup?, fnComparator?)</code></p>
+<ol>
+<li>items=&rdquo;{path:&lsquo;invoice&gt;/Invoices&rsquo; sorter:{path:&lsquo;ProductName&rsquo;}}&rdquo;  //默认是升序ascending,可以添加属性descending : true.</li>
+<li>items=&rdquo;{path:&lsquo;invoice&gt;/Invoices&rsquo; sorter:{path:&lsquo;ProductName&rsquo;,group:true}}&rdquo;</li>
+</ol>
+<h3 id="私有函数和变量">私有函数和变量</h3>
+<ul>
+<li>私有函数和变量应始终以下划线开头。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1231</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/sapui5/">
+                    #sapui5</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_DialogAndFragment/" class="prev" rel="prev" title=" SAPUI5 Dialog and Fragment "><i class="iconfont icon-dajiantou"></i>&nbsp; SAPUI5 Dialog and Fragment </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/SAPUI5_Module/" class="next" rel="next" title=" SAPUI5 模块化 "> SAPUI5 模块化 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-04-21 00:00:00 \x2b0000 UTC',
+        title: ' SAPUI5 数据类型和操作 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

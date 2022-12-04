@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/ABAP_EXCEL_DOI/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/ABAP_Utils_Stvarv/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/ABAP_Memory/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP Memory 使用  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP Memory 使用  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP Memory 使用 "/>
+<meta name="twitter:description" content="SAP Memory 和 ABAP Memory ABAP MEMORY：当活动的内部会话在单个主会话中调用另一个内部会话时，使用 export 和 import 参数传递数据。 SAP MEMORY：使用 set 和 get 参数将数据从"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP Memory 使用 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/ABAP_Memory\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abaputils",
+  "wordcount":  812 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/ABAP_Memory\/",
+  "datePublished": "2019-02-25T00:00:00\x2b00:00",
+  "dateModified": "2019-02-25T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP Memory 使用 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-02-25 >25 February 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                2 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-memory-和-abap-memory-">SAP Memory 和 ABAP Memory</h3>
+<p>ABAP MEMORY：当活动的内部会话在单个主会话中调用另一个内部会话时，使用 export 和 import 参数传递数据。
+SAP MEMORY：使用 set 和 get 参数将数据从一个主会话传递到另一个主会话。</p>
+<p><img src="/images/ABAP/ABAP_Memory2.png" alt="Memory Difference"></p>
+<h4 id="使用的语句不同">使用的语句不同</h4>
+<p>SAP memory使用SET/GET parameters</p>
+<ul>
+<li>
+<p>SET PARAMETER ID &lsquo;MAT&rsquo; FIELD var_matnr.</p>
+</li>
+<li>
+<p>GET PARAMETER ID &lsquo;MAT&rsquo; FIELD var_matnr.</p>
+</li>
+</ul>
+<p>ABAP Memory使用EXPORT 和IMPORT</p>
+<ul>
+<li>EXPORT p_matnr TO MEMORY ID <strong>&lsquo;memory_id&rsquo;.</strong></li>
+<li>IMPORT p_matnr FROM MEMORY ID <strong>&lsquo;memory_id&rsquo;.</strong></li>
+</ul>
+<p>清空 memory</p>
+<ul>
+<li>
+<p>FREE MEMORY ID &lsquo;ZTESTMAT&rsquo;. =&gt; 清空指定的ABAP memory</p>
+</li>
+<li>
+<p>FREE MEMORY. =&gt; 清空External Session内的所有ABAP memory</p>
+</li>
+</ul>
+<h4 id="共享范围不同">共享范围不同</h4>
+<p>SAP memory 用于所有external session 间。</p>
+<p>ABAP memory 用于同一个 external session 的 internal session 间。</p>
+<h4 id="作用范围不同就是生存期">作用范围不同（就是生存期）</h4>
+<p>SAP memory在登陆到退出这期间一直有效。</p>
+<p>ABAP memory只在同一个session(window) 内有效。</p>
+<h4 id="dialog-获取-sap-memory-方式">Dialog 获取 SAP Memory 方式</h4>
+<p>在 dialog 屏幕上建一个 input field，然后 Parameter ID 属性与 &lsquo;SAP_MMR&rsquo; 绑定，并打上2个勾。</p>
+<p>Set Parameter: 允许将屏幕值返回给SAP Memory (类似于执行SET PARAMETER ID语句)</p>
+<p>Get Parameter: 允许读取SAP Memory的值并默认显示(类似于执行GET PARAMETER ID语句).</p>
+<h3 id="创建共享内存对象类">创建共享内存对象类</h3>
+<ol>
+<li>
+<p>使用SE24 创建类 ZCL_ROOT_TEST</p>
+<p><img src="/images/ABAP/ABAP_Memory.png" alt="SE24"></p>
+</li>
+<li>
+<p>为共享内存对象区域创建area rool 类 (SHMA)</p>
+<ul>
+<li>
+<p>启动事务 SHMA 并创建一个新的区域名称。（示例为 ZCL_MEM_AREA）
+填写 “内存共享区域” 的简短描述。在 “根类” 中，将您创建的类放在上方（ZCL_ROOT_TEST）。</p>
+</li>
+<li>
+<p>保存时，SAP 将生成与区域名称（ZCL_MEM_AREA）同名的区域类。新生成的 Area Class 将包含读取，写入和更新共享内存对象所需的所有方法。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>创建两个实例属性name,value，可见性设置为private，参考字段MEMORY_ID</p>
+</li>
+<li>
+<p>创建SET_DATA 和 GET_DATA方法</p>
+<ol>
+<li>
+<p><strong>SET_DATA</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">my_handle</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">zcl_mem_area</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">my_root</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">zcl_root_test</span>.
+<span style="color:#a6e22e">TRY</span> .
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">zcl_mem_area</span>=&gt;<span style="color:#a6e22e">attach_for_write</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">inst_name</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_shm_area</span>=&gt;<span style="color:#a6e22e">default_instance</span>
+        <span style="color:#a6e22e">attach_mode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl_shm_area</span>=&gt;<span style="color:#a6e22e">attach_mode_default</span>
+        <span style="color:#a6e22e">wait_time</span>   <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+      <span style="color:#a6e22e">RECEIVING</span>
+        <span style="color:#a6e22e">handle</span>      <span style="color:#f92672">=</span> <span style="color:#a6e22e">my_handle</span>.
+    <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">my_root</span> <span style="color:#a6e22e">AREA</span> <span style="color:#a6e22e">HANDLE</span> <span style="color:#a6e22e">my_handle</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">my_root</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">set_data</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">name</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;name_test&#39;</span>
+        <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;value_test&#39;</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">my_handle</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">detach_commit</span>.
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_exclusive_lock_active</span> .
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_version_limit_exceeded</span> .
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_change_lock_active</span> .
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_parameter_error</span> .
+  <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_pending_lock_removed</span> .
+<span style="color:#a6e22e">ENDTRY</span>.
+</code></pre></div></li>
+<li>
+<p><strong>GET_DATA</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">my_handle</span> <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">zcl_mem_area</span>.
+<span style="color:#a6e22e">DATA</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">my_root</span>   <span style="color:#a6e22e">TYPE</span> <span style="color:#a6e22e">REF</span> <span style="color:#a6e22e">TO</span> <span style="color:#a6e22e">zcl_area_root</span>.
+   
+<span style="color:#a6e22e">TRY</span> .
+ <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">zcl_mem_area</span>=&gt;<span style="color:#a6e22e">attach_for_read</span>
+      <span style="color:#a6e22e">EXPORTING</span>
+        <span style="color:#a6e22e">inst_name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">zcl_mem_area</span>=&gt;<span style="color:#a6e22e">attach_for_write</span>
+      <span style="color:#a6e22e">RECEIVING</span>
+        <span style="color:#a6e22e">handle</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">my_handle</span>.
+    <span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OBJECT</span> <span style="color:#a6e22e">my_root</span> <span style="color:#a6e22e">AREA</span> <span style="color:#a6e22e">HANDLE</span> <span style="color:#a6e22e">my_handle</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">my_root</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_data</span>
+      <span style="color:#a6e22e">IMPORTING</span>
+        <span style="color:#a6e22e">name</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">lv_name</span>
+        <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lv_value</span>.
+    <span style="color:#a6e22e">CALL</span> <span style="color:#a6e22e">METHOD</span> <span style="color:#a6e22e">my_handle</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">detach_commit</span>.
+   <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_inconsistent</span> .
+   <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_no_active_version</span> .
+   <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_read_lock_active</span> .
+   <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_exclusive_lock_active</span> .
+   <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_parameter_error</span> .
+   <span style="color:#a6e22e">CATCH</span> <span style="color:#a6e22e">cx_shm_change_lock_active</span> .
+<span style="color:#a6e22e">ENDTRY</span>.
+</code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>使用该类进行传递Memory Id</p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>812</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abaputils/">
+                    #abaputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_EXCEL_DOI/" class="prev" rel="prev" title=" ABAP DOI 使用 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP DOI 使用 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/ABAP_Utils_Stvarv/" class="next" rel="next" title=" STVARV 使用详情 "> STVARV 使用详情 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-02-25 00:00:00 \x2b0000 UTC',
+        title: ' SAP Memory 使用 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

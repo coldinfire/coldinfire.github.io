@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_1/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_BAPI_ALL_LIST/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_2/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ABAP 7.40 Quick Reference Part2  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ABAP 7.40 Quick Reference Part2  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ABAP 7.40 Quick Reference Part2 "/>
+<meta name="twitter:description" content="Conditional operators - COND &amp; SWITCH 根据逻辑表达式或情况的不同确定指定变量的结果。THEN 后面都是返回的结果。 Definition &#34;COND&#34; COND dtype|#( WHEN log_exp1 THEN result1 [ WHEN log_exp2 THEN result2 ] ... [ ELSE resultn ] ) . &#34;SWITCH&#34; SWITCH dtype|#( operand WHEN const1"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ABAP 7.40 Quick Reference Part2 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/ABAP_7.40_QuickReference_2\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "abapbasis",
+  "wordcount":  1616 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/ABAP_7.40_QuickReference_2\/",
+  "datePublished": "2020-07-17T00:00:00\x2b00:00",
+  "dateModified": "2020-07-17T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ABAP 7.40 Quick Reference Part2 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-07-17 >17 July 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                4 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="conditional-operators---cond--switch">Conditional operators - COND &amp; SWITCH</h3>
+<p>根据逻辑表达式或情况的不同确定指定变量的结果。THEN 后面都是返回的结果。</p>
+<h4 id="definition">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">&#34;COND&#34;
+</span><span style="color:#75715e"></span>COND dtype|<span style="color:#e6db74">#( WHEN log_exp1 THEN result1
+</span><span style="color:#e6db74">  [ WHEN log_exp2 THEN result2 ]
+</span><span style="color:#e6db74">  ...
+</span><span style="color:#e6db74">  [ ELSE resultn ] ) .
+</span><span style="color:#e6db74">&#34;SWITCH&#34;
+</span><span style="color:#e6db74">SWITCH dtype</span>|<span style="color:#960050;background-color:#1e0010">#</span>( operand <span style="color:#66d9ef">WHEN</span> const1 THEN result1
+  [ <span style="color:#66d9ef">WHEN</span> const2 THEN result2 ]
+  ...
+  [ <span style="color:#66d9ef">ELSE</span> resultn ] ) .
+</code></pre></div><h4 id="example-for-cond">Example for COND</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>(time) <span style="color:#f92672">=</span> COND string(
+    <span style="color:#66d9ef">WHEN</span> sy<span style="color:#f92672">-</span>timlo <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;120000&#39;</span> THEN |<span style="color:#e6db74"></span>{ sy<span style="color:#f92672">-</span>timlo <span style="color:#66d9ef">TIME</span> <span style="color:#f92672">=</span> ISO }<span style="color:#e6db74"> AM</span>|
+    <span style="color:#66d9ef">WHEN</span> sy<span style="color:#f92672">-</span>timlo <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;120000&#39;</span> THEN
+      |<span style="color:#e6db74"></span>{ CONV t( sy<span style="color:#f92672">-</span>timlo <span style="color:#f92672">-</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span> ) <span style="color:#66d9ef">TIME</span> <span style="color:#f92672">=</span> ISO }<span style="color:#e6db74"> PM</span>|
+    <span style="color:#66d9ef">WHEN</span> sy<span style="color:#f92672">-</span>timlo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;120000&#39;</span> THEN |<span style="color:#e6db74">High Noon</span>|
+    <span style="color:#66d9ef">ELSE</span>
+      THROW cx_cant_be( ) 
+).
+</code></pre></div><h4 id="example-for-switch">Example for SWITCH</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">DATA</span>(text) <span style="color:#f92672">=</span> SWITCH <span style="color:#960050;background-color:#1e0010">#</span>( sy<span style="color:#f92672">-</span>langu
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;D&#39;</span> THEN <span style="color:#e6db74">&#39;DE&#39;</span>
+    <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;E&#39;</span> THEN <span style="color:#e6db74">&#39;EN&#39;</span>
+    <span style="color:#66d9ef">ELSE</span> 
+      THROW cx_langu_not_supported( ) 
+).
+</code></pre></div><h3 id="strings">Strings</h3>
+<h4 id="string-templates">String Templates</h4>
+<p>字符串模板由两个字符&quot;|&quot;括起来并创建一个字符串。</p>
+<p>文字文本由不在大括号&rdquo;{ }&ldquo;中的所有字符组成。</p>
+<p>大括号可以包含：</p>
+<ul>
+<li>数据对象</li>
+<li>计算表达式</li>
+<li>构造函数表达式</li>
+<li>表表达式</li>
+<li>预定义功能，或 功能方法和方法链</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span>: itab <span style="color:#66d9ef">TYPE </span><span style="color:#66d9ef">TABLE OF</span> scarr,
+      wa <span style="color:#66d9ef">LIKE LINE OF</span> itab.
+<span style="color:#66d9ef">DATA</span> output <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> scarr <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> itab.
+<span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">TABLE</span> itab <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> carrid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;LH&#39;</span> <span style="color:#66d9ef">INTO</span> wa.
+<span style="color:#66d9ef">IF</span> sy<span style="color:#f92672">-</span>subrc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>.
+  <span style="color:#66d9ef">CONCATENATE</span> <span style="color:#960050;background-color:#1e0010">‘</span>Carrier:<span style="color:#960050;background-color:#1e0010">’</span> wa<span style="color:#f92672">-</span>carrname <span style="color:#66d9ef">INTO</span> output <span style="color:#66d9ef">SEPARATED BY</span> space.
+<span style="color:#66d9ef">ENDIF</span>.
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( output ).
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> scarr <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#960050;background-color:#1e0010">@</span>DATA(lt_scarr).
+cl_demo_output<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">display</span>( |<span style="color:#e6db74">Carrier: </span>{ lt_scarr[ carrid <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>LH<span style="color:#960050;background-color:#1e0010">’</span> ]<span style="color:#960050;background-color:#1e0010">–</span>carrname }<span style="color:#e6db74"></span>| ).
+</code></pre></div><h4 id="conacatenation">Conacatenation</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span> lv_output <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">CONCATENATE</span> <span style="color:#960050;background-color:#1e0010">‘</span>Hello<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#960050;background-color:#1e0010">‘</span>world<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#66d9ef">INTO</span> lv_output <span style="color:#66d9ef">SEPARATED BY</span> space.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(lv_out) <span style="color:#f92672">=</span> |<span style="color:#e6db74">Hello</span>| <span style="color:#f92672">&amp;</span> |<span style="color:#e6db74"> </span>| <span style="color:#f92672">&amp;</span> |<span style="color:#e6db74">world</span>|.
+</code></pre></div><h4 id="widthalignmentpadding">Width/Alignment/Padding</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ <span style="color:#e6db74">&#39;Left&#39;</span>   <span style="color:#66d9ef">WIDTH</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#66d9ef">ALIGN</span> <span style="color:#f92672">=</span> LEFT   <span style="color:#66d9ef">PAD</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> }<span style="color:#e6db74"></span>|.
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ <span style="color:#e6db74">&#39;Center&#39;</span> <span style="color:#66d9ef">WIDTH</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#66d9ef">ALIGN</span> <span style="color:#f92672">=</span> CENTER <span style="color:#66d9ef">PAD</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> }<span style="color:#e6db74"></span>|.
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ <span style="color:#e6db74">&#39;Right&#39;</span>  <span style="color:#66d9ef">WIDTH</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#66d9ef">ALIGN</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">RIGHT</span>  <span style="color:#66d9ef">PAD</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> }<span style="color:#e6db74"></span>|.
+</code></pre></div><h4 id="case">Case</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ <span style="color:#e6db74">&#39;Text&#39;</span> <span style="color:#66d9ef">CASE</span> <span style="color:#f92672">=</span> (cl_abap_format<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>c_raw) }<span style="color:#e6db74"></span>|.
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ <span style="color:#e6db74">&#39;Text&#39;</span> <span style="color:#66d9ef">CASE</span> <span style="color:#f92672">=</span> (cl_abap_format<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>c_upper) }<span style="color:#e6db74"></span>|.
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ <span style="color:#e6db74">&#39;Text&#39;</span> <span style="color:#66d9ef">CASE</span> <span style="color:#f92672">=</span> (cl_abap_format<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>c_lower) }<span style="color:#e6db74"></span>|.
+</code></pre></div><h4 id="alpha-conversion">ALPHA conversion</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(lv_vbeln) <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#ae81ff">0000012345</span><span style="color:#960050;background-color:#1e0010">’</span>.
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ lv_vbeln  <span style="color:#66d9ef">ALPHA</span> <span style="color:#f92672">=</span> OUT }<span style="color:#e6db74"></span>|. 
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ lv_vbeln  <span style="color:#66d9ef">ALPHA</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">IN</span> }<span style="color:#e6db74"></span>|.
+</code></pre></div><h4 id="date-conversion">Date conversion</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(pa_date) <span style="color:#f92672">=</span> sy<span style="color:#f92672">-</span>datum.
+<span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ pa_date <span style="color:#66d9ef">DATE</span> <span style="color:#f92672">=</span> ISO }<span style="color:#e6db74"></span>|.         <span style="color:#75715e">&#34;Date Format YYYY-MM-DD&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ pa_date <span style="color:#66d9ef">DATE</span> <span style="color:#f92672">=</span> User }<span style="color:#e6db74"></span>|.        <span style="color:#75715e">&#34;As per user settings&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">WRITE</span> / |<span style="color:#e6db74"></span>{ pa_date <span style="color:#66d9ef">DATE</span> <span style="color:#f92672">=</span> Environment }<span style="color:#e6db74"></span>|. <span style="color:#75715e">&#34;Formatting setting of language environment&#34;
+</span><span style="color:#75715e"></span><span style="color:#75715e">*environment对应的值是CL_ABAP_FORMAT=&gt;D_ENVIRONMENT</span>
+</code></pre></div><h3 id="conversion-operator---conv">Conversion Operator - CONV</h3>
+<h4 id="definition-1">Definition</h4>
+<p><code>CONV dtype|# ( ... )</code></p>
+<h4 id="example">Example</h4>
+<p>方法 cl_abap_codepage=&gt;convert_to 需要一个字符串。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span> text   <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">255</span>.
+<span style="color:#66d9ef">DATA</span> helper <span style="color:#66d9ef">TYPE </span>string.
+<span style="color:#66d9ef">DATA</span> xstr   <span style="color:#66d9ef">TYPE </span>xstring.
+helper <span style="color:#f92672">=</span> text.
+xstr <span style="color:#f92672">=</span> cl_abap_codepage<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">convert_to</span>( source <span style="color:#f92672">=</span> helper ).
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span> text <span style="color:#66d9ef">TYPE </span>c <span style="color:#66d9ef">LENGTH</span> <span style="color:#ae81ff">255</span>.
+<span style="color:#66d9ef">DATA</span>(xstr) <span style="color:#f92672">=</span> cl_abap_codepage<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">convert_to</span>( source <span style="color:#f92672">=</span> CONV string( text ) ).
+<span style="color:#75715e">&#34;或则使用&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>(xstr) <span style="color:#f92672">=</span> cl_abap_codepage<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">convert_to</span>( source <span style="color:#f92672">=</span> CONV <span style="color:#960050;background-color:#1e0010">#</span>( text ) ).
+</code></pre></div><h3 id="loop-at-group-by">Loop at group by</h3>
+<p>用于内表的分类处理，相当于 SQL 语句的 group by.</p>
+<h4 id="definition-2">Definition</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">LOOP AT </span>itab result [cond] <span style="color:#66d9ef">GROUP BY</span> <span style="color:#66d9ef">key</span> ( key1 <span style="color:#f92672">=</span> dobj1 key2 <span style="color:#f92672">=</span> dobj2 ...
+    [gs <span style="color:#f92672">=</span> GROUP <span style="color:#66d9ef">SIZE</span>] [gi <span style="color:#f92672">=</span> GROUP <span style="color:#66d9ef">INDEX</span>] )
+    [ASCENDING|<span style="color:#e6db74">DESCENDING [AS TEXT]]
+</span><span style="color:#e6db74">    [WITHOUT MEMBERS]
+</span><span style="color:#e6db74">    [</span>{INTO group}<span style="color:#e6db74"></span>|<span style="color:#960050;background-color:#1e0010">{</span>ASSIGNING &lt;group&gt;}<span style="color:#e6db74">]
+</span><span style="color:#e6db74">      ...
+</span><span style="color:#e6db74">    [LOOP AT GROUP group</span>|&lt;group&gt;
+      ...
+    <span style="color:#66d9ef">ENDLOOP</span>.]
+      ...
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><p>外循环将对每个键执行一次迭代。 因此，如果 3 个记录与键匹配，则这 3 个记录将只有一个迭代。 结构“ group”不寻常，因为可以使用“LOOP AT GROUP”语句进行循环。 这将遍历该组的 3 个记录（成员）。 结构 “group” 还包含当前键以及组的大小和组的索引（如果已为 GROUP SIZE 和 GROUP INDEX 分配了字段名）。 通过示例可以最好地理解这一点。</p>
+<h4 id="example-1">Example</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#66d9ef">TYPES</span>: <span style="color:#66d9ef">BEGIN OF</span> ty_employee,
+  name <span style="color:#66d9ef">TYPE </span>char30,
+  role <span style="color:#66d9ef">TYPE </span>char30,
+  age  <span style="color:#66d9ef">TYPE </span>i,
+<span style="color:#66d9ef">END OF</span> ty_employee,
+ty_employee_t <span style="color:#66d9ef">TYPE STANDARD TABLE OF</span> ty_employee <span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">KEY</span> name.
+<span style="color:#66d9ef">DATA</span>(gt_employee) <span style="color:#f92672">=</span> <span style="color:#66d9ef">VALUE</span> ty_employee_t(
+( name <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>John<span style="color:#960050;background-color:#1e0010">‘</span>   role <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>ABAP guru<span style="color:#960050;background-color:#1e0010">‘</span>      age <span style="color:#f92672">=</span> <span style="color:#ae81ff">34</span> )
+( name <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>Alice<span style="color:#960050;background-color:#1e0010">‘</span>  role <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>FI Consultant<span style="color:#960050;background-color:#1e0010">‘</span>  age <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span> )
+( name <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>Barry<span style="color:#960050;background-color:#1e0010">‘</span>  role <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>ABAP guru<span style="color:#960050;background-color:#1e0010">‘</span>      age <span style="color:#f92672">=</span> <span style="color:#ae81ff">54</span> )
+( name <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>Mary<span style="color:#960050;background-color:#1e0010">‘</span>   role <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>FI Consultant<span style="color:#960050;background-color:#1e0010">‘</span>  age <span style="color:#f92672">=</span> <span style="color:#ae81ff">37</span> )
+( name <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>Arthur<span style="color:#960050;background-color:#1e0010">‘</span> role <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>ABAP guru<span style="color:#960050;background-color:#1e0010">‘</span>      age <span style="color:#f92672">=</span> <span style="color:#ae81ff">34</span> )
+( name <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>Mandy<span style="color:#960050;background-color:#1e0010">‘</span>  role <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>SD Consultant<span style="color:#960050;background-color:#1e0010">‘</span>  age <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span> ) ).
+<span style="color:#66d9ef">DATA</span>: gv_tot_age <span style="color:#66d9ef">TYPE </span>i,gv_avg_age <span style="color:#66d9ef">TYPE </span>decfloat34.
+<span style="color:#960050;background-color:#1e0010">“</span>Loop <span style="color:#66d9ef">with</span> grouping <span style="color:#66d9ef">on</span> Role
+<span style="color:#66d9ef">LOOP AT </span>gt_employee <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">DATA</span>(ls_employee)
+  <span style="color:#66d9ef">GROUP BY</span> ( role  <span style="color:#f92672">=</span> ls_employee<span style="color:#f92672">-</span>role
+             <span style="color:#66d9ef">size</span>  <span style="color:#f92672">=</span> GROUP <span style="color:#66d9ef">SIZE</span>
+             <span style="color:#66d9ef">index</span> <span style="color:#f92672">=</span> GROUP <span style="color:#66d9ef">INDEX</span> )
+  ASCENDING <span style="color:#66d9ef">ASSIGNING</span> <span style="color:#66d9ef">FIELD</span><span style="color:#f92672">-</span>SYMBOL(&lt;group&gt;).
+  <span style="color:#66d9ef">CLEAR</span>: gv_tot_age.
+  <span style="color:#960050;background-color:#1e0010">“</span>Output info <span style="color:#66d9ef">at</span> group level
+  <span style="color:#66d9ef">WRITE</span>: / |<span style="color:#e6db74">Group: </span>{ &lt;group&gt;<span style="color:#f92672">-</span>index }<span style="color:#e6db74"> Role: </span>{ &lt;group&gt;<span style="color:#f92672">-</span>role <span style="color:#66d9ef">WIDTH</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span> }<span style="color:#e6db74"></span>|
+              <span style="color:#f92672">&amp;</span> |<span style="color:#e6db74">Number in this role: </span>{ &lt;group&gt;<span style="color:#f92672">-</span>size }<span style="color:#e6db74"></span>|.
+   <span style="color:#960050;background-color:#1e0010">“</span><span style="color:#66d9ef">Loop at </span>members <span style="color:#66d9ef">of</span> the group
+   <span style="color:#66d9ef">LOOP AT </span>GROUP &lt;group&gt; <span style="color:#66d9ef">ASSIGNING</span> <span style="color:#66d9ef">FIELD</span><span style="color:#f92672">-</span>SYMBOL(&lt;ls_member&gt;).
+      gv_tot_age <span style="color:#f92672">=</span> gv_tot_age <span style="color:#f92672">+</span> &lt;ls_member&gt;<span style="color:#f92672">-</span>age.
+      <span style="color:#66d9ef">WRITE</span>: /<span style="color:#ae81ff">13</span> &lt;ls_member&gt;<span style="color:#f92672">-</span>name.
+   <span style="color:#66d9ef">ENDLOOP</span>.
+   <span style="color:#960050;background-color:#1e0010">“</span>Average age
+   gv_avg_age <span style="color:#f92672">=</span> gv_tot_age / &lt;group&gt;<span style="color:#f92672">-</span>size.
+   <span style="color:#66d9ef">WRITE</span>: / |<span style="color:#e6db74">Average age: </span>{ gv_avg_age }<span style="color:#e6db74"></span>|.
+   <span style="color:#66d9ef">SKIP</span>.
+<span style="color:#66d9ef">ENDLOOP</span>.
+</code></pre></div><p>Output</p>
+<pre><code class="language-htnl" data-lang="htnl">Group: 1 Role: ABAP guru  Number in this role: 3
+         John
+         Barry
+         Arthur
+Average age: 40.66666666666666666666666666666667
+Group: 2 Role: FI Consultant Number in this role: 2
+         Alice
+         Mary
+Average age: 39.5
+Group: 3 Role: SD Consultant Number in this role: 1
+         Mandy
+Average age: 64
+</code></pre><h3 id="classesmethods">Classes/Methods</h3>
+<h4 id="referencing-fields-within-returned-structures">Referencing fields within returned structures</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span>: ls_lfa1  <span style="color:#66d9ef">TYPE </span>lfa1,
+      lv_name1 <span style="color:#66d9ef">TYPE </span>lfa1<span style="color:#f92672">-</span>name1.
+ls_lfa1  <span style="color:#f92672">=</span> my_class<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_lfa1</span>( ).
+lv_name1 <span style="color:#f92672">=</span> ls_lfa1<span style="color:#f92672">-</span>name1.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(lv_name1) <span style="color:#f92672">=</span> my_class<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_lfa1</span>( )<span style="color:#f92672">-</span>name1.
+</code></pre></div><h4 id="methods-that-return-a-type-boolean">Methods that return a type BOOLEAN</h4>
+<p>类型 BOOLEAN 不是真正的布尔值，而是具有允许值<code>X、- 、blank</code>的 char1。使用 FLAG 或 WDY_BOOLEAN 类型也可以。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">IF</span> my_class<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">return_boolean</span>( ) <span style="color:#f92672">=</span> abap_true.
+  ...
+<span style="color:#66d9ef">ENDIF</span>.
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">IF</span> my_class<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">return_boolean</span>( ).
+  ...
+<span style="color:#66d9ef">ENDIF</span>.
+</code></pre></div><h4 id="new-operator">New Operator</h4>
+<p>NEW 可以创建匿名的数据对象或者类的实例，用来代替 CREATE OBJECT。如果等号左侧的对象没有确定类型，则必须在 NEW 关键字后指定类型；如果是已经预定义的对象，则可以用 <code>#</code> 代替。</p>
+<p><em>Definition</em></p>
+<ul>
+<li>
+<p><code>... NEW dtype( value ) ...</code>：创建一个类型为 dtype 的匿名数据对象，然后传值给创建的对象。</p>
+</li>
+<li>
+<p><code>... NEW class( p1 = a1 p2 = a2 ... ) ...</code>：创建一个名为 class 类的实例，并且传参到实例的构造函数。</p>
+</li>
+<li>
+<p><code>... NEW #( ... ) ...</code>：根据操作数类型创建一个匿名数据对象或者一个类的实例。</p>
+</li>
+</ul>
+<p><em>Example</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ABAP" data-lang="ABAP"><span style="color:#75715e">*Before 7.40</span>
+<span style="color:#66d9ef">DATA</span>: lo_delivs <span style="color:#66d9ef">TYPE REF TO</span> zcl_sd_delivs,
+      lo_deliv  <span style="color:#66d9ef">TYPE REF TO</span> zcl_sd_deliv.
+<span style="color:#66d9ef">CREATE OBJECT</span> lo_delivs.
+<span style="color:#66d9ef">CREATE OBJECT</span> lo_deliv.
+<span style="color:#66d9ef">DATA</span>: lv_vbeln <span style="color:#66d9ef">TYPE </span>vbeln <span style="color:#66d9ef">VALUE</span> <span style="color:#e6db74">&#39;00123488&#39;</span>.
+lo_deliv <span style="color:#f92672">=</span> lo_delivs<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_deliv</span>( lv_vbeln ).
+<span style="color:#75715e">*With 7.40</span>
+<span style="color:#66d9ef">DATA</span>(lo_deliv) <span style="color:#f92672">=</span> new zcl_sd_delivs<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">get_deliv</span>( lv_vbeln ).
+<span style="color:#75715e">&#34;# use&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DATA</span>: GO_GRID <span style="color:#66d9ef">TYPE REF TO</span> CL_GUI_ALV_GRID.
+GO_GRID <span style="color:#f92672">=</span> NEW <span style="color:#960050;background-color:#1e0010">#</span>( I_PARENT <span style="color:#f92672">=</span> GO_CON ).
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1616</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/abapbasis/">
+                    #abapbasis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_1/" class="prev" rel="prev" title=" ABAP 7.40 Quick Reference Part1 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 7.40 Quick Reference Part1 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_BAPI_ALL_LIST/" class="next" rel="next" title=" MM BAPI List "> MM BAPI List &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-07-17 00:00:00 \x2b0000 UTC',
+        title: ' ABAP 7.40 Quick Reference Part2 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

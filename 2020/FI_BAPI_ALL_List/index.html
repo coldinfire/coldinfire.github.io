@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_EXCEL_OLE/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/ABAP_Utils_CodeSearch/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/FI_BAPI_ALL_List/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            FI 常用 BAPI  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" FI 常用 BAPI  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" FI 常用 BAPI "/>
+<meta name="twitter:description" content="FI BAPI List BAPI Description K_HIERARCHY_TABLES_READ 成本要素组明细 BAPI_ACC_DOCUMENT_POST 创建会计凭证 BAPI_ACC_DOCUMENT_REV_POST 反冲会计凭证；可以冲销自开发程序生成的凭证，必须传入交易码参数 BAPI_ACC_GL_POSTING_REV_POST 只能冲销标准TCODE生成的凭证 FCOM_COSTCENTER_CHANGEMULTIPLE"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " FI 常用 BAPI ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/FI_BAPI_ALL_List\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "BAPI, FICO",
+  "wordcount":  141 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/FI_BAPI_ALL_List\/",
+  "datePublished": "2020-03-23T00:00:00\x2b00:00",
+  "dateModified": "2020-03-23T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> FI 常用 BAPI </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-03-23 >23 March 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="fi-bapi-list">FI BAPI List</h3>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">K_HIERARCHY_TABLES_READ</td>
+<td align="left">成本要素组明细</td>
+</tr>
+<tr>
+<td align="left">BAPI_ACC_DOCUMENT_POST</td>
+<td align="left">创建会计凭证</td>
+</tr>
+<tr>
+<td align="left">BAPI_ACC_DOCUMENT_REV_POST</td>
+<td align="left">反冲会计凭证；可以冲销自开发程序生成的凭证，必须传入交易码参数</td>
+</tr>
+<tr>
+<td align="left">BAPI_ACC_GL_POSTING_REV_POST</td>
+<td align="left">只能冲销标准TCODE生成的凭证</td>
+</tr>
+<tr>
+<td align="left">FCOM_COSTCENTER_CHANGEMULTIPLE</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">FCOM_COSTCENTER_CREATEMULTIPLE</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">BAPI_COSTCENTER_CHANGEMULTIPLE</td>
+<td align="left">更改一个或多个成本中心</td>
+</tr>
+<tr>
+<td align="left">BAPI_COSTCENTER_CHECKMULTIPLE</td>
+<td align="left">检查一个或多个成本中心</td>
+</tr>
+<tr>
+<td align="left">BAPI_COSTCENTER_CREATEMULTIPLE</td>
+<td align="left">创建一个或多个成本中心</td>
+</tr>
+<tr>
+<td align="left">BAPI_COSTCENTER_DELETEMULTIPLE</td>
+<td align="left">删除一个或多个成本中心</td>
+</tr>
+<tr>
+<td align="left">BAPI_INCOMINGINVOICE_CREATE</td>
+<td align="left">发票检验：MIRO</td>
+</tr>
+<tr>
+<td align="left">BAPI_INCOMINGINVOICE_CANCEL</td>
+<td align="left">发票校验冲销：mr8m</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>141</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/FICO/">
+                    #FICO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_EXCEL_OLE/" class="prev" rel="prev" title=" OLE 下载数据到EXCEL模板及速度优化 "><i class="iconfont icon-dajiantou"></i>&nbsp; OLE 下载数据到EXCEL模板及速度优化 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_Utils_CodeSearch/" class="next" rel="next" title=" SAP ABAP 代码扫描工具 "> SAP ABAP 代码扫描工具 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-03-23 00:00:00 \x2b0000 UTC',
+        title: ' FI 常用 BAPI ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

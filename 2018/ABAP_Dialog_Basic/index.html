@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2018/ABAP_ALV_SearchHelp/" />
+  <link rel="next" href="https://coldinfire.github.io/2018/ABAP_Dialog_Detail/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2018/ABAP_Dialog_Basic/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            Dialog 程序简介  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" Dialog 程序简介  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" Dialog 程序简介 "/>
+<meta name="twitter:description" content="SAP-ABAP 支持两种类型的程序：Report 和 Dialog。如果 ABAP 程序需要用户输入或则当我们需要在屏幕之间来回导航时，则使用 Dialog 编程。 对话程序的创建类型"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " Dialog 程序简介 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_Basic\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "Dialog",
+  "wordcount":  1323 ,
+  "url": "https:\/\/coldinfire.github.io\/2018\/ABAP_Dialog_Basic\/",
+  "datePublished": "2018-08-26T00:00:00\u002b00:00",
+  "dateModified": "2018-08-26T00:00:00\u002b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> Dialog 程序简介 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-08-26 >26 August 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SAP-ABAP 支持两种类型的程序：Report 和 Dialog。如果 ABAP 程序需要用户输入或则当我们需要在屏幕之间来回导航时，则使用 Dialog 编程。</p>
+<p>对话程序的创建类型为“M”— Module Pool。 它们不能独立执行，必须附加到至少一个初始屏幕的事务代码。</p>
+<h3 id="report-和-dialog--的差异">Report 和 Dialog  的差异</h3>
+<p>Report：报表是一种程序，它通常在不更改数据库的情况下读取和分析数据库表中的数据。</p>
+<p>Dialog：对话程序允许您与系统交互工作并更改数据库表的内容。 每个对话程序都有特定的屏幕序列，由系统一个接一个地处理。</p>
+<p><img src="/images/ABAP/ABAP_Dialog_1.png" alt="Dialog"></p>
+<h3 id="abap-与-dialog-交互方式">ABAP 与 Dialog 交互方式</h3>
+<p>用户对话是用户和程序之间的任何形式的交互，可以是以下任何一种:</p>
+<ul>
+<li>输入数据</li>
+<li>选择菜单项</li>
+<li>单击按钮</li>
+<li>单击或双击条目</li>
+</ul>
+<p>ABAP 程序与 Dialog 屏幕进行数据交换的方式，通过在程序中定义一个与 Dialog 中同名的全局变量或者结构，从而实现数据的自动传递。</p>
+<ul>
+<li>加载数据：在 PBO 中实现</li>
+<li>推送数据：在 PAI 中控制</li>
+</ul>
+<h3 id="dialog-的组成部分">Dialog 的组成部分</h3>
+<p>对话程序开发需要开发多个对象，而这些对象都不能单独执行。 相反，所有对象都分层链接到主程序，并按照对话主程序指定的顺序执行。</p>
+<p><img src="/images/ABAP/ABAP_Dialog_2.png" alt="Dialog"></p>
+<h4 id="transaction-code">Transaction Code</h4>
+<p>SE93 创建事务代码。事务代码链接到 ABAP 程序和初始屏幕。</p>
+<p>可以使用 CALL SCREEN 语句从任何 ABAP 程序启动屏幕序列。</p>
+<h4 id="screens">Screens</h4>
+<p>SAP 系统中的每个对话框都由一个或多个屏幕控制。可以通过事务 SE51 在 ABAP 工作台中使用 Screen Painter 创建屏幕，每个屏幕都属于一个 ABAP 程序。</p>
+<p>这些屏幕由 screen mask 或 layout 及其流程逻辑组成。 屏幕具有确定输入/输出字段和其他图形元素（例如复选框和单选按钮）的位置的布局。 Flow Logic 确定屏幕内的逻辑处理。</p>
+<h4 id="gui-status">GUI Status</h4>
+<p>每个屏幕都有一个 GUI 状态，它们是程序的独立组件。它控制菜单栏、标准工具栏、应用程序工具栏，用户可以通过这些工具栏选择应用程序中的功能。</p>
+<p>可以使用 SE41：Menu Painter 在 ABAP Workbench 中创建它们。</p>
+<h4 id="abap-program">ABAP Program</h4>
+<p>R/3 系统中的每个屏幕和 GUI 状态都属于一个 ABAP 程序。ABAP 程序包含由屏幕流逻辑调用的对话框模块，还处理来自 GUI 状态的用户输入。</p>
+<p>使用屏幕的 ABAP 程序也称为对话程序。</p>
+<p>在模块池中（M 型程序）； 要调用的第一个处理块始终是对话模块。 但是，也可以在其他 ABAP 程序中使用屏幕，例如可执行程序或功能模块。 然后以不同方式调用第一个处理块； 例如，由运行时环境或过程调用。 然后使用 CALL SCREEN 语句启动屏幕序列。</p>
+<h4 id="screen-flow-logic">Screen Flow Logic</h4>
+<p>Screen Flow Logic(屏幕流逻辑) 定义了在 screen 上的各种事件，而 Dynpro 定义了这个 Screen 和各种事件。ABAP MODULE POOL 会处理这些 Event，在每次事件时调用一个 ABAP program。</p>
+<p>屏幕流逻辑主要分为四个组件。</p>
+<ul>
+<li>PBO：Process Before Output 事件，在屏幕显示之前处理</li>
+<li>PAI：Process After Input 事件，在用户在屏幕上进行操作后处理</li>
+<li>POH：Process on help request，按 F1 时处理</li>
+<li>POV：Process on value request，按 F4 时处理</li>
+</ul>
+<h4 id="dynpro">Dynpro</h4>
+<p>屏幕及其流程逻辑称为 Dynpro（“动态程序”，因为屏幕流程逻辑会影响程序流程），每个 dynpro 都精确地控制对话程序的一个步骤。</p>
+<p>属于程序的屏幕被编号。 屏幕流序列可以是线性的，也可以是循环的。 在一个屏幕链中，您甚至可以调用另一个屏幕链，并在处理之后返回到原始链。 您还可以从 ABAP 程序的对话框模块中覆盖静态定义的下一个屏幕。</p>
+<h4 id="abap-module-pool">ABAP Module Pool</h4>
+<p>在 PBO 或 PAI 事件中，Dynpro 调用 ABAP 对话程序。 此类程序的集合称为 ABAP 模块池。</p>
+<p>例如，在 PAI 事件中调用的模块用于检查用户输入并触发适当的对话步骤，例如更新任务。</p>
+<p>从一个事务中调用的所有 dynpro 都引用一个公共模块池。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1323</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/Dialog/">
+                    #Dialog</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_ALV_SearchHelp/" class="prev" rel="prev" title=" ALV 中自定义搜索帮助 "><i class="iconfont icon-dajiantou"></i>&nbsp; ALV 中自定义搜索帮助 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2018/ABAP_Dialog_Detail/" class="next" rel="next" title=" Dialog 逻辑控制 "> Dialog 逻辑控制 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-08-26 00:00:00 \u002b0000 UTC',
+        title: ' Dialog 程序简介 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_2/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/SAP_RFC_Connect/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/MM_BAPI_ALL_LIST/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            MM BAPI List  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" MM BAPI List  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" MM BAPI List "/>
+<meta name="twitter:description" content="MM 常用 BAPI 整理 BAPI Description BAPI_MATERIAL_SAVEDATA 创建及更改物料主数据，EXTENSIONIN可以创建自定义字段 BAPI_OBJCL_CREATE 分类视图的创建 BAPI_OBJCL_GETCLASSES 分类视图得到详细信息 BAPI_MATERIAL_SAVEREPLICA 物料视图的扩充 BAPI_GOODSMVT_CREATE 创建"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " MM BAPI List ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_ALL_LIST\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "MM, BAPI",
+  "wordcount":  226 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/MM_BAPI_ALL_LIST\/",
+  "datePublished": "2020-07-20T00:00:00\x2b00:00",
+  "dateModified": "2020-07-20T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> MM BAPI List </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-07-20 >20 July 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="mm-常用-bapi-整理">MM 常用 BAPI 整理</h3>
+<table>
+<thead>
+<tr>
+<th align="left">BAPI</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="http://localhost:1313/2020/MM_BAPI_MaterialSaveData/">BAPI_MATERIAL_SAVEDATA</a></td>
+<td align="left">创建及更改物料主数据，EXTENSIONIN可以创建自定义字段</td>
+</tr>
+<tr>
+<td align="left">BAPI_OBJCL_CREATE</td>
+<td align="left">分类视图的创建</td>
+</tr>
+<tr>
+<td align="left">BAPI_OBJCL_GETCLASSES</td>
+<td align="left">分类视图得到详细信息</td>
+</tr>
+<tr>
+<td align="left">BAPI_MATERIAL_SAVEREPLICA</td>
+<td align="left">物料视图的扩充</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2019/MM_BAPI_GoodMovementCreate/">BAPI_GOODSMVT_CREATE</a></td>
+<td align="left">创建物料凭证，注意表T158G可以决定 goodsmvt_code</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2019/MM_BAPI_GoodsMovementCancel/">BAPI_GOODSMVT_CANCEL</a></td>
+<td align="left">冲销物料凭证</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseRequestCreate/">BAPI_PR_CREATE</a></td>
+<td align="left">创建 Purchase Requisition New</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseRequestCreate/">BAPI_REQUISITION_CREATE</a></td>
+<td align="left">创建 Purchase Requisition Old</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseOrderCreate/">BAPI_PO_CREATE1</a></td>
+<td align="left">创建 Purchase Order</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2020/MM_BAPI_PurchaseOrderCreate/">BAPI_PO_CHANGE</a></td>
+<td align="left">修改 PO 和删除 PO</td>
+</tr>
+<tr>
+<td align="left">WS_REVERSE_GOODS_ISSUE</td>
+<td align="left">冲销交货单的过账发货</td>
+</tr>
+<tr>
+<td align="left">BAPI_RESERVATION_CREATE1</td>
+<td align="left">创建预留，如果要检查 ATP必须使用 BAPI_RESERVATION_CREATE</td>
+</tr>
+<tr>
+<td align="left">BAPI_RESERVATION_CHANGE</td>
+<td align="left">修改和删除预留</td>
+</tr>
+<tr>
+<td align="left">BAPI_BILLINGDOC_CREATEMULTIPLE</td>
+<td align="left">创建发票</td>
+</tr>
+<tr>
+<td align="left"><a href="https://coldinfire.github.io/2020/FI_ACC_DOCUMENT_POST/">BAPI_ACC_DOCUMENT_POST</a></td>
+<td align="left">创建会计凭证</td>
+</tr>
+<tr>
+<td align="left">BAPI_MATERIAL_AVAILABILITY</td>
+<td align="left">可用库存</td>
+</tr>
+<tr>
+<td align="left">BAPI_SALESORDER_CREATEFROMDAT2</td>
+<td align="left">创建销售订单</td>
+</tr>
+<tr>
+<td align="left">BAPI_OUTB_DELIVERY_CREATE_SLS</td>
+<td align="left">根据销售订单创建交货单</td>
+</tr>
+<tr>
+<td align="left">PRICES_CHANGE &amp; PRICES_POST</td>
+<td align="left">更改物料移动平均价或者标准价格，如果要检查 ATP 必须使用第二个</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>226</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/MM/">
+                    #MM</a></span>
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/BAPI/">
+                    #BAPI</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/ABAP_7.40_QuickReference_2/" class="prev" rel="prev" title=" ABAP 7.40 Quick Reference Part2 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 7.40 Quick Reference Part2 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/SAP_RFC_Connect/" class="next" rel="next" title=" SAP 配置RFC连接(SM59) "> SAP 配置RFC连接(SM59) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-07-20 00:00:00 \x2b0000 UTC',
+        title: ' MM BAPI List ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

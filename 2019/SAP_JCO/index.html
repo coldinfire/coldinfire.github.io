@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2019/MM_BAPI_ACC_DOCUMENT_REV/" />
+  <link rel="next" href="https://coldinfire.github.io/2019/MM_Enhance_BOM_CS12/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2019/SAP_JCO/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP JCO 连接  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP JCO 连接  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP JCO 连接 "/>
+<meta name="twitter:description" content="SAP JCO简介 为了在 R/3 系统和 JAVA 平台之间进行实时的交换数据。SAP 提供了一套高效的基于 RFC 的 ABAP 和 JAVA 进程间通讯组件：SAP JAV Connector。 Jco 库"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP JCO 连接 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2019\/SAP_JCO\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "saputils",
+  "wordcount":  1307 ,
+  "url": "https:\/\/coldinfire.github.io\/2019\/SAP_JCO\/",
+  "datePublished": "2019-11-13T00:00:00\x2b00:00",
+  "dateModified": "2019-11-13T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP JCO 连接 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-11-13 >13 November 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/ABAP/"> ABAP </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-jco简介">SAP JCO简介</h3>
+<p>为了在 R/3 系统和 JAVA 平台之间进行实时的交换数据。SAP 提供了一套高效的基于 RFC 的 ABAP 和 JAVA 进程间通讯组件：SAP JAV Connector。</p>
+<p>Jco 库提供了可以直接在 JAVA 程序中使用的 API。该 API 通过 JNI 调用部署在客户端的 SAP 的 RFC 库。</p>
+<h3 id="安装与配置">安装与配置</h3>
+<p>下载 Jco 库的 jar 包。然后解压，将文件 librfc32.dll 的文件复制到目录 system32 下面。这个文件就是 SAP 的 RFC 协议实现。然后确保 CLASSPATH 环境下包含文件 sapjco.jar 所在的目录。该 jar 包中包含有在 JAVA 程序中需要直接调用的类和接口。</p>
+<h3 id="建立连接">建立连接</h3>
+<p>类 JCO 是 Jco 库中最主要的一个入口，提供了很多静态方法。其中有一系列重载的 createClient 方法可以用来创建于 SAP 系统的连接信息。</p>
+<ul>
+<li>
+<p>直接输入参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">mw</span>.<span style="color:#a6e22e">jco</span>.<span style="color:#f92672">*</span>;
+<span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Client</span> <span style="color:#a6e22e">myCont</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">createClient</span>(<span style="color:#e6db74">&#34;000&#34;</span>,        <span style="color:#75715e">//SAP Client
+</span><span style="color:#75715e"></span>                                     <span style="color:#e6db74">&#34;UserName&#34;</span>,   <span style="color:#75715e">//userid
+</span><span style="color:#75715e"></span>                                     <span style="color:#e6db74">&#34;PassWord&#34;</span>,   <span style="color:#75715e">//password
+</span><span style="color:#75715e"></span>                                     <span style="color:#e6db74">&#34;EN&#34;</span>,         <span style="color:#75715e">//Language
+</span><span style="color:#75715e"></span>                                     <span style="color:#e6db74">&#34;ClientIP&#34;</span>,   <span style="color:#75715e">//application server host name
+</span><span style="color:#75715e"></span>                                     <span style="color:#e6db74">&#34;ClientID&#34;</span>);   <span style="color:#75715e">//system number
+</span></code></pre></div></li>
+<li>
+<p>使用JAVA 配置文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">Properties</span> <span style="color:#a6e22e">properties</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Properties</span>();
+<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;jco.client.ashost&#34;</span>,<span style="color:#e6db74">&#34;10.1.3.5&#34;</span>);
+<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;jco.client.client&#34;</span>,<span style="color:#e6db74">&#34;400&#34;</span>);
+<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;jco.client.sysnr&#34;</span>,<span style="color:#e6db74">&#34;00&#34;</span>);
+<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;jco.client.lange&#34;</span>,<span style="color:#e6db74">&#34;EN&#34;</span>);
+<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;jco.client.user&#34;</span>,<span style="color:#e6db74">&#34;user&#34;</span>);
+<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;jco.client.passwd&#34;</span>,<span style="color:#e6db74">&#34;passwd&#34;</span>);
+<span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Client</span> <span style="color:#a6e22e">myCont</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">createClient</span>(<span style="color:#a6e22e">properties</span>);
+</code></pre></div></li>
+<li>
+<p>建立从当前JAVA进程到SAP服务器的连接:	<code>this.myCont.connect();</code></p>
+</li>
+<li>
+<p>获取连接状态：<code>if( myCont != null &amp;&amp; myCont.isAlive())</code></p>
+</li>
+</ul>
+<h4 id="连接池">连接池</h4>
+<p>Jco 库支持以连接池的形式重用已经创建的连接。需要调用 JCO 类的静态方法 addClientPool 即可创建一个连接池，并可以在参数中指定连接池的名字和允许同时激活的最大连接数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String <span style="color:#a6e22e">POOL_NAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JCO_Pool&#34;</span>;
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">max_cont</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+
+<span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Pool</span> <span style="color:#a6e22e">pool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">getClientPoolManager</span>().<span style="color:#a6e22e">getPool</span>(<span style="color:#a6e22e">POOL_NAME</span>);
+<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">poo</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>){
+   <span style="color:#a6e22e">Properties</span> <span style="color:#a6e22e">properties</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Properties</span>();
+    ... <span style="color:#a6e22e">read</span> <span style="color:#a6e22e">properties</span> <span style="color:#a6e22e">file</span> ...
+   <span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">addClientPool</span>(<span style="color:#a6e22e">POOL_NAME</span>,<span style="color:#a6e22e">max_cont</span>,<span style="color:#a6e22e">properties</span>);
+};
+</code></pre></div><p>获取连接：<code>myCont = JCO.getClient(POOL_NAME);</code></p>
+<p>释放连接：<code>JCO.releaseClient(myCont);</code></p>
+<p>移除连接池：<code>JCO.removeClientPool(POOL_NAME);</code></p>
+<p>移除连接池会导致其中所有的活动连接被迫强行关闭，必须在确保连接池中所有的连接都不在被使用时才能执行该操作。</p>
+<h3 id="调用function-models">调用Function Models</h3>
+<p>Jco 库使用 RFC 的方式来调用 ABAP 中的函数，所以被调用的函数必须已经勾选 &ldquo;Remote-enabled&rdquo; 属性。</p>
+<ul>
+<li>
+<p>第一步：创建 JCO.Repository 类的对象，获取所有 ABAP 函数的元数据。</p>
+<ul>
+<li><code>JCO.Repository myRepository = new JCO.Repository(&quot;Repository&quot;,myCont/POOL_NAME);</code></li>
+<li>构造函数有两个参数，第一个是可以任意指定的名字；第二个是当前使用的连接。可以指定连接池名字，Jco库会自动从该连接池获取连接</li>
+</ul>
+</li>
+<li>
+<p>第二步：通过该实例获取函数的信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">String <span style="color:#a6e22e">strFunc</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BAPI_NAME&#34;</span>;
+<span style="color:#a6e22e">IFunctionTemplate</span> <span style="color:#a6e22e">ft</span> <span style="color:#f92672">=</span>  <span style="color:#a6e22e">myRepository</span>.<span style="color:#a6e22e">getFunctionTemplate</span>(<span style="color:#a6e22e">strFunc</span>.<span style="color:#a6e22e">toUpperCase</span>());
+<span style="color:#a6e22e">JCO</span>.Function <span style="color:#66d9ef">function</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ft</span>.<span style="color:#a6e22e">getFunction</span>();
+<span style="color:#75715e">//Get a client form the pool
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Clietn</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">getClient</span>(<span style="color:#a6e22e">pool</span>);
+<span style="color:#75715e">//Set up scalar parameter
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">ParameterList</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>.<span style="color:#a6e22e">getImportParameterList</span>();
+<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#ae81ff">10</span>,<span style="color:#e6db74">&#34;MAX_ROWS&#34;</span>);
+<span style="color:#75715e">//Set up structure parameter
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Structure</span> <span style="color:#a6e22e">sFrom</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">getStructure</span>(<span style="color:#e6db74">&#34;STRUC_NAME&#34;</span>);
+<span style="color:#a6e22e">sFrom</span>.<span style="color:#a6e22e">seValue</span>(<span style="color:#e6db74">&#34;Value&#34;</span>,<span style="color:#e6db74">&#34;FIELD_NAME&#34;</span>);
+<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#a6e22e">sFrom</span>,<span style="color:#e6db74">&#34;STRUC_NAME&#34;</span>);
+<span style="color:#75715e">//Set up table parameter
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Table</span> <span style="color:#a6e22e">table</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>.<span style="color:#a6e22e">getTableParameterList</span>().<span style="color:#a6e22e">getTable</span>(<span style="color:#e6db74">&#34;TABLE_NAME&#34;</span>);
+<span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">appendRow</span>();
+<span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">setRow</span>(<span style="color:#ae81ff">0</span>);
+<span style="color:#a6e22e">talbe</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#e6db74">&#34;Value&#34;</span>,<span style="color:#e6db74">&#34;FIELD_NAME&#34;</span>);
+....
+<span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">appendRow</span>();
+<span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">setRow</span>(<span style="color:#a6e22e">n</span>);
+<span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#e6db74">&#34;Value&#34;</span>,<span style="color:#e6db74">&#34;FIELD_NAME&#34;</span>);
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">row</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">getNumRows</span>();
+</code></pre></div></li>
+<li>
+<p>第三步：执行</p>
+<ul>
+<li><code>JCO.Client client = JCO.getClient(POOL_NAME); client.execute(function);</code></li>
+<li><code>myCont.execute(funtion);</code></li>
+</ul>
+</li>
+<li>
+<p>第四步：关闭连接<code>myCont.disconnect();</code>或则<code>JCO.releaseClient(myCont)</code></p>
+</li>
+<li>
+<p>第五步：获取输出参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#75715e">// GET export value
+</span><span style="color:#75715e"></span>String <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>.<span style="color:#a6e22e">getExportParameterList</span>.<span style="color:#a6e22e">getValue</span>(<span style="color:#e6db74">&#34;E_MESSAGE&#34;</span>).
+<span style="color:#75715e">// GET export structure
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Structure</span> <span style="color:#a6e22e">struct</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>.<span style="color:#a6e22e">getExportParameterList</span>.<span style="color:#a6e22e">getStructure</span>(<span style="color:#e6db74">&#34;RETURN&#34;</span>);
+String <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">struct</span>.<span style="color:#a6e22e">getString</span>(<span style="color:#e6db74">&#34;TYPE&#34;</span>).
+<span style="color:#75715e">// GET table parameter
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Table</span> <span style="color:#a6e22e">table</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>.<span style="color:#a6e22e">getTableParameterList</span>().<span style="color:#a6e22e">getTable</span>(<span style="color:#e6db74">&#34;TABLE_NAME&#34;</span>);
+</code></pre></div></li>
+</ul>
+<h3 id="异常处理">异常处理</h3>
+<ul>
+<li>JCO.AbapException：ABAP函数执行过程中出现异常，在JAVA进程中触发该异常。</li>
+<li>JCO.ConversionException：当执行参数的get,set方法时，如果在Java类型和ABAP类型间转换失败。</li>
+</ul>
+<h3 id="调试">调试</h3>
+<ul>
+<li>
+<p>激活Jco的ABAP调试功能：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">Pool</span> <span style="color:#a6e22e">pool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JCO</span>.<span style="color:#a6e22e">getClientPoolManage</span>().<span style="color:#a6e22e">getPool</span>(<span style="color:#a6e22e">POOL_NAME</span>);
+<span style="color:#a6e22e">pool</span>.<span style="color:#a6e22e">setAbapDebug</span>(<span style="color:#66d9ef">true</span>);
+</code></pre></div></li>
+<li>
+<p>在ABAP程序内设置外部断点。</p>
+<ul>
+<li>并设置Debugging里设置External Debugging的Users为设置的外部名。</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-type">DATA TYPE</h3>
+<table>
+<thead>
+<tr>
+<th>ABAP Type</th>
+<th>Description</th>
+<th>JAVA Data Type</th>
+<th>JCo Type Code</th>
+<th>JCo Access Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b</td>
+<td>1-byte integer</td>
+<td>int</td>
+<td>JCO.TYPE_INT1</td>
+<td>int getInt()</td>
+</tr>
+<tr>
+<td>s</td>
+<td>2-byte integer</td>
+<td>int</td>
+<td>JCO.TYPE_INT2</td>
+<td>int getInt()</td>
+</tr>
+<tr>
+<td>I</td>
+<td>4-byte integer</td>
+<td>int</td>
+<td>JCO.TYPE_INT</td>
+<td>int getInt()</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Character</td>
+<td>String</td>
+<td>JCO.TYPE_CHAR</td>
+<td>String getString()</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Numerical Character</td>
+<td>String</td>
+<td>JCO.TYPE_NUM</td>
+<td>String getString()</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Binary Coded Decimal</td>
+<td>BigDecimal</td>
+<td>JCO.TYPE_BCD</td>
+<td>BigDecimal getBigDecimal()</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Date</td>
+<td>Date</td>
+<td>JCO.TYPE_DATE</td>
+<td>Date getDate()</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Time</td>
+<td>Date</td>
+<td>JCO.TYPE_TIME</td>
+<td>Date getTime()</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Float</td>
+<td>double</td>
+<td>JCO.TYPE_FLOAT</td>
+<td>double getDouble()</td>
+</tr>
+<tr>
+<td>X</td>
+<td>Raw data</td>
+<td>bytes[]</td>
+<td>JCO.TYPE_BYTE</td>
+<td>byte[] getByteArray()</td>
+</tr>
+<tr>
+<td>g</td>
+<td>String(variable-length)</td>
+<td>String</td>
+<td>JCO.TYPE_STRING</td>
+<td>String getString()</td>
+</tr>
+<tr>
+<td>y</td>
+<td>Raw data</td>
+<td>byte[]</td>
+<td>JCO.TYPE_XSTRING</td>
+<td>byte[] getByteArray()</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jco-table-method">JCO Table method</h3>
+<table>
+<thead>
+<tr>
+<th>JCO.Table Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int getNumRows()</td>
+<td>Returns teh number of rows</td>
+</tr>
+<tr>
+<td>void setRow(int pos)</td>
+<td>Sets the current row pointer</td>
+</tr>
+<tr>
+<td>int getRow()</td>
+<td>Returns the current row pointer</td>
+</tr>
+<tr>
+<td>void firstRow()</td>
+<td>Moves to the first row</td>
+</tr>
+<tr>
+<td>void firstRow()</td>
+<td>Moves to the last row</td>
+</tr>
+<tr>
+<td>boolean nextRow()</td>
+<td>Moves to the next row</td>
+</tr>
+<tr>
+<td>boolean previousRow(0)</td>
+<td>Moves to the previous row</td>
+</tr>
+<tr>
+<td>void appendRow()</td>
+<td>Adds one row at the end of the table</td>
+</tr>
+<tr>
+<td>void appendRow(int num_rows)</td>
+<td>Adds multiple rows at the end of table</td>
+</tr>
+<tr>
+<td>void deleteAllRows()</td>
+<td>Deletes all table rows</td>
+</tr>
+<tr>
+<td>void deleteRow()</td>
+<td>Delete the current row</td>
+</tr>
+<tr>
+<td>void deleteRow(int pos)</td>
+<td>Deletes the specified row</td>
+</tr>
+<tr>
+<td>void insertRow(int pos)</td>
+<td>Inserts a row at the specified position</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1307</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/saputils/">
+                    #saputils</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2019/MM_BAPI_ACC_DOCUMENT_REV/" class="prev" rel="prev" title=" BAPI:BAPI_ACC_DOCUMENT_REV_POST 凭证冲销 "><i class="iconfont icon-dajiantou"></i>&nbsp; BAPI:BAPI_ACC_DOCUMENT_REV_POST 凭证冲销 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2019/MM_Enhance_BOM_CS12/" class="next" rel="next" title=" CS12 ALV 增强 "> CS12 ALV 增强 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-11-13 00:00:00 \x2b0000 UTC',
+        title: ' SAP JCO 连接 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2020/FI_GLAccount/" />
+  <link rel="next" href="https://coldinfire.github.io/2020/MM_IM_Print/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2020/FI_Tables/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            SAP FI Tables  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" SAP FI Tables  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" SAP FI Tables "/>
+<meta name="twitter:description" content="SAP FI 表：主数据 总帐科目的 SAP 表 总账科目主记录包含总账确定科目功能所需的数据。 总帐科目主记录控制会计交易到总帐科目的过帐以及过帐数据的处理。 G/L ACCOUNTS"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " SAP FI Tables ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2020\/FI_Tables\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "FICO",
+  "wordcount":  1247 ,
+  "url": "https:\/\/coldinfire.github.io\/2020\/FI_Tables\/",
+  "datePublished": "2020-07-05T00:00:00\x2b00:00",
+  "dateModified": "2020-07-05T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> SAP FI Tables </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2020-07-05 >5 July 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/business/"> business </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="sap-fi-表主数据">SAP FI 表：主数据</h3>
+<h4 id="总帐科目的-sap-表">总帐科目的 SAP 表</h4>
+<p>总账科目主记录包含总账确定科目功能所需的数据。</p>
+<p>总帐科目主记录控制会计交易到总帐科目的过帐以及过帐数据的处理。</p>
+<table>
+<thead>
+<tr>
+<th>G/L ACCOUNTS TABLES</th>
+<th>DESCRIPTION</th>
+<th>IMPORTANT FIELDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SKA1</td>
+<td>G/L Accounts (Chart of Accounts)</td>
+<td>KTOPL /SAKNR</td>
+</tr>
+<tr>
+<td>SKAT</td>
+<td>Description G/L Accounts (Chart of Accounts)</td>
+<td></td>
+</tr>
+<tr>
+<td>SKB1</td>
+<td>G/L Accounts (Company Code)</td>
+<td>BUKRS / SAKNR</td>
+</tr>
+<tr>
+<td>SKM1</td>
+<td>Sample G/L accounts</td>
+<td></td>
+</tr>
+<tr>
+<td>SKMT</td>
+<td>Sample G/L accounts Text</td>
+<td></td>
+</tr>
+<tr>
+<td>SKAS</td>
+<td>G/L Account Master (Chart of Accounts)</td>
+<td>SPRAS / KTOPL / SAKNR / SCHLW</td>
+</tr>
+<tr>
+<td>TSAKR</td>
+<td>Create G/L account with reference</td>
+<td>BUKRS / SAKNR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sap-客户主数据表">SAP 客户主数据表</h4>
+<table>
+<thead>
+<tr>
+<th>CUSTOMER TABLES</th>
+<th>DESCRIPTION</th>
+<th>IMPORTANT FIELDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KNA1</td>
+<td>Customer master</td>
+<td>KUNNR</td>
+</tr>
+<tr>
+<td>KNB1</td>
+<td>Customer / company</td>
+<td>KUNNR / BUKRS</td>
+</tr>
+<tr>
+<td>KNVV</td>
+<td>Customer sales data</td>
+<td></td>
+</tr>
+<tr>
+<td>KNBK</td>
+<td>Bank details</td>
+<td>KUNNR / BANKS / BANKL / BANKN</td>
+</tr>
+<tr>
+<td>KNVH</td>
+<td>Customer hierarchy(等级)</td>
+<td></td>
+</tr>
+<tr>
+<td>KNVP</td>
+<td>Customer partners</td>
+<td></td>
+</tr>
+<tr>
+<td>KNVS</td>
+<td>Shipment data(出货数据) for customer</td>
+<td></td>
+</tr>
+<tr>
+<td>KNVK</td>
+<td>Contact persons</td>
+<td></td>
+</tr>
+<tr>
+<td>KNVI</td>
+<td>Customer master tax indicator</td>
+<td></td>
+</tr>
+<tr>
+<td>KNC1</td>
+<td>Customer Master Transaction Figures</td>
+<td>KUNNR / BUKRS / GJHAR</td>
+</tr>
+<tr>
+<td>KNC3</td>
+<td>Customer Master Special GL Transactions</td>
+<td>KUNNR / BUKRS / GJAHR / SHBKZ</td>
+</tr>
+</tbody>
+</table>
+<p>客户物料信息记录(Info Record)存储在表: <strong>KNMT</strong> – Customer Material Info Record</p>
+<h4 id="sap-供应商主数据表">SAP 供应商主数据表</h4>
+<table>
+<thead>
+<tr>
+<th>VENDOR TABLES</th>
+<th>DESCRIPTION</th>
+<th>MAIN FIELDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LFA1</td>
+<td>Vendor master</td>
+<td>LIFNR</td>
+</tr>
+<tr>
+<td>LFB1</td>
+<td>Vendor per company code</td>
+<td>LIFNR / BUKRS</td>
+</tr>
+<tr>
+<td>LFB5</td>
+<td>Vendor dunning data</td>
+<td></td>
+</tr>
+<tr>
+<td>LFM1</td>
+<td>Purchasing organisation data</td>
+<td></td>
+</tr>
+<tr>
+<td>LFM2</td>
+<td>Purchasing data</td>
+<td></td>
+</tr>
+<tr>
+<td>LFBK</td>
+<td>Bank details</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="sap银行主数据表">SAP银行主数据表</h4>
+<table>
+<thead>
+<tr>
+<th>BANK TABLES</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BNKA</td>
+<td>Master bank data</td>
+</tr>
+<tr>
+<td>T012-T</td>
+<td>House Banks T012A / B Allocation pmnt methods(分配方式) -&gt; Bank transfer</td>
+</tr>
+<tr>
+<td>T012C</td>
+<td>Terms for bank transactions(银行交易条款)</td>
+</tr>
+<tr>
+<td>T012D</td>
+<td>Parameter for DMEs and foreign PM(DME 和外部 PM 的参数)</td>
+</tr>
+<tr>
+<td>T012E</td>
+<td>EDI-compatible house banks / PM</td>
+</tr>
+<tr>
+<td>T023K</td>
+<td>House Bank Accounts</td>
+</tr>
+<tr>
+<td>T012O</td>
+<td>ORBIAN Detail: Bank Accounts</td>
+</tr>
+<tr>
+<td>TIBAN</td>
+<td>IBAN (International Bank Account Number)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sapfi-会计核算凭证表">SAPFI 会计核算凭证表</h3>
+<table>
+<thead>
+<tr>
+<th>ACCOUNTING DOCUMENT</th>
+<th>DESCRIPTION</th>
+<th>中文描述</th>
+<th>MAIN FIELDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BKPF</td>
+<td>Accounting documents</td>
+<td>会计凭证</td>
+<td>BUKRS / BELNR / GJAHR</td>
+</tr>
+<tr>
+<td>BSEG</td>
+<td>Item level</td>
+<td>物品等级</td>
+<td>BUKRS / BELNR / GJAHR / BUZEI</td>
+</tr>
+<tr>
+<td>BSID</td>
+<td>Accounting: Secondary index for customers</td>
+<td>会计：客户二级指标</td>
+<td></td>
+</tr>
+<tr>
+<td>BSIK</td>
+<td>Accounting: Secondary index for vendors</td>
+<td>会计：供应商的二级索引</td>
+<td></td>
+</tr>
+<tr>
+<td>BSIM</td>
+<td>Secondary Index Documents for Material</td>
+<td>物料的二级索引文件</td>
+<td></td>
+</tr>
+<tr>
+<td>BSIP</td>
+<td>Index for vendor validation of double documents</td>
+<td>供应商验证双重文件的索引</td>
+<td></td>
+</tr>
+<tr>
+<td>BSIS</td>
+<td>Accounting: Secondary index for G/L accounts</td>
+<td>会计：总帐科目的二级索引</td>
+<td></td>
+</tr>
+<tr>
+<td>BSAD</td>
+<td>Accounting: Index for customers (cleared items)</td>
+<td>会计：客户索引（已清算项目）</td>
+<td></td>
+</tr>
+<tr>
+<td>BSAK</td>
+<td>Accounting: Index for vendors (cleared items)</td>
+<td>会计：供应商索引（清算项目）</td>
+<td></td>
+</tr>
+<tr>
+<td>BSAS</td>
+<td>Accounting: Index for G/L accounts (cleared items)</td>
+<td>会计：总账科目索引（已清算项目）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sap-付款表">SAP 付款表</h3>
+<table>
+<thead>
+<tr>
+<th>SAP PAYMENT RUN TABLES</th>
+<th>DESCRIPTION</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REGUH</td>
+<td>Settlement data from payment program</td>
+<td>付款程序中的结算数据</td>
+</tr>
+<tr>
+<td>REGUP</td>
+<td>Processed items from payment program</td>
+<td>付款程序中的已处理项目</td>
+</tr>
+<tr>
+<td>REGUT</td>
+<td>TemSe - Administration Data</td>
+<td>TemSe 管理数据</td>
+</tr>
+<tr>
+<td>T042</td>
+<td>Parameters for payment transactions</td>
+<td>付款交易参数</td>
+</tr>
+<tr>
+<td>T042A</td>
+<td>Bank selection for payment program</td>
+<td>付款程序的银行选择</td>
+</tr>
+<tr>
+<td>T042B</td>
+<td>Details on the company codes that pay</td>
+<td>支付公司代码的详细信息</td>
+</tr>
+<tr>
+<td>T042C</td>
+<td>Technical Settings: payment program</td>
+<td>技术设置：付款程序</td>
+</tr>
+<tr>
+<td>T042D</td>
+<td>Available amounts for payment program</td>
+<td>付款程序可用的金额</td>
+</tr>
+<tr>
+<td>T042E</td>
+<td>Company code-specific: payment methods</td>
+<td>公司代码特定：付款方式</td>
+</tr>
+<tr>
+<td>T042F/H</td>
+<td>Payment method supplements</td>
+<td>付款方式补充</td>
+</tr>
+<tr>
+<td>T042G</td>
+<td>Groups of company codes (payment program)</td>
+<td>公司代码组（付款程序）</td>
+</tr>
+<tr>
+<td>T042I</td>
+<td>Account determination for payment program</td>
+<td>付款程序的科目确定</td>
+</tr>
+<tr>
+<td>T042J</td>
+<td>Bank charges determination</td>
+<td>银行收费确定</td>
+</tr>
+<tr>
+<td>T042K</td>
+<td>Accounts for bank charges</td>
+<td>银行收费帐户</td>
+</tr>
+<tr>
+<td>T042N</td>
+<td>Bank transaction codes</td>
+<td>银行交易代码</td>
+</tr>
+<tr>
+<td>T042S</td>
+<td>Charges/expenses for automatic pmnt transactions</td>
+<td>自动 pmnt 交易的费用 / 支出</td>
+</tr>
+<tr>
+<td>T042V</td>
+<td>Value date for automatic payments</td>
+<td>自动付款的起息日</td>
+</tr>
+<tr>
+<td>T042W</td>
+<td>Permitted currency keys for payment method</td>
+<td>付款方式允许的货币密钥</td>
+</tr>
+<tr>
+<td>T042Z</td>
+<td>Payment method for automatic payment</td>
+<td>自动付款的付款方式</td>
+</tr>
+<tr>
+<td>T008</td>
+<td>Blocking reasons for automatic pmnt transactions</td>
+<td>自动 pmnt 交易的阻止原因</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sap-fi定制表">SAP FI定制表</h3>
+<h4 id="sap公司代码表">SAP公司代码表</h4>
+<table>
+<thead>
+<tr>
+<th align="left">COMPANY CODE TABLES</th>
+<th align="left">DESCRIPTION</th>
+<th align="left">中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">T004</td>
+<td align="left">Chart of accounts</td>
+<td align="left">会计科目表</td>
+</tr>
+<tr>
+<td align="left">T007S</td>
+<td align="left">Account group (G/L accounts)</td>
+<td align="left">帐户组(G/L 帐户)</td>
+</tr>
+<tr>
+<td align="left">T009</td>
+<td align="left">Fiscal year variants</td>
+<td align="left">会计年度变式</td>
+</tr>
+<tr>
+<td align="left">T880</td>
+<td align="left">Global company data</td>
+<td align="left">全球公司数据</td>
+</tr>
+<tr>
+<td align="left">T014</td>
+<td align="left">Credit control area</td>
+<td align="left">信用控制区</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sap-fi-文档定制表">SAP FI 文档定制表</h4>
+<table>
+<thead>
+<tr>
+<th align="left">TABLES</th>
+<th align="left">DESCRIPTION</th>
+<th align="left">中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">T010O</td>
+<td align="left">Posting Period Variants</td>
+<td align="left">过帐期间变式</td>
+</tr>
+<tr>
+<td align="left">T010P</td>
+<td align="left">Posting Period Variant Names</td>
+<td align="left">过帐期间变体名称</td>
+</tr>
+<tr>
+<td align="left">T001B</td>
+<td align="left">Permitted Posting Periods</td>
+<td align="left">允许的过帐期间</td>
+</tr>
+<tr>
+<td align="left">T003</td>
+<td align="left">Document Types</td>
+<td align="left">文件类型</td>
+</tr>
+<tr>
+<td align="left">T012</td>
+<td align="left">House Banks</td>
+<td align="left">房屋银行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sap-税收表">SAP 税收表</h3>
+<table>
+<thead>
+<tr>
+<th align="left">SAP TAX TABLES</th>
+<th align="left">DESCRIPTION</th>
+<th align="left">中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">T059A</td>
+<td align="left">Type of Recipient for Vendors</td>
+<td align="left">供应商的收件人类型</td>
+</tr>
+<tr>
+<td align="left">T059B</td>
+<td align="left">Withholding Tax Classes for Vendors: Names</td>
+<td align="left">供应商的预扣税类别：名称</td>
+</tr>
+<tr>
+<td align="left">T059C</td>
+<td align="left">Type of Recipient for Vendors per Withholding Tax Type</td>
+<td align="left">每个预扣税类型的供应商收件人类型</td>
+</tr>
+<tr>
+<td align="left">T059D</td>
+<td align="left">Type of Recipient for Vendors per Withholding Tax Type</td>
+<td align="left">每个预扣税类型的供应商收件人类型 Text</td>
+</tr>
+<tr>
+<td align="left">T059E</td>
+<td align="left">Income Types T059F Formulas for Calc. Withholding Tax</td>
+<td align="left">收入类型 T059F 计算公式。预扣税</td>
+</tr>
+<tr>
+<td align="left">T059G</td>
+<td align="left">Income Types Names T059F Formulas for Calc. Withholding Tax</td>
+<td align="left">收入类型名称 T059F 计算公式。预扣税</td>
+</tr>
+<tr>
+<td align="left">T059K</td>
+<td align="left">Withholding tax code; process. key</td>
+<td align="left">预扣税代码</td>
+</tr>
+<tr>
+<td align="left">T059P</td>
+<td align="left">Withholding tax types / tax code</td>
+<td align="left">预扣税类型 / 税法</td>
+</tr>
+<tr>
+<td align="left">T059Z</td>
+<td align="left">Withholding tax code (enhanced functions)</td>
+<td align="left">预扣税法(增强功能)</td>
+</tr>
+<tr>
+<td align="left">T007A</td>
+<td align="left">Tax Keys</td>
+<td align="left">税金键</td>
+</tr>
+<tr>
+<td align="left">T007S</td>
+<td align="left">Tax Keys Names</td>
+<td align="left">税金键名称</td>
+</tr>
+<tr>
+<td align="left">T007B</td>
+<td align="left">Tax Processing in Accounting</td>
+<td align="left">会计中的税务处理</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1247</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/FICO/">
+                    #FICO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2020/FI_GLAccount/" class="prev" rel="prev" title=" G/L Account 主要Tcode和tables "><i class="iconfont icon-dajiantou"></i>&nbsp; G/L Account 主要Tcode和tables </a>
+         
+        
+        <a href="https://coldinfire.github.io/2020/MM_IM_Print/" class="next" rel="next" title=" Output Determination in Inventory Management (IM) "> Output Determination in Inventory Management (IM) &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-07-05 00:00:00 \x2b0000 UTC',
+        title: ' SAP FI Tables ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>

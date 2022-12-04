@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionClass/" />
+  <link rel="next" href="https://coldinfire.github.io/2021/ExtJs_Build/" />
+  <link rel="canonical" href="https://coldinfire.github.io/2021/ExtJS_Basis/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            ExtJS 基础知识  | Small Fire`s Blog
+       
+  </title>
+  <meta name="title" content=" ExtJS 基础知识  | Small Fire`s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" ExtJS 基础知识 "/>
+<meta name="twitter:description" content="Ext JS 简介 Ext JS 是一个 JavaScript 框架，它具有面向对象编程的功能。Ext JS 是一个“JavaScript 优先”的框架。 也就是说，用户界面及其逻辑都是在 JavaScript 中定"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": " ExtJS 基础知识 ",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/coldinfire.github.io\/2021\/ExtJS_Basis\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/coldinfire.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  "keywords": "ExtJS",
+  "wordcount":  2472 ,
+  "url": "https:\/\/coldinfire.github.io\/2021\/ExtJS_Basis\/",
+  "datePublished": "2021-05-09T00:00:00\x2b00:00",
+  "dateModified": "2021-05-09T00:00:00\x2b00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmallFire",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/coldinfire.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Small Fire"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://coldinfire.github.io">Small Fire`s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+                <a href="/search/" class="search"><i class="iconfont icon-t"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://coldinfire.github.io">Small Fire`s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/books/" title="">Books</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title"> ExtJS 基础知识 </h1>
+        <div class="post-meta">
+            Written by <a href="https://coldinfire.github.io" rel="author">Small Fire</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-05-09 >9 May 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://coldinfire.github.io/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="ext-js-简介">Ext JS 简介</h3>
+<p>Ext JS 是一个 JavaScript 框架，它具有面向对象编程的功能。Ext JS 是一个“JavaScript 优先”的框架。 也就是说，用户界面及其逻辑都是在 JavaScript 中定义的。 各种包含的主题（例如 Material）提供了必要的样式。</p>
+<p>Ext JS 为使用跨浏览器功能构建 Web 应用程序提供了丰富的 UI。 Ext JS 主要专注于前端用户界面，它支持所有现代浏览器。Ext JS 提供对 MVC 和 MVVM 应用程序架构的支持。</p>
+<p><strong>Ext 是封装 Ext JS 中所有类的命名空间。</strong></p>
+<h4 id="mvc--model-view-controller">MVC  (Model-View-Controller)</h4>
+<p>在 MVC 架构中，大多数类是模型、视图或控制器。用户与视图交互，视图显示模型中保存的数据。这些交互由控制器监控，然后控制器根据需要通过更新视图和模型来响应交互。</p>
+<ul>
+<li>
+<p>Model(模型) ：用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。一个数据字段的集合，可通过关联被链接到其他模型和通过代理链接到一个数据流。</p>
+</li>
+<li>
+<p>View(视图)：表示数据给用户。任何类型的组件，这些组件将信息输出到浏览器，如Form、Grid、Chart。</p>
+</li>
+<li>
+<p>Controller(控制器)：是 MVC 应用程序的逻辑部分。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。Ext.app.Controller 为控制器的基类。</p>
+</li>
+</ul>
+<p>View 和 Model 通常不知道彼此，因为 Controller 全权负责指导更新。一般来说，控制器将包含 MVC 应用程序中的大部分应用程序逻辑。理想情况下，视图几乎没有（如果有）业务逻辑。模型主要是数据的接口，并包含管理对所述数据的更改的业务逻辑。</p>
+<p>MVC 的目标是明确定义应用程序中每个类的职责。因为每个类都有明确定义的职责，所以它们隐含地与更大的环境分离。这使得应用程序更易于测试和维护，并且其代码更易于重用。</p>
+<h4 id="mvvm">MVVM</h4>
+<p>MVC 和 MVVM 之间的主要区别在于 MVVM 具有称为 ViewModel 的视图抽象。ViewModel 使用一种称为“数据绑定”的技术来协调 Model 的数据和 View 对该数据的表示之间的变化。</p>
+<ul>
+<li>(VM) ViewModel - ViewModel 是管理特定于视图的数据的类。它允许感兴趣的组件绑定到它并在此数据更改时进行更新。</li>
+</ul>
+<p>结果是模型和框架执行尽可能多的工作，最小化或消除直接操作视图的应用程序逻辑。</p>
+<h4 id="extjs-命名规范">Ext.js 命名规范</h4>
+<p>Ext JS中的命名约定遵循标准 JavaScript 约定，这不是强制性的，而是遵循的良好做法。它应该遵循 Camel case 语法命名类，方法，变量和属性。如果 name 与两个单词组合，则第二个单词将始终以大写字母开头。</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">惯例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Class Name</td>
+<td align="left">以大写字母开头，然后是camel case E.g. StudentClass</td>
+</tr>
+<tr>
+<td align="left">Method Name</td>
+<td align="left">以小写字母开头，然后是camel case E.g. doLayout()</td>
+</tr>
+<tr>
+<td align="left">Variable Name</td>
+<td align="left">以小写字母开头，然后是camel case E.g. firstName</td>
+</tr>
+<tr>
+<td align="left">Property Name</td>
+<td align="left">以小写字母开头，然后是camel case E.g. enableColumnResize = true</td>
+</tr>
+<tr>
+<td align="left">Constant Name</td>
+<td align="left">只有大写，E.g. COUNT, MAX_VALUE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="在ext-js中定义类">在Ext JS中定义类</h3>
+<p><strong>Ext.onReady</strong> 是指在整个页面加载完后执行。</p>
+<pre><code class="language-ejs" data-lang="ejs">&lt;script type=&quot;text/javascript&quot;&gt;
+  Ext.onReady(function(){  
+  //页面初始化代码
+  });
+&lt;/script&gt;
+</code></pre><p><strong>Ext.define()</strong> 用于在 Ext JS 中定义类。</p>
+<p><code>Ext.define(class_name, class_members/properties, callback_function);</code></p>
+<ul>
+<li>类名称：是根据应用程序结构的类名称 - appName.folderName.ClassName</li>
+<li>类属性/成员：定义类的行为。</li>
+<li>回调函数是可选的：当类正确加载时，会调用它。</li>
+</ul>
+<p>Ext JS 定义类</p>
+<pre><code class="language-ejs" data-lang="ejs">Ext.define(&quot;Person&quot;, {
+    //定义、初始化成员属性
+    name: '',
+    age: 0,
+    //定义成员方法
+    say: function (msg) {
+        Ext.Msg.alert(this.name + &quot; Says:&quot;, msg);
+    },
+    //定义构造函数
+    constructor: function (name, age) {
+        this.name = name;
+        this.age = age;
+    }    
+});
+</code></pre><h4 id="创建对象">创建对象</h4>
+<p>由两种方式可以创建对象：</p>
+<ul>
+<li>
+<p>使用 new 关键字</p>
+<ul>
+<li>var studentObject = new Person();</li>
+</ul>
+</li>
+<li>
+<p>使用 Ext.create() 方法创建</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.Panel&#39;</span>, {
+    <span style="color:#a6e22e">renderTo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;helloWorldPanel&#39;</span>,
+    <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">200</span>,
+    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">600</span>,
+    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello world&#39;</span>,
+    <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;First Ext JS Hello World Program&#39;</span>
+});
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="继承">继承</h4>
+<p>ExtJS 允许对现有的类进行扩展，其扩展可以通过继承来实现。</p>
+<p>在Ext JS继承可以使用两种方法：</p>
+<ul>
+<li>
+<p>Ext.extend</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//基类
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">define</span>(<span style="color:#e6db74">&#34;Developer&#34;</span>, {
+    <span style="color:#a6e22e">extend</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Person&#39;</span>,        <span style="color:#75715e">//继承
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">coding</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">code</span>) {
+      <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">Msg</span>.<span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">Name</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; 正在编码..&#34;</span>, <span style="color:#a6e22e">code</span>);
+    },
+    <span style="color:#a6e22e">constructor</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">callParent</span>(<span style="color:#a6e22e">arguments</span>);
+    }
+});
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>使用Mixins : Mixins是在没有扩展的情况下在类B中使用类A的不同方式。</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">mixins</span> <span style="color:#f92672">:</span> {
+   <span style="color:#a6e22e">commons</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;DepartmentApp.utils.DepartmentUtils&#39;</span>
+},
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p>在构造函数中，通过调用 this.callParent()方法，实现对属性的初始化。如果此处只调用了父类的构造方法，则可以省略掉，ExtJS 会自动为我们调用父类的构造函数。</p>
+<p>如果在子类中使用了自定义的构造函数，ExtJS 则不会再自动调用父类的构造函数。</p>
+<p>像java导包一样，在html中要导入父类的js文件。</p>
+<h3 id="类的选项---config">类的选项 - config</h3>
+<p>可以在定义类的时候为它添加配置项——<strong>config,它是Extjs的属性包装器，为属性提供get和set方法。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">onReady</span>(<span style="color:#66d9ef">function</span>(){
+    <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">define</span>(<span style="color:#e6db74">&#34;Person&#34;</span>, {
+        <span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+            <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+        },
+        <span style="color:#a6e22e">say</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">msg</span>) {
+            <span style="color:#75715e">//在方法中，“this.config.属性名”和“this.属性名”的形式都可以调用成员属性。
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">Msg</span>.<span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;,&#34;</span><span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; Says:&#34;</span>, <span style="color:#a6e22e">msg</span>);
+        },
+        <span style="color:#a6e22e">constructor</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">config</span>) {
+            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">initConfig</span>(<span style="color:#a6e22e">config</span>);
+        }
+    });
+    <span style="color:#75715e">//注意：因为在类中将成员属性放进了config中，因此已不能用new的方式进行实例化了。
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//需要使用Ext的create方法创建并返回一个实例:
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Tom</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#34;Person&#34;</span>, {
+        <span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Tom&#39;</span>,
+        <span style="color:#a6e22e">Age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">26</span>
+    });
+    <span style="color:#a6e22e">Tom</span>.<span style="color:#a6e22e">Say</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
+    
+    <span style="color:#75715e">//使用Ext自动生成的set、get方法设置、访问实例属性
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//使用“Tom.config.Age”、“Tom.Age”都可以得到Age的值
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Tom</span>.<span style="color:#a6e22e">setAge</span>(<span style="color:#ae81ff">18</span>);      <span style="color:#75715e">//注：“Tom.Age=18”也可以——这是js赋值的方法
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">Tom</span>.<span style="color:#a6e22e">getAge</span>()); <span style="color:#75715e">//注：“Tom.Age”也可以——这是js取值的方法
+</span><span style="color:#75715e"></span>})
+</code></pre></div><p>在类的定义中添加了config项，将需要在配置中完成的属性添加在里面，而在构造函数中，我们通过调用this.initConfig方法完成对config的初始化；</p>
+<p>在定义Person类对象的时候，使用Ext.create方法，传入类名Person以及配置项。</p>
+<h3 id="容器">容器</h3>
+<p>Ext JS 中的容器是我们可以添加其他容器或子组件的组件。这些容器可以具有多个布局以将部件布置在容器中。 我们可以从容器和其子元素添加或删除组件。</p>
+<p><code>Ext.container.Container</code> 是 Ext JS 中所有容器的基类。</p>
+<h4 id="常用容器列表">常用容器列表</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Ext.panel.Panel</td>
+<td align="left">这是允许在正常面板中添加项目的基本容器</td>
+</tr>
+<tr>
+<td align="left">Ext.form.Panel</td>
+<td align="left">Form面板为表单提供了一个标准容器，它本质上是一个标准的Ext.panel.Panel，它自动创建一个用于管理任何Ext.form.field.Field对象的BasicForm。</td>
+</tr>
+<tr>
+<td align="left">Ext.tab.Panel</td>
+<td align="left">标签面板就像一个普通的面板，但支持卡标签面板布局</td>
+</tr>
+<tr>
+<td align="left">Ext.container.Viewport</td>
+<td align="left">Viewport是一个容器，它会自动调整大小到整个浏览器窗口的大小。 然后，您可以在其中添加其他ExtJS UI组件和容器</td>
+</tr>
+</tbody>
+</table>
+<p>Ext.panel.Panel &amp; Ext.form.Panel</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">onReady</span>(<span style="color:#66d9ef">function</span> () {
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">child1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.Panel&#39;</span>, {
+            <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;Child Panel1&#39;</span>,
+            <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Text field1&#39;</span>
+        });
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">child2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.Panel&#39;</span>, {
+            <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;Child Panel2&#39;</span>,
+            <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Text field2&#39;</span>
+        });
+        <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#34;Ext.panel.Panel&#34;</span>, {
+            <span style="color:#a6e22e">renderTo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">getBody</span>(),
+            <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+            <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+            <span style="color:#a6e22e">border</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">frame</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">child1</span>, <span style="color:#a6e22e">child2</span>]
+        });
+        <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.form.Panel&#39;</span>, {
+            <span style="color:#a6e22e">renderTo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">getBody</span>(),
+            <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+            <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+            <span style="color:#a6e22e">border</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">frame</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">layout</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;auto&#39;</span>,<span style="color:#75715e">// auto is one of the layout type.
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">child1</span>, <span style="color:#a6e22e">child2</span>]
+        });
+    });
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</code></pre></div><p>Ext.tab.Panel</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">onReady</span>(<span style="color:#66d9ef">function</span> () {
+        <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.tab.Panel&#39;</span>, {
+            <span style="color:#a6e22e">renderTo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">getBody</span>(),
+            <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+            <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">200</span>,
+            <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> [{
+               <span style="color:#a6e22e">xtype</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;panel&#39;</span>,
+               <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Tab One&#39;</span>,
+               <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;The first tab&#39;</span>,
+               <span style="color:#a6e22e">listeners</span><span style="color:#f92672">:</span> {
+                  <span style="color:#a6e22e">render</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+                     <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">MessageBox</span>.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;Tab one&#39;</span>, <span style="color:#e6db74">&#39;Tab One was clicked.&#39;</span>);
+                  }
+               }
+            },{
+               <span style="color:#75715e">// xtype for all Component configurations in a Container
+</span><span style="color:#75715e"></span>               <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Tab Two&#39;</span>,
+               <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;The second tab&#39;</span>,
+               <span style="color:#a6e22e">listeners</span><span style="color:#f92672">:</span> {
+                  <span style="color:#a6e22e">render</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+                     <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">MessageBox</span>.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;Tab two&#39;</span>, <span style="color:#e6db74">&#39;Tab Two was clicked.&#39;</span>);
+                  }
+               }
+            }]
+         });
+    });
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</code></pre></div><p>Ext.container.Viewport</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">onReady</span>(<span style="color:#66d9ef">function</span> () {
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">childPanel1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.panel.Panel&#39;</span>, {
+            <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Child Panel 1&#39;</span>,
+            <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;A Panel&#39;</span>
+        });
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">childPanel2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.panel.Panel&#39;</span>, {
+            <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Child Panel 2&#39;</span>,
+            <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Another Panel&#39;</span>
+        });
+        <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">create</span>(<span style="color:#e6db74">&#39;Ext.container.Viewport&#39;</span>, {
+        <span style="color:#a6e22e">renderTo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Ext</span>.<span style="color:#a6e22e">getBody</span>(),
+            <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> [ <span style="color:#a6e22e">childPanel1</span>, <span style="color:#a6e22e">childPanel2</span> ]
+        });
+     });
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">c</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Small Fire </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>2472</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+            </p>
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-icon-tag"></i>Tag: 
+            
+            <span class="tag"><a href="https://coldinfire.github.io/tags/ExtJS/">
+                    #ExtJS</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://coldinfire.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://coldinfire.github.io/2021/ABAP_Utils_ReflectionClass/" class="prev" rel="prev" title=" ABAP 获取CLASS参数结果 "><i class="iconfont icon-dajiantou"></i>&nbsp; ABAP 获取CLASS参数结果 </a>
+         
+        
+        <a href="https://coldinfire.github.io/2021/ExtJs_Build/" class="next" rel="next" title=" ExtJS 应用程序创建 "> ExtJS 应用程序创建 &nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-05-09 00:00:00 \x2b0000 UTC',
+        title: ' ExtJS 基础知识 ',
+        clientID: 'd2cccd8844ae11b05792',
+        clientSecret: 'cea63bc294ee16cb47a3344b693c350da1bb0753',
+        repo: 'coldinfire.github.io',
+        owner: 'coldinfire',
+        admin: ['coldinfire'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  
+
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2017 - 2022</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://coldinfire.github.io">Small Fire</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>
